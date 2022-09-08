@@ -203,7 +203,7 @@
                                                     <input type="text" id="chargeable_weight"
                                                         class="form-control @error('chargeable_weight') is-invalid @enderror"
                                                         name="chargeable_weight" required autocomplete="chargeable_weight"
-                                                        autofocus value="" readonly>
+                                                        autofocus  readonly>
 
                                                     @error('chargeable_weight')
                                                         <span class="invalid-feedback" role="alert">
@@ -243,7 +243,8 @@
                                                     <label for="username" class="form-label">Parcel Cost in </label>
                                                     <div id="symbol_lable" class="d-inline text-danger">
                                                     </div>
-                                                    <input type="hidden" name="pl_symbol" id="pl_symbol">
+                                                    <input type="hidden" name="pl_symbol" id="pl_symbol"
+                                                        value="">
                                                     <div class="d-inline">
                                                         <input type="number" id="pl_cost"
                                                             placeholder="Enter Parcel Cost"
@@ -346,11 +347,11 @@
         </div>
     </div>
     <!-- end modal -->
-   
-    <script>
-        $(document).ready(function() {  
 
-             $('#country_id').on('change', function() {
+    <script>
+        $(document).ready(function() {
+
+            $('#country_id').on('change', function() {
                 var country_id = $(this).val();
 
                 if (country_id) {
@@ -360,14 +361,82 @@
                         success: function(data) {
                             if (data) {
                                 console.log(data);
-                              
+                                $('#region_id').val(data.region_id);
+                                $('#pl_currency').val(data.currency_id);
+                                $('#pl_symbol').val(data.symbol);
+                                $('#symbol_lable').text(data.symbol);
+
+                                $("#pl_weight").blur(function() {
+                                    alert(23);
+                                var total_charges = 0;
+                                var pl_weight = $('#pl_weight').val();
+                                var pl_weight = parseInt(pl_weight);
+                                alert(pl_weight);
+                                if (pl_weight > '0' && pl_weight <= '500') {
+
+                                    var wt_charges = parseInt(data.gm0_500);
+                                    alert(wt_charges);
+                                    $('#chargeable_weight').val('500gm');
+                                    $('#pl_cost').val(wt_charges);
+                                }
+                                if (pl_weight > '500' && pl_weight <= '1000') {
+
+                                    var wt_charges = parseInt(data.gm501_1000);
+                                    // alert(wt_charges);
+                                    $('#chargeable_weight').val('1000gm');
+                                    $('#pl_cost').val(wt_charges);
+                                }
+                                if (pl_weight > '1000' && pl_weight <= '1500') {
+
+                                    var wt_charges = parseInt(data.gm1001_1500);
+                                    // alert(wt_charges);
+                                    $('#chargeable_weight').val('1500gm');
+                                    $('#pl_cost').val(wt_charges);
+                                }
+                                if (pl_weight > '1500' && pl_weight <= '2000') {
+
+                                    var wt_charges = parseInt(data.gm1501_2000);
+                                    // alert(wt_charges);
+                                    $('#chargeable_weight').val('2000gm');
+                                    $('#pl_cost').val(wt_charges);
+                                }
+                                if (pl_weight > '2000' && pl_weight <= '5000') {
+
+                                    var wt_charges = parseInt(data.gm2001_5000);
+                                    // alert(wt_charges);
+                                    $('#chargeable_weight').val('5000gm');
+                                    $('#pl_cost').val(wt_charges);
+                                }
+                                if (pl_weight > '5000') {
+
+                                    var wt_charges = parseInt(data.gm5000_above);
+                                    // alert(wt_charges);
+                                    $('#chargeable_weight').val('above 5000gm');
+                                    $('#pl_cost').val(wt_charges);
+                                } else {
+
+                                }
+                            }); // weight blur function closed
+
+                            $("#pl_discount").blur(function() {
+
+                                var pl_cost = parseInt($('#pl_cost').val());
+                                var pl_extras = parseInt($('#pl_extras').val());
+                                var pl_discount = parseInt($('#pl_discount').val());
+                                var pl_total = (pl_cost + pl_extras) - pl_discount;
+                                $('#pl_final').val(pl_total);
+
+                            }); // discount blur function closed
+
+
+
                             } else {
                                 alert('data not found');
-                               
+
                             }
                         }
                     });
-                } 
+                }
             });
 
         });

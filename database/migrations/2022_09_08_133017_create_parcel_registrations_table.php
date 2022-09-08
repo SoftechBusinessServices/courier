@@ -22,7 +22,8 @@ class CreateParcelRegistrationsTable extends Migration
             // $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
             $table->string('pl_weight')->nullable();
             $table->string('chargeable_weight')->nullable();
-            $table->string('pl_currency')->nullable();
+            $table->foreignId('currency_id');
+            // $table->foreign('currency_id')->references('id')->on('currencies')->onDelete('cascade');
             $table->string('pl_symbol')->nullable();
             $table->string('pl_cost')->nullable();
             $table->string('pl_extras')->nullable();

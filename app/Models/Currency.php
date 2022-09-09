@@ -15,7 +15,7 @@ class Currency extends Model
 
     protected $fillable = ['name', 'symbol'];
 
-    public function shipping()
+    public function shipping_currency()
     {
         return $this->hasMany(ShippingCharge::class, 'currency_id', 'id');
     }

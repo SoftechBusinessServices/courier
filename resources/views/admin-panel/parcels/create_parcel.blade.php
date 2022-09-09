@@ -54,6 +54,7 @@
                                             @endphp
                                             @if ($data->count() > 0)
                                                 @foreach ($data as $item)
+                                                {{-- @dd($item) --}}
                                                     <tr>
                                                         <td>{{ $i++ }}</td>
                                                         <td>{{ $item->pl_id }}</td>
@@ -61,7 +62,7 @@
                                                         <td>{{ $item->country->name }}</td>
                                                         <td>{{ $item->pl_weight }}</td>
                                                         <td>{{ $item->chargeable_weight }}</td>
-                                                        <td>{{ $item->pl_currency }}</td>
+                                                        <td>{{ $item->shipping_currency }}</td>
                                                         {{-- <td>{{ $item->pl_currency }}</td> --}}
                                                         <td>{{ $item->pl_cost }}</td>
                                                         <td>{{ $item->pl_extras }}</td>
@@ -230,10 +231,10 @@
                                                 <div class="col-md-6 mb-3">
                                                     <label for="username" class="form-label">Amounts in Currency
                                                     </label>
-                                                    <input type="text" id="pl_currency" class="form-control" autofocus
-                                                        name="pl_currency" value="" readonly>
+                                                    <input type="text" id="currency_id" class="form-control" autofocus
+                                                        name="currency_id" value="" readonly>
 
-                                                    @error('pl_currency')
+                                                    @error('currency_id')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
@@ -362,20 +363,20 @@
                             if (data) {
                                 console.log(data);
                                 $('#region_id').val(data.region_id);
-                                $('#pl_currency').val(data.currency_id);
+                                $('#currency_id').val(data.currency_id);
                                 $('#pl_symbol').val(data.symbol);
                                 $('#symbol_lable').text(data.symbol);
 
                                 $("#pl_weight").blur(function() {
-                                    alert(23);
+                                    // alert(23);
                                 var total_charges = 0;
                                 var pl_weight = $('#pl_weight').val();
                                 var pl_weight = parseInt(pl_weight);
-                                alert(pl_weight);
+                                // alert(pl_weight);
                                 if (pl_weight > '0' && pl_weight <= '500') {
 
                                     var wt_charges = parseInt(data.gm0_500);
-                                    alert(wt_charges);
+                                    // alert(wt_charges);
                                     $('#chargeable_weight').val('500gm');
                                     $('#pl_cost').val(wt_charges);
                                 }

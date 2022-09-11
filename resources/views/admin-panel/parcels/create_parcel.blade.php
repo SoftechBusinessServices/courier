@@ -14,7 +14,19 @@
                         <div class="card">
                             <div class="card-body">
 
-                                <h4 class="card-title">Parcel Details</h4>
+                                <h4 class="card-title">Parcel Details
+                                </h4>
+                                <a href="{{ url('/prnpriview') }}" class="btnprn btn">Print Preview</a>
+                                <script type="text/javascript">
+                                    $(document).ready(function() {
+                                        $('.btnprn').printPage();
+                                        $(".btnprn").printPage({
+                                            url: "/print/custompage/html",
+                                            attr: "href",
+                                            message: "Your document is being created"
+                                        })
+                                    });
+                                </script>
                                 <p class="card-title-desc"><br>
                                     <!-- Button trigger modal -->
                                     <button type="button"
@@ -54,15 +66,15 @@
                                             @endphp
                                             @if ($data->count() > 0)
                                                 @foreach ($data as $item)
-                                                {{-- @dd($item) --}}
+                                                    {{-- @dd($item) --}}
                                                     <tr>
                                                         <td>{{ $i++ }}</td>
                                                         <td>{{ $item->pl_id }}</td>
                                                         <td>{{ $item->region->name }}</td>
                                                         <td>{{ $item->country->name }}</td>
+                                                        <td>{{ $item->currency->name }}</td>
                                                         <td>{{ $item->pl_weight }}</td>
                                                         <td>{{ $item->chargeable_weight }}</td>
-                                                        <td>{{ $item->shipping_currency }}</td>
                                                         {{-- <td>{{ $item->pl_currency }}</td> --}}
                                                         <td>{{ $item->pl_cost }}</td>
                                                         <td>{{ $item->pl_extras }}</td>
@@ -154,6 +166,18 @@
                                             <h5 class="text-center">Parcel Registrations</h5>
                                             <div class="row">
                                                 <div class="col-md-6 mb-3">
+                                                    <label for="username" class="form-label">Parcel Date</label>
+                                                    <input type="date" id="username" required
+                                                        class="form-control @error('pl_date') is-invalid @enderror"
+                                                        name="pl_date" value="{{ old('pl_date') }}" required autofocus>
+
+                                                    @error('pl_date')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                                <div class="col-md-6 mb-3">
                                                     <label for="useremail" class="form-label">Destination Country</label>
                                                     <select class="form-select" name="country_id" required id="country_id"
                                                         class="form-control table-responsive @error('country_id') is-invalid @enderror">
@@ -165,17 +189,6 @@
                                                         @endforeach
                                                     </select>
                                                     @error('country_id')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                                <div class="col-md-6 mb-3">
-                                                    <label for="course" class="form-label">Selected
-                                                        Region<code>*</code></label>
-                                                    <input type="text" name="region_id" id="region_id"
-                                                        class="form-control" value="" readonly>
-                                                    @error('region_id')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
@@ -204,7 +217,7 @@
                                                     <input type="text" id="chargeable_weight"
                                                         class="form-control @error('chargeable_weight') is-invalid @enderror"
                                                         name="chargeable_weight" required autocomplete="chargeable_weight"
-                                                        autofocus  readonly>
+                                                        autofocus readonly>
 
                                                     @error('chargeable_weight')
                                                         <span class="invalid-feedback" role="alert">
@@ -212,34 +225,9 @@
                                                         </span>
                                                     @enderror
                                                 </div>
-                                                {{-- <div class="col-md-6 mb-3">
-                                                    <label for="username" class="form-label">Parcel Weight Charges</label>
-                                                    <input type="number" id="pl_charges" placeholder="Enter Weight charges"
-                                                        required
-                                                        class="form-control @error('pl_charges') is-invalid @enderror"
-                                                        name="pl_charges" value="{{ old('pl_charges') }}" required
-                                                        autocomplete="pl_charges" autofocus onblur="getAmount()">
-
-                                                    @error('pl_charges')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div> --}}
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-6 mb-3">
-                                                    <label for="username" class="form-label">Amounts in Currency
-                                                    </label>
-                                                    <input type="text" id="currency_id" class="form-control" autofocus
-                                                        name="currency_id" value="" readonly>
 
-                                                    @error('currency_id')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
                                                 <div class="col-md-6 mb-3">
                                                     <label for="username" class="form-label">Parcel Cost in </label>
                                                     <div id="symbol_lable" class="d-inline text-danger">
@@ -259,10 +247,7 @@
                                                             </span>
                                                         @enderror
                                                     </div>
-
                                                 </div>
-                                            </div>
-                                            <div class="row">
                                                 <div class="col-md-6 mb-3">
                                                     <label for="username" class="form-label">Parcel Extras Cost</label>
                                                     <input type="number" id="pl_extras"
@@ -277,6 +262,8 @@
                                                         </span>
                                                     @enderror
                                                 </div>
+                                            </div>
+                                            <div class="row">
                                                 <div class="col-md-6 mb-3">
                                                     <label for="username" class="form-label">Parcel Discount</label>
                                                     <input type="number" id="pl_discount"
@@ -291,8 +278,6 @@
                                                         </span>
                                                     @enderror
                                                 </div>
-                                            </div>
-                                            <div class="row">
                                                 <div class="col-md-6 mb-3">
                                                     <label for="username" class="form-label">Parcel Final Cost</label>
                                                     <input type="number" id="pl_final"
@@ -307,18 +292,31 @@
                                                         </span>
                                                     @enderror
                                                 </div>
-                                                <div class="col-md-6 mb-3">
-                                                    <label for="username" class="form-label">Parcel Date</label>
-                                                    <input type="date" id="username" required
-                                                        class="form-control @error('pl_date') is-invalid @enderror"
-                                                        name="pl_date" value="{{ old('pl_date') }}" required autofocus>
-
-                                                    @error('pl_date')
+                                            </div>
+                                            <div class="row">
+                                                {{-- <div class="col-md-6 mb-3"> --}}
+                                                {{-- <label for="course" class="form-label">Selected --}}
+                                                {{-- Region<code>*</code></label> --}}
+                                                <input type="hidden" name="region_id" id="region_id"
+                                                    class="form-control" value="" readonly>
+                                                {{-- @error('region_id')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
-                                                    @enderror
-                                                </div>
+                                                    @enderror --}}
+                                                {{-- </div> --}}
+                                                {{-- <div class="col-md-6 mb-3">
+                                                    <label for="username" class="form-label">Amounts in Currency
+                                                    </label> --}}
+                                                <input type="hidden" id="currency_id" class="form-control" autofocus
+                                                    name="currency_id" value="" readonly>
+
+                                                {{-- @error('currency_id')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror --}}
+                                                {{-- </div> --}}
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-12 mb-3">
@@ -369,67 +367,65 @@
 
                                 $("#pl_weight").blur(function() {
                                     // alert(23);
-                                var total_charges = 0;
-                                var pl_weight = $('#pl_weight').val();
-                                var pl_weight = parseInt(pl_weight);
-                                // alert(pl_weight);
-                                if (pl_weight > '0' && pl_weight <= '500') {
+                                    var total_charges = 0;
+                                    var pl_weight = $('#pl_weight').val();
+                                    var pl_weight = parseInt(pl_weight);
+                                    // alert(pl_weight);
+                                    if (pl_weight > '0' && pl_weight <= '500') {
 
-                                    var wt_charges = parseInt(data.gm0_500);
-                                    // alert(wt_charges);
-                                    $('#chargeable_weight').val('500gm');
-                                    $('#pl_cost').val(wt_charges);
-                                }
-                                if (pl_weight > '500' && pl_weight <= '1000') {
+                                        var wt_charges = parseInt(data.gm0_500);
+                                        // alert(wt_charges);
+                                        $('#chargeable_weight').val('500gm');
+                                        $('#pl_cost').val(wt_charges);
+                                    }
+                                    if (pl_weight > '500' && pl_weight <= '1000') {
 
-                                    var wt_charges = parseInt(data.gm501_1000);
-                                    // alert(wt_charges);
-                                    $('#chargeable_weight').val('1000gm');
-                                    $('#pl_cost').val(wt_charges);
-                                }
-                                if (pl_weight > '1000' && pl_weight <= '1500') {
+                                        var wt_charges = parseInt(data.gm501_1000);
+                                        // alert(wt_charges);
+                                        $('#chargeable_weight').val('1000gm');
+                                        $('#pl_cost').val(wt_charges);
+                                    }
+                                    if (pl_weight > '1000' && pl_weight <= '1500') {
 
-                                    var wt_charges = parseInt(data.gm1001_1500);
-                                    // alert(wt_charges);
-                                    $('#chargeable_weight').val('1500gm');
-                                    $('#pl_cost').val(wt_charges);
-                                }
-                                if (pl_weight > '1500' && pl_weight <= '2000') {
+                                        var wt_charges = parseInt(data.gm1001_1500);
+                                        // alert(wt_charges);
+                                        $('#chargeable_weight').val('1500gm');
+                                        $('#pl_cost').val(wt_charges);
+                                    }
+                                    if (pl_weight > '1500' && pl_weight <= '2000') {
 
-                                    var wt_charges = parseInt(data.gm1501_2000);
-                                    // alert(wt_charges);
-                                    $('#chargeable_weight').val('2000gm');
-                                    $('#pl_cost').val(wt_charges);
-                                }
-                                if (pl_weight > '2000' && pl_weight <= '5000') {
+                                        var wt_charges = parseInt(data.gm1501_2000);
+                                        // alert(wt_charges);
+                                        $('#chargeable_weight').val('2000gm');
+                                        $('#pl_cost').val(wt_charges);
+                                    }
+                                    if (pl_weight > '2000' && pl_weight <= '5000') {
 
-                                    var wt_charges = parseInt(data.gm2001_5000);
-                                    // alert(wt_charges);
-                                    $('#chargeable_weight').val('5000gm');
-                                    $('#pl_cost').val(wt_charges);
-                                }
-                                if (pl_weight > '5000') {
+                                        var wt_charges = parseInt(data.gm2001_5000);
+                                        // alert(wt_charges);
+                                        $('#chargeable_weight').val('5000gm');
+                                        $('#pl_cost').val(wt_charges);
+                                    }
+                                    if (pl_weight > '5000') {
 
-                                    var wt_charges = parseInt(data.gm5000_above);
-                                    // alert(wt_charges);
-                                    $('#chargeable_weight').val('above 5000gm');
-                                    $('#pl_cost').val(wt_charges);
-                                } else {
+                                        var wt_charges = parseInt(data.gm5000_above);
+                                        // alert(wt_charges);
+                                        $('#chargeable_weight').val('above 5000gm');
+                                        $('#pl_cost').val(wt_charges);
+                                    } else {
 
-                                }
-                            }); // weight blur function closed
+                                    }
+                                }); // weight blur function closed
 
-                            $("#pl_discount").blur(function() {
+                                $("#pl_discount").blur(function() {
 
-                                var pl_cost = parseInt($('#pl_cost').val());
-                                var pl_extras = parseInt($('#pl_extras').val());
-                                var pl_discount = parseInt($('#pl_discount').val());
-                                var pl_total = (pl_cost + pl_extras) - pl_discount;
-                                $('#pl_final').val(pl_total);
+                                    var pl_cost = parseInt($('#pl_cost').val());
+                                    var pl_extras = parseInt($('#pl_extras').val());
+                                    var pl_discount = parseInt($('#pl_discount').val());
+                                    var pl_total = (pl_cost + pl_extras) - pl_discount;
+                                    $('#pl_final').val(pl_total);
 
-                            }); // discount blur function closed
-
-
+                                }); // discount blur function closed
 
                             } else {
                                 alert('data not found');
@@ -439,6 +435,7 @@
                     });
                 }
             });
+            //country_id function closed
 
         });
     </script>

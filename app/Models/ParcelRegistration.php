@@ -30,4 +30,9 @@ class ParcelRegistration extends Model
     {
         return $this->belongsTo(Region::class, 'region_id', 'id');
     }
+    public function currency()
+    {
+        return $this->belongsTo(Currency::class, 'currency_id', 'id');
+    }
+    
 }

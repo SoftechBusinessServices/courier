@@ -10,6 +10,7 @@ use App\Http\Controllers\ParcelRegistrationController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\ShippingChargesController;
 use App\Http\Controllers\vendorController;
+use App\Http\Controllers\PrintController;
 
 /*
 |--------------------------------------------------------------------------
@@ -94,3 +95,5 @@ Route::post('/store-vendor', [vendorController::class, 'store_vendor'])->name('s
 Route::get('edit-vendor/{id}', [vendorController::class, 'edit_vendor']);
 Route::post('update-vendor/{id}', [vendorController::class, 'update_vendor']);
 Route::get('delete-vendor/{id}', [vendorController::class, 'destroy_vendor'])->name('delete-vendor');
+
+Route::get('/prnpriview', [PrintController::class, 'prnpriview']);

@@ -19,4 +19,9 @@ class Currency extends Model
     {
         return $this->hasMany(ShippingCharge::class, 'currency_id', 'id');
     }
+    public function parcel_currency()
+    {
+        return $this->hasMany(ParcelRegistration::class, 'currency_id', 'id');
+    }
+
 }

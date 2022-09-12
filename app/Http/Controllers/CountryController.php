@@ -54,7 +54,7 @@ class CountryController extends Controller
         $validatedData = $request->validate(
             [
                 'region_id' => 'required',
-                'name' => 'required|unique:countries',
+                'name' => 'required',
                 'code' => 'required'
             ]
         );

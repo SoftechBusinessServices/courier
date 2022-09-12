@@ -14,17 +14,7 @@
                            <span key="t-dashboards">Dashboard</span>
                        </a>
                    </li>
-                   <li>
-                       <a href="javascript: void(0);" class="has-arrow waves-effect">
-                           <i class="bx bx-store"></i>
-                           <span key="t-ecommerce">Vendor Registration</span>
-                       </a>
-                       <ul class="sub-menu" aria-expanded="false">
-                           <li><a href="{{ route('add-parcel') }}" key="t-user-grid">Parcel Registration</a></li>
-                           <li><a href="{{ route('add-vendor') }}" key="t-user-grid">Add Vendor</a></li>
-
-                       </ul>
-                   </li>
+                   
                    <li>
                        <a href="javascript: void(0);" class="has-arrow waves-effect">
                            <i class="bx bxs-business"></i>
@@ -61,6 +51,18 @@
 
                        </ul>
                    </li>
+
+                   <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-store"></i>
+                        <span key="t-ecommerce">Vendor Registration</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('add-parcel') }}" key="t-user-grid">Parcel Registration</a></li>
+                        <li><a href="{{ route('add-vendor') }}" key="t-user-grid">Add Vendor</a></li>
+
+                    </ul>
+                </li>
 
                </ul>
            </div>

@@ -14,7 +14,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <p class="card-title-desc text-dark">
-                                    Countries under selected Regions
+                                    Countries under selected <a href="{{ route('add-region')}}">Regions</a> 
                                 </p>
                                 @if (isset($data))
                                     <table id="datatable-buttons"

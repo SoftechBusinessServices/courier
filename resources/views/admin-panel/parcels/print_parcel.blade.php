@@ -1,4 +1,6 @@
+@extends('admin-panel.index')
 
+@section('content')
     <div class="main-content">
 
         <div class="page-content">
@@ -8,116 +10,187 @@
                 <div class="row">
                     <div class="col-12">
                         <!--write your code here  -->
-                        <div class="card">
-                            <div class="card-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
 
-                                
-                                <p class="card-title-desc">
-                                  <h3 class="text-center">Parcel Details Print Preview</h3>
-                                
-                                </p>
-                                @if (isset($data))
-                                    <table id="datatable-buttons" style="border: 1px solid black;"
-                                        class="table table-bordered dt-responsive nowrap w-100 table-sm border">
-                                        <thead style=" border: 1px solid black;">
-                                            <tr style=" border: 1px solid black;">
-                                                <th style=" border: 1px solid black;">S.No</th>
-                                                <th style=" border: 1px solid black;">Parcel_id</th>
-                                                <th style=" border: 1px solid black;">Region</th>
-                                                <th style=" border: 1px solid black;">Country</th>
-                                                <th style=" border: 1px solid black;">Currency</th>
-                                                <th style=" border: 1px solid black;">Weight</th>
-                                                <th style=" border: 1px solid black;">Chargeable</th>
-                                                <th style=" border: 1px solid black;">Cost</th>
-                                                <th style=" border: 1px solid black;">Extras</th>
-                                                <th style=" border: 1px solid black;">Discount</th>
-                                                <th style=" border: 1px solid black;">Final</th>
-                                                <th style=" border: 1px solid black;">Delivery</th>
-                                                <th style=" border: 1px solid black;">Description</th>
-                                                <th style=" border: 1px solid black;">Parcel Date</th>
-                                                {{-- <th>Status</th> --}}
-                                                {{-- <th>Action</th> --}}
-                                            </tr>
-                                        </thead>
+                                    <!-- Main content -->
+                                    <div class="invoice p-3 mb-3">
+                                        <!-- title row -->
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <h4>
+                                                    <i class="fa fa-globe"></i> Courier Services, PVT(LTD).
+                                                    <small class="float-right">Date: 2/10/2018</small>
+                                                </h4>
+                                            </div>
+                                            <!-- /.col -->
+                                        </div>
+                                        <!-- info row -->
+                                        <div class="row invoice-info">
+                                            <div class="col-sm-4 invoice-col">
+                                                From
+                                                <address>
+                                                    <strong>Softech Business Services.</strong><br>
+                                                   G15 Markaz, Islamabad<br>
+                                                    Pakistan<br>
+                                                    Phone: (804) 123-4567890<br>
+                                                    Email: info@softechbusiness.com
+                                                </address>
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-sm-4 invoice-col">
+                                                To
+                                                <address>
+                                                    <strong>John Doe</strong><br>
+                                                    795 Folsom Ave, Suite 600<br>
+                                                    San Francisco, CA 94107<br>
+                                                    Phone: (555) 539-1037<br>
+                                                    Email: john.doe@example.com
+                                                </address>
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-sm-4 invoice-col">
+                                                <b>Invoice #007612</b><br>
+                                                <br>
+                                                <b>Order ID:</b> 4F3S8J<br>
+                                                <b>Payment Due:</b> 2/22/2014<br>
+                                                <b>Account:</b> 968-34567
+                                            </div>
+                                            <!-- /.col -->
+                                        </div>
+                                        <!-- /.row -->
+
+                                        <!-- Table row -->
+                                        <div class="row">
+                                            <div class="col-12 table-responsive">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Qty</th>
+                                                            <th>Product</th>
+                                                            <th>Serial #</th>
+                                                            <th>Description</th>
+                                                            <th>Subtotal</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>1</td>
+                                                            <td>Call of Duty</td>
+                                                            <td>455-981-221</td>
+                                                            <td>El snort testosterone trophy driving gloves handsome</td>
+                                                            <td>$64.50</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>1</td>
+                                                            <td>Need for Speed IV</td>
+                                                            <td>247-925-726</td>
+                                                            <td>Wes Anderson umami biodiesel</td>
+                                                            <td>$50.00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>1</td>
+                                                            <td>Monsters DVD</td>
+                                                            <td>735-845-642</td>
+                                                            <td>Terry Richardson helvetica tousled street art master</td>
+                                                            <td>$10.70</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>1</td>
+                                                            <td>Grown Ups Blue Ray</td>
+                                                            <td>422-568-642</td>
+                                                            <td>Tousled lomo letterpress</td>
+                                                            <td>$25.99</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <!-- /.col -->
+                                        </div>
+                                        <!-- /.row -->
+
+                                        <div class="row">
+                                            <!-- accepted payments column -->
+                                            <div class="col-6">
+                                                <p class="lead">Payment Methods:</p>
+                                                <img src="https://pngimg.com/uploads/visa/visa_PNG35.png"
+                                                    alt="Visa">
+                                                <img src="https://adminlte.io/themes/dev/AdminLTE/dist/img/credit/mastercard.png"
+                                                    alt="Mastercard">
+                                                <img src="https://adminlte.io/themes/dev/AdminLTE/dist/img/credit/american-express.png"
+                                                    alt="American Express">
+                                                <img src="https://adminlte.io/themes/dev/AdminLTE/dist/img/credit/paypal2.png"
+                                                    alt="Paypal">
+
+                                                <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
+                                                    Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly
+                                                    ning heekya handango
+                                                    imeem
+                                                    plugg
+                                                    dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.
+                                                </p>
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-6">
+                                                <p class="lead">Amount Due 2/22/2014</p>
+
+                                                <div class="table-responsive">
+                                                    <table class="table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th style="width:50%">Subtotal:</th>
+                                                                <td>$250.30</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Tax (9.3%)</th>
+                                                                <td>$10.34</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Shipping:</th>
+                                                                <td>$5.80</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Total:</th>
+                                                                <td>$265.24</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <!-- /.col -->
+                                        </div>
+                                        <!-- /.row -->
+
+                                        <!-- this row will not appear when printing -->
+                                        <div class="row no-print">
+                                            <div class="col-12">
+
+                                                <a href="" @click.prevent="printme" target="_blank"
+                                                    class="btn btn-default"><i class="fa fa-print"></i> Print</a>
+                                                <button type="button" class="btn btn-success float-right">
+                                                    <i class="fa fa-credit-card"></i>
+                                                    Submit Payment
+                                                </button>
+
+                                                <button type="button" class="btn btn-primary float-right"
+                                                    style="margin-right: 5px;">
+                                                    <i class="fa fa-download"></i> Generate PDF
+                                                </button>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <!-- /.invoice -->
+                                </div>
 
 
-                                        <tbody>
-                                            @php
-                                                $i = 1;
-                                            @endphp
-                                            @if ($data->count() > 0)
-                                                @foreach ($data as $item)
-                                                    {{-- @dd($item) --}}
-                                                    <tr style=" border: 1px solid black;">
-                                                        <td>{{ $i++ }}</td>
-                                                        <td>{{ $item->pl_id }}</td>
-                                                        <td>{{ $item->region->name }}</td>
-                                                        <td>{{ $item->country->name }}</td>
-                                                        <td>{{ $item->currency->name }}</td>
-                                                        <td>{{ $item->pl_weight }}</td>
-                                                        <td>{{ $item->chargeable_weight }}</td>
-                                                        {{-- <td>{{ $item->pl_currency }}</td> --}}
-                                                        <td>{{ $item->pl_cost }}</td>
-                                                        <td>{{ $item->pl_extras }}</td>
-                                                        <td>{{ $item->pl_discount }}</td>
-                                                        <td>{{ $item->pl_symbol . ' ' . $item->pl_final }}</td>
-
-                                                        <td>{{ $item->pl_description }}</td>
-                                                        <td>{{ $item->pl_status }}</td>
-                                                        <td>
-                                                            @php
-                                                                $month = date('d/m/Y', strtotime($item->pl_date));
-                                                                // dd($month);
-                                                                echo $month;
-                                                            @endphp
-                                                        </td>
-                                                        {{-- <td>
-                                                            @if ($item->status == 'inactive')
-                                                                <button type="button" class="btn btn-danger  btn-sm">
-                                                                    {{ $item->status }} </button>
-                                                            @else
-                                                                <button type="button" class="btn btn-success btn-sm">
-                                                                    {{ $item->status }} </button>
-                                                            @endif
-                                                        </td> --}}
-                                                        {{-- <td style="">
-                                                            <a href="{{ url('print-parcel/' . $item->id) }}"
-                                                                class="btn btn-outline-dark btn-sm print" title="Print">
-                                                                <i class="fas fa-regular fa-print"></i>
-                                                            </a>
-
-                                                            |<a href="{{ url('edit-parcel/' . $item->id) }}"
-                                                                class="btn btn-outline-warning btn-sm edit" title="Edit">
-                                                                <i class="fas fa-pencil-alt"></i>
-                                                            </a>
-                                                            |
-                                                            <a href="{{ url('delete-parcel/' . $item->id) }}"
-                                                                class="btn btn-outline-danger btn-sm delete" title="Delete"
-                                                                onclick="return confirm('Are you sure to delete Record?')">
-                                                                <i class="fas fa-trash-alt"></i>
-                                                            </a>
-                                                        </td> --}}
-                                                    </tr>
-                                                @endforeach
-                                            @else
-                                                <tr>
-                                                    <td><code>No record found...</code></td>
-                                                </tr>
-                                            @endif
-
-
-
-                                        </tbody>
-                                    </table>
-                                @endif
                             </div>
-
-                        </div> <!-- end col -->
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
-      
+@endsection

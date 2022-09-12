@@ -15,18 +15,8 @@
                             <div class="card-body">
 
                                 <h4 class="card-title">Parcel Details
+                                    <a href="{{ url('/prnpriview') }}" class="btn btn-info btn-sm ml-2">Print Preview</a>
                                 </h4>
-                                <a href="{{ url('/prnpriview') }}" class="btnprn btn">Print Preview</a>
-                                <script type="text/javascript">
-                                    $(document).ready(function() {
-                                        $('.btnprn').printPage();
-                                        $(".btnprn").printPage({
-                                            url: "/print/custompage/html",
-                                            attr: "href",
-                                            message: "Your document is being created"
-                                        })
-                                    });
-                                </script>
                                 <p class="card-title-desc"><br>
                                     <!-- Button trigger modal -->
                                     <button type="button"

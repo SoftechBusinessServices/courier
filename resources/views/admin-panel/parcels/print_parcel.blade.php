@@ -12,34 +12,30 @@
                             <div class="card-body">
 
                                 
-                                <p class="card-title-desc"><br>
-                                    <!-- Button trigger modal -->
-                                    <button type="button"
-                                        class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
-                                        data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
-                                        New Parcel
-                                    </button>
+                                <p class="card-title-desc">
+                                  <h3 class="text-center">Parcel Details Print Preview</h3>
+                                
                                 </p>
                                 @if (isset($data))
-                                    <table id="datatable-buttons"
-                                        class="table table-bordered dt-responsive nowrap w-100 table-sm">
-                                        <thead>
-                                            <tr>
-                                                <th>S.No</th>
-                                                <th>Parcel_id</th>
-                                                <th>Region</th>
-                                                <th>Country</th>
-                                                <th>Currency</th>
-                                                <th>Weight</th>
-                                                <th>Chargeable</th>
-                                                <th>Cost</th>
-                                                <th>Extras</th>
-                                                <th>Discount</th>
-                                                <th>Final</th>
-                                                <th>Delivery</th>
-                                                <th>Description</th>
-                                                <th>Parcel Date</th>
-                                                <th>Status</th>
+                                    <table id="datatable-buttons" style="border: 1px solid black;"
+                                        class="table table-bordered dt-responsive nowrap w-100 table-sm border">
+                                        <thead style=" border: 1px solid black;">
+                                            <tr style=" border: 1px solid black;">
+                                                <th style=" border: 1px solid black;">S.No</th>
+                                                <th style=" border: 1px solid black;">Parcel_id</th>
+                                                <th style=" border: 1px solid black;">Region</th>
+                                                <th style=" border: 1px solid black;">Country</th>
+                                                <th style=" border: 1px solid black;">Currency</th>
+                                                <th style=" border: 1px solid black;">Weight</th>
+                                                <th style=" border: 1px solid black;">Chargeable</th>
+                                                <th style=" border: 1px solid black;">Cost</th>
+                                                <th style=" border: 1px solid black;">Extras</th>
+                                                <th style=" border: 1px solid black;">Discount</th>
+                                                <th style=" border: 1px solid black;">Final</th>
+                                                <th style=" border: 1px solid black;">Delivery</th>
+                                                <th style=" border: 1px solid black;">Description</th>
+                                                <th style=" border: 1px solid black;">Parcel Date</th>
+                                                {{-- <th>Status</th> --}}
                                                 {{-- <th>Action</th> --}}
                                             </tr>
                                         </thead>
@@ -52,7 +48,7 @@
                                             @if ($data->count() > 0)
                                                 @foreach ($data as $item)
                                                     {{-- @dd($item) --}}
-                                                    <tr>
+                                                    <tr style=" border: 1px solid black;">
                                                         <td>{{ $i++ }}</td>
                                                         <td>{{ $item->pl_id }}</td>
                                                         <td>{{ $item->region->name }}</td>
@@ -75,7 +71,7 @@
                                                                 echo $month;
                                                             @endphp
                                                         </td>
-                                                        <td>
+                                                        {{-- <td>
                                                             @if ($item->status == 'inactive')
                                                                 <button type="button" class="btn btn-danger  btn-sm">
                                                                     {{ $item->status }} </button>
@@ -83,7 +79,7 @@
                                                                 <button type="button" class="btn btn-success btn-sm">
                                                                     {{ $item->status }} </button>
                                                             @endif
-                                                        </td>
+                                                        </td> --}}
                                                         {{-- <td style="">
                                                             <a href="{{ url('print-parcel/' . $item->id) }}"
                                                                 class="btn btn-outline-dark btn-sm print" title="Print">

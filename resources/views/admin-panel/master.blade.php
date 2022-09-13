@@ -21,7 +21,7 @@
         <!-- Start right Content here -->
         <!-- ============================================================== -->
        
-        @yield('content')
+        @include('admin-panel.content')
         
         <!-- end main content-->
         @include('admin-panel.footer')

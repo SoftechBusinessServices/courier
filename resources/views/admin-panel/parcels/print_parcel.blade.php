@@ -115,13 +115,13 @@
                                             <div class="col-6">
                                                 <p class="lead">Payment Methods:</p>
                                                 <img src="https://pngimg.com/uploads/visa/visa_PNG35.png"
-                                                    alt="Visa">
-                                                <img src="https://adminlte.io/themes/dev/AdminLTE/dist/img/credit/mastercard.png"
-                                                    alt="Mastercard">
-                                                <img src="https://adminlte.io/themes/dev/AdminLTE/dist/img/credit/american-express.png"
-                                                    alt="American Express">
-                                                <img src="https://adminlte.io/themes/dev/AdminLTE/dist/img/credit/paypal2.png"
-                                                    alt="Paypal">
+                                                    alt="Visa" width="100">
+                                                <img src="https://pngimg.com/uploads/visa/visa_PNG35.png"
+                                                    alt="Mastercard" width="100">
+                                                <img src="https://pngimg.com/uploads/visa/visa_PNG35.png"
+                                                    alt="American Express" width="100">
+                                                <img src="https://pngimg.com/uploads/visa/visa_PNG35.png"
+                                                    alt="Paypal" width="100">
 
                                                 <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
                                                     Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly

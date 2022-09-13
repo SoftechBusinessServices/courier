@@ -24,7 +24,7 @@ class HomeController extends Controller
     public function index()
     {
         // dd(1);
-        return view('admin-panel.index');
+        return view('admin-panel.master');
 
         // return view('home');
     }

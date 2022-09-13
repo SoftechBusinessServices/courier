@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Region;
+use App\Models\Company;
+use App\Models\Country;
+use App\Models\Currency;
 use Illuminate\Http\Request;
+use App\Models\ShippingCharge;
+use App\Models\ParcelRegistration;
 
 class HomeController extends Controller
 {
@@ -23,8 +29,16 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $data = ParcelRegistration::all();
+        // dd($data);
+        $regions = Region::all();
+        $countries = Country::all();
+        $charges = ShippingCharge::all();
         // dd(1);
-        return view('admin-panel.master');
+        $countries = Country::all();
+        $companies = Company::all();
+        $currencies = Currency::all();
+        return view('admin-panel.master',  compact('data', 'regions', 'charges', 'countries','companies','currencies'));
 
         // return view('home');
     }

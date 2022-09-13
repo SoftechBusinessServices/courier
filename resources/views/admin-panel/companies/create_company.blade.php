@@ -14,14 +14,17 @@
                         <div class="card">
                             <div class="card-body">
 
-                                <h4 class="card-title">Company Details</h4>
+                                <h4 class="card-title">Company Details
+                                    <a href="{{ url('/home') }}" class="btn btn-primary btn-sm ml-2">Home</a>
+                                    <a href="{{ url('/prnpriview') }}" class="btn btn-info btn-sm ml-2">Print Preview</a>
+                                </h4>
                                 <p class="card-title-desc"><br>
                                     <!-- Button trigger modal -->
-                                    <button type="button"
+                                    {{-- <button type="button"
                                         class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
                                         data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
                                         New Company
-                                    </button>
+                                    </button> --}}
                                 </p>
                                 @if (isset($data))
                                     <table id="datatable-buttons"
@@ -255,10 +258,5 @@
         </div>
     </div>
     <!-- end modal -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
 
-    <script>
-        $(":input").inputmask();
-    </script>
 @endsection

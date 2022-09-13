@@ -15,15 +15,16 @@
                             <div class="card-body">
 
                                 <h4 class="card-title">Parcel Details
+                                    <a href="{{ url('/home') }}" class="btn btn-primary btn-sm ml-2">Home</a>
                                     <a href="{{ url('/prnpriview') }}" class="btn btn-info btn-sm ml-2">Print Preview</a>
                                 </h4>
                                 <p class="card-title-desc"><br>
                                     <!-- Button trigger modal -->
-                                    <button type="button"
+                                    {{-- <button type="button"
                                         class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
                                         data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
                                         New Parcel
-                                    </button>
+                                    </button> --}}
                                 </p>
                                 @if (isset($data))
                                     <table id="datatable-buttons"

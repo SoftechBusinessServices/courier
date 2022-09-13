@@ -14,14 +14,17 @@
                         <div class="card">
                             <div class="card-body">
 
-                                <h4 class="card-title">Country Details</h4>
+                                <h4 class="card-title">Country Details
+                                    <a href="{{ url('/home') }}" class="btn btn-primary btn-sm ml-2">Home</a>
+                                    <a href="{{ url('/prnpriview') }}" class="btn btn-info btn-sm ml-2">Print Preview</a>
+                                </h4>
                                 <p class="card-title-desc"><br>
                                     <!-- Button trigger modal -->
-                                    <button type="button"
+                                    {{-- <button type="button"
                                         class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
                                         data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
                                         New country
-                                    </button>
+                                    </button> --}}
                                 </p>
                                 @if (isset($data))
                                     <table id="datatable-buttons"

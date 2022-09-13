@@ -68,7 +68,7 @@
                                 </h4>
                                 @if (isset($data))
                                     <table id="datatable-buttons"
-                                        class="table table-bordered dt-responsive nowrap w-100 table-sm text-center">
+                                        class="table table-bordered dt-responsive nowrap w-100 table-sm text-center table-responsive">
                                         <thead >
                                             <tr class="text-center">
                                                 <th>S.No</th>

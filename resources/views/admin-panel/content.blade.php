@@ -2,12 +2,11 @@
 
     <div class="page-content">
         <div class="container-fluid">
-
             <!-- start page title -->
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0 font-size-18">Dashboard</h4>
+                        <h4 class="mb-sm-0 font-size-18"><a href="{{ route('home') }}">Dashboard</a></h4>
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
@@ -20,10 +19,9 @@
                     </div>
                 </div>
             </div>
-            <!-- end page title -->
+            {{-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@---Dashboard---@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ --}}
 
             <div class="row">
-
                 <div class="col-xl-12">
                     <div class="row">
                         <div class="col-md-4">
@@ -39,7 +37,7 @@
                                             <div>
                                                 <button type="button"
                                                     class="btn btn-sm btn-success waves-effect waves-light"
-                                                    data-bs-toggle="modal" data-bs-target="#firstmodal">Add
+                                                    data-bs-toggle="modal" data-bs-target="#parcelmodal">Add
                                                     Parcel</button>
                                                 <a href="{{ route('add-parcel') }}"
                                                     class="btn btn-sm btn-primary waves-effect waves-light ">View
@@ -135,535 +133,990 @@
                     <!-- end row -->
                 </div>
             </div>
-            <!-- end row -->
-            
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="card">
+            {{-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@---1st row-end---@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ --}}
+
+            <div id="accordion">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+                                aria-expanded="true" aria-controls="collapseOne">
+                                Settings
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                         <div class="card-body">
-                            <h4 class="card-title">Settings</h4>
                             <div class="row">
-                                <div class="col-lg-3">
-                                    <div class="border p-3 rounded mt-4">
-                                        <div class="d-flex align-items-center mb-3">
-                                            <div class="avatar-xs me-3">
-                                                <span
-                                                    class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
-                                                    <i class="mdi mdi-bitcoin"></i>
-                                                </span>
-                                            </div>
-                                            <h5 class="font-size-14 mb-0">Regions</h5>
-                                        </div>
+                                <div class="col-xl-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Settings</h4>
+                                            <div class="row">
+                                                <div class="col-lg-3">
+                                                    <div class="border p-3 rounded mt-4">
+                                                        <div class="d-flex align-items-center mb-3">
+                                                            <div class="avatar-xs me-3">
+                                                                <span
+                                                                    class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
+                                                                    <i class="mdi mdi-bitcoin"></i>
+                                                                </span>
+                                                            </div>
+                                                            <h5 class="font-size-14 mb-0">Regions</h5>
+                                                        </div>
 
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <div class="text-muted mt-3">
-                                                    <p>No of Regions</p>
-                                                    <h4>4</h4>
-                                                    {{-- <p class="mb-0">0.00745 BTC</p> --}}
+                                                        <div class="row">
+                                                            <div class="col-lg-6">
+                                                                <div class="text-muted mt-3">
+                                                                    <p>No of Regions</p>
+                                                                    <h4>4</h4>
+                                                                    {{-- <p class="mb-0">0.00745 BTC</p> --}}
 
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-lg-6 align-self-end">
+                                                                <div class="float-end mt-3">
+                                                                    <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#regionmodal">Add</a>
+                                                                    <a href="{{ route('add-region') }}"
+                                                                        class="btn btn-sm btn-primary">View</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <div class="border p-3 rounded mt-4">
+                                                        <div class="d-flex align-items-center mb-3">
+                                                            <div class="avatar-xs me-3">
+                                                                <span
+                                                                    class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-18">
+                                                                    <i class="mdi mdi-ethereum"></i>
+                                                                </span>
+                                                            </div>
+                                                            <h5 class="font-size-14 mb-0">Countries</h5>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-lg-6">
+                                                                <div class="text-muted mt-3">
+                                                                    <p>No Of Countries</p>
+                                                                    <h4>15</h4>
+                                                                    {{-- <p class="mb-0">0.0056 ETH</p> --}}
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-lg-6 align-self-end">
+                                                                <div class="float-end mt-3">
+                                                                    <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#countrymodal">Add</a>
+                                                                    <a href="{{ route('add-country') }}"
+                                                                        class="btn btn-sm btn-primary">View</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <div class="border p-3 rounded mt-4">
+                                                        <div class="d-flex align-items-center mb-3">
+                                                            <div class="avatar-xs me-3">
+                                                                <span
+                                                                    class="avatar-title rounded-circle bg-info bg-soft text-info font-size-18">
+                                                                    <i class="mdi mdi-litecoin"></i>
+                                                                </span>
+                                                            </div>
+                                                            <h5 class="font-size-14 mb-0">Currencies</h5>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-lg-6">
+                                                                <div class="text-muted mt-3">
+                                                                    <p>No of Currencies</p>
+                                                                    <h4>9</h4>
+                                                                    {{-- <p class="mb-0">0.00245 LTC</p> --}}
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-lg-6 align-self-end">
+                                                                <div class="float-end mt-3">
+
+                                                                    <button type="button"
+                                                                        class="btn btn-sm btn-success waves-effect waves-light"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#paisamodal">Add
+                                                                    </button>
+                                                                    <a href="{{ route('add-currency') }}"
+                                                                        class="btn btn-sm btn-primary waves-effect waves-light ">View
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <div class="border p-3 rounded mt-4">
+                                                        <div class="d-flex align-items-center mb-3">
+                                                            <div class="avatar-xs me-3">
+                                                                <span
+                                                                    class="avatar-title rounded-circle bg-warning bg-soft text-info font-size-18">
+                                                                    <i class="mdi mdi-currency-usd-circle-outline"></i>
+                                                                </span>
+                                                            </div>
+                                                            <h5 class="font-size-14 mb-0">Rate Controls</h5>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-lg-6">
+                                                                <div class="text-muted mt-3">
+                                                                    <p>Charges Lists</p>
+                                                                    <h4>6</h4>
+                                                                    {{-- <p class="mb-0">0.00245 LTC</p> --}}
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-lg-6 align-self-end">
+                                                                <div class="float-end mt-3">
+
+                                                                    <button type="button"
+                                                                        class="btn btn-sm btn-success waves-effect waves-light"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#ratemodal">Add
+                                                                    </button>
+                                                                    <a href="{{ route('add-charges') }}"
+                                                                        class="btn btn-sm btn-primary waves-effect waves-light ">View
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-6 align-self-end">
-                                                <div class="float-end mt-3">
-                                                    <a class="btn btn-sm btn-success waves-effect waves-light text-white"
-                                                        data-bs-toggle="modal" data-bs-target="#regionmodal">Add</a>
-                                                    <a href="{{ route('add-region') }}"
-                                                        class="btn btn-sm btn-primary">View</a>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
+
                                 </div>
-                                <div class="col-lg-3">
-                                    <div class="border p-3 rounded mt-4">
-                                        <div class="d-flex align-items-center mb-3">
-                                            <div class="avatar-xs me-3">
-                                                <span
-                                                    class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-18">
-                                                    <i class="mdi mdi-ethereum"></i>
-                                                </span>
-                                            </div>
-                                            <h5 class="font-size-14 mb-0">Countries</h5>
-                                        </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                                aria-expanded="false" aria-controls="collapseTwo">
+                                Reports
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Reports Section</h4>
+                                            <div class="row">
+                                                <div class="col-lg-3">
+                                                    <div class="border p-3 rounded mt-4">
+                                                        <div class="d-flex align-items-center mb-3">
+                                                            <div class="avatar-xs me-3">
+                                                                <span
+                                                                    class="avatar-title rounded-circle bg-warning bg-soft text-info font-size-18">
+                                                                    <i class="mdi mdi-update"></i>
+                                                                </span>
+                                                            </div>
+                                                            <h5 class="font-size-14 mb-0">Daily Transaction Report</h5>
+                                                        </div>
 
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <div class="text-muted mt-3">
-                                                    <p>No Of Countries</p>
-                                                    <h4>15</h4>
-                                                    {{-- <p class="mb-0">0.0056 ETH</p> --}}
+                                                        <div class="row">
+                                                            <div class="col-lg-6">
+                                                                <div class="text-muted mt-3">
+                                                                    <p>No of Transactions</p>
+                                                                    <h4>41</h4>
+                                                                    {{-- <p class="mb-0">0.00745 BTC</p> --}}
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-lg-6 align-self-end">
+                                                                <div class="float-end mt-3">
+                                                                    {{-- <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                        data-bs-toggle="modal" data-bs-target="#regionmodal">Add</a> --}}
+                                                                    <a href="#"
+                                                                        class="btn btn-sm btn-primary">View Report</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <div class="border p-3 rounded mt-4">
+                                                        <div class="d-flex align-items-center mb-3">
+                                                            <div class="avatar-xs me-3">
+                                                                <span
+                                                                    class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-18">
+                                                                    <i class="mdi mdi-calendar-cursor"></i>
+                                                                </span>
+                                                            </div>
+                                                            <h5 class="font-size-14 mb-0">Date Range – Ledger Report
+                                                            </h5>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-lg-6">
+                                                                <div class="text-muted mt-3">
+                                                                    <p> Ledger Reports</p>
+                                                                    <h4>64</h4>
+                                                                    {{-- <p class="mb-0">0.0056 ETH</p> --}}
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-lg-6 align-self-end">
+                                                                <div class="float-end mt-3">
+                                                                    {{-- <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                        data-bs-toggle="modal" data-bs-target="#regionmodal">Add</a> --}}
+                                                                    <a href="#"
+                                                                        class="btn btn-sm btn-primary">View Report</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <div class="border p-3 rounded mt-4">
+                                                        <div class="d-flex align-items-center mb-3">
+                                                            <div class="avatar-xs me-3">
+                                                                <span
+                                                                    class="avatar-title rounded-circle bg-info bg-soft text-info font-size-18">
+                                                                    <i class="mdi mdi-account-cash"></i>
+                                                                </span>
+                                                            </div>
+                                                            <h5 class="font-size-14 mb-0">Ledger report by customer
+                                                                name
+                                                            </h5>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-lg-6">
+                                                                <div class="text-muted mt-3">
+                                                                    <p>Transactions</p>
+                                                                    <h4>9</h4>
+                                                                    {{-- <p class="mb-0">0.00245 LTC</p> --}}
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-lg-6 align-self-end">
+                                                                <div class="float-end mt-3">
+                                                                    {{-- <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                        data-bs-toggle="modal" data-bs-target="#regionmodal">Add</a> --}}
+                                                                    <a href="#"
+                                                                        class="btn btn-sm btn-primary">View Report</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <div class="border p-3 rounded mt-4">
+                                                        <div class="d-flex align-items-center mb-3">
+                                                            <div class="avatar-xs me-3">
+                                                                <span
+                                                                    class="avatar-title rounded-circle bg-warning bg-soft text-info font-size-18">
+                                                                    <i class="mdi mdi-currency-usd-off"></i>
+                                                                </span>
+                                                            </div>
+                                                            <h5 class="font-size-14 mb-0">List of customers along with
+                                                                closing balance
+                                                            </h5>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-lg-6">
+                                                                <div class="text-muted mt-3">
+                                                                    <p>Closing Balance</p>
+                                                                    <h4>26000</h4>
+                                                                    {{-- <p class="mb-0">0.00245 LTC</p> --}}
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-lg-6 align-self-end">
+                                                                <div class="float-end mt-3">
+                                                                    {{-- <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                        data-bs-toggle="modal" data-bs-target="#regionmodal">Add</a> --}}
+                                                                    <a href="#"
+                                                                        class="btn btn-sm btn-primary">View Report</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-6 align-self-end">
-                                                <div class="float-end mt-3">
-                                                    <a class="btn btn-sm btn-success waves-effect waves-light text-white"
-                                                        data-bs-toggle="modal" data-bs-target="#countrymodal">Add</a>
-                                                    <a href="{{ route('add-country') }}"
-                                                        class="btn btn-sm btn-primary">View</a>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
+
                                 </div>
-                                <div class="col-lg-3">
-                                    <div class="border p-3 rounded mt-4">
-                                        <div class="d-flex align-items-center mb-3">
-                                            <div class="avatar-xs me-3">
-                                                <span
-                                                    class="avatar-title rounded-circle bg-info bg-soft text-info font-size-18">
-                                                    <i class="mdi mdi-litecoin"></i>
-                                                </span>
-                                            </div>
-                                            <h5 class="font-size-14 mb-0">Currencies</h5>
-                                        </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse"
+                                data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Vouchers
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                        data-parent="#accordion">
+                        <div class="card-body">
 
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <div class="text-muted mt-3">
-                                                    <p>No of Currencies</p>
-                                                    <h4>9</h4>
-                                                    {{-- <p class="mb-0">0.00245 LTC</p> --}}
-
-                                                </div>
-                                            </div>
-
-                                            <div class="col-lg-6 align-self-end">
-                                                <div class="float-end mt-3">
-
-                                                    <button type="button"
-                                                        class="btn btn-sm btn-success waves-effect waves-light"
-                                                        data-bs-toggle="modal" data-bs-target="#paisamodal">Add
-                                                    </button>
-                                                    <a href="{{ route('add-currency') }}"
-                                                        class="btn btn-sm btn-primary waves-effect waves-light ">View
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
+                            <div class="row">
+                                <div class="col-xl-2 col-lg-2 col-sm-4 mb-2">
+                                    <div class="p-3">
+                                        <p>Cash Payment</p>
+                                        <a href="#" type="button"
+                                            class="btn btn-primary waves-effect waves-light" id="sa-warning">Click
+                                            me</a>
                                     </div>
                                 </div>
-                                <div class="col-lg-3">
-                                    <div class="border p-3 rounded mt-4">
-                                        <div class="d-flex align-items-center mb-3">
-                                            <div class="avatar-xs me-3">
-                                                <span
-                                                    class="avatar-title rounded-circle bg-warning bg-soft text-info font-size-18">
-                                                    <i class="mdi mdi-currency-usd-circle-outline"></i>
-                                                </span>
-                                            </div>
-                                            <h5 class="font-size-14 mb-0">Rate Controls</h5>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <div class="text-muted mt-3">
-                                                    <p>Charges Lists</p>
-                                                    <h4>6</h4>
-                                                    {{-- <p class="mb-0">0.00245 LTC</p> --}}
-
-                                                </div>
-                                            </div>
-
-                                            <div class="col-lg-6 align-self-end">
-                                                <div class="float-end mt-3">
-                                                   
-                                                </div>
-                                            </div>
-                                        </div>
+                                <div class="col-xl-2 col-lg-2 col-sm-4 mb-2">
+                                    <div class="p-3">
+                                        <p>Cash Receipt</p>
+                                        <a href="#" type="button"
+                                            class="btn btn-primary waves-effect waves-light" id="sa-warning">Click
+                                            me</a>
+                                    </div>
+                                </div>
+                                <div class="col-xl-2 col-lg-2 col-sm-4 mb-2">
+                                    <div class="p-3">
+                                        <p>Cheque Payment</p>
+                                        <a href="#" type="button"
+                                            class="btn btn-primary waves-effect waves-light" id="sa-warning">Click
+                                            me</a>
+                                    </div>
+                                </div>
+                                <div class="col-xl-2 col-lg-2 col-sm-4 mb-2">
+                                    <div class="p-3">
+                                        <p>Cheque Receipt</p>
+                                        <a href="#" type="button"
+                                            class="btn btn-primary waves-effect waves-light" id="sa-warning">Click
+                                            me</a>
+                                    </div>
+                                </div>
+                                <div class="col-xl-2 col-lg-2 col-sm-4 mb-2">
+                                    <div class="p-3">
+                                        <p>Journal Voucher</p>
+                                        <a href="#" type="button"
+                                            class="btn btn-primary waves-effect waves-light" id="sa-warning">Click
+                                            me</a>
+                                    </div>
+                                </div>
+                                <div class="col-xl-2 col-lg-2 col-sm-4 mb-2">
+                                    <div class="p-3">
+                                        <p>Sales Voucher </p>
+                                        <a href="#" type="button"
+                                            class="btn btn-primary waves-effect waves-light" id="sa-warning">Click
+                                            me</a>
                                     </div>
                                 </div>
                             </div>
 
                         </div>
                     </div>
-
                 </div>
             </div>
-            <!-- end row -->
+            {{-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@---3rd row-end--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ --}}
+            {{-- <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title mb-4">Latest Transaction</h4>
+                            <div class="table-responsive">
+                                <table class="table align-middle table-nowrap mb-0">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th style="width: 20px;">
+                                                <div class="form-check font-size-16 align-middle">
+                                                    <input class="form-check-input" type="checkbox"
+                                                        id="transactionCheck01">
+                                                    <label class="form-check-label" for="transactionCheck01"></label>
+                                                </div>
+                                            </th>
+                                            <th class="align-middle">Order ID</th>
+                                            <th class="align-middle">Billing Name</th>
+                                            <th class="align-middle">Date</th>
+                                            <th class="align-middle">Total</th>
+                                            <th class="align-middle">Payment Status</th>
+                                            <th class="align-middle">Payment Method</th>
+                                            <th class="align-middle">View Details</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check font-size-16">
+                                                    <input class="form-check-input" type="checkbox"
+                                                        id="transactionCheck02">
+                                                    <label class="form-check-label" for="transactionCheck02"></label>
+                                                </div>
+                                            </td>
+                                            <td><a href="javascript: void(0);" class="text-body fw-bold">#SK2540</a>
+                                            </td>
+                                            <td>Neal Matthews</td>
+                                            <td>
+                                                07 Oct, 2019
+                                            </td>
+                                            <td>
+                                                $400
+                                            </td>
+                                            <td>
+                                                <span
+                                                    class="badge badge-pill badge-soft-success font-size-11">Paid</span>
+                                            </td>
+                                            <td>
+                                                <i class="fab fa-cc-mastercard me-1"></i> Mastercard
+                                            </td>
+                                            <td>
+                                                <!-- Button trigger modal -->
+                                                <button type="button"
+                                                    class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
+                                                    data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
+                                                    View Details
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <div class="form-check font-size-16">
+                                                    <input class="form-check-input" type="checkbox"
+                                                        id="transactionCheck03">
+                                                    <label class="form-check-label" for="transactionCheck03"></label>
+                                                </div>
+                                            </td>
+                                            <td><a href="javascript: void(0);" class="text-body fw-bold">#SK2541</a>
+                                            </td>
+                                            <td>Jamal Burnett</td>
+                                            <td>
+                                                07 Oct, 2019
+                                            </td>
+                                            <td>
+                                                $380
+                                            </td>
+                                            <td>
+                                                <span
+                                                    class="badge badge-pill badge-soft-danger font-size-11">Chargeback</span>
+                                            </td>
+                                            <td>
+                                                <i class="fab fa-cc-visa me-1"></i> Visa
+                                            </td>
+                                            <td>
+                                                <!-- Button trigger modal -->
+                                                <button type="button"
+                                                    class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
+                                                    data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
+                                                    View Details
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <div class="form-check font-size-16">
+                                                    <input class="form-check-input" type="checkbox"
+                                                        id="transactionCheck04">
+                                                    <label class="form-check-label" for="transactionCheck04"></label>
+                                                </div>
+                                            </td>
+                                            <td><a href="javascript: void(0);" class="text-body fw-bold">#SK2542</a>
+                                            </td>
+                                            <td>Juan Mitchell</td>
+                                            <td>
+                                                06 Oct, 2019
+                                            </td>
+                                            <td>
+                                                $384
+                                            </td>
+                                            <td>
+                                                <span
+                                                    class="badge badge-pill badge-soft-success font-size-11">Paid</span>
+                                            </td>
+                                            <td>
+                                                <i class="fab fa-cc-paypal me-1"></i> Paypal
+                                            </td>
+                                            <td>
+                                                <!-- Button trigger modal -->
+                                                <button type="button"
+                                                    class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
+                                                    data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
+                                                    View Details
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check font-size-16">
+                                                    <input class="form-check-input" type="checkbox"
+                                                        id="transactionCheck05">
+                                                    <label class="form-check-label" for="transactionCheck05"></label>
+                                                </div>
+                                            </td>
+                                            <td><a href="javascript: void(0);" class="text-body fw-bold">#SK2543</a>
+                                            </td>
+                                            <td>Barry Dick</td>
+                                            <td>
+                                                05 Oct, 2019
+                                            </td>
+                                            <td>
+                                                $412
+                                            </td>
+                                            <td>
+                                                <span
+                                                    class="badge badge-pill badge-soft-success font-size-11">Paid</span>
+                                            </td>
+                                            <td>
+                                                <i class="fab fa-cc-mastercard me-1"></i> Mastercard
+                                            </td>
+                                            <td>
+                                                <!-- Button trigger modal -->
+                                                <button type="button"
+                                                    class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
+                                                    data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
+                                                    View Details
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check font-size-16">
+                                                    <input class="form-check-input" type="checkbox"
+                                                        id="transactionCheck06">
+                                                    <label class="form-check-label" for="transactionCheck06"></label>
+                                                </div>
+                                            </td>
+                                            <td><a href="javascript: void(0);" class="text-body fw-bold">#SK2544</a>
+                                            </td>
+                                            <td>Ronald Taylor</td>
+                                            <td>
+                                                04 Oct, 2019
+                                            </td>
+                                            <td>
+                                                $404
+                                            </td>
+                                            <td>
+                                                <span
+                                                    class="badge badge-pill badge-soft-warning font-size-11">Refund</span>
+                                            </td>
+                                            <td>
+                                                <i class="fab fa-cc-visa me-1"></i> Visa
+                                            </td>
+                                            <td>
+                                                <!-- Button trigger modal -->
+                                                <button type="button"
+                                                    class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
+                                                    data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
+                                                    View Details
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check font-size-16">
+                                                    <input class="form-check-input" type="checkbox"
+                                                        id="transactionCheck07">
+                                                    <label class="form-check-label" for="transactionCheck07"></label>
+                                                </div>
+                                            </td>
+                                            <td><a href="javascript: void(0);" class="text-body fw-bold">#SK2545</a>
+                                            </td>
+                                            <td>Jacob Hunter</td>
+                                            <td>
+                                                04 Oct, 2019
+                                            </td>
+                                            <td>
+                                                $392
+                                            </td>
+                                            <td>
+                                                <span
+                                                    class="badge badge-pill badge-soft-success font-size-11">Paid</span>
+                                            </td>
+                                            <td>
+                                                <i class="fab fa-cc-paypal me-1"></i> Paypal
+                                            </td>
+                                            <td>
+                                                <!-- Button trigger modal -->
+                                                <button type="button"
+                                                    class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
+                                                    data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
+                                                    View Details
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- end table-responsive -->
+                        </div>
+                    </div>
+                </div>
+            </div> --}}
+            {{-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@---4th row-end--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ --}}
 
         </div>
         <!-- container-fluid -->
     </div>
     <!-- End Page-content -->
 
-    <!-- First modal dialog -->
-    <div class="modal fade" id="firstmodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Modal 1</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="form1" novalidate method="POST" action="{{ route('store-parcel') }}"
-                        enctype="multipart/form-data">
-                        @csrf
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h5 class="text-center">Parcel Registrations</h5>
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="username" class="form-label">Parcel Date</label>
-                                        <input type="date" id="username" required
-                                            class="form-control @error('pl_date') is-invalid @enderror" name="pl_date"
-                                            value="{{ old('pl_date') }}" required autofocus>
+</div>
+<!-- Main-content -->
 
-                                        @error('pl_date')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="useremail" class="form-label">Destination Country</label>
-                                        <select class="form-select" name="country_id" required id="country_id"
-                                            class="form-control table-responsive @error('country_id') is-invalid @enderror">
-                                            <option value="">-----</option>
-                                            @foreach ($countries as $item)
-                                                <option value="{{ $item->id }}">{{ $item->name }}
-                                                    {{-- -{{ $country->charges }} --}}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        @error('country_id')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                {{-- first row closed --}}
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="username" class="form-label">Parcel Weight
-                                            <code>(grams)</code></label>
-                                        <input type="number" id="pl_weight" placeholder="Enter Parcel Weight"
-                                            required class="form-control @error('pl_weight') is-invalid @enderror"
-                                            name="pl_weight" value="{{ old('pl_weight') }}" required
-                                            autocomplete="pl_weight" autofocus>
-
-                                        @error('pl_weight')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="username" class="form-label">Chargeable Weight</label>
-                                        <input type="text" id="chargeable_weight"
-                                            class="form-control @error('chargeable_weight') is-invalid @enderror"
-                                            name="chargeable_weight" required autocomplete="chargeable_weight"
-                                            autofocus readonly>
-
-                                        @error('chargeable_weight')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="row">
-
-                                    <div class="col-md-6 mb-3">
-                                        <label for="username" class="form-label">Parcel Cost in </label>
-                                        <div id="symbol_lable" class="d-inline text-danger">
-                                        </div>
-                                        <input type="hidden" name="pl_symbol" id="pl_symbol" value="">
-                                        <div class="d-inline">
-                                            <input type="number" id="pl_cost" placeholder="Enter Parcel Cost"
-                                                class="form-control @error('pl_cost') is-invalid @enderror"
-                                                name="pl_cost" required autocomplete="pl_cost" autofocus readonly>
-
-                                            @error('pl_cost')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="username" class="form-label">Parcel Extras Cost</label>
-                                        <input type="number" id="pl_extras" placeholder="Enter Parcel Extra Cost"
-                                            required class="form-control @error('pl_extras') is-invalid @enderror"
-                                            name="pl_extras" value="{{ old('pl_extras') }}" required
-                                            autocomplete="pl_extras" autofocus>
-
-                                        @error('pl_extras')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="username" class="form-label">Parcel Discount</label>
-                                        <input type="number" id="pl_discount" placeholder="Enter Parcel Discount"
-                                            required class="form-control @error('pl_discount') is-invalid @enderror"
-                                            name="pl_discount" value="{{ old('pl_discount') }}" required
-                                            autocomplete="pl_discount" autofocus>
-
-                                        @error('pl_discount')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="username" class="form-label">Parcel Final Cost</label>
-                                        <input type="number" id="pl_final" placeholder="Parcel Final Charges"
-                                            required class="form-control @error('pl_final') is-invalid @enderror"
-                                            name="pl_final" value="{{ old('pl_final') }}" readonly
-                                            autocomplete="pl_final" autofocus>
-
-                                        @error('pl_final')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    {{-- <div class="col-md-6 mb-3"> --}}
-                                    {{-- <label for="course" class="form-label">Selected --}}
-                                    {{-- Region<code>*</code></label> --}}
-                                    <input type="hidden" name="region_id" id="region_id" class="form-control"
-                                        value="" readonly>
-                                    {{-- @error('region_id')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror --}}
-                                    {{-- </div> --}}
-                                    {{-- <div class="col-md-6 mb-3">
-                                    <label for="username" class="form-label">Amounts in Currency
-                                    </label> --}}
-                                    <input type="hidden" id="currency_id" class="form-control" autofocus
-                                        name="currency_id" value="" readonly>
-
-                                    {{-- @error('currency_id')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror --}}
-                                    {{-- </div> --}}
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12 mb-3">
-                                        <label for="address" class="form-label">Parcel Description</label>
-                                        <textarea name="pl_description" id="pl_description" class="form-control" cols="1" rows="1">
-                                    </textarea>
-                                        @error('pl_description')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <!-- Toogle to second dialog -->
-                                <button type="submit" form="form1" class="btn btn-primary " id="modal_submit"
-                                    value="Submit">Submit</button>
-                                <button type="button" class="btn btn-secondary" id="modal_close"
-                                    data-bs-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+{{-- *******************************Parcel Modal************************************************************* --}}
+<div class="modal fade" id="parcelmodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Parcel Registrations</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-        </div>
-    </div>
-    <!-- customer modal dialog -->
-    <div class="modal fade" id="customermodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Customer Modal</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="form2" novalidate method="POST" action="{{ route('store-customer') }}"
-                        enctype="multipart/form-data">
-                        @csrf
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <div class="col-md-12 mb-3">
-                                        <label for="useremail" class="form-label">Select Company</label>
-                                        <select class="form-select" name="company_id" required
-                                            class="form-control table-responsive @error('company_id') is-invalid @enderror"
-                                            value="{{ old('company_id') }}">
-                                            @foreach ($companies as $company)
-                                                <option value="{{ $company->id }}">{{ $company->name }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        @error('company_id')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
+            <div class="modal-body">
+                <form id="form1" novalidate method="POST" action="{{ route('store-parcel') }}"
+                    enctype="multipart/form-data">
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5 class="text-center"></h5>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="username" class="form-label">Parcel Date</label>
+                                    <input type="date" id="username" required
+                                        class="form-control @error('pl_date') is-invalid @enderror" name="pl_date"
+                                        value="{{ old('pl_date') }}" required autofocus>
+
+                                    @error('pl_date')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="useremail" class="form-label">Destination Country</label>
+                                    <select class="form-select" name="country_id" required id="country_id"
+                                        class="form-control table-responsive @error('country_id') is-invalid @enderror">
+                                        <option value="">-----</option>
+                                        @foreach ($countries as $item)
+                                            <option value="{{ $item->id }}">{{ $item->name }}
+                                                {{-- -{{ $country->charges }} --}}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('country_id')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            {{-- first row closed --}}
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="username" class="form-label">Parcel Weight
+                                        <code>(grams)</code></label>
+                                    <input type="number" id="pl_weight" placeholder="Enter Parcel Weight" required
+                                        class="form-control @error('pl_weight') is-invalid @enderror" name="pl_weight"
+                                        value="{{ old('pl_weight') }}" required autocomplete="pl_weight" autofocus>
+
+                                    @error('pl_weight')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="username" class="form-label">Chargeable Weight</label>
+                                    <input type="text" id="chargeable_weight"
+                                        class="form-control @error('chargeable_weight') is-invalid @enderror"
+                                        name="chargeable_weight" required autocomplete="chargeable_weight" autofocus
+                                        readonly>
+
+                                    @error('chargeable_weight')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-md-6 mb-3">
+                                    <label for="username" class="form-label">Parcel Cost in </label>
+                                    <div id="symbol_lable" class="d-inline text-danger">
                                     </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label for="username" class="form-label">Customer Name</label>
-                                        <input type="text" id="username" placeholder="Enter customer name"
-                                            class="form-control @error('name') is-invalid @enderror" name="name"
-                                            value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                    <input type="hidden" name="pl_symbol" id="pl_symbol" value="">
+                                    <div class="d-inline">
+                                        <input type="number" id="pl_cost" placeholder="Enter Parcel Cost"
+                                            class="form-control @error('pl_cost') is-invalid @enderror" name="pl_cost"
+                                            required autocomplete="pl_cost" autofocus readonly>
 
-                                        @error('name')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-
-                                    <div class="col-md-12 mb-3">
-                                        <label for="useremail" class="form-label">Customer Email</label>
-                                        <input type="email" id="useremail" placeholder="Enter email"
-                                            class="form-control @error('email') is-invalid @enderror" name="email"
-                                            value="{{ old('email') }}" autocomplete="email" required>
-
-                                        @error('email')
+                                        @error('pl_cost')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="username" class="form-label">Parcel Extras Cost</label>
+                                    <input type="number" id="pl_extras" placeholder="Enter Parcel Extra Cost"
+                                        required class="form-control @error('pl_extras') is-invalid @enderror"
+                                        name="pl_extras" value="{{ old('pl_extras') }}" required
+                                        autocomplete="pl_extras" autofocus>
+
+                                    @error('pl_extras')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="username" class="form-label">Parcel Discount</label>
+                                    <input type="number" id="pl_discount" placeholder="Enter Parcel Discount"
+                                        required class="form-control @error('pl_discount') is-invalid @enderror"
+                                        name="pl_discount" value="{{ old('pl_discount') }}" required
+                                        autocomplete="pl_discount" autofocus>
 
-                        {{-- first row closed --}}
-                        <div class="row">
-                            <div class="col-md-12 mb-3">
-                                <label for="username" class="form-label">Customer Phone Number</label>
-                                <input type="text" data-inputmask="'mask': '0399-99999999'" type="number"
-                                    maxlength="12" class="form-control @error('phone') is-invalid @enderror"
-                                    name="phone" value="{{ old('phone') }}" required autocomplete="phone"
-                                    autofocus>
+                                    @error('pl_discount')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="username" class="form-label">Parcel Final Cost</label>
+                                    <input type="number" id="pl_final" placeholder="Parcel Final Charges" required
+                                        class="form-control @error('pl_final') is-invalid @enderror" name="pl_final"
+                                        value="{{ old('pl_final') }}" readonly autocomplete="pl_final" autofocus>
 
-                                @error('phone')
+                                    @error('pl_final')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row">
+                                {{-- <div class="col-md-6 mb-3"> --}}
+                                {{-- <label for="course" class="form-label">Selected --}}
+                                {{-- Region<code>*</code></label> --}}
+                                <input type="hidden" name="region_id" id="region_id" class="form-control"
+                                    value="" readonly>
+                                {{-- @error('region_id')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
-                            </div>
-                            <div class="col-md-12 mb-3">
-                                <label for="useremail" class="form-label">Select Country</label>
-                                <select class="form-select" name="country_id" required
-                                    class="form-control table-responsive @error('country_id') is-invalid @enderror"
-                                    value="{{ old('country_id') }}">
-                                    @foreach ($countries as $country)
-                                        <option value="{{ $country->id }}">
-                                            {{ $country->name }}
-                                            {{-- - {{ $country->code }} --}}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                @error('country_id')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="col-md-12 mb-3">
-                                <label for="address" class="form-label">Customer Address</label>
-                                <textarea name="address" id="address" class="form-control" cols="1" rows="1">
+                                @enderror --}}
+                                {{-- </div> --}}
+                                {{-- <div class="col-md-6 mb-3">
+                                <label for="username" class="form-label">Amounts in Currency
+                                </label> --}}
+                                <input type="hidden" id="currency_id" class="form-control" autofocus
+                                    name="currency_id" value="" readonly>
 
-                                        </textarea>
-                                @error('customer_address')
+                                {{-- @error('currency_id')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
+                                @enderror --}}
+                                {{-- </div> --}}
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12 mb-3">
-                                <label for="username" class="form-label">Customer CNIC Number</label>
-                                <input type="text" data-inputmask="'mask': '99999-9999999-9'"
-                                    placeholder="XXXXX-XXXXXXX-X" name="cnic_no" required
-                                    class="form-control @error('cnic_no') is-invalid @enderror"
-                                    value="{{ old('cnic_no') }}" required autocomplete="cnic_no" autofocus>
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <label for="address" class="form-label">Parcel Description</label>
+                                    <textarea name="pl_description" id="pl_description" class="form-control" cols="1" rows="1">
+                                </textarea>
+                                    @error('pl_description')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
 
-                                @error('cnic_no')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="col-md-12 mb-3">
-                                <label for="username" class="form-label">Upload CNIC Picture</label>
-                                <input type="file" id="cnic_scane" required name="cnic_scane"
-                                    class="form-control @error('cnic_scane') is-invalid @enderror"
-                                    autocomplete="cnic_scane" autofocus>
-
-                                @error('cnic_scane')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
                         </div>
                         <div class="modal-footer">
                             <!-- Toogle to second dialog -->
-                            <button type="submit" form="form2" class="btn btn-primary " id="modal_submit"
+                            <button type="submit" form="form1" class="btn btn-primary " id="modal_submit"
                                 value="Submit">Submit</button>
-                            <button type="button" class="btn btn-secondary" id="modal_close1"
+                            <button type="button" class="btn btn-secondary" id="modal_close"
                                 data-bs-dismiss="modal">Close</button>
                         </div>
-                </div>
+                    </div>
                 </form>
-
             </div>
         </div>
     </div>
 </div>
 
-{{-- modals --}}
- <!-- regionmodal dialog -->
- <div class="modal fade" id="regionmodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+{{-- ***************************Customer Modal************************************************ --}}
+<div class="modal fade" id="customermodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Region Modal</h5>
+                <h5 class="modal-title">Customer Modal</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="regionform" action="{{ route('store-region') }}" method="POST">
+                <form id="form2" novalidate method="POST" action="{{ route('store-customer') }}"
+                    enctype="multipart/form-data">
                     @csrf
                     <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <label for="useremail" class="form-label">Select Company</label>
+                                    <select class="form-select" name="company_id" required
+                                        class="form-control table-responsive @error('company_id') is-invalid @enderror"
+                                        value="{{ old('company_id') }}">
+                                        @foreach ($companies as $company)
+                                            <option value="{{ $company->id }}">{{ $company->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('company_id')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label for="username" class="form-label">Customer Name</label>
+                                    <input type="text" id="username" placeholder="Enter customer name"
+                                        class="form-control @error('name') is-invalid @enderror" name="name"
+                                        value="{{ old('name') }}" required autocomplete="name" autofocus>
+
+                                    @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-12 mb-3">
+                                    <label for="useremail" class="form-label">Customer Email</label>
+                                    <input type="email" id="useremail" placeholder="Enter email"
+                                        class="form-control @error('email') is-invalid @enderror" name="email"
+                                        value="{{ old('email') }}" autocomplete="email" required>
+
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- first row closed --}}
+                    <div class="row">
                         <div class="col-md-12 mb-3">
-                            <label for="username" class="form-label">Enter Region Name</label>
-                            <input type="text" id="username" placeholder="Enter customer name"
-                                class="form-control @error('name') is-invalid @enderror" name="name"
-                                value="{{ old('name') }}" required autocomplete="name" autofocus>
-                            @error('name')
+                            <label for="username" class="form-label">Customer Phone Number</label>
+                            <input type="text" data-inputmask="'mask': '0399-99999999'" type="number"
+                                maxlength="12" class="form-control @error('phone') is-invalid @enderror"
+                                name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
+
+                            @error('phone')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
-                        <div class="modal-footer">
-                            <!-- Toogle to second dialog -->
-                            <button type="submit" form="regionform" class="btn btn-primary " id="modal_submit"
-                                value="Submit">Submit</button>
-                            <button type="button" class="btn btn-secondary" id="modal_close1"
-                                data-bs-dismiss="modal">Close</button>
+                        <div class="col-md-12 mb-3">
+                            <label for="useremail" class="form-label">Select Country</label>
+                            <select class="form-select" name="country_id" required
+                                class="form-control table-responsive @error('country_id') is-invalid @enderror"
+                                value="{{ old('country_id') }}">
+                                @foreach ($countries as $country)
+                                    <option value="{{ $country->id }}">
+                                        {{ $country->name }}
+                                        {{-- - {{ $country->code }} --}}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('country_id')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
-                </form>
+                        <div class="col-md-12 mb-3">
+                            <label for="address" class="form-label">Customer Address</label>
+                            <textarea name="address" id="address" class="form-control" cols="1" rows="1">
 
+                                    </textarea>
+                            @error('customer_address')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label for="username" class="form-label">Customer CNIC Number</label>
+                            <input type="text" data-inputmask="'mask': '99999-9999999-9'"
+                                placeholder="XXXXX-XXXXXXX-X" name="cnic_no" required
+                                class="form-control @error('cnic_no') is-invalid @enderror"
+                                value="{{ old('cnic_no') }}" required autocomplete="cnic_no" autofocus>
+
+                            @error('cnic_no')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="username" class="form-label">Upload CNIC Picture</label>
+                            <input type="file" id="cnic_scane" required name="cnic_scane"
+                                class="form-control @error('cnic_scane') is-invalid @enderror"
+                                autocomplete="cnic_scane" autofocus>
+
+                            @error('cnic_scane')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <!-- Toogle to second dialog -->
+                        <button type="submit" form="form2" class="btn btn-primary " id="modal_submit"
+                            value="Submit">Submit</button>
+                        <button type="button" class="btn btn-secondary" id="modal_close1"
+                            data-bs-dismiss="modal">Close</button>
+                    </div>
             </div>
+            </form>
+
         </div>
     </div>
 </div>
 
-<!-- companymodal dialog -->
+{{-- ***************************Company Modal************************************************ --}}
 <div class="modal fade" id="companymodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -786,7 +1239,46 @@
         </div>
     </div>
 </div>
-<!-- countrymodal dialog -->
+
+{{-- ***************************Region Modal************************************************ --}}
+<div class="modal fade" id="regionmodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Region Modal</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="regionform" action="{{ route('store-region') }}" method="POST">
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label for="username" class="form-label">Enter Region Name</label>
+                            <input type="text" id="username" placeholder="Enter customer name"
+                                class="form-control @error('name') is-invalid @enderror" name="name"
+                                value="{{ old('name') }}" required autocomplete="name" autofocus>
+                            @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="modal-footer">
+                            <!-- Toogle to second dialog -->
+                            <button type="submit" form="regionform" class="btn btn-primary " id="modal_submit"
+                                value="Submit">Submit</button>
+                            <button type="button" class="btn btn-secondary" id="modal_close1"
+                                data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+{{-- ***************************Country Modal************************************************ --}}
 <div class="modal fade" id="countrymodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -859,9 +1351,7 @@
         </div>
     </div>
 </div>
-<!-- countrymodal dialog -->
-
-<!-- countrymodal dialog -->
+{{-- ***************************Currency Modal************************************************ --}}
 <div class="modal fade" id="paisamodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -911,11 +1401,10 @@
             </div>
         </div>
     </div>
-    <!-- countrymodal dialog -->
+</div>
 
-
-<!-- countrymodal dialog -->
-<div class="modal fade" id="paisamodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+{{-- ***************************Charges Modal************************************************ --}}
+<div class="modal fade" id="ratemodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -923,202 +1412,187 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="paisaform" novalidate method="POST" action="{{ route('store-currency') }}"
+                <form id="rateform" novalidate method="POST" action="{{ route('store-charges') }}"
                     enctype="multipart/form-data">
                     @csrf
                     <div class="row">
-                        <div class="col-md-12 mb-3">
-                            <label for="username" class="form-label">Currency Name</label>
-                            <input type="text" id="username" placeholder="Enter currency name"
-                                class="form-control @error('name') is-invalid @enderror" name="name"
-                                value="{{ old('name') }}" required autocomplete="name" autofocus>
+                        <div class="col-md-12">
 
-                            @error('name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="col-md-12 mb-3">
-                            <label for="username" class="form-label">Currency Symbol</label>
-                            <input type="text" id="username" placeholder="Enter currency symbol"
-                                class="form-control @error('symbol') is-invalid @enderror" name="symbol"
-                                value="{{ old('symbol') }}" required autocomplete="symbol" autofocus>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="useremail" class="form-label">Destination Country</label>
+                                    <select class="form-select" name="country_idd" required id="country_idd"
+                                        class="form-control table-responsive @error('country_idd') is-invalid @enderror">
+                                        <option value="">-----</option>
+                                        @foreach ($countries as $item)
+                                            <option value="{{ $item->id }}">{{ $item->name }}
+                                                {{-- -{{ $country->charges }} --}}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('country')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="course" class="form-label">Destination Region
+                                        <code>*</code></label>
+                                    <select class="form-control" name="region_idd" id="region_idd">
 
-                            @error('symbol')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                                    </select>
+                                    @error('region_idd')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                            </div>
+                            {{-- first row closed --}}
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="useremail" class="form-label">Desired Currency</label>
+                                    <select class="form-select" name="currency_idd" required id="currency_idd"
+                                        class="form-control table-responsive @error('currency_idd') is-invalid @enderror">
+                                        <option value="">-----</option>
+                                        @foreach ($currencies as $currency)
+                                            <option value="{{ $currency->id }}">{{ $currency->name }}
+                                                {{-- -{{ $country->charges }} --}}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('currency_idd')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="course" class="form-label">Desired
+                                        Symbol<code>*</code></label>
+                                    <input type="text" name="symbol" id="symbol_idd" class="form-control"
+                                        value="" readonly>
+                                    @error('symbol_idd')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            {{-- row closed --}}
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="username" class="form-label">Weight (0-500)gm </label>
+                                    <input type="number" id="gm0_500" placeholder="Enter Price for (0-500)gm "
+                                        required class="form-control @error('gm0_500') is-invalid @enderror"
+                                        name="gm0_500" value="{{ old('0_500g') }}" required
+                                        autocomplete="gm0_500" autofocus>
+
+                                    @error('gm0_500')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="username" class="form-label">Weight (501-1000)gm </label>
+                                    <input type="number" id="gm501_1000"
+                                        placeholder="Enter Price for (501-1000)gm " required
+                                        class="form-control @error('gm501_1000') is-invalid @enderror"
+                                        name="gm501_1000" value="{{ old('gm501_1000') }}" required
+                                        autocomplete="gm501_1000" autofocus>
+
+                                    @error('gm501_1000')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            {{-- row closed --}}
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="username" class="form-label">Weight (1001-1500)gm </label>
+                                    <input type="number" id="gm1001_1500"
+                                        placeholder="Enter Price for (1001-1500)gm " required
+                                        class="form-control @error('gm1001_1500') is-invalid @enderror"
+                                        name="gm1001_1500" value="{{ old('gm1001_1500') }}" required
+                                        autocomplete="gm1001_1500" autofocus>
+
+                                    @error('gm1001_1500')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="username" class="form-label">Weight (1501-2000)gm </label>
+                                    <input type="number" id="gm1501_2000"
+                                        placeholder="Enter Price for (1501-2000)gm " required
+                                        class="form-control @error('gm1501_2000') is-invalid @enderror"
+                                        name="gm1501_2000" value="{{ old('gm1501_2000') }}" required
+                                        autocomplete="gm1501_2000" autofocus>
+
+                                    @error('gm1501_2000')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            {{-- row closed --}}
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="username" class="form-label">Weight (2001-5000)gm </label>
+                                    <input type="number" id="gm2001_5000"
+                                        placeholder="Enter Price for (2001-5000)gm " required
+                                        class="form-control @error('gm2001_5000') is-invalid @enderror"
+                                        name="gm2001_5000" value="{{ old('gm2001_5000') }}" required
+                                        autocomplete="gm2001_5000" autofocus>
+
+                                    @error('gm2001_5000')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="username" class="form-label">Weight (above-5000)gm
+                                    </label>
+                                    <input type="number" id="gm5000_above"
+                                        placeholder="Enter Price for (above-2000)gm " required
+                                        class="form-control @error('gm5000_above') is-invalid @enderror"
+                                        name="gm5000_above" value="{{ old('gm5000_above') }}" required
+                                        autocomplete="gm5000_above" autofocus>
+
+                                    @error('gm5000_above')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <!-- Toogle to second dialog -->
-                        <button type="submit" form="paisaform" class="btn btn-primary " id="modal_submit"
+                        <button type="submit" form="rateform" class="btn btn-primary " id="modal_submit"
                             value="Submit">Submit</button>
                         <button type="button" class="btn btn-secondary" id="modal_close1"
                             data-bs-dismiss="modal">Close</button>
                     </div>
                 </form>
-
             </div>
         </div>
     </div>
-    <!-- countrymodal dialog -->
-
-    
-    <div class="modal fade" id="ratemodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Region Modal</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="rateform" action="{{ route('store-region') }}" method="POST">
-                        @csrf
-                        <div class="row">
-                            <div class="col-md-12 mb-3">
-                                <label for="username" class="form-label">Enter Region Name</label>
-                                <input type="text" id="username" placeholder="Enter customer name"
-                                    class="form-control @error('name') is-invalid @enderror" name="name"
-                                    value="{{ old('name') }}" required autocomplete="name" autofocus>
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="modal-footer">
-                                <!-- Toogle to second dialog -->
-                                <button type="submit" form="rateform" class="btn btn-primary " id="modal_submit"
-                                    value="Submit">Submit</button>
-                                <button type="button" class="btn btn-secondary" id="modal_close1"
-                                    data-bs-dismiss="modal">Close</button>
-                            </div>
-                    </form>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    
-
-
-
 </div>
-<!--  Extra Large modal example -->
-<div class="modal fade bs-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="myExtraLargeModalLabel">Extra large modal</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-
-            <div class="modal-body">
-                @if (isset($data))
-                    <table id="datatable-buttons"
-                        class="table table-bordered dt-responsive nowrap w-100 table-sm table-responsive">
-                        <thead>
-                            <tr>
-                                <th>S.No</th>
-                                <th>Parcel_id</th>
-                                <th>Region</th>
-                                <th>Country</th>
-                                <th>Currency</th>
-                                <th>Weight</th>
-                                <th>Chargeable</th>
-                                <th>Cost</th>
-                                <th>Extras</th>
-                                <th>Discount</th>
-                                <th>Final</th>
-                                <th>Delivery</th>
-                                <th>Description</th>
-                                <th>Parcel Date</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
+{{-- @@@@@@@@@@@@@@@@@@@@@@@@@@@---Modals Closed---@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ --}}
 
 
-                        <tbody>
-                            @php
-                                $i = 1;
-                            @endphp
-                            @if ($data->count() > 0)
-                                @foreach ($data as $item)
-                                    {{-- @dd($item) --}}
-                                    <tr>
-                                        <td>{{ $i++ }}</td>
-                                        <td>{{ $item->pl_id }}</td>
-                                        <td>{{ $item->region->name }}</td>
-                                        <td>{{ $item->country->name }}</td>
-                                        <td>{{ $item->currency->name }}</td>
-                                        <td>{{ $item->pl_weight }}</td>
-                                        <td>{{ $item->chargeable_weight }}</td>
-                                        {{-- <td>{{ $item->pl_currency }}</td> --}}
-                                        <td>{{ $item->pl_cost }}</td>
-                                        <td>{{ $item->pl_extras }}</td>
-                                        <td>{{ $item->pl_discount }}</td>
-                                        <td>{{ $item->pl_symbol . ' ' . $item->pl_final }}</td>
+{{-- *****************************---Javascript---************************** --}}
 
-                                        <td>{{ $item->pl_description }}</td>
-                                        <td>{{ $item->pl_status }}</td>
-                                        <td>
-                                            @php
-                                                $month = date('d/m/Y', strtotime($item->pl_date));
-                                                // dd($month);
-                                                echo $month;
-                                            @endphp
-                                        </td>
-                                        <td>
-                                            @if ($item->status == 'inactive')
-                                                <button type="button" class="btn btn-danger  btn-sm">
-                                                    {{ $item->status }} </button>
-                                            @else
-                                                <button type="button" class="btn btn-success btn-sm">
-                                                    {{ $item->status }} </button>
-                                            @endif
-                                        </td>
-                                        <td style="">
-                                            <a href="{{ url('print-parcel/' . $item->id) }}"
-                                                class="btn btn-outline-dark btn-sm print" title="Print">
-                                                <i class="fas fa-regular fa-print"></i>
-                                            </a>
-
-                                            |<a href="{{ url('edit-parcel/' . $item->id) }}"
-                                                class="btn btn-outline-warning btn-sm edit" title="Edit">
-                                                <i class="fas fa-pencil-alt"></i>
-                                            </a>
-                                            |
-                                            <a href="{{ url('delete-parcel/' . $item->id) }}"
-                                                class="btn btn-outline-danger btn-sm delete" title="Delete"
-                                                onclick="return confirm('Are you sure to delete Record?')">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            @else
-                                <tr>
-                                    <td><code>No record found...</code></td>
-                                </tr>
-                            @endif
-
-
-
-                        </tbody>
-                    </table>
-                @endif
-            </div>
-
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-</div>
 <script>
     $(document).ready(function() {
 
@@ -1208,6 +1682,56 @@
             }
         });
         //country_id function closed
+
+        // rate controls ajax
+        $('#country_idd').on('change', function() {
+            var country_id = $(this).val();
+            // alert(country_id)
+            if (region_idd) {
+                $.ajax({
+                    url: "{{ url('/getSelected') }}/" + country_id,
+                    type: "GET",
+                    success: function(data) {
+                        if (data) {
+                            console.log(data);
+                            $("#region_idd").html(data);
+                        } else {
+                            $('#region_idd').empty();
+                        }
+                    }
+                });
+            } else {
+                $('#region_idd').empty();
+            }
+        });
+
+        //currency method starts
+        $('#currency_idd').on('click', function() {
+            var currency_id = $(this).val();
+            console.log(currency_id);
+            if (currency_id) {
+                $.ajax({
+                    url: "{{ url('/getCurrency') }}/" +
+                        currency_id,
+                    type: "GET",
+                    data: {
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    dataType: "json",
+
+                    success: function(response) {
+                        console.log(response);
+                        //   alert(response['0']['name']);
+                        $('#symbol_idd').val(response['0'][
+                            'symbol'
+                        ]);
+                    }
+
+                });
+            } else {
+
+            }
+        });
 
     });
 </script>

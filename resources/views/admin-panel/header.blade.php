@@ -3,12 +3,10 @@
          <div class="d-flex">
              <!-- LOGO -->
              <div class="navbar-brand-box">
-                 <a href="index.html" class="logo logo-dark">
+                 <a href="index.html" class="logo logo-light">
                      <span class="logo-sm">
-                         {{-- <img src="{{asset('assets/images/logo.svg')}}" alt="" height="22"> --}}
                      </span>
                      <span class="logo-lg">
-                         {{-- <img src="{{asset('assets/images/logo-dark.png')}}" alt="" height="17"> --}}
                      </span>
                  </a>
 
@@ -17,7 +15,7 @@
                          <img src="{{ asset('assets/images/logo-light.svg') }}" alt="" height="22">
                      </span>
                      <span class="logo-lg">
-                         {{-- <img src="assets/images/logo-light.png" alt="" height="19"> --}}
+
                          <img src="{{ asset('assets/images/logo3.png') }}" alt="" height="60"
                              class="bg-white">
                      </span>
@@ -193,16 +191,16 @@
                                      <div class="font-size-12 text-muted">
                                          <p class="mb-1" key="t-grammer">If several languages coalesce the grammar
                                          </p>
-                                         <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span
-                                                 key="t-min-ago">3 min ago</span></p>
+                                         <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span key="t-min-ago">3
+                                                 min ago</span></p>
                                      </div>
                                  </div>
                              </div>
                          </a>
                          <a href="javascript: void(0);" class="text-reset notification-item">
                              <div class="d-flex">
-                                 <img src="{{asset('assets/images/users/avatar-3.jpg')}}" class="me-3 rounded-circle avatar-xs"
-                                     alt="user-pic">
+                                 <img src="{{ asset('assets/images/users/avatar-3.jpg') }}"
+                                     class="me-3 rounded-circle avatar-xs" alt="user-pic">
                                  <div class="flex-grow-1">
                                      <h6 class="mb-1">James Lemire</h6>
                                      <div class="font-size-12 text-muted">
@@ -235,8 +233,8 @@
 
                          <a href="javascript: void(0);" class="text-reset notification-item">
                              <div class="d-flex">
-                                 <img src="{{asset('assets/images/users/avatar-4.jpg')}}" class="me-3 rounded-circle avatar-xs"
-                                     alt="user-pic">
+                                 <img src="{{ asset('assets/images/users/avatar-4.jpg') }}"
+                                     class="me-3 rounded-circle avatar-xs" alt="user-pic">
                                  <div class="flex-grow-1">
                                      <h6 class="mb-1">Salena Layfield</h6>
                                      <div class="font-size-12 text-muted">
@@ -261,8 +259,8 @@
              <div class="dropdown d-inline-block">
                  <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                      data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                     <img class="rounded-circle header-profile-user" src="{{asset('assets/images/users/admin.png')}}"
-                         alt="Header Avatar">
+                     <img class="rounded-circle header-profile-user"
+                         src="{{ asset('assets/images/users/admin.png') }}" alt="Header Avatar">
                      <span class="d-none d-xl-inline-block ms-1" key="t-henry">Admin</span>
                      <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                  </button>
@@ -303,7 +301,7 @@
              </div>
 
              {{-- cart dropdown --}}
-              {{-- <div class="dropdown">
+             {{-- <div class="dropdown">
                     <button type="button" class="btn btn-info" data-toggle="dropdown">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
                         <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
@@ -314,15 +312,15 @@
                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
                             </div>
                             @php $total = 0 @endphp
-                            @foreach((array) session('cart') as $id => $details)
+                            @foreach ((array) session('cart') as $id => $details)
                                 @php $total += $details['price'] * $details['quantity'] @endphp
                             @endforeach
                             <div class="col-lg-6 col-sm-6 col-6 total-section text-right">
                                 <p>Total: <span class="text-info">$ {{ $total }}</span></p>
                             </div>
                         </div>
-                        @if(session('cart'))
-                            @foreach(session('cart') as $id => $details)
+                        @if (session('cart'))
+                            @foreach (session('cart') as $id => $details)
                                 <div class="row cart-detail">
                                     <div class="col-lg-4 col-sm-4 col-4 cart-detail-img">
                                         <img src="{{ $details['image'] }}" />
@@ -341,7 +339,7 @@
                         </div>
                     </div>
                 </div> --}}
-                {{--dropdown  --}}
+             {{-- dropdown --}}
          </div>
      </div>
  </header>

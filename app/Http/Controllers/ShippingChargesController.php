@@ -55,9 +55,9 @@ class ShippingChargesController extends Controller
         // dd($request->all());
         $request->validate([
 
-            'region_id' => 'required',
-            'country_id' => 'required',
-            'currency_id' => 'required',
+            'region_idd' => 'required',
+            'country_idd' => 'required',
+            'currency_idd' => 'required',
             'symbol' => 'required',
             'gm0_500' => 'required',
             'gm501_1000' => 'required',
@@ -68,9 +68,9 @@ class ShippingChargesController extends Controller
         ]);
 
         $data  = [
-            'region_id' => $request->region_id,
-            'country_id' => $request->country_id,
-            'currency_id' => $request->currency_id,
+            'region_id' => $request->region_idd,
+            'country_id' => $request->country_idd,
+            'currency_id' => $request->currency_idd,
             'symbol' => $request->symbol,
             'gm0_500' => $request->gm0_500,
             'gm501_1000' => $request->gm501_1000,
@@ -106,9 +106,9 @@ class ShippingChargesController extends Controller
         // dd($record);
         $request->validate([
 
-            'region_id' => 'required',
-            'country_id' => 'required',
-            'currency_id' => 'required',
+            'region_idd' => 'required',
+            'country_idd' => 'required',
+            'currency_idd' => 'required',
             'symbol' => 'required',
             'gm0_500' => 'required',
             'gm501_1000' => 'required',
@@ -119,9 +119,9 @@ class ShippingChargesController extends Controller
         ]);
 
         $data  = [
-            'region_id' => $request->region_id,
-            'country_id' => $request->country_id,
-            'currency_id' => $request->currency_id,
+            'region_id' => $request->region_idd,
+            'country_id' => $request->country_idd,
+            'currency_id' => $request->currency_idd,
             'symbol' => $request->symbol,
             'gm0_500' => $request->gm0_500,
             'gm501_1000' => $request->gm501_1000,

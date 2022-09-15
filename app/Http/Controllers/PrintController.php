@@ -22,4 +22,14 @@ class PrintController extends Controller
         // dd($charges);
         return view('admin-panel.parcels.print_parcel', compact('data', 'regions', 'charges', 'countries'));
     }
+    public function print_view()
+    {
+        $data = ShippingCharge::all();
+        // dd($data);
+        $regions = Region::all();
+        $countries = Country::all();
+        $charges = ShippingCharge::all();
+        // dd($charges);
+        return view('admin-panel.prints.print_view', compact('data', 'regions', 'charges', 'countries'));
+    }
 }

@@ -1,7 +1,7 @@
 @extends('admin-panel.index')
 
 @section('content')
-    <div class="main-content">
+    <div class="">
 
         <div class="page-content">
             <div class="container-fluid">
@@ -9,22 +9,23 @@
                 <!-- start page title -->
                 <div class="row">
                     <div class="col-12">
-                        <!--write your code here  --> 
+                        <!--write your code here  -->
 
                         <div class="card">
                             <div class="card-body">
 
                                 <h4 class="card-title">Shipping Charges Details
                                     <a href="{{ url('/home') }}" class="btn btn-primary btn-sm ml-2">Home</a>
-                                    <a href="{{ url('/prnpriview') }}" class="btn btn-info btn-sm ml-2">Print Preview</a>
-                                </h4>
-                                <p class="card-title-desc"><br>
-                                    <!-- Button trigger modal -->
                                     {{-- <button type="button"
-                                        class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
+                                        class="btn btn-success btn-sm btn-rounded waves-effect waves-light"
                                         data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
                                         New Country
                                     </button> --}}
+                                    <a href="{{ url('/print_view') }}" class="btn btn-info btn-sm ml-2">Print Preview</a>
+                                </h4>
+                                <p class="card-title-desc"><br>
+                                    <!-- Button trigger modal -->
+
                                 </p>
                                 @if (isset($data))
                                     <table id="datatable-buttons"

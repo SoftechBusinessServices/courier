@@ -31,8 +31,8 @@
                             <div class="row">
                                 <div class="col-7">
                                     <div class="text-white p-4">
-                                        <h5 class="text-white">Free Register</h5>
-                                        <p class="text-white">Get your free Admin dashboard account now.</p>
+                                        <h5 class="text-white">Courier Services</h5>
+                                        <p class="text-white">Sign Up your Admin dashboard account now.</p>
                                     </div>
                                 </div>
                                 <div class="col-5 align-self-end">

@@ -97,3 +97,4 @@ Route::post('update-vendor/{id}', [vendorController::class, 'update_vendor']);
 Route::get('delete-vendor/{id}', [vendorController::class, 'destroy_vendor'])->name('delete-vendor');
 
 Route::get('/prnpriview', [PrintController::class, 'prnpriview']);
+Route::get('/print_view', [PrintController::class, 'print_view']);

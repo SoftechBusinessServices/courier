@@ -30,7 +30,7 @@
                             <div class="row">
                                 <div class="col-7">
                                     <div class="text-white p-4">
-                                        <h5 class="text-white">Welcome Back !</h5>
+                                        <h5 class="text-white">Courier Services</h5>
                                         <p>Sign in to Admin dashboard.</p>
                                     </div>
                                 </div>
@@ -53,7 +53,7 @@
                                 <a href="{{ route('home') }}" class="auth-logo-dark">
                                     <div class="avatar-md profile-user-wid mb-4">
                                         <span class="avatar-title rounded-circle bg-light">
-                                            <img src="assets/images/logo2.png" alt="" class="rounded-circle"
+                                            <img src="assets/images/admin.png" alt="" class="rounded-circle"
                                                 height="66">
                                         </span>
                                     </div>

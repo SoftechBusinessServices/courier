@@ -1,787 +1,598 @@
-<div class="main-content">
+{{-- <div class="main-content"> --}}
+<div class="">
 
     <div class="page-content">
         <div class="container-fluid">
+
             <!-- start page title -->
             <div class="row">
                 <div class="col-12">
-                    <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0 font-size-18"><a href="{{ route('home') }}">Dashboard</a></h4>
-
-                        <div class="page-title-right">
-                            <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item text-primary"><a href="{{ route('home') }}">Dashboards</a>
-                                </li>
-                                <li class="breadcrumb-item active">Dashboard</li>
-                            </ol>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            {{-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@---Dashboard---@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ --}}
-
-            <div class="row">
-                <div class="col-xl-12">
+                    <!--write your code here  -->
                     <div class="row">
-                        <div class="col-md-4">
-                            <div class="card mini-stats-wid">
-                                <div class="card-body">
-                                    <div class="d-flex">
-                                        <div class="flex-grow-1">
-                                            <p class="text-muted fw-medium">Parcels</p>
-                                            <h4 class="mb-0">1,235</h4>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <p class="text-muted fw-medium">Parcel Action Buttons</p>
-                                            <div>
-                                                <button type="button"
-                                                    class="btn btn-sm btn-success waves-effect waves-light"
-                                                    data-bs-toggle="modal" data-bs-target="#parcelmodal">Add
-                                                    Parcel</button>
-                                                <a href="{{ route('add-parcel') }}"
-                                                    class="btn btn-sm btn-primary waves-effect waves-light ">View
-                                                    Parcel</a>
-                                                {{-- <button type="button" class="btn btn-primary waves-effect waves-light"
-                                                    data-bs-toggle="modal" data-bs-target=".bs-example-modal-xl">View
-                                                    Parcel</button> --}}
-                                            </div> <!-- end preview-->
-                                        </div>
+                        <div class="col-12">
+                            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                <h4 class="mb-sm-0 font-size-18"><a href="{{ route('home') }}">Dashboard</a></h4>
 
-                                        <div class="flex-shrink-0 align-self-center">
-                                            <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
-                                                <span class="avatar-title">
-                                                    <i class="bx bx-copy-alt font-size-24"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="card mini-stats-wid">
+                    </div>
+                    <!--dashboard row closed -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
                                 <div class="card-body">
-                                    <div class="d-flex">
-                                        <div class="flex-grow-1">
-                                            <p class="text-muted fw-medium">Customers</p>
-                                            <h4 class="mb-0">246</h4>
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" data-bs-toggle="tab" href="#home1"
+                                                role="tab">
+                                                <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
+                                                <span class="d-none d-sm-block">Settings</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-bs-toggle="tab" href="#profile1" role="tab">
+                                                <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
+                                                <span class="d-none d-sm-block">Reports</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-bs-toggle="tab" href="#messages1" role="tab">
+                                                <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
+                                                <span class="d-none d-sm-block">Vouchers</span>
+                                            </a>
+                                        </li>
+
+                                    </ul>
+
+                                    <!-- Tab panes -->
+                                    <div class="tab-content p-3 text-muted">
+                                        <div class="tab-pane active" id="home1" role="tabpanel">
+                                            <p class="mb-0">
+
+                                            <div class="row">
+                                                <div class="col-xl-12">
+                                                    <h4 class="card-title">Settings</h4>
+                                                    <div class="row">
+                                                        <div class="col-lg-3">
+                                                            <div class="border p-3 rounded mt-4">
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="avatar-xs me-3">
+                                                                        <span
+                                                                            class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
+                                                                            <i class="mdi mdi-bitcoin"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <h5 class="font-size-14 mb-0">Regions</h5>
+                                                                </div>
+
+                                                                <div class="row">
+                                                                    <div class="col-lg-6">
+                                                                        <div class="text-muted mt-3">
+                                                                            <p>No of Regions</p>
+                                                                            <h4>4</h4>
+                                                                            {{-- <p class="mb-0">0.00745 BTC</p> --}}
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-lg-6 align-self-end">
+                                                                        <div class="float-end mt-3">
+                                                                            <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                                data-bs-toggle="modal"
+                                                                                data-bs-target="#regionmodal">Add</a>
+                                                                            <a href="{{ route('add-region') }}"
+                                                                                class="btn btn-sm btn-primary">View</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="border p-3 rounded mt-4">
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="avatar-xs me-3">
+                                                                        <span
+                                                                            class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-18">
+                                                                            <i class="mdi mdi-ethereum"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <h5 class="font-size-14 mb-0">Countries</h5>
+                                                                </div>
+
+                                                                <div class="row">
+                                                                    <div class="col-lg-6">
+                                                                        <div class="text-muted mt-3">
+                                                                            <p>Countries</p>
+                                                                            <h4>15</h4>
+                                                                            {{-- <p class="mb-0">0.0056 ETH</p> --}}
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-lg-6 align-self-end">
+                                                                        <div class="float-end mt-3">
+                                                                            <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                                data-bs-toggle="modal"
+                                                                                data-bs-target="#countrymodal">Add</a>
+                                                                            <a href="{{ route('add-country') }}"
+                                                                                class="btn btn-sm btn-primary">View</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="border p-3 rounded mt-4">
+                                                                <div class="d-flex align-items-center mb-0">
+                                                                    <div class="avatar-xs me-3">
+                                                                        <span
+                                                                            class="avatar-title rounded-circle bg-info bg-soft text-info font-size-18">
+                                                                            <i class="mdi mdi-litecoin"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <h5 class="font-size-14 mb-0">Currencies</h5>
+                                                                </div>
+
+                                                                <div class="row">
+                                                                    <div class="col-lg-6">
+                                                                        <div class="text-muted mt-3">
+                                                                            <p>Currencies</p>
+                                                                            <h4>9</h4>
+                                                                            {{-- <p class="mb-0">0.00245 LTC</p> --}}
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-lg-6 align-self-end">
+                                                                        <div class="float-end mt-3">
+
+                                                                            <button type="button"
+                                                                                class="btn btn-sm btn-success waves-effect waves-light"
+                                                                                data-bs-toggle="modal"
+                                                                                data-bs-target="#paisamodal">Add
+                                                                            </button>
+                                                                            <a href="{{ route('add-currency') }}"
+                                                                                class="btn btn-sm btn-primary waves-effect waves-light ">View
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="border p-3 rounded mt-4">
+                                                                <div class="d-flex align-items-center mb-0">
+                                                                    <div class="avatar-xs me-3">
+                                                                        <span
+                                                                            class="avatar-title rounded-circle bg-warning bg-soft text-info font-size-18">
+                                                                            <i
+                                                                                class="mdi mdi-currency-usd-circle-outline"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <h5 class="font-size-14 mb-0">Rate Controls</h5>
+                                                                </div>
+
+                                                                <div class="row">
+                                                                    <div class="col-lg-6">
+                                                                        <div class="text-muted mt-3">
+                                                                            <p>Charges Lists</p>
+                                                                            <h4>6</h4>
+                                                                            {{-- <p class="mb-0">0.00245 LTC</p> --}}
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-lg-6 align-self-end">
+                                                                        <div class="float-end mt-3">
+
+                                                                            <button type="button"
+                                                                                class="btn btn-sm btn-success waves-effect waves-light"
+                                                                                data-bs-toggle="modal"
+                                                                                data-bs-target="#ratemodal">Add
+                                                                            </button>
+                                                                            <a href="{{ route('add-charges') }}"
+                                                                                class="btn btn-sm btn-primary waves-effect waves-light ">View
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </p>
                                         </div>
-                                        <div class="flex-grow-1">
-                                            <p class="text-muted fw-medium">Customer Action Buttons</p>
-                                            <div>
-                                                <button type="button"
-                                                    class="btn btn-sm btn-success waves-effect waves-light"
-                                                    data-bs-toggle="modal" data-bs-target="#customermodal">Add
-                                                    Customer</button>
-                                                <a href="{{ route('add-customer') }}"
-                                                    class="btn btn-sm btn-primary waves-effect waves-light ">View
-                                                    Customer</a>
-                                                {{-- <button type="button" class="btn btn-primary waves-effect waves-light"
-                                                    data-bs-toggle="modal" data-bs-target=".bs-example-modal-xl">View
-                                                    Parcel</button> --}}
-                                            </div> <!-- end preview-->
+                                        <div class="tab-pane" id="profile1" role="tabpanel">
+                                            <p class="mb-0">
+                                            <div class="row">
+                                                <div class="col-xl-12">
+
+
+                                                    <h4 class="card-title">Reports Section</h4>
+                                                    <div class="row">
+                                                        <div class="col-lg-3">
+                                                            <div class="border p-3 rounded mt-4">
+                                                                <div class="d-flex align-items-center mb-0">
+                                                                    <div class="avatar-xs me-3">
+                                                                        <span
+                                                                            class="avatar-title rounded-circle bg-warning bg-soft text-info font-size-18">
+                                                                            <i class="mdi mdi-update"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <h5 class="font-size-14 mb-0">Daily Transaction
+                                                                        Report
+                                                                    </h5>
+                                                                </div>
+
+                                                                <div class="row">
+                                                                    <div class="col-lg-6">
+                                                                        <div class="text-muted mt-3">
+                                                                            <p>Transactions</p>
+                                                                            <h4>41</h4>
+                                                                            {{-- <p class="mb-0">0.00745 BTC</p> --}}
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-lg-6 align-self-end">
+                                                                        <div class="float-end mt-3">
+                                                                            {{-- <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                                                    data-bs-toggle="modal" data-bs-target="#regionmodal">Add</a> --}}
+                                                                            <a href="#"
+                                                                                class="btn btn-sm btn-primary">View
+                                                                                Report</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="border p-3 rounded mt-4">
+                                                                <div class="d-flex align-items-center mb-0">
+                                                                    <div class="avatar-xs me-3">
+                                                                        <span
+                                                                            class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-18">
+                                                                            <i class="mdi mdi-calendar-cursor"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <h5 class="font-size-14 mb-0">Date Range – Ledger
+                                                                        Report
+                                                                    </h5>
+                                                                </div>
+
+                                                                <div class="row">
+                                                                    <div class="col-lg-6">
+                                                                        <div class="text-muted mt-3">
+                                                                            <p> Ledger Reports</p>
+                                                                            <h4>64</h4>
+                                                                            {{-- <p class="mb-0">0.0056 ETH</p> --}}
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-lg-6 align-self-end">
+                                                                        <div class="float-end mt-3">
+                                                                            {{-- <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                                                    data-bs-toggle="modal" data-bs-target="#regionmodal">Add</a> --}}
+                                                                            <a href="#"
+                                                                                class="btn btn-sm btn-primary">View
+                                                                                Report</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="border p-3 rounded mt-4">
+                                                                <div class="d-flex align-items-center mb-0">
+                                                                    <div class="avatar-xs me-3">
+                                                                        <span
+                                                                            class="avatar-title rounded-circle bg-info bg-soft text-info font-size-18">
+                                                                            <i class="mdi mdi-account-cash"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <h5 class="font-size-14 mb-0">Ledger report by
+                                                                        customer
+                                                                        name
+                                                                    </h5>
+                                                                </div>
+
+                                                                <div class="row">
+                                                                    <div class="col-lg-6">
+                                                                        <div class="text-muted mt-3">
+                                                                            <p>Transactions</p>
+                                                                            <h4>9</h4>
+                                                                            {{-- <p class="mb-0">0.00245 LTC</p> --}}
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-lg-6 align-self-end">
+                                                                        <div class="float-end mt-3">
+                                                                            {{-- <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                                                    data-bs-toggle="modal" data-bs-target="#regionmodal">Add</a> --}}
+                                                                            <a href="#"
+                                                                                class="btn btn-sm btn-primary">View
+                                                                                Report</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="border p-3 rounded mt-4">
+                                                                <div class="d-flex align-items-center mb-0">
+                                                                    <div class="avatar-xs me-3">
+                                                                        <span
+                                                                            class="avatar-title rounded-circle bg-warning bg-soft text-info font-size-18">
+                                                                            <i class="mdi mdi-currency-usd-off"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                    <h5 class="font-size-14 mb-0">List of customers
+                                                                        along
+                                                                        with
+                                                                        closing balance
+                                                                    </h5>
+                                                                </div>
+
+                                                                <div class="row">
+                                                                    <div class="col-lg-6">
+                                                                        <div class="text-muted mt-3">
+                                                                            <p>Closing Balance</p>
+                                                                            <h4>26000</h4>
+                                                                            {{-- <p class="mb-0">0.00245 LTC</p> --}}
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-lg-6 align-self-end">
+                                                                        <div class="float-end mt-3">
+                                                                            {{-- <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                                                    data-bs-toggle="modal" data-bs-target="#regionmodal">Add</a> --}}
+                                                                            <a href="#"
+                                                                                class="btn btn-sm btn-primary">View
+                                                                                Report</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </p>
+                                        </div>
+                                        <div class="tab-pane" id="messages1" role="tabpanel">
+                                            <p class="mb-0">
+                                            <div class="row">
+                                                <div class="col-xl-12">
+                                                    <h4 class="card-title">Vouchers Section</h4>
+                                                    <div class="row">
+                                                        <div class="col-xl-2 col-lg-2 col-sm-4 mb-2">
+                                                            <div class="border p-3 rounded mt-4">
+                                                                <p>Cash Payment</p>
+                                                                <a href="#" type="button"
+                                                                    class="btn btn-primary waves-effect waves-light"
+                                                                    id="sa-warning">Click
+                                                                    me</a>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-xl-2 col-lg-2 col-sm-4 mb-2">
+                                                            <div class="border p-3 rounded mt-4">
+                                                                <p>Cash Receipt</p>
+                                                                <a href="#" type="button"
+                                                                    class="btn btn-primary waves-effect waves-light"
+                                                                    id="sa-warning">Click
+                                                                    me</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-2 col-lg-2 col-sm-4 mb-2">
+                                                            <div class="border p-3 rounded mt-4">
+                                                                <p>Cheque Payment</p>
+                                                                <a href="#" type="button"
+                                                                    class="btn btn-primary waves-effect waves-light"
+                                                                    id="sa-warning">Click
+                                                                    me</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-2 col-lg-2 col-sm-4 mb-2">
+                                                            <div class="border p-3 rounded mt-4">
+                                                                <p>Cheque Receipt</p>
+                                                                <a href="#" type="button"
+                                                                    class="btn btn-primary waves-effect waves-light"
+                                                                    id="sa-warning">Click
+                                                                    me</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-2 col-lg-2 col-sm-4 mb-2">
+                                                            <div class="border p-3 rounded mt-4">
+                                                                <p>Journal Voucher</p>
+                                                                <a href="#" type="button"
+                                                                    class="btn btn-primary waves-effect waves-light"
+                                                                    id="sa-warning">Click
+                                                                    me</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-2 col-lg-2 col-sm-4 mb-2">
+                                                            <div class="border p-3 rounded mt-4">
+                                                                <p>Sales Voucher </p>
+                                                                <a href="#" type="button"
+                                                                    class="btn btn-primary waves-effect waves-light"
+                                                                    id="sa-warning">Click
+                                                                    me</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </p>
                                         </div>
 
-                                        <div class="flex-shrink-0 align-self-center ">
-                                            <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
-                                                <span class="avatar-title rounded-circle bg-primary">
-                                                    <i class="bx bx-archive-in font-size-24"></i>
-                                                </span>
-                                            </div>
-                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card mini-stats-wid">
-                                <div class="card-body">
-                                    <div class="d-flex">
-                                        <div class="flex-grow-1">
-                                            <p class="text-muted fw-medium">Companies</p>
-                                            <h4 class="mb-0">123</h4>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <p class="text-muted fw-medium">Company Action Buttons</p>
-                                            <div>
-                                                <button type="button"
-                                                    class="btn btn-sm btn-success waves-effect waves-light"
-                                                    data-bs-toggle="modal" data-bs-target="#companymodal">Add
-                                                    Company</button>
-                                                <a href="{{ route('add-company') }}"
-                                                    class="btn btn-sm btn-primary waves-effect waves-light ">View
-                                                    Company</a>
-                                                {{-- <button type="button" class="btn btn-primary waves-effect waves-light"
-                                                    data-bs-toggle="modal" data-bs-target=".bs-example-modal-xl">View
-                                                    Parcel</button> --}}
-                                            </div> <!-- end preview-->
-                                        </div>
 
-                                        <div class="flex-shrink-0 align-self-center">
-                                            <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
-                                                <span class="avatar-title rounded-circle bg-primary">
-                                                    <i class="bx bx-purchase-tag-alt font-size-24"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- end row -->
+                    <!--row closed -->
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="row">
+
+                                <div class="col-md-3">
+                                    <div class="card mini-stats-wid">
+                                        <div class="card-body">
+                                            <div class="d-flex">
+                                                <div class="flex-grow-1">
+                                                    <p class="text-muted fw-medium">Parcels</p>
+                                                    <h4 class="mb-0">1,235</h4>
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <p class="text-muted fw-medium">Action Buttons</p>
+                                                    <div>
+                                                        <button type="button"
+                                                            class="btn btn-sm btn-success waves-effect waves-light"
+                                                            data-bs-toggle="modal" data-bs-target="#parcelmodal">Add
+                                                        </button>
+                                                        <a href="{{ route('add-parcel') }}"
+                                                            class="btn btn-sm btn-primary waves-effect waves-light ">View
+                                                        </a>
+                                                        {{-- <button type="button" class="btn btn-primary waves-effect waves-light"
+                                                        data-bs-toggle="modal" data-bs-target=".bs-example-modal-xl">View
+                                                        Parcel</button> --}}
+                                                    </div> <!-- end preview-->
+                                                </div>
+
+                                                <div class="flex-shrink-0 align-self-center">
+                                                    <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
+                                                        <span class="avatar-title">
+                                                            <i class="bx bx-gift font-size-24"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card mini-stats-wid">
+                                        <div class="card-body">
+                                            <div class="d-flex">
+                                                <div class="flex-grow-1">
+                                                    <p class="text-muted fw-medium">Customers</p>
+                                                    <h4 class="mb-0">246</h4>
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <p class="text-muted fw-medium">Action Buttons</p>
+                                                    <div>
+                                                        <button type="button"
+                                                            class="btn btn-sm btn-success waves-effect waves-light"
+                                                            data-bs-toggle="modal" data-bs-target="#customermodal">Add
+                                                        </button>
+                                                        <a href="{{ route('add-customer') }}"
+                                                            class="btn btn-sm btn-primary waves-effect waves-light ">View
+                                                        </a>
+                                                        {{-- <button type="button" class="btn btn-primary waves-effect waves-light"
+                                                        data-bs-toggle="modal" data-bs-target=".bs-example-modal-xl">View
+                                                        Parcel</button> --}}
+                                                    </div> <!-- end preview-->
+                                                </div>
+
+                                                <div class="flex-shrink-0 align-self-center ">
+                                                    <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
+                                                        <span class="avatar-title rounded-circle bg-primary">
+                                                            <i class="bx bxs-user-check font-size-24"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card mini-stats-wid">
+                                        <div class="card-body">
+                                            <div class="d-flex">
+                                                <div class="flex-grow-1">
+                                                    <p class="text-muted fw-medium">Companies</p>
+                                                    <h4 class="mb-0">123</h4>
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <p class="text-muted fw-medium">Action Buttons</p>
+                                                    <div>
+                                                        <button type="button"
+                                                            class="btn btn-sm btn-success waves-effect waves-light"
+                                                            data-bs-toggle="modal" data-bs-target="#companymodal">Add
+                                                        </button>
+                                                        <a href="{{ route('add-company') }}"
+                                                            class="btn btn-sm btn-primary waves-effect waves-light ">View
+                                                        </a>
+                                                        {{-- <button type="button" class="btn btn-primary waves-effect waves-light"
+                                                        data-bs-toggle="modal" data-bs-target=".bs-example-modal-xl">View
+                                                        Parcel</button> --}}
+                                                    </div> <!-- end preview-->
+                                                </div>
+
+                                                <div class="flex-shrink-0 align-self-center">
+                                                    <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
+                                                        <span class="avatar-title rounded-circle bg-primary">
+                                                            <i class="bx bx-globe font-size-24"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card mini-stats-wid">
+                                        <div class="card-body">
+                                            <div class="d-flex">
+                                                <div class="flex-grow-1">
+                                                    <p class="text-muted fw-medium">Customers</p>
+                                                    <h4 class="mb-0">246</h4>
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <p class="text-muted fw-medium">Action Buttons</p>
+                                                    <div>
+                                                        <button type="button"
+                                                            class="btn btn-sm btn-success waves-effect waves-light"
+                                                            data-bs-toggle="modal" data-bs-target="#customermodal">Add
+                                                        </button>
+                                                        <a href="{{ route('add-customer') }}"
+                                                            class="btn btn-sm btn-primary waves-effect waves-light ">View
+                                                        </a>
+                                                        {{-- <button type="button" class="btn btn-primary waves-effect waves-light"
+                                                        data-bs-toggle="modal" data-bs-target=".bs-example-modal-xl">View
+                                                        Parcel</button> --}}
+                                                    </div> <!-- end preview-->
+                                                </div>
+
+                                                <div class="flex-shrink-0 align-self-center ">
+                                                    <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
+                                                        <span class="avatar-title rounded-circle bg-primary">
+                                                            <i class="bx bx-walk font-size-24"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end row -->
+                        </div>
+                    </div>
                 </div>
             </div>
-            {{-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@---1st row-end---@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ --}}
-
-            <div id="accordion">
-                <div class="card">
-                    <div class="card-header" id="headingOne">
-                        <h5 class="mb-0">
-                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
-                                aria-expanded="true" aria-controls="collapseOne">
-                                Settings
-                            </button>
-                        </h5>
-                    </div>
-
-                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-xl-12">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h4 class="card-title">Settings</h4>
-                                            <div class="row">
-                                                <div class="col-lg-3">
-                                                    <div class="border p-3 rounded mt-4">
-                                                        <div class="d-flex align-items-center mb-3">
-                                                            <div class="avatar-xs me-3">
-                                                                <span
-                                                                    class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
-                                                                    <i class="mdi mdi-bitcoin"></i>
-                                                                </span>
-                                                            </div>
-                                                            <h5 class="font-size-14 mb-0">Regions</h5>
-                                                        </div>
-
-                                                        <div class="row">
-                                                            <div class="col-lg-6">
-                                                                <div class="text-muted mt-3">
-                                                                    <p>No of Regions</p>
-                                                                    <h4>4</h4>
-                                                                    {{-- <p class="mb-0">0.00745 BTC</p> --}}
-
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-lg-6 align-self-end">
-                                                                <div class="float-end mt-3">
-                                                                    <a class="btn btn-sm btn-success waves-effect waves-light text-white"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#regionmodal">Add</a>
-                                                                    <a href="{{ route('add-region') }}"
-                                                                        class="btn btn-sm btn-primary">View</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3">
-                                                    <div class="border p-3 rounded mt-4">
-                                                        <div class="d-flex align-items-center mb-3">
-                                                            <div class="avatar-xs me-3">
-                                                                <span
-                                                                    class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-18">
-                                                                    <i class="mdi mdi-ethereum"></i>
-                                                                </span>
-                                                            </div>
-                                                            <h5 class="font-size-14 mb-0">Countries</h5>
-                                                        </div>
-
-                                                        <div class="row">
-                                                            <div class="col-lg-6">
-                                                                <div class="text-muted mt-3">
-                                                                    <p>No Of Countries</p>
-                                                                    <h4>15</h4>
-                                                                    {{-- <p class="mb-0">0.0056 ETH</p> --}}
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-lg-6 align-self-end">
-                                                                <div class="float-end mt-3">
-                                                                    <a class="btn btn-sm btn-success waves-effect waves-light text-white"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#countrymodal">Add</a>
-                                                                    <a href="{{ route('add-country') }}"
-                                                                        class="btn btn-sm btn-primary">View</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3">
-                                                    <div class="border p-3 rounded mt-4">
-                                                        <div class="d-flex align-items-center mb-3">
-                                                            <div class="avatar-xs me-3">
-                                                                <span
-                                                                    class="avatar-title rounded-circle bg-info bg-soft text-info font-size-18">
-                                                                    <i class="mdi mdi-litecoin"></i>
-                                                                </span>
-                                                            </div>
-                                                            <h5 class="font-size-14 mb-0">Currencies</h5>
-                                                        </div>
-
-                                                        <div class="row">
-                                                            <div class="col-lg-6">
-                                                                <div class="text-muted mt-3">
-                                                                    <p>No of Currencies</p>
-                                                                    <h4>9</h4>
-                                                                    {{-- <p class="mb-0">0.00245 LTC</p> --}}
-
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-lg-6 align-self-end">
-                                                                <div class="float-end mt-3">
-
-                                                                    <button type="button"
-                                                                        class="btn btn-sm btn-success waves-effect waves-light"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#paisamodal">Add
-                                                                    </button>
-                                                                    <a href="{{ route('add-currency') }}"
-                                                                        class="btn btn-sm btn-primary waves-effect waves-light ">View
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3">
-                                                    <div class="border p-3 rounded mt-4">
-                                                        <div class="d-flex align-items-center mb-3">
-                                                            <div class="avatar-xs me-3">
-                                                                <span
-                                                                    class="avatar-title rounded-circle bg-warning bg-soft text-info font-size-18">
-                                                                    <i class="mdi mdi-currency-usd-circle-outline"></i>
-                                                                </span>
-                                                            </div>
-                                                            <h5 class="font-size-14 mb-0">Rate Controls</h5>
-                                                        </div>
-
-                                                        <div class="row">
-                                                            <div class="col-lg-6">
-                                                                <div class="text-muted mt-3">
-                                                                    <p>Charges Lists</p>
-                                                                    <h4>6</h4>
-                                                                    {{-- <p class="mb-0">0.00245 LTC</p> --}}
-
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-lg-6 align-self-end">
-                                                                <div class="float-end mt-3">
-
-                                                                    <button type="button"
-                                                                        class="btn btn-sm btn-success waves-effect waves-light"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#ratemodal">Add
-                                                                    </button>
-                                                                    <a href="{{ route('add-charges') }}"
-                                                                        class="btn btn-sm btn-primary waves-effect waves-light ">View
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="headingTwo">
-                        <h5 class="mb-0">
-                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
-                                aria-expanded="false" aria-controls="collapseTwo">
-                                Reports
-                            </button>
-                        </h5>
-                    </div>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-xl-12">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h4 class="card-title">Reports Section</h4>
-                                            <div class="row">
-                                                <div class="col-lg-3">
-                                                    <div class="border p-3 rounded mt-4">
-                                                        <div class="d-flex align-items-center mb-3">
-                                                            <div class="avatar-xs me-3">
-                                                                <span
-                                                                    class="avatar-title rounded-circle bg-warning bg-soft text-info font-size-18">
-                                                                    <i class="mdi mdi-update"></i>
-                                                                </span>
-                                                            </div>
-                                                            <h5 class="font-size-14 mb-0">Daily Transaction Report</h5>
-                                                        </div>
-
-                                                        <div class="row">
-                                                            <div class="col-lg-6">
-                                                                <div class="text-muted mt-3">
-                                                                    <p>No of Transactions</p>
-                                                                    <h4>41</h4>
-                                                                    {{-- <p class="mb-0">0.00745 BTC</p> --}}
-
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-lg-6 align-self-end">
-                                                                <div class="float-end mt-3">
-                                                                    {{-- <a class="btn btn-sm btn-success waves-effect waves-light text-white"
-                                                                        data-bs-toggle="modal" data-bs-target="#regionmodal">Add</a> --}}
-                                                                    <a href="#"
-                                                                        class="btn btn-sm btn-primary">View Report</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3">
-                                                    <div class="border p-3 rounded mt-4">
-                                                        <div class="d-flex align-items-center mb-3">
-                                                            <div class="avatar-xs me-3">
-                                                                <span
-                                                                    class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-18">
-                                                                    <i class="mdi mdi-calendar-cursor"></i>
-                                                                </span>
-                                                            </div>
-                                                            <h5 class="font-size-14 mb-0">Date Range – Ledger Report
-                                                            </h5>
-                                                        </div>
-
-                                                        <div class="row">
-                                                            <div class="col-lg-6">
-                                                                <div class="text-muted mt-3">
-                                                                    <p> Ledger Reports</p>
-                                                                    <h4>64</h4>
-                                                                    {{-- <p class="mb-0">0.0056 ETH</p> --}}
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-lg-6 align-self-end">
-                                                                <div class="float-end mt-3">
-                                                                    {{-- <a class="btn btn-sm btn-success waves-effect waves-light text-white"
-                                                                        data-bs-toggle="modal" data-bs-target="#regionmodal">Add</a> --}}
-                                                                    <a href="#"
-                                                                        class="btn btn-sm btn-primary">View Report</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3">
-                                                    <div class="border p-3 rounded mt-4">
-                                                        <div class="d-flex align-items-center mb-3">
-                                                            <div class="avatar-xs me-3">
-                                                                <span
-                                                                    class="avatar-title rounded-circle bg-info bg-soft text-info font-size-18">
-                                                                    <i class="mdi mdi-account-cash"></i>
-                                                                </span>
-                                                            </div>
-                                                            <h5 class="font-size-14 mb-0">Ledger report by customer
-                                                                name
-                                                            </h5>
-                                                        </div>
-
-                                                        <div class="row">
-                                                            <div class="col-lg-6">
-                                                                <div class="text-muted mt-3">
-                                                                    <p>Transactions</p>
-                                                                    <h4>9</h4>
-                                                                    {{-- <p class="mb-0">0.00245 LTC</p> --}}
-
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-lg-6 align-self-end">
-                                                                <div class="float-end mt-3">
-                                                                    {{-- <a class="btn btn-sm btn-success waves-effect waves-light text-white"
-                                                                        data-bs-toggle="modal" data-bs-target="#regionmodal">Add</a> --}}
-                                                                    <a href="#"
-                                                                        class="btn btn-sm btn-primary">View Report</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3">
-                                                    <div class="border p-3 rounded mt-4">
-                                                        <div class="d-flex align-items-center mb-3">
-                                                            <div class="avatar-xs me-3">
-                                                                <span
-                                                                    class="avatar-title rounded-circle bg-warning bg-soft text-info font-size-18">
-                                                                    <i class="mdi mdi-currency-usd-off"></i>
-                                                                </span>
-                                                            </div>
-                                                            <h5 class="font-size-14 mb-0">List of customers along with
-                                                                closing balance
-                                                            </h5>
-                                                        </div>
-
-                                                        <div class="row">
-                                                            <div class="col-lg-6">
-                                                                <div class="text-muted mt-3">
-                                                                    <p>Closing Balance</p>
-                                                                    <h4>26000</h4>
-                                                                    {{-- <p class="mb-0">0.00245 LTC</p> --}}
-
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-lg-6 align-self-end">
-                                                                <div class="float-end mt-3">
-                                                                    {{-- <a class="btn btn-sm btn-success waves-effect waves-light text-white"
-                                                                        data-bs-toggle="modal" data-bs-target="#regionmodal">Add</a> --}}
-                                                                    <a href="#"
-                                                                        class="btn btn-sm btn-primary">View Report</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="headingThree">
-                        <h5 class="mb-0">
-                            <button class="btn btn-link collapsed" data-toggle="collapse"
-                                data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                Vouchers
-                            </button>
-                        </h5>
-                    </div>
-                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                        data-parent="#accordion">
-                        <div class="card-body">
-
-                            <div class="row">
-                                <div class="col-xl-2 col-lg-2 col-sm-4 mb-2">
-                                    <div class="p-3">
-                                        <p>Cash Payment</p>
-                                        <a href="#" type="button"
-                                            class="btn btn-primary waves-effect waves-light" id="sa-warning">Click
-                                            me</a>
-                                    </div>
-                                </div>
-                                <div class="col-xl-2 col-lg-2 col-sm-4 mb-2">
-                                    <div class="p-3">
-                                        <p>Cash Receipt</p>
-                                        <a href="#" type="button"
-                                            class="btn btn-primary waves-effect waves-light" id="sa-warning">Click
-                                            me</a>
-                                    </div>
-                                </div>
-                                <div class="col-xl-2 col-lg-2 col-sm-4 mb-2">
-                                    <div class="p-3">
-                                        <p>Cheque Payment</p>
-                                        <a href="#" type="button"
-                                            class="btn btn-primary waves-effect waves-light" id="sa-warning">Click
-                                            me</a>
-                                    </div>
-                                </div>
-                                <div class="col-xl-2 col-lg-2 col-sm-4 mb-2">
-                                    <div class="p-3">
-                                        <p>Cheque Receipt</p>
-                                        <a href="#" type="button"
-                                            class="btn btn-primary waves-effect waves-light" id="sa-warning">Click
-                                            me</a>
-                                    </div>
-                                </div>
-                                <div class="col-xl-2 col-lg-2 col-sm-4 mb-2">
-                                    <div class="p-3">
-                                        <p>Journal Voucher</p>
-                                        <a href="#" type="button"
-                                            class="btn btn-primary waves-effect waves-light" id="sa-warning">Click
-                                            me</a>
-                                    </div>
-                                </div>
-                                <div class="col-xl-2 col-lg-2 col-sm-4 mb-2">
-                                    <div class="p-3">
-                                        <p>Sales Voucher </p>
-                                        <a href="#" type="button"
-                                            class="btn btn-primary waves-effect waves-light" id="sa-warning">Click
-                                            me</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@---3rd row-end--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ --}}
-            {{-- <div class="row">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title mb-4">Latest Transaction</h4>
-                            <div class="table-responsive">
-                                <table class="table align-middle table-nowrap mb-0">
-                                    <thead class="table-light">
-                                        <tr>
-                                            <th style="width: 20px;">
-                                                <div class="form-check font-size-16 align-middle">
-                                                    <input class="form-check-input" type="checkbox"
-                                                        id="transactionCheck01">
-                                                    <label class="form-check-label" for="transactionCheck01"></label>
-                                                </div>
-                                            </th>
-                                            <th class="align-middle">Order ID</th>
-                                            <th class="align-middle">Billing Name</th>
-                                            <th class="align-middle">Date</th>
-                                            <th class="align-middle">Total</th>
-                                            <th class="align-middle">Payment Status</th>
-                                            <th class="align-middle">Payment Method</th>
-                                            <th class="align-middle">View Details</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="form-check font-size-16">
-                                                    <input class="form-check-input" type="checkbox"
-                                                        id="transactionCheck02">
-                                                    <label class="form-check-label" for="transactionCheck02"></label>
-                                                </div>
-                                            </td>
-                                            <td><a href="javascript: void(0);" class="text-body fw-bold">#SK2540</a>
-                                            </td>
-                                            <td>Neal Matthews</td>
-                                            <td>
-                                                07 Oct, 2019
-                                            </td>
-                                            <td>
-                                                $400
-                                            </td>
-                                            <td>
-                                                <span
-                                                    class="badge badge-pill badge-soft-success font-size-11">Paid</span>
-                                            </td>
-                                            <td>
-                                                <i class="fab fa-cc-mastercard me-1"></i> Mastercard
-                                            </td>
-                                            <td>
-                                                <!-- Button trigger modal -->
-                                                <button type="button"
-                                                    class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
-                                                    data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
-                                                    View Details
-                                                </button>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <div class="form-check font-size-16">
-                                                    <input class="form-check-input" type="checkbox"
-                                                        id="transactionCheck03">
-                                                    <label class="form-check-label" for="transactionCheck03"></label>
-                                                </div>
-                                            </td>
-                                            <td><a href="javascript: void(0);" class="text-body fw-bold">#SK2541</a>
-                                            </td>
-                                            <td>Jamal Burnett</td>
-                                            <td>
-                                                07 Oct, 2019
-                                            </td>
-                                            <td>
-                                                $380
-                                            </td>
-                                            <td>
-                                                <span
-                                                    class="badge badge-pill badge-soft-danger font-size-11">Chargeback</span>
-                                            </td>
-                                            <td>
-                                                <i class="fab fa-cc-visa me-1"></i> Visa
-                                            </td>
-                                            <td>
-                                                <!-- Button trigger modal -->
-                                                <button type="button"
-                                                    class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
-                                                    data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
-                                                    View Details
-                                                </button>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <div class="form-check font-size-16">
-                                                    <input class="form-check-input" type="checkbox"
-                                                        id="transactionCheck04">
-                                                    <label class="form-check-label" for="transactionCheck04"></label>
-                                                </div>
-                                            </td>
-                                            <td><a href="javascript: void(0);" class="text-body fw-bold">#SK2542</a>
-                                            </td>
-                                            <td>Juan Mitchell</td>
-                                            <td>
-                                                06 Oct, 2019
-                                            </td>
-                                            <td>
-                                                $384
-                                            </td>
-                                            <td>
-                                                <span
-                                                    class="badge badge-pill badge-soft-success font-size-11">Paid</span>
-                                            </td>
-                                            <td>
-                                                <i class="fab fa-cc-paypal me-1"></i> Paypal
-                                            </td>
-                                            <td>
-                                                <!-- Button trigger modal -->
-                                                <button type="button"
-                                                    class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
-                                                    data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
-                                                    View Details
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-check font-size-16">
-                                                    <input class="form-check-input" type="checkbox"
-                                                        id="transactionCheck05">
-                                                    <label class="form-check-label" for="transactionCheck05"></label>
-                                                </div>
-                                            </td>
-                                            <td><a href="javascript: void(0);" class="text-body fw-bold">#SK2543</a>
-                                            </td>
-                                            <td>Barry Dick</td>
-                                            <td>
-                                                05 Oct, 2019
-                                            </td>
-                                            <td>
-                                                $412
-                                            </td>
-                                            <td>
-                                                <span
-                                                    class="badge badge-pill badge-soft-success font-size-11">Paid</span>
-                                            </td>
-                                            <td>
-                                                <i class="fab fa-cc-mastercard me-1"></i> Mastercard
-                                            </td>
-                                            <td>
-                                                <!-- Button trigger modal -->
-                                                <button type="button"
-                                                    class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
-                                                    data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
-                                                    View Details
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-check font-size-16">
-                                                    <input class="form-check-input" type="checkbox"
-                                                        id="transactionCheck06">
-                                                    <label class="form-check-label" for="transactionCheck06"></label>
-                                                </div>
-                                            </td>
-                                            <td><a href="javascript: void(0);" class="text-body fw-bold">#SK2544</a>
-                                            </td>
-                                            <td>Ronald Taylor</td>
-                                            <td>
-                                                04 Oct, 2019
-                                            </td>
-                                            <td>
-                                                $404
-                                            </td>
-                                            <td>
-                                                <span
-                                                    class="badge badge-pill badge-soft-warning font-size-11">Refund</span>
-                                            </td>
-                                            <td>
-                                                <i class="fab fa-cc-visa me-1"></i> Visa
-                                            </td>
-                                            <td>
-                                                <!-- Button trigger modal -->
-                                                <button type="button"
-                                                    class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
-                                                    data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
-                                                    View Details
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-check font-size-16">
-                                                    <input class="form-check-input" type="checkbox"
-                                                        id="transactionCheck07">
-                                                    <label class="form-check-label" for="transactionCheck07"></label>
-                                                </div>
-                                            </td>
-                                            <td><a href="javascript: void(0);" class="text-body fw-bold">#SK2545</a>
-                                            </td>
-                                            <td>Jacob Hunter</td>
-                                            <td>
-                                                04 Oct, 2019
-                                            </td>
-                                            <td>
-                                                $392
-                                            </td>
-                                            <td>
-                                                <span
-                                                    class="badge badge-pill badge-soft-success font-size-11">Paid</span>
-                                            </td>
-                                            <td>
-                                                <i class="fab fa-cc-paypal me-1"></i> Paypal
-                                            </td>
-                                            <td>
-                                                <!-- Button trigger modal -->
-                                                <button type="button"
-                                                    class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
-                                                    data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
-                                                    View Details
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- end table-responsive -->
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
-            {{-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@---4th row-end--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ --}}
+             <!-- start page title -->
 
         </div>
-        <!-- container-fluid -->
+         <!-- container-fluid -->
     </div>
-    <!-- End Page-content -->
-
 </div>
-<!-- Main-content -->
+  <!-- main-content -->
 
 {{-- *******************************Parcel Modal************************************************************* --}}
 <div class="modal fade" id="parcelmodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
@@ -799,7 +610,7 @@
                         <div class="col-md-12">
                             <h5 class="text-center"></h5>
                             <div class="row">
-                                <div class="col-md-6 mb-3">
+                                <div class="col-md-6 mb-0">
                                     <label for="username" class="form-label">Parcel Date</label>
                                     <input type="date" id="username" required
                                         class="form-control @error('pl_date') is-invalid @enderror" name="pl_date"
@@ -811,7 +622,7 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <div class="col-md-6 mb-3">
+                                <div class="col-md-6 mb-0">
                                     <label for="useremail" class="form-label">Destination Country</label>
                                     <select class="form-select" name="country_id" required id="country_id"
                                         class="form-control table-responsive @error('country_id') is-invalid @enderror">
@@ -831,7 +642,7 @@
                             </div>
                             {{-- first row closed --}}
                             <div class="row">
-                                <div class="col-md-6 mb-3">
+                                <div class="col-md-6 mb-0">
                                     <label for="username" class="form-label">Parcel Weight
                                         <code>(grams)</code></label>
                                     <input type="number" id="pl_weight" placeholder="Enter Parcel Weight" required
@@ -844,7 +655,7 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <div class="col-md-6 mb-3">
+                                <div class="col-md-6 mb-0">
                                     <label for="username" class="form-label">Chargeable Weight</label>
                                     <input type="text" id="chargeable_weight"
                                         class="form-control @error('chargeable_weight') is-invalid @enderror"
@@ -860,7 +671,7 @@
                             </div>
                             <div class="row">
 
-                                <div class="col-md-6 mb-3">
+                                <div class="col-md-6 mb-0">
                                     <label for="username" class="form-label">Parcel Cost in </label>
                                     <div id="symbol_lable" class="d-inline text-danger">
                                     </div>
@@ -877,7 +688,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-6 mb-3">
+                                <div class="col-md-6 mb-0">
                                     <label for="username" class="form-label">Parcel Extras Cost</label>
                                     <input type="number" id="pl_extras" placeholder="Enter Parcel Extra Cost"
                                         required class="form-control @error('pl_extras') is-invalid @enderror"
@@ -892,7 +703,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6 mb-3">
+                                <div class="col-md-6 mb-0">
                                     <label for="username" class="form-label">Parcel Discount</label>
                                     <input type="number" id="pl_discount" placeholder="Enter Parcel Discount"
                                         required class="form-control @error('pl_discount') is-invalid @enderror"
@@ -905,7 +716,7 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <div class="col-md-6 mb-3">
+                                <div class="col-md-6 mb-0">
                                     <label for="username" class="form-label">Parcel Final Cost</label>
                                     <input type="number" id="pl_final" placeholder="Parcel Final Charges" required
                                         class="form-control @error('pl_final') is-invalid @enderror" name="pl_final"
@@ -919,7 +730,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                {{-- <div class="col-md-6 mb-3"> --}}
+                                {{-- <div class="col-md-6 mb-0"> --}}
                                 {{-- <label for="course" class="form-label">Selected --}}
                                 {{-- Region<code>*</code></label> --}}
                                 <input type="hidden" name="region_id" id="region_id" class="form-control"
@@ -930,7 +741,7 @@
                                     </span>
                                 @enderror --}}
                                 {{-- </div> --}}
-                                {{-- <div class="col-md-6 mb-3">
+                                {{-- <div class="col-md-6 mb-0">
                                 <label for="username" class="form-label">Amounts in Currency
                                 </label> --}}
                                 <input type="hidden" id="currency_id" class="form-control" autofocus
@@ -944,7 +755,7 @@
                                 {{-- </div> --}}
                             </div>
                             <div class="row">
-                                <div class="col-md-12 mb-3">
+                                <div class="col-md-12 mb-0">
                                     <label for="address" class="form-label">Parcel Description</label>
                                     <textarea name="pl_description" id="pl_description" class="form-control" cols="1" rows="1">
                                 </textarea>
@@ -986,7 +797,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="row">
-                                <div class="col-md-12 mb-3">
+                                <div class="col-md-12 mb-0">
                                     <label for="useremail" class="form-label">Select Company</label>
                                     <select class="form-select" name="company_id" required
                                         class="form-control table-responsive @error('company_id') is-invalid @enderror"
@@ -1002,7 +813,7 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <div class="col-md-12 mb-3">
+                                <div class="col-md-12 mb-0">
                                     <label for="username" class="form-label">Customer Name</label>
                                     <input type="text" id="username" placeholder="Enter customer name"
                                         class="form-control @error('name') is-invalid @enderror" name="name"
@@ -1015,7 +826,7 @@
                                     @enderror
                                 </div>
 
-                                <div class="col-md-12 mb-3">
+                                <div class="col-md-12 mb-0">
                                     <label for="useremail" class="form-label">Customer Email</label>
                                     <input type="email" id="useremail" placeholder="Enter email"
                                         class="form-control @error('email') is-invalid @enderror" name="email"
@@ -1033,7 +844,7 @@
 
                     {{-- first row closed --}}
                     <div class="row">
-                        <div class="col-md-12 mb-3">
+                        <div class="col-md-12 mb-0">
                             <label for="username" class="form-label">Customer Phone Number</label>
                             <input type="text" data-inputmask="'mask': '0399-99999999'" type="number"
                                 maxlength="12" class="form-control @error('phone') is-invalid @enderror"
@@ -1045,7 +856,7 @@
                                 </span>
                             @enderror
                         </div>
-                        <div class="col-md-12 mb-3">
+                        <div class="col-md-12 mb-0">
                             <label for="useremail" class="form-label">Select Country</label>
                             <select class="form-select" name="country_id" required
                                 class="form-control table-responsive @error('country_id') is-invalid @enderror"
@@ -1063,7 +874,7 @@
                                 </span>
                             @enderror
                         </div>
-                        <div class="col-md-12 mb-3">
+                        <div class="col-md-12 mb-0">
                             <label for="address" class="form-label">Customer Address</label>
                             <textarea name="address" id="address" class="form-control" cols="1" rows="1">
 
@@ -1076,7 +887,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12 mb-3">
+                        <div class="col-md-12 mb-0">
                             <label for="username" class="form-label">Customer CNIC Number</label>
                             <input type="text" data-inputmask="'mask': '99999-9999999-9'"
                                 placeholder="XXXXX-XXXXXXX-X" name="cnic_no" required
@@ -1089,7 +900,7 @@
                                 </span>
                             @enderror
                         </div>
-                        <div class="col-md-12 mb-3">
+                        <div class="col-md-12 mb-0">
                             <label for="username" class="form-label">Upload CNIC Picture</label>
                             <input type="file" id="cnic_scane" required name="cnic_scane"
                                 class="form-control @error('cnic_scane') is-invalid @enderror"
@@ -1132,7 +943,7 @@
                         <div class="col-md-12">
                             <div class="row">
 
-                                <div class="col-md-12 mb-3">
+                                <div class="col-md-12 mb-0">
                                     <label for="username" class="form-label">Company Name</label>
                                     <input type="text" id="username" placeholder="Enter company name" required
                                         class="form-control @error('name') is-invalid @enderror" name="name"
@@ -1145,7 +956,7 @@
                                     @enderror
                                 </div>
 
-                                <div class="col-md-12 mb-3">
+                                <div class="col-md-12 mb-0">
                                     <label for="useremail" class="form-label">Company Email</label>
                                     <input type="email" id="useremail" placeholder="Enter company email"
                                         class="form-control @error('email') is-invalid @enderror" name="email"
@@ -1162,7 +973,7 @@
                     </div>
                     {{-- first row closed --}}
                     <div class="row">
-                        <div class="col-md-12 mb-3">
+                        <div class="col-md-12 mb-0">
                             <label for="username" class="form-label">Company Phone Number</label>
                             <input type="text" data-inputmask="'mask': '0399-99999999'" required type="number"
                                 maxlength="12" class="form-control @error('phone') is-invalid @enderror"
@@ -1174,7 +985,7 @@
                                 </span>
                             @enderror
                         </div>
-                        <div class="col-md-12 mb-3">
+                        <div class="col-md-12 mb-0">
                             <label for="username" class="form-label">Company NTN Number</label>
                             <input type="number" id="ntn_no" placeholder="Enter NTN Number" required
                                 class="form-control @error('ntn_no') is-invalid @enderror" name="ntn_no"
@@ -1188,7 +999,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12 mb-3">
+                        <div class="col-md-12 mb-0">
                             <label for="username" class="form-label">Company Website URL</label>
                             <input type="url" id="web_url" name="web_url" required
                                 class="form-control @error('web_url') is-invalid @enderror"
@@ -1200,7 +1011,7 @@
                                 </span>
                             @enderror
                         </div>
-                        <div class="col-md-12 mb-3">
+                        <div class="col-md-12 mb-0">
                             <label for="useremail" class="form-label">Select Country</label>
                             <select class="form-select" name="country_id" required
                                 class="form-control table-responsive @error('country_id') is-invalid @enderror"
@@ -1218,7 +1029,7 @@
                                 </span>
                             @enderror
                         </div>
-                        <div class="col-md-12 mb-3">
+                        <div class="col-md-12 mb-0">
                             <label for="address" class="form-label">Company Address</label>
                             <textarea name="address" id="address" class="form-control" cols="1" rows="1">
 
@@ -1252,7 +1063,7 @@
                 <form id="regionform" action="{{ route('store-region') }}" method="POST">
                     @csrf
                     <div class="row">
-                        <div class="col-md-12 mb-3">
+                        <div class="col-md-12 mb-0">
                             <label for="username" class="form-label">Enter Region Name</label>
                             <input type="text" id="username" placeholder="Enter customer name"
                                 class="form-control @error('name') is-invalid @enderror" name="name"
@@ -1293,7 +1104,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="row">
-                                <div class="col-md-12 mb-3">
+                                <div class="col-md-12 mb-0">
                                     <label for="useremail" class="form-label">Choose Region</label>
                                     <select class="form-select" name="region_id" required id="region_id"
                                         class="form-control table-responsive @error('region_id') is-invalid @enderror">
@@ -1310,7 +1121,7 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <div class="col-md-12 mb-3">
+                                <div class="col-md-12 mb-0">
                                     <label for="username" class="form-label">Country Name</label>
                                     <input type="text" id="username" placeholder="Enter country name"
                                         class="form-control @error('name') is-invalid @enderror" name="name"
@@ -1322,7 +1133,7 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <div class="col-md-12 mb-3">
+                                <div class="col-md-12 mb-0">
                                     <label for="username" class="form-label">Country Code</label>
                                     <input type="text" id="username" placeholder="Enter country code"
                                         class="form-control @error('code') is-invalid @enderror" name="code"
@@ -1364,7 +1175,7 @@
                     enctype="multipart/form-data">
                     @csrf
                     <div class="row">
-                        <div class="col-md-12 mb-3">
+                        <div class="col-md-12 mb-0">
                             <label for="username" class="form-label">Currency Name</label>
                             <input type="text" id="username" placeholder="Enter currency name"
                                 class="form-control @error('name') is-invalid @enderror" name="name"
@@ -1376,7 +1187,7 @@
                                 </span>
                             @enderror
                         </div>
-                        <div class="col-md-12 mb-3">
+                        <div class="col-md-12 mb-0">
                             <label for="username" class="form-label">Currency Symbol</label>
                             <input type="text" id="username" placeholder="Enter currency symbol"
                                 class="form-control @error('symbol') is-invalid @enderror" name="symbol"
@@ -1419,7 +1230,7 @@
                         <div class="col-md-12">
 
                             <div class="row">
-                                <div class="col-md-6 mb-3">
+                                <div class="col-md-6 mb-0">
                                     <label for="useremail" class="form-label">Destination Country</label>
                                     <select class="form-select" name="country_idd" required id="country_idd"
                                         class="form-control table-responsive @error('country_idd') is-invalid @enderror">
@@ -1436,7 +1247,7 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <div class="col-md-6 mb-3">
+                                <div class="col-md-6 mb-0">
                                     <label for="course" class="form-label">Destination Region
                                         <code>*</code></label>
                                     <select class="form-control" name="region_idd" id="region_idd">
@@ -1452,7 +1263,7 @@
                             </div>
                             {{-- first row closed --}}
                             <div class="row">
-                                <div class="col-md-6 mb-3">
+                                <div class="col-md-6 mb-0">
                                     <label for="useremail" class="form-label">Desired Currency</label>
                                     <select class="form-select" name="currency_idd" required id="currency_idd"
                                         class="form-control table-responsive @error('currency_idd') is-invalid @enderror">
@@ -1469,7 +1280,7 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <div class="col-md-6 mb-3">
+                                <div class="col-md-6 mb-0">
                                     <label for="course" class="form-label">Desired
                                         Symbol<code>*</code></label>
                                     <input type="text" name="symbol" id="symbol_idd" class="form-control"
@@ -1483,12 +1294,12 @@
                             </div>
                             {{-- row closed --}}
                             <div class="row">
-                                <div class="col-md-6 mb-3">
+                                <div class="col-md-6 mb-0">
                                     <label for="username" class="form-label">Weight (0-500)gm </label>
                                     <input type="number" id="gm0_500" placeholder="Enter Price for (0-500)gm "
                                         required class="form-control @error('gm0_500') is-invalid @enderror"
-                                        name="gm0_500" value="{{ old('0_500g') }}" required
-                                        autocomplete="gm0_500" autofocus>
+                                        name="gm0_500" value="{{ old('0_500g') }}" required autocomplete="gm0_500"
+                                        autofocus>
 
                                     @error('gm0_500')
                                         <span class="invalid-feedback" role="alert">
@@ -1496,11 +1307,10 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <div class="col-md-6 mb-3">
+                                <div class="col-md-6 mb-0">
                                     <label for="username" class="form-label">Weight (501-1000)gm </label>
-                                    <input type="number" id="gm501_1000"
-                                        placeholder="Enter Price for (501-1000)gm " required
-                                        class="form-control @error('gm501_1000') is-invalid @enderror"
+                                    <input type="number" id="gm501_1000" placeholder="Enter Price for (501-1000)gm "
+                                        required class="form-control @error('gm501_1000') is-invalid @enderror"
                                         name="gm501_1000" value="{{ old('gm501_1000') }}" required
                                         autocomplete="gm501_1000" autofocus>
 
@@ -1513,7 +1323,7 @@
                             </div>
                             {{-- row closed --}}
                             <div class="row">
-                                <div class="col-md-6 mb-3">
+                                <div class="col-md-6 mb-0">
                                     <label for="username" class="form-label">Weight (1001-1500)gm </label>
                                     <input type="number" id="gm1001_1500"
                                         placeholder="Enter Price for (1001-1500)gm " required
@@ -1527,7 +1337,7 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <div class="col-md-6 mb-3">
+                                <div class="col-md-6 mb-0">
                                     <label for="username" class="form-label">Weight (1501-2000)gm </label>
                                     <input type="number" id="gm1501_2000"
                                         placeholder="Enter Price for (1501-2000)gm " required
@@ -1544,7 +1354,7 @@
                             </div>
                             {{-- row closed --}}
                             <div class="row">
-                                <div class="col-md-6 mb-3">
+                                <div class="col-md-6 mb-0">
                                     <label for="username" class="form-label">Weight (2001-5000)gm </label>
                                     <input type="number" id="gm2001_5000"
                                         placeholder="Enter Price for (2001-5000)gm " required
@@ -1558,7 +1368,7 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <div class="col-md-6 mb-3">
+                                <div class="col-md-6 mb-0">
                                     <label for="username" class="form-label">Weight (above-5000)gm
                                     </label>
                                     <input type="number" id="gm5000_above"
@@ -1588,11 +1398,10 @@
         </div>
     </div>
 </div>
-{{-- @@@@@@@@@@@@@@@@@@@@@@@@@@@---Modals Closed---@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ --}}
 
 
-{{-- *****************************---Javascript---************************** --}}
 
+<!--*************---Javascript---******************-->
 <script>
     $(document).ready(function() {
 
@@ -1735,11 +1544,5 @@
 
     });
 </script>
-<script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
-<script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('assets/libs/metismenu/metisMenu.min.js') }}"></script>
-<script src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
-<script src="{{ asset('assets/libs/node-waves/waves.min.js') }}"></script>
 
-<!-- App js -->
-<script src="{{ asset('assets/js/app.js') }}"></script>
+

@@ -3,37 +3,21 @@
 {{-- @dd(1); --}}
 @include('admin-panel.head')
 
-<body data-sidebar="dark">
-
-    <!-- <body data-layout="horizontal" data-topbar="dark"> -->
-
+<body>
     <!-- Begin page -->
     <div id="layout-wrapper">
 
         @include('admin-panel.header')
-
-
-        <!-- ========== Left Sidebar Start ========== -->
-        @include('admin-panel.leftbar')
-        <!-- Left Sidebar End -->
-
-        <!-- ============================================================== -->
-        <!-- Start right Content here -->
-        <!-- ============================================================== -->
+        {{-- @include('admin-panel.leftbar') --}}
 
         @include('admin-panel.content')
 
         <!-- end main content-->
         @include('admin-panel.footer')
+
     </div>
-    <!-- END layout-wrapper -->
 
-    <!-- Right Sidebar -->
-    {{-- @include('admin-panel.rightbar') --}}
-    <!-- /Right-bar -->
-
-    <!-- Right bar overlay-->
-    <div class="rightbar-overlay"></div>
+    {{-- <div class="rightbar-overlay"></div> --}}
 
     <!-- JAVASCRIPT -->
     <script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
@@ -60,16 +44,22 @@
     <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
     <script src="{{ asset('assets/js/app.js') }}"></script>
 
-    <!-- Sweet Alerts js -->
-    <script src="{{ asset('assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
 
-    <!-- Sweet alert init js-->
-    <script src="{{ asset('assets/js/pages/sweet-alerts.init.js') }}"></script>
     {{-- toastr js --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> --}}
     <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> --}}
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
 
+     <!-- Sweet Alerts js -->
+     <script src="{{ asset('assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
+
+     <!-- Sweet alert init js-->
+     <script src="{{ asset('assets/js/pages/sweet-alerts.init.js') }}"></script>
+
+    <!-- App js -->
+    <script src="{{ asset('assets/js/app.js') }}"></script>
     <script>
         $(":input").inputmask();
     </script>

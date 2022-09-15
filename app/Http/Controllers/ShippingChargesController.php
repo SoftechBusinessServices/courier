@@ -106,9 +106,9 @@ class ShippingChargesController extends Controller
         // dd($record);
         $request->validate([
 
-            'region_idd' => 'required',
-            'country_idd' => 'required',
-            'currency_idd' => 'required',
+            'region_id' => 'required',
+            'country_id' => 'required',
+            'currency_id' => 'required',
             'symbol' => 'required',
             'gm0_500' => 'required',
             'gm501_1000' => 'required',

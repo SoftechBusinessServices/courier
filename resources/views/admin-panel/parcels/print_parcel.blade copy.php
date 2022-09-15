@@ -1,123 +1,152 @@
+@extends('admin-panel.index')
 
-    <div class="main-content">
+@section('content')
+ <div class="">
 
-        <div class="page-content">
-            <div class="container-fluid">
+    <div class="page-content">
+        <div class="container-fluid">
 
-                <!-- start page title -->
-                <div class="row">
-                    <div class="col-12">
-                        <!--write your code here  -->
-                        <div class="card">
-                            <div class="card-body">
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                        <h4 class="mb-sm-0 font-size-18">Detail</h4>
 
-                                
-                                <p class="card-title-desc">
-                                  <h3 class="text-center">Parcel Details Print Preview</h3>
-                                
-                                </p>
-                                @if (isset($data))
-                                    <table id="datatable-buttons" style="border: 1px solid black;"
-                                        class="table table-bordered dt-responsive nowrap w-100 table-sm border">
-                                        <thead style=" border: 1px solid black;">
-                                            <tr style=" border: 1px solid black;">
-                                                <th style=" border: 1px solid black;">S.No</th>
-                                                <th style=" border: 1px solid black;">Parcel_id</th>
-                                                <th style=" border: 1px solid black;">Region</th>
-                                                <th style=" border: 1px solid black;">Country</th>
-                                                <th style=" border: 1px solid black;">Currency</th>
-                                                <th style=" border: 1px solid black;">Weight</th>
-                                                <th style=" border: 1px solid black;">Chargeable</th>
-                                                <th style=" border: 1px solid black;">Cost</th>
-                                                <th style=" border: 1px solid black;">Extras</th>
-                                                <th style=" border: 1px solid black;">Discount</th>
-                                                <th style=" border: 1px solid black;">Final</th>
-                                                <th style=" border: 1px solid black;">Delivery</th>
-                                                <th style=" border: 1px solid black;">Description</th>
-                                                <th style=" border: 1px solid black;">Parcel Date</th>
-                                                {{-- <th>Status</th> --}}
-                                                {{-- <th>Action</th> --}}
-                                            </tr>
-                                        </thead>
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Invoices</a></li>
+                                <li class="breadcrumb-item active">Detail</li>
+                            </ol>
+                        </div>
 
+                    </div>
+                </div>
+            </div>
+            <!-- end page title -->
 
-                                        <tbody>
-                                            @php
-                                                $i = 1;
-                                            @endphp
-                                            @if ($data->count() > 0)
-                                                @foreach ($data as $item)
-                                                    {{-- @dd($item) --}}
-                                                    <tr style=" border: 1px solid black;">
-                                                        <td>{{ $i++ }}</td>
-                                                        <td>{{ $item->pl_id }}</td>
-                                                        <td>{{ $item->region->name }}</td>
-                                                        <td>{{ $item->country->name }}</td>
-                                                        <td>{{ $item->currency->name }}</td>
-                                                        <td>{{ $item->pl_weight }}</td>
-                                                        <td>{{ $item->chargeable_weight }}</td>
-                                                        {{-- <td>{{ $item->pl_currency }}</td> --}}
-                                                        <td>{{ $item->pl_cost }}</td>
-                                                        <td>{{ $item->pl_extras }}</td>
-                                                        <td>{{ $item->pl_discount }}</td>
-                                                        <td>{{ $item->pl_symbol . ' ' . $item->pl_final }}</td>
-
-                                                        <td>{{ $item->pl_description }}</td>
-                                                        <td>{{ $item->pl_status }}</td>
-                                                        <td>
-                                                            @php
-                                                                $month = date('d/m/Y', strtotime($item->pl_date));
-                                                                // dd($month);
-                                                                echo $month;
-                                                            @endphp
-                                                        </td>
-                                                        {{-- <td>
-                                                            @if ($item->status == 'inactive')
-                                                                <button type="button" class="btn btn-danger  btn-sm">
-                                                                    {{ $item->status }} </button>
-                                                            @else
-                                                                <button type="button" class="btn btn-success btn-sm">
-                                                                    {{ $item->status }} </button>
-                                                            @endif
-                                                        </td> --}}
-                                                        {{-- <td style="">
-                                                            <a href="{{ url('print-parcel/' . $item->id) }}"
-                                                                class="btn btn-outline-dark btn-sm print" title="Print">
-                                                                <i class="fas fa-regular fa-print"></i>
-                                                            </a>
-
-                                                            |<a href="{{ url('edit-parcel/' . $item->id) }}"
-                                                                class="btn btn-outline-warning btn-sm edit" title="Edit">
-                                                                <i class="fas fa-pencil-alt"></i>
-                                                            </a>
-                                                            |
-                                                            <a href="{{ url('delete-parcel/' . $item->id) }}"
-                                                                class="btn btn-outline-danger btn-sm delete" title="Delete"
-                                                                onclick="return confirm('Are you sure to delete Record?')">
-                                                                <i class="fas fa-trash-alt"></i>
-                                                            </a>
-                                                        </td> --}}
-                                                    </tr>
-                                                @endforeach
-                                            @else
-                                                <tr>
-                                                    <td><code>No record found...</code></td>
-                                                </tr>
-                                            @endif
-
-
-
-                                        </tbody>
-                                    </table>
-                                @endif
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="invoice-title">
+                                <h4 class="float-end font-size-16">Order # 12345</h4>
+                                <div class="mb-4">
+                                    <img src="assets/images/courier-logo.png" alt="logo" height="20"/>
+                                </div>
                             </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <address>
+                                        <strong>Billed To:</strong><br>
+                                        John Smith<br>
+                                        1234 Main<br>
+                                        Apt. 4B<br>
+                                        Springfield, ST 54321
+                                    </address>
+                                </div>
+                                <div class="col-sm-6 text-sm-end">
+                                    <address class="mt-2 mt-sm-0">
+                                        <strong>Shipped To:</strong><br>
+                                        Kenny Rigdon<br>
+                                        1234 Main<br>
+                                        Apt. 4B<br>
+                                        Springfield, ST 54321
+                                    </address>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6 mt-3">
+                                    <address>
+                                        <strong>Payment Method:</strong><br>
+                                        Visa ending **** 4242<br>
+                                        jsmith@email.com
+                                    </address>
+                                </div>
+                                <div class="col-sm-6 mt-3 text-sm-end">
+                                    <address>
+                                        <strong>Order Date:</strong><br>
+                                        October 16, 2019<br><br>
+                                    </address>
+                                </div>
+                            </div>
+                            <div class="py-2 mt-3">
+                                <h3 class="font-size-15 fw-bold">Order summary</h3>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 70px;">No.</th>
+                                            <th>Item</th>
+                                            <th class="text-end">Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>01</td>
+                                            <td>Skote - Admin Dashboard Template</td>
+                                            <td class="text-end">$499.00</td>
+                                        </tr>
 
-                        </div> <!-- end col -->
+                                        <tr>
+                                            <td>02</td>
+                                            <td>Skote - Landing Template</td>
+                                            <td class="text-end">$399.00</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>03</td>
+                                            <td>Veltrix - Admin Dashboard Template</td>
+                                            <td class="text-end">$499.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" class="text-end">Sub Total</td>
+                                            <td class="text-end">$1397.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" class="border-0 text-end">
+                                                <strong>Shipping</strong></td>
+                                            <td class="border-0 text-end">$13.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" class="border-0 text-end">
+                                                <strong>Total</strong></td>
+                                            <td class="border-0 text-end"><h4 class="m-0">$1410.00</h4></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="d-print-none">
+                                <div class="float-end">
+                                    <a href="javascript:window.print()" class="btn btn-success waves-effect waves-light me-1"><i class="fa fa-print"></i></a>
+                                    <a href="javascript: void(0);" class="btn btn-primary w-md waves-effect waves-light">Send</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+
+        </div> <!-- container-fluid -->
+    </div>
+    <!-- End Page-content -->
+
+{{--
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <script>document.write(new Date().getFullYear())</script> © Skote.
+                </div>
+                <div class="col-sm-6">
+                    <div class="text-sm-end d-none d-sm-block">
+                        Design & Develop by Themesbrand
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-
-      
+    </footer>
+</div> --}}
+@endsection

@@ -1,7 +1,7 @@
 @extends('admin-panel.index')
 
 @section('content')
-    <div class="main-content">
+    <div class="">
 
         <div class="page-content">
             <div class="container-fluid">

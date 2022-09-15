@@ -1,7 +1,7 @@
 @extends('admin-panel.index')
 
 @section('content')
-    <div class="main-content">
+    <div class="">
 
         <div class="page-content">
             <div class="container-fluid">
@@ -9,13 +9,15 @@
                     <div class="col-xl-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">
-                                    {{-- <a href="{{ url('add-region') }}" class="btn btn-primary ">New Region</a> --}}
-                                </h4>
-                                <p class="card-title-desc">
+                                <h4 class="card-title">Country Details
                                     <a href="{{ url('/home') }}" class="btn btn-primary btn-sm ml-2">Home</a>
-                                    <a href="{{ url('/prnpriview') }}" class="btn btn-info btn-sm ml-2">Print Preview</a>
-                                </p>
+                                    {{-- <button type="button"
+                                    class="btn btn-success btn-sm btn-rounded waves-effect waves-light"
+                                    data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
+                                    New Region
+                                </button> --}}
+                                <a href="{{ url('/prnpriview') }}" class="btn btn-info btn-sm ml-2">Print Preview</a>
+                                </h4>
                                 <form class="needs-validation" novalidate action="{{ route('store-region') }}"
                                     method="POST">
                                     @csrf

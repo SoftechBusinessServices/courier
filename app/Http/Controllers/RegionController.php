@@ -102,5 +102,9 @@ class RegionController extends Controller
         return view('admin-panel.regions.fetch_region', compact('data'));
     }
 
-
+    public function destroy($id)
+    {
+        Region::find($id)->delete();
+        return back()->with('success', 'Region deleted successfully');
+    }
 }

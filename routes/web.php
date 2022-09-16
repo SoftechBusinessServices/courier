@@ -114,3 +114,5 @@ Route::get('forget-password', [ForgotPasswordController::class, 'ForgetPassword'
 Route::post('forget-password', [ForgotPasswordController::class, 'ForgetPasswordStore'])->name('ForgetPasswordPost');
 Route::get('reset-password/{token}', [ForgotPasswordController::class, 'ResetPassword'])->name('ResetPasswordGet');
 Route::post('reset-password', [ForgotPasswordController::class, 'ResetPasswordStore'])->name('ResetPasswordPost');
+
+Route::get('region/delete/{id}', [RegionController::class, 'destroy']);

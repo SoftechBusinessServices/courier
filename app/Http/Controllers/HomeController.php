@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Region;
 use App\Models\Company;
 use App\Models\Country;
@@ -9,6 +10,8 @@ use App\Models\Currency;
 use Illuminate\Http\Request;
 use App\Models\ShippingCharge;
 use App\Models\ParcelRegistration;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -38,8 +41,76 @@ class HomeController extends Controller
         $countries = Country::all();
         $companies = Company::all();
         $currencies = Currency::all();
-        return view('admin-panel.master',  compact('data', 'regions', 'charges', 'countries','companies','currencies'));
+        return view('admin-panel.master',  compact('data', 'regions', 'charges', 'countries', 'companies', 'currencies'));
 
         // return view('home');
     }
+
+    public function update_user(Request $request, $id)
+    {
+
+        $request->validate([
+
+            'name' => 'required',
+            'email' => 'required',
+        ]);
+
+        $record = User::find($id);
+
+        $data = [
+            'name'  => $request->name,
+            'email'  => $request->email,
+        ];
+
+        $record->update($data);
+
+        return redirect()->back()->with('success', "Profile updated Successfully!");
+    }
+
+    public function profile($id)
+    {
+        // dd(1);
+        $data = User::find($id);
+        return view('admin-panel.users.profile', compact('data'));
+    }
+
+    public function showChangePasswordGet()
+    {
+        return view('auth.passwords.change-password');
+    }
+
+    public function changePasswordPost(Request $request)
+    {
+
+        if (!(Hash::check($request->get('current-password'), Auth::user()->password))) {
+            // The passwords matches
+            return redirect()->back()->with("error", "Your current password does not matches with the password.");
+        }
+
+        if (strcmp($request->get('current-password'), $request->get('new-password')) == 0) {
+            // Current password and new password same
+            return redirect()->back()->with("error", "Your New password does not same as Confirm password.");
+        }
+
+
+        $validatedData = $request->validate([
+            'current-password' => 'required',
+            'new-password' => 'required|string|min:8|confirmed',
+        ]);
+
+        if ($validatedData) {
+            //Change Password
+            $user = Auth::user();
+            $user->password = bcrypt($request->get('new-password'));
+            $user->save();
+            return redirect()->back()->with("success", "Password successfully changed!");
+        } else {
+            return redirect()->back()->with("error", "Your New password does not same as Confirm password.");
+        }
+    }
+
+
+
+
+
 }

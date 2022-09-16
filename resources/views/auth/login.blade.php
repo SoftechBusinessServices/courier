@@ -139,12 +139,15 @@
                                     </div>
 
                                     <div class="text-center">
-                                        @if (Route::has('password.request'))
+                                        {{-- @if (Route::has('password.request'))
                                             <a href="{{ route('password.request') }}" class="text-muted">
                                                 <i class="mdi mdi-lock me-1"></i>
                                                 {{ __('Forgot Your Password?') }}
                                             </a>
-                                        @endif
+                                        @endif --}}
+                                        <a class="btn btn-link" href="{{ route('ForgetPasswordGet') }}">
+                                            {{ __('Forgot Your Password?') }}
+                                        </a>
                                         <p>Don't have an account ? <a href="{{ route('register') }}"
                                                 class="fw-medium text-primary">
                                                 Signup now </a>
@@ -180,15 +183,15 @@
     </div>
     <!-- end account-pages -->
 
-    <!-- JAVASCRIPT -->
-    <script src="assets/libs/jquery/jquery.min.js"></script>
-    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/libs/metismenu/metisMenu.min.js"></script>
-    <script src="assets/libs/simplebar/simplebar.min.js"></script>
-    <script src="assets/libs/node-waves/waves.min.js"></script>
-
-    <!-- App js -->
-    <script src="assets/js/app.js"></script>
+      <!-- JAVASCRIPT -->
+      <script src="{{ asset('assets/libs/jquery/jquery.min.js')}}"></script>
+      <script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+      <script src="{{ asset('assets/libs/metismenu/metisMenu.min.js')}}"></script>
+      <script src="{{ asset('assets/libs/simplebar/simplebar.min.js')}}"></script>
+      <script src="{{ asset('assets/libs/node-waves/waves.min.js')}}"></script>
+  
+      <!-- App js -->
+      <script src="{{ asset('assets/js/app.js')}}"></script>
 </body>
 
 </html>

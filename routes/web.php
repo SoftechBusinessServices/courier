@@ -1,16 +1,17 @@
 <?php
 
-use App\Http\Controllers\CompanyController;
-use App\Http\Controllers\CountryController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\ParcelRegistrationController;
-use App\Http\Controllers\RegionController;
-use App\Http\Controllers\ShippingChargesController;
-use App\Http\Controllers\vendorController;
 use App\Http\Controllers\PrintController;
+use App\Http\Controllers\RegionController;
+use App\Http\Controllers\vendorController;
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\CountryController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ShippingChargesController;
+use App\Http\Controllers\ParcelRegistrationController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -104,3 +105,12 @@ Route::get('/companies-print-view', [PrintController::class, 'companies_print_vi
 Route::get('/regions-print-view', [PrintController::class, 'regions_print_view']);
 Route::get('/countries-print-view', [PrintController::class, 'countries_print_view']);
 Route::get('/currencies-print-view', [PrintController::class, 'currencies_print_view']);
+
+Route::post('update-user/{id}', [HomeController::class, 'update_user']);
+Route::get('profile/{id}', [HomeController::class, 'profile']);
+Route::get('/changePassword', [App\Http\Controllers\HomeController::class, 'showChangePasswordGet'])->name('changePasswordGet');
+Route::post('/changePassword', [App\Http\Controllers\HomeController::class, 'changePasswordPost'])->name('changePasswordPost');
+Route::get('forget-password', [ForgotPasswordController::class, 'ForgetPassword'])->name('ForgetPasswordGet');
+Route::post('forget-password', [ForgotPasswordController::class, 'ForgetPasswordStore'])->name('ForgetPasswordPost');
+Route::get('reset-password/{token}', [ForgotPasswordController::class, 'ResetPassword'])->name('ResetPasswordGet');
+Route::post('reset-password', [ForgotPasswordController::class, 'ResetPasswordStore'])->name('ResetPasswordPost');

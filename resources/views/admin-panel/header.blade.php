@@ -83,7 +83,10 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
-                    <a class="dropdown-item" href="#">
+                    @php
+                    $id = Auth::user()->id;
+                    @endphp
+                    <a class="dropdown-item" href="{{ url('profile/'.$id) }}">
                         <i class="bx bx-user font-size-16 align-middle me-1">
 
                         </i>

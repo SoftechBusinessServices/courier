@@ -16,7 +16,7 @@
 
                                 <h4 class="card-title">Company Details
                                     <a href="{{ url('/home') }}" class="btn btn-primary btn-sm ml-2">Home</a>
-                                    <a href="{{ url('/prnpriview') }}" class="btn btn-info btn-sm ml-2">Print Preview</a>
+                                    <a href="{{ url('/companies-print-view') }}" class="btn btn-info btn-sm ml-2">Print Preview</a>
                                 </h4>
                                 {{-- <p class="card-title-desc"><br>
                                     <!-- Button trigger modal -->
@@ -28,7 +28,7 @@
                                 </p> --}}
                                 @if (isset($data))
                                     <table id="datatable-buttons"
-                                        class="table table-bordered dt-responsive nowrap w-100 table-sm table-responsive">
+                                        class="table table-bordered dt-responsive nowrap w-100 table-sm ">
                                         <thead>
                                             <tr>
                                                 <th>S.No</th>
@@ -86,6 +86,12 @@
                                                         </td>
 
                                                         <td style="width: 100px">
+                                                            <a href="{{ url('print-parcel/' . $item->id) }}"
+                                                                class="btn btn-outline-dark btn-sm print" title="Print">
+                                                                <i class="fas fa-regular fa-print"></i>
+                                                            </a>
+
+                                                            |
                                                             <a href="{{ url('edit-company/' . $item->id) }}"
                                                                 class="btn btn-outline-warning btn-sm edit" title="Edit">
                                                                 <i class="fas fa-pencil-alt"></i>

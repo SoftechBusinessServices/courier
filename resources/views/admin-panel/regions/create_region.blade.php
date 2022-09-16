@@ -16,7 +16,7 @@
                                     data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
                                     New Region
                                 </button> --}}
-                                <a href="{{ url('/prnpriview') }}" class="btn btn-info btn-sm ml-2">Print Preview</a>
+                                <a href="{{ url('regions-print-view') }}" class="btn btn-info btn-sm ml-2">Print Preview</a>
                                 </h4>
                                 <form class="needs-validation" novalidate action="{{ route('store-region') }}"
                                     method="POST">
@@ -94,18 +94,6 @@
                                                     <tr>
                                                         <td>{{ $i++ }}</td>
                                                         <td>{{ $item->name }}</td>
-                                                        {{-- <td>
-                                                            <a href="{{ url('fetch-region/' . $item->id) }}"
-                                                                class="btn btn-outline-primary btn-sm eye" title="View">
-                                                                <i class="fa fa-list">&nbsp;View</i>
-                                                            </a>
-                                                            |
-                                                            <a href="{{ url('add-region/' . $item->id) }}"
-                                                                class="btn btn-outline-primary btn-sm eye" title="View">
-                                                                <i class="fa fa-plus-square">&nbsp;Add</i>
-                                                            </a>
-                                                        </td> --}}
-
                                                         <td>
                                                             @if ($item->status == 'inactive')
                                                                 <button type="button" class="btn btn-danger  btn-sm">

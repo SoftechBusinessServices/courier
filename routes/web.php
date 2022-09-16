@@ -97,4 +97,10 @@ Route::post('update-vendor/{id}', [vendorController::class, 'update_vendor']);
 Route::get('delete-vendor/{id}', [vendorController::class, 'destroy_vendor'])->name('delete-vendor');
 
 Route::get('/prnpriview', [PrintController::class, 'prnpriview']);
-Route::get('/print_view', [PrintController::class, 'print_view']);
+Route::get('/charges-print-view', [PrintController::class, 'charges_print_view']);
+Route::get('/parcels-print-view', [PrintController::class, 'parcels_print_view']);
+Route::get('/customers-print-view', [PrintController::class, 'customers_print_view']);
+Route::get('/companies-print-view', [PrintController::class, 'companies_print_view']);
+Route::get('/regions-print-view', [PrintController::class, 'regions_print_view']);
+Route::get('/countries-print-view', [PrintController::class, 'countries_print_view']);
+Route::get('/currencies-print-view', [PrintController::class, 'currencies_print_view']);

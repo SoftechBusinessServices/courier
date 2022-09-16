@@ -21,7 +21,7 @@
                                         data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
                                         New Country
                                     </button> --}}
-                                    <a href="{{ url('/print_view') }}" class="btn btn-info btn-sm ml-2">Print Preview</a>
+                                    <a href="{{ url('/charges-print-view') }}" class="btn btn-info btn-sm ml-2">Print Preview</a>
                                 </h4>
                                 <p class="card-title-desc"><br>
                                     <!-- Button trigger modal -->

@@ -70,7 +70,7 @@
                                                                     <div class="col-lg-6">
                                                                         <div class="text-muted mt-3">
                                                                             <p>No of Regions</p>
-                                                                            <h4>4</h4>
+                                                                            <h4>{{ $regions->count();}}</h4>
                                                                             {{-- <p class="mb-0">0.00745 BTC</p> --}}
 
                                                                         </div>
@@ -104,7 +104,7 @@
                                                                     <div class="col-lg-6">
                                                                         <div class="text-muted mt-3">
                                                                             <p>Countries</p>
-                                                                            <h4>15</h4>
+                                                                            <h4>{{ $countries->count();}}</h4>
                                                                             {{-- <p class="mb-0">0.0056 ETH</p> --}}
                                                                         </div>
                                                                     </div>
@@ -137,7 +137,7 @@
                                                                     <div class="col-lg-6">
                                                                         <div class="text-muted mt-3">
                                                                             <p>Currencies</p>
-                                                                            <h4>9</h4>
+                                                                            <h4>{{ $currencies->count();}}</h4>
                                                                             {{-- <p class="mb-0">0.00245 LTC</p> --}}
 
                                                                         </div>
@@ -176,7 +176,7 @@
                                                                     <div class="col-lg-6">
                                                                         <div class="text-muted mt-3">
                                                                             <p>Charges Lists</p>
-                                                                            <h4>6</h4>
+                                                                            <h4>{{ $charges->count();}}</h4>
                                                                             {{-- <p class="mb-0">0.00245 LTC</p> --}}
 
                                                                         </div>
@@ -446,7 +446,7 @@
                                             <div class="d-flex">
                                                 <div class="flex-grow-1">
                                                     <p class="text-muted fw-medium">Parcels</p>
-                                                    <h4 class="mb-0">1,235</h4>
+                                                    <h4 class="mb-0">{{ $data->count();}}</h4>
                                                 </div>
                                                 <div class="flex-grow-1">
                                                     <p class="text-muted fw-medium">Action Buttons</p>
@@ -481,7 +481,7 @@
                                             <div class="d-flex">
                                                 <div class="flex-grow-1">
                                                     <p class="text-muted fw-medium">Customers</p>
-                                                    <h4 class="mb-0">246</h4>
+                                                    <h4 class="mb-0">{{ $customers->count();}}</h4>
                                                 </div>
                                                 <div class="flex-grow-1">
                                                     <p class="text-muted fw-medium">Action Buttons</p>
@@ -516,7 +516,7 @@
                                             <div class="d-flex">
                                                 <div class="flex-grow-1">
                                                     <p class="text-muted fw-medium">Companies</p>
-                                                    <h4 class="mb-0">123</h4>
+                                                    <h4 class="mb-0">{{ $companies->count();}}</h4>
                                                 </div>
                                                 <div class="flex-grow-1">
                                                     <p class="text-muted fw-medium">Action Buttons</p>
@@ -622,6 +622,7 @@
                                         </span>
                                     @enderror
                                 </div>
+                              
                                 <div class="col-md-6 mb-0">
                                     <label for="useremail" class="form-label">Destination Country</label>
                                     <select class="form-select" name="country_id" required id="country_id"

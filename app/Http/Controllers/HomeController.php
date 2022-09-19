@@ -37,11 +37,12 @@ class HomeController extends Controller
         $regions = Region::all();
         $countries = Country::all();
         $charges = ShippingCharge::all();
+        $customers = ShippingCharge::all();
         // dd(1);
         $countries = Country::all();
         $companies = Company::all();
         $currencies = Currency::all();
-        return view('admin-panel.master',  compact('data', 'regions', 'charges', 'countries', 'companies', 'currencies'));
+        return view('admin-panel.master',  compact('data', 'regions', 'charges', 'countries', 'companies', 'currencies','customers'));
 
         // return view('home');
     }

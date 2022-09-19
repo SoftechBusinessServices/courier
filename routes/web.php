@@ -12,6 +12,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ShippingChargesController;
 use App\Http\Controllers\ParcelRegistrationController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -116,3 +117,6 @@ Route::get('reset-password/{token}', [ForgotPasswordController::class, 'ResetPas
 Route::post('reset-password', [ForgotPasswordController::class, 'ResetPasswordStore'])->name('ResetPasswordPost');
 
 Route::get('region/delete/{id}', [RegionController::class, 'destroy']);
+
+Route::get('report', [ReportController::class, 'index'])->name('report');
+Route::get('daily-report', [ReportController::class, 'dailyReport'])->name('daily.report');

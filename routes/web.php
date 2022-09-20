@@ -13,6 +13,7 @@ use App\Http\Controllers\ShippingChargesController;
 use App\Http\Controllers\ParcelRegistrationController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\RepresentativeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -97,6 +98,12 @@ Route::post('/store-vendor', [vendorController::class, 'store_vendor'])->name('s
 Route::get('edit-vendor/{id}', [vendorController::class, 'edit_vendor']);
 Route::post('update-vendor/{id}', [vendorController::class, 'update_vendor']);
 Route::get('delete-vendor/{id}', [vendorController::class, 'destroy_vendor'])->name('delete-vendor');
+//Vendor Registration
+Route::get('/add-representator', [RepresentativeController::class, 'add_representator'])->name('add-representator');
+Route::post('/store-representator', [RepresentativeController::class, 'store_representator'])->name('store-representator');
+Route::get('edit-representator/{id}', [RepresentativeController::class, 'edit_representator']);
+Route::post('update-representator/{id}', [RepresentativeController::class, 'update_representator']);
+Route::get('delete-representator/{id}', [RepresentativeController::class, 'destroy_representator'])->name('delete-representator');
 
 Route::get('/prnpriview', [PrintController::class, 'prnpriview']);
 Route::get('/charges-print-view', [PrintController::class, 'charges_print_view']);

@@ -301,7 +301,7 @@
                                             <div id="pie_chart" class="apex-charts" dir="ltr"></div>
                                         </div>
                                         <div class="card-footer mb-3">
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -483,6 +483,29 @@
                                                                                     <i class="mdi mdi-bitcoin"></i>
                                                                                 </span>
                                                                             </div>
+                                                                            <h5 class="font-size-14 mb-0">Representator
+                                                                            </h5>
+                                                                        </div>
+
+                                                                        <div class="float-end mt-3">
+                                                                            <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                                data-bs-toggle="modal"
+                                                                                data-bs-target="#representmodal">Add</a>
+                                                                            <a href="{{ route('add-representator') }}"
+                                                                                class="btn btn-sm btn-primary">View</a>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                                                                    <div class="border p-3 rounded mt-4">
+                                                                        <div class="d-flex align-items-center">
+                                                                            <div class="avatar-xs me-3">
+                                                                                <span
+                                                                                    class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
+                                                                                    <i class="mdi mdi-bitcoin"></i>
+                                                                                </span>
+                                                                            </div>
                                                                             <h5 class="font-size-14 mb-0">Vendors</h5>
                                                                         </div>
 
@@ -505,41 +528,21 @@
                                                                                     <i class="mdi mdi-bitcoin"></i>
                                                                                 </span>
                                                                             </div>
-                                                                            <h5 class="font-size-14 mb-0">Dummy-1</h5>
+                                                                            <h5 class="font-size-14 mb-0">Parel
+                                                                                Registration</h5>
                                                                         </div>
 
                                                                         <div class="float-end mt-3">
                                                                             <a class="btn btn-sm btn-success waves-effect waves-light text-white"
                                                                                 data-bs-toggle="modal"
-                                                                                data-bs-target="#dummy1modal">Add</a>
-                                                                            <a href="#"
+                                                                                data-bs-target="#parcelmodal">Add</a>
+                                                                            <a href="{{ route('add-parcel') }}"
                                                                                 class="btn btn-sm btn-primary">View</a>
                                                                         </div>
 
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
-                                                                    <div class="border p-3 rounded mt-4">
-                                                                        <div class="d-flex align-items-center">
-                                                                            <div class="avatar-xs me-3">
-                                                                                <span
-                                                                                    class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
-                                                                                    <i class="mdi mdi-bitcoin"></i>
-                                                                                </span>
-                                                                            </div>
-                                                                            <h5 class="font-size-14 mb-0">Dummy-2</h5>
-                                                                        </div>
 
-                                                                        <div class="float-end mt-3">
-                                                                            <a class="btn btn-sm btn-success waves-effect waves-light text-white"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#dummy1modal">Add</a>
-                                                                            <a href="#"
-                                                                                class="btn btn-sm btn-primary">View</a>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
 
                                                             </div>
                                                         </div>
@@ -554,6 +557,94 @@
                                                         <div class="col-xl-12">
                                                             <h4 class="card-title">Reports Section</h4>
                                                             <div class="row">
+                                                                <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                                                                    <div class="border p-3 rounded mt-4">
+                                                                        <div class="d-flex align-items-center mb-0">
+                                                                            <div class="avatar-xs me-3">
+                                                                                <span
+                                                                                    class="avatar-title rounded-circle bg-warning bg-soft text-info font-size-18">
+                                                                                    <i class="mdi mdi-update"></i>
+                                                                                </span>
+                                                                            </div>
+                                                                            <h6 class="font-size-14 mb-0">
+                                                                                Daily Transactions
+                                                                            </h6>
+                                                                        </div>
+                                                                        <div class="float-end mt-3">
+                                                                            {{-- <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                                                        data-bs-toggle="modal" data-bs-target="#regionmodal">Add</a> --}}
+                                                                            <a href="#"
+                                                                                class="btn btn-sm btn-primary">View
+                                                                                Report</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                                                                    <div class="border p-3 rounded mt-4">
+                                                                        <div class="d-flex align-items-center mb-0">
+                                                                            <div class="avatar-xs me-3">
+                                                                                <span
+                                                                                    class="avatar-title rounded-circle bg-warning bg-soft text-info font-size-18">
+                                                                                    <i class="mdi mdi-update"></i>
+                                                                                </span>
+                                                                            </div>
+                                                                            <h6 class="font-size-14 mb-0">
+                                                                                Daily Transactions
+                                                                            </h6>
+                                                                        </div>
+                                                                        <div class="float-end mt-3">
+                                                                            {{-- <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                                                        data-bs-toggle="modal" data-bs-target="#regionmodal">Add</a> --}}
+                                                                            <a href="#"
+                                                                                class="btn btn-sm btn-primary">View
+                                                                                Report</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                                                                    <div class="border p-3 rounded mt-4">
+                                                                        <div class="d-flex align-items-center mb-0">
+                                                                            <div class="avatar-xs me-3">
+                                                                                <span
+                                                                                    class="avatar-title rounded-circle bg-warning bg-soft text-info font-size-18">
+                                                                                    <i class="mdi mdi-update"></i>
+                                                                                </span>
+                                                                            </div>
+                                                                            <h6 class="font-size-14 mb-0">
+                                                                                Daily Transactions
+                                                                            </h6>
+                                                                        </div>
+                                                                        <div class="float-end mt-3">
+                                                                            {{-- <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                                                        data-bs-toggle="modal" data-bs-target="#regionmodal">Add</a> --}}
+                                                                            <a href="#"
+                                                                                class="btn btn-sm btn-primary">View
+                                                                                Report</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                                                                    <div class="border p-3 rounded mt-4">
+                                                                        <div class="d-flex align-items-center mb-0">
+                                                                            <div class="avatar-xs me-3">
+                                                                                <span
+                                                                                    class="avatar-title rounded-circle bg-warning bg-soft text-info font-size-18">
+                                                                                    <i class="mdi mdi-update"></i>
+                                                                                </span>
+                                                                            </div>
+                                                                            <h6 class="font-size-14 mb-0">
+                                                                                Daily Transactions
+                                                                            </h6>
+                                                                        </div>
+                                                                        <div class="float-end mt-3">
+                                                                            {{-- <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                                                        data-bs-toggle="modal" data-bs-target="#regionmodal">Add</a> --}}
+                                                                            <a href="#"
+                                                                                class="btn btn-sm btn-primary">View
+                                                                                Report</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                                 <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
                                                                     <div class="border p-3 rounded mt-4">
                                                                         <div class="d-flex align-items-center mb-0">
@@ -804,14 +895,14 @@
                                 <div class="col-md-6">
                                     <div class="card">
                                         <div class="card-title">
-                                            <h6 class="m-2">Latest Transaction</h6>
+                                            <h6 class="m-3">Latest Transaction</h6>
                                             <hr>
                                         </div>
                                         <div class="card-body">
                                             <div class="table-responsive">
-                                                <table class="table align-middle table-nowrap mb-0 table-sm">
+                                                <table class="table align-middle table-nowrap mb-2 table-sm">
                                                     <thead class="table-light">
-                                                        <tr>
+                                                        <tr class="">
                                                             <th style="width: 20px;">
                                                                 <div class="form-check font-size-16 align-middle">
                                                                     <input class="form-check-input" type="checkbox"
@@ -1053,14 +1144,9 @@
                                             </div>
                                             <!-- end table-responsive -->
                                         </div>
-                                        
                                     </div>
-
-
                                 </div>
                             </div>
-
-
 
                         </div>
                     </div>
@@ -1095,7 +1181,7 @@
                         <div class="col-md-12">
                             <h5 class="text-center"></h5>
                             <div class="row">
-                                <div class="col-md-6 mb-0">
+                                <div class="col-md-6 mb-2">
                                     <label for="username" class="form-label">Parcel Date</label>
                                     <input type="date" id="username" required
                                         class="form-control @error('pl_date') is-invalid @enderror" name="pl_date"
@@ -1108,7 +1194,7 @@
                                     @enderror
                                 </div>
 
-                                <div class="col-md-6 mb-0">
+                                <div class="col-md-6 mb-2">
                                     <label for="useremail" class="form-label">Destination Country</label>
                                     <select class="form-select" name="country_id" required id="country_id"
                                         class="form-control table-responsive @error('country_id') is-invalid @enderror">
@@ -1128,7 +1214,96 @@
                             </div>
                             {{-- first row closed --}}
                             <div class="row">
-                                <div class="col-md-6 mb-0">
+                                <div class="col-md-12 mt-3">
+                                    <div class="form-group form-control">
+                                        <label for="useremail" class="form-label">Customer Type</label>
+                                        <input type="radio" name="customer_type" id="random" value="random"
+                                            class="ml-2">Random Customer
+                                        <input type="radio" name="customer_type" id="registered"
+                                            value="registered" class="ml-2">Company Customer
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row" id="random_customer">
+                                <div class="col-md-6 mb-2">
+                                    <label for="username" class="form-label">Customer Name</label>
+                                    <input type="text" id="username" placeholder="Customer Name" required
+                                        class="form-control @error('name') is-invalid @enderror" name="name"
+                                        value="{{ old('name') }}" required autocomplete="name" autofocus>
+
+                                    @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <label for="username" class="form-label">Customer Phone Number</label>
+                                    <input type="text" data-inputmask="'mask': '0399-99999999'" type="number"
+                                        maxlength="12" class="form-control @error('phone') is-invalid @enderror"
+                                        name="phone" value="{{ old('phone') }}" required autocomplete="phone"
+                                        autofocus>
+
+                                    @error('phone')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-12 mb-2 form-control">
+                                    <label for="address" class="form-label">Customer Address</label>
+                                    <textarea name="address" id="address" class="form-control" cols="2" rows="3">
+            
+                                                </textarea>
+                                    @error('customer_address')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row" id="company_customer">
+                                <div class="col-md-6 mb-2">
+                                    <label for="useremail" class="form-label">Select Company</label>
+                                    <select class="form-select" name="company_id" required id="company_id"
+                                        class="form-control table-responsive @error('company_id') is-invalid @enderror">
+                                        <option value="">-----</option>
+                                        @foreach ($companies as $item)
+                                            <option value="{{ $item->id }}">{{ $item->name }}
+                                                {{-- -{{ $country->charges }} --}}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('company_id')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <label for="useremail" class="form-label">Select Representator</label>
+                                    <select class="form-select" name="representator_id" required
+                                        id="representator_id"
+                                        class="form-control table-responsive @error('representator_id') is-invalid @enderror">
+                                        <option value="">-----</option>
+                                        @foreach ($countries as $item)
+                                            <option value="{{ $item->id }}">{{ $item->name }}
+                                                {{-- -{{ $country->charges }} --}}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('representator_id')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            {{-- first row closed --}}
+
+                            <div class="row">
+                                <div class="col-md-6 mb-2">
                                     <label for="username" class="form-label">Parcel Weight
                                         <code>(grams)</code></label>
                                     <input type="number" id="pl_weight" placeholder="Enter Parcel Weight" required
@@ -1141,7 +1316,7 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <div class="col-md-6 mb-0">
+                                <div class="col-md-6 mb-2">
                                     <label for="username" class="form-label">Chargeable Weight</label>
                                     <input type="text" id="chargeable_weight"
                                         class="form-control @error('chargeable_weight') is-invalid @enderror"
@@ -1157,7 +1332,7 @@
                             </div>
                             <div class="row">
 
-                                <div class="col-md-6 mb-0">
+                                <div class="col-md-6 mb-2">
                                     <label for="username" class="form-label">Parcel Cost in </label>
                                     <div id="symbol_lable" class="d-inline text-danger">
                                     </div>
@@ -1174,7 +1349,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-6 mb-0">
+                                <div class="col-md-6 mb-2">
                                     <label for="username" class="form-label">Parcel Extras Cost</label>
                                     <input type="number" id="pl_extras" placeholder="Enter Parcel Extra Cost"
                                         required class="form-control @error('pl_extras') is-invalid @enderror"
@@ -1189,7 +1364,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6 mb-0">
+                                <div class="col-md-6 mb-2">
                                     <label for="username" class="form-label">Parcel Discount</label>
                                     <input type="number" id="pl_discount" placeholder="Enter Parcel Discount"
                                         required class="form-control @error('pl_discount') is-invalid @enderror"
@@ -1202,7 +1377,7 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <div class="col-md-6 mb-0">
+                                <div class="col-md-6 mb-2">
                                     <label for="username" class="form-label">Parcel Final Cost</label>
                                     <input type="number" id="pl_final" placeholder="Parcel Final Charges" required
                                         class="form-control @error('pl_final') is-invalid @enderror" name="pl_final"
@@ -1241,7 +1416,7 @@
                                 {{-- </div> --}}
                             </div>
                             <div class="row">
-                                <div class="col-md-12 mb-0">
+                                <div class="col-md-6 mb-2">
                                     <label for="address" class="form-label">Parcel Description</label>
                                     <textarea name="pl_description" id="pl_description" class="form-control" cols="1" rows="1">
                                 </textarea>
@@ -1267,8 +1442,7 @@
         </div>
     </div>
 </div>
-
-{{-- ***************************Customer Modal************************************************ --}}
+{{-- ***************************Vendor Modal************************************************ --}}
 <div class="modal fade" id="vendormodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -1412,9 +1586,8 @@
         </div>
     </div>
 </div>
-
-{{-- ***************************Company Modal************************************************ --}}
-<div class="modal fade" id="companymodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+{{-- ***************************Vendor Modal************************************************ --}}
+<div class="modal fade" id="representmodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -1422,16 +1595,31 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="form3" novalidate method="POST" action="{{ route('store-company') }}"
+                <form id="representform" novalidate method="POST" action="{{ route('store-representator') }}"
                     enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-md-12">
                             <div class="row">
-
                                 <div class="col-md-12 mb-0">
-                                    <label for="username" class="form-label">Company Name</label>
-                                    <input type="text" id="username" placeholder="Enter company name" required
+                                    <label for="useremail" class="form-label">Select Company</label>
+                                    <select class="form-select" name="company_id" required
+                                        class="form-control table-responsive @error('company_id') is-invalid @enderror"
+                                        value="{{ old('company_id') }}">
+                                        @foreach ($companies as $company)
+                                            <option value="{{ $company->id }}">{{ $company->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('company_id')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-12 mb-0">
+                                    <label for="username" class="form-label">Representator Name</label>
+                                    <input type="text" id="username" placeholder="Enter customer name"
                                         class="form-control @error('name') is-invalid @enderror" name="name"
                                         value="{{ old('name') }}" required autocomplete="name" autofocus>
 
@@ -1443,8 +1631,107 @@
                                 </div>
 
                                 <div class="col-md-12 mb-0">
+                                    <label for="useremail" class="form-label">Representator Email</label>
+                                    <input type="email" id="useremail" placeholder="Enter email"
+                                        class="form-control @error('email') is-invalid @enderror" name="email"
+                                        value="{{ old('email') }}" autocomplete="email" required>
+
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- first row closed --}}
+                    <div class="row">
+                        <div class="col-md-12 mb-0">
+                            <label for="username" class="form-label">Representator Phone Number</label>
+                            <input type="text" data-inputmask="'mask': '0399-99999999'" type="number"
+                                maxlength="12" class="form-control @error('phone') is-invalid @enderror"
+                                name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
+
+                            @error('phone')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="col-md-12 mb-0">
+                            <label for="address" class="form-label">Representator Address</label>
+                            <textarea name="address" id="address" class="form-control" cols="1" rows="1">
+
+                                    </textarea>
+                            @error('customer_address')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <!-- Toogle to second dialog -->
+                        <button type="submit" form="representform" class="btn btn-primary " id="modal_submit"
+                            value="Submit">Submit</button>
+                        <button type="button" class="btn btn-secondary" id="modal_close1"
+                            data-bs-dismiss="modal">Close</button>
+                    </div>
+            </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+{{-- ***************************Company Modal************************************************ --}}
+<div class="modal fade" id="companymodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Company Registration Modal</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="form3" novalidate method="POST" action="{{ route('store-company') }}"
+                    enctype="multipart/form-data">
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+
+                                <div class="col-md-6 mb-2">
+                                    <label for="username" class="form-label">First Name</label>
+                                    <input type="text" id="username" placeholder="First Name" required
+                                        class="form-control @error('fname') is-invalid @enderror" name="fname"
+                                        value="{{ old('fname') }}" required autocomplete="fname" autofocus>
+
+                                    @error('fname')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <label for="username" class="form-label">Last Name</label>
+                                    <input type="text" id="username" placeholder="Last Name" required
+                                        class="form-control @error('lname') is-invalid @enderror" name="lname"
+                                        value="{{ old('lname') }}" required autocomplete="lname" autofocus>
+
+                                    @error('lname')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-12 mb-2">
                                     <label for="useremail" class="form-label">Company Email</label>
-                                    <input type="email" id="useremail" placeholder="Enter company email"
+                                    <input type="email" id="useremail" placeholder="Email Address"
                                         class="form-control @error('email') is-invalid @enderror" name="email"
                                         value="{{ old('email') }}" autocomplete="email" required>
 
@@ -1459,7 +1746,7 @@
                     </div>
                     {{-- first row closed --}}
                     <div class="row">
-                        <div class="col-md-12 mb-0">
+                        <div class="col-md-12 mb-2">
                             <label for="username" class="form-label">Company Phone Number</label>
                             <input type="text" data-inputmask="'mask': '0399-99999999'" required type="number"
                                 maxlength="12" class="form-control @error('phone') is-invalid @enderror"
@@ -1471,9 +1758,9 @@
                                 </span>
                             @enderror
                         </div>
-                        <div class="col-md-12 mb-0">
+                        <div class="col-md-12 mb-2">
                             <label for="username" class="form-label">Company NTN Number</label>
-                            <input type="number" id="ntn_no" placeholder="Enter NTN Number" required
+                            <input type="number" id="ntn_no" placeholder="NTN Number" required
                                 class="form-control @error('ntn_no') is-invalid @enderror" name="ntn_no"
                                 value="{{ old('ntn_no') }}" required autocomplete="ntn_no" autofocus>
 
@@ -1485,9 +1772,10 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12 mb-0">
+                        <div class="col-md-12 mb-2">
                             <label for="username" class="form-label">Company Website URL</label>
                             <input type="url" id="web_url" name="web_url" required
+                                placeholder="https://example.com" pattern="https://.*"
                                 class="form-control @error('web_url') is-invalid @enderror"
                                 value="{{ old('web_url') }}" required autocomplete="company_url" autofocus>
 
@@ -1497,7 +1785,7 @@
                                 </span>
                             @enderror
                         </div>
-                        <div class="col-md-12 mb-0">
+                        <div class="col-md-12 mb-2">
                             <label for="useremail" class="form-label">Select Country</label>
                             <select class="form-select" name="country_id" required
                                 class="form-control table-responsive @error('country_id') is-invalid @enderror"
@@ -1515,7 +1803,7 @@
                                 </span>
                             @enderror
                         </div>
-                        <div class="col-md-12 mb-0">
+                        <div class="col-md-12 mb-2">
                             <label for="address" class="form-label">Company Address</label>
                             <textarea name="address" id="address" class="form-control" cols="1" rows="1">
 
@@ -1716,8 +2004,8 @@
                         <div class="col-md-12">
 
                             <div class="row">
-                                <div class="col-md-6 mb-0">
-                                    <label for="useremail" class="form-label">Destination Country</label>
+                                <div class="col-md-6 mb-3">
+                                    <label for="useremail" class="form-label">Select Country</label>
                                     <select class="form-select" name="country_idd" required id="country_idd"
                                         class="form-control table-responsive @error('country_idd') is-invalid @enderror">
                                         <option value="">-----</option>
@@ -1733,8 +2021,8 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <div class="col-md-6 mb-0">
-                                    <label for="course" class="form-label">Destination Region
+                                <div class="col-md-6 mb-3">
+                                    <label for="course" class="form-label">Selected Region
                                         <code>*</code></label>
                                     <select class="form-control" name="region_idd" id="region_idd">
 
@@ -1749,7 +2037,7 @@
                             </div>
                             {{-- first row closed --}}
                             <div class="row">
-                                <div class="col-md-6 mb-0">
+                                <div class="col-md-6 mb-3">
                                     <label for="useremail" class="form-label">Desired Currency</label>
                                     <select class="form-select" name="currency_idd" required id="currency_idd"
                                         class="form-control table-responsive @error('currency_idd') is-invalid @enderror">
@@ -1766,7 +2054,7 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <div class="col-md-6 mb-0">
+                                <div class="col-md-6 mb-3">
                                     <label for="course" class="form-label">Desired
                                         Symbol<code>*</code></label>
                                     <input type="text" name="symbol" id="symbol_idd" class="form-control"
@@ -1780,7 +2068,7 @@
                             </div>
                             {{-- row closed --}}
                             <div class="row">
-                                <div class="col-md-6 mb-0">
+                                <div class="col-md-6 mb-3">
                                     <label for="username" class="form-label">Weight (0-500)gm </label>
                                     <input type="number" id="gm0_500" placeholder="Enter Price for (0-500)gm "
                                         required class="form-control @error('gm0_500') is-invalid @enderror"
@@ -1793,7 +2081,7 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <div class="col-md-6 mb-0">
+                                <div class="col-md-6 mb-3">
                                     <label for="username" class="form-label">Weight (501-1000)gm </label>
                                     <input type="number" id="gm501_1000"
                                         placeholder="Enter Price for (501-1000)gm " required
@@ -1810,7 +2098,7 @@
                             </div>
                             {{-- row closed --}}
                             <div class="row">
-                                <div class="col-md-6 mb-0">
+                                <div class="col-md-6 mb-3">
                                     <label for="username" class="form-label">Weight (1001-1500)gm </label>
                                     <input type="number" id="gm1001_1500"
                                         placeholder="Enter Price for (1001-1500)gm " required
@@ -1824,7 +2112,7 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <div class="col-md-6 mb-0">
+                                <div class="col-md-6 mb-3">
                                     <label for="username" class="form-label">Weight (1501-2000)gm </label>
                                     <input type="number" id="gm1501_2000"
                                         placeholder="Enter Price for (1501-2000)gm " required
@@ -1841,7 +2129,7 @@
                             </div>
                             {{-- row closed --}}
                             <div class="row">
-                                <div class="col-md-6 mb-0">
+                                <div class="col-md-6 mb-3">
                                     <label for="username" class="form-label">Weight (2001-5000)gm </label>
                                     <input type="number" id="gm2001_5000"
                                         placeholder="Enter Price for (2001-5000)gm " required
@@ -1855,7 +2143,7 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <div class="col-md-6 mb-0">
+                                <div class="col-md-6 mb-3">
                                     <label for="username" class="form-label">Weight (above-5000)gm
                                     </label>
                                     <input type="number" id="gm5000_above"
@@ -2116,6 +2404,24 @@
             }
         });
 
+    });
+
+    // onchange radio
+    $('#random_customer').hide();
+    $('#company_customer').hide();
+    $('input[type=radio][name=customer_type]').on('change', function() {
+        switch ($(this).val()) {
+            case 'random':
+                // alert("1");
+                $('#company_customer').hide();
+                $('#random_customer').show();
+                break;
+            case 'registered':
+                // alert("2");
+                $('#random_customer').hide();
+                $('#company_customer').show();
+
+        }
     });
 </script>
 

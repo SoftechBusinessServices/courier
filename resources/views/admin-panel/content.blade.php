@@ -300,6 +300,9 @@
 
                                             <div id="pie_chart" class="apex-charts" dir="ltr"></div>
                                         </div>
+                                        <div class="card-footer mb-3">
+                                            
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1050,6 +1053,7 @@
                                             </div>
                                             <!-- end table-responsive -->
                                         </div>
+                                        
                                     </div>
 
 

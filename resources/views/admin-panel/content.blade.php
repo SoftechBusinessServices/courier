@@ -18,7 +18,256 @@
                     </div>
                     <!--dashboard row closed -->
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-6">
+                            <div class="row">
+                                
+                                <div class="col-3 col-sm-4 col-md-3 col-lg-2 col-xl-2">
+                                    <div class="card mini-stats-wid">
+                                        <div class="card-body">
+                                            <div class="d-flex">
+                                                <div class="flex-grow-1">
+                                                    <h4 class="mb-0 text-center">{{ $data->count();}}</h4>
+                                                    <p class="text-muted fw-medium text-center">Total Parcels</p>
+                                                </div>
+                                            
+                                                <div class="flex-shrink-0 align-self-center">
+                                                    <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
+                                                        <span class="avatar-title">
+                                                            <i class="bx bx-gift font-size-24"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 col-sm-4 col-md-3 col-lg-2 col-xl-2">
+                                    <div class="card mini-stats-wid">
+                                        <div class="card-body">
+                                            <div class="d-flex">
+                                                <div class="flex-grow-1">
+                                                    <h4 class="mb-0 text-center">{{ $data->count();}}</h4>
+                                                    <p class="text-muted fw-medium text-center">Total Parcels</p>
+                                                </div>
+                                            
+                                                <div class="flex-shrink-0 align-self-center">
+                                                    <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
+                                                        <span class="avatar-title">
+                                                            <i class="bx bx-gift font-size-24"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 col-sm-4 col-md-3 col-lg-2 col-xl-2">
+                                    <div class="card mini-stats-wid">
+                                        <div class="card-body">
+                                            <div class="d-flex">
+                                                <div class="flex-grow-1">
+                                                    <h4 class="mb-0 text-center">{{ $data->count();}}</h4>
+                                                    <p class="text-muted fw-medium text-center">Total Parcels</p>
+                                                </div>
+                                            
+                                                <div class="flex-shrink-0 align-self-center">
+                                                    <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
+                                                        <span class="avatar-title">
+                                                            <i class="bx bx-gift font-size-24"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 col-sm-4 col-md-3 col-lg-2 col-xl-2">
+                                    <div class="card mini-stats-wid">
+                                        <div class="card-body">
+                                            <div class="d-flex">
+                                                <div class="flex-grow-1">
+                                                    <h4 class="mb-0 text-center">{{ $data->count();}}</h4>
+                                                    <p class="text-muted fw-medium text-center">Total Parcels</p>
+                                                </div>
+                                            
+                                                <div class="flex-shrink-0 align-self-center">
+                                                    <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
+                                                        <span class="avatar-title">
+                                                            <i class="bx bx-gift font-size-24"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 col-sm-4 col-md-3 col-lg-2 col-xl-2">
+                                    <div class="card mini-stats-wid">
+                                        <div class="card-body">
+                                            <div class="d-flex">
+                                                <div class="flex-grow-1">
+                                                    <h4 class="mb-0 text-center">{{ $data->count();}}</h4>
+                                                    <p class="text-muted fw-medium text-center">Total Parcels</p>
+                                                </div>
+                                            
+                                                <div class="flex-shrink-0 align-self-center">
+                                                    <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
+                                                        <span class="avatar-title">
+                                                            <i class="bx bx-gift font-size-24"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 col-sm-4 col-md-3 col-lg-2 col-xl-2">
+                                    <div class="card mini-stats-wid">
+                                        <div class="card-body">
+                                            <div class="d-flex">
+                                                <div class="flex-grow-1">
+                                                    <h4 class="mb-0 text-center">{{ $data->count();}}</h4>
+                                                    <p class="text-muted fw-medium text-center">Total Parcels</p>
+                                                </div>
+                                            
+                                                <div class="flex-shrink-0 align-self-center">
+                                                    <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
+                                                        <span class="avatar-title">
+                                                            <i class="bx bx-gift font-size-24"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 col-sm-4 col-md-3 col-lg-2 col-xl-2">
+                                    <div class="card mini-stats-wid">
+                                        <div class="card-body">
+                                            <div class="d-flex">
+                                                <div class="flex-grow-1">
+                                                    <h4 class="mb-0 text-center">{{ $data->count();}}</h4>
+                                                    <p class="text-muted fw-medium text-center">Total Parcels</p>
+                                                </div>
+                                            
+                                                <div class="flex-shrink-0 align-self-center">
+                                                    <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
+                                                        <span class="avatar-title">
+                                                            <i class="bx bx-gift font-size-24"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 col-sm-4 col-md-3 col-lg-2 col-xl-2">
+                                    <div class="card mini-stats-wid">
+                                        <div class="card-body">
+                                            <div class="d-flex">
+                                                <div class="flex-grow-1">
+                                                    <h4 class="mb-0 text-center">{{ $data->count();}}</h4>
+                                                    <p class="text-muted fw-medium text-center">Total Parcels</p>
+                                                </div>
+                                            
+                                                <div class="flex-shrink-0 align-self-center">
+                                                    <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
+                                                        <span class="avatar-title">
+                                                            <i class="bx bx-gift font-size-24"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 col-sm-4 col-md-3 col-lg-2 col-xl-2">
+                                    <div class="card mini-stats-wid">
+                                        <div class="card-body">
+                                            <div class="d-flex">
+                                                <div class="flex-grow-1">
+                                                    <h4 class="mb-0 text-center">{{ $data->count();}}</h4>
+                                                    <p class="text-muted fw-medium text-center">Total Parcels</p>
+                                                </div>
+                                            
+                                                <div class="flex-shrink-0 align-self-center">
+                                                    <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
+                                                        <span class="avatar-title">
+                                                            <i class="bx bx-gift font-size-24"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="card mini-stats-wid">
+                                        <div class="card-body">
+                                            <div class="d-flex">
+                                                <div class="flex-grow-1">
+                                                    <h4 class="mb-0 text-center">{{ $data->count();}}</h4>
+                                                    <p class="text-muted fw-medium text-center">Total Parcels</p>
+                                                </div>
+                                            
+                                                <div class="flex-shrink-0 align-self-center">
+                                                    <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
+                                                        <span class="avatar-title">
+                                                            <i class="bx bx-gift font-size-24"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="card mini-stats-wid">
+                                        <div class="card-body">
+                                            <div class="d-flex">
+                                                <div class="flex-grow-1">
+                                                    <h4 class="mb-0 text-center">{{ $data->count();}}</h4>
+                                                    <p class="text-muted fw-medium text-center">Total Parcels</p>
+                                                </div>
+                                            
+                                                <div class="flex-shrink-0 align-self-center">
+                                                    <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
+                                                        <span class="avatar-title">
+                                                            <i class="bx bx-gift font-size-24"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="card mini-stats-wid">
+                                        <div class="card-body">
+                                            <div class="d-flex">
+                                                <div class="flex-grow-1">
+                                                    <h4 class="mb-0 text-center">{{ $data->count();}}</h4>
+                                                    <p class="text-muted fw-medium text-center">Total Parcels</p>
+                                                </div>
+                                            
+                                                <div class="flex-shrink-0 align-self-center">
+                                                    <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
+                                                        <span class="avatar-title">
+                                                            <i class="bx bx-gift font-size-24"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+                              
+                            </div>
+                            <!-- end row -->
+                        </div>
+                        <div class="col-md-6">
                             <div class="card">
                                 <div class="card-body">
                                     <!-- Nav tabs -->
@@ -434,155 +683,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!--row closed -->
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <div class="row">
 
-                                <div class="col-md-3">
-                                    <div class="card mini-stats-wid">
-                                        <div class="card-body">
-                                            <div class="d-flex">
-                                                <div class="flex-grow-1">
-                                                    <p class="text-muted fw-medium">Parcels</p>
-                                                    <h4 class="mb-0">{{ $data->count();}}</h4>
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <p class="text-muted fw-medium">Action Buttons</p>
-                                                    <div>
-                                                        <button type="button"
-                                                            class="btn btn-sm btn-success waves-effect waves-light"
-                                                            data-bs-toggle="modal" data-bs-target="#parcelmodal">Add
-                                                        </button>
-                                                        <a href="{{ route('add-parcel') }}"
-                                                            class="btn btn-sm btn-primary waves-effect waves-light ">View
-                                                        </a>
-                                                        {{-- <button type="button" class="btn btn-primary waves-effect waves-light"
-                                                        data-bs-toggle="modal" data-bs-target=".bs-example-modal-xl">View
-                                                        Parcel</button> --}}
-                                                    </div> <!-- end preview-->
-                                                </div>
-
-                                                <div class="flex-shrink-0 align-self-center">
-                                                    <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
-                                                        <span class="avatar-title">
-                                                            <i class="bx bx-gift font-size-24"></i>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="card mini-stats-wid">
-                                        <div class="card-body">
-                                            <div class="d-flex">
-                                                <div class="flex-grow-1">
-                                                    <p class="text-muted fw-medium">Customers</p>
-                                                    <h4 class="mb-0">{{ $customers->count();}}</h4>
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <p class="text-muted fw-medium">Action Buttons</p>
-                                                    <div>
-                                                        <button type="button"
-                                                            class="btn btn-sm btn-success waves-effect waves-light"
-                                                            data-bs-toggle="modal" data-bs-target="#customermodal">Add
-                                                        </button>
-                                                        <a href="{{ route('add-customer') }}"
-                                                            class="btn btn-sm btn-primary waves-effect waves-light ">View
-                                                        </a>
-                                                        {{-- <button type="button" class="btn btn-primary waves-effect waves-light"
-                                                        data-bs-toggle="modal" data-bs-target=".bs-example-modal-xl">View
-                                                        Parcel</button> --}}
-                                                    </div> <!-- end preview-->
-                                                </div>
-
-                                                <div class="flex-shrink-0 align-self-center ">
-                                                    <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
-                                                        <span class="avatar-title rounded-circle bg-primary">
-                                                            <i class="bx bxs-user-check font-size-24"></i>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="card mini-stats-wid">
-                                        <div class="card-body">
-                                            <div class="d-flex">
-                                                <div class="flex-grow-1">
-                                                    <p class="text-muted fw-medium">Companies</p>
-                                                    <h4 class="mb-0">{{ $companies->count();}}</h4>
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <p class="text-muted fw-medium">Action Buttons</p>
-                                                    <div>
-                                                        <button type="button"
-                                                            class="btn btn-sm btn-success waves-effect waves-light"
-                                                            data-bs-toggle="modal" data-bs-target="#companymodal">Add
-                                                        </button>
-                                                        <a href="{{ route('add-company') }}"
-                                                            class="btn btn-sm btn-primary waves-effect waves-light ">View
-                                                        </a>
-                                                        {{-- <button type="button" class="btn btn-primary waves-effect waves-light"
-                                                        data-bs-toggle="modal" data-bs-target=".bs-example-modal-xl">View
-                                                        Parcel</button> --}}
-                                                    </div> <!-- end preview-->
-                                                </div>
-
-                                                <div class="flex-shrink-0 align-self-center">
-                                                    <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
-                                                        <span class="avatar-title rounded-circle bg-primary">
-                                                            <i class="bx bx-globe font-size-24"></i>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="card mini-stats-wid">
-                                        <div class="card-body">
-                                            <div class="d-flex">
-                                                <div class="flex-grow-1">
-                                                    <p class="text-muted fw-medium">Customers</p>
-                                                    <h4 class="mb-0">246</h4>
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <p class="text-muted fw-medium">Action Buttons</p>
-                                                    <div>
-                                                        <button type="button"
-                                                            class="btn btn-sm btn-success waves-effect waves-light"
-                                                            data-bs-toggle="modal" data-bs-target="#customermodal">Add
-                                                        </button>
-                                                        <a href="{{ route('add-customer') }}"
-                                                            class="btn btn-sm btn-primary waves-effect waves-light ">View
-                                                        </a>
-                                                        {{-- <button type="button" class="btn btn-primary waves-effect waves-light"
-                                                        data-bs-toggle="modal" data-bs-target=".bs-example-modal-xl">View
-                                                        Parcel</button> --}}
-                                                    </div> <!-- end preview-->
-                                                </div>
-
-                                                <div class="flex-shrink-0 align-self-center ">
-                                                    <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
-                                                        <span class="avatar-title rounded-circle bg-primary">
-                                                            <i class="bx bx-walk font-size-24"></i>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end row -->
-                        </div>
                     </div>
                 </div>
             </div>

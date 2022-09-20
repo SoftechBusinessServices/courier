@@ -44,6 +44,11 @@
     <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
     <script src="{{ asset('assets/js/app.js') }}"></script>
 
+    <!-- echarts js -->
+    <script src="{{ asset('assets/libs/echarts/echarts.min.js') }}"></script>
+    <!-- echarts init -->
+    
+    
 
     {{-- toastr js --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>

@@ -20,16 +20,16 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="row">
-                                
-                                <div class="col-3 col-sm-4 col-md-3 col-lg-2 col-xl-2">
+
+                                <div class="col-4 col-sm-4 col-md-4 col-lg-6 col-xl-6">
                                     <div class="card mini-stats-wid">
                                         <div class="card-body">
                                             <div class="d-flex">
                                                 <div class="flex-grow-1">
-                                                    <h4 class="mb-0 text-center">{{ $data->count();}}</h4>
+                                                    <h4 class="mb-0 text-center">{{ $data->count() }}</h4>
                                                     <p class="text-muted fw-medium text-center">Total Parcels</p>
                                                 </div>
-                                            
+
                                                 <div class="flex-shrink-0 align-self-center">
                                                     <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
                                                         <span class="avatar-title">
@@ -41,15 +41,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-3 col-sm-4 col-md-3 col-lg-2 col-xl-2">
+                                <div class="col-4 col-sm-4 col-md-4 col-lg-6 col-xl-6">
                                     <div class="card mini-stats-wid">
                                         <div class="card-body">
                                             <div class="d-flex">
                                                 <div class="flex-grow-1">
-                                                    <h4 class="mb-0 text-center">{{ $data->count();}}</h4>
+                                                    <h4 class="mb-0 text-center">{{ $data->count() }}</h4>
                                                     <p class="text-muted fw-medium text-center">Total Parcels</p>
                                                 </div>
-                                            
+
                                                 <div class="flex-shrink-0 align-self-center">
                                                     <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
                                                         <span class="avatar-title">
@@ -61,15 +61,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-3 col-sm-4 col-md-3 col-lg-2 col-xl-2">
+                                <div class="col-4 col-sm-4 col-md-4 col-lg-6 col-xl-6">
                                     <div class="card mini-stats-wid">
                                         <div class="card-body">
                                             <div class="d-flex">
                                                 <div class="flex-grow-1">
-                                                    <h4 class="mb-0 text-center">{{ $data->count();}}</h4>
+                                                    <h4 class="mb-0 text-center">{{ $data->count() }}</h4>
                                                     <p class="text-muted fw-medium text-center">Total Parcels</p>
                                                 </div>
-                                            
+
                                                 <div class="flex-shrink-0 align-self-center">
                                                     <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
                                                         <span class="avatar-title">
@@ -81,15 +81,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-3 col-sm-4 col-md-3 col-lg-2 col-xl-2">
+                                <div class="col-4 col-sm-4 col-md-4 col-lg-6 col-xl-6">
                                     <div class="card mini-stats-wid">
                                         <div class="card-body">
                                             <div class="d-flex">
                                                 <div class="flex-grow-1">
-                                                    <h4 class="mb-0 text-center">{{ $data->count();}}</h4>
+                                                    <h4 class="mb-0 text-center">{{ $data->count() }}</h4>
                                                     <p class="text-muted fw-medium text-center">Total Parcels</p>
                                                 </div>
-                                            
+
                                                 <div class="flex-shrink-0 align-self-center">
                                                     <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
                                                         <span class="avatar-title">
@@ -101,15 +101,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-3 col-sm-4 col-md-3 col-lg-2 col-xl-2">
+                                <div class="col-4 col-sm-4 col-md-4 col-lg-6 col-xl-6">
                                     <div class="card mini-stats-wid">
                                         <div class="card-body">
                                             <div class="d-flex">
                                                 <div class="flex-grow-1">
-                                                    <h4 class="mb-0 text-center">{{ $data->count();}}</h4>
+                                                    <h4 class="mb-0 text-center">{{ $data->count() }}</h4>
                                                     <p class="text-muted fw-medium text-center">Total Parcels</p>
                                                 </div>
-                                            
+
                                                 <div class="flex-shrink-0 align-self-center">
                                                     <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
                                                         <span class="avatar-title">
@@ -121,15 +121,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-3 col-sm-4 col-md-3 col-lg-2 col-xl-2">
+                                <div class="col-4 col-sm-4 col-md-4 col-lg-6 col-xl-6">
                                     <div class="card mini-stats-wid">
                                         <div class="card-body">
                                             <div class="d-flex">
                                                 <div class="flex-grow-1">
-                                                    <h4 class="mb-0 text-center">{{ $data->count();}}</h4>
+                                                    <h4 class="mb-0 text-center">{{ $data->count() }}</h4>
                                                     <p class="text-muted fw-medium text-center">Total Parcels</p>
                                                 </div>
-                                            
+
                                                 <div class="flex-shrink-0 align-self-center">
                                                     <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
                                                         <span class="avatar-title">
@@ -141,15 +141,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-3 col-sm-4 col-md-3 col-lg-2 col-xl-2">
+                                <div class="col-4 col-sm-4 col-md-4 col-lg-6 col-xl-6">
                                     <div class="card mini-stats-wid">
                                         <div class="card-body">
                                             <div class="d-flex">
                                                 <div class="flex-grow-1">
-                                                    <h4 class="mb-0 text-center">{{ $data->count();}}</h4>
+                                                    <h4 class="mb-0 text-center">{{ $data->count() }}</h4>
                                                     <p class="text-muted fw-medium text-center">Total Parcels</p>
                                                 </div>
-                                            
+
                                                 <div class="flex-shrink-0 align-self-center">
                                                     <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
                                                         <span class="avatar-title">
@@ -161,15 +161,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-3 col-sm-4 col-md-3 col-lg-2 col-xl-2">
+                                <div class="col-4 col-sm-4 col-md-4 col-lg-6 col-xl-6">
                                     <div class="card mini-stats-wid">
                                         <div class="card-body">
                                             <div class="d-flex">
                                                 <div class="flex-grow-1">
-                                                    <h4 class="mb-0 text-center">{{ $data->count();}}</h4>
+                                                    <h4 class="mb-0 text-center">{{ $data->count() }}</h4>
                                                     <p class="text-muted fw-medium text-center">Total Parcels</p>
                                                 </div>
-                                            
+
                                                 <div class="flex-shrink-0 align-self-center">
                                                     <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
                                                         <span class="avatar-title">
@@ -181,15 +181,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-3 col-sm-4 col-md-3 col-lg-2 col-xl-2">
+                                <div class="col-4 col-sm-4 col-md-4 col-lg-6 col-xl-6">
                                     <div class="card mini-stats-wid">
                                         <div class="card-body">
                                             <div class="d-flex">
                                                 <div class="flex-grow-1">
-                                                    <h4 class="mb-0 text-center">{{ $data->count();}}</h4>
+                                                    <h4 class="mb-0 text-center">{{ $data->count() }}</h4>
                                                     <p class="text-muted fw-medium text-center">Total Parcels</p>
                                                 </div>
-                                            
+
                                                 <div class="flex-shrink-0 align-self-center">
                                                     <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
                                                         <span class="avatar-title">
@@ -201,15 +201,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-4 col-sm-4 col-md-4 col-lg-6 col-xl-6">
                                     <div class="card mini-stats-wid">
                                         <div class="card-body">
                                             <div class="d-flex">
                                                 <div class="flex-grow-1">
-                                                    <h4 class="mb-0 text-center">{{ $data->count();}}</h4>
+                                                    <h4 class="mb-0 text-center">{{ $data->count() }}</h4>
                                                     <p class="text-muted fw-medium text-center">Total Parcels</p>
                                                 </div>
-                                            
+
                                                 <div class="flex-shrink-0 align-self-center">
                                                     <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
                                                         <span class="avatar-title">
@@ -221,15 +221,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-4 col-sm-4 col-md-4 col-lg-6 col-xl-6">
                                     <div class="card mini-stats-wid">
                                         <div class="card-body">
                                             <div class="d-flex">
                                                 <div class="flex-grow-1">
-                                                    <h4 class="mb-0 text-center">{{ $data->count();}}</h4>
+                                                    <h4 class="mb-0 text-center">{{ $data->count() }}</h4>
                                                     <p class="text-muted fw-medium text-center">Total Parcels</p>
                                                 </div>
-                                            
+
                                                 <div class="flex-shrink-0 align-self-center">
                                                     <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
                                                         <span class="avatar-title">
@@ -241,15 +241,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-4 col-sm-4 col-md-4 col-lg-6 col-xl-6">
                                     <div class="card mini-stats-wid">
                                         <div class="card-body">
                                             <div class="d-flex">
                                                 <div class="flex-grow-1">
-                                                    <h4 class="mb-0 text-center">{{ $data->count();}}</h4>
+                                                    <h4 class="mb-0 text-center">{{ $data->count() }}</h4>
                                                     <p class="text-muted fw-medium text-center">Total Parcels</p>
                                                 </div>
-                                            
+
                                                 <div class="flex-shrink-0 align-self-center">
                                                     <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
                                                         <span class="avatar-title">
@@ -262,8 +262,8 @@
                                     </div>
                                 </div>
 
-                                
-                              
+
+
                             </div>
                             <!-- end row -->
                         </div>
@@ -280,13 +280,15 @@
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" data-bs-toggle="tab" href="#profile1" role="tab">
+                                            <a class="nav-link" data-bs-toggle="tab" href="#profile1"
+                                                role="tab">
                                                 <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
                                                 <span class="d-none d-sm-block">Reports</span>
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" data-bs-toggle="tab" href="#messages1" role="tab">
+                                            <a class="nav-link" data-bs-toggle="tab" href="#messages1"
+                                                role="tab">
                                                 <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
                                                 <span class="d-none d-sm-block">Vouchers</span>
                                             </a>
@@ -303,7 +305,7 @@
                                                 <div class="col-xl-12">
                                                     <h4 class="card-title">Settings</h4>
                                                     <div class="row">
-                                                        <div class="col-lg-3">
+                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
                                                             <div class="border p-3 rounded mt-4">
                                                                 <div class="d-flex align-items-center">
                                                                     <div class="avatar-xs me-3">
@@ -315,138 +317,18 @@
                                                                     <h5 class="font-size-14 mb-0">Regions</h5>
                                                                 </div>
 
-                                                                <div class="row">
-                                                                    <div class="col-lg-6">
-                                                                        <div class="text-muted mt-3">
-                                                                            <p>No of Regions</p>
-                                                                            <h4>{{ $regions->count();}}</h4>
-                                                                            {{-- <p class="mb-0">0.00745 BTC</p> --}}
-
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="col-lg-6 align-self-end">
-                                                                        <div class="float-end mt-3">
-                                                                            <a class="btn btn-sm btn-success waves-effect waves-light text-white"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#regionmodal">Add</a>
-                                                                            <a href="{{ route('add-region') }}"
-                                                                                class="btn btn-sm btn-primary">View</a>
-                                                                        </div>
-                                                                    </div>
+                                                                <div class="float-end mt-3">
+                                                                    <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#regionmodal">Add</a>
+                                                                    <a href="{{ route('add-region') }}"
+                                                                        class="btn btn-sm btn-primary">View</a>
                                                                 </div>
+
+
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="border p-3 rounded mt-4">
-                                                                <div class="d-flex align-items-center">
-                                                                    <div class="avatar-xs me-3">
-                                                                        <span
-                                                                            class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-18">
-                                                                            <i class="mdi mdi-ethereum"></i>
-                                                                        </span>
-                                                                    </div>
-                                                                    <h5 class="font-size-14 mb-0">Countries</h5>
-                                                                </div>
-
-                                                                <div class="row">
-                                                                    <div class="col-lg-6">
-                                                                        <div class="text-muted mt-3">
-                                                                            <p>Countries</p>
-                                                                            <h4>{{ $countries->count();}}</h4>
-                                                                            {{-- <p class="mb-0">0.0056 ETH</p> --}}
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="col-lg-6 align-self-end">
-                                                                        <div class="float-end mt-3">
-                                                                            <a class="btn btn-sm btn-success waves-effect waves-light text-white"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#countrymodal">Add</a>
-                                                                            <a href="{{ route('add-country') }}"
-                                                                                class="btn btn-sm btn-primary">View</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="border p-3 rounded mt-4">
-                                                                <div class="d-flex align-items-center mb-0">
-                                                                    <div class="avatar-xs me-3">
-                                                                        <span
-                                                                            class="avatar-title rounded-circle bg-info bg-soft text-info font-size-18">
-                                                                            <i class="mdi mdi-litecoin"></i>
-                                                                        </span>
-                                                                    </div>
-                                                                    <h5 class="font-size-14 mb-0">Currencies</h5>
-                                                                </div>
-
-                                                                <div class="row">
-                                                                    <div class="col-lg-6">
-                                                                        <div class="text-muted mt-3">
-                                                                            <p>Currencies</p>
-                                                                            <h4>{{ $currencies->count();}}</h4>
-                                                                            {{-- <p class="mb-0">0.00245 LTC</p> --}}
-
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="col-lg-6 align-self-end">
-                                                                        <div class="float-end mt-3">
-
-                                                                            <button type="button"
-                                                                                class="btn btn-sm btn-success waves-effect waves-light"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#paisamodal">Add
-                                                                            </button>
-                                                                            <a href="{{ route('add-currency') }}"
-                                                                                class="btn btn-sm btn-primary waves-effect waves-light ">View
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="border p-3 rounded mt-4">
-                                                                <div class="d-flex align-items-center mb-0">
-                                                                    <div class="avatar-xs me-3">
-                                                                        <span
-                                                                            class="avatar-title rounded-circle bg-warning bg-soft text-info font-size-18">
-                                                                            <i
-                                                                                class="mdi mdi-currency-usd-circle-outline"></i>
-                                                                        </span>
-                                                                    </div>
-                                                                    <h5 class="font-size-14 mb-0">Rate Controls</h5>
-                                                                </div>
-
-                                                                <div class="row">
-                                                                    <div class="col-lg-6">
-                                                                        <div class="text-muted mt-3">
-                                                                            <p>Charges Lists</p>
-                                                                            <h4>{{ $charges->count();}}</h4>
-                                                                            {{-- <p class="mb-0">0.00245 LTC</p> --}}
-
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="col-lg-6 align-self-end">
-                                                                        <div class="float-end mt-3">
-
-                                                                            <button type="button"
-                                                                                class="btn btn-sm btn-success waves-effect waves-light"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#ratemodal">Add
-                                                                            </button>
-                                                                            <a href="{{ route('add-charges') }}"
-                                                                                class="btn btn-sm btn-primary waves-effect waves-light ">View
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
@@ -687,13 +569,13 @@
                     </div>
                 </div>
             </div>
-             <!-- start page title -->
+            <!-- start page title -->
 
         </div>
-         <!-- container-fluid -->
+        <!-- container-fluid -->
     </div>
 </div>
-  <!-- main-content -->
+<!-- main-content -->
 
 {{-- *******************************Parcel Modal************************************************************* --}}
 <div class="modal fade" id="parcelmodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
@@ -723,7 +605,7 @@
                                         </span>
                                     @enderror
                                 </div>
-                              
+
                                 <div class="col-md-6 mb-0">
                                     <label for="useremail" class="form-label">Destination Country</label>
                                     <select class="form-select" name="country_id" required id="country_id"
@@ -1646,5 +1528,3 @@
 
     });
 </script>
-
-

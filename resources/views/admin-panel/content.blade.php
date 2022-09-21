@@ -29,39 +29,39 @@
                                                 <div class="card border border-dark">
                                                     <div class="card-header bg-transparent border-dark text-center">
                                                         <h6 class="my-0 text-dark text-center text-bold"><i
-                                                                class="mdi mdi-bullseye-arrow "></i>{{ $data->count() }}
+                                                                class="mdi mdi-bullseye-arrow "></i>{{ $regions->count() }}
                                                         </h6>
-                                                        <span class="">No of Regions</span>
+                                                        <span class="">Regions</span>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                                            <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3">
                                                 <div class="card border border-primary">
                                                     <div class="card-header bg-transparent border-primary text-center">
                                                         <h6 class="my-0 text-primary text-center text-bold"><i
-                                                                class="mdi mdi-bullseye-arrow "></i>{{ $data->count() }}
+                                                                class="mdi mdi-bullseye-arrow "></i>{{ $countries->count() }}
                                                         </h6>
-                                                        <span class="">Total Countries</span>
+                                                        <span class="">Countries</span>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                                            <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3">
                                                 <div class="card border border-info">
                                                     <div class="card-header bg-transparent border-info text-center">
                                                         <h6 class="my-0 text-info text-center text-bold"><i
-                                                                class="mdi mdi-bullseye-arrow "></i>{{ $data->count() }}
+                                                                class="mdi mdi-bullseye-arrow "></i>{{ $companies->count() }}
                                                         </h6>
-                                                        <span class="">Total Companies</span>
+                                                        <span class="">Companies</span>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                                            <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3">
                                                 <div class="card border border-success">
                                                     <div class="card-header bg-transparent border-success text-center">
                                                         <h6 class="my-0 text-success text-center text-bold"><i
-                                                                class="mdi mdi-bullseye-arrow "></i>{{ $data->count() }}
+                                                                class="mdi mdi-bullseye-arrow "></i>{{ $customers->count() }}
                                                         </h6>
-                                                        <span class="">Total Customers</span>
+                                                        <span class="">Customers</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -70,7 +70,10 @@
 
                                     </div>
                                     <div class="row">
+                                        <div class="card-title">
+                                            <h6 class="">Order Details</h6>
 
+                                        </div>
                                         <div class="col-4 col-sm-4 col-md-4 col-lg-3 col-xl-3">
                                             <div class="card border border-secondary">
                                                 <div class="card-header bg-transparent border-secondary text-center">
@@ -188,9 +191,9 @@
 
                                             </div>
                                         </div>
-                                        {{-- <div class="card-footer mb-1">
+                                        <div class="card-footer">
 
-                                        </div> --}}
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -32,7 +32,7 @@ class ParcelRegistrationController extends Controller
 
     public function store_parcel(Request $request)
     {
-        // dd($request->all());
+        dd($request->all());
         $request->validate([
             'region_id' => 'required',
             'country_id' => 'required',

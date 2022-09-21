@@ -38,7 +38,8 @@
                                                     <h6 class="my-0 text-secondary text-center text-bold"><i
                                                             class="mdi mdi-bullseye-arrow "></i>{{ $data->count() }}
                                                     </h6>
-                                                    <a class="text-dark btn-sm" href="{{ route('add-parcel') }}">New
+                                                    <a class="text-dark btn-sm"  data-bs-toggle="modal"
+                                                    data-bs-target="#parcelmodal">New
                                                         Parcel</a>
                                                 </div>
                                             </div>
@@ -682,27 +683,24 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="card">
+                                <div class="col-md-6" >
+                                    <div class="card" style="height: 100%">
                                         <div class="card-title">
                                             <h6 class="m-2">Parcels</h6>
                                             <hr>
                                         </div>
                                         <div class="card-body">
                                             <div class="row">
-                                                <div class="col-md-8">
+                                                <div class="col-md-12">
                                                     <div id="pie_chart" class="apex-charts" dir="ltr">
-
-                                                    </div>
-                                                    <div class="card-footer">
-
                                                     </div>
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-12 mt-2">
+
                                                     <div class="card-title">
                                                         {{-- <h6 class="m-2">Parcels</h6> --}}
                                                         <div class="row">
-                                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                            <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
                                                                 <div class="card border border-dark">
                                                                     <div
                                                                         class="card-header bg-transparent border-dark text-center">
@@ -715,7 +713,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                            <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
                                                                 <div class="card border border-primary">
                                                                     <div
                                                                         class="card-header bg-transparent border-primary text-center">
@@ -728,7 +726,20 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                            <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                                <div class="card border border-warning">
+                                                                    <div
+                                                                        class="card-header bg-transparent border-warning text-center">
+                                                                        <h6
+                                                                            class="my-0 text-warning text-center text-bold">
+                                                                            <i
+                                                                                class="mdi mdi-bullseye-arrow "></i>{{ $currencies->count() }}
+                                                                        </h6>
+                                                                        <span class="">Currencies</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
                                                                 <div class="card border border-info">
                                                                     <div
                                                                         class="card-header bg-transparent border-info text-center">
@@ -741,7 +752,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                            <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
                                                                 <div class="card border border-success">
                                                                     <div
                                                                         class="card-header bg-transparent border-success text-center">
@@ -754,7 +765,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                            <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
                                                                 <div class="card border border-warning">
                                                                     <div
                                                                         class="card-header bg-transparent border-warning text-center">
@@ -763,12 +774,13 @@
                                                                             <i
                                                                                 class="mdi mdi-bullseye-arrow "></i>{{ $currencies->count() }}
                                                                         </h6>
-                                                                        <span class="">Currnecies</span>
+                                                                        <span class="">Representatives</span>
                                                                     </div>
                                                                 </div>
                                                             </div>
 
                                                         </div>
+
 
                                                     </div>
                                                 </div>
@@ -849,19 +861,126 @@
                                 </div>
                             </div>
                             {{-- first row closed --}}
-                            <div class="row">
-                                <div class="col-md-12 mt-3">
-                                    <div class="form-group form-control">
-                                        <label for="useremail" class="form-label">Customer Type</label>
-                                        <input type="radio" name="customer_type" id="random" value="random"
-                                            class="ml-2">Random Customer
-                                        <input type="radio" name="customer_type" id="registered"
-                                            value="registered" class="ml-2">Company Customer
-                                    </div>
 
+                            <div class="row">
+                                <div class="col-md-6 mb-2">
+                                    <label for="username" class="form-label">Parcel Weight
+                                        <code>(grams)</code></label>
+                                    <input type="number" id="pl_weight" placeholder="Enter Parcel Weight" required
+                                        class="form-control @error('pl_weight') is-invalid @enderror" name="pl_weight"
+                                        value="{{ old('pl_weight') }}" required autocomplete="pl_weight" autofocus>
+
+                                    @error('pl_weight')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <label for="username" class="form-label">Parcel Cost in </label>
+                                    <div id="symbol_lable" class="d-inline text-danger">
+                                    </div>
+                                    <input type="hidden" name="pl_symbol" id="pl_symbol" value="">
+                                    <div class="d-inline">
+                                        <input type="number" id="pl_cost" placeholder="Enter Parcel Cost"
+                                            class="form-control @error('pl_cost') is-invalid @enderror" name="pl_cost"
+                                            required autocomplete="pl_cost" autofocus >
+
+                                        @error('pl_cost')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                {{--  <div class="col-md-6 mb-2">
+                                    <label for="username" class="form-label">Chargeable Weight</label>
+                                    <input type="text" id="chargeable_weight"
+                                        class="form-control @error('chargeable_weight') is-invalid @enderror"
+                                        name="chargeable_weight" required autocomplete="chargeable_weight" autofocus
+                                        readonly>
+
+                                    @error('chargeable_weight')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>  --}}
+                            </div>
+                            <div class="row">
+
+                                <div class="col-md-6 mb-2">
+                                    <label for="username" class="form-label">Parcel Extras Cost</label>
+                                    <input type="number" id="pl_extras" placeholder="Enter Parcel Extra Cost"
+                                        required class="form-control @error('pl_extras') is-invalid @enderror"
+                                        name="pl_extras" value="{{ old('pl_extras') }}" required
+                                        autocomplete="pl_extras" autofocus>
+
+                                    @error('pl_extras')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <label for="username" class="form-label">Parcel Discount</label>
+                                    <input type="number" id="pl_discount" placeholder="Enter Parcel Discount"
+                                        required class="form-control @error('pl_discount') is-invalid @enderror"
+                                        name="pl_discount" value="{{ old('pl_discount') }}" required
+                                        autocomplete="pl_discount" autofocus>
+
+                                    @error('pl_discount')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
-                            <div class="row" id="random_customer">
+                            <div class="row">
+                                <div class="col-md-6 mb-2">
+                                    <label for="username" class="form-label">Parcel Final Cost</label>
+                                    <input type="number" id="pl_final" placeholder="Parcel Final Charges" required
+                                        class="form-control @error('pl_final') is-invalid @enderror" name="pl_final"
+                                        value="{{ old('pl_final') }}" readonly autocomplete="pl_final" autofocus>
+
+                                    @error('pl_final')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <label for="address" class="form-label">Parcel Description</label>
+                                    <textarea name="pl_description" id="pl_description" class="form-control" cols="1" rows="1">
+                                </textarea>
+                                    @error('pl_description')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <input type="hidden" name="region_id" id="region_id" class="form-control"
+                                    value="" readonly>
+
+                                <input type="hidden" id="currency_id" class="form-control" autofocus
+                                    name="currency_id" value="" readonly>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 mt-3">
+                                    <div class="">
+                                        <label for="useremail" class="form-label">Customer Type</label>
+                                        <input type="radio" name="customer_type" id="random" value="random"
+                                            class="ml-2">Random
+                                        <input type="radio" name="customer_type" id="registered"
+                                            value="registered" class="ml-2">Company
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-2" id="random_customer">
+                                <hr>
                                 <div class="col-md-6 mb-2">
                                     <label for="username" class="form-label">Customer Name</label>
                                     <input type="text" id="username" placeholder="Customer Name" required
@@ -899,7 +1018,8 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="row" id="company_customer">
+                            <div class="row mt-2" id="company_customer">
+                                <hr>
                                 <div class="col-md-6 mb-2">
                                     <label for="useremail" class="form-label">Select Company</label>
                                     <select class="form-select" name="company_id" required id="company_id"
@@ -938,132 +1058,6 @@
                             </div>
                             {{-- first row closed --}}
 
-                            <div class="row">
-                                <div class="col-md-6 mb-2">
-                                    <label for="username" class="form-label">Parcel Weight
-                                        <code>(grams)</code></label>
-                                    <input type="number" id="pl_weight" placeholder="Enter Parcel Weight" required
-                                        class="form-control @error('pl_weight') is-invalid @enderror" name="pl_weight"
-                                        value="{{ old('pl_weight') }}" required autocomplete="pl_weight" autofocus>
-
-                                    @error('pl_weight')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <div class="col-md-6 mb-2">
-                                    <label for="username" class="form-label">Chargeable Weight</label>
-                                    <input type="text" id="chargeable_weight"
-                                        class="form-control @error('chargeable_weight') is-invalid @enderror"
-                                        name="chargeable_weight" required autocomplete="chargeable_weight" autofocus
-                                        readonly>
-
-                                    @error('chargeable_weight')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="row">
-
-                                <div class="col-md-6 mb-2">
-                                    <label for="username" class="form-label">Parcel Cost in </label>
-                                    <div id="symbol_lable" class="d-inline text-danger">
-                                    </div>
-                                    <input type="hidden" name="pl_symbol" id="pl_symbol" value="">
-                                    <div class="d-inline">
-                                        <input type="number" id="pl_cost" placeholder="Enter Parcel Cost"
-                                            class="form-control @error('pl_cost') is-invalid @enderror" name="pl_cost"
-                                            required autocomplete="pl_cost" autofocus readonly>
-
-                                        @error('pl_cost')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mb-2">
-                                    <label for="username" class="form-label">Parcel Extras Cost</label>
-                                    <input type="number" id="pl_extras" placeholder="Enter Parcel Extra Cost"
-                                        required class="form-control @error('pl_extras') is-invalid @enderror"
-                                        name="pl_extras" value="{{ old('pl_extras') }}" required
-                                        autocomplete="pl_extras" autofocus>
-
-                                    @error('pl_extras')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 mb-2">
-                                    <label for="username" class="form-label">Parcel Discount</label>
-                                    <input type="number" id="pl_discount" placeholder="Enter Parcel Discount"
-                                        required class="form-control @error('pl_discount') is-invalid @enderror"
-                                        name="pl_discount" value="{{ old('pl_discount') }}" required
-                                        autocomplete="pl_discount" autofocus>
-
-                                    @error('pl_discount')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <div class="col-md-6 mb-2">
-                                    <label for="username" class="form-label">Parcel Final Cost</label>
-                                    <input type="number" id="pl_final" placeholder="Parcel Final Charges" required
-                                        class="form-control @error('pl_final') is-invalid @enderror" name="pl_final"
-                                        value="{{ old('pl_final') }}" readonly autocomplete="pl_final" autofocus>
-
-                                    @error('pl_final')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="row">
-                                {{-- <div class="col-md-6 mb-0"> --}}
-                                {{-- <label for="course" class="form-label">Selected --}}
-                                {{-- Region<code>*</code></label> --}}
-                                <input type="hidden" name="region_id" id="region_id" class="form-control"
-                                    value="" readonly>
-                                {{-- @error('region_id')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror --}}
-                                {{-- </div> --}}
-                                {{-- <div class="col-md-6 mb-0">
-                                <label for="username" class="form-label">Amounts in Currency
-                                </label> --}}
-                                <input type="hidden" id="currency_id" class="form-control" autofocus
-                                    name="currency_id" value="" readonly>
-
-                                {{-- @error('currency_id')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror --}}
-                                {{-- </div> --}}
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12 mb-2">
-                                    <label for="address" class="form-label">Parcel Description</label>
-                                    <textarea name="pl_description" id="pl_description" class="form-control" cols="1" rows="1">
-                                </textarea>
-                                    @error('pl_description')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-
-                            </div>
                         </div>
                         <div class="modal-footer">
                             <!-- Toogle to second dialog -->
@@ -1956,59 +1950,38 @@
                             $('#pl_symbol').val(data.symbol);
                             $('#symbol_lable').text(data.symbol);
 
-                            $("#pl_weight").blur(function() {
-                                // alert(23);
-                                var total_charges = 0;
-                                var pl_weight = $('#pl_weight').val();
-                                var pl_weight = parseInt(pl_weight);
-                                // alert(pl_weight);
-                                if (pl_weight > '0' && pl_weight <= '500') {
+                            $("#pl_cost").blur(function() {
 
-                                    var wt_charges = parseInt(data.gm0_500);
-                                    // alert(wt_charges);
-                                    $('#chargeable_weight').val('500gm');
-                                    $('#pl_cost').val(wt_charges);
-                                }
-                                if (pl_weight > '500' && pl_weight <= '1000') {
+                                var pl_weight = parseInt($('#pl_weight').val());
+                                var pl_cost = parseInt($('#pl_cost').val());
+                                var pl_extras = parseInt($('#pl_extras').val());
+                                var pl_discount = parseInt($('#pl_discount').val());
+                                var pl_total = (pl_cost + pl_extras) - pl_discount;
+                                $('#pl_final').val(pl_total);
 
-                                    var wt_charges = parseInt(data.gm501_1000);
-                                    // alert(wt_charges);
-                                    $('#chargeable_weight').val('1000gm');
-                                    $('#pl_cost').val(wt_charges);
-                                }
-                                if (pl_weight > '1000' && pl_weight <= '1500') {
 
-                                    var wt_charges = parseInt(data.gm1001_1500);
-                                    // alert(wt_charges);
-                                    $('#chargeable_weight').val('1500gm');
-                                    $('#pl_cost').val(wt_charges);
-                                }
-                                if (pl_weight > '1500' && pl_weight <= '2000') {
-
-                                    var wt_charges = parseInt(data.gm1501_2000);
-                                    // alert(wt_charges);
-                                    $('#chargeable_weight').val('2000gm');
-                                    $('#pl_cost').val(wt_charges);
-                                }
-                                if (pl_weight > '2000' && pl_weight <= '5000') {
-
-                                    var wt_charges = parseInt(data.gm2001_5000);
-                                    // alert(wt_charges);
-                                    $('#chargeable_weight').val('5000gm');
-                                    $('#pl_cost').val(wt_charges);
-                                }
-                                if (pl_weight > '5000') {
-
-                                    var wt_charges = parseInt(data.gm5000_above);
-                                    // alert(wt_charges);
-                                    $('#chargeable_weight').val('above 5000gm');
-                                    $('#pl_cost').val(wt_charges);
-                                } else {
-
-                                }
-                            }); // weight blur function closed
+                            }); // cost blur function closed
 
                             $("#pl_discount").blur(function() {
+
+                                var pl_cost = parseInt($('#pl_cost').val());
+                                var pl_extras = parseInt($('#pl_extras').val());
+                                var pl_discount = parseInt($('#pl_discount').val());
+                                var pl_total = (pl_cost + pl_extras) - pl_discount;
+                                $('#pl_final').val(pl_total);
+
+                            }); // discount blur function closed
+                            $("#pl_extras").blur(function() {
+
+                                var pl_cost = parseInt($('#pl_cost').val());
+                                var pl_extras = parseInt($('#pl_extras').val());
+                                var pl_discount = parseInt($('#pl_discount').val());
+                                var pl_total = (pl_cost + pl_extras) - pl_discount;
+                                $('#pl_final').val(pl_total);
+
+                            }); // discount blur function closed
+                            $("#pl_weight
+                            ").blur(function() {
 
                                 var pl_cost = parseInt($('#pl_cost').val());
                                 var pl_extras = parseInt($('#pl_extras').val());

@@ -80,7 +80,7 @@
                                                     <h6 class="my-0 text-secondary text-center text-bold"><i
                                                             class="mdi mdi-bullseye-arrow "></i>{{ $data->count() }}
                                                     </h6>
-                                                    <span class="">Total Order</span>
+                                                    <span class="">Total Orders</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -90,7 +90,7 @@
                                                     <h6 class="my-0 text-success text-center text-bold"><i
                                                             class="mdi mdi-bullseye-arrow "></i>{{ $data->count() }}
                                                     </h6>
-                                                    <span class="">Completed Order</span>
+                                                    <span class="">Completed</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -100,7 +100,7 @@
                                                     <h6 class="my-0 text-primary text-center text-bold"><i
                                                             class="mdi mdi-bullseye-arrow "></i>{{ $data->count() }}
                                                     </h6>
-                                                    <span class="">Booked Order</span>
+                                                    <span class="">Booked</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -111,7 +111,7 @@
                                                     <h6 class="my-0 text-danger text-center text-bold"><i
                                                             class="mdi mdi-bullseye-arrow "></i>{{ $data->count() }}
                                                     </h6>
-                                                    <span class="">Cancelled Order</span>
+                                                    <span class="">Cancelled</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -121,7 +121,7 @@
                                                     <h6 class="my-0 text-warning text-center text-bold"><i
                                                             class="mdi mdi-bullseye-arrow "></i>{{ $data->count() }}
                                                     </h6>
-                                                    <span class="">Pending Order</span>
+                                                    <span class="">Pending</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -131,7 +131,7 @@
                                                     <h6 class="my-0 text-info text-center text-bold"><i
                                                             class="mdi mdi-bullseye-arrow "></i>{{ $data->count() }}
                                                     </h6>
-                                                    <span class="">Dispatched Order</span>
+                                                    <span class="">Dispatched</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -141,7 +141,7 @@
                                                     <h6 class="my-0 text-secondary text-center text-bold"><i
                                                             class="mdi mdi-bullseye-arrow "></i>{{ $data->count() }}
                                                     </h6>
-                                                    <span class="">Assigned Order</span>
+                                                    <span class="">Assigned</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -151,7 +151,7 @@
                                                     <h6 class="my-0 text-success text-center text-bold"><i
                                                             class="mdi mdi-bullseye-arrow "></i>{{ $data->count() }}
                                                     </h6>
-                                                    <span class="">Delivered Order</span>
+                                                    <span class="">Delivered</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -161,7 +161,7 @@
                                                     <h6 class="my-0 text-danger text-center text-bold"><i
                                                             class="mdi mdi-bullseye-arrow "></i>{{ $data->count() }}
                                                     </h6>
-                                                    <span class="">Returned Order</span>
+                                                    <span class="">Returned</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -171,7 +171,7 @@
                                                     <h6 class="my-0 text-primary text-center text-bold"><i
                                                             class="mdi mdi-bullseye-arrow "></i>{{ $data->count() }}
                                                     </h6>
-                                                    <span class="">Outstation Order</span>
+                                                    <span class="">Outstation</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -481,7 +481,7 @@
                                                                                 </span>
                                                                             </div>
                                                                             <h6 class="font-size-14 mb-0">
-                                                                                Date Range – <br>Ledger Report
+                                                                                Date Range<br>Ledger Report
                                                                             </h6>
                                                                         </div>
                                                                         <div class="float-end mt-3">

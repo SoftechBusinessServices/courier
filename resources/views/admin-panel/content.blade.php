@@ -1,6 +1,10 @@
 {{-- <div class="main-content"> --}}
 <div class="">
 
+
+
+
+
     <div class="page-content">
         <div class="container-fluid">
 
@@ -22,90 +26,45 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="card-title">
-                                        {{-- <h6 class="m-2">Parcels</h6> --}}
-                                        <div class="row">
-                                            <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                                                <div class="card border border-dark">
-                                                    <div class="card-header bg-transparent border-dark text-center">
-                                                        <h6 class="my-0 text-dark text-center text-bold"><i
-                                                                class="mdi mdi-bullseye-arrow "></i>{{ $regions->count() }}
-                                                        </h6>
-                                                        <span class="">Regions</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                                                <div class="card border border-primary">
-                                                    <div class="card-header bg-transparent border-primary text-center">
-                                                        <h6 class="my-0 text-primary text-center text-bold"><i
-                                                                class="mdi mdi-bullseye-arrow "></i>{{ $countries->count() }}
-                                                        </h6>
-                                                        <span class="">Countries</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                                                <div class="card border border-info">
-                                                    <div class="card-header bg-transparent border-info text-center">
-                                                        <h6 class="my-0 text-info text-center text-bold"><i
-                                                                class="mdi mdi-bullseye-arrow "></i>{{ $companies->count() }}
-                                                        </h6>
-                                                        <span class="">Companies</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                                                <div class="card border border-success">
-                                                    <div class="card-header bg-transparent border-success text-center">
-                                                        <h6 class="my-0 text-success text-center text-bold"><i
-                                                                class="mdi mdi-bullseye-arrow "></i>{{ $customers->count() }}
-                                                        </h6>
-                                                        <span class="">Customers</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <hr>
-                                        </div>
 
-                                    </div>
                                     <div class="row">
                                         <div class="card-title">
-                                            <h6 class="">Order Details</h6>
+                                            <h6 class="">Orders</h6>
 
                                         </div>
-                                        <div class="col-4 col-sm-4 col-md-4 col-lg-3 col-xl-3">
+                                        <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
                                             <div class="card border border-secondary">
                                                 <div class="card-header bg-transparent border-secondary text-center">
                                                     <h6 class="my-0 text-secondary text-center text-bold"><i
                                                             class="mdi mdi-bullseye-arrow "></i>{{ $data->count() }}
                                                     </h6>
-                                                    <span class="">Total Orders</span>
+                                                    <a class="text-dark btn-sm" href="{{ route('add-parcel') }}">New
+                                                        Parcel</a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-4 col-sm-4 col-md-4 col-lg-3 col-xl-3">
+                                        <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
                                             <div class="card border border-success">
                                                 <div class="card-header bg-transparent border-success text-center">
                                                     <h6 class="my-0 text-success text-center text-bold"><i
                                                             class="mdi mdi-bullseye-arrow "></i>{{ $data->count() }}
                                                     </h6>
-                                                    <span class="">Completed</span>
+                                                    <span class="">Processed</span>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-4 col-sm-4 col-md-4 col-lg-3 col-xl-3">
+                                        <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
                                             <div class="card border border-primary">
                                                 <div class="card-header bg-transparent border-primary text-center">
                                                     <h6 class="my-0 text-primary text-center text-bold"><i
                                                             class="mdi mdi-bullseye-arrow "></i>{{ $data->count() }}
                                                     </h6>
-                                                    <span class="">Booked</span>
+                                                    <span class="">Allocated</span>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div class="col-4 col-sm-4 col-md-4 col-lg-3 col-xl-3">
+                                        <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
                                             <div class="card border border-danger">
                                                 <div class="card-header bg-transparent border-danger text-center">
                                                     <h6 class="my-0 text-danger text-center text-bold"><i
@@ -115,7 +74,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-4 col-sm-4 col-md-4 col-lg-3 col-xl-3">
+                                        <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
                                             <div class="card border border-warning">
                                                 <div class="card-header bg-transparent border-warning text-center">
                                                     <h6 class="my-0 text-warning text-center text-bold"><i
@@ -125,7 +84,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-4 col-sm-4 col-md-4 col-lg-3 col-xl-3">
+                                        <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
                                             <div class="card border border-info">
                                                 <div class="card-header bg-transparent border-info text-center">
                                                     <h6 class="my-0 text-info text-center text-bold"><i
@@ -135,7 +94,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-4 col-sm-4 col-md-4 col-lg-3 col-xl-3">
+                                        {{-- <div class="col-4 col-sm-4 col-md-4 col-lg-3 col-xl-3">
                                             <div class="card border border-secondary">
                                                 <div class="card-header bg-transparent border-secondary text-center">
                                                     <h6 class="my-0 text-secondary text-center text-bold"><i
@@ -144,8 +103,8 @@
                                                     <span class="">Assigned</span>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-4 col-sm-4 col-md-4 col-lg-3 col-xl-3">
+                                        </div> --}}
+                                        <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
                                             <div class="card border border-success">
                                                 <div class="card-header bg-transparent border-success text-center">
                                                     <h6 class="my-0 text-success text-center text-bold"><i
@@ -155,7 +114,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-4 col-sm-4 col-md-4 col-lg-3 col-xl-3">
+                                        <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
                                             <div class="card border border-danger">
                                                 <div class="card-header bg-transparent border-danger text-center">
                                                     <h6 class="my-0 text-danger text-center text-bold"><i
@@ -165,7 +124,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-4 col-sm-4 col-md-4 col-lg-3 col-xl-3">
+                                        {{-- <div class="col-4 col-sm-4 col-md-4 col-lg-3 col-xl-3">
                                             <div class="card border border-primary">
                                                 <div class="card-header bg-transparent border-primary text-center">
                                                     <h6 class="my-0 text-primary text-center text-bold"><i
@@ -174,11 +133,554 @@
                                                     <span class="">Outstation</span>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
 
                                     </div>
-                                    <!-- end row -->
-                                    <!-- end row -->
+                                    <!-- buttons section row  end -->
+
+                                    <div class="row mb-0">
+                                        <div class="col-md-12">
+                                            <div class="card mb-0">
+                                                <div class="card-body">
+                                                    <!-- Nav tabs -->
+                                                    <ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
+                                                        <li class="nav-item">
+                                                            <a class="nav-link active" data-bs-toggle="tab" href="#home1"
+                                                                role="tab">
+                                                                <span class="d-block d-sm-none"><i
+                                                                        class="fas fa-home"></i></span>
+                                                                <span class="d-none d-sm-block">Settings</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" data-bs-toggle="tab" href="#profile1"
+                                                                role="tab">
+                                                                <span class="d-block d-sm-none"><i
+                                                                        class="far fa-user"></i></span>
+                                                                <span class="d-none d-sm-block">Reports</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" data-bs-toggle="tab" href="#messages1"
+                                                                role="tab">
+                                                                <span class="d-block d-sm-none"><i
+                                                                        class="far fa-envelope"></i></span>
+                                                                <span class="d-none d-sm-block">Vouchers</span>
+                                                            </a>
+                                                        </li>
+
+                                                    </ul>
+
+                                                    <!-- Tab panes -->
+                                                    <div class="tab-content p-3 text-muted">
+                                                        <div class="tab-pane active" id="home1" role="tabpanel">
+                                                            <p class="mb-0">
+                                                            <div class="row">
+                                                                <div class="col-xl-12">
+                                                                    <h4 class="card-title">Settings</h4>
+                                                                    <div class="row">
+                                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                                                                            <div class="border p-3 rounded mt-4">
+                                                                                <div class="d-flex align-items-center">
+                                                                                    <div class="avatar-xs me-3">
+                                                                                        <span
+                                                                                            class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
+                                                                                            <i class="mdi mdi-bitcoin"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <h5 class="font-size-14 mb-0">Regions</h5>
+                                                                                </div>
+
+                                                                                <div class="float-end mt-3">
+                                                                                    <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                                        data-bs-toggle="modal"
+                                                                                        data-bs-target="#regionmodal">Add</a>
+                                                                                    <a href="{{ route('add-region') }}"
+                                                                                        class="btn btn-sm btn-primary">View</a>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                                                                            <div class="border p-3 rounded mt-4">
+                                                                                <div class="d-flex align-items-center">
+                                                                                    <div class="avatar-xs me-3">
+                                                                                        <span
+                                                                                            class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
+                                                                                            <i class="mdi mdi-bitcoin"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <h5 class="font-size-14 mb-0">Countries
+                                                                                    </h5>
+                                                                                </div>
+
+                                                                                <div class="float-end mt-3">
+                                                                                    <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                                        data-bs-toggle="modal"
+                                                                                        data-bs-target="#countrymodal">Add</a>
+                                                                                    <a href="{{ route('add-country') }}"
+                                                                                        class="btn btn-sm btn-primary">View</a>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                                                                            <div class="border p-3 rounded mt-4">
+                                                                                <div class="d-flex align-items-center">
+                                                                                    <div class="avatar-xs me-3">
+                                                                                        <span
+                                                                                            class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
+                                                                                            <i class="mdi mdi-bitcoin"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <h5 class="font-size-14 mb-0">Currencies
+                                                                                    </h5>
+                                                                                </div>
+
+                                                                                <div class="float-end mt-3">
+                                                                                    <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                                        data-bs-toggle="modal"
+                                                                                        data-bs-target="#paisamodal">Add</a>
+                                                                                    <a href="{{ route('add-currency') }}"
+                                                                                        class="btn btn-sm btn-primary">View</a>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                        {{-- <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                                                                            <div class="border p-3 rounded mt-4">
+                                                                                <div class="d-flex align-items-center">
+                                                                                    <div class="avatar-xs me-3">
+                                                                                        <span
+                                                                                            class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
+                                                                                            <i class="mdi mdi-bitcoin"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <h5 class="font-size-14 mb-0">Shipping
+                                                                                        Charges</h5>
+                                                                                </div>
+
+                                                                                <div class="float-end mt-3">
+                                                                                    <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                                        data-bs-toggle="modal"
+                                                                                        data-bs-target="#ratemodal">Add</a>
+                                                                                    <a href="{{ route('add-charges') }}"
+                                                                                        class="btn btn-sm btn-primary">View</a>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div> --}}
+                                                                        <!-- doosri row -->
+                                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                                                                            <div class="border p-3 rounded mt-4">
+                                                                                <div class="d-flex align-items-center">
+                                                                                    <div class="avatar-xs me-3">
+                                                                                        <span
+                                                                                            class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
+                                                                                            <i class="mdi mdi-bitcoin"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <h5 class="font-size-14 mb-0">Companies
+                                                                                    </h5>
+                                                                                </div>
+
+                                                                                <div class="float-end mt-3">
+                                                                                    <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                                        data-bs-toggle="modal"
+                                                                                        data-bs-target="#companymodal">Add</a>
+                                                                                    <a href="{{ route('add-company') }}"
+                                                                                        class="btn btn-sm btn-primary">View</a>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                        {{-- <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                                                                            <div class="border p-3 rounded mt-4">
+                                                                                <div class="d-flex align-items-center">
+                                                                                    <div class="avatar-xs me-3">
+                                                                                        <span
+                                                                                            class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
+                                                                                            <i class="mdi mdi-bitcoin"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <h5 class="font-size-14 mb-0">Representator
+                                                                                    </h5>
+                                                                                </div>
+
+                                                                                <div class="float-end mt-3">
+                                                                                    <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                                        data-bs-toggle="modal"
+                                                                                        data-bs-target="#representmodal">Add</a>
+                                                                                    <a href="{{ route('add-representator') }}"
+                                                                                        class="btn btn-sm btn-primary">View</a>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div> --}}
+                                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                                                                            <div class="border p-3 rounded mt-4">
+                                                                                <div class="d-flex align-items-center">
+                                                                                    <div class="avatar-xs me-3">
+                                                                                        <span
+                                                                                            class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
+                                                                                            <i class="mdi mdi-bitcoin"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <h5 class="font-size-14 mb-0">Vendors</h5>
+                                                                                </div>
+
+                                                                                <div class="float-end mt-3">
+                                                                                    <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                                        data-bs-toggle="modal"
+                                                                                        data-bs-target="#vendormodal">Add</a>
+                                                                                    <a href="{{ route('add-vendor') }}"
+                                                                                        class="btn btn-sm btn-primary">View</a>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                                                                            <div class="border p-3 rounded mt-4">
+                                                                                <div class="d-flex align-items-center">
+                                                                                    <div class="avatar-xs me-3">
+                                                                                        <span
+                                                                                            class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
+                                                                                            <i class="mdi mdi-bitcoin"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <h5 class="font-size-14 mb-0">Parel
+                                                                                        Registration</h5>
+                                                                                </div>
+
+                                                                                <div class="float-end mt-3">
+                                                                                    <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                                        data-bs-toggle="modal"
+                                                                                        data-bs-target="#parcelmodal">Add</a>
+                                                                                    <a href="{{ route('add-parcel') }}"
+                                                                                        class="btn btn-sm btn-primary">View</a>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            </p>
+                                                        </div>
+                                                        <!--- tabpane closed -->
+
+                                                        <div class="tab-pane" id="profile1" role="tabpanel">
+                                                            <p class="mb-0">
+                                                            <div class="row">
+                                                                <div class="col-xl-12">
+                                                                    <h4 class="card-title">Reports Section</h4>
+                                                                    <div class="row">
+                                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                                            <div class="border p-3 rounded mt-4">
+                                                                                <div class="d-flex align-items-center mb-0">
+                                                                                    <div class="avatar-xs me-3">
+                                                                                        <span
+                                                                                            class="avatar-title rounded-circle bg-warning bg-soft text-info font-size-18">
+                                                                                            <i class="mdi mdi-update"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <h6 class="font-size-14 mb-0">
+                                                                                        Daily Transactions <br>Report Section
+                                                                                    </h6>
+                                                                                </div>
+                                                                                <div class="float-end mt-3">
+                                                                                    {{-- <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                                                                data-bs-toggle="modal" data-bs-target="#regionmodal">Add</a> --}}
+                                                                                    <a href="#"
+                                                                                        class="btn btn-sm btn-primary">View
+                                                                                        Report</a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                                            <div class="border p-3 rounded mt-4">
+                                                                                <div class="d-flex align-items-center mb-0">
+                                                                                    <div class="avatar-xs me-3">
+                                                                                        <span
+                                                                                            class="avatar-title rounded-circle bg-warning bg-soft text-info font-size-18">
+                                                                                            <i
+                                                                                                class="mdi mdi-calendar-cursor"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <h6 class="font-size-14 mb-0">
+                                                                                        Date Range<br>Ledger Report
+                                                                                    </h6>
+                                                                                </div>
+                                                                                <div class="float-end mt-3">
+                                                                                    {{-- <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                                                                data-bs-toggle="modal" data-bs-target="#regionmodal">Add</a> --}}
+                                                                                    <a href="#"
+                                                                                        class="btn btn-sm btn-primary">View
+                                                                                        Report</a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                                            <div class="border p-3 rounded mt-4">
+                                                                                <div class="d-flex align-items-center mb-0">
+                                                                                    <div class="avatar-xs me-3">
+                                                                                        <span
+                                                                                            class="avatar-title rounded-circle bg-warning bg-soft text-info font-size-18">
+                                                                                            <i
+                                                                                                class="mdi mdi-account-cash"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <h6 class="font-size-14 mb-0">
+                                                                                        Ledger report <br> by customer name
+                                                                                    </h6>
+                                                                                </div>
+                                                                                <div class="float-end mt-3">
+                                                                                    {{-- <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                                                                data-bs-toggle="modal" data-bs-target="#regionmodal">Add</a> --}}
+                                                                                    <a href="#"
+                                                                                        class="btn btn-sm btn-primary">View
+                                                                                        Report</a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                                            <div class="border p-3 rounded mt-4">
+                                                                                <div class="d-flex align-items-center mb-0">
+                                                                                    <div class="avatar-xs me-3">
+                                                                                        <span
+                                                                                            class="avatar-title rounded-circle bg-warning bg-soft text-info font-size-18">
+                                                                                            <i
+                                                                                                class="mdi mdi-currency-usd-off"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <h6 class="font-size-14 mb-0">
+                                                                                        List of customers<br> with closing
+                                                                                        balance
+
+                                                                                    </h6>
+                                                                                </div>
+                                                                                <div class="float-end mt-3">
+                                                                                    {{-- <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                                                                data-bs-toggle="modal" data-bs-target="#regionmodal">Add</a> --}}
+                                                                                    <a href="#"
+                                                                                        class="btn btn-sm btn-primary">View
+                                                                                        Report</a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                                            <div class="border p-3 rounded mt-4">
+                                                                                <div class="d-flex align-items-center mb-0">
+                                                                                    <div class="avatar-xs me-3">
+                                                                                        <span
+                                                                                            class="avatar-title rounded-circle bg-warning bg-soft text-info font-size-18">
+                                                                                            <i class="mdi mdi-update"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <h6 class="font-size-14 mb-0">
+                                                                                        Dummy report
+                                                                                    </h6>
+                                                                                </div>
+                                                                                <div class="float-end mt-3">
+                                                                                    {{-- <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                                                                data-bs-toggle="modal" data-bs-target="#regionmodal">Add</a> --}}
+                                                                                    <a href="#"
+                                                                                        class="btn btn-sm btn-primary">View
+                                                                                        Report</a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                                            <div class="border p-3 rounded mt-4">
+                                                                                <div class="d-flex align-items-center mb-0">
+                                                                                    <div class="avatar-xs me-3">
+                                                                                        <span
+                                                                                            class="avatar-title rounded-circle bg-warning bg-soft text-info font-size-18">
+                                                                                            <i class="mdi mdi-update"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <h6 class="font-size-14 mb-0">
+                                                                                        Dummy report
+                                                                                    </h6>
+                                                                                </div>
+                                                                                <div class="float-end mt-3">
+                                                                                    {{-- <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                                                                data-bs-toggle="modal" data-bs-target="#regionmodal">Add</a> --}}
+                                                                                    <a href="#"
+                                                                                        class="btn btn-sm btn-primary">View
+                                                                                        Report</a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!--- tabpane closed -->
+
+                                                        <div class="tab-pane" id="messages1" role="tabpanel">
+                                                            <p class="mb-0">
+                                                            <div class="row">
+                                                                <div class="col-xl-12">
+                                                                    <h4 class="card-title">Vouchers Section</h4>
+                                                                    <div class="row">
+
+                                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                                            <div class="border p-3 rounded mt-4">
+                                                                                <div class="d-flex align-items-center">
+                                                                                    <div class="avatar-xs me-3">
+                                                                                        <span
+                                                                                            class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
+                                                                                            <i class="mdi mdi-bitcoin"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <h5 class="font-size-14 mb-0">Cash Payment
+                                                                                    </h5>
+                                                                                </div>
+
+                                                                                <div class="float-end mt-3">
+                                                                                    <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                                        data-bs-toggle="modal"
+                                                                                        data-bs-target="#regionmodal">Add</a>
+                                                                                    <a href="#"
+                                                                                        class="btn btn-sm btn-primary">View</a>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                                            <div class="border p-3 rounded mt-4">
+                                                                                <div class="d-flex align-items-center">
+                                                                                    <div class="avatar-xs me-3">
+                                                                                        <span
+                                                                                            class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
+                                                                                            <i class="mdi mdi-bitcoin"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <h5 class="font-size-14 mb-0">Cash Receipt
+                                                                                    </h5>
+                                                                                </div>
+
+                                                                                <div class="float-end mt-3">
+                                                                                    <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                                        data-bs-toggle="modal"
+                                                                                        data-bs-target="#regionmodal">Add</a>
+                                                                                    <a href="#"
+                                                                                        class="btn btn-sm btn-primary">View</a>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                                            <div class="border p-3 rounded mt-4">
+                                                                                <div class="d-flex align-items-center">
+                                                                                    <div class="avatar-xs me-3">
+                                                                                        <span
+                                                                                            class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
+                                                                                            <i class="mdi mdi-bitcoin"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <h5 class="font-size-14 mb-0">Cheque
+                                                                                        Payment</h5>
+                                                                                </div>
+
+                                                                                <div class="float-end mt-3">
+                                                                                    <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                                        data-bs-toggle="modal"
+                                                                                        data-bs-target="#regionmodal">Add</a>
+                                                                                    <a href="#"
+                                                                                        class="btn btn-sm btn-primary">View</a>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                                            <div class="border p-3 rounded mt-4">
+                                                                                <div class="d-flex align-items-center">
+                                                                                    <div class="avatar-xs me-3">
+                                                                                        <span
+                                                                                            class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
+                                                                                            <i class="mdi mdi-bitcoin"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <h5 class="font-size-14 mb-0">Cheque
+                                                                                        Receipt</h5>
+                                                                                </div>
+
+                                                                                <div class="float-end mt-3">
+                                                                                    <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                                        data-bs-toggle="modal"
+                                                                                        data-bs-target="#regionmodal">Add</a>
+                                                                                    <a href="#"
+                                                                                        class="btn btn-sm btn-primary">View</a>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                                            <div class="border p-3 rounded mt-4">
+                                                                                <div class="d-flex align-items-center">
+                                                                                    <div class="avatar-xs me-3">
+                                                                                        <span
+                                                                                            class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
+                                                                                            <i class="mdi mdi-bitcoin"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <h5 class="font-size-14 mb-0">Journal
+                                                                                        Voucher</h5>
+                                                                                </div>
+
+                                                                                <div class="float-end mt-3">
+                                                                                    <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                                        data-bs-toggle="modal"
+                                                                                        data-bs-target="#regionmodal">Add</a>
+                                                                                    <a href="#"
+                                                                                        class="btn btn-sm btn-primary">View</a>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                                            <div class="border p-3 rounded mt-4">
+                                                                                <div class="d-flex align-items-center">
+                                                                                    <div class="avatar-xs me-3">
+                                                                                        <span
+                                                                                            class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
+                                                                                            <i class="mdi mdi-bitcoin"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <h5 class="font-size-14 mb-0">Sales Voucher
+                                                                                    </h5>
+                                                                                </div>
+
+                                                                                <div class="float-end mt-3">
+                                                                                    <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                                        data-bs-toggle="modal"
+                                                                                        data-bs-target="#regionmodal">Add</a>
+                                                                                    <a href="#"
+                                                                                        class="btn btn-sm btn-primary">View</a>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            </p>
+                                                        </div>
+                                                        <!--- tabpane closed -->
+                                                    </div>
+                                                </div>
+                                                </p>
+                                            </div>
+
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="card">
@@ -187,13 +689,93 @@
                                             <hr>
                                         </div>
                                         <div class="card-body">
-                                            <div id="pie_chart" class="apex-charts" dir="ltr">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <div id="pie_chart" class="apex-charts" dir="ltr">
 
+                                                    </div>
+                                                    <div class="card-footer">
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="card-title">
+                                                        {{-- <h6 class="m-2">Parcels</h6> --}}
+                                                        <div class="row">
+                                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                                <div class="card border border-dark">
+                                                                    <div
+                                                                        class="card-header bg-transparent border-dark text-center">
+                                                                        <h6
+                                                                            class="my-0 text-dark text-center text-bold">
+                                                                            <i
+                                                                                class="mdi mdi-bullseye-arrow "></i>{{ $regions->count() }}
+                                                                        </h6>
+                                                                        <span class="">Regions</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                                <div class="card border border-primary">
+                                                                    <div
+                                                                        class="card-header bg-transparent border-primary text-center">
+                                                                        <h6
+                                                                            class="my-0 text-primary text-center text-bold">
+                                                                            <i
+                                                                                class="mdi mdi-bullseye-arrow "></i>{{ $countries->count() }}
+                                                                        </h6>
+                                                                        <span class="">Countries</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                                <div class="card border border-info">
+                                                                    <div
+                                                                        class="card-header bg-transparent border-info text-center">
+                                                                        <h6
+                                                                            class="my-0 text-info text-center text-bold">
+                                                                            <i
+                                                                                class="mdi mdi-bullseye-arrow "></i>{{ $companies->count() }}
+                                                                        </h6>
+                                                                        <span class="">Companies</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                                <div class="card border border-success">
+                                                                    <div
+                                                                        class="card-header bg-transparent border-success text-center">
+                                                                        <h6
+                                                                            class="my-0 text-success text-center text-bold">
+                                                                            <i
+                                                                                class="mdi mdi-bullseye-arrow "></i>{{ $customers->count() }}
+                                                                        </h6>
+                                                                        <span class="">Vendors</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                                <div class="card border border-warning">
+                                                                    <div
+                                                                        class="card-header bg-transparent border-warning text-center">
+                                                                        <h6
+                                                                            class="my-0 text-warning text-center text-bold">
+                                                                            <i
+                                                                                class="mdi mdi-bullseye-arrow "></i>{{ $currencies->count() }}
+                                                                        </h6>
+                                                                        <span class="">Currnecies</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="card-footer">
 
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -205,813 +787,7 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <!-- Nav tabs -->
-                                            <ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
-                                                <li class="nav-item">
-                                                    <a class="nav-link active" data-bs-toggle="tab" href="#home1"
-                                                        role="tab">
-                                                        <span class="d-block d-sm-none"><i
-                                                                class="fas fa-home"></i></span>
-                                                        <span class="d-none d-sm-block">Settings</span>
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" data-bs-toggle="tab" href="#profile1"
-                                                        role="tab">
-                                                        <span class="d-block d-sm-none"><i
-                                                                class="far fa-user"></i></span>
-                                                        <span class="d-none d-sm-block">Reports</span>
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" data-bs-toggle="tab" href="#messages1"
-                                                        role="tab">
-                                                        <span class="d-block d-sm-none"><i
-                                                                class="far fa-envelope"></i></span>
-                                                        <span class="d-none d-sm-block">Vouchers</span>
-                                                    </a>
-                                                </li>
-
-                                            </ul>
-
-                                            <!-- Tab panes -->
-                                            <div class="tab-content p-3 text-muted">
-                                                <div class="tab-pane active" id="home1" role="tabpanel">
-                                                    <p class="mb-0">
-                                                    <div class="row">
-                                                        <div class="col-xl-12">
-                                                            <h4 class="card-title">Settings</h4>
-                                                            <div class="row">
-                                                                <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
-                                                                    <div class="border p-3 rounded mt-4">
-                                                                        <div class="d-flex align-items-center">
-                                                                            <div class="avatar-xs me-3">
-                                                                                <span
-                                                                                    class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
-                                                                                    <i class="mdi mdi-bitcoin"></i>
-                                                                                </span>
-                                                                            </div>
-                                                                            <h5 class="font-size-14 mb-0">Regions</h5>
-                                                                        </div>
-
-                                                                        <div class="float-end mt-3">
-                                                                            <a class="btn btn-sm btn-success waves-effect waves-light text-white"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#regionmodal">Add</a>
-                                                                            <a href="{{ route('add-region') }}"
-                                                                                class="btn btn-sm btn-primary">View</a>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
-                                                                    <div class="border p-3 rounded mt-4">
-                                                                        <div class="d-flex align-items-center">
-                                                                            <div class="avatar-xs me-3">
-                                                                                <span
-                                                                                    class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
-                                                                                    <i class="mdi mdi-bitcoin"></i>
-                                                                                </span>
-                                                                            </div>
-                                                                            <h5 class="font-size-14 mb-0">Countries
-                                                                            </h5>
-                                                                        </div>
-
-                                                                        <div class="float-end mt-3">
-                                                                            <a class="btn btn-sm btn-success waves-effect waves-light text-white"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#countrymodal">Add</a>
-                                                                            <a href="{{ route('add-country') }}"
-                                                                                class="btn btn-sm btn-primary">View</a>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
-                                                                    <div class="border p-3 rounded mt-4">
-                                                                        <div class="d-flex align-items-center">
-                                                                            <div class="avatar-xs me-3">
-                                                                                <span
-                                                                                    class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
-                                                                                    <i class="mdi mdi-bitcoin"></i>
-                                                                                </span>
-                                                                            </div>
-                                                                            <h5 class="font-size-14 mb-0">Currencies
-                                                                            </h5>
-                                                                        </div>
-
-                                                                        <div class="float-end mt-3">
-                                                                            <a class="btn btn-sm btn-success waves-effect waves-light text-white"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#paisamodal">Add</a>
-                                                                            <a href="{{ route('add-currency') }}"
-                                                                                class="btn btn-sm btn-primary">View</a>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
-                                                                    <div class="border p-3 rounded mt-4">
-                                                                        <div class="d-flex align-items-center">
-                                                                            <div class="avatar-xs me-3">
-                                                                                <span
-                                                                                    class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
-                                                                                    <i class="mdi mdi-bitcoin"></i>
-                                                                                </span>
-                                                                            </div>
-                                                                            <h5 class="font-size-14 mb-0">Shipping
-                                                                                Charges</h5>
-                                                                        </div>
-
-                                                                        <div class="float-end mt-3">
-                                                                            <a class="btn btn-sm btn-success waves-effect waves-light text-white"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#ratemodal">Add</a>
-                                                                            <a href="{{ route('add-charges') }}"
-                                                                                class="btn btn-sm btn-primary">View</a>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                                <!-- doosri row -->
-                                                                <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
-                                                                    <div class="border p-3 rounded mt-4">
-                                                                        <div class="d-flex align-items-center">
-                                                                            <div class="avatar-xs me-3">
-                                                                                <span
-                                                                                    class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
-                                                                                    <i class="mdi mdi-bitcoin"></i>
-                                                                                </span>
-                                                                            </div>
-                                                                            <h5 class="font-size-14 mb-0">Companies
-                                                                            </h5>
-                                                                        </div>
-
-                                                                        <div class="float-end mt-3">
-                                                                            <a class="btn btn-sm btn-success waves-effect waves-light text-white"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#companymodal">Add</a>
-                                                                            <a href="{{ route('add-company') }}"
-                                                                                class="btn btn-sm btn-primary">View</a>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
-                                                                    <div class="border p-3 rounded mt-4">
-                                                                        <div class="d-flex align-items-center">
-                                                                            <div class="avatar-xs me-3">
-                                                                                <span
-                                                                                    class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
-                                                                                    <i class="mdi mdi-bitcoin"></i>
-                                                                                </span>
-                                                                            </div>
-                                                                            <h5 class="font-size-14 mb-0">Representator
-                                                                            </h5>
-                                                                        </div>
-
-                                                                        <div class="float-end mt-3">
-                                                                            <a class="btn btn-sm btn-success waves-effect waves-light text-white"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#representmodal">Add</a>
-                                                                            <a href="{{ route('add-representator') }}"
-                                                                                class="btn btn-sm btn-primary">View</a>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
-                                                                    <div class="border p-3 rounded mt-4">
-                                                                        <div class="d-flex align-items-center">
-                                                                            <div class="avatar-xs me-3">
-                                                                                <span
-                                                                                    class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
-                                                                                    <i class="mdi mdi-bitcoin"></i>
-                                                                                </span>
-                                                                            </div>
-                                                                            <h5 class="font-size-14 mb-0">Vendors</h5>
-                                                                        </div>
-
-                                                                        <div class="float-end mt-3">
-                                                                            <a class="btn btn-sm btn-success waves-effect waves-light text-white"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#vendormodal">Add</a>
-                                                                            <a href="{{ route('add-vendor') }}"
-                                                                                class="btn btn-sm btn-primary">View</a>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
-                                                                    <div class="border p-3 rounded mt-4">
-                                                                        <div class="d-flex align-items-center">
-                                                                            <div class="avatar-xs me-3">
-                                                                                <span
-                                                                                    class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
-                                                                                    <i class="mdi mdi-bitcoin"></i>
-                                                                                </span>
-                                                                            </div>
-                                                                            <h5 class="font-size-14 mb-0">Parel
-                                                                                Registration</h5>
-                                                                        </div>
-
-                                                                        <div class="float-end mt-3">
-                                                                            <a class="btn btn-sm btn-success waves-effect waves-light text-white"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#parcelmodal">Add</a>
-                                                                            <a href="{{ route('add-parcel') }}"
-                                                                                class="btn btn-sm btn-primary">View</a>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    </p>
-                                                </div>
-                                                <!--- tabpane closed -->
-
-                                                <div class="tab-pane" id="profile1" role="tabpanel">
-                                                    <p class="mb-0">
-                                                    <div class="row">
-                                                        <div class="col-xl-12">
-                                                            <h4 class="card-title">Reports Section</h4>
-                                                            <div class="row">
-                                                                <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                                    <div class="border p-3 rounded mt-4">
-                                                                        <div class="d-flex align-items-center mb-0">
-                                                                            <div class="avatar-xs me-3">
-                                                                                <span
-                                                                                    class="avatar-title rounded-circle bg-warning bg-soft text-info font-size-18">
-                                                                                    <i class="mdi mdi-update"></i>
-                                                                                </span>
-                                                                            </div>
-                                                                            <h6 class="font-size-14 mb-0">
-                                                                                Daily Transactions <br>Report Section
-                                                                            </h6>
-                                                                        </div>
-                                                                        <div class="float-end mt-3">
-                                                                            {{-- <a class="btn btn-sm btn-success waves-effect waves-light text-white"
-                                                                                                        data-bs-toggle="modal" data-bs-target="#regionmodal">Add</a> --}}
-                                                                            <a href="#"
-                                                                                class="btn btn-sm btn-primary">View
-                                                                                Report</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                                    <div class="border p-3 rounded mt-4">
-                                                                        <div class="d-flex align-items-center mb-0">
-                                                                            <div class="avatar-xs me-3">
-                                                                                <span
-                                                                                    class="avatar-title rounded-circle bg-warning bg-soft text-info font-size-18">
-                                                                                    <i
-                                                                                        class="mdi mdi-calendar-cursor"></i>
-                                                                                </span>
-                                                                            </div>
-                                                                            <h6 class="font-size-14 mb-0">
-                                                                                Date Range<br>Ledger Report
-                                                                            </h6>
-                                                                        </div>
-                                                                        <div class="float-end mt-3">
-                                                                            {{-- <a class="btn btn-sm btn-success waves-effect waves-light text-white"
-                                                                                                        data-bs-toggle="modal" data-bs-target="#regionmodal">Add</a> --}}
-                                                                            <a href="#"
-                                                                                class="btn btn-sm btn-primary">View
-                                                                                Report</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                                    <div class="border p-3 rounded mt-4">
-                                                                        <div class="d-flex align-items-center mb-0">
-                                                                            <div class="avatar-xs me-3">
-                                                                                <span
-                                                                                    class="avatar-title rounded-circle bg-warning bg-soft text-info font-size-18">
-                                                                                    <i
-                                                                                        class="mdi mdi-account-cash"></i>
-                                                                                </span>
-                                                                            </div>
-                                                                            <h6 class="font-size-14 mb-0">
-                                                                                Ledger report <br> by customer name
-                                                                            </h6>
-                                                                        </div>
-                                                                        <div class="float-end mt-3">
-                                                                            {{-- <a class="btn btn-sm btn-success waves-effect waves-light text-white"
-                                                                                                        data-bs-toggle="modal" data-bs-target="#regionmodal">Add</a> --}}
-                                                                            <a href="#"
-                                                                                class="btn btn-sm btn-primary">View
-                                                                                Report</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                                    <div class="border p-3 rounded mt-4">
-                                                                        <div class="d-flex align-items-center mb-0">
-                                                                            <div class="avatar-xs me-3">
-                                                                                <span
-                                                                                    class="avatar-title rounded-circle bg-warning bg-soft text-info font-size-18">
-                                                                                    <i
-                                                                                        class="mdi mdi-currency-usd-off"></i>
-                                                                                </span>
-                                                                            </div>
-                                                                            <h6 class="font-size-14 mb-0">
-                                                                                List of customers<br> with closing
-                                                                                balance
-
-                                                                            </h6>
-                                                                        </div>
-                                                                        <div class="float-end mt-3">
-                                                                            {{-- <a class="btn btn-sm btn-success waves-effect waves-light text-white"
-                                                                                                        data-bs-toggle="modal" data-bs-target="#regionmodal">Add</a> --}}
-                                                                            <a href="#"
-                                                                                class="btn btn-sm btn-primary">View
-                                                                                Report</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                                    <div class="border p-3 rounded mt-4">
-                                                                        <div class="d-flex align-items-center mb-0">
-                                                                            <div class="avatar-xs me-3">
-                                                                                <span
-                                                                                    class="avatar-title rounded-circle bg-warning bg-soft text-info font-size-18">
-                                                                                    <i class="mdi mdi-update"></i>
-                                                                                </span>
-                                                                            </div>
-                                                                            <h6 class="font-size-14 mb-0">
-                                                                                Dummy report
-                                                                            </h6>
-                                                                        </div>
-                                                                        <div class="float-end mt-3">
-                                                                            {{-- <a class="btn btn-sm btn-success waves-effect waves-light text-white"
-                                                                                                        data-bs-toggle="modal" data-bs-target="#regionmodal">Add</a> --}}
-                                                                            <a href="#"
-                                                                                class="btn btn-sm btn-primary">View
-                                                                                Report</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                                    <div class="border p-3 rounded mt-4">
-                                                                        <div class="d-flex align-items-center mb-0">
-                                                                            <div class="avatar-xs me-3">
-                                                                                <span
-                                                                                    class="avatar-title rounded-circle bg-warning bg-soft text-info font-size-18">
-                                                                                    <i class="mdi mdi-update"></i>
-                                                                                </span>
-                                                                            </div>
-                                                                            <h6 class="font-size-14 mb-0">
-                                                                                Dummy report
-                                                                            </h6>
-                                                                        </div>
-                                                                        <div class="float-end mt-3">
-                                                                            {{-- <a class="btn btn-sm btn-success waves-effect waves-light text-white"
-                                                                                                        data-bs-toggle="modal" data-bs-target="#regionmodal">Add</a> --}}
-                                                                            <a href="#"
-                                                                                class="btn btn-sm btn-primary">View
-                                                                                Report</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!--- tabpane closed -->
-
-                                                <div class="tab-pane" id="messages1" role="tabpanel">
-                                                    <p class="mb-0">
-                                                    <div class="row">
-                                                        <div class="col-xl-12">
-                                                            <h4 class="card-title">Vouchers Section</h4>
-                                                            <div class="row">
-
-                                                                <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                                    <div class="border p-3 rounded mt-4">
-                                                                        <div class="d-flex align-items-center">
-                                                                            <div class="avatar-xs me-3">
-                                                                                <span
-                                                                                    class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
-                                                                                    <i class="mdi mdi-bitcoin"></i>
-                                                                                </span>
-                                                                            </div>
-                                                                            <h5 class="font-size-14 mb-0">Cash Payment
-                                                                            </h5>
-                                                                        </div>
-
-                                                                        <div class="float-end mt-3">
-                                                                            <a class="btn btn-sm btn-success waves-effect waves-light text-white"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#regionmodal">Add</a>
-                                                                            <a href="#"
-                                                                                class="btn btn-sm btn-primary">View</a>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                                    <div class="border p-3 rounded mt-4">
-                                                                        <div class="d-flex align-items-center">
-                                                                            <div class="avatar-xs me-3">
-                                                                                <span
-                                                                                    class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
-                                                                                    <i class="mdi mdi-bitcoin"></i>
-                                                                                </span>
-                                                                            </div>
-                                                                            <h5 class="font-size-14 mb-0">Cash Receipt
-                                                                            </h5>
-                                                                        </div>
-
-                                                                        <div class="float-end mt-3">
-                                                                            <a class="btn btn-sm btn-success waves-effect waves-light text-white"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#regionmodal">Add</a>
-                                                                            <a href="#"
-                                                                                class="btn btn-sm btn-primary">View</a>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                                    <div class="border p-3 rounded mt-4">
-                                                                        <div class="d-flex align-items-center">
-                                                                            <div class="avatar-xs me-3">
-                                                                                <span
-                                                                                    class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
-                                                                                    <i class="mdi mdi-bitcoin"></i>
-                                                                                </span>
-                                                                            </div>
-                                                                            <h5 class="font-size-14 mb-0">Cheque
-                                                                                Payment</h5>
-                                                                        </div>
-
-                                                                        <div class="float-end mt-3">
-                                                                            <a class="btn btn-sm btn-success waves-effect waves-light text-white"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#regionmodal">Add</a>
-                                                                            <a href="#"
-                                                                                class="btn btn-sm btn-primary">View</a>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                                    <div class="border p-3 rounded mt-4">
-                                                                        <div class="d-flex align-items-center">
-                                                                            <div class="avatar-xs me-3">
-                                                                                <span
-                                                                                    class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
-                                                                                    <i class="mdi mdi-bitcoin"></i>
-                                                                                </span>
-                                                                            </div>
-                                                                            <h5 class="font-size-14 mb-0">Cheque
-                                                                                Receipt</h5>
-                                                                        </div>
-
-                                                                        <div class="float-end mt-3">
-                                                                            <a class="btn btn-sm btn-success waves-effect waves-light text-white"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#regionmodal">Add</a>
-                                                                            <a href="#"
-                                                                                class="btn btn-sm btn-primary">View</a>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                                    <div class="border p-3 rounded mt-4">
-                                                                        <div class="d-flex align-items-center">
-                                                                            <div class="avatar-xs me-3">
-                                                                                <span
-                                                                                    class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
-                                                                                    <i class="mdi mdi-bitcoin"></i>
-                                                                                </span>
-                                                                            </div>
-                                                                            <h5 class="font-size-14 mb-0">Journal
-                                                                                Voucher</h5>
-                                                                        </div>
-
-                                                                        <div class="float-end mt-3">
-                                                                            <a class="btn btn-sm btn-success waves-effect waves-light text-white"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#regionmodal">Add</a>
-                                                                            <a href="#"
-                                                                                class="btn btn-sm btn-primary">View</a>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                                    <div class="border p-3 rounded mt-4">
-                                                                        <div class="d-flex align-items-center">
-                                                                            <div class="avatar-xs me-3">
-                                                                                <span
-                                                                                    class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
-                                                                                    <i class="mdi mdi-bitcoin"></i>
-                                                                                </span>
-                                                                            </div>
-                                                                            <h5 class="font-size-14 mb-0">Sales Voucher
-                                                                            </h5>
-                                                                        </div>
-
-                                                                        <div class="float-end mt-3">
-                                                                            <a class="btn btn-sm btn-success waves-effect waves-light text-white"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#regionmodal">Add</a>
-                                                                            <a href="#"
-                                                                                class="btn btn-sm btn-primary">View</a>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    </p>
-                                                </div>
-                                                <!--- tabpane closed -->
-                                            </div>
-                                        </div>
-                                        </p>
-                                    </div>
-
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="card">
-                                        <div class="card-title">
-                                            <h6 class="m-3">Latest Transaction</h6>
-                                            <hr>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="table-responsive">
-                                                <table class="table align-middle table-nowrap mb-2 table-sm">
-                                                    <thead class="table-light">
-                                                        <tr class="">
-                                                            <th style="width: 20px;">
-                                                                <div class="form-check font-size-16 align-middle">
-                                                                    <input class="form-check-input" type="checkbox"
-                                                                        id="transactionCheck01">
-                                                                    <label class="form-check-label"
-                                                                        for="transactionCheck01"></label>
-                                                                </div>
-                                                            </th>
-                                                            <th class="align-middle">Order ID</th>
-                                                            <th class="align-middle">Billing Name</th>
-                                                            <th class="align-middle">Date</th>
-                                                            <th class="align-middle">Total</th>
-                                                            <th class="align-middle">Payment Status</th>
-                                                            <th class="align-middle">Payment Method</th>
-                                                            <th class="align-middle">View Details</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="form-check font-size-16">
-                                                                    <input class="form-check-input" type="checkbox"
-                                                                        id="transactionCheck02">
-                                                                    <label class="form-check-label"
-                                                                        for="transactionCheck02"></label>
-                                                                </div>
-                                                            </td>
-                                                            <td><a href="javascript: void(0);"
-                                                                    class="text-body fw-bold">#SK2540</a>
-                                                            </td>
-                                                            <td>Neal Matthews</td>
-                                                            <td>
-                                                                07 Oct, 2019
-                                                            </td>
-                                                            <td>
-                                                                $400
-                                                            </td>
-                                                            <td>
-                                                                <span
-                                                                    class="badge badge-pill badge-soft-success font-size-11">Paid</span>
-                                                            </td>
-                                                            <td>
-                                                                <i class="fab fa-cc-mastercard me-1"></i> Mastercard
-                                                            </td>
-                                                            <td>
-                                                                <!-- Button trigger modal -->
-                                                                <button type="button"
-                                                                    class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target=".transaction-detailModal">
-                                                                    View Details
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td>
-                                                                <div class="form-check font-size-16">
-                                                                    <input class="form-check-input" type="checkbox"
-                                                                        id="transactionCheck03">
-                                                                    <label class="form-check-label"
-                                                                        for="transactionCheck03"></label>
-                                                                </div>
-                                                            </td>
-                                                            <td><a href="javascript: void(0);"
-                                                                    class="text-body fw-bold">#SK2541</a>
-                                                            </td>
-                                                            <td>Jamal Burnett</td>
-                                                            <td>
-                                                                07 Oct, 2019
-                                                            </td>
-                                                            <td>
-                                                                $380
-                                                            </td>
-                                                            <td>
-                                                                <span
-                                                                    class="badge badge-pill badge-soft-danger font-size-11">Chargeback</span>
-                                                            </td>
-                                                            <td>
-                                                                <i class="fab fa-cc-visa me-1"></i> Visa
-                                                            </td>
-                                                            <td>
-                                                                <!-- Button trigger modal -->
-                                                                <button type="button"
-                                                                    class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target=".transaction-detailModal">
-                                                                    View Details
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td>
-                                                                <div class="form-check font-size-16">
-                                                                    <input class="form-check-input" type="checkbox"
-                                                                        id="transactionCheck04">
-                                                                    <label class="form-check-label"
-                                                                        for="transactionCheck04"></label>
-                                                                </div>
-                                                            </td>
-                                                            <td><a href="javascript: void(0);"
-                                                                    class="text-body fw-bold">#SK2542</a>
-                                                            </td>
-                                                            <td>Juan Mitchell</td>
-                                                            <td>
-                                                                06 Oct, 2019
-                                                            </td>
-                                                            <td>
-                                                                $384
-                                                            </td>
-                                                            <td>
-                                                                <span
-                                                                    class="badge badge-pill badge-soft-success font-size-11">Paid</span>
-                                                            </td>
-                                                            <td>
-                                                                <i class="fab fa-cc-paypal me-1"></i> Paypal
-                                                            </td>
-                                                            <td>
-                                                                <!-- Button trigger modal -->
-                                                                <button type="button"
-                                                                    class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target=".transaction-detailModal">
-                                                                    View Details
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="form-check font-size-16">
-                                                                    <input class="form-check-input" type="checkbox"
-                                                                        id="transactionCheck05">
-                                                                    <label class="form-check-label"
-                                                                        for="transactionCheck05"></label>
-                                                                </div>
-                                                            </td>
-                                                            <td><a href="javascript: void(0);"
-                                                                    class="text-body fw-bold">#SK2543</a>
-                                                            </td>
-                                                            <td>Barry Dick</td>
-                                                            <td>
-                                                                05 Oct, 2019
-                                                            </td>
-                                                            <td>
-                                                                $412
-                                                            </td>
-                                                            <td>
-                                                                <span
-                                                                    class="badge badge-pill badge-soft-success font-size-11">Paid</span>
-                                                            </td>
-                                                            <td>
-                                                                <i class="fab fa-cc-mastercard me-1"></i> Mastercard
-                                                            </td>
-                                                            <td>
-                                                                <!-- Button trigger modal -->
-                                                                <button type="button"
-                                                                    class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target=".transaction-detailModal">
-                                                                    View Details
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="form-check font-size-16">
-                                                                    <input class="form-check-input" type="checkbox"
-                                                                        id="transactionCheck06">
-                                                                    <label class="form-check-label"
-                                                                        for="transactionCheck06"></label>
-                                                                </div>
-                                                            </td>
-                                                            <td><a href="javascript: void(0);"
-                                                                    class="text-body fw-bold">#SK2544</a>
-                                                            </td>
-                                                            <td>Ronald Taylor</td>
-                                                            <td>
-                                                                04 Oct, 2019
-                                                            </td>
-                                                            <td>
-                                                                $404
-                                                            </td>
-                                                            <td>
-                                                                <span
-                                                                    class="badge badge-pill badge-soft-warning font-size-11">Refund</span>
-                                                            </td>
-                                                            <td>
-                                                                <i class="fab fa-cc-visa me-1"></i> Visa
-                                                            </td>
-                                                            <td>
-                                                                <!-- Button trigger modal -->
-                                                                <button type="button"
-                                                                    class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target=".transaction-detailModal">
-                                                                    View Details
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="form-check font-size-16">
-                                                                    <input class="form-check-input" type="checkbox"
-                                                                        id="transactionCheck07">
-                                                                    <label class="form-check-label"
-                                                                        for="transactionCheck07"></label>
-                                                                </div>
-                                                            </td>
-                                                            <td><a href="javascript: void(0);"
-                                                                    class="text-body fw-bold">#SK2545</a>
-                                                            </td>
-                                                            <td>Jacob Hunter</td>
-                                                            <td>
-                                                                04 Oct, 2019
-                                                            </td>
-                                                            <td>
-                                                                $392
-                                                            </td>
-                                                            <td>
-                                                                <span
-                                                                    class="badge badge-pill badge-soft-success font-size-11">Paid</span>
-                                                            </td>
-                                                            <td>
-                                                                <i class="fab fa-cc-paypal me-1"></i> Paypal
-                                                            </td>
-                                                            <td>
-                                                                <!-- Button trigger modal -->
-                                                                <button type="button"
-                                                                    class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target=".transaction-detailModal">
-                                                                    View Details
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <!-- end table-responsive -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!--latest transaction -->
             <!-- end row -->
 
         </div>
@@ -1307,35 +1083,33 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Customer Modal</h5>
+                <h5 class="modal-title">Logistics Registration</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="form2" novalidate method="POST" action="{{ route('store-customer') }}"
+                <form id="form2" novalidate method="POST" action="{{ route('store-vendor') }}"
                     enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-md-12">
                             <div class="row">
-                                <div class="col-md-12 mb-0">
-                                    <label for="useremail" class="form-label">Select Company</label>
-                                    <select class="form-select" name="company_id" required
-                                        class="form-control table-responsive @error('company_id') is-invalid @enderror"
-                                        value="{{ old('company_id') }}">
-                                        @foreach ($companies as $company)
-                                            <option value="{{ $company->id }}">{{ $company->name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                    @error('company_id')
+
+                                <div class="col-md-12 mb-2">
+                                    <label for="username" class="form-label">Logistics Name</label>
+                                    <input type="text" id="username" placeholder="Enter Logistics name"
+                                        class="form-control @error('logistics_name') is-invalid @enderror"
+                                        name="logistics_name" value="{{ old('logistics_name') }}" required
+                                        autocomplete="logistics_name" autofocus>
+
+                                    @error('logistics_name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
                                 </div>
-                                <div class="col-md-12 mb-0">
-                                    <label for="username" class="form-label">Customer Name</label>
-                                    <input type="text" id="username" placeholder="Enter customer name"
+                                <div class="col-md-12 mb-2">
+                                    <label for="username" class="form-label">Vendor Name</label>
+                                    <input type="text" id="username" placeholder="Enter Vendor name"
                                         class="form-control @error('name') is-invalid @enderror" name="name"
                                         value="{{ old('name') }}" required autocomplete="name" autofocus>
 
@@ -1346,9 +1120,9 @@
                                     @enderror
                                 </div>
 
-                                <div class="col-md-12 mb-0">
-                                    <label for="useremail" class="form-label">Customer Email</label>
-                                    <input type="email" id="useremail" placeholder="Enter email"
+                                <div class="col-md-12 mb-2">
+                                    <label for="useremail" class="form-label">Vendor Email</label>
+                                    <input type="email" id="useremail" placeholder="Enter Email address"
                                         class="form-control @error('email') is-invalid @enderror" name="email"
                                         value="{{ old('email') }}" autocomplete="email" required>
 
@@ -1364,8 +1138,8 @@
 
                     {{-- first row closed --}}
                     <div class="row">
-                        <div class="col-md-12 mb-0">
-                            <label for="username" class="form-label">Customer Phone Number</label>
+                        <div class="col-md-12 mb-2">
+                            <label for="username" class="form-label">Vendor Phone Number</label>
                             <input type="text" data-inputmask="'mask': '0399-99999999'" type="number"
                                 maxlength="12" class="form-control @error('phone') is-invalid @enderror"
                                 name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
@@ -1376,7 +1150,7 @@
                                 </span>
                             @enderror
                         </div>
-                        <div class="col-md-12 mb-0">
+                        <div class="col-md-12 mb-2">
                             <label for="useremail" class="form-label">Select Country</label>
                             <select class="form-select" name="country_id" required
                                 class="form-control table-responsive @error('country_id') is-invalid @enderror"
@@ -1394,8 +1168,8 @@
                                 </span>
                             @enderror
                         </div>
-                        <div class="col-md-12 mb-0">
-                            <label for="address" class="form-label">Customer Address</label>
+                        <div class="col-md-12 mb-2">
+                            <label for="address" class="form-label">Vendor Address</label>
                             <textarea name="address" id="address" class="form-control" cols="1" rows="1">
 
                                     </textarea>
@@ -1406,33 +1180,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12 mb-0">
-                            <label for="username" class="form-label">Customer CNIC Number</label>
-                            <input type="text" data-inputmask="'mask': '99999-9999999-9'"
-                                placeholder="XXXXX-XXXXXXX-X" name="cnic_no" required
-                                class="form-control @error('cnic_no') is-invalid @enderror"
-                                value="{{ old('cnic_no') }}" required autocomplete="cnic_no" autofocus>
 
-                            @error('cnic_no')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="col-md-12 mb-0">
-                            <label for="username" class="form-label">Upload CNIC Picture</label>
-                            <input type="file" id="cnic_scane" required name="cnic_scane"
-                                class="form-control @error('cnic_scane') is-invalid @enderror"
-                                autocomplete="cnic_scane" autofocus>
-
-                            @error('cnic_scane')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
                     <div class="modal-footer">
                         <!-- Toogle to second dialog -->
                         <button type="submit" form="form2" class="btn btn-primary " id="modal_submit"
@@ -1562,8 +1310,8 @@
                     @csrf
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="row">
 
+                            <div class="row">
                                 <div class="col-md-6 mb-2">
                                     <label for="username" class="form-label">First Name</label>
                                     <input type="text" id="username" placeholder="First Name" required
@@ -1588,8 +1336,9 @@
                                         </span>
                                     @enderror
                                 </div>
-
-                                <div class="col-md-12 mb-2">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-2">
                                     <label for="useremail" class="form-label">Company Email</label>
                                     <input type="email" id="useremail" placeholder="Email Address"
                                         class="form-control @error('email') is-invalid @enderror" name="email"
@@ -1601,12 +1350,26 @@
                                         </span>
                                     @enderror
                                 </div>
+                                <div class="col-md-6 mb-2">
+                                    <label for="username" class="form-label">Company Website URL</label>
+                                    <input type="url" id="web_url" name="web_url" required
+                                        placeholder="https://example.com" pattern="https://.*"
+                                        class="form-control @error('web_url') is-invalid @enderror"
+                                        value="{{ old('web_url') }}" required autocomplete="company_url" autofocus>
+
+                                    @error('web_url')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
+
                         </div>
                     </div>
                     {{-- first row closed --}}
                     <div class="row">
-                        <div class="col-md-12 mb-2">
+                        <div class="col-md-6 mb-2">
                             <label for="username" class="form-label">Company Phone Number</label>
                             <input type="text" data-inputmask="'mask': '0399-99999999'" required type="number"
                                 maxlength="12" class="form-control @error('phone') is-invalid @enderror"
@@ -1618,7 +1381,7 @@
                                 </span>
                             @enderror
                         </div>
-                        <div class="col-md-12 mb-2">
+                        <div class="col-md-6 mb-2">
                             <label for="username" class="form-label">Company NTN Number</label>
                             <input type="number" id="ntn_no" placeholder="NTN Number" required
                                 class="form-control @error('ntn_no') is-invalid @enderror" name="ntn_no"
@@ -1632,20 +1395,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12 mb-2">
-                            <label for="username" class="form-label">Company Website URL</label>
-                            <input type="url" id="web_url" name="web_url" required
-                                placeholder="https://example.com" pattern="https://.*"
-                                class="form-control @error('web_url') is-invalid @enderror"
-                                value="{{ old('web_url') }}" required autocomplete="company_url" autofocus>
 
-                            @error('web_url')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="col-md-12 mb-2">
+                        <div class="col-md-6 mb-2">
                             <label for="useremail" class="form-label">Select Country</label>
                             <select class="form-select" name="country_id" required
                                 class="form-control table-responsive @error('country_id') is-invalid @enderror"
@@ -1663,11 +1414,74 @@
                                 </span>
                             @enderror
                         </div>
-                        <div class="col-md-12 mb-2">
+                        <div class="col-md-6 mb-2">
                             <label for="address" class="form-label">Company Address</label>
                             <textarea name="address" id="address" class="form-control" cols="1" rows="1">
+                            </textarea>
+                        </div>
+                        <div class="col-md-12 mb-2">
 
-                    </textarea>
+                            <label for="address" class="form-label">Company Representative</label>
+                            <input type="radio" name="answer" id="no" value="no"
+                                class="ml-2">NO
+                            <input type="radio" name="answer" id="yes" value="yes"
+                                class="ml-2">YES
+
+                            <div class="row mt-1" id="company_representative">
+                                <hr>
+                                <div class="col-md-6 mb-2">
+                                    <label for="username" class="form-label">Representative Name</label>
+                                    <input type="text" id="username" placeholder="Representative Name"
+                                        required class="form-control @error('represent_name') is-invalid @enderror"
+                                        name="represent_name" value="{{ old('represent_name') }}" required
+                                        autocomplete="name" autofocus>
+
+                                    @error('represent_name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <label for="username" class="form-label">Phone Number</label>
+                                    <input type="text" data-inputmask="'mask': '0399-99999999'" type="number"
+                                        maxlength="12"
+                                        class="form-control @error('represent_phone') is-invalid @enderror"
+                                        name="represent_phone" value="{{ old('represent_phone') }}" required
+                                        autocomplete="phone" autofocus>
+
+                                    @error('represent_phone')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <label for="useremail" class="form-label">Representative Email</label>
+                                    <input type="email" id="useremail" placeholder="Email Address"
+                                        class="form-control @error('email') is-invalid @enderror"
+                                        name="represent_email" value="{{ old('represent_email') }}"
+                                        autocomplete="represent_email" required>
+
+                                    @error('represent_email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-6 mb-2">
+                                    <label for="address" class="form-label">Representative Address</label>
+                                    <textarea name="represent_address" id="represent_address" class="form-control" cols="1" rows="1">
+
+                                    </textarea>
+                                    @error('represent_address')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -2281,6 +2095,17 @@
                 $('#random_customer').hide();
                 $('#company_customer').show();
 
+        }
+    });
+
+    //oncheck box
+    $("#company_representative").hide();
+    $('input[type=radio][name=answer]').change(function() {
+
+        if ($(this).val() == "yes") {
+            $("#company_representative").show();
+        } else {
+            $("#company_representative").hide();
         }
     });
 </script>

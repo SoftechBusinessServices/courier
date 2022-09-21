@@ -25,13 +25,13 @@
                                     <div class="card-title">
                                         {{-- <h6 class="m-2">Parcels</h6> --}}
                                         <div class="row">
-                                            <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                                            <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3">
                                                 <div class="card border border-dark">
                                                     <div class="card-header bg-transparent border-dark text-center">
                                                         <h6 class="my-0 text-dark text-center text-bold"><i
                                                                 class="mdi mdi-bullseye-arrow "></i>{{ $data->count() }}
                                                         </h6>
-                                                        <span class="">Total Regions</span>
+                                                        <span class="">No of Regions</span>
                                                     </div>
                                                 </div>
                                             </div>

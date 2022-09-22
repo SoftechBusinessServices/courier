@@ -13,7 +13,7 @@
         @include('admin-panel.content')
 
         <!-- end main content-->
-        @include('admin-panel.footer')
+        {{--  @include('admin-panel.footer')  --}}
 
     </div>
 
@@ -47,8 +47,8 @@
     <!-- echarts js -->
     <script src="{{ asset('assets/libs/echarts/echarts.min.js') }}"></script>
     <!-- echarts init -->
-    
-    
+
+
 
     {{-- toastr js --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>

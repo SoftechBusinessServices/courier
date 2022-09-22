@@ -6,7 +6,7 @@
 
 
     <div class="page-content">
-        <div class="container-fluid">
+        <div class="container-fluid " style="border: none">
 
             <!-- start page title -->
             <div class="row">
@@ -14,7 +14,7 @@
                     <!--write your code here  -->
                     <div class="row">
                         <div class="col-12">
-                            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                            <div class="page-title-box d-sm-flex  justify-content-center  ">
                                 <h4 class="mb-sm-0 font-size-18"><a href="{{ route('home') }}">Dashboard</a></h4>
 
                             </div>
@@ -24,13 +24,13 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-6">
+                            <div class="row ">
+                                <div class="col-md-6 ">
 
-                                    <div class="row">
-                                        <div class="card-title">
-                                            <h6 class="">Orders</h6>
-
+                                    <div class="row border rounded  mx-0 mb-3">
+                                        <div class="card-title  ">
+                                            <h6 class="my-2">Orders</h6>
+                                            <hr>
                                         </div>
                                         <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
                                             <div class="card border border-secondary">
@@ -38,8 +38,8 @@
                                                     <h6 class="my-0 text-secondary text-center text-bold"><i
                                                             class="mdi mdi-bullseye-arrow "></i>{{ $data->count() }}
                                                     </h6>
-                                                    <a class="text-dark btn-sm"  data-bs-toggle="modal"
-                                                    data-bs-target="#parcelmodal">New
+                                                    <a class="text-dark btn-sm" data-bs-toggle="modal"
+                                                        data-bs-target="#parcelmodal">New
                                                         Parcel</a>
                                                 </div>
                                             </div>
@@ -144,10 +144,11 @@
                                             <div class="card mb-0">
                                                 <div class="card-body">
                                                     <!-- Nav tabs -->
-                                                    <ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
+                                                    <ul class="nav nav-tabs nav-tabs-custom nav-justified"
+                                                        role="tablist">
                                                         <li class="nav-item">
-                                                            <a class="nav-link active" data-bs-toggle="tab" href="#home1"
-                                                                role="tab">
+                                                            <a class="nav-link active" data-bs-toggle="tab"
+                                                                href="#home1" role="tab">
                                                                 <span class="d-block d-sm-none"><i
                                                                         class="fas fa-home"></i></span>
                                                                 <span class="d-none d-sm-block">Settings</span>
@@ -173,26 +174,33 @@
                                                     </ul>
 
                                                     <!-- Tab panes -->
-                                                    <div class="tab-content p-3 text-muted">
-                                                        <div class="tab-pane active" id="home1" role="tabpanel">
+                                                    <div class="tab-content pt-3  text-muted">
+                                                        <div class="tab-pane active" id="home1" role="tabpanel"
+                                                            style=" ">
                                                             <p class="mb-0">
                                                             <div class="row">
-                                                                <div class="col-xl-12">
-                                                                    <h4 class="card-title">Settings</h4>
-                                                                    <div class="row">
-                                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
-                                                                            <div class="border p-3 rounded mt-4">
-                                                                                <div class="d-flex align-items-center">
+                                                                <div class="col-xl-12 ">
+                                                                    <h4
+                                                                        class="card-title font-weight-bolde font-size-20">
+                                                                        Settings</h4>
+                                                                    <div class="row ">
+                                                                        <div
+                                                                            class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                                                                            <div class="border  rounded mt-2">
+                                                                                <div
+                                                                                    class="d-flex align-items-center p-2 border-bottom">
                                                                                     <div class="avatar-xs me-3">
                                                                                         <span
                                                                                             class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
-                                                                                            <i class="mdi mdi-bitcoin"></i>
+                                                                                            <i
+                                                                                                class="mdi mdi-bitcoin"></i>
                                                                                         </span>
                                                                                     </div>
-                                                                                    <h5 class="font-size-14 mb-0">Regions</h5>
+                                                                                    <h5 class="font-size-14 mb-0">
+                                                                                        Regions</h5>
                                                                                 </div>
 
-                                                                                <div class="float-end mt-3">
+                                                                                <div class="text-center">
                                                                                     <a class="btn btn-sm btn-success waves-effect waves-light text-white"
                                                                                         data-bs-toggle="modal"
                                                                                         data-bs-target="#regionmodal">Add</a>
@@ -202,20 +210,24 @@
 
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
-                                                                            <div class="border p-3 rounded mt-4">
-                                                                                <div class="d-flex align-items-center">
+                                                                        <div
+                                                                            class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                                                                            <div class="border  rounded mt-2">
+                                                                                <div
+                                                                                    class="d-flex align-items-center p-2 border-bottom">
                                                                                     <div class="avatar-xs me-3">
                                                                                         <span
                                                                                             class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
-                                                                                            <i class="mdi mdi-bitcoin"></i>
+                                                                                            <i
+                                                                                                class="mdi mdi-bitcoin"></i>
                                                                                         </span>
                                                                                     </div>
-                                                                                    <h5 class="font-size-14 mb-0">Countries
+                                                                                    <h5 class="font-size-14 mb-0">
+                                                                                        Countries
                                                                                     </h5>
                                                                                 </div>
 
-                                                                                <div class="float-end mt-3">
+                                                                                <div class="text-center">
                                                                                     <a class="btn btn-sm btn-success waves-effect waves-light text-white"
                                                                                         data-bs-toggle="modal"
                                                                                         data-bs-target="#countrymodal">Add</a>
@@ -225,20 +237,24 @@
 
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
-                                                                            <div class="border p-3 rounded mt-4">
-                                                                                <div class="d-flex align-items-center">
+                                                                        <div
+                                                                            class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                                                                            <div class="border  rounded mt-2">
+                                                                                <div
+                                                                                    class="d-flex align-items-center p-2 border-bottom">
                                                                                     <div class="avatar-xs me-3">
                                                                                         <span
                                                                                             class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
-                                                                                            <i class="mdi mdi-bitcoin"></i>
+                                                                                            <i
+                                                                                                class="mdi mdi-bitcoin"></i>
                                                                                         </span>
                                                                                     </div>
-                                                                                    <h5 class="font-size-14 mb-0">Currencies
+                                                                                    <h5 class="font-size-14 mb-0">
+                                                                                        Currencies
                                                                                     </h5>
                                                                                 </div>
 
-                                                                                <div class="float-end mt-3">
+                                                                                <div class="text-center">
                                                                                     <a class="btn btn-sm btn-success waves-effect waves-light text-white"
                                                                                         data-bs-toggle="modal"
                                                                                         data-bs-target="#paisamodal">Add</a>
@@ -272,20 +288,24 @@
                                                                             </div>
                                                                         </div> --}}
                                                                         <!-- doosri row -->
-                                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
-                                                                            <div class="border p-3 rounded mt-4">
-                                                                                <div class="d-flex align-items-center">
+                                                                        <div
+                                                                            class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                                                                            <div class="border  rounded mt-2">
+                                                                                <div
+                                                                                    class="d-flex align-items-center p-2 border-bottom">
                                                                                     <div class="avatar-xs me-3">
                                                                                         <span
                                                                                             class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
-                                                                                            <i class="mdi mdi-bitcoin"></i>
+                                                                                            <i
+                                                                                                class="mdi mdi-bitcoin"></i>
                                                                                         </span>
                                                                                     </div>
-                                                                                    <h5 class="font-size-14 mb-0">Companies
+                                                                                    <h5 class="font-size-14 mb-0">
+                                                                                        Companies
                                                                                     </h5>
                                                                                 </div>
 
-                                                                                <div class="float-end mt-3">
+                                                                                <div class="text-center">
                                                                                     <a class="btn btn-sm btn-success waves-effect waves-light text-white"
                                                                                         data-bs-toggle="modal"
                                                                                         data-bs-target="#companymodal">Add</a>
@@ -318,42 +338,49 @@
 
                                                                             </div>
                                                                         </div> --}}
-                                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
-                                                                            <div class="border p-3 rounded mt-4">
-                                                                                <div class="d-flex align-items-center">
+                                                                        <div
+                                                                            class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                                                                            <div class="border  rounded mt-4 ">
+                                                                                <div
+                                                                                    class="d-flex align-items-center p-2 border-bottom">
                                                                                     <div class="avatar-xs me-3">
                                                                                         <span
                                                                                             class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
-                                                                                            <i class="mdi mdi-bitcoin"></i>
+                                                                                            <i
+                                                                                                class="mdi mdi-bitcoin"></i>
                                                                                         </span>
                                                                                     </div>
-                                                                                    <h5 class="font-size-14 mb-0">Vendors</h5>
+                                                                                    <h5 class="font-size-14 mb-0">
+                                                                                        Vendors</h5>
                                                                                 </div>
-
-                                                                                <div class="float-end mt-3">
+                                                                                <div class=" text-center ">
                                                                                     <a class="btn btn-sm btn-success waves-effect waves-light text-white"
                                                                                         data-bs-toggle="modal"
                                                                                         data-bs-target="#vendormodal">Add</a>
                                                                                     <a href="{{ route('add-vendor') }}"
                                                                                         class="btn btn-sm btn-primary">View</a>
                                                                                 </div>
-
                                                                             </div>
+
+
                                                                         </div>
-                                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
-                                                                            <div class="border p-3 rounded mt-4">
-                                                                                <div class="d-flex align-items-center">
+                                                                        <div
+                                                                            class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                                                                            <div class="border  rounded mt-4">
+                                                                                <div
+                                                                                    class="d-flex align-items-center p-2 border-bottom">
                                                                                     <div class="avatar-xs me-3">
                                                                                         <span
                                                                                             class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
-                                                                                            <i class="mdi mdi-bitcoin"></i>
+                                                                                            <i
+                                                                                                class="mdi mdi-bitcoin"></i>
                                                                                         </span>
                                                                                     </div>
                                                                                     <h5 class="font-size-14 mb-0">Parel
                                                                                         Registration</h5>
                                                                                 </div>
 
-                                                                                <div class="float-end mt-3">
+                                                                                <div class="text-center">
                                                                                     <a class="btn btn-sm btn-success waves-effect waves-light text-white"
                                                                                         data-bs-toggle="modal"
                                                                                         data-bs-target="#parcelmodal">Add</a>
@@ -372,26 +399,33 @@
                                                         </div>
                                                         <!--- tabpane closed -->
 
-                                                        <div class="tab-pane" id="profile1" role="tabpanel">
+                                                        <div class="tab-pane" id="profile1" role="tabpanel"
+                                                            style=" ">
                                                             <p class="mb-0">
                                                             <div class="row">
                                                                 <div class="col-xl-12">
-                                                                    <h4 class="card-title">Reports Section</h4>
+                                                                    <h4
+                                                                        class="card-title font-size-20 font-weight-bolder mb-0">
+                                                                        Reports Section</h4>
                                                                     <div class="row">
-                                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                                            <div class="border p-3 rounded mt-4">
-                                                                                <div class="d-flex align-items-center mb-0">
+                                                                        <div
+                                                                            class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                                            <div class="border  rounded mt-4">
+                                                                                <div
+                                                                                    class="d-flex align-items-center  p-3 border-bottom ">
                                                                                     <div class="avatar-xs me-3">
                                                                                         <span
                                                                                             class="avatar-title rounded-circle bg-warning bg-soft text-info font-size-18">
-                                                                                            <i class="mdi mdi-update"></i>
+                                                                                            <i
+                                                                                                class="mdi mdi-update"></i>
                                                                                         </span>
                                                                                     </div>
                                                                                     <h6 class="font-size-14 mb-0">
-                                                                                        Daily Transactions <br>Report Section
+                                                                                        Daily Transactions <br>Report
+                                                                                        Section
                                                                                     </h6>
                                                                                 </div>
-                                                                                <div class="float-end mt-3">
+                                                                                <div class="text-center">
                                                                                     {{-- <a class="btn btn-sm btn-success waves-effect waves-light text-white"
                                                                                                                 data-bs-toggle="modal" data-bs-target="#regionmodal">Add</a> --}}
                                                                                     <a href="#"
@@ -400,9 +434,11 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                                            <div class="border p-3 rounded mt-4">
-                                                                                <div class="d-flex align-items-center mb-0">
+                                                                        <div
+                                                                            class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                                            <div class="border  rounded mt-4">
+                                                                                <div
+                                                                                    class="d-flex align-items-center p-3 border-bottom">
                                                                                     <div class="avatar-xs me-3">
                                                                                         <span
                                                                                             class="avatar-title rounded-circle bg-warning bg-soft text-info font-size-18">
@@ -414,7 +450,7 @@
                                                                                         Date Range<br>Ledger Report
                                                                                     </h6>
                                                                                 </div>
-                                                                                <div class="float-end mt-3">
+                                                                                <div class="text-center">
                                                                                     {{-- <a class="btn btn-sm btn-success waves-effect waves-light text-white"
                                                                                                                 data-bs-toggle="modal" data-bs-target="#regionmodal">Add</a> --}}
                                                                                     <a href="#"
@@ -423,9 +459,11 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                                            <div class="border p-3 rounded mt-4">
-                                                                                <div class="d-flex align-items-center mb-0">
+                                                                        <div
+                                                                            class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                                            <div class="border  rounded mt-4">
+                                                                                <div
+                                                                                    class="d-flex align-items-center p-3 border-bottom">
                                                                                     <div class="avatar-xs me-3">
                                                                                         <span
                                                                                             class="avatar-title rounded-circle bg-warning bg-soft text-info font-size-18">
@@ -434,10 +472,11 @@
                                                                                         </span>
                                                                                     </div>
                                                                                     <h6 class="font-size-14 mb-0">
-                                                                                        Ledger report <br> by customer name
+                                                                                        Ledger report <br> by customer
+                                                                                        name
                                                                                     </h6>
                                                                                 </div>
-                                                                                <div class="float-end mt-3">
+                                                                                <div class="text-center">
                                                                                     {{-- <a class="btn btn-sm btn-success waves-effect waves-light text-white"
                                                                                                                 data-bs-toggle="modal" data-bs-target="#regionmodal">Add</a> --}}
                                                                                     <a href="#"
@@ -446,9 +485,11 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                                            <div class="border p-3 rounded mt-4">
-                                                                                <div class="d-flex align-items-center mb-0">
+                                                                        <div
+                                                                            class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                                            <div class="border  rounded mt-4">
+                                                                                <div
+                                                                                    class="d-flex align-items-center p-3 border-bottom">
                                                                                     <div class="avatar-xs me-3">
                                                                                         <span
                                                                                             class="avatar-title rounded-circle bg-warning bg-soft text-info font-size-18">
@@ -457,12 +498,13 @@
                                                                                         </span>
                                                                                     </div>
                                                                                     <h6 class="font-size-14 mb-0">
-                                                                                        List of customers<br> with closing
+                                                                                        List of customers<br> with
+                                                                                        closing
                                                                                         balance
 
                                                                                     </h6>
                                                                                 </div>
-                                                                                <div class="float-end mt-3">
+                                                                                <div class="text-center">
                                                                                     {{-- <a class="btn btn-sm btn-success waves-effect waves-light text-white"
                                                                                                                 data-bs-toggle="modal" data-bs-target="#regionmodal">Add</a> --}}
                                                                                     <a href="#"
@@ -471,20 +513,23 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                                            <div class="border p-3 rounded mt-4">
-                                                                                <div class="d-flex align-items-center mb-0">
+                                                                        <div
+                                                                            class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                                            <div class="border  rounded mt-4">
+                                                                                <div
+                                                                                    class="d-flex align-items-center p-3 border-bottom">
                                                                                     <div class="avatar-xs me-3">
                                                                                         <span
                                                                                             class="avatar-title rounded-circle bg-warning bg-soft text-info font-size-18">
-                                                                                            <i class="mdi mdi-update"></i>
+                                                                                            <i
+                                                                                                class="mdi mdi-update"></i>
                                                                                         </span>
                                                                                     </div>
                                                                                     <h6 class="font-size-14 mb-0">
                                                                                         Dummy report
                                                                                     </h6>
                                                                                 </div>
-                                                                                <div class="float-end mt-3">
+                                                                                <div class="text-center">
                                                                                     {{-- <a class="btn btn-sm btn-success waves-effect waves-light text-white"
                                                                                                                 data-bs-toggle="modal" data-bs-target="#regionmodal">Add</a> --}}
                                                                                     <a href="#"
@@ -493,20 +538,23 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                                            <div class="border p-3 rounded mt-4">
-                                                                                <div class="d-flex align-items-center mb-0">
+                                                                        <div
+                                                                            class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                                            <div class="border  rounded mt-4">
+                                                                                <div
+                                                                                    class="d-flex align-items-center p-3 border-bottom">
                                                                                     <div class="avatar-xs me-3">
                                                                                         <span
                                                                                             class="avatar-title rounded-circle bg-warning bg-soft text-info font-size-18">
-                                                                                            <i class="mdi mdi-update"></i>
+                                                                                            <i
+                                                                                                class="mdi mdi-update"></i>
                                                                                         </span>
                                                                                     </div>
                                                                                     <h6 class="font-size-14 mb-0">
                                                                                         Dummy report
                                                                                     </h6>
                                                                                 </div>
-                                                                                <div class="float-end mt-3">
+                                                                                <div class="text-center">
                                                                                     {{-- <a class="btn btn-sm btn-success waves-effect waves-light text-white"
                                                                                                                 data-bs-toggle="modal" data-bs-target="#regionmodal">Add</a> --}}
                                                                                     <a href="#"
@@ -523,27 +571,34 @@
                                                         </div>
                                                         <!--- tabpane closed -->
 
-                                                        <div class="tab-pane" id="messages1" role="tabpanel">
+                                                        <div class="tab-pane" id="messages1" role="tabpanel"
+                                                            style=" ">
                                                             <p class="mb-0">
                                                             <div class="row">
                                                                 <div class="col-xl-12">
-                                                                    <h4 class="card-title">Vouchers Section</h4>
+                                                                    <h4
+                                                                        class="card-title font-size-20 font-weight-bolder mb-0 ">
+                                                                        Vouchers Section</h4>
                                                                     <div class="row">
 
-                                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                                            <div class="border p-3 rounded mt-4">
-                                                                                <div class="d-flex align-items-center">
+                                                                        <div
+                                                                            class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                                            <div class="border  rounded mt-4">
+                                                                                <div
+                                                                                    class="d-flex align-items-center  p-3 border-bottom">
                                                                                     <div class="avatar-xs me-3">
                                                                                         <span
                                                                                             class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
-                                                                                            <i class="mdi mdi-bitcoin"></i>
+                                                                                            <i
+                                                                                                class="mdi mdi-bitcoin"></i>
                                                                                         </span>
                                                                                     </div>
-                                                                                    <h5 class="font-size-14 mb-0">Cash Payment
+                                                                                    <h5 class="font-size-14 mb-0">Cash
+                                                                                        Payment
                                                                                     </h5>
                                                                                 </div>
 
-                                                                                <div class="float-end mt-3">
+                                                                                <div class="text-center">
                                                                                     <a class="btn btn-sm btn-success waves-effect waves-light text-white"
                                                                                         data-bs-toggle="modal"
                                                                                         data-bs-target="#regionmodal">Add</a>
@@ -553,20 +608,24 @@
 
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                                            <div class="border p-3 rounded mt-4">
-                                                                                <div class="d-flex align-items-center">
+                                                                        <div
+                                                                            class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                                            <div class="border rounded mt-4">
+                                                                                <div
+                                                                                    class="d-flex align-items-center p-3 border-bottom ">
                                                                                     <div class="avatar-xs me-3">
                                                                                         <span
                                                                                             class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
-                                                                                            <i class="mdi mdi-bitcoin"></i>
+                                                                                            <i
+                                                                                                class="mdi mdi-bitcoin"></i>
                                                                                         </span>
                                                                                     </div>
-                                                                                    <h5 class="font-size-14 mb-0">Cash Receipt
+                                                                                    <h5 class="font-size-14 mb-0">Cash
+                                                                                        Receipt
                                                                                     </h5>
                                                                                 </div>
 
-                                                                                <div class="float-end mt-3">
+                                                                                <div class="text-center">
                                                                                     <a class="btn btn-sm btn-success waves-effect waves-light text-white"
                                                                                         data-bs-toggle="modal"
                                                                                         data-bs-target="#regionmodal">Add</a>
@@ -576,20 +635,24 @@
 
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                                            <div class="border p-3 rounded mt-4">
-                                                                                <div class="d-flex align-items-center">
+                                                                        <div
+                                                                            class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                                            <div class="border rounded mt-4">
+                                                                                <div
+                                                                                    class="d-flex align-items-center p-3 border-bottom ">
                                                                                     <div class="avatar-xs me-3">
                                                                                         <span
                                                                                             class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
-                                                                                            <i class="mdi mdi-bitcoin"></i>
+                                                                                            <i
+                                                                                                class="mdi mdi-bitcoin"></i>
                                                                                         </span>
                                                                                     </div>
-                                                                                    <h5 class="font-size-14 mb-0">Cheque
+                                                                                    <h5 class="font-size-14 mb-0">
+                                                                                        Cheque
                                                                                         Payment</h5>
                                                                                 </div>
 
-                                                                                <div class="float-end mt-3">
+                                                                                <div class="text-center">
                                                                                     <a class="btn btn-sm btn-success waves-effect waves-light text-white"
                                                                                         data-bs-toggle="modal"
                                                                                         data-bs-target="#regionmodal">Add</a>
@@ -599,20 +662,24 @@
 
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                                            <div class="border p-3 rounded mt-4">
-                                                                                <div class="d-flex align-items-center">
+                                                                        <div
+                                                                            class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                                            <div class="border rounded mt-4">
+                                                                                <div
+                                                                                    class="d-flex align-items-center p-3 border-bottom ">
                                                                                     <div class="avatar-xs me-3">
                                                                                         <span
                                                                                             class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
-                                                                                            <i class="mdi mdi-bitcoin"></i>
+                                                                                            <i
+                                                                                                class="mdi mdi-bitcoin"></i>
                                                                                         </span>
                                                                                     </div>
-                                                                                    <h5 class="font-size-14 mb-0">Cheque
+                                                                                    <h5 class="font-size-14 mb-0">
+                                                                                        Cheque
                                                                                         Receipt</h5>
                                                                                 </div>
 
-                                                                                <div class="float-end mt-3">
+                                                                                <div class="text-center">
                                                                                     <a class="btn btn-sm btn-success waves-effect waves-light text-white"
                                                                                         data-bs-toggle="modal"
                                                                                         data-bs-target="#regionmodal">Add</a>
@@ -622,20 +689,24 @@
 
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                                            <div class="border p-3 rounded mt-4">
-                                                                                <div class="d-flex align-items-center">
+                                                                        <div
+                                                                            class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                                            <div class="border rounded mt-4">
+                                                                                <div
+                                                                                    class="d-flex align-items-center p-3 border-bottom ">
                                                                                     <div class="avatar-xs me-3">
                                                                                         <span
                                                                                             class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
-                                                                                            <i class="mdi mdi-bitcoin"></i>
+                                                                                            <i
+                                                                                                class="mdi mdi-bitcoin"></i>
                                                                                         </span>
                                                                                     </div>
-                                                                                    <h5 class="font-size-14 mb-0">Journal
+                                                                                    <h5 class="font-size-14 mb-0">
+                                                                                        Journal
                                                                                         Voucher</h5>
                                                                                 </div>
 
-                                                                                <div class="float-end mt-3">
+                                                                                <div class="text-center">
                                                                                     <a class="btn btn-sm btn-success waves-effect waves-light text-white"
                                                                                         data-bs-toggle="modal"
                                                                                         data-bs-target="#regionmodal">Add</a>
@@ -645,20 +716,24 @@
 
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                                            <div class="border p-3 rounded mt-4">
-                                                                                <div class="d-flex align-items-center">
+                                                                        <div
+                                                                            class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                                            <div class="border rounded mt-4">
+                                                                                <div
+                                                                                    class="d-flex align-items-center p-3 border-bottom ">
                                                                                     <div class="avatar-xs me-3">
                                                                                         <span
                                                                                             class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
-                                                                                            <i class="mdi mdi-bitcoin"></i>
+                                                                                            <i
+                                                                                                class="mdi mdi-bitcoin"></i>
                                                                                         </span>
                                                                                     </div>
-                                                                                    <h5 class="font-size-14 mb-0">Sales Voucher
+                                                                                    <h5 class="font-size-14 mb-0">Sales
+                                                                                        Voucher
                                                                                     </h5>
                                                                                 </div>
 
-                                                                                <div class="float-end mt-3">
+                                                                                <div class="text-center">
                                                                                     <a class="btn btn-sm btn-success waves-effect waves-light text-white"
                                                                                         data-bs-toggle="modal"
                                                                                         data-bs-target="#regionmodal">Add</a>
@@ -683,8 +758,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6" >
-                                    <div class="card" style="height: 100%">
+                                <div class="col-md-6">
+                                    <div class="card">
                                         <div class="card-title">
                                             <h6 class="m-2">Parcels</h6>
                                             <hr>
@@ -699,7 +774,8 @@
 
                                                     <div class="card-title">
                                                         {{-- <h6 class="m-2">Parcels</h6> --}}
-                                                        <div class="row">
+                                                        <div class="row m-4">
+
                                                             <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4">
                                                                 <div class="card border border-dark">
                                                                     <div
@@ -884,7 +960,7 @@
                                     <div class="d-inline">
                                         <input type="number" id="pl_cost" placeholder="Enter Parcel Cost"
                                             class="form-control @error('pl_cost') is-invalid @enderror" name="pl_cost"
-                                            required autocomplete="pl_cost" autofocus >
+                                            required autocomplete="pl_cost" autofocus>
 
                                         @error('pl_cost')
                                             <span class="invalid-feedback" role="alert">
@@ -893,7 +969,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                {{--  <div class="col-md-6 mb-2">
+                                {{-- <div class="col-md-6 mb-2">
                                     <label for="username" class="form-label">Chargeable Weight</label>
                                     <input type="text" id="chargeable_weight"
                                         class="form-control @error('chargeable_weight') is-invalid @enderror"
@@ -905,7 +981,7 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
-                                </div>  --}}
+                                </div> --}}
                             </div>
                             <div class="row">
 
@@ -1416,17 +1492,15 @@
                         <div class="col-md-12 mb-2">
 
                             <label for="address" class="form-label">Company Representative</label>
-                            <input type="radio" name="answer" id="no" value="no"
-                                class="ml-2">NO
-                            <input type="radio" name="answer" id="yes" value="yes"
-                                class="ml-2">YES
+                            <input type="radio" name="answer" id="no" value="no" class="ml-2">NO
+                            <input type="radio" name="answer" id="yes" value="yes" class="ml-2">YES
 
                             <div class="row mt-1" id="company_representative">
                                 <hr>
                                 <div class="col-md-6 mb-2">
                                     <label for="username" class="form-label">Representative Name</label>
-                                    <input type="text" id="username" placeholder="Representative Name"
-                                        required class="form-control @error('represent_name') is-invalid @enderror"
+                                    <input type="text" id="username" placeholder="Representative Name" required
+                                        class="form-control @error('represent_name') is-invalid @enderror"
                                         name="represent_name" value="{{ old('represent_name') }}" required
                                         autocomplete="name" autofocus>
 
@@ -1929,12 +2003,46 @@
         </div>
     </div>
 </div>
+
 <!-- end modal -->
 
 <!--*************---Javascript---******************-->
+
 <script>
     $(document).ready(function() {
 
+        $('#random_customer').hide();
+        $('#company_customer').hide();
+        // onchange radio
+        $('#random_customer').hide();
+        $('#company_customer').hide();
+        $('input[type=radio][name=customer_type]').on('change', function() {
+            switch ($(this).val()) {
+                case 'random':
+                    // alert("1");
+                    $('#company_customer').hide();
+                    $('#random_customer').show();
+                    break;
+                case 'registered':
+                    // alert("2");
+                    $('#random_customer').hide();
+                    $('#company_customer').show();
+
+            }
+        });
+
+        //oncheck box
+        $("#company_representative").hide();
+        $('input[type=radio][name=answer]').change(function() {
+
+            if ($(this).val() == "yes") {
+                $("#company_representative").show();
+            } else {
+                $("#company_representative").hide();
+            }
+        });
+
+        //country_id function closed
         $('#country_id').on('change', function() {
             var country_id = $(this).val();
 
@@ -1980,14 +2088,14 @@
                                 $('#pl_final').val(pl_total);
 
                             }); // discount blur function closed
-                            $("#pl_weight
-                            ").blur(function() {
+                            $("#pl_weight").blur(function() {
 
                                 var pl_cost = parseInt($('#pl_cost').val());
                                 var pl_extras = parseInt($('#pl_extras').val());
                                 var pl_discount = parseInt($('#pl_discount').val());
                                 var pl_total = (pl_cost + pl_extras) - pl_discount;
-                                $('#pl_final').val(pl_total);
+                                $(
+                                    '#pl_final').val(pl_total);
 
                             }); // discount blur function closed
 
@@ -1999,7 +2107,6 @@
                 });
             }
         });
-        //country_id function closed
 
         // rate controls ajax
         $('#country_idd').on('change', function() {
@@ -2051,40 +2158,7 @@
             }
         });
 
-    });
 
-    // onchange radio
-    $('#random_customer').hide();
-    $('#company_customer').hide();
-    $('input[type=radio][name=customer_type]').on('change', function() {
-        switch ($(this).val()) {
-            case 'random':
-                // alert("1");
-                $('#company_customer').hide();
-                $('#random_customer').show();
-                break;
-            case 'registered':
-                // alert("2");
-                $('#random_customer').hide();
-                $('#company_customer').show();
 
-        }
-    });
-
-    //oncheck box
-    $("#company_representative").hide();
-    $('input[type=radio][name=answer]').change(function() {
-
-        if ($(this).val() == "yes") {
-            $("#company_representative").show();
-        } else {
-            $("#company_representative").hide();
-        }
-    });
+    }); //ready function closed
 </script>
-
-<!-- apexcharts -->
-<script src="{{ asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
-
-<!-- apexcharts init -->
-<script src="{{ asset('assets/js/pages/apexcharts.init.js') }}"></script>

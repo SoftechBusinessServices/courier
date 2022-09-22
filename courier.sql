@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 13, 2022 at 07:57 AM
+-- Generation Time: Sep 22, 2022 at 03:23 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -29,7 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `companies` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `fname` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `lname` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `country_id` bigint(20) UNSIGNED NOT NULL,
@@ -47,14 +48,42 @@ CREATE TABLE `companies` (
 -- Dumping data for table `companies`
 --
 
-INSERT INTO `companies` (`id`, `name`, `email`, `email_verified_at`, `country_id`, `address`, `phone`, `ntn_no`, `web_url`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Vivo', 'raheke@mailinator.com', NULL, 5, 'Eligendi sint ut mo', '0318-6312784', '72', 'https://www.vaherutese.cm', 'active', '2022-09-06 08:20:43', '2022-09-06 08:20:43', NULL),
-(2, 'Oppo', 'huvybexi@mailinator.com', NULL, 4, 'Sed perferendis quod', '0311-8627671', '38', 'https://www.bitatinuhazalo.ca', 'active', '2022-09-06 08:20:53', '2022-09-06 08:20:53', NULL),
-(3, 'Huwaei', 'xexyka@mailinator.com', NULL, 6, 'Nostrud ea pariatur', '0312-0846127', '50', 'https://www.jadyrogikugipi.net', 'active', '2022-09-06 08:21:05', '2022-09-06 08:21:05', NULL),
-(4, 'Lenovo', 'bemabaw@mailinator.com', NULL, 1, 'Et magna rerum asper', '0316-2585814', '89', 'https://www.xihiwaputibi.me.uk', 'active', '2022-09-06 08:21:13', '2022-09-06 08:21:13', NULL),
-(5, 'Fujitsu', 'kege@mailinator.com', NULL, 7, 'Iusto recusandae Ne', '0313-3474217', '28', 'https://www.wusopotyj.cm', 'active', '2022-09-06 08:21:25', '2022-09-06 08:21:25', NULL),
-(6, 'Techno', 'dymu@mailinator.com', NULL, 5, 'Labore quaerat accus', '0317-4438564', '14', 'https://www.raxasosafiwu.us', 'active', '2022-09-12 02:12:38', '2022-09-12 04:59:25', '2022-09-12 04:59:25'),
-(7, 'Alcatel Network', 'alcatel@gmail.com', NULL, 1, 'Karachi', '0312-3446464', '1234', 'https://www.alcatel.com/', 'active', '2022-09-12 04:58:34', '2022-09-12 04:59:10', NULL);
+INSERT INTO `companies` (`id`, `fname`, `lname`, `email`, `email_verified_at`, `country_id`, `address`, `phone`, `ntn_no`, `web_url`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Vivo', 'Tech', 'vivotech@gmail.com', NULL, 1, 'Mumbai', '0323-1645645', '3132132', 'http://www.vivotech.com', 'active', '2022-09-22 02:08:00', '2022-09-22 05:13:42', NULL),
+(2, 'Oppo', 'Tech', 'oppo@mailinator.com', NULL, 3, 'Molestias amet magn', '0317-2455117', '100', 'https://www.fimusy.me', 'active', '2022-09-22 02:10:12', '2022-09-22 05:12:58', NULL),
+(3, 'Samsung', 'Tech', 'samsung@mail.com', NULL, 4, 'Eum vel et sed est d', '0319-0549860', '81', 'https://www.gipyjecij.biz', 'active', '2022-09-22 02:10:49', '2022-09-22 05:14:47', NULL),
+(4, 'Apple', 'Iphone', 'apple@mailinator.com', NULL, 2, 'Ex a magnam sint adi', '0312-8324459', '85', 'https://www.lunujibaz.me', 'active', '2022-09-22 02:11:05', '2022-09-22 05:13:27', NULL),
+(5, 'Infinix', 'Smart', 'infinix@gmail.com', NULL, 4, 'Optio mollit id et', '0314-8114923', '41', 'https://www.codi.org', 'active', '2022-09-22 02:11:44', '2022-09-22 05:14:26', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `company_representatives`
+--
+
+CREATE TABLE `company_representatives` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `company_id` bigint(20) UNSIGNED NOT NULL,
+  `represent_name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `represent_email` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `represent_phone` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `represent_address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` enum('active','inactive') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `company_representatives`
+--
+
+INSERT INTO `company_representatives` (`id`, `company_id`, `represent_name`, `represent_email`, `represent_phone`, `represent_address`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 'Asad Khan', 'asad@gmail.com', '0312-1245645', 'GT road', 'active', '2022-09-22 02:08:00', '2022-09-22 06:42:08', '2022-09-22 06:42:08'),
+(2, 2, 'pememiraw', 'tebi@mailinator.com', '0311-5210560', 'Commodi fugiat ducim', 'active', '2022-09-22 02:10:13', '2022-09-22 02:10:13', NULL),
+(3, 4, 'sivohymiti', 'moje@mailinator.com', '0313-4423964', 'Natus molestiae esse', 'active', '2022-09-22 02:11:05', '2022-09-22 06:42:16', '2022-09-22 06:42:16'),
+(4, 2, 'Abbas', 'abbas@gmail.com', '0323-1223221', 'Peshawar', 'active', '2022-09-22 03:16:36', '2022-09-22 03:16:36', NULL),
+(5, 2, 'Abbas', 'abbas@gmail.com', '0323-1223221', 'Peshawar', 'active', '2022-09-22 03:16:51', '2022-09-22 03:16:51', NULL);
 
 -- --------------------------------------------------------
 
@@ -78,15 +107,10 @@ CREATE TABLE `countries` (
 --
 
 INSERT INTO `countries` (`id`, `region_id`, `name`, `code`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 'Pakistan', 'PK92', 'active', '2022-09-06 08:04:04', '2022-09-06 08:04:04', NULL),
-(2, 2, 'United Kingdom', 'GB44', 'active', '2022-09-06 08:05:48', '2022-09-06 08:05:48', NULL),
-(3, 1, 'India', 'IND91', 'active', '2022-09-06 08:07:04', '2022-09-06 08:07:04', NULL),
-(4, 1, 'Srilanka', 'LKA94', 'active', '2022-09-06 08:07:56', '2022-09-06 08:07:56', NULL),
-(5, 2, 'Ukraine', 'UKR380', 'active', '2022-09-06 08:08:43', '2022-09-06 08:18:32', NULL),
-(6, 3, 'United States', 'USA1', 'active', '2022-09-06 08:09:17', '2022-09-06 08:09:17', NULL),
-(7, 1, 'Afghanistan', 'AFG93', 'active', '2022-09-06 08:09:59', '2022-09-06 08:09:59', NULL),
-(8, 4, 'New Zealand', 'NZL52', 'active', '2022-09-12 02:18:54', '2022-09-12 02:19:59', NULL),
-(9, 1, 'Turkey', 'TUR90', 'active', '2022-09-12 05:04:39', '2022-09-12 05:05:32', NULL);
+(1, 1, 'Pakistan', 'PK92', 'active', '2022-09-22 01:11:35', '2022-09-22 01:11:35', NULL),
+(2, 2, 'United States', 'US01', 'active', '2022-09-22 01:12:03', '2022-09-22 01:12:03', NULL),
+(3, 1, 'India', 'IN93', 'active', '2022-09-22 01:12:21', '2022-09-22 01:12:21', NULL),
+(4, 1, 'Afghanistan', 'AF91', 'active', '2022-09-22 01:12:41', '2022-09-22 01:12:41', NULL);
 
 -- --------------------------------------------------------
 
@@ -109,14 +133,10 @@ CREATE TABLE `currencies` (
 --
 
 INSERT INTO `currencies` (`id`, `name`, `symbol`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'US Dollar (USD)', '$', 'active', '2022-09-06 23:44:38', '2022-09-06 23:46:15', NULL),
-(2, 'Euro (EUR)', '€', 'active', '2022-09-06 23:45:57', '2022-09-06 23:49:50', NULL),
-(3, 'PKR', 'Rs', 'active', '2022-09-06 23:51:28', '2022-09-06 23:51:28', NULL),
-(4, 'INR', '₹', 'active', '2022-09-06 23:51:45', '2022-09-06 23:51:45', NULL),
-(5, 'EGP', '£', 'active', '2022-09-12 02:25:58', '2022-09-12 02:25:58', NULL),
-(6, 'IRR', '﷼', 'active', '2022-09-12 02:26:46', '2022-09-12 02:26:46', NULL),
-(7, 'GBP', '£', 'active', '2022-09-12 02:29:27', '2022-09-12 02:29:27', NULL),
-(8, 'TRY', '₺', 'active', '2022-09-12 05:06:32', '2022-09-12 05:06:32', NULL);
+(1, 'PKR', 'Rs', 'active', '2022-09-22 01:12:57', '2022-09-22 01:12:57', NULL),
+(2, 'INR', '₹', 'active', '2022-09-22 01:14:00', '2022-09-22 01:14:00', NULL),
+(3, 'AFN', '؋', 'active', '2022-09-22 01:15:32', '2022-09-22 01:15:32', NULL),
+(4, 'USD', '$', 'active', '2022-09-22 01:15:48', '2022-09-22 01:15:48', NULL);
 
 -- --------------------------------------------------------
 
@@ -141,17 +161,6 @@ CREATE TABLE `customers` (
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `customers`
---
-
-INSERT INTO `customers` (`id`, `company_id`, `name`, `email`, `email_verified_at`, `country_id`, `address`, `phone`, `cnic_no`, `cnic_scane`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 3, 'Abdur Rahman', 'sugy@mailinator.com', NULL, 5, 'Ex consequatur recus', '0311-4655978', '21313-1313131-3', '1662470590.png', 'active', '2022-09-06 08:23:10', '2022-09-12 02:14:11', NULL),
-(2, 2, 'Salman Khan', 'cypatud@mailinator.com', NULL, 1, 'Alias voluptates deb', '0315-4673493', '23231-2313131-3', '1662470607.png', 'active', '2022-09-06 08:23:27', '2022-09-12 02:14:24', NULL),
-(3, 5, 'Kashif Mahmood', 'daquvutowi@mailinator.com', NULL, 3, 'Aute maiores qui vol', '0312-1471619', '23423-4242424-2', '1662470628.jpg', 'active', '2022-09-06 08:23:48', '2022-09-12 02:14:53', NULL),
-(4, 4, 'vibixalyj', 'natodywex@mailinator.com', NULL, 2, 'Aut ea est elit nu', '0318-7271186', '13123-1312313-1', '1662966831.png', 'active', '2022-09-12 02:13:51', '2022-09-12 02:13:51', NULL),
-(5, 3, 'Asad', 'asad@gmail.com', NULL, 1, 'Islamabad G15 markaz', '0324-6867798', '17301-1232321-3', '1662976919.png', 'active', '2022-09-12 05:02:00', '2022-09-12 05:02:15', NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -171,6 +180,37 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `logistics`
+--
+
+CREATE TABLE `logistics` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `logistic_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `vendor_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `vendor_email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `country_id` bigint(20) UNSIGNED NOT NULL,
+  `vendor_address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `vendor_phone` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` enum('active','inactive') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `logistics`
+--
+
+INSERT INTO `logistics` (`id`, `logistic_name`, `vendor_name`, `vendor_email`, `email_verified_at`, `country_id`, `vendor_address`, `vendor_phone`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, NULL, 'tylap', 'sutijovy@mailinator.com', NULL, 2, 'Anim asperiores nost', '0314-4636626', 'active', '2022-09-22 06:38:52', '2022-09-22 07:13:55', '2022-09-22 07:13:55'),
+(3, NULL, 'coxiwyrib', 'dybawica@mailinator.com', NULL, 3, 'Nisi nesciunt et es', '0312-4258451', 'active', '2022-09-22 06:39:11', '2022-09-22 07:13:58', '2022-09-22 07:13:58'),
+(4, 'TCS', 'Abbas Khab', 'abbas@mail.com', NULL, 1, 'Reprehenderit ullamc', '0314-1198970', 'active', '2022-09-22 06:42:49', '2022-09-22 07:26:15', NULL),
+(5, 'OCS', 'Nouman KHan', 'nouman@mail.com', NULL, 3, 'Cupidatat et excepte', '0311-2773965', 'active', '2022-09-22 07:22:00', '2022-09-22 07:26:55', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `migrations`
 --
 
@@ -185,19 +225,20 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(39, '2022_08_31_095542_create_parcel_registrations_table', 1),
-(71, '2014_10_12_000000_create_users_table', 2),
-(72, '2014_10_12_100000_create_password_resets_table', 2),
-(73, '2019_08_19_000000_create_failed_jobs_table', 2),
-(74, '2022_09_01_075129_create_companies_table', 2),
-(75, '2022_09_01_080253_create_customers_table', 2),
-(76, '2022_09_02_065442_create_shipping_charges_table', 2),
-(77, '2022_09_02_070928_create_regions_table', 2),
-(78, '2022_09_06_061145_create_parcel_registrations_table', 2),
-(79, '2022_09_06_112849_create_currencies_table', 2),
-(80, '2022_09_06_123657_create_countries_table', 2),
-(81, '2022_09_07_075145_create_shipping_charges_table', 3),
-(82, '2022_09_08_133017_create_parcel_registrations_table', 4);
+(25, '2014_10_12_000000_create_users_table', 1),
+(26, '2019_08_19_000000_create_failed_jobs_table', 1),
+(27, '2022_09_01_075129_create_companies_table', 1),
+(28, '2022_09_01_080253_create_customers_table', 1),
+(29, '2022_09_02_070928_create_regions_table', 1),
+(30, '2022_09_06_112849_create_currencies_table', 1),
+(31, '2022_09_06_123657_create_countries_table', 1),
+(32, '2022_09_07_075145_create_shipping_charges_table', 1),
+(33, '2022_09_08_133017_create_parcel_registrations_table', 1),
+(34, '2022_09_16_105303_create_password_resets_table', 1),
+(35, '2022_09_22_052716_create_company_representative_table', 1),
+(36, '2022_09_22_055640_create_logistics_table', 1),
+(38, '2022_09_22_063145_create_companies_table', 2),
+(39, '2022_09_22_070449_create_company_representatives_table', 3);
 
 -- --------------------------------------------------------
 
@@ -208,34 +249,28 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 CREATE TABLE `parcel_registrations` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `pl_id` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `pl_date` date DEFAULT NULL,
   `region_id` bigint(20) UNSIGNED NOT NULL,
   `country_id` bigint(20) UNSIGNED NOT NULL,
-  `pl_weight` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `chargeable_weight` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `currency_id` bigint(20) UNSIGNED NOT NULL,
   `pl_symbol` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `pl_weight` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `pl_cost` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `pl_extras` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `pl_discount` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `pl_final` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `pl_date` date DEFAULT NULL,
   `pl_description` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `pl_status` enum('processing','shipped','transit','delivered') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'processing',
+  `cust_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cust_phone` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cust_address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company_id` int(11) DEFAULT NULL,
+  `represent_id` int(11) DEFAULT NULL,
+  `pl_status` enum('pending','processed','unallocated','allocated','shipped','transit','dispatched','delivered','cancelled','returned') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
   `status` enum('active','inactive') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `parcel_registrations`
---
-
-INSERT INTO `parcel_registrations` (`id`, `pl_id`, `region_id`, `country_id`, `pl_weight`, `chargeable_weight`, `currency_id`, `pl_symbol`, `pl_cost`, `pl_extras`, `pl_discount`, `pl_final`, `pl_date`, `pl_description`, `pl_status`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, '2022-PL-000001', 3, 6, '1200', '1500gm', 1, '$', '1800', '300', '100', '2000', '2022-09-05', 'Parcel to United States', 'processing', 'active', '2022-09-12 13:32:19', '2022-09-12 05:11:57', NULL),
-(2, '2022-PL-000002', 2, 5, '87', '500gm', 2, '€', '50', '490', '100', '440', '1979-07-25', 'Ukraine', 'processing', 'active', '2022-09-12 13:48:02', '2022-09-12 13:48:02', NULL),
-(3, '2022-PL-000003', 3, 6, '450', '500gm', 1, '$', '600', '400', '200', '800', '2022-09-02', 'United States', 'processing', 'active', '2022-09-12 13:59:35', '2022-09-12 13:59:35', NULL),
-(4, '2022-PL-000004', 1, 3, '470', '500gm', 4, '₹', '20', '50', '10', '60', '2022-09-12', 'Punjab, India Parcel', 'processing', 'active', '2022-09-12 05:10:21', '2022-09-12 05:10:21', NULL);
 
 -- --------------------------------------------------------
 
@@ -269,11 +304,8 @@ CREATE TABLE `regions` (
 --
 
 INSERT INTO `regions` (`id`, `name`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Asia', 'active', '2022-09-06 07:41:43', '2022-09-06 07:41:43', NULL),
-(2, 'Europe', 'active', '2022-09-06 07:41:49', '2022-09-06 07:41:49', NULL),
-(3, 'America', 'active', '2022-09-06 07:41:56', '2022-09-06 07:41:56', NULL),
-(4, 'Australia', 'active', '2022-09-12 02:15:14', '2022-09-12 02:15:14', NULL),
-(5, 'Africa', 'active', '2022-09-12 05:02:45', '2022-09-12 05:02:45', NULL);
+(1, 'Asia', 'active', '2022-09-22 01:10:59', '2022-09-22 01:10:59', NULL),
+(2, 'Europe', 'active', '2022-09-22 01:11:08', '2022-09-22 01:11:08', NULL);
 
 -- --------------------------------------------------------
 
@@ -287,12 +319,6 @@ CREATE TABLE `shipping_charges` (
   `country_id` bigint(20) UNSIGNED DEFAULT NULL,
   `currency_id` bigint(20) UNSIGNED DEFAULT NULL,
   `symbol` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `gm0_500` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `gm501_1000` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `gm1001_1500` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `gm1501_2000` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `gm2001_5000` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `gm5000_above` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` enum('active','inactive') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
   `deleted_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -303,14 +329,9 @@ CREATE TABLE `shipping_charges` (
 -- Dumping data for table `shipping_charges`
 --
 
-INSERT INTO `shipping_charges` (`id`, `region_id`, `country_id`, `currency_id`, `symbol`, `gm0_500`, `gm501_1000`, `gm1001_1500`, `gm1501_2000`, `gm2001_5000`, `gm5000_above`, `status`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 3, 'Rs', '10', '20', '30', '40', '50', '100', 'active', NULL, '2022-09-12 13:28:56', '2022-09-12 13:28:56'),
-(2, 2, 2, 7, '£', '100', '200', '300', '400', '500', '1000', 'active', NULL, '2022-09-12 13:29:22', '2022-09-12 02:29:45'),
-(3, 1, 3, 4, '₹', '20', '40', '60', '80', '100', '200', 'active', NULL, '2022-09-12 13:29:57', '2022-09-12 13:29:57'),
-(4, 1, 4, 3, 'Rs', '30', '60', '90', '120', '150', '300', 'active', NULL, '2022-09-12 13:30:19', '2022-09-12 13:30:19'),
-(5, 2, 5, 2, '€', '50', '100', '150', '200', '250', '500', 'active', NULL, '2022-09-12 13:30:42', '2022-09-12 13:30:42'),
-(6, 3, 6, 1, '$', '600', '1200', '1800', '2400', '3000', '6000', 'active', NULL, '2022-09-12 13:58:34', '2022-09-12 13:58:34'),
-(7, 1, 9, 8, '₺', '250', '500', '750', '1000', '1250', '2500', 'active', NULL, '2022-09-12 05:08:31', '2022-09-12 05:09:00');
+INSERT INTO `shipping_charges` (`id`, `region_id`, `country_id`, `currency_id`, `symbol`, `status`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 1, 'Rs', 'active', NULL, '2022-09-22 07:50:03', '2022-09-22 07:50:03'),
+(2, 2, 2, 4, '$', 'active', NULL, '2022-09-22 08:17:10', '2022-09-22 08:17:10');
 
 -- --------------------------------------------------------
 
@@ -334,8 +355,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@gmail.com', NULL, '$2y$10$zW.CkxwqkZvrm/v9rOIAaelDa2fZRA41XrtHMWQGfGzbgbnop3BKy', NULL, '2022-09-12 13:19:24', '2022-09-12 13:19:24'),
-(2, 'user', 'user@gmail.com', NULL, '$2y$10$oxBW2LqcR8F1zf43VbrAZ.GOEt6NolsG0pEwLJAQQ0TJ2FQVRje36', 'FdUlOeNfxYboX72QolXNndm7Vq1gAS7EnXM5NNgiykTwfNKOojIuRHfcR9Mr', '2022-09-12 04:56:49', '2022-09-12 04:56:49');
+(1, 'admin', 'admin@gmail.com', NULL, '$2y$10$PiBOU.I/pWVJ.19bjABJkeFMEPFTXysiKKxR4KxGmCoj4yQdhqAZe', NULL, '2022-09-22 01:10:43', '2022-09-22 01:10:43');
 
 --
 -- Indexes for dumped tables
@@ -347,6 +367,12 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 ALTER TABLE `companies`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `companies_email_unique` (`email`);
+
+--
+-- Indexes for table `company_representatives`
+--
+ALTER TABLE `company_representatives`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `countries`
@@ -373,6 +399,13 @@ ALTER TABLE `customers`
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `logistics`
+--
+ALTER TABLE `logistics`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `logistics_vendor_email_unique` (`vendor_email`);
 
 --
 -- Indexes for table `migrations`
@@ -419,25 +452,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `companies`
 --
 ALTER TABLE `companies`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `company_representatives`
+--
+ALTER TABLE `company_representatives`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `countries`
 --
 ALTER TABLE `countries`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `currencies`
 --
 ALTER TABLE `currencies`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -446,34 +485,40 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `logistics`
+--
+ALTER TABLE `logistics`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `parcel_registrations`
 --
 ALTER TABLE `parcel_registrations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `regions`
 --
 ALTER TABLE `regions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `shipping_charges`
 --
 ALTER TABLE `shipping_charges`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

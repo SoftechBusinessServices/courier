@@ -14,8 +14,8 @@ class ParcelRegistration extends Model
     protected $guarded = [];
 
     protected $fillables = [
-        'pl_id', 'region_id', 'country_id', 'pl_weight', 'chargeable_weight', 'pl_cost', 'pl_currency', 'pl_extras',
-        'pl_symbol', 'pl_discount',  'pl_final', 'pl_date', 'pl_discription',  'pl_status', 'status'
+        'pl_id', 'region_id', 'country_id', 'pl_currency','pl_symbol', 'pl_weight','pl_cost', 'pl_extras',
+         'pl_discount', 'pl_final', 'pl_date', 'pl_discription','cust_name','cust_phone','cust_address','company_id','represent_id','pl_status', 'status'
     ];
 
     public function country()
@@ -34,5 +34,5 @@ class ParcelRegistration extends Model
     {
         return $this->belongsTo(Currency::class, 'currency_id', 'id');
     }
-    
+
 }

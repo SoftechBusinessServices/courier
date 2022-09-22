@@ -16,7 +16,7 @@
 
                                 <h4 class="card-title mt-4">Company Details
                                     <a href="{{ url('/home') }}" class="btn btn-primary btn-sm ml-2">Home</a>
-                                    <a href="{{ url('/companies-print-view') }}" class="btn btn-info btn-sm ml-2">Print Preview</a>
+                                    <a href="{{ url('/representative-print-view') }}" class="btn btn-info btn-sm ml-2">Print Preview</a>
                                 </h4>
                                 {{-- <p class="card-title-desc"><br>
                                     <!-- Button trigger modal -->
@@ -32,18 +32,13 @@
                                         <thead>
                                             <tr>
                                                 <th>S.No</th>
-                                                <th>First Name </th>
-                                                <th>Last Name </th>
+                                                {{--  <th>Company Email</th>  --}}
+                                                <th>Representative Name</th>
                                                 <th>Email</th>
-                                                {{-- <th>Image</th> --}}
                                                 <th>Phone</th>
-                                                <th>Country</th>
                                                 <th>Address</th>
-                                                <th>NTN -No</th>
-                                                <th>Website URL</th>
-                                                {{--  <th>Joining date</th>  --}}
-                                                {{--  <th>Status</th>  --}}
-                                                <th>Representatives</th>
+                                                <th>Company Name </th>
+                                                <th>Joining date</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -57,26 +52,19 @@
                                                 @foreach ($data as $item)
                                                     <tr>
                                                         <td>{{ $i++ }}</td>
-                                                        <td>{{ $item->fname }}</td>
-                                                        <td>{{ $item->lname }}</td>
-                                                        <td>{{ $item->email }}</td>
-                                                        {{-- <td>
-                                                            <img src="{{ asset('uploads/customers/' . $item->image) }}"
-                                                                alt="" width="50">
-                                                        </td> --}}
-                                                        <td>{{ $item->phone }}</td>
-                                                        <td>{{ $item->country->name }}</td>
-                                                        <td>{{ $item->address }}</td>
-                                                        <td>{{ $item->ntn_no }}</td>
-                                                        <td>{{ $item->web_url }}</td>
-
-                                                        {{--  <td>
+                                                        {{--  <td>{{ $item->companies->email }}</td>  --}}
+                                                        <td>{{ $item->represent_name }}</td>
+                                                        <td>{{ $item->represent_email }}</td>
+                                                        <td>{{ $item->represent_phone }}</td>
+                                                        <td>{{ $item->represent_address }}</td>
+                                                        <td>{{ $item->companies->fname." ".$item->companies->lname }}</td>
+                                                        <td>
                                                             @php
                                                                 $month = date('d/m/Y', strtotime($item->created_at));
                                                                 // dd($month);
                                                                 echo $month;
                                                             @endphp
-                                                        </td>  --}}
+                                                        </td>
 
                                                         {{--  <td>
                                                             @if ($item->status == 'inactive')
@@ -87,27 +75,21 @@
                                                                     {{ $item->status }} </button>
                                                             @endif
                                                         </td>  --}}
+                                                        </td>
 
-                                                        <td class="text-center">
-                                                            <a href="{{ url('fetch-representative/' . $item->id) }}"
-                                                                class="btn btn-outline-info  btn-sm delete"
-                                                                title="View">
-                                                                <i class="far fa-eye"></i>
-                                                            </a>|
+                                                        <td style="width: 100px">
                                                             <a href="{{ url('print-parcel/' . $item->id) }}"
                                                                 class="btn btn-outline-dark btn-sm print" title="Print">
                                                                 <i class="fas fa-regular fa-print"></i>
                                                             </a>
-                                                        </td>
-                                                        <td style="width: 100px">
 
-
-                                                            <a href="{{ url('edit-company/' . $item->id) }}"
+                                                            |
+                                                            <a href="{{ url('edit-representator/' . $item->id) }}"
                                                                 class="btn btn-outline-warning btn-sm edit" title="Edit">
                                                                 <i class="fas fa-pencil-alt"></i>
                                                             </a>
                                                             |
-                                                            <a href="{{ url('delete-company/' . $item->id) }}"
+                                                            <a href="{{ url('delete-representator/' . $item->id) }}"
                                                                 class="btn btn-outline-danger btn-sm delete" title="Delete"
                                                                 onclick="return confirm('Are you sure to delete Record?')">
                                                                 <i class="fas fa-trash-alt"></i>

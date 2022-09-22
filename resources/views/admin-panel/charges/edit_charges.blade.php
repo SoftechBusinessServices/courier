@@ -89,7 +89,7 @@
 
                             </div>
                             {{-- row closed --}}
-                            <div class="row">
+                            {{--  <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="username" class="form-label">Weight (0-500)gm </label>
                                     <input type="number" id="gm0_500" value="{{ $data->gm0_500 }}"
@@ -114,9 +114,9 @@
                                         </span>
                                     @enderror
                                 </div>
-                            </div>
+                            </div>  --}}
                             {{-- row closed --}}
-                            <div class="row">
+                            {{--  <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="username" class="form-label">Weight (1001-1500)gm </label>
                                     <input type="number" id="gm1001_1500" value="{{ $data->gm1001_1500 }}"
@@ -141,9 +141,9 @@
                                         </span>
                                     @enderror
                                 </div>
-                            </div>
+                            </div>  --}}
                             {{-- row closed --}}
-                            <div class="row">
+                            {{--  <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="username" class="form-label">Weight (2001-5000)gm </label>
                                     <input type="number" id="gm2001_5000" value="{{ $data->gm2001_5000 }}"
@@ -169,7 +169,7 @@
                                         </span>
                                     @enderror
                                 </div>
-                            </div>
+                            </div>  --}}
                             {{-- row closed --}}
                             <hr>
                             <div class="col-md-6 mb-3">

@@ -29,21 +29,22 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="invoice-title">
-                                    <h4 class="float-end font-size-16">Registered Customers Details</h4>
+                                    <h4 class="float-end font-size-16">Registered Companies Details</h4>
                                     <div class="mb-4">
                                         <img src="assets/images/courier-logo.png" alt="logo" height="20" />
                                     </div>
                                 </div>
                                 <hr>
                                 <div class="py-2 mt-3">
-                                    <h3 class="font-size-15 fw-bold">Registered Customers Summary</h3>
+                                    <h3 class="font-size-15 fw-bold">Registered Companies Summary</h3>
                                 </div>
                                 <div class="text-center">
                                     <table class="table table-nowrap table-sm">
                                         <thead>
                                             <tr>
                                                 <th>S.No</th>
-                                                <th>Company</th>
+                                                <th>First Name</th>
+                                                <th>Last Name</th>
                                                 <th>Email</th>
                                                 {{-- <th>Image</th> --}}
                                                 <th>Phone</th>
@@ -53,7 +54,7 @@
                                                 <th>Website URL</th>
                                                 <th>Joining date</th>
 
-                                                <th>Action</th>
+                                                {{--  <th>Action</th>  --}}
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -64,7 +65,8 @@
                                                 @foreach ($data as $item)
                                                     <tr>
                                                         <td>{{ $i++ }}</td>
-                                                        <td>{{ $item->name }}</td>
+                                                        <td>{{ $item->fname }}</td>
+                                                        <td>{{ $item->lname }}</td>
                                                         <td>{{ $item->email }}</td>
                                                         <td>{{ $item->phone }}</td>
                                                         <td>{{ $item->country->name }}</td>
@@ -78,12 +80,12 @@
                                                                 echo $month;
                                                             @endphp
                                                         </td>
-                                                        <td style="">
+                                                        {{--  <td style="">
                                                             <a href="{{ url('print-parcel/' . $item->id) }}"
                                                                 class="btn btn-outline-dark btn-sm print" title="Print">
                                                                 <i class="fas fa-regular fa-print"></i>
                                                             </a>
-                                                        </td>
+                                                        </td>  --}}
                                                     </tr>
                                                 @endforeach
                                             @else

@@ -59,12 +59,12 @@ class ShippingChargesController extends Controller
             'country_idd' => 'required',
             'currency_idd' => 'required',
             'symbol' => 'required',
-            'gm0_500' => 'required',
-            'gm501_1000' => 'required',
-            'gm1001_1500' => 'required',
-            'gm1501_2000' => 'required',
-            'gm2001_5000' => 'required',
-            'gm5000_above' => 'required',
+            // 'gm0_500' => 'required',
+            // 'gm501_1000' => 'required',
+            // 'gm1001_1500' => 'required',
+            // 'gm1501_2000' => 'required',
+            // 'gm2001_5000' => 'required',
+            // 'gm5000_above' => 'required',
         ]);
 
         $data  = [
@@ -72,12 +72,12 @@ class ShippingChargesController extends Controller
             'country_id' => $request->country_idd,
             'currency_id' => $request->currency_idd,
             'symbol' => $request->symbol,
-            'gm0_500' => $request->gm0_500,
-            'gm501_1000' => $request->gm501_1000,
-            'gm1001_1500' => $request->gm1001_1500,
-            'gm1501_2000' => $request->gm1501_2000,
-            'gm2001_5000' => $request->gm2001_5000,
-            'gm5000_above' => $request->gm5000_above,
+            // 'gm0_500' => $request->gm0_500,
+            // 'gm501_1000' => $request->gm501_1000,
+            // 'gm1001_1500' => $request->gm1001_1500,
+            // 'gm1501_2000' => $request->gm1501_2000,
+            // 'gm2001_5000' => $request->gm2001_5000,
+            // 'gm5000_above' => $request->gm5000_above,
         ];
 
         $data = ShippingCharge::create($data);
@@ -110,12 +110,12 @@ class ShippingChargesController extends Controller
             'country_id' => 'required',
             'currency_id' => 'required',
             'symbol' => 'required',
-            'gm0_500' => 'required',
-            'gm501_1000' => 'required',
-            'gm1001_1500' => 'required',
-            'gm1501_2000' => 'required',
-            'gm2001_5000' => 'required',
-            'gm5000_above' => 'required',
+            // 'gm0_500' => 'required',
+            // 'gm501_1000' => 'required',
+            // 'gm1001_1500' => 'required',
+            // 'gm1501_2000' => 'required',
+            // 'gm2001_5000' => 'required',
+            // 'gm5000_above' => 'required',
         ]);
 
         $data  = [
@@ -123,12 +123,12 @@ class ShippingChargesController extends Controller
             'country_id' => $request->country_idd,
             'currency_id' => $request->currency_idd,
             'symbol' => $request->symbol,
-            'gm0_500' => $request->gm0_500,
-            'gm501_1000' => $request->gm501_1000,
-            'gm1001_1500' => $request->gm1001_1500,
-            'gm1501_2000' => $request->gm1501_2000,
-            'gm2001_5000' => $request->gm2001_5000,
-            'gm5000_above' => $request->gm5000_above,
+            // 'gm0_500' => $request->gm0_500,
+            // 'gm501_1000' => $request->gm501_1000,
+            // 'gm1001_1500' => $request->gm1001_1500,
+            // 'gm1501_2000' => $request->gm1501_2000,
+            // 'gm2001_5000' => $request->gm2001_5000,
+            // 'gm5000_above' => $request->gm5000_above,
         ];
 
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
+use App\Models\CompanyRepresentative;
 use App\Models\Country;
 use Illuminate\Http\Request;
 
@@ -18,10 +19,11 @@ class CompanyController extends Controller
     }
     public function store_company(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
         $validatedData = $request->validate([
 
-            'name' => 'required',
+            'fname' => 'required',
+            'lname' => 'required',
             'email' => 'required',
             'phone' => 'required',
             'country_id' => 'required',
@@ -31,7 +33,8 @@ class CompanyController extends Controller
         ]);
 
         $data  = [
-            'name' => $request->name,
+            'fname' => $request->fname,
+            'lname' => $request->lname,
             'email' => $request->email,
             'phone' => $request->phone,
             'country_id' => $request->country_id,
@@ -40,13 +43,29 @@ class CompanyController extends Controller
             'web_url' => $request->web_url,
         ];
 
-        $data = Company::create($data);
-        // dd($data);
+        $company_id = Company::create($data)->id;
+        // dd($company_id);
 
-        if ($data) {
-            return redirect()->back()->with('success', "Record inserted Successfully");
-        } else {
-            return redirect()->back()->with('error', "Record Not inserted ---");
+        if($request->answer == "yes"){
+            // dd(1);
+        $represent = [
+             'company_id'=> $company_id,
+            'represent_name'=> $request->represent_name,
+            'represent_email'=> $request->represent_email,
+            'represent_phone'=> $request->represent_phone,
+            'represent_address'=> $request->represent_address,
+        ];
+        $represent = CompanyRepresentative::create($represent)->id;
+
+        if($represent){
+            return redirect()->back()->with('success', "Company with Representative added Successfully");
+        }
+
+        }  //representative
+        else{
+            if ($company_id) {
+                return redirect()->back()->with('success', "Company added Successfully");
+            }
         }
     }
     public function edit_company($id)
@@ -64,7 +83,8 @@ class CompanyController extends Controller
         // dd($record);
         $validatedData = $request->validate([
 
-            'name' => 'required',
+            'fname' => 'required',
+            'lname' => 'required',
             'email' => 'required',
             'phone' => 'required',
             'country_id' => 'required',
@@ -74,7 +94,8 @@ class CompanyController extends Controller
         ]);
 
         $data  = [
-            'name' => $request->name,
+            'fname' => $request->fname,
+            'lname' => $request->lname,
             'email' => $request->email,
             'phone' => $request->phone,
             'country_id' => $request->country_id,
@@ -104,4 +125,14 @@ class CompanyController extends Controller
             return redirect()->back()->with('success', "Record Not Deleted...");
         }
     }
+
+    public function fetch_representative($id = NULL)
+    {
+        // dd($id);
+        $data = CompanyRepresentative::where('company_id', $id)->get();
+        // dd($data);
+
+        return view('admin-panel.companies.fetch_representative', compact('data'));
+    }
+
 }

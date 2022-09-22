@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCompaniesTable extends Migration
+class CreateLogisticsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,16 @@ class CreateCompaniesTable extends Migration
      */
     public function up()
     {
-        Schema::create('companies', function (Blueprint $table) {
+        Schema::create('logistics', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->string('email')->unique();
+            $table->string('logistic_name')->nullable();
+            $table->string('vendor_name')->nullable();
+            $table->string('vendor_email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->foreignId('country_id');
             // $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
-            $table->text('address')->nullable();
-            $table->string('phone')->nullable();
-            $table->string('ntn_no')->nullable();
-            $table->text('web_url')->nullable();
+            $table->text('vendor_address')->nullable();
+            $table->string('vendor_phone')->nullable();
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
             $table->softDeletes();
@@ -37,6 +36,6 @@ class CreateCompaniesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('companies');
+        Schema::dropIfExists('logistics');
     }
 }

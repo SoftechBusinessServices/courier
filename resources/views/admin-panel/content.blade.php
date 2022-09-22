@@ -14,7 +14,7 @@
                     <!--write your code here  -->
                     <div class="row">
                         <div class="col-12">
-                            <div class="page-title-box d-sm-flex  justify-content-center  ">
+                            <div class="page-title-box d-sm-flex  justify-content-left  ">
                                 <h4 class="mb-sm-0 font-size-18"><a href="{{ route('home') }}">Dashboard</a></h4>
 
                             </div>
@@ -38,9 +38,11 @@
                                                     <h6 class="my-0 text-secondary text-center text-bold"><i
                                                             class="mdi mdi-bullseye-arrow "></i>{{ $data->count() }}
                                                     </h6>
-                                                    <a class="text-dark btn-sm" data-bs-toggle="modal"
-                                                        data-bs-target="#parcelmodal">New
+                                                    <a href="{{ route('add-parcel') }}" class="text-dark btn-sm">New
                                                         Parcel</a>
+                                                    {{-- <a class="text-dark btn-sm" data-bs-toggle="modal"
+                                                        data-bs-target="#parcelmodal">New
+                                                        Parcel</a> --}}
                                                 </div>
                                             </div>
                                         </div>
@@ -50,7 +52,8 @@
                                                     <h6 class="my-0 text-success text-center text-bold"><i
                                                             class="mdi mdi-bullseye-arrow "></i>{{ $data->count() }}
                                                     </h6>
-                                                    <span class="">Processed</span>
+                                                    <a href="{{ route('add-parcel') }}" class="text-dark btn-sm">New
+                                                        Processed</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -60,7 +63,8 @@
                                                     <h6 class="my-0 text-primary text-center text-bold"><i
                                                             class="mdi mdi-bullseye-arrow "></i>{{ $data->count() }}
                                                     </h6>
-                                                    <span class="">Allocated</span>
+                                                    <a href="{{ route('add-parcel') }}" class="text-dark btn-sm">New
+                                                        Allocated</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -71,7 +75,8 @@
                                                     <h6 class="my-0 text-danger text-center text-bold"><i
                                                             class="mdi mdi-bullseye-arrow "></i>{{ $data->count() }}
                                                     </h6>
-                                                    <span class="">Cancelled</span>
+                                                    <a href="{{ route('add-parcel') }}" class="text-dark btn-sm">New
+                                                        Cancelled</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -81,7 +86,8 @@
                                                     <h6 class="my-0 text-warning text-center text-bold"><i
                                                             class="mdi mdi-bullseye-arrow "></i>{{ $data->count() }}
                                                     </h6>
-                                                    <span class="">Pending</span>
+                                                    <a href="{{ route('add-parcel') }}" class="text-dark btn-sm">New
+                                                        Pending</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -91,7 +97,8 @@
                                                     <h6 class="my-0 text-info text-center text-bold"><i
                                                             class="mdi mdi-bullseye-arrow "></i>{{ $data->count() }}
                                                     </h6>
-                                                    <span class="">Dispatched</span>
+                                                    <a href="{{ route('add-parcel') }}" class="text-dark btn-sm">New
+                                                        Dispatched</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -111,7 +118,8 @@
                                                     <h6 class="my-0 text-success text-center text-bold"><i
                                                             class="mdi mdi-bullseye-arrow "></i>{{ $data->count() }}
                                                     </h6>
-                                                    <span class="">Delivered</span>
+                                                    <a href="{{ route('add-parcel') }}" class="text-dark btn-sm">New
+                                                        Delivered</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -121,7 +129,8 @@
                                                     <h6 class="my-0 text-danger text-center text-bold"><i
                                                             class="mdi mdi-bullseye-arrow "></i>{{ $data->count() }}
                                                     </h6>
-                                                    <span class="">Returned</span>
+                                                    <a href="{{ route('add-parcel') }}" class="text-dark btn-sm">New
+                                                        Returned</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -203,9 +212,10 @@
                                                                                 <div class="text-center">
                                                                                     <a class="btn btn-sm btn-success waves-effect waves-light text-white"
                                                                                         data-bs-toggle="modal"
-                                                                                        data-bs-target="#regionmodal">Add</a>
-                                                                                    <a href="{{ route('add-region') }}"
-                                                                                        class="btn btn-sm btn-primary">View</a>
+                                                                                        data-bs-target="#regionmodal">Add
+                                                                                        region</a>
+                                                                                    {{-- <a href="{{ route('add-region') }}"
+                                                                                        class="btn btn-sm btn-primary">View</a> --}}
                                                                                 </div>
 
                                                                             </div>
@@ -230,9 +240,10 @@
                                                                                 <div class="text-center">
                                                                                     <a class="btn btn-sm btn-success waves-effect waves-light text-white"
                                                                                         data-bs-toggle="modal"
-                                                                                        data-bs-target="#countrymodal">Add</a>
-                                                                                    <a href="{{ route('add-country') }}"
-                                                                                        class="btn btn-sm btn-primary">View</a>
+                                                                                        data-bs-target="#countrymodal">Add
+                                                                                        Country </a>
+                                                                                    {{-- <a href="{{ route('add-country') }}"
+                                                                                        class="btn btn-sm btn-primary">View</a> --}}
                                                                                 </div>
 
                                                                             </div>
@@ -257,37 +268,14 @@
                                                                                 <div class="text-center">
                                                                                     <a class="btn btn-sm btn-success waves-effect waves-light text-white"
                                                                                         data-bs-toggle="modal"
-                                                                                        data-bs-target="#paisamodal">Add</a>
-                                                                                    <a href="{{ route('add-currency') }}"
-                                                                                        class="btn btn-sm btn-primary">View</a>
+                                                                                        data-bs-target="#paisamodal">Add
+                                                                                        Currency</a>
+                                                                                    {{-- <a href="{{ route('add-currency') }}"
+                                                                                        class="btn btn-sm btn-primary">View</a> --}}
                                                                                 </div>
 
                                                                             </div>
                                                                         </div>
-                                                                        {{-- <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
-                                                                            <div class="border p-3 rounded mt-4">
-                                                                                <div class="d-flex align-items-center">
-                                                                                    <div class="avatar-xs me-3">
-                                                                                        <span
-                                                                                            class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
-                                                                                            <i class="mdi mdi-bitcoin"></i>
-                                                                                        </span>
-                                                                                    </div>
-                                                                                    <h5 class="font-size-14 mb-0">Shipping
-                                                                                        Charges</h5>
-                                                                                </div>
-
-                                                                                <div class="float-end mt-3">
-                                                                                    <a class="btn btn-sm btn-success waves-effect waves-light text-white"
-                                                                                        data-bs-toggle="modal"
-                                                                                        data-bs-target="#ratemodal">Add</a>
-                                                                                    <a href="{{ route('add-charges') }}"
-                                                                                        class="btn btn-sm btn-primary">View</a>
-                                                                                </div>
-
-                                                                            </div>
-                                                                        </div> --}}
-                                                                        <!-- doosri row -->
                                                                         <div
                                                                             class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
                                                                             <div class="border  rounded mt-2">
@@ -301,20 +289,74 @@
                                                                                         </span>
                                                                                     </div>
                                                                                     <h5 class="font-size-14 mb-0">
-                                                                                        Companies
+                                                                                        Rate Charges
                                                                                     </h5>
                                                                                 </div>
 
                                                                                 <div class="text-center">
                                                                                     <a class="btn btn-sm btn-success waves-effect waves-light text-white"
                                                                                         data-bs-toggle="modal"
-                                                                                        data-bs-target="#companymodal">Add</a>
-                                                                                    <a href="{{ route('add-company') }}"
-                                                                                        class="btn btn-sm btn-primary">View</a>
+                                                                                        data-bs-target="#ratemodal">Add
+                                                                                        Charges</a>
+                                                                                    {{-- <a href="{{ route('add-currency') }}"
+                                                                                        class="btn btn-sm btn-primary">View</a> --}}
                                                                                 </div>
 
                                                                             </div>
                                                                         </div>
+                                                                        <div
+                                                                            class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                                                                            <div class="border  rounded mt-4 ">
+                                                                                <div
+                                                                                    class="d-flex align-items-center p-2 border-bottom">
+                                                                                    <div class="avatar-xs me-3">
+                                                                                        <span
+                                                                                            class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
+                                                                                            <i
+                                                                                                class="mdi mdi-bitcoin"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <h5 class="font-size-14 mb-0">
+                                                                                        Companies</h5>
+                                                                                </div>
+                                                                                <div class=" text-center ">
+                                                                                    <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                                        data-bs-toggle="modal"
+                                                                                        data-bs-target="#companymodal">Add
+                                                                                        Company </a>
+                                                                                    {{-- <a href="{{ route('add-representator') }}"
+                                                                                    class="btn btn-sm btn-primary">View</a> --}}
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div
+                                                                            class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                                                                            <div class="border  rounded mt-4 ">
+                                                                                <div
+                                                                                    class="d-flex align-items-center p-2 border-bottom">
+                                                                                    <div class="avatar-xs me-3">
+                                                                                        <span
+                                                                                            class="avatar-title rounded-circle bg-warning bg-soft text-warning font-size-18">
+                                                                                            <i
+                                                                                                class="mdi mdi-bitcoin"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <h5 class="font-size-14 mb-0">
+                                                                                        Representatives</h5>
+                                                                                </div>
+                                                                                <div class="text-center ">
+                                                                                    <a class="btn btn-sm btn-success waves-effect waves-light text-white"
+                                                                                        data-bs-toggle="modal"
+                                                                                        data-bs-target="#representmodal">Representative</a>
+                                                                                    {{-- <a href="{{ route('add-representator') }}"
+                                                                                class="btn btn-sm btn-primary">View</a> --}}
+                                                                                </div>
+                                                                            </div>
+
+
+                                                                        </div>
+
                                                                         {{-- <div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
                                                                             <div class="border p-3 rounded mt-4">
                                                                                 <div class="d-flex align-items-center">
@@ -338,6 +380,7 @@
 
                                                                             </div>
                                                                         </div> --}}
+
                                                                         <div
                                                                             class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
                                                                             <div class="border  rounded mt-4 ">
@@ -356,9 +399,10 @@
                                                                                 <div class=" text-center ">
                                                                                     <a class="btn btn-sm btn-success waves-effect waves-light text-white"
                                                                                         data-bs-toggle="modal"
-                                                                                        data-bs-target="#vendormodal">Add</a>
-                                                                                    <a href="{{ route('add-vendor') }}"
-                                                                                        class="btn btn-sm btn-primary">View</a>
+                                                                                        data-bs-target="#vendormodal">Add
+                                                                                        Vendor</a>
+                                                                                    {{-- <a href="{{ route('add-logistic') }}"
+                                                                                        class="btn btn-sm btn-primary">View</a> --}}
                                                                                 </div>
                                                                             </div>
 
@@ -376,16 +420,17 @@
                                                                                                 class="mdi mdi-bitcoin"></i>
                                                                                         </span>
                                                                                     </div>
-                                                                                    <h5 class="font-size-14 mb-0">Parel
-                                                                                        Registration</h5>
+                                                                                    <h5 class="font-size-14 mb-0">New
+                                                                                        Parcel</h5>
                                                                                 </div>
 
                                                                                 <div class="text-center">
                                                                                     <a class="btn btn-sm btn-success waves-effect waves-light text-white"
                                                                                         data-bs-toggle="modal"
-                                                                                        data-bs-target="#parcelmodal">Add</a>
-                                                                                    <a href="{{ route('add-parcel') }}"
-                                                                                        class="btn btn-sm btn-primary">View</a>
+                                                                                        data-bs-target="#parcelmodal">Add
+                                                                                        Parcel</a>
+                                                                                    {{-- <a href="{{ route('add-parcel') }}"
+                                                                                        class="btn btn-sm btn-primary">View</a> --}}
                                                                                 </div>
 
                                                                             </div>
@@ -780,12 +825,13 @@
                                                                 <div class="card border border-dark">
                                                                     <div
                                                                         class="card-header bg-transparent border-dark text-center">
-                                                                        <h6
+                                                                        <p
                                                                             class="my-0 text-dark text-center text-bold">
                                                                             <i
                                                                                 class="mdi mdi-bullseye-arrow "></i>{{ $regions->count() }}
-                                                                        </h6>
-                                                                        <span class="">Regions</span>
+                                                                        </p>
+                                                                        <a class="text-dark hover"
+                                                                            href="{{ route('add-region') }}">Regions</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -798,7 +844,8 @@
                                                                             <i
                                                                                 class="mdi mdi-bullseye-arrow "></i>{{ $countries->count() }}
                                                                         </h6>
-                                                                        <span class="">Countries</span>
+                                                                        <a class="text-dark hover"
+                                                                            href="{{ route('add-country') }}">Countries</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -811,7 +858,8 @@
                                                                             <i
                                                                                 class="mdi mdi-bullseye-arrow "></i>{{ $currencies->count() }}
                                                                         </h6>
-                                                                        <span class="">Currencies</span>
+                                                                        <a class="text-dark hover"
+                                                                            href="{{ route('add-currency') }}">Currencies</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -824,7 +872,8 @@
                                                                             <i
                                                                                 class="mdi mdi-bullseye-arrow "></i>{{ $companies->count() }}
                                                                         </h6>
-                                                                        <span class="">Companies</span>
+                                                                        <a class="text-dark hover"
+                                                                            href="{{ route('add-company') }}">Companies</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -837,7 +886,8 @@
                                                                             <i
                                                                                 class="mdi mdi-bullseye-arrow "></i>{{ $customers->count() }}
                                                                         </h6>
-                                                                        <span class="">Vendors</span>
+                                                                        <a class="text-dark hover"
+                                                                            href="{{ route('add-logistic') }}">Vendors</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -850,7 +900,8 @@
                                                                             <i
                                                                                 class="mdi mdi-bullseye-arrow "></i>{{ $currencies->count() }}
                                                                         </h6>
-                                                                        <span class="">Representatives</span>
+                                                                        <a class="text-dark font-size-10 font-weight-bold p-0"
+                                                                            href="{{ route('add-representator') }}">Representatives</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1157,7 +1208,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="form2" novalidate method="POST" action="{{ route('store-vendor') }}"
+                <form id="form2" novalidate method="POST" action="{{ route('store-logistic') }}"
                     enctype="multipart/form-data">
                     @csrf
                     <div class="row">
@@ -1166,12 +1217,12 @@
 
                                 <div class="col-md-12 mb-2">
                                     <label for="username" class="form-label">Logistics Name</label>
-                                    <input type="text" id="username" placeholder="Enter Logistics name"
+                                    <input type="text" id="username" placeholder="Enter logistic name"
                                         class="form-control @error('logistics_name') is-invalid @enderror"
-                                        name="logistics_name" value="{{ old('logistics_name') }}" required
-                                        autocomplete="logistics_name" autofocus>
+                                        name="logistic_name" value="{{ old('logistic_name') }}" required
+                                        autocomplete="logistic_name" autofocus>
 
-                                    @error('logistics_name')
+                                    @error('logistic_name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -1269,7 +1320,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Customer Modal</h5>
+                <h5 class="modal-title">Company Registration Modal</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -1285,7 +1336,8 @@
                                         class="form-control table-responsive @error('company_id') is-invalid @enderror"
                                         value="{{ old('company_id') }}">
                                         @foreach ($companies as $company)
-                                            <option value="{{ $company->id }}">{{ $company->name }}
+                                            <option value="{{ $company->id }}">
+                                                {{ $company->fname . ' ' . $company->lname }}
                                             </option>
                                         @endforeach
                                     </select>
@@ -1809,7 +1861,7 @@
                                 </div>
                             </div>
                             {{-- row closed --}}
-                            <div class="row">
+                            {{-- <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="username" class="form-label">Weight (0-500)gm </label>
                                     <input type="number" id="gm0_500" placeholder="Enter Price for (0-500)gm "
@@ -1837,9 +1889,9 @@
                                         </span>
                                     @enderror
                                 </div>
-                            </div>
+                            </div> --}}
                             {{-- row closed --}}
-                            <div class="row">
+                            {{-- <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="username" class="form-label">Weight (1001-1500)gm </label>
                                     <input type="number" id="gm1001_1500"
@@ -1868,9 +1920,9 @@
                                         </span>
                                     @enderror
                                 </div>
-                            </div>
+                            </div> --}}
                             {{-- row closed --}}
-                            <div class="row">
+                            {{-- <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="username" class="form-label">Weight (2001-5000)gm </label>
                                     <input type="number" id="gm2001_5000"
@@ -1900,7 +1952,7 @@
                                         </span>
                                     @enderror
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <div class="modal-footer">

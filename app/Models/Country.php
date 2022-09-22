@@ -39,4 +39,8 @@ class Country extends Model
     {
         return $this->hasManyThrough(Country::class, ShippingCharge::class, 'id', 'region_id');
     }
+    public function logistic(){
+
+        return $this->hasMany(Logistic::class,'country_id','id');
+    }
 }

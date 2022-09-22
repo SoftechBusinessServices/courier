@@ -22,12 +22,12 @@ class CreateShippingChargesTable extends Migration
             $table->foreignId('currency_id')->nullable();
             // $table->foreign('currency_id')->references('id')->on('currencies')->onDelete('cascade');
             $table->string('symbol')->nullable();
-            $table->string('gm0_500')->nullable();
-            $table->string('gm501_1000')->nullable();
-            $table->string('gm1001_1500')->nullable();
-            $table->string('gm1501_2000')->nullable();
-            $table->string('gm2001_5000')->nullable();
-            $table->string('gm5000_above')->nullable();
+            // $table->string('gm0_500')->nullable();
+            // $table->string('gm501_1000')->nullable();
+            // $table->string('gm1001_1500')->nullable();
+            // $table->string('gm1501_2000')->nullable();
+            // $table->string('gm2001_5000')->nullable();
+            // $table->string('gm5000_above')->nullable();
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->softDeletes();
             $table->timestamps();

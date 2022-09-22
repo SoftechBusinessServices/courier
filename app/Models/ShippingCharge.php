@@ -13,7 +13,8 @@ class ShippingCharge extends Model
     use SoftDeletes;
     protected $guarded = [];
 
-    protected $fillables = ['region_id', 'country_id', 'currency_id', 'symbol', '0_500g', '501_1000g', '1001_2000g', '2001_5000g', ' above_5000g', 'status'];
+    // protected $fillables = ['region_id', 'country_id', 'currency_id', 'symbol', '0_500g', '501_1000g', '1001_2000g', '2001_5000g', ' above_5000g', 'status'];
+    protected $fillables = ['region_id', 'country_id', 'currency_id', 'symbol','status'];
 
     public function region()
     {

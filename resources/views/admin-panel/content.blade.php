@@ -52,7 +52,7 @@
                                                     <h6 class="my-0 text-success text-center text-bold"><i
                                                             class="mdi mdi-bullseye-arrow "></i>{{ $data->count() }}
                                                     </h6>
-                                                    <a href="{{ route('add-parcel') }}" class="text-dark btn-sm">New
+                                                    <a href="{{ route('add-parcel') }}" class="text-dark btn-sm">
                                                         Processed</a>
                                                 </div>
                                             </div>
@@ -63,7 +63,7 @@
                                                     <h6 class="my-0 text-primary text-center text-bold"><i
                                                             class="mdi mdi-bullseye-arrow "></i>{{ $data->count() }}
                                                     </h6>
-                                                    <a href="{{ route('add-parcel') }}" class="text-dark btn-sm">New
+                                                    <a href="{{ route('add-parcel') }}" class="text-dark btn-sm">
                                                         Allocated</a>
                                                 </div>
                                             </div>
@@ -75,7 +75,7 @@
                                                     <h6 class="my-0 text-danger text-center text-bold"><i
                                                             class="mdi mdi-bullseye-arrow "></i>{{ $data->count() }}
                                                     </h6>
-                                                    <a href="{{ route('add-parcel') }}" class="text-dark btn-sm">New
+                                                    <a href="{{ route('add-parcel') }}" class="text-dark btn-sm">
                                                         Cancelled</a>
                                                 </div>
                                             </div>
@@ -86,7 +86,7 @@
                                                     <h6 class="my-0 text-warning text-center text-bold"><i
                                                             class="mdi mdi-bullseye-arrow "></i>{{ $data->count() }}
                                                     </h6>
-                                                    <a href="{{ route('add-parcel') }}" class="text-dark btn-sm">New
+                                                    <a href="{{ route('add-parcel') }}" class="text-dark btn-sm">
                                                         Pending</a>
                                                 </div>
                                             </div>
@@ -97,7 +97,7 @@
                                                     <h6 class="my-0 text-info text-center text-bold"><i
                                                             class="mdi mdi-bullseye-arrow "></i>{{ $data->count() }}
                                                     </h6>
-                                                    <a href="{{ route('add-parcel') }}" class="text-dark btn-sm">New
+                                                    <a href="{{ route('add-parcel') }}" class="text-dark btn-sm">
                                                         Dispatched</a>
                                                 </div>
                                             </div>
@@ -118,7 +118,7 @@
                                                     <h6 class="my-0 text-success text-center text-bold"><i
                                                             class="mdi mdi-bullseye-arrow "></i>{{ $data->count() }}
                                                     </h6>
-                                                    <a href="{{ route('add-parcel') }}" class="text-dark btn-sm">New
+                                                    <a href="{{ route('add-parcel') }}" class="text-dark btn-sm">
                                                         Delivered</a>
                                                 </div>
                                             </div>
@@ -129,7 +129,7 @@
                                                     <h6 class="my-0 text-danger text-center text-bold"><i
                                                             class="mdi mdi-bullseye-arrow "></i>{{ $data->count() }}
                                                     </h6>
-                                                    <a href="{{ route('add-parcel') }}" class="text-dark btn-sm">New
+                                                    <a href="{{ route('add-parcel') }}" class="text-dark btn-sm">
                                                         Returned</a>
                                                 </div>
                                             </div>
@@ -1149,16 +1149,14 @@
                                 <hr>
                                 <div class="col-md-6 mb-2">
                                     <label for="useremail" class="form-label">Select Company</label>
-                                    <select class="form-select" name="company_id" required id="company_id"
-                                        class="form-control table-responsive @error('company_id') is-invalid @enderror">
-                                        <option value="">-----</option>
+
+                                    <select class="form-control" name="company_idd" id="company_idd">
+                                        <option hidden>Choose Category</option>
                                         @foreach ($companies as $item)
-                                            <option value="{{ $item->id }}">{{ $item->name }}
-                                                {{-- -{{ $country->charges }} --}}
-                                            </option>
+                                            <option value="{{ $item->id }}">{{ $item->fname }}</option>
                                         @endforeach
                                     </select>
-                                    @error('company_id')
+                                    @error('company_idd')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -1166,15 +1164,8 @@
                                 </div>
                                 <div class="col-md-6 mb-2">
                                     <label for="useremail" class="form-label">Select Representator</label>
-                                    <select class="form-select" name="representator_id" required
-                                        id="representator_id"
-                                        class="form-control table-responsive @error('representator_id') is-invalid @enderror">
-                                        <option value="">-----</option>
-                                        @foreach ($countries as $item)
-                                            <option value="{{ $item->id }}">{{ $item->name }}
-                                                {{-- -{{ $country->charges }} --}}
-                                            </option>
-                                        @endforeach
+                                    <select class="form-control" name="represent_idd" id="represent_idd">
+
                                     </select>
                                     @error('representator_id')
                                         <span class="invalid-feedback" role="alert">
@@ -2209,6 +2200,39 @@
 
             }
         });
+        // company-representative selection
+        $('#company_idd').on('change', function() {
+
+
+            var company_idd = $(this).val();
+            alert(company_idd);
+            if(company_idd) {
+                $.ajax({
+                    url: "{{ url('/getCompany') }}/" + company_idd,
+                    type: "GET",
+
+                    success:function(data)
+                    {
+                      if(data){
+                        console.log(data);
+                         $('#represent_idd').empty();
+                         $('#represent_idd').append('<option hidden>Choose Representative</option>');
+                         $.each(data, function(key, course){
+                             $('select[name="represent_idd"]').append('<option value="'+ data['key'] +'">' + course.represent_name+ '</option>');
+                         });
+                     }else{
+
+                        $('#represent_idd').empty();
+
+                     }
+                  }
+                });
+            }else{
+
+                $('#represent_idd').empty();
+
+            }
+         });
 
 
 

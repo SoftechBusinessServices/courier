@@ -10,6 +10,12 @@ use Illuminate\Http\Request;
 class CompanyController extends Controller
 {
     //
+    public function getCompany($id)
+    {
+        $course  = CompanyRepresentative::where('company_id', $id)->get();
+        return response()->json($course);
+    }
+
     public function add_company()
     {
         $data = Company::all();

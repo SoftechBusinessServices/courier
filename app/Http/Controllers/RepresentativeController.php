@@ -45,7 +45,7 @@ class RepresentativeController extends Controller
 
         if ($data) {
 
-            return redirect('add-representator')->with('success', "Record Added Successfully");
+            return redirect('/')->with('success', "Record Added Successfully");
         } else {
             return redirect()->back()->with('error', "Record Not Added...");
         }

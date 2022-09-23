@@ -57,6 +57,8 @@ Route::get('getSelected/{id}', [ShippingChargesController::class, 'getSelected']
 Route::get('getCurrency/{id}', [ShippingChargesController::class, 'getCurrency']);
 Route::get('getSelectedShipping/{id}', [ParcelRegistrationController::class, 'getSelectedShipping']);
 
+Route::get('getCompany/{id}', [CompanyController::class, 'getCompany']);
+
 //region Routes
 Route::get('add-region', [RegionController::class, 'add_region'])->name('add-region');
 Route::post('store-region', [RegionController::class, 'store_region'])->name('store-region');

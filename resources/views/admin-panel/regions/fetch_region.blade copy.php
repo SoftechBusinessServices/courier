@@ -1,7 +1,7 @@
 @extends('admin-panel.index')
 
 @section('content')
-    <div class="main-content container">
+    <div class="main-content">
 
         <div class="page-content">
             <div class="container-fluid">
@@ -14,32 +14,11 @@
                         <div class="card">
                             <div class="card-body">
                                 <p class="card-title-desc text-dark">
-                                    <a href="{{ route('home') }}" class="btn btn-primary btn-md text-white">Go Back </a>
-                                    <a href="{{ route('home') }}" class="btn btn-primary btn-md text-white">Dashboard </a>
-                                    <span class="font-size-20 font-weight-bold"> Countries under selected <a href="{{ route('add-region') }}"> Regions</a>
-
-                                    </span>
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label for="">Start Date</label>
-                                                <input type="date" class="form-control" name="start_date">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label for="">End Date</label>
-                                                <input type="date" class="form-control" name="end_date">
-                                            </div>
-                                        </div>
-                                    </div>
-
-
+                                    Countries under selected <a href="{{ route('add-region')}}">Regions</a> 
                                 </p>
                                 @if (isset($data))
                                     <table id="datatable-buttons"
                                         class="table table-bordered dt-responsive nowrap w-100 table-sm">
-
                                         <thead>
                                             <tr>
                                                 <th>S.No</th>
@@ -60,7 +39,7 @@
                                                 @foreach ($data as $item)
                                                     <tr>
                                                         <td>{{ $i++ }}</td>
-                                                        <td class="bg-secondary text-white">{{ $item->region->name }}</td>
+                                                        <td class="bg-secondary text-white">{{ $item->region->name}}</td>
                                                         <td>{{ $item->name }}</td>
                                                         <td>{{ $item->code }}</td>
 
@@ -88,7 +67,6 @@
                                     </table>
                                 @endif
                             </div>
-
 
                         </div> <!-- end col -->
                     </div>

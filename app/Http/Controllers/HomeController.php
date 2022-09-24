@@ -108,9 +108,15 @@ class HomeController extends Controller
         } else {
             return redirect()->back()->with("error", "Your New password does not same as Confirm password.");
         }
+
+        
     }
 
+    public function fetch_user(){
 
+        $data = User::all();
+        return view('admin-panel.users.fetch_user', compact('data'));
+    }
 
 
 

@@ -203,8 +203,6 @@
         {{--  Processed table end   --}}
 
 
-
-
         {{--  Setting Table - Start   --}}
 
         <div class="page-content px-5">
@@ -223,9 +221,6 @@
 
                                 <h3 class="mb-0 mt-2">Setting </h3>
                             </a>
-
-
-
                         </div>
                         <div class="row gx-5  ">
                             <div class="col-3 ">
@@ -242,8 +237,11 @@
 
                                     <div class="modal-footer flex-nowrap p-0 justify-content-center">
                                         <a class="btn btn-primary btn-md text-white " data-bs-toggle="modal"
-                                            data-bs-target="#parcelmodal">Add
-                                            Parcel </a>
+                                            data-bs-target="#usermodal">Add
+                                            User </a>
+                                        <a class="btn btn-success btn-md text-white " data-bs-toggle="modal"
+                                            data-bs-target="{{route('add-user')}}">Users List
+                                        </a>
 
                                     </div>
                                 </div>
@@ -265,8 +263,10 @@
                                             <div class="modal-footer flex-nowrap p-0 justify-content-center">
                                                 <a class="btn btn-primary btn-md text-white " data-bs-toggle="modal"
                                                     data-bs-target="#parcelmodal">Add
-                                                    Parcel </a>
-
+                                                    Customer </a>
+                                                    <a class="btn btn-success btn-md text-white " data-bs-toggle="modal"
+                                                    data-bs-target="#parcelmodal">Customers List
+                                                </a>
                                             </div>
                                         </div>
                             </div> {{--  <!-- Vendors  -->  --}}
@@ -286,7 +286,10 @@
                                             <div class="modal-footer flex-nowrap p-0 justify-content-center">
                                                 <a class="btn btn-primary btn-md text-white " data-bs-toggle="modal"
                                                     data-bs-target="#parcelmodal">Add
-                                                    Parcel </a>
+                                                    Vendor </a>
+                                                    <a class="btn btn-success btn-md text-white " data-bs-toggle="modal"
+                                            data-bs-target="#parcelmodal">Vendors List
+                                        </a>
 
                                             </div>
                                         </div>
@@ -309,7 +312,10 @@
                                             <div class="modal-footer flex-nowrap p-0 justify-content-center">
                                                 <a class="btn btn-primary btn-md text-white " data-bs-toggle="modal"
                                                     data-bs-target="#parcelmodal">Add
-                                                    Parcel </a>
+                                                    Region </a>
+                                                    <a class="btn btn-success btn-md text-white " data-bs-toggle="modal"
+                                            data-bs-target="#parcelmodal">Regions List
+                                        </a>
 
                                             </div>
                                         </div>

@@ -15,10 +15,10 @@ class Region extends Model
 
     protected $fillables = ['name','status'];
 
-    public function shipping()
-    {
-        return $this->hasOne(ShippingCharge::class, 'region_id', 'id');
-    }
+    // public function shipping()
+    // {
+    //     return $this->hasOne(ShippingCharge::class, 'region_id', 'id');
+    // }
     public function country()
     {
         return $this->hasMany(Country::class, 'region_id', 'id');

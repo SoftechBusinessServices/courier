@@ -64,9 +64,9 @@
                                                         <td>{{ $item->pl_id }}</td>
                                                         <td>{{ $item->region->name }}</td>
                                                         <td>{{ $item->country->name }}</td>
-                                                        <td>{{ $item->currency->name }}</td>
+                                                        {{-- <td>{{ $item->currency->name }}</td> --}}
                                                         <td>{{ $item->pl_weight }}</td>
-                                                        <td>{{ $item->chargeable_weight }}</td>
+                                                        {{-- <td>{{ $item->chargeable_weight }}</td> --}}
                                                         {{-- <td>{{ $item->pl_currency }}</td> --}}
                                                         <td>{{ $item->pl_cost }}</td>
                                                         <td>{{ $item->pl_extras }}</td>

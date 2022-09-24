@@ -9,7 +9,7 @@ use App\Http\Controllers\vendorController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\ShippingChargesController;
+// use App\Http\Controllers\ShippingChargesController;
 use App\Http\Controllers\ParcelRegistrationController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\LogisticController;
@@ -53,8 +53,8 @@ Route::post('update-parcel/{id}', [ParcelRegistrationController::class, 'update_
 Route::get('delete-parcel/{id}', [ParcelRegistrationController::class, 'destroy_parcel'])->name('delete-parcel');
 
 //ajax dependent
-Route::get('getSelected/{id}', [ShippingChargesController::class, 'getSelected']);
-Route::get('getCurrency/{id}', [ShippingChargesController::class, 'getCurrency']);
+// Route::get('getSelected/{id}', [ShippingChargesController::class, 'getSelected']);
+// Route::get('getCurrency/{id}', [ShippingChargesController::class, 'getCurrency']);
 Route::get('getSelectedShipping/{id}', [ParcelRegistrationController::class, 'getSelectedShipping']);
 
 Route::get('getCompany/{id}', [CompanyController::class, 'getCompany']);
@@ -91,6 +91,7 @@ Route::get('restore-currency/{id}', [ShippingChargesController::class, 'restorec
 Route::get('currency-forceDelete/{id}', [ShippingChargesControllers::class, 'currency_forceDelete'])->name('currency-forceDelete');
 
 //Currency Charges
+Route::get('create-country/{id}', [CountryController::class, 'create_country'])->name('create_country');
 Route::get('add-country', [CountryController::class, 'add_country'])->name('add-country');
 Route::post('store-country', [CountryController::class, 'store_country'])->name('store-country');
 Route::get('delete-country/{id}', [CountryController::class, 'destroy_country'])->name('delete-country');
@@ -140,6 +141,9 @@ Route::post('reset-password', [ForgotPasswordController::class, 'ResetPasswordSt
 Route::get('region/delete/{id}', [RegionController::class, 'destroy']);
 
 Route::get('add-user/',[HomeController::class,'fetch_user'])->name('add-user');
+Route::post('store-user/',[HomeController::class,'store_user'])->name('store-user');
+Route::get('edit-user/',[HomeController::class,'fetch_user'])->name('add-user');
+Route::get('fetch-user/',[HomeController::class,'fetch_user'])->name('add-user');
 Route::get('delete-user/{id}',[HomeController::class,'destroy_user'])->name('delete-user');
 
 

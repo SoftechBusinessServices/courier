@@ -1,86 +1,153 @@
-@extends('admin-panel.index')
+{{-- @extends('admin-panel.index')
 
 @section('content')
-    <div class="">
+    <div class="main-content container">
 
         <div class="page-content">
             <div class="container-fluid">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Country Details
-                                    <a href="{{ url('/home') }}" class="btn btn-primary btn-sm ml-2">Home</a>
-                                    {{-- <button type="button"
-                                    class="btn btn-success btn-sm btn-rounded waves-effect waves-light"
-                                    data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
-                                    New Region
-                                </button> --}}
-                                <a href="{{ url('regions-print-view') }}" class="btn btn-info btn-sm ml-2">Print Preview</a>
-                                </h4>
-                                <form class="needs-validation" novalidate action="{{ route('store-region') }}"
-                                    method="POST">
-                                    @csrf
-                                    <div class="row">
-                                        <div class="col-md-6 mb-3">
-                                            <label for="username" class="form-label">Enter Region Name</label>
-                                            <input type="text" id="username" placeholder="Enter customer name"
-                                                class="form-control @error('name') is-invalid @enderror" name="name"
-                                                value="{{ old('name') }}" required autocomplete="name" autofocus>
-                                            @error('name')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-check mb-3">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                    id="invalidCheck" required>
-                                                <label class="form-check-label" for="invalidCheck">
-                                                    Agree to terms and conditions
-                                                </label>
-                                                <div class="invalid-feedback">
-                                                    You must agree before submitting.
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <button class="btn btn-primary" type="submit">Submit form</button>
-                                            </div>
-                                        </div>
 
-                                    </div>
-
-
-                                </form>
-                            </div>
-                        </div>
-                        <!-- end card -->
-                    </div> <!-- end col -->
-
-                </div>
-
+                <!-- start page title -->
                 <div class="row">
                     <div class="col-12">
                         <!--write your code here  -->
 
                         <div class="card">
                             <div class="card-body">
+                                <p class="card-title-desc text-dark">
+                                    <a href="{{ route('home') }}" class="btn btn-primary btn-md text-white">Back</a>
+                                    <a href="{{ route('home') }}" class="btn btn-dark btn-md text-white">Dashboard </a>
+                                    <span class="font-size-20 font-weight-bold"> Countries under selected <a href="{{ route('add-region') }}"> Regions</a>
 
-                                <h4 class="card-title"></h4>
-                                <h4 class="card-title-desc text-dark ">
-                                    Product Categories Details
-                                </h4>
+                                    </span>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label for="">Start Date</label>
+                                                <input type="date" class="form-control" name="start_date">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label for="">End Date</label>
+                                                <input type="date" class="form-control" name="end_date">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </p>
                                 @if (isset($data))
                                     <table id="datatable-buttons"
-                                        class="table table-bordered dt-responsive nowrap w-100 table-sm text-center table-sm">
-                                        <thead >
-                                            <tr class="text-center">
+                                        class="table table-bordered dt-responsive nowrap w-100 table-sm">
+
+                                        <thead>
+                                            <tr>
                                                 <th>S.No</th>
                                                 <th>Region</th>
-                                                {{-- <th>Subcategories</th> --}}
+                                                <th>Country</th>
+                                                <th>Code</th>
+                                                <th>Status</th>
+
+                                            </tr>
+                                        </thead>
+
+
+                                        <tbody>
+                                            @php
+                                                $i = 1;
+                                            @endphp
+                                            @if ($data->count() > 0)
+                                                @foreach ($data as $item)
+                                                    <tr>
+                                                        <td>{{ $i++ }}</td>
+                                                        <td class="bg-secondary text-white">{{ $item->region->name }}</td>
+                                                        <td>{{ $item->name }}</td>
+                                                        <td>{{ $item->code }}</td>
+
+                                                        <td>
+                                                            @if ($item->status == 'inactive')
+                                                                <button type="button" class="btn btn-danger  btn-sm">
+                                                                    {{ $item->status }} </button>
+                                                            @else
+                                                                <button type="button" class="btn btn-success btn-sm">
+                                                                    {{ $item->status }} </button>
+                                                            @endif
+                                                        </td>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            @else
+                                                <tr>
+                                                    <td><code>No record found...</code></td>
+                                                </tr>
+                                            @endif
+
+
+
+                                        </tbody>
+                                    </table>
+                                @endif
+                            </div>
+
+
+                        </div> <!-- end col -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection --}}
+
+@extends('admin-panel.index')
+
+@section('content')
+    <div class="main-content container">
+
+        <div class="page-content">
+            <div class="container-fluid">
+
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <!--write your code here  -->
+
+                        <div class="card">
+                            <div class="card-body">
+                                <p class="card-title-desc text-dark">
+                                    <a href="{{ route('home') }}" class="btn btn-primary btn-md text-white">Back</a>
+                                    <a href="{{ route('home') }}" class="btn btn-dark btn-md text-white">Dashboard </a>
+                                    <span class="font-size-20 font-weight-bold"> Countries under selected <a href="{{ route('add-region') }}"> Regions</a>
+
+                                    </span>
+                                    {{-- <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label for="">Start Date</label>
+                                                <input type="date" class="form-control" name="start_date">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label for="">End Date</label>
+                                                <input type="date" class="form-control" name="end_date">
+                                            </div>
+                                        </div>
+                                    </div> --}}
+
+
+                                </p>
+                                @if (isset($data))
+                                    <table id="datatable-buttons"
+                                        class="table table-bordered dt-responsive nowrap w-100 table-sm text-center">
+
+                                        <thead>
+                                            <tr>
+                                                <th>S.No</th>
+                                                <th>Region</th>
+                                                <th>Countries</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
+
                                             </tr>
                                         </thead>
 
@@ -95,6 +162,24 @@
                                                         <td>{{ $i++ }}</td>
                                                         <td>{{ $item->name }}</td>
                                                         <td>
+                                                           
+                                                            <a href="{{ url('create-country/'.$item->id) }}"
+                                                                class="btn btn-outline-primary btn-sm delete"
+                                                                title="add">
+                                                                <i class="far fa-eye"></i>
+                                                            </a>
+                                                            <span class="text-dark">|</span>
+                                                            {{ $item->count() }}  
+                                                            <span class="text-dark">|</span>
+                                                            <a href="{{ url('fetch-region/' . $item->id) }}"
+                                                                class="btn btn-outline-primary btn-sm delete"
+                                                                title="View">
+                                                                <i class="far fa-eye"></i>
+                                                            </a>
+                                                                                                                    
+                                                        </td>
+                                                       
+                                                        <td>
                                                             @if ($item->status == 'inactive')
                                                                 <button type="button" class="btn btn-danger  btn-sm">
                                                                     {{ $item->status }} </button>
@@ -103,15 +188,8 @@
                                                                     {{ $item->status }} </button>
                                                             @endif
                                                         </td>
-                                                        </td>
-
                                                         <td style="">
-                                                            <a href="{{ url('fetch-region/' . $item->id) }}"
-                                                                class="btn btn-outline-secondary btn-sm delete"
-                                                                title="View">
-                                                                <i class="far fa-eye"></i>
-                                                            </a>
-                                                            |
+                                                           
                                                             <a href="{{ url('edit-region/' . $item->id) }}"
                                                                 class="btn btn-outline-warning btn-sm delete"
                                                                 title="Edit">
@@ -139,13 +217,11 @@
                                 @endif
                             </div>
 
+
                         </div> <!-- end col -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
-    {{-- <script src="{{asset('assets/js/pages/form-validation.init.js')}}"></script> --}}
 @endsection

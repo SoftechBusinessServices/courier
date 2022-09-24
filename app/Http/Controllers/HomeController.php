@@ -112,6 +112,30 @@ class HomeController extends Controller
         
     }
 
+    public function store_user(Request $request){
+
+        // dd($request->all());
+        $request->validate([
+            'name'=> 'required',
+            'email'=> 'required',
+            'password'=> 'required',
+        ]);
+
+        $data = [
+            'name' =>$request->name,
+            'email' =>$request->email,
+            'password' =>$request->password,
+        ];
+        $data = User::create($data);
+        if($data){
+
+            return redirect()->back()->with('success',"Record Inserted Successfully");
+        }
+        else{
+            
+            return redirect()->back()->with('error',"Insertion Failed!");
+        }
+    }
     public function fetch_user(){
 
         $data = User::all();

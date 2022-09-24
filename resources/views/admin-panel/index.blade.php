@@ -13,7 +13,7 @@
         @yield('content')
 
         <!-- end main content-->
-        @include('admin-panel.footer')
+        {{-- @include('admin-panel.footer') --}}
     </div>
 
     {{-- <div class="rightbar-overlay"></div> --}}

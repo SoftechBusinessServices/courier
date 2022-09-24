@@ -11,30 +11,30 @@ use Illuminate\Http\Request;
 class ShippingChargesController extends Controller
 {
     //
-    public function add_charges()
-    {
-        $data = ShippingCharge::all();
-        $countries = Country::all();
-        $currencies = Currency::all();
-        // dd($data);
-        return view('admin-panel.charges.create_charges', compact('data', 'countries', 'currencies'));
-    }
+    // public function add_charges()
+    // {
+    //     $data = ShippingCharge::all();
+    //     $countries = Country::all();
+    //     $currencies = Currency::all();
+    //     // dd($data);
+    //     return view('admin-panel.charges.create_charges', compact('data', 'countries', 'currencies'));
+    // }
 
     //ajax dependent Country selection
     public function getSelected($id)
     {
-        $shipping = Country::find($id);
-        // Country::where(function($query){
-        //     $query->where('id' , 2);
-        // })->get();
-        $regions = Region::all();
-        $regions_select = "";
-        foreach($regions as $region){
-            $selected = "";
-            if($shipping->region_id == $region->id)
-               $selected = "selected='selected'";
-               $regions_select .= "<option $selected value=".$region->id.">".$region->name."</option>";
-        }
+        // $shipping = Country::find($id);
+        // // Country::where(function($query){
+        // //     $query->where('id' , 2);
+        // // })->get();
+        // $regions = Region::all();
+        // $regions_select = "";
+        // foreach($regions as $region){
+        //     $selected = "";
+        //     if($shipping->region_id == $region->id)
+        //        $selected = "selected='selected'";
+        //        $regions_select .= "<option $selected value=".$region->id.">".$region->name."</option>";
+        // }
         // $shipping = Country::with(['region' => function($query) use ($id) {
         //     $query->where('id' , $id);
         // }])->get();

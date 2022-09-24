@@ -308,8 +308,7 @@
                                         <a class="btn btn-primary btn-md text-white " data-bs-toggle="modal"
                                             data-bs-target="#regionmodal">Add
                                             Region </a>
-                                        <a class="btn btn-success btn-md text-white " data-bs-toggle="modal"
-                                            data-bs-target="#parcelmodal">Regions List
+                                        <a class="btn btn-success btn-md text-white" href="{{ route('add-region')}}">Regions List
                                         </a>
 
                                     </div>
@@ -389,13 +388,13 @@
                                     </div>
                                     <div class="row mt-3">
                                         <div class="col-md-6 mb-2">
-                                            &#45;&#45;&#45;
+                                            &#45;&#45;&#45;&#45;&#45;&#45;&#45;
                                             <label for="useremail" class="form-label">Customer Type </label>
-                                            &#45;&#45;&#45;
+                                            &#45;&#45;&#45;&#45;&#45;&#45;&#45;
                                         </div>
                                         <div class="col-md-6 mb-2">
                                             <input type="radio" name="customer_type" id="random" value="random"
-                                                class="ml-2">Normal
+                                                class="ml-2">Individual
                                             <input type="radio" name="customer_type" id="registered"
                                                 value="registered" class="ml-2">Company
                                         </div>
@@ -446,13 +445,13 @@
                                         <div class="col-md-6 mb-2">
                                             <label for="useremail" class="form-label">Select Company</label>
 
-                                            <select class="form-control" name="company_idd" id="company_idd">
+                                            {{-- <select class="form-control" name="company_idd" id="company_idd">
                                                 <option hidden>Choose Category</option>
                                                 @foreach ($companies as $item)
                                                     <option value="{{ $item->id }}">{{ $item->fname }}
                                                     </option>
                                                 @endforeach
-                                            </select>
+                                            </select> --}}
                                             @error('company_idd')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -472,17 +471,18 @@
                                         </div>
                                     </div>
                                     <div class="row">
+                                        
                                         <div class="col-md-6 mb-2">
                                             <label for="useremail" class="form-label">Destination Country</label>
-                                            <select class="form-select" name="country_id" required id="country_id"
+                                            {{-- <select class="form-select" name="country_id" required id="country_id"
                                                 class="form-control table-responsive @error('country_id') is-invalid @enderror">
                                                 <option value="">-----</option>
                                                 @foreach ($countries as $item)
                                                     <option value="{{ $item->id }}">{{ $item->name }}
-                                                        {{-- -{{ $country->charges }} --}}
+                                                    
                                                     </option>
                                                 @endforeach
-                                            </select>
+                                            </select> --}}
                                             @error('country_id')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -770,7 +770,7 @@
                                     <div class="row">
                                         <div class="col-md-12 mb-0">
                                             <label for="useremail" class="form-label">Select Company</label>
-                                            <select class="form-select" name="company_id" required
+                                            {{-- <select class="form-select" name="company_id" required
                                                 class="form-control table-responsive @error('company_id') is-invalid @enderror"
                                                 value="{{ old('company_id') }}">
                                                 @foreach ($companies as $company)
@@ -778,7 +778,7 @@
                                                         {{ $company->fname . ' ' . $company->lname }}
                                                     </option>
                                                 @endforeach
-                                            </select>
+                                            </select> --}}
                                             @error('company_id')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -786,8 +786,8 @@
                                             @enderror
                                         </div>
                                         <div class="col-md-12 mb-0">
-                                            <label for="username" class="form-label">Representator Name</label>
-                                            <input type="text" id="username" placeholder="Enter customer name"
+                                            <label for="username" class="form-label">Representative Name</label>
+                                            <input type="text" id="username" placeholder="Enter Representative name"
                                                 class="form-control @error('name') is-invalid @enderror"
                                                 name="name" value="{{ old('name') }}" required
                                                 autocomplete="name" autofocus>
@@ -800,7 +800,7 @@
                                         </div>
 
                                         <div class="col-md-12 mb-0">
-                                            <label for="useremail" class="form-label">Representator Email</label>
+                                            <label for="useremail" class="form-label">Representative Email</label>
                                             <input type="email" id="useremail" placeholder="Enter email"
                                                 class="form-control @error('email') is-invalid @enderror"
                                                 name="email" value="{{ old('email') }}" autocomplete="email"
@@ -819,7 +819,7 @@
                             {{-- first row closed --}}
                             <div class="row">
                                 <div class="col-md-12 mb-0">
-                                    <label for="username" class="form-label">Representator Phone Number</label>
+                                    <label for="username" class="form-label">Representative Phone Number</label>
                                     <input type="text" data-inputmask="'mask': '0399-99999999'" type="number"
                                         maxlength="12" class="form-control @error('phone') is-invalid @enderror"
                                         name="phone" value="{{ old('phone') }}" required autocomplete="phone"
@@ -833,11 +833,12 @@
                                 </div>
 
                                 <div class="col-md-12 mb-0">
-                                    <label for="address" class="form-label">Representator Address</label>
-                                    <textarea name="address" id="address" class="form-control" cols="1" rows="1">
-
-                                    </textarea>
-                                    @error('customer_address')
+                                    <label for="address" class="form-label">Representative CNIC</label>
+                                    <input type="text" data-inputmask="'mask': 'xxxxx-xxxxxxx-x'" type="number"
+                                        maxlength="13" class="form-control @error('represent_cnic') is-invalid @enderror"
+                                        name="represent_cnic" value="{{ old('represent_cnic') }}" required autocomplete="phone"
+                                        autofocus>
+                                    @error('represent_cnic')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -869,7 +870,7 @@
                             aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form class="needs-validation" novalidate method="POST" action="{{ route('register') }}">
+                        <form id="userform" class="needs-validation" novalidate method="POST" action="{{ route('store-user') }}">
                             @csrf
                             <div class="mb-3">
                                 <label for="username" class="form-label">Username</label>
@@ -1051,7 +1052,7 @@
                             </div>
                             <div class="row">
 
-                                {{-- <div class="col-md-6 mb-2">
+                                <div class="col-md-6 mb-2">
                                     <label for="useremail" class="form-label">Select Country</label>
                                     <select class="form-select" name="country_id" required
                                         class="form-control table-responsive @error('country_id') is-invalid @enderror"
@@ -1068,8 +1069,8 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
-                                </div> --}}
-                                <div class="col-md-12 mb-2">
+                                </div>
+                                <div class="col-md-6 mb-2">
                                     <label for="address" class="form-label">Company Address</label>
                                     <textarea name="address" id="address" class="form-control" cols="1" rows="1">
                             </textarea>
@@ -1099,6 +1100,19 @@
                                             @enderror
                                         </div>
                                         <div class="col-md-6 mb-2">
+                                            <label for="useremail" class="form-label">Representative Email</label>
+                                            <input type="email" id="useremail" placeholder="some@mail.com"
+                                                class="form-control @error('email') is-invalid @enderror"
+                                                name="represent_email" value="{{ old('represent_email') }}"
+                                                autocomplete="represent_email" required>
+
+                                            @error('represent_email')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-6 mb-2">
                                             <label for="username" class="form-label">Phone Number</label>
                                             <input type="text" data-inputmask="'mask': '0399-99999999'"
                                                 type="number" maxlength="12"
@@ -1113,31 +1127,17 @@
                                             @enderror
                                         </div>
                                         <div class="col-md-6 mb-2">
-                                            <label for="useremail" class="form-label">Representative Email</label>
-                                            <input type="email" id="useremail" placeholder="Email Address"
-                                                class="form-control @error('email') is-invalid @enderror"
-                                                name="represent_email" value="{{ old('represent_email') }}"
-                                                autocomplete="represent_email" required>
-
-                                            @error('represent_email')
+                                            <label for="address" class="form-label">Representative CNIC</label>
+                                            <input type="number" maxlength="13" class="form-control @error('represent_cnic') is-invalid @enderror"
+                                                name="represent_cnic" value="{{ old('represent_cnic') }}" required autocomplete="represent_cnic"
+                                                placeholder="xxxxx-xxxxxxx-x" autofocus>
+                                            @error('represent_cnic')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
                                         </div>
 
-                                        <div class="col-md-6 mb-2">
-                                            <label for="address" class="form-label">Representative
-                                                Address</label>
-                                            <textarea name="represent_address" id="represent_address" class="form-control" cols="1" rows="1">
-
-                                    </textarea>
-                                            @error('represent_address')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1213,15 +1213,15 @@
                                     <div class="row">
                                         <div class="col-md-12 mb-0">
                                             <label for="useremail" class="form-label">Choose Region</label>
-                                            <select class="form-select" name="region_id" required id="region_id"
+                                            {{-- <select class="form-select" name="region_id" required id="region_id"
                                                 class="form-control table-responsive @error('region_id') is-invalid @enderror">
                                                 <option value="">-----</option>
                                                 @foreach ($regions as $item)
                                                     <option value="{{ $item->id }}">{{ $item->name }}
-                                                        {{-- -{{ $country->charges }} --}}
+                                                       
                                                     </option>
                                                 @endforeach
-                                            </select>
+                                            </select> --}}
                                             @error('region_id')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -1343,16 +1343,16 @@
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
                                             <label for="useremail" class="form-label">Select Country</label>
-                                            <select class="form-select" name="country_idd" required
+                                            {{-- <select class="form-select" name="country_idd" required
                                                 id="country_idd"
                                                 class="form-control table-responsive @error('country_idd') is-invalid @enderror">
                                                 <option value="">-----</option>
                                                 @foreach ($countries as $item)
                                                     <option value="{{ $item->id }}">{{ $item->name }}
-                                                        {{-- -{{ $country->charges }} --}}
+                                                       
                                                     </option>
                                                 @endforeach
-                                            </select>
+                                            </select> --}}
                                             @error('country')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -1377,16 +1377,16 @@
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
                                             <label for="useremail" class="form-label">Desired Currency</label>
-                                            <select class="form-select" name="currency_idd" required
+                                            {{-- <select class="form-select" name="currency_idd" required
                                                 id="currency_idd"
                                                 class="form-control table-responsive @error('currency_idd') is-invalid @enderror">
                                                 <option value="">-----</option>
                                                 @foreach ($currencies as $currency)
                                                     <option value="{{ $currency->id }}">{{ $currency->name }}
-                                                        {{-- -{{ $country->charges }} --}}
+                                                      
                                                     </option>
                                                 @endforeach
-                                            </select>
+                                            </select> --}}
                                             @error('currency_idd')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>

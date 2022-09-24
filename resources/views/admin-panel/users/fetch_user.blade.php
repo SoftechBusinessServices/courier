@@ -116,14 +116,15 @@
                                 <p class="card-title-desc text-dark">
                                     <a href="{{ route('home') }}" class="btn btn-primary btn-md text-white">Back</a>
                                     <a href="{{ route('home') }}" class="btn btn-dark btn-md text-white">Dashboard </a>
-                                    <span class="font-size-20 font-weight-bold ml-3">Registered Users 
+                                    <span class="font-size-20 font-weight-bold ml-3">Registered Users List
                                         {{-- <a href="{{ route('add-region') }}"> Regions</a> --}}
 
                                     </span>
                                 </p>
+                                <hr><br><br>
                                 @if (isset($data))
                                     <table id="datatable-buttons"
-                                        class="table table-bordered dt-responsive nowrap w-100 table-sm">
+                                        class="table table-bordered dt-responsive nowrap w-100 table-sm text-center">
 
                                         <thead>
                                             <tr>
@@ -131,7 +132,7 @@
                                                 <th>User Name</th>
                                                 <th>User Email</th>
                                                 <th>Joining Date</th>
-                                                <th>Status</th>
+                                                {{-- <th>Status</th> --}}
                                                 <th>Action</th>
 
                                             </tr>
@@ -155,7 +156,7 @@
                                                                 echo $month;
                                                             @endphp
                                                         </td>
-                                                        <td>
+                                                        {{-- <td>
                                                             @if ($item->status == 'inactive')
                                                                 <button type="button" class="btn btn-danger  btn-sm">
                                                                     {{ $item->status }} </button>
@@ -163,13 +164,19 @@
                                                                 <button type="button" class="btn btn-success btn-sm">
                                                                     {{ $item->status }} </button>
                                                             @endif
-                                                        </td>
+                                                        </td> --}}
                                                         <td>
+                                                            
+                                                            {{-- <a href="{{ url('edit-country/' . $item->id) }}"
+                                                                class="btn btn-outline-warning btn-sm edit" title="Edit">
+                                                                <i class="fas fa-pencil-alt"></i>
+                                                            </a> | --}}
                                                             <a href="{{ url('delete-user/' . $item->id) }}"
                                                                 class="btn btn-outline-danger btn-sm delete" title="Delete"
                                                                 onclick="return confirm('Are you sure to delete Record?')">
                                                                 <i class="fas fa-trash-alt"></i>
                                                             </a>
+                                                            
                                                         </td>     
                                                     </tr>
                                                 @endforeach

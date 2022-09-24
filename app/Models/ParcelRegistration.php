@@ -22,10 +22,10 @@ class ParcelRegistration extends Model
     {
         return $this->belongsTo(Country::class, 'country_id', 'id');
     }
-    public function shipping()
-    {
-        return $this->belongsTo(ShippingCharge::class, 'region_id', 'id');
-    }
+    // public function shipping()
+    // {
+    //     return $this->belongsTo(ShippingCharge::class, 'region_id', 'id');
+    // }
     public function region()
     {
         return $this->belongsTo(Region::class, 'region_id', 'id');

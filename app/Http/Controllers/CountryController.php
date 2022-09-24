@@ -8,10 +8,18 @@ use Illuminate\Http\Request;
 
 class CountryController extends Controller
 {
-    //
-    //Country functions
-    public function add_country()
+    
+    public function create_country($id)
     {
+        // dd($id);
+        $data = Country::where('region_id',$id)->get();
+        // dd($data);
+        $region  = Region::find($id);
+        return view('admin-panel.countries.create_country1', compact('data', 'region'));
+    }
+    public function add_country($id)
+    {
+        dd(1);
         $data = Country::all();
         $regions  = Region::all();
         return view('admin-panel.countries.create_country', compact('data', 'regions'));
@@ -23,14 +31,14 @@ class CountryController extends Controller
             [
                 'region_id' => 'required',
                 'name' => 'required|unique:countries',
-                'code' => 'required'
+                // 'code' => 'required'
             ]
         );
 
         $data = [
             'region_id' => $request->region_id,
             'name' => $request->name,
-            'code' => $request->code
+            // 'code' => $request->code
         ];
         $data = Country::create($data);
 

@@ -18,10 +18,10 @@ class CreateCompanyRepresentativesTable extends Migration
                 $table->foreignId('company_id');
                 // $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
                 $table->text('represent_name')->nullable();
-                // $table->string('represent_email')->nullable();
+                $table->string('represent_email')->nullable();
                 $table->string('represent_phone')->nullable();
                 $table->text('represent_cnic')->nullable();
-                $table->text('represent_address')->nullable();
+                // $table->text('represent_address')->nullable();
                 $table->enum('status', ['active', 'inactive'])->default('active');
                 $table->timestamps();
                 $table->softDeletes();

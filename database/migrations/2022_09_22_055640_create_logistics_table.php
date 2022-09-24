@@ -19,7 +19,7 @@ class CreateLogisticsTable extends Migration
             $table->string('vendor_name')->nullable();
             $table->string('vendor_email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->foreignId('country_id');
+            // $table->foreignId('country_id');
             // $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
             $table->text('vendor_address')->nullable();
             $table->string('vendor_phone')->nullable();

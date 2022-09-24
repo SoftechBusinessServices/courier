@@ -139,6 +139,7 @@ Route::post('reset-password', [ForgotPasswordController::class, 'ResetPasswordSt
 
 Route::get('region/delete/{id}', [RegionController::class, 'destroy']);
 
-Route::get('add-user/',[HomeController::class,'fetch_user']);
+Route::get('add-user/',[HomeController::class,'fetch_user'])->name('add-user');
+Route::get('delete-user/{id}',[HomeController::class,'destroy_user'])->name('delete-user');
 
 

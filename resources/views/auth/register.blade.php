@@ -53,7 +53,7 @@
                             </div>
                             <div class="p-2">
                                 <form class="needs-validation" novalidate method="POST"
-                                    action="{{ route('register') }}">
+                                    action="{{ route('register') }}" id="userform">
                                     @csrf
                                     <div class="mb-3">
                                         <label for="username" class="form-label">Username</label>
@@ -94,9 +94,7 @@
                                                 value="{{ old('password') }}" required>
                                             <button class="btn btn-light " type="button" id="password-addon"><i
                                                     class="mdi mdi-eye-outline"></i></button>
-                                            {{-- <div class="invalid-feedback">
-                                            Please Enter Password
-                                        </div> --}}
+                                        
                                             @error('password')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>

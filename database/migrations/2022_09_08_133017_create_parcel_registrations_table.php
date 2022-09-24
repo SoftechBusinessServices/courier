@@ -22,7 +22,7 @@ class CreateParcelRegistrationsTable extends Migration
             $table->foreignId('country_id');
             // $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
             // $table->string('chargeable_weight')->nullable();
-            $table->foreignId('currency_id');
+            // $table->foreignId('currency_id');
             // $table->foreign('currency_id')->references('id')->on('currencies')->onDelete('cascade');
             $table->string('pl_symbol')->nullable();
             $table->string('pl_weight')->nullable();
@@ -36,7 +36,7 @@ class CreateParcelRegistrationsTable extends Migration
             $table->text('cust_address')->nullable();
             $table->integer('company_id')->nullable();
             $table->integer('represent_id')->nullable();
-            $table->enum('pl_status', ['pending','processed', 'unallocated','allocated','shipped', 'transit','dispatched','delivered','cancelled','returned'])->default('pending');
+            $table->enum('pl_status', ['processed','cancelled','allocated','delivered','returned'])->default('processed');
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
             $table->softDeletes();

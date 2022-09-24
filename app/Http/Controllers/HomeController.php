@@ -117,6 +117,18 @@ class HomeController extends Controller
         $data = User::all();
         return view('admin-panel.users.fetch_user', compact('data'));
     }
+    public function destroy_user($id)
+    {
+        dd($id);
+        $data = User::find($id);
+        $data = $data->delete();
+
+        if ($data) {
+            return redirect('add-user')->with('error', "Record Deleted Successfully");
+        } else {
+            return redirect()->back()->with('success', "Record Not Deleted");
+        }
+    }
 
 
 

@@ -19,7 +19,7 @@ class CreateCompaniesTable extends Migration
             $table->string('lname')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->foreignId('country_id');
+            // $table->foreignId('country_id');
             // $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
             $table->text('address')->nullable();
             $table->string('phone')->nullable();

@@ -262,8 +262,7 @@
                                         <a class="btn btn-primary btn-md text-white " data-bs-toggle="modal"
                                             data-bs-target="#companymodal">Add
                                             Customer </a>
-                                        <a class="btn btn-success btn-md text-white " data-bs-toggle="modal"
-                                            data-bs-target="#parcelmodal">Companies List
+                                        <a class="btn btn-success btn-md text-white " href="{{route('add-company')}}">Companies List
                                         </a>
                                     </div>
                                 </div>
@@ -445,13 +444,13 @@
                                         <div class="col-md-6 mb-2">
                                             <label for="useremail" class="form-label">Select Company</label>
 
-                                            {{-- <select class="form-control" name="company_idd" id="company_idd">
+                                            <select class="form-control" name="company_idd" id="company_idd">
                                                 <option hidden>Choose Category</option>
                                                 @foreach ($companies as $item)
                                                     <option value="{{ $item->id }}">{{ $item->fname }}
                                                     </option>
                                                 @endforeach
-                                            </select> --}}
+                                            </select>
                                             @error('company_idd')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -474,7 +473,7 @@
                                         
                                         <div class="col-md-6 mb-2">
                                             <label for="useremail" class="form-label">Destination Country</label>
-                                            {{-- <select class="form-select" name="country_id" required id="country_id"
+                                            <select class="form-select" name="country_id" required id="country_id"
                                                 class="form-control table-responsive @error('country_id') is-invalid @enderror">
                                                 <option value="">-----</option>
                                                 @foreach ($countries as $item)
@@ -482,7 +481,7 @@
                                                     
                                                     </option>
                                                 @endforeach
-                                            </select> --}}
+                                            </select>
                                             @error('country_id')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -1052,7 +1051,7 @@
                             </div>
                             <div class="row">
 
-                                <div class="col-md-6 mb-2">
+                                {{-- <div class="col-md-6 mb-2">
                                     <label for="useremail" class="form-label">Select Country</label>
                                     <select class="form-select" name="country_id" required
                                         class="form-control table-responsive @error('country_id') is-invalid @enderror"
@@ -1069,8 +1068,8 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
-                                </div>
-                                <div class="col-md-6 mb-2">
+                                </div> --}}
+                                <div class="col-md-12 mb-2">
                                     <label for="address" class="form-label">Company Address</label>
                                     <textarea name="address" id="address" class="form-control" cols="1" rows="1">
                             </textarea>

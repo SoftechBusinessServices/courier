@@ -32,7 +32,7 @@ class CompanyController extends Controller
             'lname' => 'required',
             'email' => 'required',
             'phone' => 'required',
-            'country_id' => 'required',
+            // 'country_id' => 'required',
             'address' => 'required',
             'ntn_no' => 'required',
             'web_url' => 'required',
@@ -43,7 +43,7 @@ class CompanyController extends Controller
             'lname' => $request->lname,
             'email' => $request->email,
             'phone' => $request->phone,
-            'country_id' => $request->country_id,
+            // 'country_id' => $request->country_id,
             'address' => $request->address,
             'ntn_no' => $request->ntn_no,
             'web_url' => $request->web_url,
@@ -59,7 +59,7 @@ class CompanyController extends Controller
             'represent_name'=> $request->represent_name,
             'represent_email'=> $request->represent_email,
             'represent_phone'=> $request->represent_phone,
-            'represent_address'=> $request->represent_address,
+            // 'represent_address'=> $request->represent_address,
         ];
         $represent = CompanyRepresentative::create($represent)->id;
 
@@ -137,8 +137,8 @@ class CompanyController extends Controller
         // dd($id);
         $data = CompanyRepresentative::where('company_id', $id)->get();
         // dd($data);
-
-        return view('admin-panel.companies.fetch_representative', compact('data'));
+        $company_id = Company::find($id)->id;
+        return view('admin-panel.companies.fetch_representative', compact('data','company_id'));
     }
 
 }

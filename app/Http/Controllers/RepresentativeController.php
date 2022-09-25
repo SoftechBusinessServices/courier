@@ -25,19 +25,19 @@ class RepresentativeController extends Controller
         $validatedData = $request->validate([
 
             'company_id' => 'required',
-            'name' => 'required',
-            'email' => 'required',
-            'phone' => 'required',
-            'address' => 'required',
+            'represent_name' => 'required',
+            'represent_email' => 'required',
+            'represent_phone' => 'required',
+            'represent_cnic' => 'required',
 
         ]);
 
         $data  = [
             'company_id' => $request->company_id,
-            'represent_name' => $request->name,
-            'represent_email' => $request->email,
-            'represent_phone' => $request->phone,
-            'represent_address' => $request->address,
+            'represent_name' => $request->represent_name,
+            'represent_email' => $request->represent_email,
+            'represent_phone' => $request->represent_phone,
+            'represent_cnic' => $request->represent_cnic,
         ];
 
         $data = CompanyRepresentative::create($data)->id;

@@ -123,40 +123,43 @@
                                 </p>
                                 <hr><br><br>
                                 @if (isset($data))
-                                    <table id="datatable-buttons"
-                                        class="table table-bordered dt-responsive nowrap w-100 table-sm text-center">
+                                    {{--  two lines od dic add for responsiveness  --}}
+                                    <div class="table-rep-plugin">
+                                        <div class="table-responsive mb-0" data-pattern="priority-columns">
+                                            <table id="datatable-buttons"
+                                                class="table table-bordered dt-responsive nowrap w-100 table-sm text-center">
 
-                                        <thead>
-                                            <tr>
-                                                <th>S.No</th>
-                                                <th>User Name</th>
-                                                <th>User Email</th>
-                                                <th>Joining Date</th>
-                                                {{-- <th>Status</th> --}}
-                                                <th>Action</th>
-
-                                            </tr>
-                                        </thead>
-
-
-                                        <tbody>
-                                            @php
-                                                $i = 1;
-                                            @endphp
-                                            @if ($data->count() > 0)
-                                                @foreach ($data as $item)
+                                                <thead>
                                                     <tr>
-                                                        <td>{{ $i++ }}</td>
-                                                        <td>{{$item->name}}</td>
-                                                        <td>{{ $item->email }}</td>
-                                                        <td>
-                                                            @php
-                                                                $month = date('d/m/Y', strtotime($item->created_at));
-                                                                // dd($month);
-                                                                echo $month;
-                                                            @endphp
-                                                        </td>
-                                                        {{-- <td>
+                                                        <th>S.No</th>
+                                                        <th>User Name</th>
+                                                        <th>User Email</th>
+                                                        <th>Joining Date</th>
+                                                        {{-- <th>Status</th> --}}
+                                                        <th>Action</th>
+
+                                                    </tr>
+                                                </thead>
+
+
+                                                <tbody>
+                                                    @php
+                                                        $i = 1;
+                                                    @endphp
+                                                    @if ($data->count() > 0)
+                                                        @foreach ($data as $item)
+                                                            <tr>
+                                                                <td>{{ $i++ }}</td>
+                                                                <td>{{ $item->name }}</td>
+                                                                <td>{{ $item->email }}</td>
+                                                                <td>
+                                                                    @php
+                                                                        $month = date('d/m/Y', strtotime($item->created_at));
+                                                                        // dd($month);
+                                                                        echo $month;
+                                                                    @endphp
+                                                                </td>
+                                                                {{-- <td>
                                                             @if ($item->status == 'inactive')
                                                                 <button type="button" class="btn btn-danger  btn-sm">
                                                                     {{ $item->status }} </button>
@@ -165,39 +168,44 @@
                                                                     {{ $item->status }} </button>
                                                             @endif
                                                         </td> --}}
-                                                        <td>
-                                                            
-                                                            {{-- <a href="{{ url('edit-country/' . $item->id) }}"
+                                                                <td>
+
+                                                                    {{-- <a href="{{ url('edit-country/' . $item->id) }}"
                                                                 class="btn btn-outline-warning btn-sm edit" title="Edit">
                                                                 <i class="fas fa-pencil-alt"></i>
                                                             </a> | --}}
-                                                            <a href="{{ url('delete-user/' . $item->id) }}"
-                                                                class="btn btn-outline-danger btn-sm delete" title="Delete"
-                                                                onclick="return confirm('Are you sure to delete Record?')">
-                                                                <i class="fas fa-trash-alt"></i>
-                                                            </a>
-                                                            
-                                                        </td>     
-                                                    </tr>
-                                                @endforeach
-                                            @else
-                                                <tr>
-                                                    <td><code>No record found...</code></td>
-                                                </tr>
-                                            @endif
+                                                                    <a href="{{ url('delete-user/' . $item->id) }}"
+                                                                        class="btn btn-outline-danger btn-sm delete"
+                                                                        title="Delete"
+                                                                        onclick="return confirm('Are you sure to delete Record?')">
+                                                                        <i class="fas fa-trash-alt"></i>
+                                                                    </a>
+
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
+                                                    @else
+                                                        <tr>
+                                                            <td><code>No record found...</code></td>
+                                                        </tr>
+                                                    @endif
 
 
 
-                                        </tbody>
-                                    </table>
+                                                </tbody>
+                                            </table>
                                 @endif
+
+
+
+                                </tbody>
+                                </table>
                             </div>
-
-
-                        </div> <!-- end col -->
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-@endsection
+</div>
+            @endsection

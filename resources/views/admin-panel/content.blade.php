@@ -522,7 +522,7 @@
                                             <label for="username" class="form-label">Parcel Cost in </label>
                                             <div id="symbol_lable" class="d-inline text-danger">
                                             </div>
-                                            <input type="hidden" name="pl_symbol" id="pl_symbol" value="">
+                                            <input type="hidden" name="pl_symbol" id="pl_symbol" value="PKR Rs">
                                             <div class="d-inline">
                                                 <input type="number" id="pl_cost" placeholder="Enter Parcel Cost"
                                                     class="form-control @error('pl_cost') is-invalid @enderror"
@@ -664,11 +664,11 @@
                                         <div class="col-md-12 mb-2">
                                             <label for="username" class="form-label">Vendor Name</label>
                                             <input type="text" id="username" placeholder="Enter Vendor name"
-                                                class="form-control @error('name') is-invalid @enderror"
-                                                name="name" value="{{ old('name') }}" required
-                                                autocomplete="name" autofocus>
+                                                class="form-control @error('vendor_name') is-invalid @enderror"
+                                                name="vendor_name" value="{{ old('vendor_name') }}" required
+                                                autocomplete="vendor_name" autofocus>
 
-                                            @error('name')
+                                            @error('vendor_name')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -678,11 +678,11 @@
                                         <div class="col-md-12 mb-2">
                                             <label for="useremail" class="form-label">Vendor Email</label>
                                             <input type="email" id="useremail" placeholder="Enter Email address"
-                                                class="form-control @error('email') is-invalid @enderror"
-                                                name="email" value="{{ old('email') }}" autocomplete="email"
+                                                class="form-control @error('vendor_email') is-invalid @enderror"
+                                                name="vendor_email" value="{{ old('vendor_email') }}" autocomplete="email"
                                                 required>
 
-                                            @error('email')
+                                            @error('vendor_email')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -697,11 +697,11 @@
                                 <div class="col-md-12 mb-2">
                                     <label for="username" class="form-label">Vendor Phone Number</label>
                                     <input type="text" data-inputmask="'mask': '0399-99999999'" type="number"
-                                        maxlength="12" class="form-control @error('phone') is-invalid @enderror"
-                                        name="phone" value="{{ old('phone') }}" required autocomplete="phone"
+                                        maxlength="12" class="form-control @error('vendor_phone') is-invalid @enderror"
+                                        name="vendor_phone" value="{{ old('vendor_phone') }}" required autocomplete="vendor_phone"
                                         autofocus>
 
-                                    @error('phone')
+                                    @error('vendor_phone')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -727,10 +727,10 @@
                                 </div> --}}
                                 <div class="col-md-12 mb-2">
                                     <label for="address" class="form-label">Vendor Address</label>
-                                    <textarea name="address" id="address" class="form-control" cols="1" rows="1">
+                                    <textarea name="vendor_address" id="vendor_address" class="form-control" cols="1" rows="1">
 
                                     </textarea>
-                                    @error('customer_address')
+                                    @error('vendor_address')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>

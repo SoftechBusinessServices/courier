@@ -166,7 +166,7 @@
                                                             <a href="{{ url('create-country/'.$item->id) }}"
                                                                 class="btn btn-outline-primary btn-sm delete"
                                                                 title="add">
-                                                                <i class="far fa-eye"></i>
+                                                                <i class="fas fa-plus-circle"></i>
                                                             </a>
                                                             <span class="text-dark">|</span>
                                                             {{ $item->count() }}  

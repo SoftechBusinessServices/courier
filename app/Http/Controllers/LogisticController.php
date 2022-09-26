@@ -22,22 +22,22 @@ class LogisticController extends Controller
         // dd($request->all());
         $validatedData = $request->validate([
 
-            'country_id' => 'required',
+            // 'country_id' => 'required',
             'logistic_name' => 'required',
-            'name' => 'required',
-            'email' => 'required',
-            'phone' => 'required',
-            'address' => 'required',
+            'vendor_name' => 'required',
+            'vendor_email' => 'required',
+            'vendor_phone' => 'required',
+            'vendor_address' => 'required',
 
         ]);
 
         $data  = [
-            'country_id' => $request->country_id,
+            // 'country_id' => $request->country_id,
             'logistic_name' => $request->logistic_name,
-            'vendor_name' => $request->name,
-            'vendor_email' => $request->email,
-            'vendor_phone' => $request->phone,
-            'vendor_address' => $request->address,
+            'vendor_name' => $request->vendor_name,
+            'vendor_email' => $request->vendor_email,
+            'vendor_phone' => $request->vendor_phone,
+            'vendor_address' => $request->vendor_address,
         ];
 
         $data = Logistic::create($data)->id;

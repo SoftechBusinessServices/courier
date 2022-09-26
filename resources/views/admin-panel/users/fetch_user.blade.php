@@ -123,9 +123,6 @@
                                 </p>
                                 <hr><br><br>
                                 @if (isset($data))
-
-                                <div class="table-rep-plugin">
-                                    <div class="table-responsive mb-0" data-pattern="priority-columns">
                                     <table id="datatable-buttons"
                                         class="table table-bordered dt-responsive nowrap w-100 table-sm text-center">
 
@@ -169,7 +166,7 @@
                                                             @endif
                                                         </td> --}}
                                                         <td>
-
+                                                            
                                                             {{-- <a href="{{ url('edit-country/' . $item->id) }}"
                                                                 class="btn btn-outline-warning btn-sm edit" title="Edit">
                                                                 <i class="fas fa-pencil-alt"></i>
@@ -179,8 +176,8 @@
                                                                 onclick="return confirm('Are you sure to delete Record?')">
                                                                 <i class="fas fa-trash-alt"></i>
                                                             </a>
-
-                                                        </td>
+                                                            
+                                                        </td>     
                                                     </tr>
                                                 @endforeach
                                             @else
@@ -193,8 +190,6 @@
 
                                         </tbody>
                                     </table>
-                                </div>
-                            </div>
                                 @endif
                             </div>
 

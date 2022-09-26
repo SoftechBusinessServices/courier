@@ -23,7 +23,7 @@
                         </div>
 
                         <div class="modal-footer flex-nowrap p-0 justify-content-center">
-                            <a class="btn btn-primary btn-md text-white " data-bs-toggle="modal"
+                            <a class="btn btn-primary btn-md text-white waves-effect waves-light " data-bs-toggle="modal"
                                 data-bs-target="#parcelmodal">Add
                                 Parcel </a>
 
@@ -103,6 +103,7 @@
 
         </div>
 
+        {{--  Processed down form   --}}
         <div class="container">
             <div class="collapse" id="collapseExample">
                 <div class="card card-body">
@@ -204,11 +205,11 @@
 
         {{--  Setting Table - Start   --}}
 
-        <div class="page-content px-5">
+        <div class="page-content ">
             {{--  <!-- page title -->  --}}
 
-            {{--  <!-- Parcel  -->  --}}
-            <div class="col ">
+
+
                 <div class=" border bg-light">
                     <div class="modal modal-alert position-static d-block  " tabindex="-1" role="dialog"
                         id="modalChoice">
@@ -221,9 +222,10 @@
                                 <h3 class="mb-0 mt-2">Setting </h3>
                             </a>
                         </div>
-                        <div class="row gx-5  ">
-                            <div class="col-3 ">
 
+                        {{--  User   --}}
+                        <div class="row gx-5   ">
+                            <div class="col ">
                                 <div class="modal-content rounded-3 shadow">
                                     <div class="modal-body  text-center">
                                         <a href="#" class="nav-link text-dark">
@@ -246,14 +248,14 @@
                                 </div>
                             </div>
                             {{--  <!-- Customers  -->  --}}
-                            <div class="col-3 ">
+                            <div class="col ">
 
                                 <div class="modal-content rounded-3 shadow">
                                     <div class="modal-body  text-center">
                                         <a href="#" class="nav-link text-dark">
                                             <img src="{{ asset('assets/images/customers.png') }}" alt="">
 
-                                            <h3 class="mb-0 mt-2">Companies</h3>
+                                            <h3 class="mb-0 mt-2">Customers</h3>
                                         </a>
 
                                     </div>
@@ -267,7 +269,7 @@
                                     </div>
                                 </div>
                             </div> {{--  <!-- Vendors  -->  --}}
-                            <div class="col-3 ">
+                            <div class="col ">
 
                                 <div class="modal-content rounded-3 shadow">
                                     <div class="modal-body text-center">
@@ -291,7 +293,7 @@
 
                             </div>
                             {{--  <!-- Regions  -->  --}}
-                            <div class="col-3 ">
+                            <div class="col ">
 
                                 <div class="modal-content rounded-3 shadow">
                                     <div class="modal-body  text-center">
@@ -320,7 +322,7 @@
 
                     </div>
                 </div>
-            </div>
+
 
 
 
@@ -332,28 +334,324 @@
 
 
 
-        {{--  Copied   --}}
+
+
+
+
+
+        {{-- *******************************Parcel Modal Large ************************************************************* --}}
+        <div class="main-content">
+          <div class="page-content">
+                <div class="container-fluid">
+                   <div class="row">
+                        <div class="col-lg-6">
+                                    <div>
+                                        <!--  Large modal example -->
+                                        <div class="modal fade " id="parcelmodal"   tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="myLargeModalLabel">Large modal</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form id="form1" novalidate method="POST" action="{{ route('store-parcel') }}"
+                                                            enctype="multipart/form-data">
+                                                            @csrf
+                                                            <div class="row">
+                                                                <div class="col-lg-12">
+
+
+                                                                    <div class="row">
+                                                                        <div class="col-md-6 mb-2">
+                                                                            <label for="username" class="form-label">Tracking ID</label>
+                                                                            <input type="text" id="username" required
+                                                                                class="form-control @error('pl_id') is-invalid @enderror"
+                                                                                name="pl_id" value="{{ old('pl_id') }}" autofocus readonly>
+                                                                        </div>
+                                                                        <div class="col-md-6 mb-2">
+                                                                            <label for="username" class="form-label">Parcel Date</label>
+                                                                            <input type="date" id="username" required
+                                                                                class="form-control @error('pl_date') is-invalid @enderror"
+                                                                                name="pl_date" value="{{ old('pl_date') }}" required autofocus>
+
+                                                                            @error('pl_date')
+                                                                                <span class="invalid-feedback" role="alert">
+                                                                                    <strong>{{ $message }}</strong>
+                                                                                </span>
+                                                                            @enderror
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mt-3">
+                                                                        <div class="col-md-6 mb-2">
+                                                                            &#45;&#45;&#45;&#45;&#45;&#45;&#45;
+                                                                            <label for="useremail" class="form-label">Customer Type </label>
+                                                                            &#45;&#45;&#45;&#45;&#45;&#45;&#45;
+                                                                        </div>
+                                                                        <div class="col-md-6 mb-2">
+                                                                            <input type="radio" name="customer_type" id="random" value="random"
+                                                                                class="ml-2">Individual
+                                                                            <input type="radio" name="customer_type" id="registered"
+                                                                                value="registered" class="ml-2">Company
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mt-2" id="random_customer">
+                                                                        <hr>
+                                                                        <div class="col-md-6 mb-2">
+                                                                            <label for="username" class="form-label">Customer Name</label>
+                                                                            <input type="text" id="username" placeholder="Customer Name" required
+                                                                                class="form-control @error('name') is-invalid @enderror"
+                                                                                name="name" value="{{ old('name') }}" required
+                                                                                autocomplete="name" autofocus>
+
+                                                                            @error('name')
+                                                                                <span class="invalid-feedback" role="alert">
+                                                                                    <strong>{{ $message }}</strong>
+                                                                                </span>
+                                                                            @enderror
+                                                                        </div>
+                                                                        <div class="col-md-6 mb-2">
+                                                                            <label for="username" class="form-label">Customer Phone Number</label>
+                                                                            <input type="text" data-inputmask="'mask': '0399-99999999'"
+                                                                                type="number" maxlength="12"
+                                                                                class="form-control @error('phone') is-invalid @enderror"
+                                                                                name="phone" value="{{ old('phone') }}" required
+                                                                                autocomplete="phone" autofocus>
+
+                                                                            @error('phone')
+                                                                                <span class="invalid-feedback" role="alert">
+                                                                                    <strong>{{ $message }}</strong>
+                                                                                </span>
+                                                                            @enderror
+                                                                        </div>
+                                                                        <div class="col-md-12 mb-2 form-control">
+                                                                            <label for="address" class="form-label">Customer Address</label>
+                                                                            <textarea name="address" id="address" class="form-control" cols="2" rows="3">
+
+                                                                                    </textarea>
+                                                                            @error('customer_address')
+                                                                                <span class="invalid-feedback" role="alert">
+                                                                                    <strong>{{ $message }}</strong>
+                                                                                </span>
+                                                                            @enderror
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mt-2" id="company_customer">
+                                                                        <hr>
+                                                                        <div class="col-md-6 mb-2">
+                                                                            <label for="useremail" class="form-label">Select Company</label>
+
+                                                                            <select class="form-control" name="company_idd" id="company_idd">
+                                                                                <option hidden>Choose Category</option>
+                                                                                @foreach ($companies as $item)
+                                                                                    <option value="{{ $item->id }}">{{ $item->fname }}
+                                                                                    </option>
+                                                                                @endforeach
+                                                                            </select>
+                                                                            @error('company_idd')
+                                                                                <span class="invalid-feedback" role="alert">
+                                                                                    <strong>{{ $message }}</strong>
+                                                                                </span>
+                                                                            @enderror
+                                                                        </div>
+                                                                        <div class="col-md-6 mb-2">
+                                                                            <label for="useremail" class="form-label">Select Representator</label>
+                                                                            <select class="form-control" name="represent_idd" id="represent_idd">
+
+                                                                            </select>
+                                                                            @error('representator_id')
+                                                                                <span class="invalid-feedback" role="alert">
+                                                                                    <strong>{{ $message }}</strong>
+                                                                                </span>
+                                                                            @enderror
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+
+                                                                        <div class="col-md-6 mb-2">
+                                                                            <label for="useremail" class="form-label">Destination Country</label>
+                                                                            <select class="form-select" name="country_id" required id="country_id"
+                                                                                class="form-control table-responsive @error('country_id') is-invalid @enderror">
+                                                                                <option value="">-----</option>
+                                                                                @foreach ($countries as $item)
+                                                                                    <option value="{{ $item->id }}">{{ $item->name }}
+
+                                                                                    </option>
+                                                                                @endforeach
+                                                                            </select>
+                                                                            @error('country_id')
+                                                                                <span class="invalid-feedback" role="alert">
+                                                                                    <strong>{{ $message }}</strong>
+                                                                                </span>
+                                                                            @enderror
+                                                                        </div>
+                                                                        <div class="col-md-6 mb-2">
+                                                                            <label for="username" class="form-label">Parcel Address</label>
+                                                                            <input type="text" id="username" placeholder="Receiver  Address"
+                                                                                required class="form-control @error('pl_address') is-invalid @enderror"
+                                                                                name="pl_address" value="{{ old('pl_address') }}" required
+                                                                                autocomplete="name" autofocus>
+
+                                                                            @error('pl_address')
+                                                                                <span class="invalid-feedback" role="alert">
+                                                                                    <strong>{{ $message }}</strong>
+                                                                                </span>
+                                                                            @enderror
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row">
+                                                                        <div class="col-md-6 mb-2">
+                                                                            <label for="username" class="form-label">Parcel Weight
+                                                                                <code>(grams)</code></label>
+                                                                            <input type="number" id="pl_weight" placeholder="Enter Parcel Weight"
+                                                                                required class="form-control @error('pl_weight') is-invalid @enderror"
+                                                                                name="pl_weight" value="{{ old('pl_weight') }}" required
+                                                                                autocomplete="pl_weight" autofocus>
+
+                                                                            @error('pl_weight')
+                                                                                <span class="invalid-feedback" role="alert">
+                                                                                    <strong>{{ $message }}</strong>
+                                                                                </span>
+                                                                            @enderror
+                                                                        </div>
+                                                                        <div class="col-md-6 mb-2">
+                                                                            <label for="username" class="form-label">Parcel Cost in </label>
+                                                                            <div id="symbol_lable" class="d-inline text-danger">
+                                                                            </div>
+                                                                            <input type="hidden" name="pl_symbol" id="pl_symbol" value="PKR Rs">
+                                                                            <div class="d-inline">
+                                                                                <input type="number" id="pl_cost" placeholder="Enter Parcel Cost"
+                                                                                    class="form-control @error('pl_cost') is-invalid @enderror"
+                                                                                    name="pl_cost" required autocomplete="pl_cost" autofocus>
+
+                                                                                @error('pl_cost')
+                                                                                    <span class="invalid-feedback" role="alert">
+                                                                                        <strong>{{ $message }}</strong>
+                                                                                    </span>
+                                                                                @enderror
+                                                                            </div>
+                                                                        </div>
+                                                                        {{-- <div class="col-md-6 mb-2">
+                                                                    <label for="username" class="form-label">Chargeable Weight</label>
+                                                                    <input type="text" id="chargeable_weight"
+                                                                        class="form-control @error('chargeable_weight') is-invalid @enderror"
+                                                                        name="chargeable_weight" required autocomplete="chargeable_weight" autofocus
+                                                                        readonly>
+
+                                                                    @error('chargeable_weight')
+                                                                        <span class="invalid-feedback" role="alert">
+                                                                            <strong>{{ $message }}</strong>
+                                                                        </span>
+                                                                    @enderror
+                                                                </div> --}}
+                                                                    </div>
+                                                                    <div class="row">
+
+                                                                        <div class="col-md-6 mb-2">
+                                                                            <label for="username" class="form-label">Parcel Extras Cost</label>
+                                                                            <input type="number" id="pl_extras"
+                                                                                placeholder="Enter Parcel Extra Cost" required
+                                                                                class="form-control @error('pl_extras') is-invalid @enderror"
+                                                                                name="pl_extras" value="{{ old('pl_extras') }}" required
+                                                                                autocomplete="pl_extras" autofocus>
+
+                                                                            @error('pl_extras')
+                                                                                <span class="invalid-feedback" role="alert">
+                                                                                    <strong>{{ $message }}</strong>
+                                                                                </span>
+                                                                            @enderror
+                                                                        </div>
+                                                                        <div class="col-md-6 mb-2">
+                                                                            <label for="username" class="form-label">Parcel Discount</label>
+                                                                            <input type="number" id="pl_discount"
+                                                                                placeholder="Enter Parcel Discount" required
+                                                                                class="form-control @error('pl_discount') is-invalid @enderror"
+                                                                                name="pl_discount" value="{{ old('pl_discount') }}" required
+                                                                                autocomplete="pl_discount" autofocus>
+
+                                                                            @error('pl_discount')
+                                                                                <span class="invalid-feedback" role="alert">
+                                                                                    <strong>{{ $message }}</strong>
+                                                                                </span>
+                                                                            @enderror
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-6 mb-2">
+                                                                            <label for="username" class="form-label">Parcel Final Cost</label>
+                                                                            <input type="number" id="pl_final" placeholder="Parcel Final Charges"
+                                                                                required class="form-control @error('pl_final') is-invalid @enderror"
+                                                                                name="pl_final" value="{{ old('pl_final') }}" readonly
+                                                                                autocomplete="pl_final" autofocus>
+
+                                                                            @error('pl_final')
+                                                                                <span class="invalid-feedback" role="alert">
+                                                                                    <strong>{{ $message }}</strong>
+                                                                                </span>
+                                                                            @enderror
+                                                                        </div>
+                                                                        <div class="col-md-6 mb-2">
+                                                                            <label for="address" class="form-label">Parcel Description</label>
+                                                                            <textarea name="pl_description" id="pl_description" class="form-control" cols="1" rows="1">
+                                                                </textarea>
+                                                                            @error('pl_description')
+                                                                                <span class="invalid-feedback" role="alert">
+                                                                                    <strong>{{ $message }}</strong>
+                                                                                </span>
+                                                                            @enderror
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <input type="hidden" name="region_id" id="region_id" class="form-control"
+                                                                            value="" readonly>
+
+                                                                        <input type="hidden" id="currency_id" class="form-control" autofocus
+                                                                            name="currency_id" value="" readonly>
+                                                                    </div>
+
+
+                                                                    {{-- first row closed --}}
+
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <!-- Toogle to second dialog -->
+                                                                    <button type="submit" form="form1" class="btn btn-primary " id="modal_submit"
+                                                                        value="Submit">Submit</button>
+                                                                    <button type="button" class="btn btn-secondary" id="modal_close"
+                                                                        data-bs-dismiss="modal">Close</button>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div><!-- /.modal-content -->
+                                            </div><!-- /.modal-dialog -->
+                                        </div><!-- /.modal -->
+
+
+                                    </div>
+
+                                </div>
+                                <!-- end card body -->
+
+                        <!-- end col -->
+                </div>
+              </div>
+            </div>
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-        {{-- *******************************Parcel Modal************************************************************* --}}
-        <div class="modal fade" id="parcelmodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+        {{-- *******************************Parcel Modal  Small************************************************************* --}}
+        <div class="modal fade" id="..." aria-hidden="true" aria-labelledby="myLargeModalLabel" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">Parcel Registrations</h5>
+
                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                             aria-label="Close"></button>
                     </div>
@@ -362,8 +660,8 @@
                             enctype="multipart/form-data">
                             @csrf
                             <div class="row">
-                                <div class="col-md-12">
-                                    <h5 class="text-center"></h5>
+                                <div class="col-lg-12">
+
 
                                     <div class="row">
                                         <div class="col-md-6 mb-2">
@@ -470,7 +768,7 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        
+
                                         <div class="col-md-6 mb-2">
                                             <label for="useremail" class="form-label">Destination Country</label>
                                             <select class="form-select" name="country_id" required id="country_id"
@@ -478,7 +776,7 @@
                                                 <option value="">-----</option>
                                                 @foreach ($countries as $item)
                                                     <option value="{{ $item->id }}">{{ $item->name }}
-                                                    
+
                                                     </option>
                                                 @endforeach
                                             </select>
@@ -631,6 +929,10 @@
                 </div>
             </div>
         </div>
+
+
+
+
         {{-- ***************************Vendor Modal************************************************ --}}
         <div class="modal fade" id="logisticmodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
@@ -715,7 +1017,7 @@
                                         @foreach ($countries as $country)
                                             <option value="{{ $country->id }}">
                                                 {{ $country->name }}
-                                               
+
                                             </option>
                                         @endforeach
                                     </select>
@@ -910,7 +1212,7 @@
                                         value="{{ old('password') }}" required>
                                     <button class="btn btn-light " type="button" id="password-addon"><i
                                             class="mdi mdi-eye-outline"></i></button>
-                                
+
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -1059,7 +1361,7 @@
                                         @foreach ($countries as $country)
                                             <option value="{{ $country->id }}">
                                                 {{ $country->name }}
-                                              
+
                                             </option>
                                         @endforeach
                                     </select>
@@ -1217,7 +1519,7 @@
                                                 <option value="">-----</option>
                                                 @foreach ($regions as $item)
                                                     <option value="{{ $item->id }}">{{ $item->name }}
-                                                       
+
                                                     </option>
                                                 @endforeach
                                             </select> --}}
@@ -1348,7 +1650,7 @@
                                                 <option value="">-----</option>
                                                 @foreach ($countries as $item)
                                                     <option value="{{ $item->id }}">{{ $item->name }}
-                                                       
+
                                                     </option>
                                                 @endforeach
                                             </select> --}}
@@ -1382,7 +1684,7 @@
                                                 <option value="">-----</option>
                                                 @foreach ($currencies as $currency)
                                                     <option value="{{ $currency->id }}">{{ $currency->name }}
-                                                      
+
                                                     </option>
                                                 @endforeach
                                             </select> --}}
@@ -1799,5 +2101,5 @@
 
 
             }); //ready function closed
-            
+
         </script>

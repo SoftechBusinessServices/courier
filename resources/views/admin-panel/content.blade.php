@@ -1,4 +1,4 @@
-<div class="page-content px-5">
+<div class="page-content px-5" style="padding:0; padding-top:6%;">
     <div class="page-title-box d-sm-flex  justify-content-left  ">
         <h4 class="mb-sm-0 font-size-18"><a href="{{ route('home') }}">Dashboard</a></h4>
     </div>
@@ -175,19 +175,19 @@
 
 
     <!-- Setting container -->
-    <div class="page-content ">
+    <div class="page-content" style="padding:0;  padding-top:2%;">
         <div class=" border bg-light">
             <div class="modal modal-alert position-static d-block  " tabindex="-1" role="dialog" id="modalChoice">
                 <div class="modal-body  text-center">
                     <a href="#" class="nav-link text-dark">
                         <img src="{{ asset('assets/images/setting.png') }}" alt="">
 
-                        <h3 class="mb-0 mt-2">Setting </h3>
+                        <h3 class="">Setting </h3>
                     </a>
                 </div>
 
                 <div class="row gx-5">
-                    <div class="col ">
+                    <div class="col  ">
                         <div class="modal-content rounded-3 shadow">
                             <div class="modal-body  text-center">
                                 <a href="#" class="nav-link text-dark">

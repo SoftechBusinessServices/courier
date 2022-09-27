@@ -3,6 +3,7 @@
         <h4 class="mb-sm-0 font-size-18"><a href="{{ route('home') }}">Dashboard</a></h4>
     </div>
 
+    <!-- fist container  -->
     <div class="row gx-5  ">
         <!-- Parcel  -->
         <div class="col ">
@@ -74,14 +75,13 @@
                 <div class="modal-content rounded-3 shadow">
                     <div class="modal-body p-4 text-center">
                         <a href="#" class="nav-link text-dark">
-                            <img src="{{ asset('assets/images/cancel-new.png') }}" alt="">
+                            <img src="{{ asset('assets/images/payments.png') }}" alt="">
 
                             <h3 class="mb-0 mt-2">Payments</h3>
                         </a>
                     </div>
                     <div class="modal-footer flex-nowrap p-0 justify-content-center">
-                        <a href="add-suppliers.html"> <button type="button" class="btn btn-primary btn-md">Cancelled
-                                Parcels</button></a>
+                        <a href="add-suppliers.html"> <button type="button" class="btn btn-primary btn-md">Payments</button></a>
 
                     </div>
                 </div>
@@ -90,6 +90,8 @@
     </div>
     <!-- Row1 closed -->
 
+
+    <!--processed collapsed table  -->
     <div class="container">
         <div class="collapse" id="collapseExample">
             <div class="card card-body">
@@ -171,6 +173,8 @@
     </div>
     <!-- table collapsed closed -->
 
+
+    <!-- Setting container -->
     <div class="page-content ">
         <div class=" border bg-light">
             <div class="modal modal-alert position-static d-block  " tabindex="-1" role="dialog" id="modalChoice">
@@ -248,6 +252,7 @@
                     </div>
                     <!-- customers closed -->
 
+                    <!-- Regions  -->
                     <div class="col ">
                         <div class="modal-content rounded-3 shadow">
                             <div class="modal-body  text-center">
@@ -271,8 +276,31 @@
                     </div>
                     <!-- Regions closed -->
 
-                </div>
+                    <!--Services  -->
+                    <div class="col ">
+                        <div class="modal-content rounded-3 shadow">
+                            <div class="modal-body  text-center">
+                                <a href="#" class="nav-link text-dark">
+                                    <img src="{{ asset('assets/images/services.png') }}" alt="">
 
+                                    <h3 class="mb-0 mt-2">Services</h3>
+                                </a>
+
+                            </div>
+                            <div class="modal-footer flex-nowrap p-0 justify-content-center">
+                                <a class="btn btn-primary btn-md text-white " data-bs-toggle="modal"
+                                    data-bs-target="#regionmodal">Add
+                                    Region </a>
+                                <a class="btn btn-success btn-md text-white" href="{{ route('add-region') }}">Regions
+                                    List
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Services closed -->
+
+                </div>
             </div>
         </div>
     </div>

@@ -48,6 +48,16 @@
     <script src="{{ asset('assets/libs/echarts/echarts.min.js') }}"></script>
     <!-- echarts init -->
 
+    <!-- jquery step -->
+    <script src="{{ asset('assets/libs/jquery-steps/build/jquery.steps.min.js')}}"></script>
+
+    <!-- form wizard init -->
+    <script src="{{ asset('assets/js/pages/form-wizard.init.js')}}"></script>
+
+      <!-- form repeater js -->
+      <script src="{{ asset('assets/libs/jquery.repeater/jquery.repeater.min.js')}}"></script>
+
+      <script src="{{ asset('assets/js/pages/form-repeater.int.js')}}"></script>
 
 
     {{-- toastr js --}}

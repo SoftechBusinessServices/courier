@@ -109,7 +109,7 @@ class HomeController extends Controller
             return redirect()->back()->with("error", "Your New password does not same as Confirm password.");
         }
 
-        
+
     }
 
     public function store_user(Request $request){
@@ -132,7 +132,7 @@ class HomeController extends Controller
             return redirect()->back()->with('success',"Record Inserted Successfully");
         }
         else{
-            
+
             return redirect()->back()->with('error',"Insertion Failed!");
         }
     }

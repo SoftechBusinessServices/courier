@@ -40,7 +40,7 @@
                     </div>
                     <div class="modal-footer flex-nowrap p-0 justify-content-center d-flex flex-direction-column">
                         <!-- add customer  -->
-                        <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button"
+                        <a class="btn btn-primary" data-toggle="collapse" href="#processtable" role="button"
                             aria-expanded="false" aria-controls="collapseExample">Processed
                             Parcels</a>
 
@@ -61,9 +61,13 @@
                             <h3 class="mb-0 mt-2">Allocated</h3>
                         </a>
                     </div>
-                    <div class="modal-footer flex-nowrap p-0 justify-content-center">
-                        <a href="add-suppliers.html"> <button type="button" class="btn btn-primary btn-md">Allocated
-                                Parcels</button></a>
+                    <div class="modal-footer flex-nowrap p-0 justify-content-center d-flex flex-direction-column">
+                        <!-- add customer  -->
+                        <a class="btn btn-primary" data-toggle="collapse" href="#allocatetable" role="button"
+                            aria-expanded="false" aria-controls="collapseExample">Allocated
+                            Parcels</a>
+
+
                     </div>
                 </div>
             </div>
@@ -91,10 +95,9 @@
     </div>
     <!-- Row1 closed -->
 
-
     <!--processed collapsed table  -->
     <div class="container">
-        <div class="collapse" id="collapseExample">
+        <div class="collapse" id="processtable">
             <div class="card card-body">
                 <div class="row">
                     <div class="col-12">
@@ -175,8 +178,104 @@
             </div>
         </div>
     </div>
-    <!-- table collapsed closed -->
+    <!-- table processed collapsed closed -->
 
+
+
+
+
+
+    <!--Allocate collapsed table  -->
+    <div class="container">
+        <div class="collapse" id="allocatetable">
+            <div class="card card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <!--write your code here  -->
+
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title"></h4>
+                                <h4 class="card-title-desc text-dark ">
+                                    Allocated
+                                </h4>
+                                @if (isset($regions))
+                                    <table id="datatable-buttons"
+                                        class="table table-bordered dt-responsive nowrap w-100 table-sm text-center table-sm">
+                                        <thead>
+                                            <tr class="text-center">
+                                                <th>Parcel ID</th>
+                                                <th>Parcel Destination</th>
+                                                <th>Despatch Date</th>
+                                                {{-- <th>Subcategories</th> --}}
+                                                <th>Parcel Wieght(kg)</th>
+                                                <th>Parcel Charges</th>
+                                                <th>Vendor</th>
+                                                <th>Tracking ID</th>
+                                                <th>Vendor Charges</th>
+                                                <th>Status</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @php
+                                                $i = 1;
+                                            @endphp
+                                            @if ($regions->count() > 0)
+                                                @foreach ($regions as $item)
+                                                    <tr>
+                                                        <td>{{ $i++ }} <a
+                                                                href="{{ url('fetch-region/' . $item->id) }}"
+                                                                class="btn btn-outline-secondary btn-sm delete"
+                                                                title="View">
+                                                                <i class="far fa-eye"></i>
+                                                            </a> </td>
+                                                        <td>{{ $item->name }}</td>
+                                                        <td> 02/02/02 </td>
+                                                        <td> 02 kg </td>
+                                                        <td> 02 Rs/$</td>
+                                                        <td> xyz </td>
+                                                        <td>{{ $i++ }} <a
+                                                                href="{{ url('fetch-region/' . $item->id) }}"
+                                                                class="btn btn-outline-secondary btn-sm delete"
+                                                                title="View">
+                                                                <i class="far fa-eye"></i>
+                                                            </a> </td>
+
+                                                        <td> <button
+                                                                type="button"class="btn btn-outline-info btn-sm">Update</button>
+                                                        </td>
+                                                        <td>
+
+                                                            <div class="btn-group btn-group-sm" role="group"
+                                                                aria-label="...">
+                                                                <button
+                                                                    type="button"class="btn btn-outline-success btn-sm">Complete</button>
+                                                                |
+                                                                <button
+                                                                    type="button"class="btn btn-outline-success btn-sm">Dilevered</button>
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            @else
+                                                <tr>
+                                                    <td><code>No record found...</code></td>
+                                                </tr>
+                                            @endif
+                                        </tbody>
+                                    </table>
+                                @endif
+                            </div>
+
+                        </div> <!-- end col -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- table allocate collapsed closed -->
 
     <!-- Setting container -->
     <div class="page-content" style="padding:0;  padding-top:2%;">
@@ -295,7 +394,8 @@
                                 <a class="btn btn-primary btn-md text-white " data-bs-toggle="modal"
                                     data-bs-target="#servicemodal">Add
                                     Region </a>
-                                <a class="btn btn-success btn-md text-white" href="{{ route('add-region') }}">Regions
+                                <a class="btn btn-success btn-md text-white"
+                                    href="{{ route('add-service') }}">Services
                                     List
                                 </a>
 

@@ -15,6 +15,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\LogisticController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RepresentativeController;
+use App\Http\Controllers\ServicesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -148,4 +149,5 @@ Route::get('delete-user/{id}',[HomeController::class,'destroy_user'])->name('del
 
 
 
-Route::post('store-sevice/',[HomeController::class,'store_user'])->name('store-service');
+Route::get('add-sevice/',[ServicesController::class,'create_service'])->name('add-service');
+Route::post('store-sevice/',[ServicesController::class,'store_service'])->name('store-service');

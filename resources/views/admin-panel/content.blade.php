@@ -81,7 +81,8 @@
                         </a>
                     </div>
                     <div class="modal-footer flex-nowrap p-0 justify-content-center">
-                        <a href="add-suppliers.html"> <button type="button" class="btn btn-primary btn-md">Payments</button></a>
+                        <a href="add-suppliers.html"> <button type="button"
+                                class="btn btn-primary btn-md">Payments</button></a>
 
                     </div>
                 </div>
@@ -308,8 +309,259 @@
 
 </div>
 
+<!------------------User Modal---------------------->
+     {{-- ***************************User Modal************************************************ --}}
+     <div class="modal fade" id="usermodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">User Registration Modal</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="userform" class="needs-validation" novalidate method="POST"
+                        action="{{ route('store-user') }}">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" id="username" placeholder="Enter username" required
+                                class="form-control @error('name') is-invalid @enderror" name="name"
+                                value="{{ old('name') }}" required autocomplete="name" autofocus>
+                            {{-- <div class="invalid-feedback">
+                        Please Enter Username
+                    </div> --}}
+                            @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
 
-<!-- ***************Parcel Modal**************** -->
+                        <div class="mb-3">
+                            <label for="useremail" class="form-label">Email</label>
+                            <input type="email" id="useremail" placeholder="Enter email"
+                                class="form-control @error('email') is-invalid @enderror" name="email"
+                                value="{{ old('email') }}" autocomplete="email" required>
+                            {{-- <div class="invalid-feedback">
+                        Please Enter Email
+                    </div> --}}
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="userpassword" class="form-label">{{ __('Password') }}</label>
+                            <div class="input-group auth-pass-inputgroup">
+                                <input type="password" id="userpassword"
+                                    class="form-control @error('password') is-invalid @enderror"
+                                    name="password" autocomplete="new-password" placeholder="Enter password"
+                                    value="{{ old('password') }}" required>
+                                <button class="btn btn-light " type="button" id="password-addon"><i
+                                        class="mdi mdi-eye-outline"></i></button>
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="userpassword" for="password-confirm"
+                                class="form-label">{{ __('Confirm Password') }}</label>
+                            <input id="password-confirm" type="password" class="form-control"
+                                name="password_confirmation" required autocomplete="new-password"
+                                value="{{ old('password_confirmation') }}">
+                            @error('password_confirmation')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+
+                        <div class="modal-footer">
+                            <!-- Toogle to second dialog -->
+                            <button type="submit" form="userform" class="btn btn-primary "
+                                id="modal_submit" value="Submit">Submit</button>
+                            <button type="button" class="btn btn-secondary" id="modal_close1"
+                                data-bs-dismiss="modal">Close</button>
+                        </div>
+                </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+<!------------------Region Modal---------------------->
+<div class="modal fade" id="regionmodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Region Modal</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="regionform" action="{{ route('store-region') }}" method="POST">
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-12 mb-0">
+                            <label for="username" class="form-label">Enter Region Name</label>
+                            <input type="text" id="username" placeholder="Enter customer name"
+                                class="form-control @error('name') is-invalid @enderror" name="name"
+                                value="{{ old('name') }}" required autocomplete="name" autofocus>
+                            @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="modal-footer">
+                            <!-- Toogle to second dialog -->
+                            <button type="submit" form="regionform" class="btn btn-primary "
+                                id="modal_submit" value="Submit">Submit</button>
+                            <button type="button" class="btn btn-secondary" id="modal_close1"
+                                data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!------------------Vendor Modal---------------------->
+<div class="modal fade" id="logisticmodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Logistics Vendor Registration</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="form2" novalidate method="POST" action="{{ route('store-logistic') }}"
+                    enctype="multipart/form-data">
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+
+                                <div class="col-md-12 mb-2">
+                                    <label for="username" class="form-label">Logistics Name</label>
+                                    <input type="text" id="username"
+                                        placeholder="Enter logistic name"
+                                        class="form-control @error('logistics_name') is-invalid @enderror"
+                                        name="logistic_name" value="{{ old('logistic_name') }}" required
+                                        autocomplete="logistic_name" autofocus>
+
+                                    @error('logistic_name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-12 mb-2">
+                                    <label for="username" class="form-label">Vendor Name</label>
+                                    <input type="text" id="username" placeholder="Enter Vendor name"
+                                        class="form-control @error('vendor_name') is-invalid @enderror"
+                                        name="vendor_name" value="{{ old('vendor_name') }}" required
+                                        autocomplete="vendor_name" autofocus>
+
+                                    @error('vendor_name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-12 mb-2">
+                                    <label for="useremail" class="form-label">Vendor Email</label>
+                                    <input type="email" id="useremail"
+                                        placeholder="Enter Email address"
+                                        class="form-control @error('vendor_email') is-invalid @enderror"
+                                        name="vendor_email" value="{{ old('vendor_email') }}"
+                                        autocomplete="email" required>
+
+                                    @error('vendor_email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- first row closed --}}
+                    <div class="row">
+                        <div class="col-md-12 mb-2">
+                            <label for="username" class="form-label">Vendor Phone Number</label>
+                            <input type="text" data-inputmask="'mask': '0399-99999999'" type="number"
+                                maxlength="12"
+                                class="form-control @error('vendor_phone') is-invalid @enderror"
+                                name="vendor_phone" value="{{ old('vendor_phone') }}" required
+                                autocomplete="vendor_phone" autofocus>
+
+                            @error('vendor_phone')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        {{-- <div class="col-md-12 mb-2">
+                        <label for="useremail" class="form-label">Select Country</label>
+                        <select class="form-select" name="country_id" required
+                            class="form-control table-responsive @error('country_id') is-invalid @enderror"
+                            value="{{ old('country_id') }}">
+                            @foreach ($countries as $country)
+                                <option value="{{ $country->id }}">
+                                    {{ $country->name }}
+
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('country_id')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div> --}}
+                        <div class="col-md-12 mb-2">
+                            <label for="address" class="form-label">Vendor Address</label>
+                            <textarea name="vendor_address" id="vendor_address" class="form-control" cols="1" rows="1">
+
+                        </textarea>
+                            @error('vendor_address')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <!-- Toogle to second dialog -->
+                        <button type="submit" form="form2" class="btn btn-primary " id="modal_submit"
+                            value="Submit">Submit</button>
+                        <button type="button" class="btn btn-secondary" id="modal_close1"
+                            data-bs-dismiss="modal">Close</button>
+                    </div>
+            </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<!------------------Parcel Modal---------------------->
+<!------------------Parcel Modal---------------------->
 <div class="modal fade " id="parcelmodal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -686,7 +938,8 @@
 
                                         <div class="row mt-5">
                                             <div class="col-md-6">
-                                                <input type="checkbox" name="check_print" value="Orange">Do you want to Print?
+                                                <input type="checkbox" name="check_print" value="Orange">Do you want
+                                                to Print?
                                             </div>
                                         </div>
                                     </form>

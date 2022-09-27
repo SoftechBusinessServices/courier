@@ -147,3 +147,5 @@ Route::get('fetch-user/',[HomeController::class,'fetch_user'])->name('add-user')
 Route::get('delete-user/{id}',[HomeController::class,'destroy_user'])->name('delete-user');
 
 
+
+Route::post('store-sevice/',[HomeController::class,'store_user'])->name('store-service');

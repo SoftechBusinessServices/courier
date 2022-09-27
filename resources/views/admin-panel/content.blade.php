@@ -4,7 +4,7 @@
     </div>
 
     <!-- fist container  -->
-    <div class="row gx-5  ">
+    <div class="row gx-5 mb-2">
         <!-- Parcel  -->
         <div class="col ">
             <div class="p-3 border bg-light">
@@ -104,18 +104,20 @@
                             <div class="card-body">
                                 <h4 class="card-title"></h4>
                                 <h4 class="card-title-desc text-dark ">
-                                    Product Categories Details
+                                    Procssed Orders
                                 </h4>
                                 @if (isset($regions))
                                     <table id="datatable-buttons"
                                         class="table table-bordered dt-responsive nowrap w-100 table-sm text-center table-sm">
                                         <thead>
                                             <tr class="text-center">
-                                                <th>S.No</th>
-                                                <th>Region</th>
-                                                <th>No of Countries</th>
+                                                <th>Parcel ID</th>
+                                                <th>Parcel Destination</th>
+                                                <th>Despatch Date</th>
                                                 {{-- <th>Subcategories</th> --}}
-                                                <th>Date</th>
+                                                <th>Parcel Wieght(kg)</th>
+                                                <th>Parcel Charges</th>
+                                                <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -126,21 +128,22 @@
                                             @if ($regions->count() > 0)
                                                 @foreach ($regions as $item)
                                                     <tr>
-                                                        <td>{{ $i++ }}</td>
-                                                        <td>{{ $item->name }}</td>
-                                                        <td> 02 | <a href="{{ url('fetch-region/' . $item->id) }}"
+                                                        <td>{{ $i++ }} <a
+                                                                href="{{ url('fetch-region/' . $item->id) }}"
                                                                 class="btn btn-outline-secondary btn-sm delete"
                                                                 title="View">
                                                                 <i class="far fa-eye"></i>
-                                                            </a>
+                                                            </a> </td>
+                                                        <td>{{ $item->name }}</td>
+                                                        <td> 02/02/02 </td>
+                                                        <td> 02 </td>
+                                                        <td> 02 </td>
+                                                        <td> <button type="button"
+                                                                class="btn btn-outline-info btn-sm">Allocate</button>
                                                         </td>
                                                         <td style="">
-                                                            <a href="#"
-                                                                class="btn btn-outline-secondary btn-sm delete"
-                                                                title="View">
-                                                                <i class="far fa-eye"></i>
-                                                            </a>
-                                                            |
+
+
                                                             <a href="{{ url('edit-region/' . $item->id) }}"
                                                                 class="btn btn-outline-warning btn-sm delete"
                                                                 title="Edit">
@@ -290,7 +293,7 @@
                             </div>
                             <div class="modal-footer flex-nowrap p-0 justify-content-center">
                                 <a class="btn btn-primary btn-md text-white " data-bs-toggle="modal"
-                                    data-bs-target="#regionmodal">Add
+                                    data-bs-target="#servicemodal">Add
                                     Region </a>
                                 <a class="btn btn-success btn-md text-white" href="{{ route('add-region') }}">Regions
                                     List
@@ -310,101 +313,95 @@
 </div>
 
 <!------------------User Modal---------------------->
-     {{-- ***************************User Modal************************************************ --}}
-     <div class="modal fade" id="usermodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">User Registration Modal</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="userform" class="needs-validation" novalidate method="POST"
-                        action="{{ route('store-user') }}">
-                        @csrf
-                        <div class="mb-3">
-                            <label for="username" class="form-label">Username</label>
-                            <input type="text" id="username" placeholder="Enter username" required
-                                class="form-control @error('name') is-invalid @enderror" name="name"
-                                value="{{ old('name') }}" required autocomplete="name" autofocus>
-                            {{-- <div class="invalid-feedback">
-                        Please Enter Username
-                    </div> --}}
-                            @error('name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
 
-                        <div class="mb-3">
-                            <label for="useremail" class="form-label">Email</label>
-                            <input type="email" id="useremail" placeholder="Enter email"
-                                class="form-control @error('email') is-invalid @enderror" name="email"
-                                value="{{ old('email') }}" autocomplete="email" required>
-                            {{-- <div class="invalid-feedback">
-                        Please Enter Email
-                    </div> --}}
-                            @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="userpassword" class="form-label">{{ __('Password') }}</label>
-                            <div class="input-group auth-pass-inputgroup">
-                                <input type="password" id="userpassword"
-                                    class="form-control @error('password') is-invalid @enderror"
-                                    name="password" autocomplete="new-password" placeholder="Enter password"
-                                    value="{{ old('password') }}" required>
-                                <button class="btn btn-light " type="button" id="password-addon"><i
-                                        class="mdi mdi-eye-outline"></i></button>
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="userpassword" for="password-confirm"
-                                class="form-label">{{ __('Confirm Password') }}</label>
-                            <input id="password-confirm" type="password" class="form-control"
-                                name="password_confirmation" required autocomplete="new-password"
-                                value="{{ old('password_confirmation') }}">
-                            @error('password_confirmation')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-
-
-                        <div class="modal-footer">
-                            <!-- Toogle to second dialog -->
-                            <button type="submit" form="userform" class="btn btn-primary "
-                                id="modal_submit" value="Submit">Submit</button>
-                            <button type="button" class="btn btn-secondary" id="modal_close1"
-                                data-bs-dismiss="modal">Close</button>
-                        </div>
-                </div>
-                </form>
-
+<div class="modal fade" id="usermodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">User Registration Modal</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <div class="modal-body">
+                <form id="userform" class="needs-validation" novalidate method="POST"
+                    action="{{ route('store-user') }}">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" id="username" placeholder="Enter username" required
+                            class="form-control @error('name') is-invalid @enderror" name="name"
+                            value="{{ old('name') }}" required autocomplete="name" autofocus>
+
+                        @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="useremail" class="form-label">Email</label>
+                        <input type="email" id="useremail" placeholder="Enter email"
+                            class="form-control @error('email') is-invalid @enderror" name="email"
+                            value="{{ old('email') }}" autocomplete="email" required>
+
+                        @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="userpassword" class="form-label">{{ __('Password') }}</label>
+                        <div class="input-group auth-pass-inputgroup">
+                            <input type="password" id="userpassword"
+                                class="form-control @error('password') is-invalid @enderror" name="password"
+                                autocomplete="new-password" placeholder="Enter password"
+                                value="{{ old('password') }}" required>
+                            <button class="btn btn-light " type="button" id="password-addon"><i
+                                    class="mdi mdi-eye-outline"></i></button>
+
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="userpassword" for="password-confirm"
+                            class="form-label">{{ __('Confirm Password') }}</label>
+                        <input id="password-confirm" type="password" class="form-control"
+                            name="password_confirmation" required autocomplete="new-password"
+                            value="{{ old('password_confirmation') }}">
+                        @error('password_confirmation')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <!-- Toogle to second dialog -->
+                        <button type="submit" form="userform" class="btn btn-primary " id="modal_submit"
+                            value="Submit">Submit</button>
+                        <button type="button" class="btn btn-secondary" id="modal_close1"
+                            data-bs-dismiss="modal">Close</button>
+                    </div>
+            </div>
+            </form>
+
         </div>
     </div>
+</div>
 <!------------------Region Modal---------------------->
 <div class="modal fade" id="regionmodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Region Modal</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                    aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form id="regionform" action="{{ route('store-region') }}" method="POST">
@@ -424,8 +421,8 @@
 
                         <div class="modal-footer">
                             <!-- Toogle to second dialog -->
-                            <button type="submit" form="regionform" class="btn btn-primary "
-                                id="modal_submit" value="Submit">Submit</button>
+                            <button type="submit" form="regionform" class="btn btn-primary " id="modal_submit"
+                                value="Submit">Submit</button>
                             <button type="button" class="btn btn-secondary" id="modal_close1"
                                 data-bs-dismiss="modal">Close</button>
                         </div>
@@ -443,8 +440,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Logistics Vendor Registration</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                    aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form id="form2" novalidate method="POST" action="{{ route('store-logistic') }}"
@@ -456,8 +452,7 @@
 
                                 <div class="col-md-12 mb-2">
                                     <label for="username" class="form-label">Logistics Name</label>
-                                    <input type="text" id="username"
-                                        placeholder="Enter logistic name"
+                                    <input type="text" id="username" placeholder="Enter logistic name"
                                         class="form-control @error('logistics_name') is-invalid @enderror"
                                         name="logistic_name" value="{{ old('logistic_name') }}" required
                                         autocomplete="logistic_name" autofocus>
@@ -484,11 +479,10 @@
 
                                 <div class="col-md-12 mb-2">
                                     <label for="useremail" class="form-label">Vendor Email</label>
-                                    <input type="email" id="useremail"
-                                        placeholder="Enter Email address"
+                                    <input type="email" id="useremail" placeholder="Enter Email address"
                                         class="form-control @error('vendor_email') is-invalid @enderror"
-                                        name="vendor_email" value="{{ old('vendor_email') }}"
-                                        autocomplete="email" required>
+                                        name="vendor_email" value="{{ old('vendor_email') }}" autocomplete="email"
+                                        required>
 
                                     @error('vendor_email')
                                         <span class="invalid-feedback" role="alert">
@@ -505,8 +499,7 @@
                         <div class="col-md-12 mb-2">
                             <label for="username" class="form-label">Vendor Phone Number</label>
                             <input type="text" data-inputmask="'mask': '0399-99999999'" type="number"
-                                maxlength="12"
-                                class="form-control @error('vendor_phone') is-invalid @enderror"
+                                maxlength="12" class="form-control @error('vendor_phone') is-invalid @enderror"
                                 name="vendor_phone" value="{{ old('vendor_phone') }}" required
                                 autocomplete="vendor_phone" autofocus>
 
@@ -516,24 +509,6 @@
                                 </span>
                             @enderror
                         </div>
-                        {{-- <div class="col-md-12 mb-2">
-                        <label for="useremail" class="form-label">Select Country</label>
-                        <select class="form-select" name="country_id" required
-                            class="form-control table-responsive @error('country_id') is-invalid @enderror"
-                            value="{{ old('country_id') }}">
-                            @foreach ($countries as $country)
-                                <option value="{{ $country->id }}">
-                                    {{ $country->name }}
-
-                                </option>
-                            @endforeach
-                        </select>
-                        @error('country_id')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div> --}}
                         <div class="col-md-12 mb-2">
                             <label for="address" class="form-label">Vendor Address</label>
                             <textarea name="vendor_address" id="vendor_address" class="form-control" cols="1" rows="1">
@@ -560,7 +535,44 @@
         </div>
     </div>
 </div>
-<!------------------Parcel Modal---------------------->
+<!------------------Service Modal---------------------->
+<div class="modal fade" id="serivcemodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Region Modal</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="regionform" action="{{ route('store-region') }}" method="POST">
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-12 mb-0">
+                            <label for="username" class="form-label">Enter Region Name</label>
+                            <input type="text" id="username" placeholder="Enter customer name"
+                                class="form-control @error('name') is-invalid @enderror" name="name"
+                                value="{{ old('name') }}" required autocomplete="name" autofocus>
+                            @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="modal-footer">
+                            <!-- Toogle to second dialog -->
+                            <button type="submit" form="regionform" class="btn btn-primary " id="modal_submit"
+                                value="Submit">Submit</button>
+                            <button type="button" class="btn btn-secondary" id="modal_close1"
+                                data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
 <!------------------Parcel Modal---------------------->
 <div class="modal fade " id="parcelmodal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
     aria-hidden="true">
@@ -948,220 +960,222 @@
                             </div><!-- /.modal-content -->
                         </div><!-- /.modal-dialog -->
                     </div><!-- /.modal -->
-                    <!-- ***************Parcel Modal**************** -->
+
+<!-------------- Parcel modal closed ------------------------>                    
+
+   <!---------------------- JAVASCRIPT-------------------->
+   <script>
+    $(document).ready(function() {
+        // onchange radio
+        $('#random_customer').hide();
+        $('#company_customer').hide();
+
+        $('input[type=radio][name=customer_type]').on('change', function() {
+
+            switch ($(this).val()) {
+
+                case 'random':
+                    // alert("1");
+
+                    $('#random_customer').show();
+                    //$('#company_customer').empty();
+                    $('#company_customer').hide();
+                    break;
+
+                case 'registered':
+                    // alert("2");
+
+                    $('#company_customer').show();
+                    //$('#random_customer').empty();
+                    $('#random_customer').hide();
+            }
+        });
+
+        //oncheck box
+        $("#company_representative").hide();
+        $('input[type=radio][name=answer]').change(function() {
+
+            if ($(this).val() == "yes") {
+                $("#company_representative").show();
+            } else {
+                $("#company_representative").hide();
+            }
+        });
+
+        //country_id function closed
+        $('#country_id').on('change', function() {
+            var country_id = $(this).val();
+
+            if (country_id) {
+                $.ajax({
+                    url: "{{ url('/getSelectedShipping') }}/" + country_id,
+                    type: "GET",
+                    success: function(data) {
+                        if (data) {
+                            console.log(data);
+                            $('#region_id').val(data.region_id);
+                            $('#currency_id').val(data.currency_id);
+                            $('#pl_symbol').val(data.symbol);
+                            $('#symbol_lable').text(data.symbol);
+
+                            $("#pl_cost").blur(function() {
+
+                                var pl_weight = parseInt($('#pl_weight').val());
+                                var pl_cost = parseInt($('#pl_cost').val());
+                                var pl_extras = parseInt($('#pl_extras').val());
+                                var pl_discount = parseInt($('#pl_discount').val());
+                                var pl_total = (pl_cost + pl_extras) - pl_discount;
+                                $('#pl_final').val(pl_total);
 
 
-                    <!-- __________Javascript____________-->
-                    <script>
-                        $(document).ready(function() {
-                            // onchange radio
-                            $('#random_customer').hide();
-                            $('#company_customer').hide();
+                            }); // cost blur function closed
 
-                            $('input[type=radio][name=customer_type]').on('change', function() {
+                            $("#pl_discount").blur(function() {
 
-                                switch ($(this).val()) {
+                                var pl_cost = parseInt($('#pl_cost').val());
+                                var pl_extras = parseInt($('#pl_extras').val());
+                                var pl_discount = parseInt($('#pl_discount').val());
+                                var pl_total = (pl_cost + pl_extras) - pl_discount;
+                                $('#pl_final').val(pl_total);
 
-                                    case 'random':
-                                        // alert("1");
+                            }); // discount blur function closed
+                            $("#pl_extras").blur(function() {
 
-                                        $('#random_customer').show();
-                                        //$('#company_customer').empty();
-                                        $('#company_customer').hide();
-                                        break;
+                                var pl_cost = parseInt($('#pl_cost').val());
+                                var pl_extras = parseInt($('#pl_extras').val());
+                                var pl_discount = parseInt($('#pl_discount').val());
+                                var pl_total = (pl_cost + pl_extras) - pl_discount;
+                                $('#pl_final').val(pl_total);
 
-                                    case 'registered':
-                                        // alert("2");
+                            }); // discount blur function closed
+                            $("#pl_weight").blur(function() {
 
-                                        $('#company_customer').show();
-                                        //$('#random_customer').empty();
-                                        $('#random_customer').hide();
-                                }
+                                var pl_cost = parseInt($('#pl_cost').val());
+                                var pl_extras = parseInt($('#pl_extras').val());
+                                var pl_discount = parseInt($('#pl_discount').val());
+                                var pl_total = (pl_cost + pl_extras) - pl_discount;
+                                $(
+                                    '#pl_final').val(pl_total);
+
+                            }); // discount blur function closed
+
+                        } else {
+                            alert('data not found');
+
+                        }
+                    }
+                });
+            }
+        });
+
+        // rate controls ajax
+        $('#country_idd').on('change', function() {
+            var country_id = $(this).val();
+            // alert(country_id)
+            if (region_idd) {
+                $.ajax({
+                    url: "{{ url('/getSelected') }}/" + country_id,
+                    type: "GET",
+                    success: function(data) {
+                        if (data) {
+                            console.log(data);
+                            $("#region_idd").html(data);
+                        } else {
+                            $('#region_idd').empty();
+                        }
+                    }
+                });
+            } else {
+                $('#region_idd').empty();
+            }
+        });
+
+        //currency method starts
+        $('#currency_idd').on('click', function() {
+            var currency_id = $(this).val();
+            console.log(currency_id);
+            if (currency_id) {
+                $.ajax({
+                    url: "{{ url('/getCurrency') }}/" +
+                        currency_id,
+                    type: "GET",
+                    data: {
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    dataType: "json",
+
+                    success: function(response) {
+                        console.log(response);
+                        //   alert(response['0']['name']);
+                        $('#symbol_idd').val(response['0'][
+                            'symbol'
+                        ]);
+                    }
+
+                });
+            } else {
+
+            }
+        });
+        // company-representative selection
+        $('#company_idd').on('change', function() {
+
+            var company_idd = $(this).val();
+            alert(company_idd);
+            if (company_idd) {
+                $.ajax({
+                    url: "{{ url('/getCompany') }}/" + company_idd,
+                    type: "GET",
+
+                    success: function(data) {
+                        if (data) {
+                            console.log(data);
+                            $('#represent_idd').empty();
+                            $('#represent_idd').append(
+                                '<option hidden>Choose Representative</option>');
+                            $.each(data, function(key, course) {
+                                $('select[name="represent_idd"]').append(
+                                    '<option value="' + course.id + '">' +
+                                    course.represent_name + '</option>');
                             });
+                        } else {
 
-                            //oncheck box
-                            $("#company_representative").hide();
-                            $('input[type=radio][name=answer]').change(function() {
+                            $('#represent_idd').empty();
 
-                                if ($(this).val() == "yes") {
-                                    $("#company_representative").show();
-                                } else {
-                                    $("#company_representative").hide();
-                                }
-                            });
+                        }
+                    }
+                });
+            } else {
 
-                            //country_id function closed
-                            $('#country_id').on('change', function() {
-                                var country_id = $(this).val();
+                $('#represent_idd').empty();
 
-                                if (country_id) {
-                                    $.ajax({
-                                        url: "{{ url('/getSelectedShipping') }}/" + country_id,
-                                        type: "GET",
-                                        success: function(data) {
-                                            if (data) {
-                                                console.log(data);
-                                                $('#region_id').val(data.region_id);
-                                                $('#currency_id').val(data.currency_id);
-                                                $('#pl_symbol').val(data.symbol);
-                                                $('#symbol_lable').text(data.symbol);
-
-                                                $("#pl_cost").blur(function() {
-
-                                                    var pl_weight = parseInt($('#pl_weight').val());
-                                                    var pl_cost = parseInt($('#pl_cost').val());
-                                                    var pl_extras = parseInt($('#pl_extras').val());
-                                                    var pl_discount = parseInt($('#pl_discount').val());
-                                                    var pl_total = (pl_cost + pl_extras) - pl_discount;
-                                                    $('#pl_final').val(pl_total);
-
-
-                                                }); // cost blur function closed
-
-                                                $("#pl_discount").blur(function() {
-
-                                                    var pl_cost = parseInt($('#pl_cost').val());
-                                                    var pl_extras = parseInt($('#pl_extras').val());
-                                                    var pl_discount = parseInt($('#pl_discount').val());
-                                                    var pl_total = (pl_cost + pl_extras) - pl_discount;
-                                                    $('#pl_final').val(pl_total);
-
-                                                }); // discount blur function closed
-                                                $("#pl_extras").blur(function() {
-
-                                                    var pl_cost = parseInt($('#pl_cost').val());
-                                                    var pl_extras = parseInt($('#pl_extras').val());
-                                                    var pl_discount = parseInt($('#pl_discount').val());
-                                                    var pl_total = (pl_cost + pl_extras) - pl_discount;
-                                                    $('#pl_final').val(pl_total);
-
-                                                }); // discount blur function closed
-                                                $("#pl_weight").blur(function() {
-
-                                                    var pl_cost = parseInt($('#pl_cost').val());
-                                                    var pl_extras = parseInt($('#pl_extras').val());
-                                                    var pl_discount = parseInt($('#pl_discount').val());
-                                                    var pl_total = (pl_cost + pl_extras) - pl_discount;
-                                                    $(
-                                                        '#pl_final').val(pl_total);
-
-                                                }); // discount blur function closed
-
-                                            } else {
-                                                alert('data not found');
-
-                                            }
-                                        }
-                                    });
-                                }
-                            });
-
-                            // rate controls ajax
-                            $('#country_idd').on('change', function() {
-                                var country_id = $(this).val();
-                                // alert(country_id)
-                                if (region_idd) {
-                                    $.ajax({
-                                        url: "{{ url('/getSelected') }}/" + country_id,
-                                        type: "GET",
-                                        success: function(data) {
-                                            if (data) {
-                                                console.log(data);
-                                                $("#region_idd").html(data);
-                                            } else {
-                                                $('#region_idd').empty();
-                                            }
-                                        }
-                                    });
-                                } else {
-                                    $('#region_idd').empty();
-                                }
-                            });
-
-                            //currency method starts
-                            $('#currency_idd').on('click', function() {
-                                var currency_id = $(this).val();
-                                console.log(currency_id);
-                                if (currency_id) {
-                                    $.ajax({
-                                        url: "{{ url('/getCurrency') }}/" +
-                                            currency_id,
-                                        type: "GET",
-                                        data: {
-                                            "_token": "{{ csrf_token() }}"
-                                        },
-                                        dataType: "json",
-
-                                        success: function(response) {
-                                            console.log(response);
-                                            //   alert(response['0']['name']);
-                                            $('#symbol_idd').val(response['0'][
-                                                'symbol'
-                                            ]);
-                                        }
-
-                                    });
-                                } else {
-
-                                }
-                            });
-                            // company-representative selection
-                            $('#company_idd').on('change', function() {
-
-                                var company_idd = $(this).val();
-                                alert(company_idd);
-                                if (company_idd) {
-                                    $.ajax({
-                                        url: "{{ url('/getCompany') }}/" + company_idd,
-                                        type: "GET",
-
-                                        success: function(data) {
-                                            if (data) {
-                                                console.log(data);
-                                                $('#represent_idd').empty();
-                                                $('#represent_idd').append(
-                                                    '<option hidden>Choose Representative</option>');
-                                                $.each(data, function(key, course) {
-                                                    $('select[name="represent_idd"]').append(
-                                                        '<option value="' + course.id + '">' +
-                                                        course.represent_name + '</option>');
-                                                });
-                                            } else {
-
-                                                $('#represent_idd').empty();
-
-                                            }
-                                        }
-                                    });
-                                } else {
-
-                                    $('#represent_idd').empty();
-
-                                }
-                            });
+            }
+        });
 
 
 
-                        }); //ready function closed
-                    </script>
-                    <script type="text/javascript">
-                        $(function() {
-                            $("#chkPassport").click(function() {
-                                if ($(this).is(":checked")) {
-                                    $("#dvAddShipper").show();
-                                } else {
-                                    $("#dvAddShipper").hide();
-                                }
-                            });
-                        });
+    }); //ready function closed
+</script>
+<script type="text/javascript">
+    $(function() {
+        $("#chkPassport").click(function() {
+            if ($(this).is(":checked")) {
+                $("#dvAddShipper").show();
+            } else {
+                $("#dvAddShipper").hide();
+            }
+        });
+    });
 
-                        $(function() {
-                            $("#chkCompany").click(function() {
-                                if ($(this).is(":checked")) {
-                                    $("#dvCompany").show();
-                                } else {
-                                    $("#dvCompany").hide();
-                                }
-                            });
-                        });
-                    </script>
+    $(function() {
+        $("#chkCompany").click(function() {
+            if ($(this).is(":checked")) {
+                $("#dvCompany").show();
+            } else {
+                $("#dvCompany").hide();
+            }
+        });
+    });
+</script>
+
+                 

@@ -674,7 +674,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label for="exampleDataList" class="col-md-2 col-form-label">Datalists</label>
+                                    <label for="username" class="form-label">Search Phone Number</label>
                                     <input class="form-control" list="datalistOptions" id="exampleDataList"
                                         placeholder="Type to search...">
                                     <datalist id="datalistOptions">

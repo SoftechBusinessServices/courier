@@ -48,8 +48,8 @@
                                                         <td>{{ $i++ }}</td>
                                                         <td>{{ $item->name }}</td>
                                                         <td>
-                                                            <a class="btn btn-outline-primary btn-sm delete" title="add"
-                                                                data-bs-toggle="modal" data-bs-target="#countrymodal">
+                                                            <a class="btn btn-outline-primary btn-sm plus_btn" title="add"
+                                                                data-bs-toggle="modal" data-bs-target="#countrymodal" id="{{ $item->id }}">
                                                                 <i class="fas fa-plus-circle"></i>
                                                             </a>
                                                             {{--  <a href="{{ url('create-country/'.$item->id) }}"
@@ -139,13 +139,14 @@
                                     <p>{{ Session::get('success') }}</p>
                                 </div>
                             @endif
+                            <input type="hidden" name="region_id" value="" id="region_id">
                             <table class="table table-bordered" id="dynamicAddRemove">
                                 <tr>
-                                    <th>Subject</th>
+                                    <th>Country</th>
                                     <th>Action</th>
                                 </tr>
                                 <tr>
-                                    <td><input type="text" name="addMoreInputFields[0][subject]"
+                                    <td><input type="text" name="addMoreInputFields[0][country_name]"
                                             placeholder="Enter Country" class="form-control" />
                                     </td>
                                     <td><button type="button" name="add" id="dynamic-ar"
@@ -165,11 +166,17 @@
             $("#dynamic-ar").click(function () {
                 ++i;
                 $("#dynamicAddRemove").append('<tr><td><input type="text" name="addMoreInputFields[' + i +
-                    '][subject]" placeholder="Enter subject" class="form-control" /></td><td><button type="button" class="btn btn-outline-danger remove-input-field">Delete</button></td></tr>'
+                    '][country_name]" placeholder="Enter Country Name" class="form-control" /></td><td><button type="button" class="btn btn-outline-danger remove-input-field">Delete</button></td></tr>'
                     );
             });
             $(document).on('click', '.remove-input-field', function () {
                 $(this).parents('tr').remove();
+            });
+
+            $('.plus_btn').on('click', function(e){
+                e.preventDefault();
+                console.log(this.id);
+                $('#region_id').val(this.id);
             });
         </script>
     @endsection

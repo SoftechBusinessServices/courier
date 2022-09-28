@@ -29,14 +29,21 @@ class CountryController extends Controller
         // dd($request->all());
         $request->validate([
             'region_id' => 'required',
-            'addMoreInputFields.*.subject' => 'required'
+            'addMoreInputFields.*.country_name' => 'required'
         ]);
 
         foreach ($request->addMoreInputFields as $key => $value) {
-            Country::create($value);
+            // Country::create($value);
+            return $value;
         }
+        $data= [
 
-        return back()->with('success', 'New subject has been added.');
+            'region_id' => $request->region_id,
+                'name' =>$value,
+    ];
+        Country::create($value);
+
+        return back()->with('success', 'New Country has been added.');
         // $validatedData = $request->validate(
         //     [
         //         'region_id' => 'required',

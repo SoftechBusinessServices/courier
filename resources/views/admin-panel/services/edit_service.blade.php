@@ -18,8 +18,43 @@
 
                                     {{--  <a class="btn btn-success btn-md text-white " data-bs-toggle="modal"
                                         data-bs-target="#countrymodal">Add Country</a>  --}}
-                                    <span class="font-size-22 font-weight-bold ml-2"> Services Details
+                                    <span class="font-size-22 font-weight-bold ml-4"> Edit Service Form
                                     </span>
+                                    <form class="needs-validation" novalidate action="{{ url('update-service/' . $record->id) }}"
+                                        method="POST">
+                                        @csrf
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    {{-- <label for="validationCustom01" class="form-label">Category Name:</label> --}}
+                                                    <input type="text" name="service_name" class="form-control"
+                                                        id="validationCustom01" value="{{ $record->service_name }}" required>
+                                                    <div class="valid-feedback">
+                                                        Looks good!
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-check mb-3">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                        id="invalidCheck" required>
+                                                    <label class="form-check-label" for="invalidCheck">
+                                                        Agree to terms and conditions
+                                                    </label>
+                                                    <div class="invalid-feedback">
+                                                        You must agree before submitting.
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <button class="btn btn-primary" type="submit">Submit form</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+                                    </form>
+
                                 </p>
                                 <hr>
                                 @if (isset($data))

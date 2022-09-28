@@ -19,44 +19,53 @@ class LogisticController extends Controller
     }
     public function store_logistic(Request $request)
     {
-        // dd($request->all());
-        $validatedData = $request->validate([
-
-            // 'country_id' => 'required',
-            'logistic_name' => 'required',
-            'vendor_name' => 'required',
-            'vendor_email' => 'required',
-            'vendor_phone' => 'required',
-            'vendor_address' => 'required',
-
+        dd($request->all());
+        $data = $request->validate([
+            'logistic_name'          =>  'required',
+            'tags'                  =>  'required',
         ]);
+        // $data['tags'] = implode(",", $request->tags);
+        $data['tags'] = json_encode($request->tags);
+        $post = Logistic::create($data);
 
-        $data  = [
-            // 'country_id' => $request->country_id,
-            'logistic_name' => $request->logistic_name,
-            'vendor_name' => $request->vendor_name,
-            'vendor_email' => $request->vendor_email,
-            'vendor_phone' => $request->vendor_phone,
-            'vendor_address' => $request->vendor_address,
-        ];
+        return redirect()->route('posts.index')->with('success', 'Post created successfully.');
+    //     $validatedData = $request->validate([
 
-        $data = Logistic::create($data)->id;
-        // dd($data);
+    //         // 'country_id' => 'required',
+    //         'logistic_name' => 'required',
+    //         'vendor_name' => 'required',
+    //         'vendor_email' => 'required',
+    //         'vendor_phone' => 'required',
+    //         'vendor_address' => 'required',
 
-        if ($data) {
+    //     ]);
 
-            return redirect('add-logistic')->with('success', "Record Added Successfully");
-        } else {
-            return redirect()->back()->with('error', "Record Not Added...");
-        }
-    }
-    public function edit_logistic($id)
-    {
-        //
-        $data = Logistic::find($id);
-        $countries = Country::all();
-        // dd($data);
-        return view('admin-panel.logistics.edit_logistic', compact('data', 'countries'));
+    //     $data  = [
+    //         // 'country_id' => $request->country_id,
+    //         'logistic_name' => $request->logistic_name,
+    //         'vendor_name' => $request->vendor_name,
+    //         'vendor_email' => $request->vendor_email,
+    //         'vendor_phone' => $request->vendor_phone,
+    //         'vendor_address' => $request->vendor_address,
+    //     ];
+
+    //     $data = Logistic::create($data)->id;
+    //     // dd($data);
+
+    //     if ($data) {
+
+    //         return redirect('add-logistic')->with('success', "Record Added Successfully");
+    //     } else {
+    //         return redirect()->back()->with('error', "Record Not Added...");
+    //     }
+    // }
+    // public function edit_logistic($id)
+    // {
+    //     //
+    //     $data = Logistic::find($id);
+    //     $countries = Country::all();
+    //     // dd($data);
+    //     return view('admin-panel.logistics.edit_logistic', compact('data', 'countries'));
     }
     public function update_logistic(Request $request, $id)
     {

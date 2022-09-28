@@ -11,36 +11,24 @@ class ServicesController extends Controller
     //
     public function create_service()
     {
-        // dd($id);
+
         $data = Service::all();
-        // dd($data);
-        // $region  = Region::find($id);
         return view('admin-panel.services.create_service', compact('data'));
     }
-    // public function add_country($id)
-    // {
-    //     dd(1);
-    //     $data = Country::all();
-    //     $regions  = Region::all();
-    //     return view('admin-panel.countries.create_country', compact('data', 'regions'));
-    // }
-    public function store_country(Request $request)
+
+    public function store_service(Request $request)
     {
         // dd($request->all());
         $validatedData = $request->validate(
             [
-                'region_id' => 'required',
-                'name' => 'required|unique:countries',
-                // 'code' => 'required'
+                'service_name' => 'required|unique:services',
             ]
         );
 
         $data = [
-            'region_id' => $request->region_id,
-            'name' => $request->name,
-            // 'code' => $request->code
+            'service_name' => $request->service_name,
         ];
-        $data = Country::create($data);
+        $data = Service::create($data);
 
         if ($data) {
             return redirect()->back()->with('success', "Record inserted Successfully");
@@ -48,4 +36,69 @@ class ServicesController extends Controller
             return redirect()->back()->with('error', "Record Not inserted...");
         }
     }
+
+    public function edit_service($id)
+    {
+        $record = Service::find($id);
+        $data = Service::all();
+        return view('admin-panel.services.edit_service', compact('data','record'));
+    }
+    public function update_service(Request $request, $id)
+    {
+        // dd($request->all());
+        $validatedData = $request->validate(
+            [
+                'service_name' => 'required',
+            ]
+        );
+
+        $record = Service::find($id);
+
+        $data = [
+            'service_name' => $request->service_name,
+        ];
+
+        $data = $record->update($data);
+
+        if ($data) {
+            return redirect('add-service')->with('success', "Record Updated Successfully");
+        } else {
+            return redirect()->back()->with('error', "Record Not Updated...");
+        }
+    }
+
+    public function destroy_country($id)
+    {
+        $data = Service::find($id);
+        $data = $data->delete();
+
+        if ($data) {
+            return redirect('add-service')->with('success', "Record Deleted");
+        } else {
+            return redirect()->back()->with('success', "Record Not Deleted");
+        }
+    }
+
+    //restoring a record
+    public function restoreservice($id)
+    {
+        $data =  Service::withTrashed()->find($id)->restore();
+
+        if ($data) {
+            return redirect('add-service')->with('error', "Record Restored Successfully");
+        } else {
+            return redirect()->back()->with('success', "Record Not Restored");
+        }
+    }
+
+    public function country_forceDelete($id)
+    {
+        $data = Country::withTrashed()->where('id', $id)->forceDelete();
+        if ($data) {
+            return redirect()->back()->with('error', "Record Permanently Deleted");
+        } else {
+            return redirect()->back()->with('success', "Record Not Deleted...");
+        }
+    }
+
 }

@@ -13,13 +13,29 @@ class ParcelRegistrationController extends Controller
     //
     public function add_parcel()
     {
+        $lastParcel =   ParcelRegistration::orderBy('created_at', 'desc')->first();
+
+        $parcel = new ParcelRegistration();
+
+        if (isset($lastParcel)) {
+            // Sum 1 + last id
+            $abc =  $parcel->pl_id = date('Y') . '-' . 'PL-00000' . ($lastParcel->id + 1);
+            // $data['pl_id'] = $a;
+            return $abc;
+        } else {
+            $abc = $parcel->pl_id  = date('Y') . '-' . 'PL-000001';
+            // $data['pl_id'] = $b;
+            return $abc;
+        }
+
+        //
         $data = ParcelRegistration::all();
         // dd($data);
         $regions = Region::all();
         $countries = Country::all();
         $charges = ShippingCharge::all();
         // dd($charges);
-        return view('admin-panel.parcels.create_parcel', compact('data', 'regions', 'charges', 'countries'));
+        return view('admin-panel.parcels.create_parcel', compact('data', 'regions', 'charges', 'countries','abc'));
     }
 
     public function getSelectedShipping($id)

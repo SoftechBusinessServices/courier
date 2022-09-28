@@ -143,11 +143,16 @@ Route::get('region/delete/{id}', [RegionController::class, 'destroy']);
 
 Route::get('add-user/',[HomeController::class,'fetch_user'])->name('add-user');
 Route::post('store-user/',[HomeController::class,'store_user'])->name('store-user');
-Route::get('edit-user/',[HomeController::class,'fetch_user'])->name('add-user');
-Route::get('fetch-user/',[HomeController::class,'fetch_user'])->name('add-user');
+Route::get('edit-user/',[HomeController::class,'edit_user'])->name('edit-user');
+Route::get('fetch-user/',[HomeController::class,'fetch_user'])->name('fetch-user');
 Route::get('delete-user/{id}',[HomeController::class,'destroy_user'])->name('delete-user');
 
 
 
-Route::get('add-sevice/',[ServicesController::class,'create_service'])->name('add-service');
-Route::post('store-sevice/',[ServicesController::class,'store_service'])->name('store-service');
+Route::get('add-service/',[ServicesController::class,'create_service'])->name('add-service');
+Route::post('store-service/',[ServicesController::class,'store_service'])->name('store-service');
+Route::get('edit-service/{id}', [ServicesController::class, 'edit_service']);
+Route::post('update-service/{id}', [ServicesController::class, 'update_service']);
+Route::get('delete-service/{id}', [ServicesController::class, 'destroy_service'])->name('delete-service');
+Route::get('restore-service/{id}', [ServicesController::class, 'restoreservice'])->name('restore-service');
+Route::get('service-forceDelete/{id}', [ServicesController::class, 'service_forceDelete'])->name('service-forceDelete');

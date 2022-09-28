@@ -16,11 +16,11 @@
                                 <p class="card-title-desc text-dark">
                                     <a href="{{ route('home') }}" class="btn btn-primary btn-md text-white">Back</a>
                                     <a href="{{ route('home') }}" class="btn btn-dark btn-md text-white">Dashboard </a>
-                                    <span class="font-size-20 font-weight-bold"> Countries under selected 
+                                    <span class="font-size-20 font-weight-bold"> Countries under selected
                                         <a href="#"> Region</a>
 
                                     </span>
-                                   
+
                                 </p>
                                 @if (isset($data))
                                     <table id="datatable-buttons"
@@ -48,23 +48,26 @@
                                                         <td>{{ $i++ }}</td>
                                                         <td>{{ $item->name }}</td>
                                                         <td>
-                                                           
-                                                            <a href="{{ url('create-country/'.$item->id) }}"
+                                                            <a class="btn btn-outline-primary btn-sm delete" title="add"
+                                                                data-bs-toggle="modal" data-bs-target="#countrymodal">
+                                                                <i class="fas fa-plus-circle"></i>
+                                                            </a>
+                                                            {{--  <a href="{{ url('create-country/'.$item->id) }}"
                                                                 class="btn btn-outline-primary btn-sm delete"
                                                                 title="add">
                                                                 <i class="fas fa-plus-circle"></i>
                                                             </a>
                                                             <span class="text-dark">|</span>
-                                                            {{ $item->count() }}  
+                                                            {{ $item->count() }}  --}}
                                                             <span class="text-dark">|</span>
                                                             <a href="{{ url('fetch-region/' . $item->id) }}"
                                                                 class="btn btn-outline-primary btn-sm delete"
                                                                 title="View">
                                                                 <i class="far fa-eye"></i>
                                                             </a>
-                                                                                                                    
+
                                                         </td>
-                                                       
+
                                                         <td>
                                                             @if ($item->status == 'inactive')
                                                                 <button type="button" class="btn btn-danger  btn-sm">
@@ -75,7 +78,7 @@
                                                             @endif
                                                         </td>
                                                         <td style="">
-                                                           
+
                                                             <a href="{{ url('edit-region/' . $item->id) }}"
                                                                 class="btn btn-outline-warning btn-sm delete"
                                                                 title="Edit">
@@ -110,4 +113,63 @@
             </div>
         </div>
     </div>
-@endsection
+
+    <div class="modal fade" id="countrymodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Country Modal</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <form action="{{ url('store-country') }}" method="POST">
+                            @csrf
+                            @if ($errors->any())
+                                <div class="alert alert-danger" role="alert">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                            @if (Session::has('success'))
+                                <div class="alert alert-success text-center">
+                                    <p>{{ Session::get('success') }}</p>
+                                </div>
+                            @endif
+                            <table class="table table-bordered" id="dynamicAddRemove">
+                                <tr>
+                                    <th>Subject</th>
+                                    <th>Action</th>
+                                </tr>
+                                <tr>
+                                    <td><input type="text" name="addMoreInputFields[0][subject]"
+                                            placeholder="Enter Country" class="form-control" />
+                                    </td>
+                                    <td><button type="button" name="add" id="dynamic-ar"
+                                            class="btn btn-outline-primary">Add Country</button></td>
+                                </tr>
+                            </table>
+                            <button type="submit" class="btn btn-outline-success btn-block">Save</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            var i = 0;
+            $("#dynamic-ar").click(function () {
+                ++i;
+                $("#dynamicAddRemove").append('<tr><td><input type="text" name="addMoreInputFields[' + i +
+                    '][subject]" placeholder="Enter subject" class="form-control" /></td><td><button type="button" class="btn btn-outline-danger remove-input-field">Delete</button></td></tr>'
+                    );
+            });
+            $(document).on('click', '.remove-input-field', function () {
+                $(this).parents('tr').remove();
+            });
+        </script>
+    @endsection

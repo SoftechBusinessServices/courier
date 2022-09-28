@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class CountryController extends Controller
 {
-    
+
     public function create_country($id)
     {
         // dd($id);
@@ -27,26 +27,36 @@ class CountryController extends Controller
     public function store_country(Request $request)
     {
         // dd($request->all());
-        $validatedData = $request->validate(
-            [
-                'region_id' => 'required',
-                'name' => 'required|unique:countries',
-                // 'code' => 'required'
-            ]
-        );
+        $request->validate([
+            'region_id' => 'required',
+            'addMoreInputFields.*.subject' => 'required'
+        ]);
 
-        $data = [
-            'region_id' => $request->region_id,
-            'name' => $request->name,
-            // 'code' => $request->code
-        ];
-        $data = Country::create($data);
-
-        if ($data) {
-            return redirect()->back()->with('success', "Record inserted Successfully");
-        } else {
-            return redirect()->back()->with('error', "Record Not inserted...");
+        foreach ($request->addMoreInputFields as $key => $value) {
+            Country::create($value);
         }
+
+        return back()->with('success', 'New subject has been added.');
+        // $validatedData = $request->validate(
+        //     [
+        //         'region_id' => 'required',
+        //         'name' => 'required|unique:countries',
+        //         // 'code' => 'required'
+        //     ]
+        // );
+
+        // $data = [
+        //     'region_id' => $request->region_id,
+        //     'name' => $request->name,
+        //     // 'code' => $request->code
+        // ];
+        // $data = Country::create($data);
+
+        // if ($data) {
+        //     return redirect()->back()->with('success', "Record inserted Successfully");
+        // } else {
+        //     return redirect()->back()->with('error', "Record Not inserted...");
+        // }
     }
 
     public function edit_country($id)

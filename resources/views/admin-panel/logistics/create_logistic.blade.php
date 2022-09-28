@@ -18,24 +18,7 @@
                                     <a href="{{ route('home') }}" class="btn btn-primary btn-md text-white">Back</a>
                                     <a href="{{ route('home') }}" class="btn btn-dark btn-md text-white">Dashboard </a>
                                     <span class="font-size-20 font-weight-bold">Vendors List</a>
-
                                     </span>
-                                    {{-- <div class="row">
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label for="">Start Date</label>
-                                                <input type="date" class="form-control" name="start_date">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label for="">End Date</label>
-                                                <input type="date" class="form-control" name="end_date">
-                                            </div>
-                                        </div>
-                                    </div> --}}
-
-
                                 </p>
                                 @if (isset($data))
                                 <table id="datatable-buttons"
@@ -55,8 +38,8 @@
                                             <th>Action</th>
                                         </tr>
                                     </thead>
-                                
-                                
+
+
                                     <tbody>
                                         @php
                                             $i = 1;
@@ -79,7 +62,7 @@
                                                             echo $month;
                                                         @endphp
                                                     </td>
-                                
+
                                                     {{--  <td>
                                                         @if ($item->status == 'inactive')
                                                             <button type="button" class="btn btn-danger  btn-sm">
@@ -90,13 +73,13 @@
                                                         @endif
                                                     </td>  --}}
                                                     </td>
-                                
+
                                                     <td style="width: 100px">
                                                         <a href="{{ url('print-parcel/' . $item->id) }}"
                                                             class="btn btn-outline-dark btn-sm print" title="Print">
                                                             <i class="fas fa-regular fa-print"></i>
                                                         </a>
-                                
+
                                                         |
                                                         <a href="{{ url('edit-logistic/' . $item->id) }}"
                                                             class="btn btn-outline-warning btn-sm edit" title="Edit">
@@ -116,13 +99,13 @@
                                                 <td><code>No record found...</code></td>
                                             </tr>
                                         @endif
-                                
-                                
-                                
+
+
+
                                     </tbody>
                                 </table>
                                 @endif
-                                
+
                             </div>
 
 
@@ -132,5 +115,5 @@
             </div>
         </div>
     </div>
-@endsection 
+@endsection
 

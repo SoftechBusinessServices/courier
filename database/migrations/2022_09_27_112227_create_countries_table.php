@@ -17,7 +17,7 @@ class CreateCountriesTable extends Migration
             $table->id();
             $table->foreignId('region_id');
             // $table->foreign('region_id')->references('id')->on('regions')->onDelete('cascade');
-            $table->string('name')->nullable();
+            $table->longText('name')->nullable();
             // $table->string('code');
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();

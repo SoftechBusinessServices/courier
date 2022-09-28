@@ -311,26 +311,31 @@
                         </div>
                     </div>
 
+
+                    <!--Services  -->
                     <div class="col ">
                         <div class="modal-content rounded-3 shadow">
                             <div class="modal-body  text-center">
                                 <a href="#" class="nav-link text-dark">
-                                    <img src="{{ asset('assets/images/customers.png') }}" alt="">
+                                    <img src="{{ asset('assets/images/services.png') }}" alt="">
 
-                                    <h3 class="mb-0 mt-2">Customers</h3>
+                                    <h3 class="mb-0 mt-2">Services</h3>
                                 </a>
+
                             </div>
                             <div class="modal-footer flex-nowrap p-0 justify-content-center">
                                 <a class="btn btn-primary btn-md text-white " data-bs-toggle="modal"
-                                    data-bs-target="#companymodal">Add
-                                    Customer </a>
-                                <a class="btn btn-success btn-md text-white "
-                                    href="{{ route('add-company') }}">Companies List
+                                    data-bs-target="#servicemodal">Add
+                                    Region </a>
+                                <a class="btn btn-success btn-md text-white"
+                                    href="{{ route('add-service') }}">Services
+                                    List
                                 </a>
+
                             </div>
                         </div>
                     </div>
-                    <!-- Users Closed -->
+                    <!-- Services closed -->
 
                     <div class="col ">
                         <div class="modal-content rounded-3 shadow">
@@ -379,30 +384,27 @@
                     </div>
                     <!-- Regions closed -->
 
-                    <!--Services  -->
                     <div class="col ">
                         <div class="modal-content rounded-3 shadow">
                             <div class="modal-body  text-center">
                                 <a href="#" class="nav-link text-dark">
-                                    <img src="{{ asset('assets/images/services.png') }}" alt="">
+                                    <img src="{{ asset('assets/images/customers.png') }}" alt="">
 
-                                    <h3 class="mb-0 mt-2">Services</h3>
+                                    <h3 class="mb-0 mt-2">Customers</h3>
                                 </a>
-
                             </div>
                             <div class="modal-footer flex-nowrap p-0 justify-content-center">
                                 <a class="btn btn-primary btn-md text-white " data-bs-toggle="modal"
-                                    data-bs-target="#servicemodal">Add
-                                    Region </a>
-                                <a class="btn btn-success btn-md text-white"
-                                    href="{{ route('add-service') }}">Services
-                                    List
+                                    data-bs-target="#companymodal">Add
+                                    Customer </a>
+                                <a class="btn btn-success btn-md text-white "
+                                    href="{{ route('add-company') }}">Companies List
                                 </a>
-
                             </div>
                         </div>
                     </div>
-                    <!-- Services closed -->
+                    <!-- Customers Closed -->
+
 
                 </div>
             </div>
@@ -563,64 +565,23 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <div class="col-md-12 mb-2">
-                                    <label for="username" class="form-label">Vendor Name</label>
-                                    <input type="text" id="username" placeholder="Enter Vendor name"
-                                        class="form-control @error('vendor_name') is-invalid @enderror"
-                                        name="vendor_name" value="{{ old('vendor_name') }}" required
-                                        autocomplete="vendor_name" autofocus>
 
-                                    @error('vendor_name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                <div class="form-group mb-3">
+                                    <label for="select2Multiple">Multiple Tags</label>
+                                    <select class="select2-multiple form-control " name="tags[]" multiple="multiple"
+                                        style="width: 100%" id="select2Multiple">
+                                        @foreach ($services as $item)
+                                            <option value="{{ $item->id }}">
+                                                {{ $item->service_name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                 </div>
 
-                                <div class="col-md-12 mb-2">
-                                    <label for="useremail" class="form-label">Vendor Email</label>
-                                    <input type="email" id="useremail" placeholder="Enter Email address"
-                                        class="form-control @error('vendor_email') is-invalid @enderror"
-                                        name="vendor_email" value="{{ old('vendor_email') }}" autocomplete="email"
-                                        required>
-
-                                    @error('vendor_email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
                             </div>
                         </div>
                     </div>
 
-                    {{-- first row closed --}}
-                    <div class="row">
-                        <div class="col-md-12 mb-2">
-                            <label for="username" class="form-label">Vendor Phone Number</label>
-                            <input type="text" data-inputmask="'mask': '0399-99999999'" type="number"
-                                maxlength="12" class="form-control @error('vendor_phone') is-invalid @enderror"
-                                name="vendor_phone" value="{{ old('vendor_phone') }}" required
-                                autocomplete="vendor_phone" autofocus>
-
-                            @error('vendor_phone')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="col-md-12 mb-2">
-                            <label for="address" class="form-label">Vendor Address</label>
-                            <textarea name="vendor_address" id="vendor_address" class="form-control" cols="1" rows="1">
-
-                        </textarea>
-                            @error('vendor_address')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
 
                     <div class="modal-footer">
                         <!-- Toogle to second dialog -->
@@ -696,7 +657,7 @@
                                     <label for="username" class="form-label">Tracking ID</label>
                                     <input type="text" id="username" required
                                         class="form-control @error('pl_id') is-invalid @enderror" name="pl_id"
-                                        value="{{ old('pl_id') }}" autofocus readonly>
+                                        value="{{ $abc }}" autofocus readonly>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="username" class="form-label">Parcel Date</label>
@@ -713,6 +674,18 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
+                                    <label for="exampleDataList" class="col-md-2 col-form-label">Datalists</label>
+                                    <input class="form-control" list="datalistOptions" id="exampleDataList"
+                                        placeholder="Type to search...">
+                                    <datalist id="datalistOptions">
+                                        @foreach ($services as $item)
+                                        <option value="{{ $item->id }}">
+                                            {{ $item->service_name }}
+                                        </option>
+                                    @endforeach
+                                    </datalist>
+                                </div>
+                                {{--  <div class="col-md-6">
                                     <label for="username" class="form-label">Shipper Phone
                                         Number</label>
                                     <input type="text" data-inputmask="'mask': '0399-99999999'" type="number"
@@ -725,7 +698,7 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
-                                </div>
+                                </div>  --}}
                                 <div class="col-md-6">
                                     <label for="chkPassport">
                                         <input type="checkbox" id="chkPassport" />
@@ -1069,12 +1042,16 @@
 
 
 <!---------------------- JAVASCRIPT-------------------->
+
 <script>
     $(document).ready(function() {
+
 
         $(function() {
             $("#chkPassport").click(function() {
                 if ($(this).is(":checked")) {
+
+                    $("#exampleDataList").val('');
                     $("#dvAddShipper").show();
                 } else {
                     $("#dvAddShipper").hide();

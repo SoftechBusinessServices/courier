@@ -10,6 +10,7 @@ use App\Models\Currency;
 use Illuminate\Http\Request;
 use App\Models\ShippingCharge;
 use App\Models\ParcelRegistration;
+use App\Models\Service;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -32,6 +33,21 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $lastParcel =   ParcelRegistration::orderBy('created_at', 'desc')->first();
+
+        $parcel = new ParcelRegistration();
+
+        if (isset($lastParcel)) {
+            // Sum 1 + last id
+            $abc =  $parcel->pl_id = date('Y') . '-' . 'PL-00000' . ($lastParcel->id + 1);
+            // $data['pl_id'] = $a;
+            // return $abc;
+        } else {
+            $abc = $parcel->pl_id  = date('Y') . '-' . 'PL-000001';
+            // $data['pl_id'] = $b;
+            // return $abc;
+        }
+
         $data = ParcelRegistration::all();
         // dd($data);
         $regions = Region::all();
@@ -42,7 +58,8 @@ class HomeController extends Controller
         $countries = Country::all();
         $companies = Company::all();
         $currencies = Currency::all();
-        return view('admin-panel.master',  compact('data', 'regions', 'charges', 'countries', 'companies', 'currencies','customers'));
+        $services = Service::all();
+        return view('admin-panel.master',  compact('data', 'regions', 'charges', 'countries', 'companies', 'currencies','customers','services','abc'));
 
         // return view('home');
     }

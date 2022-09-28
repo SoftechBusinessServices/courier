@@ -13,7 +13,7 @@ class Country extends Model
     use SoftDeletes;
     protected $guarded = [];
 
-    protected $fillable = ['region_id', 'name', 'code'];
+    protected $fillable = ['region_id', 'name'];
 
     public function parcel()
     {

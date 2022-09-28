@@ -419,7 +419,7 @@
 <div class="modal fade" id="usermodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header" style="background-color: #d6dbf8">
                 <h5 class="modal-title">User Registration Modal</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -501,7 +501,7 @@
 <div class="modal fade" id="regionmodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header" style="background-color: #d6dbf8">
                 <h5 class="modal-title">Region Modal</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -541,7 +541,7 @@
     <div class="modal-dialog modal-dialog-centered">
 
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header" style="background-color: #d6dbf8">
                 <h5 class="modal-title">Logistics Vendor Registration</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -644,7 +644,7 @@
 <div class="modal fade" id="servicemodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header" style="background-color: #d6dbf8">
                 <h5 class="modal-title">Services Modal</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -682,7 +682,7 @@
 <div class="modal fade " id="parcelmodal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg">
-        <div class="modal-content">
+        <div class="modal-content" >
             <div class="modal-header">
                 <h5 class="modal-title" id="myLargeModalLabel">Add New Parcel</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -891,8 +891,7 @@
                                     </datalist>
                                 </div>
                                 {{--  <div class="col-md-6">
-                                    <label for="username" class="form-label">Shipper Phone
-                                        Number</label>
+                                    <label for="username" class="form-label">Services Type</label>
                                     <input type="text" data-inputmask="'mask': '0399-99999999'" type="number"
                                         maxlength="12" class="form-control @error('company_phone') is-invalid @enderror"
                                         name="company_phone" value="{{ old('company_phone') }}" required autocomplete="phone"
@@ -904,10 +903,10 @@
                                         </span>
                                     @enderror
                                 </div>  --}}
-                                <div class="col-md-6">
-                                    <label for="chkPassport">
+                                <div class="col-md-6 mt-4">
+                                    <label for="chkPassport ">
                                         <input type="checkbox" id="chkPassport" />
-                                        Add New Shipper?
+                                        Add New Shipper
                                     </label>
 
                                 </div>
@@ -961,7 +960,8 @@
                                                 Province /Region:</label>
                                             <input type="text" class="form-control" name="shipper_region"
                                                 id="shipper_region">
-                                        </div>
+
+                                            </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">

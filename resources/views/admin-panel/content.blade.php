@@ -326,7 +326,7 @@
                             <div class="modal-footer flex-nowrap p-0 justify-content-center">
                                 <a class="btn btn-primary btn-md text-white " data-bs-toggle="modal"
                                     data-bs-target="#servicemodal">Add
-                                    Region </a>
+                                    Service </a>
                                 <a class="btn btn-success btn-md text-white"
                                     href="{{ route('add-service') }}">Services
                                     List
@@ -539,6 +539,7 @@
 <!------------------Vendor Modal---------------------->
 <div class="modal fade" id="logisticmodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
+
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Logistics Vendor Registration</h5>
@@ -550,8 +551,8 @@
                     @csrf
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="row">
 
+                            <div class="row">
                                 <div class="col-md-12 mb-2">
                                     <label for="username" class="form-label">Logistics Name</label>
                                     <input type="text" id="username" placeholder="Enter logistic name"
@@ -565,9 +566,38 @@
                                         </span>
                                     @enderror
                                 </div>
+                                <div class="col-md-12 mb-2">
+                                    <label for="useremail" class="form-label">Vendor Email</label>
+                                    <input type="email" id="useremail" placeholder="Enter Email address"
+                                        class="form-control @error('vendor_email') is-invalid @enderror"
+                                        name="vendor_email" value="{{ old('vendor_email') }}" autocomplete="email"
+                                        required>
 
-                                <div class="form-group mb-3">
-                                    <label for="select2Multiple">Multiple Tags</label>
+                                    @error('vendor_email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12 mb-2">
+                                    <label for="username" class="form-label">Vendor Phone Number</label>
+                                    <input type="text" data-inputmask="'mask': '0399-99999999'" type="number"
+                                        maxlength="12"
+                                        class="form-control @error('vendor_phone') is-invalid @enderror"
+                                        name="vendor_phone" value="{{ old('vendor_phone') }}" required
+                                        autocomplete="vendor_phone" autofocus>
+
+                                    @error('vendor_phone')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-12 mb-2">
+                                    <label for="select2Multiple">Tag Services</label>
                                     <select class="select2-multiple form-control " name="tags[]" multiple="multiple"
                                         style="width: 100%" id="select2Multiple">
                                         @foreach ($services as $item)
@@ -577,25 +607,39 @@
                                         @endforeach
                                     </select>
                                 </div>
-
                             </div>
+                            <div class="row">
+                                <div class="col-md-12 mb-2">
+                                    <label for="address" class="form-label">Vendor Address</label>
+                                    <textarea name="vendor_address" id="vendor_address" class="form-control" cols="1" rows="1">
+
+                                    </textarea>
+                                    @error('vendor_address')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
                         </div>
-                    </div>
 
-
-                    <div class="modal-footer">
-                        <!-- Toogle to second dialog -->
-                        <button type="submit" form="form2" class="btn btn-primary " id="modal_submit"
-                            value="Submit">Submit</button>
-                        <button type="button" class="btn btn-secondary" id="modal_close1"
-                            data-bs-dismiss="modal">Close</button>
                     </div>
             </div>
-            </form>
 
+            <div class="modal-footer">
+                <!-- Toogle to second dialog -->
+                <button type="submit" form="form2" class="btn btn-primary " id="modal_submit"
+                    value="Submit">Submit</button>
+                <button type="button" class="btn btn-secondary" id="modal_close1"
+                    data-bs-dismiss="modal">Close</button>
+            </div>
         </div>
+        </form>
+
     </div>
 </div>
+
 <!------------------Service Modal---------------------->
 <div class="modal fade" id="servicemodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
@@ -647,7 +691,168 @@
 
 
                 <div id="basic-example">
-                    <h3><span>Shipper Info</span> </h3>
+                    <h3>Parcel Details</h3>
+                    <section>
+                        <form>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="mb-3">
+                                        <label for="basicpill-namecard-input">No of Boxes</label>
+                                        <input type="number" class="form-control" id="pl_box" name="pl_box"
+                                            min="0">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="mb-3">
+                                        <label for="basicpill-namecard-input">Weight in <span
+                                                class="text-danger text-ecnter">KG</span></label>
+                                        <input type="number" class="form-control" id="pl_weight" name="pl_weight"
+                                            min="0">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="mb-3">
+                                        <label for="basicpill-namecard-input">Select Shipping Service</label>
+                                        <select name="pl_service" id="pl_service" class="form-control">
+                                            <option value="">---- Select One Service ----</option>
+                                            @foreach ($services as $row)
+                                                <option value="{{ $row->id }}"> {{ $row->service_name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="mb-3">
+                                        <label for="basicpill-namecard-input">Charges</label>
+                                        <input type="number" class="form-control" id="pl_charges" name="pl_charges"
+                                            min="0">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="mb-3">
+                                        <label for="basicpill-namecard-input">Extras</label>
+                                        <input type="number" class="form-control" id="pl_extras" name="pl_extras"
+                                            min="0">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="mb-3">
+                                        <label for="basicpill-namecard-input">Discount</label>
+                                        <input type="number" class="form-control" id="pl_discount"
+                                            name="pl_discount" min="0">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="mb-3">
+                                        <label for="basicpill-namecard-input">Final Charges</label>
+                                        <input type="number" class="form-control" id="pl_final" name="pl_final"
+                                            min="0">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-8">
+                                    <div class="mb-3">
+                                        <label for="basicpill-namecard-input">Parcel Description</label>
+                                        <textarea name="pl_description" id="pl_description" cols="1" rows="1" class="form-control">
+                                       </textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </section>
+
+                    <h3 class="font-size-12">Dispatch Note</h3>
+                    <section>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title mb-4">Dispatch Note</h4>
+                                        <form class="repeater" enctype="multipart/form-data">
+                                            <div data-repeater-list="group-a">
+                                                <div data-repeater-item class="row">
+
+                                                    <div class="mb-3 col">
+                                                        <label for="name">Contents</label>
+                                                        <input type="text" id="disp_content" name="disp_content[]"
+                                                            class="form-control" />
+                                                    </div>
+
+                                                    <div class="mb-3 col">
+                                                        <label for="message">Condition</label>
+                                                        <select name="disp_condition[]" id="disp_condition"
+                                                            class="form-control">
+
+                                                            <option value="new">New</option>
+                                                            <option value="used">Used</option>
+
+                                                        </select>
+                                                    </div>
+
+
+                                                    <div class="mb-3 col-lg-2">
+                                                        <label for="message">Currency</label>
+                                                        <select name="disp_currency[]" id="disp_currency[]"
+                                                            class="form-control">
+
+                                                            <option value="pkr">PKR</option>
+                                                            <option value="usd">USD</option>
+                                                            <option value="euro">Euro</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="mb-3 col">
+                                                        <label for="resume">Price</label>
+                                                        <input type="number" id="disp_price" name="disp_price[]"
+                                                            min="0" class="form-control" />
+                                                    </div>
+
+                                                    <div class="mb-3 col">
+                                                        <label for="subject">QTY</label>
+                                                        <input type="number" id="disp_quantity"
+                                                            name="disp_quantity[]" min="0"
+                                                            class="form-control" />
+                                                    </div>
+
+                                                    <div class="mb-3 col">
+                                                        <label for="resume">Total</label>
+                                                        <input type="number" id="disp_total" name="disp_total[]"
+                                                            min="0" class="form-control" />
+                                                    </div>
+                                                    <div class="col-lg-2 align-self-center">
+                                                        <div class="d-grid">
+                                                            <input data-repeater-delete type="button"
+                                                                class="btn btn-primary" value="Delete" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <input data-repeater-create type="button"
+                                                class="btn btn-success mt-3 mt-lg-0" value="Add" />
+
+                                            <div class="row mt-5">
+                                                <div class="col-md-6">
+                                                    <input type="checkbox" name="check_print" value="Orange">Do you
+                                                    want
+                                                    to Print?
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <h3>Shipper</h3>
                     <section>
                         <form id="form1" novalidate method="POST" action="{{ route('store-parcel') }}"
                             enctype="multipart/form-data">
@@ -679,21 +884,21 @@
                                         placeholder="Type to search...">
                                     <datalist id="datalistOptions">
                                         @foreach ($services as $item)
-                                        <option value="{{ $item->id }}">
-                                            {{ $item->service_name }}
-                                        </option>
-                                    @endforeach
+                                            <option value="{{ $item->id }}">
+                                                {{ $item->service_name }}
+                                            </option>
+                                        @endforeach
                                     </datalist>
                                 </div>
                                 {{--  <div class="col-md-6">
                                     <label for="username" class="form-label">Shipper Phone
                                         Number</label>
                                     <input type="text" data-inputmask="'mask': '0399-99999999'" type="number"
-                                        maxlength="12" class="form-control @error('phone') is-invalid @enderror"
-                                        name="phone" value="{{ old('phone') }}" required autocomplete="phone"
+                                        maxlength="12" class="form-control @error('company_phone') is-invalid @enderror"
+                                        name="company_phone" value="{{ old('company_phone') }}" required autocomplete="phone"
                                         autofocus>
 
-                                    @error('phone')
+                                    @error('company_phone')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -714,11 +919,11 @@
                                             <label for="username" class="form-label">Company
                                                 Name</label>
                                             <input type="text" id="username" placeholder="Company Name" required
-                                                class="form-control @error('name') is-invalid @enderror"
-                                                name="name" value="{{ old('name') }}" required
-                                                autocomplete="name" autofocus>
+                                                class="form-control @error('company_name') is-invalid @enderror"
+                                                name="company_name" value="{{ old('company_name') }}" required
+                                                autocomplete="company_name" autofocus>
 
-                                            @error('name')
+                                            @error('company_name')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -729,11 +934,11 @@
                                                 Person</label>
                                             <input type="text" data-inputmask="'mask': '0399-99999999'"
                                                 type="number" maxlength="12"
-                                                class="form-control @error('phone') is-invalid @enderror"
-                                                name="phone" value="{{ old('phone') }}" required
-                                                autocomplete="phone" autofocus>
+                                                class="form-control @error('shipper_phone') is-invalid @enderror"
+                                                name="shipper_phone" value="{{ old('shipper_phone') }}" required
+                                                autocomplete="company_phone" autofocus>
 
-                                            @error('phone')
+                                            @error('shipper_phone')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -741,71 +946,70 @@
                                         </div>
 
                                     </div>
-
                                     <div class="row">
-                                        <div class="col-md-6">
-                                            <label for="basicpill-phoneno-input">Address
-                                                Line1:</label>
-                                            <input type="text" class="form-control" name="shipper_add1"
-                                                id="basicpill-phoneno-input">
+                                        <div class="col-lg-6">
+                                            <label for="basicpill-phoneno-input">Select Country:</label>
+                                            <select class="form-control" name="shipper_country"
+                                                id="shipper_country">
+                                                @foreach ($countries as $country)
+                                                    <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="basicpill-phoneno-input">Address
-                                                Line2:</label>
-                                            <input type="text" class="form-control" name="shipper_add1"
-                                                id="basicpill-phoneno-input">
+                                            <label for="basicpill-phoneno-input">State/
+                                                Province /Region:</label>
+                                            <input type="text" class="form-control" name="shipper_region"
+                                                id="shipper_region">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label for="basicpill-phoneno-input">City:</label>
-                                            <input type="text" class="form-control" name="shipper_add1"
-                                                id="basicpill-phoneno-input">
+                                            <input type="text" class="form-control" name="shipper_city"
+                                                id="shipper_city">
                                         </div>
-
                                         <div class="col-md-6">
-                                            <label for="basicpill-phoneno-input">State/
-                                                Province /Region:</label>
-                                            <input type="text" class="form-control" name="shipper_add1"
-                                                id="basicpill-phoneno-input">
-
+                                            <label for="basicpill-phoneno-input">ZIP:</label>
+                                            <input type="text" class="form-control" name="shipper_zip"
+                                                id="shipper_zip">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
-
-                                            <label for="basicpill-phoneno-input">ZIP:</label>
+                                            <label for="basicpill-phoneno-input">Address
+                                                Line1:</label>
                                             <input type="text" class="form-control" name="shipper_add1"
-                                                id="basicpill-phoneno-input">
-
+                                                id="shipper_add1">
                                         </div>
-                                        <div class="col-lg-6">
-
-                                            <label for="basicpill-phoneno-input">Country:</label>
-                                            <input type="text" class="form-control" name="shipper_add1"
-                                                id="basicpill-phoneno-input">
-
+                                        <div class="col-md-6">
+                                            <label for="basicpill-phoneno-input">Address
+                                                Line2:</label>
+                                            <input type="text" class="form-control" name="shipper_add2"
+                                                id="shipper_add2">
                                         </div>
-
                                     </div>
+
                                 </div>
                             </div>
                         </form>
                     </section>
 
-                    <h3><span>Consignee</span></h3>
+                    <!-- Confirm Details -->
+                    <h3>Consignee</h3>
                     <section>
                         <form>
                             <div class="row">
 
                                 <div class="col-md-6">
-                                    <label for="username" class="form-label">Receiver
+                                    <label for="username" class="form-label">Consignee
                                         Name</label>
                                     <input type="text" id="username" placeholder="Receiver Name" required
-                                        class="form-control @error('name') is-invalid @enderror" name="name"
-                                        value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                        class="form-control @error('consignee_name') is-invalid @enderror"
+                                        name="consignee_name" value="{{ old('consignee_name') }}" required
+                                        autocomplete="name" autofocus>
 
-                                    @error('name')
+                                    @error('consignee_name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -815,11 +1019,12 @@
                                     <label for="username" class="form-label">Receiver Phone
                                         Number</label>
                                     <input type="text" data-inputmask="'mask': '0399-99999999'" type="number"
-                                        maxlength="12" class="form-control @error('phone') is-invalid @enderror"
-                                        name="phone" value="{{ old('phone') }}" required autocomplete="phone"
-                                        autofocus>
+                                        maxlength="12"
+                                        class="form-control @error('consignee_phone') is-invalid @enderror"
+                                        name="phone" value="{{ old('consignee_phone') }}" required
+                                        autocomplete="consignee_phone" autofocus>
 
-                                    @error('phone')
+                                    @error('consignee_phone')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -827,209 +1032,64 @@
                                 </div>
 
                             </div>
-                            <div class="row">
+                            <div class="row mt-3 mb-2">
                                 <div class="col-md-6">
                                     <label for="chkCompany">
                                         <input type="checkbox" id="chkCompany" />
                                         Is it Business?
                                     </label>
-                                    <div id="dvCompany" style="display: none">
-
-                                        <input type="text" class="form-control" id="txtPassportNumber"
-                                            placeholder="Business Title" />
-                                    </div>
-
-                                    </option>
-
-                                    </select>
-                                    @error('country_id')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
                                 </div>
-                                <div class="col-md-6 mb-2">
-                                    <label for="username" class="form-label">Parcel Address</label>
-                                    <input type="text" id="username" placeholder="Receiver  Address" required
-                                        class="form-control @error('pl_address') is-invalid @enderror"
-                                        name="pl_address" value="{{ old('pl_address') }}" required
-                                        autocomplete="name" autofocus>
-
-                                    @error('pl_address')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                <div class="col-md-6">
+                                    <div id="dvCompany" style="display: none">
+                                        <input type="text" class="form-control" id="consignee_business"
+                                            name="consignee_business" placeholder="Business Title" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label for="basicpill-phoneno-input">Select Country:</label>
+                                    <select class="form-control" name="consignee_country" id="consignee_country">
+                                        @foreach ($countries as $country)
+                                            <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="basicpill-phoneno-input">State/
+                                        Province /Region:</label>
+                                    <input type="text" class="form-control" name="consignee_region"
+                                        id="consignee_region">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="basicpill-phoneno-input">City:</label>
+                                    <input type="text" class="form-control" name="consignee_city"
+                                        id="consignee_city">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="basicpill-phoneno-input">ZIP:</label>
+                                    <input type="text" class="form-control" name="consignee_zip"
+                                        id="consignee_zip">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="basicpill-phoneno-input">Address
                                         Line1:</label>
-                                    <input type="text" class="form-control" name="shipper_add1"
-                                        id="basicpill-phoneno-input">
+                                    <input type="text" class="form-control" name="consignee_add1"
+                                        id="consignee_add1">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="basicpill-phoneno-input">Address
                                         Line2:</label>
-                                    <input type="text" class="form-control" name="shipper_add1"
-                                        id="basicpill-phoneno-input">
+                                    <input type="text" class="form-control" name="consignee_add2"
+                                        id="consignee_add2">
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label for="basicpill-phoneno-input">City:</label>
-                                    <input type="text" class="form-control" name="shipper_add1"
-                                        id="basicpill-phoneno-input">
-                                </div>
 
-                                <div class="col-md-6">
-                                    <label for="basicpill-phoneno-input">State/
-                                        Province /Region:</label>
-                                    <input type="text" class="form-control" name="shipper_add1"
-                                        id="basicpill-phoneno-input">
-
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label for="basicpill-phoneno-input">ZIP:</label>
-                                    <input type="text" class="form-control" name="shipper_add1"
-                                        id="basicpill-phoneno-input">
-                                </div>
-                                <div class="col-lg-6">
-                                    <label for="basicpill-phoneno-input">Country:</label>
-                                    <input type="text" class="form-control" name="shipper_add1"
-                                        id="basicpill-phoneno-input">
-                                </div>
-                            </div>
                         </form>
-                    </section>
-
-                    <h3>Parcel Details</h3>
-                    <section>
-                        <form>
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <div class="mb-3">
-                                        <label for="basicpill-namecard-input">No of Boxes</label>
-                                        <input type="text" class="form-control" id="basicpill-namecard-input">
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="mb-3">
-                                        <label for="basicpill-namecard-input">Weight in <span
-                                                class="text-danger text-ecnter">KG</span></label>
-                                        <input type="text" class="form-control" id="basicpill-namecard-input">
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="mb-3">
-                                        <label for="basicpill-namecard-input">Charges</label>
-                                        <input type="text" class="form-control" id="basicpill-namecard-input">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <div class="mb-3">
-                                        <label for="basicpill-namecard-input">Extras</label>
-                                        <input type="text" class="form-control" id="basicpill-namecard-input">
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="mb-3">
-                                        <label for="basicpill-namecard-input">Discount</label>
-                                        <input type="text" class="form-control" id="basicpill-namecard-input">
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="mb-3">
-                                        <label for="basicpill-namecard-input">Final Charges</label>
-                                        <input type="text" class="form-control" id="basicpill-namecard-input">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="mb-3">
-                                        <label for="basicpill-namecard-input">Parcel Description</label>
-                                        <textarea name="pl_description" id="pl_description" cols="1" rows="3" class="form-control">
-                                       </textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </section>
-
-                    <!-- Confirm Details -->
-                    <h3>Dispatch Note</h3>
-                    <section>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title mb-4">Dispatch Note</h4>
-                                        <form class="repeater" enctype="multipart/form-data">
-                                            <div data-repeater-list="group-a">
-                                                <div data-repeater-item class="row">
-
-                                                    <div class="mb-3 col-lg-2">
-                                                        <label for="name">Contents</label>
-                                                        <input type="text" id="name" name="untyped-input"
-                                                            class="form-control" />
-                                                    </div>
-
-
-                                                    <div class="mb-3 col-lg-2">
-                                                        <label for="subject">QTY</label>
-                                                        <input type="number" id="subject" class="form-control" />
-                                                    </div>
-
-                                                    <div class="mb-3 col-lg-2">
-                                                        <label for="resume">Price</label>
-                                                        <input type="number" class="form-control" id="resume">
-                                                    </div>
-
-                                                    <div class="mb-3 col-lg-2">
-                                                        <label for="message">Currency</label>
-                                                        <select name="currency" id="currency" class="form-control">
-
-                                                            <option value="pkr">PKR</option>
-                                                            <option value="usd">USD</option>
-                                                            <option value="euro">Euro</option>
-                                                        </select>
-                                                    </div>
-
-                                                    <div class="mb-3 col-lg-2">
-                                                        <label for="resume">Total</label>
-                                                        <input type="number" class="form-control" id="resume">
-                                                    </div>
-                                                    <div class="col-lg-2 align-self-center">
-                                                        <div class="d-grid">
-                                                            <input data-repeater-delete type="button"
-                                                                class="btn btn-primary" value="Delete" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <input data-repeater-create type="button"
-                                                class="btn btn-success mt-3 mt-lg-0" value="Add" />
-
-                                            <div class="row mt-5">
-                                                <div class="col-md-6">
-                                                    <input type="checkbox" name="check_print" value="Orange">Do you
-                                                    want
-                                                    to Print?
-                                                </div>
-                                            </div>
-                                        </form>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </section>
 
                 </div>

@@ -48,7 +48,8 @@
                                                         <td>{{ $i++ }}</td>
                                                         <td>{{ $item->name }}</td>
                                                         <td>
-                                                            <a class="btn btn-outline-primary btn-sm plus_btn" title="add"
+                                                            <i class="fa-solid fa-circle-4">{{ $item->count('id') }}</i>
+                                                            |<a class="btn btn-outline-primary btn-sm plus_btn" title="add"
                                                                 data-bs-toggle="modal" data-bs-target="#countrymodal" id="{{ $item->id }}">
                                                                 <i class="fas fa-plus-circle"></i>
                                                             </a>

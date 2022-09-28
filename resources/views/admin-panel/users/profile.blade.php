@@ -127,7 +127,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-               
+
                     <div class="table-responsive">
 
                         <table class="table align-middle table-nowrap">
@@ -245,7 +245,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-               
+
                     <div class="table-responsive">
 
                         <table class="table align-middle table-nowrap">

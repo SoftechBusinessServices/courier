@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Country;
 use App\Models\Region;
+use App\Models\Country;
 use Illuminate\Http\Request;
+use Symfony\Component\Console\Input\Input;
 
 class CountryController extends Controller
 {
@@ -12,7 +13,7 @@ class CountryController extends Controller
     public function create_country($id)
     {
         // dd($id);
-        $data = Country::where('region_id',$id)->get();
+        $data = Country::where('region_id', $id)->get();
         // dd($data);
         $region  = Region::find($id);
         return view('admin-panel.countries.create_country1', compact('data', 'region'));
@@ -32,16 +33,17 @@ class CountryController extends Controller
             'addMoreInputFields.*.country_name' => 'required'
         ]);
 
-        foreach ($request->addMoreInputFields as $key => $value) {
-            // Country::create($value);
-            return $value;
-        }
-        $data= [
 
-            'region_id' => $request->region_id,
-                'name' =>$value,
-    ];
-        Country::create($value);
+        foreach ($request->addMoreInputFields as $key => $value) {
+
+            $form_data = array(
+                'region_id'  =>  $request->region_id,
+                'name'  =>  $value['country_name'],
+            );
+
+            Country::create($form_data);
+
+        }
 
         return back()->with('success', 'New Country has been added.');
         // $validatedData = $request->validate(
@@ -103,6 +105,7 @@ class CountryController extends Controller
     public function destroy_country($id)
     {
         $data = Country::find($id);
+        // dd($data);
         $data = $data->delete();
 
         if ($data) {

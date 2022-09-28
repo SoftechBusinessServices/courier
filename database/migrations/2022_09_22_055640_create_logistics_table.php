@@ -16,13 +16,15 @@ class CreateLogisticsTable extends Migration
         Schema::create('logistics', function (Blueprint $table) {
             $table->id();
             $table->string('logistic_name')->nullable();
-            $table->string('vendor_name')->nullable();
+            $table->longText('services_id');
+            // $table->string('vendor_name')->nullable();
             $table->string('vendor_email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('vendor_phone')->nullable();
+            // $table->timestamp('email_verified_at')->nullable();
             // $table->foreignId('country_id');
             // $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
+            // $table->text('vendor_address')->nullable();
             $table->text('vendor_address')->nullable();
-            $table->string('vendor_phone')->nullable();
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
             $table->softDeletes();

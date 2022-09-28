@@ -14,16 +14,16 @@
                         <div class="card">
                             <div class="card-body">
                                 <p class="card-title-desc text-dark">
-                                    <a href="{{ route('home') }}" class="btn btn-primary btn-md text-white">Back</a>
+                                    <a href="{{ route('add-region') }}" class="btn btn-primary btn-md text-white">Back</a>
                                     <a href="{{ route('home') }}" class="btn btn-dark btn-md text-white">Dashboard </a>
-                                    <span class="font-size-20 font-weight-bold"> Countries under selected <a href="{{ route('add-region') }}"> Regions</a>
+                                    <span class="font-size-20 font-weight-bold"> Countries under selected <a href="#"> Region</a>
 
                                     </span>
-                                  
+
                                 </p>
                                 @if (isset($data))
                                     <table id="datatable-buttons"
-                                        class="table table-bordered dt-responsive nowrap w-100 table-sm">
+                                        class="table table-bordered dt-responsive nowrap w-100 table-sm text-center">
 
                                         <thead>
                                             <tr>
@@ -53,7 +53,7 @@
                                                             $date_formate = date('d/m/y', strtotime($item->created_at));
                                                             echo $date_formate;
                                                             @endphp
-                                                        </td>                                                       
+                                                        </td>
                                                         <td>
                                                             @if ($item->status == 'inactive')
                                                                 <button type="button" class="btn btn-danger  btn-sm">
@@ -62,6 +62,12 @@
                                                                 <button type="button" class="btn btn-success btn-sm">
                                                                     {{ $item->status }} </button>
                                                             @endif
+                                                            |
+                                                            <a href="{{ url('delete-country/' . $item->id) }}"
+                                                                class="btn btn-outline-danger btn-sm delete" title="Delete"
+                                                                onclick="return confirm('Are you sure to delete Record?')">
+                                                                <i class="fas fa-trash-alt"></i>
+                                                            </a>
                                                         </td>
                                                         </td>
                                                     </tr>
@@ -86,5 +92,5 @@
             </div>
         </div>
     </div>
-@endsection 
+@endsection
 

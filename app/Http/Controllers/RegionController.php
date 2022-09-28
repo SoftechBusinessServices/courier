@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Country;
 use App\Models\Region;
-use App\Models\ShippingCharge;
+use App\Models\Country;
 use Illuminate\Http\Request;
+use App\Models\ShippingCharge;
+use Illuminate\Support\Facades\DB;
 use Symfony\Polyfill\Intl\Idn\Resources\unidata\Regex;
 
 class RegionController extends Controller

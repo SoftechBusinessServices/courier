@@ -682,7 +682,7 @@
 <div class="modal fade " id="parcelmodal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg">
-        <div class="modal-content" >
+        <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="myLargeModalLabel">Add New Parcel</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -881,7 +881,7 @@
                                 <div class="col-md-6">
                                     <label for="username" class="form-label">Search Phone Number</label>
                                     <input class="form-control" list="datalistOptions" id="exampleDataList"
-                                        placeholder="Type to search...">
+                                        placeholder="Type to search..." name="pl_phone">
                                     <datalist id="datalistOptions">
                                         @foreach ($services as $item)
                                             <option value="{{ $item->id }}">
@@ -935,7 +935,7 @@
                                                 type="number" maxlength="12"
                                                 class="form-control @error('shipper_phone') is-invalid @enderror"
                                                 name="shipper_phone" value="{{ old('shipper_phone') }}" required
-                                                autocomplete="company_phone" autofocus>
+                                                autocomplete="shipper_phone" autofocus>
 
                                             @error('shipper_phone')
                                                 <span class="invalid-feedback" role="alert">
@@ -948,8 +948,9 @@
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <label for="basicpill-phoneno-input">Select Country:</label>
-                                            <select class="form-control" name="shipper_country"
-                                                id="shipper_country">
+                                            <select class="form-control" name="shipper_country" id="shipper_country">
+                                                <option value=""> ------------- Select One Country -------------
+                                                </option>
                                                 @foreach ($countries as $country)
                                                     <option value="{{ $country->id }}">{{ $country->name }}</option>
                                                 @endforeach
@@ -958,10 +959,10 @@
                                         <div class="col-md-6">
                                             <label for="basicpill-phoneno-input">State/
                                                 Province /Region:</label>
-                                            <input type="text" class="form-control" name="shipper_region"
-                                                id="shipper_region">
+                                            <input type="text" class="form-control" name="shipper_state"
+                                                id="shipper_state">
 
-                                            </div>
+                                        </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
@@ -1050,6 +1051,8 @@
                                 <div class="col-lg-6">
                                     <label for="basicpill-phoneno-input">Select Country:</label>
                                     <select class="form-control" name="consignee_country" id="consignee_country">
+                                        <option value=""> ------------- Select One Country -------------
+                                        </option>
                                         @foreach ($countries as $country)
                                             <option value="{{ $country->id }}">{{ $country->name }}</option>
                                         @endforeach
@@ -1089,6 +1092,20 @@
                                 </div>
                             </div>
 
+                            <div class="row mt-3 mb-2">
+                                <div class="col-md-6">
+                                    Dispatch Notes Printout
+                                    <a href="{{ url('/dispatch-notes-print-view') }}"
+                                        class="btn btn-info waves-effect waves-light me-1"><i
+                                            class="fa fa-print"></i></a>
+                                </div>
+                                <div class="col-md-6">
+                                   Customer Receipt Printout
+                                    <a href="{{ url('/customer-receipt-print-view') }}"
+                                        class="btn btn-info waves-effect waves-light me-1"><i
+                                            class="fa fa-print"></i></a>
+                                </div>
+                            </div>
                         </form>
                     </section>
 

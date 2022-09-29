@@ -16,6 +16,7 @@ use App\Http\Controllers\LogisticController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RepresentativeController;
 use App\Http\Controllers\ServicesController;
+use App\Http\Controllers\TestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -126,8 +127,8 @@ Route::get('/companies-print-view', [PrintController::class, 'companies_print_vi
 Route::get('/regions-print-view', [PrintController::class, 'regions_print_view']);
 Route::get('/countries-print-view', [PrintController::class, 'countries_print_view']);
 Route::get('/currencies-print-view', [PrintController::class, 'currencies_print_view']);
-Route::get('/dispatch-notes-print-view', [PrintController::class, 'dispatch-note-print-view']);
-Route::get('/customer-receipt-print-view', [PrintController::class, 'customer-receipt-print-view']);
+Route::get('/dispatch-notes-print-view', [PrintController::class, 'dispatch_notes_print_view']);
+Route::get('/customer-receipt-print-view', [PrintController::class, 'customer_receipt_print_view']);
 
 Route::get('report', [ReportController::class, 'index'])->name('report');
 Route::get('daily-report', [ReportController::class, 'dailyReport'])->name('daily.report');
@@ -158,3 +159,5 @@ Route::post('update-service/{id}', [ServicesController::class, 'update_service']
 Route::get('delete-service/{id}', [ServicesController::class, 'destroy_service'])->name('delete-service');
 Route::get('restore-service/{id}', [ServicesController::class, 'restoreservice'])->name('restore-service');
 Route::get('service-forceDelete/{id}', [ServicesController::class, 'service_forceDelete'])->name('service-forceDelete');
+
+Route::post('store-testing/',[TestController::class,'store_testing'])->name('store-testing');

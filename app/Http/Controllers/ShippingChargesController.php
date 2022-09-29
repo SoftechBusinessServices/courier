@@ -52,7 +52,7 @@ class ShippingChargesController extends Controller
 
     public function store_charges(Request $request)
     {
-        // dd($request->all());
+        dd($request->all());
         $request->validate([
 
             'region_idd' => 'required',

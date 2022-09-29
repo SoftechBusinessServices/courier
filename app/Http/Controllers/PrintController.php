@@ -96,6 +96,26 @@ class PrintController extends Controller
         // dd($charges);
         return view('admin-panel.prints.currencies_print_view', compact('data', 'regions', 'charges', 'countries'));
     }
+    public function dispatch_notes_print_view()
+    {
+        $data = Currency::all();
+        // dd($data);
+        $regions = Region::all();
+        $countries = Country::all();
+        $charges = ShippingCharge::all();
+        // dd($charges);
+        return view('admin-panel.prints.dispatch_notes_print_view', compact('data', 'regions', 'charges', 'countries'));
+    }
+    public function customer_receipt_print_view()
+    {
+        $data = Currency::all();
+        // dd($data);
+        $regions = Region::all();
+        $countries = Country::all();
+        $charges = ShippingCharge::all();
+        // dd($charges);
+        return view('admin-panel.prints.currencies_print_view', compact('data', 'regions', 'charges', 'countries'));
+    }
 
 
 }

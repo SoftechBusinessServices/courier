@@ -820,7 +820,7 @@
                                                             <input type="number" id="disp_total" name="disp_total[]"
                                                                 min="0" class="form-control" />
                                                         </div>
-                                                        <div class="form-group col">
+                                                        <div class="form-group col mt-4">
                                                             <button type="button" class="btn btn-danger btn-md"
                                                                 data-repeater-delete="">Delete</button>
                                                         </div>

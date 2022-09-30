@@ -13,6 +13,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ParcelRegistrationController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\LogisticController;
+use App\Http\Controllers\ParcelController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RepresentativeController;
 use App\Http\Controllers\ServicesController;
@@ -56,16 +57,16 @@ Route::post('update-customer/{id}', [CustomerController::class, 'update_customer
 Route::get('delete-customer/{id}', [CustomerController::class, 'destroy_customer'])->name('delete-customer');
 
 //Parcel Routes
-Route::get('/add-parcel', [ParcelRegistrationController::class, 'add_parcel'])->name('add-parcel');
-Route::post('/store-parcel', [ParcelRegistrationController::class, 'store_parcel'])->name('store-parcel');
-Route::get('edit-parcel/{id}', [ParcelRegistrationController::class, 'edit_parcel']);
-Route::post('update-parcel/{id}', [ParcelRegistrationController::class, 'update_parcel']);
-Route::get('delete-parcel/{id}', [ParcelRegistrationController::class, 'destroy_parcel'])->name('delete-parcel');
+Route::get('/add-parcel', [ParcelController::class, 'add_parcel'])->name('add-parcel');
+Route::post('/store-parcel', [ParcelController::class, 'store_parcel'])->name('store-parcel');
+Route::get('edit-parcel/{id}', [ParcelController::class, 'edit_parcel']);
+Route::post('update-parcel/{id}', [ParcelController::class, 'update_parcel']);
+Route::get('delete-parcel/{id}', [ParcelController::class, 'destroy_parcel'])->name('delete-parcel');
 
 //ajax dependent
 // Route::get('getSelected/{id}', [ShippingChargesController::class, 'getSelected']);
 // Route::get('getCurrency/{id}', [ShippingChargesController::class, 'getCurrency']);
-Route::get('getSelectedShipping/{id}', [ParcelRegistrationController::class, 'getSelectedShipping']);
+Route::get('getSelectedShipping/{id}', [ParcelController::class, 'getSelectedShipping']);
 
 Route::get('getCompany/{id}', [CompanyController::class, 'getCompany']);
 

@@ -17,7 +17,7 @@ class CreateParcelShippersTable extends Migration
             $table->id();
             $table->string('pl_id')->nullable();
             $table->date('pl_date')->nullable();
-            $table->string('pl_phone_id')->nullable();
+            $table->integer('pl_phone_id')->nullable();
             $table->string('company_name')->nullable();
             $table->string('shipper_phone')->nullable();
             // $table->foreignId('region_id');

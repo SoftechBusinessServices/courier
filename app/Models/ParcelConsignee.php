@@ -7,16 +7,14 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class CompanyRepresentative extends Model
+class ParcelConsignee extends Model
 {
     use HasFactory, Notifiable;
     use SoftDeletes;
     protected $guarded = [];
 
-    protected $fillables = ['represent_name','represent_email', 'represent_phone', 'represent_address', 'company_id','status' ];
-
-    public function companies(){
-
-        return $this->belongsTo(Company::class, 'company_id','id');
-    }
+    protected $fillables = [
+        'pl_id','consignee_name', 'consignee_phone','consignee_business', 'consignee_country_id',
+         'consignee_state', 'consignee_city', 'consignee_zip','consignee_address1','consignee_address2', 'status'
+    ];
 }

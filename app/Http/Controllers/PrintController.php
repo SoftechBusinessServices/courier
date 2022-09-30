@@ -11,39 +11,40 @@ use App\Models\ParcelRegistration;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
 use App\Models\Currency;
+use App\Models\Parcel;
 
 class PrintController extends Controller
 {
     //
     public function prnpriview()
     {
-        $data = ParcelRegistration::all();
+        $data = Parcel::all();
         // dd($data);
         $regions = Region::all();
         $countries = Country::all();
-        $charges = ShippingCharge::all();
+        // $charges = ShippingCharge::all();
         // dd($charges);
-        return view('admin-panel.parcels.print_parcel', compact('data', 'regions', 'charges', 'countries'));
+        return view('admin-panel.parcels.print_parcel', compact('data', 'regions',  'countries'));
     }
     public function parcels_print_view()
     {
-        $data = ParcelRegistration::all();
+        $data = Parcel::all();
         // dd($data);
         $regions = Region::all();
         $countries = Country::all();
-        $charges = ShippingCharge::all();
+        // $charges = ShippingCharge::all();
         // dd($charges);
-        return view('admin-panel.prints.parcels_print_view', compact('data', 'regions', 'charges', 'countries'));
+        return view('admin-panel.prints.parcels_print_view', compact('data', 'regions',  'countries'));
     }
     public function charges_print_view()
     {
-        $data = ShippingCharge::all();
+        $data = Parcel::all();
         // dd($data);
         $regions = Region::all();
         $countries = Country::all();
-        $charges = ShippingCharge::all();
+        // $charges = ShippingCharge::all();
         // dd($charges);
-        return view('admin-panel.prints.charges_print_view', compact('data', 'regions', 'charges', 'countries'));
+        return view('admin-panel.prints.charges_print_view', compact('data', 'regions',  'countries'));
     }
     public function customers_print_view()
     {
@@ -51,9 +52,9 @@ class PrintController extends Controller
         // dd($data);
         $regions = Region::all();
         $countries = Country::all();
-        $charges = ShippingCharge::all();
+        // $charges = ShippingCharge::all();
         // dd($charges);
-        return view('admin-panel.prints.customers_print_view', compact('data', 'regions', 'charges', 'countries'));
+        return view('admin-panel.prints.customers_print_view', compact('data', 'regions', 'countries'));
     }
 
     public function companies_print_view()
@@ -62,9 +63,9 @@ class PrintController extends Controller
         // dd($data);
         $regions = Region::all();
         $countries = Country::all();
-        $charges = ShippingCharge::all();
+        // $charges = ShippingCharge::all();
         // dd($charges);
-        return view('admin-panel.prints.companies_print_view', compact('data', 'regions', 'charges', 'countries'));
+        return view('admin-panel.prints.companies_print_view', compact('data', 'regions', 'countries'));
     }
     public function regions_print_view()
     {
@@ -72,9 +73,9 @@ class PrintController extends Controller
         // dd($data);
         $regions = Region::all();
         $countries = Country::all();
-        $charges = ShippingCharge::all();
+        // $charges = ShippingCharge::all();
         // dd($charges);
-        return view('admin-panel.prints.regions_print_view', compact('data', 'regions', 'charges', 'countries'));
+        return view('admin-panel.prints.regions_print_view', compact('data', 'regions',  'countries'));
     }
     public function countries_print_view()
     {
@@ -82,9 +83,9 @@ class PrintController extends Controller
         // dd($data);
         $regions = Region::all();
         $countries = Country::all();
-        $charges = ShippingCharge::all();
+        // $charges = ShippingCharge::all();
         // dd($charges);
-        return view('admin-panel.prints.countries_print_view', compact('data', 'regions', 'charges', 'countries'));
+        return view('admin-panel.prints.countries_print_view', compact('data', 'regions','countries'));
     }
     public function currencies_print_view()
     {
@@ -92,9 +93,9 @@ class PrintController extends Controller
         // dd($data);
         $regions = Region::all();
         $countries = Country::all();
-        $charges = ShippingCharge::all();
+        // $charges = ShippingCharge::all();
         // dd($charges);
-        return view('admin-panel.prints.currencies_print_view', compact('data', 'regions', 'charges', 'countries'));
+        return view('admin-panel.prints.currencies_print_view', compact('data', 'regions','countries'));
     }
     public function dispatch_notes_print_view()
     {
@@ -102,9 +103,9 @@ class PrintController extends Controller
         // dd($data);
         $regions = Region::all();
         $countries = Country::all();
-        $charges = ShippingCharge::all();
+        // $charges = ShippingCharge::all();
         // dd($charges);
-        return view('admin-panel.prints.dispatch_notes_print_view', compact('data', 'regions', 'charges', 'countries'));
+        return view('admin-panel.prints.dispatch_notes_print_view', compact('data', 'regions',  'countries'));
     }
     public function customer_receipt_print_view()
     {
@@ -112,9 +113,9 @@ class PrintController extends Controller
         // dd($data);
         $regions = Region::all();
         $countries = Country::all();
-        $charges = ShippingCharge::all();
+        // $charges = ShippingCharge::all();
         // dd($charges);
-        return view('admin-panel.prints.currencies_print_view', compact('data', 'regions', 'charges', 'countries'));
+        return view('admin-panel.prints.currencies_print_view', compact('data', 'regions',  'countries'));
     }
 
 

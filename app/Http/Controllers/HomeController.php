@@ -7,6 +7,8 @@ use App\Models\Region;
 use App\Models\Company;
 use App\Models\Country;
 use App\Models\Currency;
+use App\Models\Customer;
+use App\Models\Parcel;
 use Illuminate\Http\Request;
 use App\Models\ShippingCharge;
 use App\Models\ParcelRegistration;
@@ -33,9 +35,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $lastParcel =   ParcelRegistration::orderBy('created_at', 'desc')->first();
+        $lastParcel =   Parcel::orderBy('created_at', 'desc')->first();
 
-        $parcel = new ParcelRegistration();
+        $parcel = new Parcel();
 
         if (isset($lastParcel)) {
             // Sum 1 + last id
@@ -48,18 +50,18 @@ class HomeController extends Controller
             // return $abc;
         }
 
-        $data = ParcelRegistration::all();
+        $data = Parcel::all();
         // dd($data);
         $regions = Region::all();
         $countries = Country::all();
-        $charges = ShippingCharge::all();
-        $customers = ShippingCharge::all();
+        // $charges = ShippingCharge::all();
+        $customers = Customer::all();
         // dd(1);
         $countries = Country::all();
         $companies = Company::all();
         $currencies = Currency::all();
         $services = Service::all();
-        return view('admin-panel.master',  compact('data', 'regions', 'charges', 'countries', 'companies', 'currencies','customers','services','abc'));
+        return view('admin-panel.master',  compact('data', 'regions',  'countries', 'companies', 'currencies','customers','services','abc'));
 
         // return view('home');
     }

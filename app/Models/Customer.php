@@ -15,14 +15,14 @@ class Customer extends Model
 
     protected $fillables = ['company_id', 'name', 'email', 'phone', 'address', 'country_id', 'cnic_no', 'cnic_scane', 'status'];
 
-    public function company()
-    {
-        return $this->belongsTo(Company::class, 'company_id', 'id');
-    }
-    public function country()
-    {
-        return $this->belongsTo(Country::class, 'country_id', 'id');
-    }
+    // public function company()
+    // {
+    //     return $this->belongsTo(Company::class, 'company_id', 'id');
+    // }
+    // public function country()
+    // {
+    //     return $this->belongsTo(Country::class, 'country_id', 'id');
+    // }
 
 
 }

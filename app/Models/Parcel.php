@@ -7,15 +7,15 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class ParcelRegistration extends Model
+class Parcel extends Model
 {
     use HasFactory, Notifiable;
     use SoftDeletes;
     protected $guarded = [];
 
     protected $fillables = [
-        'pl_id', 'region_id', 'country_id', 'pl_currency','pl_symbol', 'pl_weight','pl_cost', 'pl_extras',
-         'pl_discount', 'pl_final', 'pl_date', 'pl_discription','cust_name','cust_phone','cust_address','company_id','represent_id','pl_status', 'status'
+        'pl_id','pl_boxes', 'service_id','pl_weight','pl_charges', 'pl_extras',
+         'pl_discount', 'pl_final', 'pl_discription','pl_status', 'status'
     ];
 
     public function country()
@@ -30,9 +30,9 @@ class ParcelRegistration extends Model
     {
         return $this->belongsTo(Region::class, 'region_id', 'id');
     }
-    public function currency()
+    public function service()
     {
-        return $this->belongsTo(Currency::class, 'currency_id', 'id');
+        return $this->belongsTo(Service::class, 'service_id', 'id');
     }
 
 }

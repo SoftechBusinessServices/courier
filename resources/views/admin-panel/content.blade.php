@@ -688,12 +688,12 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div id="basic-example">
-                    <h3>Parcel Details</h3>
-                    <section>
-                        <form id="notform" method="POST" action="{{ route('store-testing') }}"
-                            enctype="multipart/form-data">
-                            @csrf
+                <form id="noteform" method="POST" action="{{ route('store-testing') }}"
+                    enctype="multipart/form-data">
+                    @csrf
+                    <div id="basic-example">
+                        <h3>Parcel Details</h3>
+                        <section>
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="mb-3">
@@ -765,116 +765,118 @@
                                 </div>
                             </div>
 
-                    </section>
+                        </section>
 
-                    <h3 class="font-size-12">Dispatch Note</h3>
-                    <section>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title mb-4">Dispatch Note</h4>
+                        <h3 class="font-size-12">Dispatch Note</h3>
+                        <section>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title mb-4">Dispatch Note</h4>
 
-                                        <div class="repeater">
-                                            <div data-repeater-list="userData">
-                                                <div data-repeater-item="">
-                                                    <div class="row">
-                                                        <div class="form-group col">
-                                                            <label for="name">Contents</label>
-                                                            <input type="text" id="disp_content"
-                                                                name="disp_content[]" class="form-control" />
-                                                        </div>
-                                                        <div class="form-group col">
-                                                            <label for="message">Condition</label>
-                                                            <select name="disp_condition[]" id="disp_condition"
-                                                                class="form-control">
+                                            <div class="repeater">
+                                                <div data-repeater-list="userData">
+                                                    <div data-repeater-item="">
+                                                        <div class="row">
+                                                            <div class="form-group col">
+                                                                <label for="name">Contents</label>
+                                                                <input type="text" id="disp_content"
+                                                                    name="disp_content[]" class="form-control" />
+                                                            </div>
+                                                            <div class="form-group col">
+                                                                <label for="message">Condition</label>
+                                                                <select name="disp_condition[]" id="disp_condition"
+                                                                    class="form-control">
 
-                                                                <option value="new">New</option>
-                                                                <option value="used">Used</option>
+                                                                    <option value="new">New</option>
+                                                                    <option value="used">Used</option>
 
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group col">
-                                                            <label for="message">Currency</label>
-                                                            <select name="disp_currency[]" id="disp_currency[]"
-                                                                class="form-control">
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group col">
+                                                                <label for="message">Currency</label>
+                                                                <select name="disp_currency[]" id="disp_currency[]"
+                                                                    class="form-control">
 
-                                                                <option value="pkr">PKR</option>
-                                                                <option value="usd">USD</option>
-                                                                <option value="euro">Euro</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group col">
-                                                            <label for="resume">Price</label>
-                                                            <input type="number" id="disp_price" name="disp_price[]"
-                                                                min="0" class="form-control" />
-                                                        </div>
-                                                        <div class="form-group col">
-                                                            <label for="subject">QTY</label>
-                                                            <input type="number" id="disp_quantity"
-                                                                name="disp_quantity[]" min="0"
-                                                                class="form-control" />
-                                                        </div>
-                                                        <div class="form-group col">
-                                                            <label for="resume">Total</label>
-                                                            <input type="number" id="disp_total" name="disp_total[]"
-                                                                min="0" class="form-control" />
-                                                        </div>
-                                                        <div class="form-group col mt-4">
-                                                            <button type="button" class="btn btn-danger btn-md"
-                                                                data-repeater-delete="">Delete</button>
+                                                                    <option value="pkr">PKR</option>
+                                                                    <option value="usd">USD</option>
+                                                                    <option value="euro">Euro</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group col">
+                                                                <label for="resume">Price</label>
+                                                                <input type="number" id="disp_price"
+                                                                    name="disp_price[]" min="0"
+                                                                    class="form-control" />
+                                                            </div>
+                                                            <div class="form-group col">
+                                                                <label for="subject">QTY</label>
+                                                                <input type="number" id="disp_quantity"
+                                                                    name="disp_quantity[]" min="0"
+                                                                    class="form-control" />
+                                                            </div>
+                                                            <div class="form-group col">
+                                                                <label for="resume">Total</label>
+                                                                <input type="number" id="disp_total"
+                                                                    name="disp_total[]" min="0"
+                                                                    class="form-control" />
+                                                            </div>
+                                                            <div class="form-group col mt-4">
+                                                                <button type="button" class="btn btn-danger btn-md"
+                                                                    data-repeater-delete="">Delete</button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <input data-repeater-create="" type="button"
+                                                    class="btn btn-success btn-sm" value="Add Notes"><br><br>
+                                                {{--  <input type="submit" form="notform" name="submit" class="btn btn-primary" value="Submit">  --}}
                                             </div>
-                                            <input data-repeater-create="" type="button"
-                                                class="btn btn-success btn-sm" value="Add Notes"><br><br>
-                                            {{--  <input type="submit" form="notform" name="submit" class="btn btn-primary" value="Submit">  --}}
-                                        </div>
 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </section>
+                        </section>
 
-                    <h3>Shipper</h3>
-                    <section>
+                        <h3>Shipper</h3>
+                        <section>
 
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="username" class="form-label">Tracking ID</label>
-                                <input type="text" id="username" required
-                                    class="form-control @error('pl_id') is-invalid @enderror" name="pl_id"
-                                    value="{{ $abc }}" autofocus readonly>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="username" class="form-label">Parcel Date</label>
-                                <input type="date" id="username" required
-                                    class="form-control @error('pl_date') is-invalid @enderror" name="pl_date"
-                                    value="{{ old('pl_date') }}" required autofocus>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="username" class="form-label">Tracking ID</label>
+                                    <input type="text" id="username" required
+                                        class="form-control @error('pl_id') is-invalid @enderror" name="pl_id"
+                                        value="{{ $abc }}" autofocus readonly>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="username" class="form-label">Parcel Date</label>
+                                    <input type="date" id="username" required
+                                        class="form-control @error('pl_date') is-invalid @enderror" name="pl_date"
+                                        value="{{ old('pl_date') }}" required autofocus>
 
-                                @error('pl_date')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                    @error('pl_date')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="username" class="form-label">Search Phone Number</label>
-                                <input class="form-control" list="datalistOptions" id="exampleDataList"
-                                    placeholder="Type to search..." name="pl_phone">
-                                <datalist id="datalistOptions">
-                                    @foreach ($services as $item)
-                                        <option value="{{ $item->id }}">
-                                            {{ $item->service_name }}
-                                        </option>
-                                    @endforeach
-                                </datalist>
-                            </div>
-                            {{--  <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="username" class="form-label">Search Phone Number</label>
+                                    <input class="form-control" list="datalistOptions" id="exampleDataList"
+                                        placeholder="Type to search..." name="pl_phone">
+                                    <datalist id="datalistOptions">
+                                        @foreach ($services as $item)
+                                            <option value="{{ $item->id }}">
+                                                {{ $item->service_name }}
+                                            </option>
+                                        @endforeach
+                                    </datalist>
+                                </div>
+                                {{--  <div class="col-md-6">
                                     <label for="username" class="form-label">Services Type</label>
                                     <input type="text" data-inputmask="'mask': '0399-99999999'" type="number"
                                         maxlength="12" class="form-control @error('company_phone') is-invalid @enderror"
@@ -887,213 +889,215 @@
                                         </span>
                                     @enderror
                                 </div>  --}}
-                            <div class="col-md-6 mt-4">
-                                <label for="chkPassport ">
-                                    <input type="checkbox" id="chkPassport" />
-                                    Add New Shipper
-                                </label>
+                                <div class="col-md-6 mt-4">
+                                    <label for="chkPassport ">
+                                        <input type="checkbox" id="chkPassport" />
+                                        Add New Shipper
+                                    </label>
 
-                            </div>
-                            <div id="dvAddShipper" style="display: none">
-                                <hr>
-                                <div class="row">
+                                </div>
+                                <div id="dvAddShipper" style="display: none">
+                                    <hr>
+                                    <div class="row">
 
-                                    <div class="col-md-6">
-                                        <label for="username" class="form-label">Company
-                                            Name</label>
-                                        <input type="text" id="username" placeholder="Company Name" required
-                                            class="form-control @error('company_name') is-invalid @enderror"
-                                            name="company_name" value="{{ old('company_name') }}" required
-                                            autocomplete="company_name" autofocus>
+                                        <div class="col-md-6">
+                                            <label for="username" class="form-label">Company
+                                                Name</label>
+                                            <input type="text" id="username" placeholder="Company Name" required
+                                                class="form-control @error('company_name') is-invalid @enderror"
+                                                name="company_name" value="{{ old('company_name') }}" required
+                                                autocomplete="company_name" autofocus>
 
-                                        @error('company_name')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
+                                            @error('company_name')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="username" class="form-label">Contact
+                                                Person</label>
+                                            <input type="text" data-inputmask="'mask': '0399-99999999'"
+                                                type="number" maxlength="12"
+                                                class="form-control @error('shipper_phone') is-invalid @enderror"
+                                                name="shipper_phone" value="{{ old('shipper_phone') }}" required
+                                                autocomplete="shipper_phone" autofocus>
+
+                                            @error('shipper_phone')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+
                                     </div>
-                                    <div class="col-md-6">
-                                        <label for="username" class="form-label">Contact
-                                            Person</label>
-                                        <input type="text" data-inputmask="'mask': '0399-99999999'" type="number"
-                                            maxlength="12"
-                                            class="form-control @error('shipper_phone') is-invalid @enderror"
-                                            name="shipper_phone" value="{{ old('shipper_phone') }}" required
-                                            autocomplete="shipper_phone" autofocus>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <label for="basicpill-phoneno-input">Select Country:</label>
+                                            <select class="form-control" name="shipper_country" id="shipper_country">
+                                                <option value=""> ------------- Select One Country -------------
+                                                </option>
+                                                @foreach ($countries as $country)
+                                                    <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="basicpill-phoneno-input">State/
+                                                Province /Region:</label>
+                                            <input type="text" class="form-control" name="shipper_state"
+                                                id="shipper_state">
 
-                                        @error('shipper_phone')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="basicpill-phoneno-input">City:</label>
+                                            <input type="text" class="form-control" name="shipper_city"
+                                                id="shipper_city">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="basicpill-phoneno-input">ZIP:</label>
+                                            <input type="text" class="form-control" name="shipper_zip"
+                                                id="shipper_zip">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="basicpill-phoneno-input">Address
+                                                Line1:</label>
+                                            <input type="text" class="form-control" name="shipper_add1"
+                                                id="shipper_add1">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="basicpill-phoneno-input">Address
+                                                Line2:</label>
+                                            <input type="text" class="form-control" name="shipper_add2"
+                                                id="shipper_add2">
+                                        </div>
                                     </div>
 
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <label for="basicpill-phoneno-input">Select Country:</label>
-                                        <select class="form-control" name="shipper_country" id="shipper_country">
-                                            <option value=""> ------------- Select One Country -------------
-                                            </option>
-                                            @foreach ($countries as $country)
-                                                <option value="{{ $country->id }}">{{ $country->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="basicpill-phoneno-input">State/
-                                            Province /Region:</label>
-                                        <input type="text" class="form-control" name="shipper_state"
-                                            id="shipper_state">
+                            </div>
 
-                                    </div>
+                        </section>
+
+                        <!-- Confirm Details -->
+                        <h3>Consignee</h3>
+                        <section>
+
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <label for="username" class="form-label">Consignee
+                                        Name</label>
+                                    <input type="text" id="username" placeholder="Receiver Name" required
+                                        class="form-control @error('consignee_name') is-invalid @enderror"
+                                        name="consignee_name" value="{{ old('consignee_name') }}" required
+                                        autocomplete="name" autofocus>
+
+                                    @error('consignee_name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label for="basicpill-phoneno-input">City:</label>
-                                        <input type="text" class="form-control" name="shipper_city"
-                                            id="shipper_city">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="basicpill-phoneno-input">ZIP:</label>
-                                        <input type="text" class="form-control" name="shipper_zip"
-                                            id="shipper_zip">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label for="basicpill-phoneno-input">Address
-                                            Line1:</label>
-                                        <input type="text" class="form-control" name="shipper_add1"
-                                            id="shipper_add1">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="basicpill-phoneno-input">Address
-                                            Line2:</label>
-                                        <input type="text" class="form-control" name="shipper_add2"
-                                            id="shipper_add2">
-                                    </div>
+                                <div class="col-md-6">
+                                    <label for="username" class="form-label">Receiver Phone
+                                        Number</label>
+                                    <input type="text" data-inputmask="'mask': '0399-99999999'" type="number"
+                                        maxlength="12"
+                                        class="form-control @error('consignee_phone') is-invalid @enderror"
+                                        name="phone" value="{{ old('consignee_phone') }}" required
+                                        autocomplete="consignee_phone" autofocus>
+
+                                    @error('consignee_phone')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
 
                             </div>
-                        </div>
-
-                    </section>
-
-                    <!-- Confirm Details -->
-                    <h3>Consignee</h3>
-                    <section>
-
-                        <div class="row">
-
-                            <div class="col-md-6">
-                                <label for="username" class="form-label">Consignee
-                                    Name</label>
-                                <input type="text" id="username" placeholder="Receiver Name" required
-                                    class="form-control @error('consignee_name') is-invalid @enderror"
-                                    name="consignee_name" value="{{ old('consignee_name') }}" required
-                                    autocomplete="name" autofocus>
-
-                                @error('consignee_name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="col-md-6">
-                                <label for="username" class="form-label">Receiver Phone
-                                    Number</label>
-                                <input type="text" data-inputmask="'mask': '0399-99999999'" type="number"
-                                    maxlength="12"
-                                    class="form-control @error('consignee_phone') is-invalid @enderror"
-                                    name="phone" value="{{ old('consignee_phone') }}" required
-                                    autocomplete="consignee_phone" autofocus>
-
-                                @error('consignee_phone')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                        </div>
-                        <div class="row mt-3 mb-2">
-                            <div class="col-md-6">
-                                <label for="chkCompany">
-                                    <input type="checkbox" id="chkCompany" />
-                                    Is it Business?
-                                </label>
-                            </div>
-                            <div class="col-md-6">
-                                <div id="dvCompany" style="display: none">
-                                    <input type="text" class="form-control" id="consignee_business"
-                                        name="consignee_business" placeholder="Business Title" />
+                            <div class="row mt-3 mb-2">
+                                <div class="col-md-6">
+                                    <label for="chkCompany">
+                                        <input type="checkbox" id="chkCompany" />
+                                        Is it Business?
+                                    </label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div id="dvCompany" style="display: none">
+                                        <input type="text" class="form-control" id="consignee_business"
+                                            name="consignee_business" placeholder="Business Title" />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <label for="basicpill-phoneno-input">Select Country:</label>
-                                <select class="form-control" name="consignee_country" id="consignee_country">
-                                    <option value=""> ------------- Select One Country -------------
-                                    </option>
-                                    @foreach ($countries as $country)
-                                        <option value="{{ $country->id }}">{{ $country->name }}</option>
-                                    @endforeach
-                                </select>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label for="basicpill-phoneno-input">Select Country:</label>
+                                    <select class="form-control" name="consignee_country" id="consignee_country">
+                                        <option value=""> ------------- Select One Country -------------
+                                        </option>
+                                        @foreach ($countries as $country)
+                                            <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="basicpill-phoneno-input">State/
+                                        Province /Region:</label>
+                                    <input type="text" class="form-control" name="consignee_region"
+                                        id="consignee_region">
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <label for="basicpill-phoneno-input">State/
-                                    Province /Region:</label>
-                                <input type="text" class="form-control" name="consignee_region"
-                                    id="consignee_region">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="basicpill-phoneno-input">City:</label>
+                                    <input type="text" class="form-control" name="consignee_city"
+                                        id="consignee_city">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="basicpill-phoneno-input">ZIP:</label>
+                                    <input type="text" class="form-control" name="consignee_zip"
+                                        id="consignee_zip">
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="basicpill-phoneno-input">City:</label>
-                                <input type="text" class="form-control" name="consignee_city"
-                                    id="consignee_city">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="basicpill-phoneno-input">Address
+                                        Line1:</label>
+                                    <input type="text" class="form-control" name="consignee_add1"
+                                        id="consignee_add1">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="basicpill-phoneno-input">Address
+                                        Line2:</label>
+                                    <input type="text" class="form-control" name="consignee_add2"
+                                        id="consignee_add2">
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <label for="basicpill-phoneno-input">ZIP:</label>
-                                <input type="text" class="form-control" name="consignee_zip" id="consignee_zip">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="basicpill-phoneno-input">Address
-                                    Line1:</label>
-                                <input type="text" class="form-control" name="consignee_add1"
-                                    id="consignee_add1">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="basicpill-phoneno-input">Address
-                                    Line2:</label>
-                                <input type="text" class="form-control" name="consignee_add2"
-                                    id="consignee_add2">
-                            </div>
-                        </div>
 
-                        <div class="row mt-3 mb-2">
-                            <div class="col-md-6">
-                                Dispatch Notes Printout
-                                <a href="{{ url('/dispatch-notes-print-view') }}"
-                                    class="btn btn-info waves-effect waves-light me-1"><i class="fa fa-print"></i></a>
+                            <div class="row mt-3 mb-2">
+                                <div class="col-md-6">
+                                    Dispatch Notes Printout
+                                    <a href="{{ url('/dispatch-notes-print-view') }}"
+                                        class="btn btn-info waves-effect waves-light me-1"><i
+                                            class="fa fa-print"></i></a>
+                                </div>
+                                <div class="col-md-6">
+                                    Customer Receipt Printout
+                                    <a href="{{ url('/customer-receipt-print-view') }}"
+                                        class="btn btn-info waves-effect waves-light me-1"><i
+                                            class="fa fa-print"></i></a>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                Customer Receipt Printout
-                                <a href="{{ url('/customer-receipt-print-view') }}"
-                                    class="btn btn-info waves-effect waves-light me-1"><i class="fa fa-print"></i></a>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-                <div class="modal-footer">
-                    <input type="submit" form="notform" name="submit" class="btn btn-outline-info btn-block"
-                        value="Submit">
-                </div>
-                </form>
+                        </section>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" form="noteform" class="btn btn-outline-info btn-block" value="Submit">
+                    </div>
+
             </div>
         </div>
     </div>

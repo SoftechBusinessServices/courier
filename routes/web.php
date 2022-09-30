@@ -33,6 +33,14 @@ Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('/');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+//Users Routes
+Route::get('add-user/',[HomeController::class,'fetch_user'])->name('add-user');
+Route::post('store-user/',[HomeController::class,'store_user'])->name('store-user');
+Route::get('edit-user/',[HomeController::class,'edit_user'])->name('edit-user');
+Route::get('fetch-user/',[HomeController::class,'fetch_user'])->name('fetch-user');
+Route::get('delete-user/{id}',[HomeController::class,'destroy_user'])->name('delete-user');
+
+
 //Company Routes
 Route::get('/add-company', [CompanyController::class, 'add_company'])->name('add-company');
 Route::post('/store-company', [CompanyController::class, 'store_company'])->name('store-company');
@@ -72,16 +80,6 @@ Route::get('restore-region/{id}', [RegionController::class, 'restoreregion'])->n
 Route::get('region-forceDelete/{id}', [RegionController::class, 'region_forceDelete'])->name('region-forceDelete');
 Route::get('fetch-region/{id}', [RegionController::class, 'fetch_region'])->name('fetch-region');
 
-//Shipping Charges
-Route::get('add-charges', [ShippingChargesController::class, 'add_charges'])->name('add-charges');
-Route::post('store-charges', [ShippingChargesController::class, 'store_charges'])->name('store-charges');
-Route::get('delete-charges/{id}', [ShippingChargesController::class, 'destroy_charges'])->name('delete-charges');
-Route::get('edit-charges/{id}', [ShippingChargesController::class, 'edit_charges']);
-Route::post('update-charges/{id}', [ShippingChargesController::class, 'update_charges']);
-Route::get('delete-charges/{id}', [ShippingChargesController::class, 'destroy_charges'])->name('delete-charges');
-Route::get('restore-charges/{id}', [ShippingChargesController::class, 'restorecharges'])->name('restore-charges');
-Route::get('charges-forceDelete/{id}', [ShippingChargesControllers::class, 'charges_forceDelete'])->name('charges-forceDelete');
-
 //Currency Charges
 Route::get('add-currency', [ShippingChargesController::class, 'add_currency'])->name('add-currency');
 Route::post('store-currency', [ShippingChargesController::class, 'store_currency'])->name('store-currency');
@@ -103,20 +101,12 @@ Route::get('delete-country/{id}', [CountryController::class, 'destroy_country'])
 Route::get('restore-country/{id}', [CountryController::class, 'restorecountry'])->name('restore-country');
 Route::get('country-forceDelete/{id}', [CountryController::class, 'country_forceDelete'])->name('currency-country');
 
-//Vendor Registration
+//Logistic Registration
 Route::get('/add-logistic', [LogisticController::class, 'add_logistic'])->name('add-logistic');
 Route::post('/store-logistic', [LogisticController::class, 'store_logistic'])->name('store-logistic');
 Route::get('edit-logistic/{id}', [LogisticController::class, 'edit_logistic']);
 Route::post('update-logistic/{id}', [LogisticController::class, 'update_logistic']);
 Route::get('delete-logistic/{id}', [LogisticController::class, 'destroy_logistic'])->name('delete-logistic');
-
-//Vendor Registration
-Route::get('/add-representator', [RepresentativeController::class, 'add_representator'])->name('add-representator');
-Route::post('/store-representator', [RepresentativeController::class, 'store_representator'])->name('store-representator');
-Route::get('edit-representator/{id}', [RepresentativeController::class, 'edit_representator']);
-Route::post('update-representator/{id}', [RepresentativeController::class, 'update_representator']);
-Route::get('delete-representator/{id}', [RepresentativeController::class, 'destroy_representator'])->name('delete-representator');
-Route::get('fetch-representative/{id}', [CompanyController::class, 'fetch_representative'])->name('fetch-representative');
 
 //Print Previews
 Route::get('/prnpriview', [PrintController::class, 'prnpriview']);
@@ -144,11 +134,6 @@ Route::post('reset-password', [ForgotPasswordController::class, 'ResetPasswordSt
 
 Route::get('region/delete/{id}', [RegionController::class, 'destroy']);
 
-Route::get('add-user/',[HomeController::class,'fetch_user'])->name('add-user');
-Route::post('store-user/',[HomeController::class,'store_user'])->name('store-user');
-Route::get('edit-user/',[HomeController::class,'edit_user'])->name('edit-user');
-Route::get('fetch-user/',[HomeController::class,'fetch_user'])->name('fetch-user');
-Route::get('delete-user/{id}',[HomeController::class,'destroy_user'])->name('delete-user');
 
 
 

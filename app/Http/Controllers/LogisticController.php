@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Country;
 use App\Models\Logistic;
+use App\Models\Parcel;
 use Illuminate\Http\Request;
 
 class LogisticController extends Controller
@@ -117,7 +118,34 @@ class LogisticController extends Controller
     }
 
     public function store_allocate(Request $request){
-        dd(1);
+        dd($request->all());
+        $id = $request->parcell_id;
 
+        $request->validate([
+
+            'parcell_id' => 'required',
+            'vendor_id' => 'required',
+            'vendor_track_id' => 'required',
+            'vendor_track_id' => 'required',
+        ]);
+
+        $data  = [
+            'pl_id' => $request->parcell_id,
+            'vendor_id' => $request->vendor_id,
+            'vendor_track_id' => $request->vendor_track_id,
+            'vendor_track_id' => $request->vendor_track_id,
+        ];
+
+        $record = Parcel::find($id);
+        // dd($record);
+
+        $data = $record->update($data);
+        // dd($data);
+        if ($data) {
+
+            return redirect('add-logistic')->with('success', "Record Updated Successfully");
+        } else {
+            return redirect()->back()->with('error', "Record Not Updated...");
+        }
     }
 }

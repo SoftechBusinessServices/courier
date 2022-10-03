@@ -429,6 +429,74 @@
 
 </div>
 
+
+<!------------------Allocate Modal---------------------->
+<div class="modal fade" id="allocatemodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #d6dbf8">
+                <h5 class="modal-title">Region Modal</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ url('allocate-parcel') }}" method="POST" id="sadabahar">
+                    @csrf
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Parcel ID</th>
+                            <th>Select Vendor</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" name="parcell_id" value="" id="parcell_id"
+                                    class="form-control" readonly>
+                            </td>
+                            <td>
+                                <select class="form-select" name="vendor_id" required
+                                    class="form-control table-responsive @error('vendor_id') is-invalid @enderror">
+                                    @foreach ($logistics as $logistic)
+                                        <option value="{{ $logistic->id }}">
+                                            {{ $logistic->vendor_name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @error('vendor_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Enter Vendor Tracking ID </th>
+                            <th>Enter Vendor Charges</th>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="vendor_track_id" id="vendor_track_id"
+                                    placeholder="Vendor Tracking ID" class="form-control" />
+                            </td>
+                            <td>
+                                <input type="number" name="vendor_track_charges" id="vendor_track_charges"
+                                    placeholder="Vendor Charges" class="form-control" />
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="modal-footer">
+                        <!-- Toogle to second dialog -->
+                        <button type="submit" form="sadabahar" class="btn btn-primary " id="modal_submit"
+                            value="Submit">Submit</button>
+                        <button type="button" class="btn btn-secondary" id="modal_close1"
+                            data-bs-dismiss="modal">Close</button>
+                    </div>
+            </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
 <!------------------User Modal---------------------->
 
 <div class="modal fade" id="usermodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
@@ -1298,74 +1366,6 @@
         </div>
     </div>
 </div>
-
-<!------------------Region Modal---------------------->
-<div class="modal fade" id="allocatemodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header" style="background-color: #d6dbf8">
-                <h5 class="modal-title">Region Modal</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="{{ url('allocate-parcel') }}" method="POST">
-                    @csrf
-                    <table class="table table-bordered">
-                        <tr>
-                            <th>Parcel ID</th>
-                            <th>Select Vendor</th>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="text" name="parcell_id" value="" id="parcell_id"
-                                    class="form-control" readonly>
-                            </td>
-                            <td>
-                                <select class="form-select" name="vendor_id" required
-                                    class="form-control table-responsive @error('vendor_id') is-invalid @enderror">
-                                    @foreach ($logistics as $logistic)
-                                        <option value="{{ $logistic->id }}">
-                                            {{ $logistic->vendor_name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                @error('vendor_id')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Enter Vendor Tracking ID </th>
-                            <th>Enter Vendor Charges</th>
-                        </tr>
-                        <tr>
-                            <td><input type="text" name="vendor_track_id" id="vendor_track_id"
-                                    placeholder="Vendor Tracking ID" class="form-control" />
-                            </td>
-                            <td>
-                                <input type="number" name="vendor_track_charges" id="vendor_track_charges"
-                                    placeholder="Vendor Charges" class="form-control" />
-                            </td>
-                        </tr>
-                    </table>
-
-                    <div class="modal-footer">
-                        <!-- Toogle to second dialog -->
-                        <button type="submit" form="allocateform" class="btn btn-primary " id="modal_submit"
-                            value="Submit">Submit</button>
-                        <button type="button" class="btn btn-secondary" id="modal_close1"
-                            data-bs-dismiss="modal">Close</button>
-                    </div>
-            </div>
-            </form>
-
-        </div>
-    </div>
-</div>
-
-
 
 
 <!---------------------- JAVASCRIPT-------------------->

@@ -13,15 +13,14 @@
 
                         <div class="card">
                             <div class="card-body">
-                                <p class="card-title-desc text-dark">
-                                    <a href="{{ route('home') }}" class="btn btn-dark btn-md text-white">Dashboard </a>
+                                <p class="card-title-desc text-dark mb-2 py-4 rounded" style="background-color: #d6dbf8">
+
 
                                     {{--  <a class="btn btn-success btn-md text-white " data-bs-toggle="modal"
                                         data-bs-target="#countrymodal">Add Country</a>  --}}
                                     <span class="font-size-22 font-weight-bold ml-2"> Services Details
                                     </span>
                                 </p>
-                                <hr>
                                 @if (isset($data))
                                     <table id="datatable-buttons"
                                         class="table table-bordered dt-responsive nowrap w-100 table-sm text-center">
@@ -89,6 +88,11 @@
                                         </tbody>
                                     </table>
                                 @endif
+
+                                <div class="float-end">
+                                    <a href="{{ route('home') }}"
+                                    class="btn btn-dark btn-md text-white btn-sm m-2 p-2">Dashboard </a>
+                                </div>
                             </div>
 
 

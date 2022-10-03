@@ -176,11 +176,11 @@
 
                                 <div class="d-print-none">
                                     <div class="float-end">
+                                        <a href="{{ route('home') }}"
+                                        class="btn btn-dark btn-md text-white btn-sm m-2 p-2">Dashboard </a>
                                         <a href="javascript:window.print()"
                                             class="btn btn-success waves-effect waves-light me-1"><i
                                                 class="fa fa-print"></i></a>
-                                        <a href="javascript: void(0);"
-                                            class="btn btn-primary w-md waves-effect waves-light">Send</a>
                                     </div>
                                 </div>
                             </div>

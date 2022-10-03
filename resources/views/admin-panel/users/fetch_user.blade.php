@@ -113,15 +113,14 @@
 
                         <div class="card">
                             <div class="card-body">
-                                <p class="card-title-desc text-dark">
-                                    <a href="{{ route('home') }}" class="btn btn-primary btn-md text-white">Back</a>
-                                    <a href="{{ route('home') }}" class="btn btn-dark btn-md text-white">Dashboard </a>
+                                <p class="card-title-desc text-dark mb-2 py-4 rounded" style="background-color: #d6dbf8">
+
                                     <span class="font-size-20 font-weight-bold ml-3">Registered Users List
                                         {{-- <a href="{{ route('add-region') }}"> Regions</a> --}}
 
                                     </span>
                                 </p>
-                                <hr><br><br>
+
                                 @if (isset($data))
                                     {{--  two lines od dic add for responsiveness  --}}
                                     <div class="table-rep-plugin">
@@ -200,6 +199,10 @@
 
                                 </tbody>
                                 </table>
+                                    <div class="float-end">
+                                        <a href="{{ route('home') }}"
+                                        class="btn btn-dark btn-md text-white btn-sm m-2 p-2">Dashboard </a>
+                                    </div>
                             </div>
                         </div>
                     </div>
@@ -208,4 +211,4 @@
         </div>
     </div>
 
-            @endsection
+@endsection

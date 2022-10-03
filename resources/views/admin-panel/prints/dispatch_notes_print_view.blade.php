@@ -3,13 +3,13 @@
 @section('content')
     <div class="">
 
-        <div class="page-content px-0 py-2">
-            <div class="container">
+        <div class="page-content px-0 " style=" padding:0px;padding-top:75px;">
+            <div class="container p-0">
                 {{-- @dd($data); --}}
                 <!-- start page title -->
-                <div class="row">
+                <div class="row ">
                     <div class="col-12">
-                        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                        <div class="page-title-box d-sm-flex align-items-center justify-content-between p-0">
                             {{--  <h4 class="mb-sm-0 font-size-18">Detail</h4>  --}}
                             <h4 class="float-end font-size-16"> Dispatch Notes Receipt </h4>
                             <div class="page-title-right">
@@ -27,7 +27,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body p-0">
                                 <div class="invoice-title">
                                     {{--  <h4 class="float-end font-size-16"> Dispatch Notes Receipt </h4>  --}}
                                     <div class="mb-0">
@@ -46,7 +46,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <hr>
+                               <hr class="m-0 mb-2">
                                 <div class=" ">
                                     <h3 class="font-size-15 fw-bold">Parcel Details</h3>
 
@@ -55,23 +55,23 @@
                                     <table class="table table-nowrap table-sm table-responsive-sm">
                                         <thead>
                                             <tr>
-                                                <th>No of Boxes</th>
-                                                <th>Weight</th>
-                                                <th>Service</th>
+                                                <th  class="py-1 px-0 font-size-14" scope="col" >No of Boxes</th>
+                                                <th  class="py-1 px-0 font-size-14" scope="col">Weight</th>
+                                                <th  class="py-1 px-0 font-size-14" scope="col">Service</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>4</td>
-                                                <td>12</td>
-                                                <td>DHL Via Dubai</td>
+                                                <td class="py-1 px-0 font-size-14">4</td>
+                                                <td class="py-1 px-0 font-size-14">12</td>
+                                                <td class="py-1 px-0 font-size-14">DHL Via Dubai</td>
                                             </tr>
                                         </tbody>
 
                                     </table>
                                 </div>
 
-                                <hr>
+                               <hr class="m-0 mb-2">
                                 <div class="">
                                     <h3 class="font-size-15 fw-bold">Dispatch Note</h3>
                                 </div>
@@ -79,28 +79,28 @@
                                     <table class="table table-nowrap table-sm  table-responsive-sm">
                                         <thead>
                                             <tr>
-                                                <th scope="col">Content</th>
-                                                <th scope="col">Condition</th>
-                                                <th scope="col">Currency</th>
-                                                <th scope="col">Price</th>
-                                                <th scope="col">Quantity</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Content</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Condition</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Currency</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Price</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Quantity</th>
                                             </tr>
                                         </thead>
 
                                         <tbody>
                                             <tr>
-                                                <td>Shoes</td>
-                                                <td>Used</td>
-                                                <td>PKR</td>
-                                                <td>200</td>
-                                                <td>50</td>
+                                                <td class="py-1 px-0 font-size-14">Shoes</td>
+                                                <td class="py-1 px-0 font-size-14">Used</td>
+                                                <td class="py-1 px-0 font-size-14">PKR</td>
+                                                <td class="py-1 px-0 font-size-14">200</td>
+                                                <td class="py-1 px-0 font-size-14">50</td>
                                             </tr>
                                         </tbody>
 
                                     </table>
                                 </div>
 
-                                <hr>
+                               <hr class="m-0 mb-2">
                                 <div class="">
                                     <h3 class="font-size-15 fw-bold">Sender Details</h3>
                                 </div>
@@ -108,27 +108,27 @@
                                     <table class="table table-nowrap table-sm  table-responsive-sm">
                                         <thead>
                                             <tr>
-                                                <th scope="col">Company Name</th>
-                                                <th scope="col">Contact Number</th>
-                                                <th scope="col">Country</th>
-                                                <th scope="col">State</th>
-                                                <th scope="col">City</th>
-                                                <th scope="col">Zip Code</th>
-                                                <th scope="col">Address Line1</th>
-                                                <th scope="col">Address Line2</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Company Name</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Number</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Country</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">State</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">City</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Zip Code</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Address Line1</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Address Line2</th>
 
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td scope="col">Softech Business Services</td>
-                                                <td scope="col">03109488696</td>
-                                                <td scope="col">Pakistan</td>
-                                                <td scope="col">Khyber Pakhtunkhwa</td>
-                                                <td scope="col">Peshawar</td>
-                                                <td scope="col">25000</td>
-                                                <td scope="col">Khyber Bazar, Peshawar</td>
-                                                <td scope="col">Charsadda Road, Peshawar</td>
+                                                <td class="py-1 px-0 font-size-14" >Softech Business Services</td>
+                                                <td class="py-1 px-0 font-size-14" >03109488696</td>
+                                                <td class="py-1 px-0 font-size-14" >Pakistan</td>
+                                                <td class="py-1 px-0 font-size-14" >Khyber Pakhtunkhwa</td>
+                                                <td class="py-1 px-0 font-size-14" >Peshawar</td>
+                                                <td class="py-1 px-0 font-size-14" >25000</td>
+                                                <td class="py-1 px-0 font-size-14" >Khyber Bazar, Peshawar</td>
+                                                <td class="py-1 px-0 font-size-14" >Charsadda Road, Peshawar</td>
 
                                             </tr>
                                         </tbody>
@@ -136,7 +136,7 @@
                                     </table>
                                 </div>
 
-                                <hr>
+                               <hr class="m-0 mb-2">
                                 <div class="">
                                     <h3 class="font-size-15 fw-bold">Receiver Details</h3>
                                 </div>
@@ -144,29 +144,29 @@
                                     <table class="table table-nowrap table-sm  table-responsive-sm">
                                         <thead>
                                             <tr>
-                                                <th scope="col">Receiver Name</th>
-                                                <th scope="col">Contact Number</th>
-                                                <th scope="col">Business Name</th>
-                                                <th scope="col">Country</th>
-                                                <th scope="col">State</th>
-                                                <th scope="col">City</th>
-                                                <th scope="col">Zip Code</th>
-                                                <th scope="col">Address Line1</th>
-                                                <th scope="col">Address Line2</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Receiver Name</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Number</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Business Name</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Country</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">State</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">City</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Zip Code</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Address Line1</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Address Line2</th>
 
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>Qazi Wajid Iqbal</td>
-                                                <td>03451231211</td>
-                                                <td>Apex College Lahore</td>
-                                                <td>Pakistan</td>
-                                                <td>Punjab</td>
-                                                <td>Lahore</td>
-                                                <td>25000</td>
-                                                <td>Hall Road, Lahore</td>
-                                                <td>Fazal e Haq Rd, Gulshan Block</td>
+                                                <td class="py-1 px-0 font-size-14">Qazi Wajid Iqbal</td>
+                                                <td class="py-1 px-0 font-size-14">03451231211</td>
+                                                <td class="py-1 px-0 font-size-14">Apex College Lahore</td>
+                                                <td class="py-1 px-0 font-size-14">Pakistan</td>
+                                                <td class="py-1 px-0 font-size-14">Punjab</td>
+                                                <td class="py-1 px-0 font-size-14">Lahore</td>
+                                                <td class="py-1 px-0 font-size-14">25000</td>
+                                                <td class="py-1 px-0 font-size-14">Hall Road, Lahore</td>
+                                                <td class="py-1 px-0 font-size-14">Fazal e Haq Rd, Gulshan Block</td>
 
                                             </tr>
                                         </tbody>
@@ -176,11 +176,11 @@
 
                                 <div class="d-print-none">
                                     <div class="float-end">
+                                        <a href="{{ route('home') }}"
+                                        class="btn btn-dark btn-md text-white btn-sm m-2 p-2">Dashboard </a>
                                         <a href="javascript:window.print()"
-                                            class="btn btn-success waves-effect waves-light me-1"><i
+                                            class="btn btn-success waves-effect waves-light me-1 mr-4"><i
                                                 class="fa fa-print"></i></a>
-                                        <a href="javascript: void(0);"
-                                            class="btn btn-primary w-md waves-effect waves-light">Send</a>
                                     </div>
                                 </div>
                             </div>

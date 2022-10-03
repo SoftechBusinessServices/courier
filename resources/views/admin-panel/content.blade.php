@@ -85,8 +85,12 @@
                         </a>
                     </div>
                     <div class="modal-footer flex-nowrap p-0 justify-content-center">
-                        <a href="add-suppliers.html"> <button type="button"
-                                class="btn btn-primary btn-md">Payments</button></a>
+                        <a class="btn btn-primary btn-md text-white " data-bs-toggle="modal"
+                            data-bs-target="#usermodal">Add
+                            Method </a>
+                        <a class="btn btn-success btn-md text-white" href="{{ route('add-user') }}">Users
+                            List
+                        </a>
 
                     </div>
                 </div>
@@ -115,11 +119,11 @@
                                             <tr class="text-center">
                                                 <th>S.No</th>
                                                 <th>Parcel ID</th>
-                                                <th>Parcel Destination</th>
-                                                <th>Despatch Date</th>
+                                                <th>Parcel<br></th>
+                                                <th>Despatch<br>Date</th>
                                                 {{-- <th>Subcategories</th> --}}
-                                                <th>Parcel Wieght(kg)</th>
-                                                <th>Parcel Charges</th>
+                                                <th>Weight <br>(kilogram)</th>
+                                                <th>Parcel <br>Charges</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
@@ -133,11 +137,10 @@
                                                     <tr>
                                                         <td>{{ $i++ }}</td>
                                                         <td>
-                                                            {{ $item->pl_id }} |
                                                             <a href="{{ url('fetch-region/' . $item->id) }}"
                                                                 class="btn btn-outline-secondary btn-sm delete"
                                                                 title="View">
-                                                                <i class="far fa-eye"></i>
+                                                                <i class="far fa-eye"> {{ $item->pl_id }}</i>
                                                             </a>
                                                         </td>
                                                         <td>{{ $item->consignee_country }}</td>
@@ -203,7 +206,7 @@
                         <div class="card">
                             <div class="card-body bg-light border rounded">
                                 <h4 class="card-title-desc text-dark mb-2 p-3" style="background-color: #d6dbf8">
-                                    Processed Parcels
+                                    Allocated Parcels
                                 </h4>
                                 @if (isset($parcels))
                                 <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100 table-sm text-center">
@@ -211,13 +214,16 @@
                                             <tr class="text-center">
                                                 <th>S.No</th>
                                                 <th>Parcel ID</th>
-                                                <th>Parcel Destination</th>
-                                                <th>Despatch Date</th>
+                                                <th>Parcel<br>Destination</th>
+                                                <th>Despatch<br>Date</th>
                                                 {{-- <th>Subcategories</th> --}}
-                                                <th>Parcel Wieght(kg)</th>
-                                                <th>Parcel Charges</th>
+                                                <th>Weight<br>(kilogram)</th>
+                                                <th>Parcel<br>Cost</th>
+                                                <th>Vendor<br>Name</th>
+                                                <th>Tracking<br>ID</th>
+                                                <th>Vendor<br>Charges</th>
                                                 <th>Status</th>
-                                                <th>Action</th>
+                                                {{--  <th>Action</th>  --}}
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -229,11 +235,11 @@
                                                     <tr>
                                                         <td>{{ $i++ }}</td>
                                                         <td>
-                                                            {{ $item->pl_id }} |
+
                                                             <a href="{{ url('fetch-region/' . $item->id) }}"
                                                                 class="btn btn-outline-secondary btn-sm delete"
                                                                 title="View">
-                                                                <i class="far fa-eye"></i>
+                                                                <i class="far fa-eye"> {{ $item->pl_id }}</i>
                                                             </a>
                                                         </td>
                                                         <td>{{ $item->consignee_country }}</td>
@@ -246,16 +252,34 @@
                                                         </td>
                                                         <td> {{ $item->pl_weight }} </td>
                                                         <td> {{ $item->pl_final }} </td>
+                                                        <td> {{ $item->pl_final }} </td>
+                                                        <td>
+                                                            <a class="btn btn-outline-info btn-sm parcel_allocate"
+                                                            title="add" data-bs-toggle="modal"
+                                                            data-bs-target="#trackingmodal"
+                                                            id="{{ $item->pl_id }}">
+                                                            {{ $item->id }}
+                                                        </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="btn btn-outline-primary btn-sm parcel_allocate"
+                                                            title="add" data-bs-toggle="modal"
+                                                            data-bs-target="#vendorcharges"
+                                                            id="{{ $item->pl_id }}">
+                                                            {{ $item->id }}
+                                                        </a>
+                                                        </td>
+
                                                         <td>
                                                             <a class="btn btn-outline-info btn-sm parcel_allocate"
                                                                 title="add" data-bs-toggle="modal"
                                                                 data-bs-target="#allocatemodal"
                                                                 id="{{ $item->pl_id }}">
-                                                                Allocate
+                                                                Delivered
                                                             </a>
 
                                                         </td>
-                                                        <td style="">
+                                                        {{--  <td style="">
 
 
                                                             <a href="{{ url('edit-region/' . $item->id) }}"
@@ -270,7 +294,7 @@
                                                                 onclick="return confirm('Are you sure to delete Record?')">
                                                                 <i class="fas fa-trash-alt"></i>
                                                             </a>
-                                                        </td>
+                                                        </td>  --}}
                                                     </tr>
                                                 @endforeach
                                             @else
@@ -431,12 +455,97 @@
 </div>
 
 
+<!------------------Vendor Charges Update ---------------------->
+<div class="modal fade" id="vendorcharges" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #d6dbf8">
+                <h5 class="modal-title">Update Vendor Charges Modal</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ url('vendor-charges-update') }}" method="POST" id="sadabahar">
+                    @csrf
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Parcel ID</th>
+                            <th>Tracking ID</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" name="parcell_iddd" value="" id="parcell_iddd"
+                                    class="form-control" readonly>
+                            </td>
+                            <td>
+                                <input type="text" name="tracking_id" value="" id="tracking_id"
+                                    class="form-control" >
+                            </td>
+                        </tr>
+                        <br>
+                    </table>
+
+                    <div class="modal-footer">
+                        <!-- Toogle to second dialog -->
+                        <button type="submit" form="sadabahar" class="btn btn-primary " id="modal_submit"
+                            value="Submit">Submit</button>
+                        <button type="button" class="btn btn-secondary" id="modal_close1"
+                            data-bs-dismiss="modal">Close</button>
+                    </div>
+            </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<!------------------Tracing Modal---------------------->
+<div class="modal fade" id="trackingmodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #d6dbf8">
+                <h5 class="modal-title">Update Tracking ID Modal</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ url('tracking-parcel') }}" method="POST" id="sadabahar">
+                    @csrf
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Parcel ID</th>
+                            <th>Tracking ID</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" name="parcell_idd" value="" id="parcell_idd"
+                                    class="form-control" readonly>
+                            </td>
+                            <td>
+                                <input type="text" name="track_id" value="" id="track_id"
+                                    class="form-control" >
+                            </td>
+                        </tr>
+                        <br>
+                    </table>
+
+                    <div class="modal-footer">
+                        <!-- Toogle to second dialog -->
+                        <button type="submit" form="sadabahar" class="btn btn-primary " id="modal_submit"
+                            value="Submit">Submit</button>
+                        <button type="button" class="btn btn-secondary" id="modal_close1"
+                            data-bs-dismiss="modal">Close</button>
+                    </div>
+            </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
 <!------------------Allocate Modal---------------------->
 <div class="modal fade" id="allocatemodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header" style="background-color: #d6dbf8">
-                <h5 class="modal-title">Region Modal</h5>
+                <h5 class="modal-title">Allocate Your Parcel to a Vendor</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -496,7 +605,6 @@
         </div>
     </div>
 </div>
-
 
 <!------------------User Modal---------------------->
 

@@ -95,7 +95,7 @@
     </div>
     <!-- Row1 closed -->
 
-    <!--processed collapsed table  -->
+
     <div class="container">
         <div class="collapse" id="processtable">
             <div class="card card-body mb-0">
@@ -193,14 +193,6 @@
             </div>
         </div>
     </div>
-    <!-- table processed collapsed closed -->
-
-
-
-
-
-
-    <!--Allocate collapsed table  -->
     <div class="container">
         <div class="collapse" id="allocatetable">
             <div class="card card-body mb-0">
@@ -210,26 +202,22 @@
 
                         <div class="card">
                             <div class="card-body bg-light border rounded">
-
-                                <h4 class="card-title-desc text-dark m-0 p-3" style="background-color: #d6dbf8">
-                                    Allocated
+                                <h4 class="card-title-desc text-dark mb-2 p-3" style="background-color: #d6dbf8">
+                                    Processed Parcels
                                 </h4>
-                                @if (isset($regions))
-                                    <table id="datatable-buttons"
-                                        class="table table-bordered dt-responsive nowrap w-100 table-sm text-center table-sm">
+                                @if (isset($parcels))
+                                <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100 table-sm text-center">
                                         <thead>
                                             <tr class="text-center">
+                                                <th>S.No</th>
                                                 <th>Parcel ID</th>
                                                 <th>Parcel Destination</th>
                                                 <th>Despatch Date</th>
                                                 {{-- <th>Subcategories</th> --}}
                                                 <th>Parcel Wieght(kg)</th>
                                                 <th>Parcel Charges</th>
-                                                <th>Vendor</th>
-                                                <th>Tracking ID</th>
-                                                <th>Vendor Charges</th>
                                                 <th>Status</th>
-
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -237,40 +225,51 @@
                                                 $i = 1;
                                             @endphp
                                             @if ($regions->count() > 0)
-                                                @foreach ($regions as $item)
+                                                @foreach ($parcels as $item)
                                                     <tr>
-                                                        <td>{{ $i++ }} <a
-                                                                href="{{ url('fetch-region/' . $item->id) }}"
-                                                                class="btn btn-outline-secondary btn-sm delete"
-                                                                title="View">
-                                                                <i class="far fa-eye"></i>
-                                                            </a> </td>
-                                                        <td>{{ $item->name }}</td>
-                                                        <td> 02/02/02 </td>
-                                                        <td> 02 kg </td>
-                                                        <td> 02 Rs/$</td>
-                                                        <td> xyz </td>
-                                                        <td>{{ $i++ }} <a
-                                                                href="{{ url('fetch-region/' . $item->id) }}"
-                                                                class="btn btn-outline-secondary btn-sm delete"
-                                                                title="View">
-                                                                <i class="far fa-eye"></i>
-                                                            </a> </td>
-
-                                                        <td> <button
-                                                                type="button"class="btn btn-outline-info btn-sm">Update</button>
-                                                        </td>
+                                                        <td>{{ $i++ }}</td>
                                                         <td>
+                                                            {{ $item->pl_id }} |
+                                                            <a href="{{ url('fetch-region/' . $item->id) }}"
+                                                                class="btn btn-outline-secondary btn-sm delete"
+                                                                title="View">
+                                                                <i class="far fa-eye"></i>
+                                                            </a>
+                                                        </td>
+                                                        <td>{{ $item->consignee_country }}</td>
+                                                        <td>
+                                                            @php
+                                                                $month = date('d/m/Y', strtotime($item->created_at));
+                                                                // dd($month);
+                                                                echo $month;
+                                                            @endphp
+                                                        </td>
+                                                        <td> {{ $item->pl_weight }} </td>
+                                                        <td> {{ $item->pl_final }} </td>
+                                                        <td>
+                                                            <a class="btn btn-outline-info btn-sm parcel_allocate"
+                                                                title="add" data-bs-toggle="modal"
+                                                                data-bs-target="#allocatemodal"
+                                                                id="{{ $item->pl_id }}">
+                                                                Allocate
+                                                            </a>
 
-                                                            <div class="btn-group btn-group-sm" role="group"
-                                                                aria-label="...">
-                                                                <button
-                                                                    type="button"class="btn btn-outline-success btn-sm">Complete</button>
-                                                                |
-                                                                <button
-                                                                    type="button"class="btn btn-outline-success btn-sm">Dilevered</button>
-                                                                </a>
-                                                            </div>
+                                                        </td>
+                                                        <td style="">
+
+
+                                                            <a href="{{ url('edit-region/' . $item->id) }}"
+                                                                class="btn btn-outline-warning btn-sm delete"
+                                                                title="Edit">
+                                                                <i class="fas fa-pencil-alt"></i>
+                                                            </a>
+                                                            |
+                                                            <a href="{{ url('delete-region/' . $item->id) }}"
+                                                                class="btn btn-outline-danger btn-sm delete"
+                                                                title="Delete"
+                                                                onclick="return confirm('Are you sure to delete Record?')">
+                                                                <i class="fas fa-trash-alt"></i>
+                                                            </a>
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -290,7 +289,9 @@
             </div>
         </div>
     </div>
-    <!-- table allocate collapsed closed -->
+
+
+
 
     <!-- Setting container -->
     <div class="page-content" style="padding:0;  padding-top:2%;">

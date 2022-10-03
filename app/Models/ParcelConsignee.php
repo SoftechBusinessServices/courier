@@ -17,4 +17,8 @@ class ParcelConsignee extends Model
         'pl_id','consignee_name', 'consignee_phone','consignee_business', 'consignee_country_id',
          'consignee_state', 'consignee_city', 'consignee_zip','consignee_address1','consignee_address2', 'status'
     ];
+    public function consignee_country(){
+
+        return $this->belongsTo(Country::class, 'country_id','id');
+    }
 }

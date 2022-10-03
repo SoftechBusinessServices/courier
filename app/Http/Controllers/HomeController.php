@@ -8,6 +8,7 @@ use App\Models\Company;
 use App\Models\Country;
 use App\Models\Currency;
 use App\Models\Customer;
+use App\Models\Logistic;
 use App\Models\Parcel;
 use Illuminate\Http\Request;
 use App\Models\ShippingCharge;
@@ -61,7 +62,9 @@ class HomeController extends Controller
         $companies = Company::all();
         $currencies = Currency::all();
         $services = Service::all();
-        return view('admin-panel.master',  compact('data', 'regions',  'countries', 'companies', 'currencies','customers','services','abc'));
+        $parcels = Parcel::all();
+        $logistics = Logistic::all();
+        return view('admin-panel.master',  compact('data', 'regions',  'countries', 'companies', 'currencies','customers','services','abc','parcels','logistics'));
 
         // return view('home');
     }

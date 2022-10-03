@@ -7,6 +7,7 @@ use App\Models\Region;
 use App\Models\Country;
 use App\Models\Currency;
 use App\Models\ParcelConsignee;
+use App\Models\ParcelNote;
 use App\Models\ParcelShipper;
 use Illuminate\Http\Request;
 
@@ -187,38 +188,30 @@ class ParcelController extends Controller
             return redirect()->back()->with('error', "Consignee Datails not Inserted!");
         }
 
-        dd(22);
+        // dd(23);
+            // dd($request->all());
+            $a = $request->userData['0']['disp_content'];
+            // dd($a);
 
-        $data  = [
-            'region_id' => $request->region_id,
-            'country_id' => $request->country_id,
-            'pl_weight' => $request->pl_weight,
-            'chargeable_weight' => $request->chargeable_weight,
-            'currency_id' => $request->currency_id,
-            'pl_symbol' => $request->pl_symbol,
-            'pl_cost' => $request->pl_cost,
-            'pl_extras' => $request->pl_extras,
-            'pl_discount' => $request->pl_discount,
-            'pl_final' => $request->pl_final,
-            'pl_description' => $request->pl_description,
-            'pl_date' => $request->pl_date,
+            for($i =0; $i < count($request->userData); $i++){
+                // dd(24);
 
-        ];
+                $data = [
+                    'pl_id'  => $request->pl_id,
+                    'disp_content'  =>  $request->userData[$i]['disp_content'],
+                    'disp_condition'  =>  $request->userData[$i]['disp_condition'],
+                    'currency_id'  =>  $request->userData[$i]['disp_currency'],
+                    'disp_price'  =>  $request->userData[$i]['disp_price'],
+                    'disp_quantity'  =>  $request->userData[$i]['disp_quantity'],
+                    'disp_total'  =>  $request->userData[$i]['disp_total'],
 
-        $lastParcel =   Parcel::orderBy('created_at', 'desc')->first();
+                ];
+                $record = ParcelNote::create($data);
+                session()->now('message', 'Success! parcel Added.');
 
-        $parcel = new Parcel();
+            }
 
-        if (isset($lastParcel)) {
-            // Sum 1 + last id
-            $a =  $parcel->pl_id = date('Y') . '-' . 'PL-00000' . ($lastParcel->id + 1);
-            $data['pl_id'] = $a;
-        } else {
-            $b = $parcel->pl_id  = date('Y') . '-' . 'PL-000001';
-            $data['pl_id'] = $b;
-        }
-        $data = Parcel::create($data);
-        // dd($data);
+        // dd(25);
 
         if ($data) {
             return redirect()->back()->with('success', "Record inserted Successfully");

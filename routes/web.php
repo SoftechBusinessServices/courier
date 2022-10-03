@@ -147,3 +147,6 @@ Route::get('restore-service/{id}', [ServicesController::class, 'restoreservice']
 Route::get('service-forceDelete/{id}', [ServicesController::class, 'service_forceDelete'])->name('service-forceDelete');
 
 Route::post('store-testing/',[TestController::class,'store_testing'])->name('store-testing');
+Route::get('search', [Select2SearchController::class,'index']);
+Route::get('ajax-autocomplete-search', [Select2SearchController::class,'selectSearch']);
+Route::post('allocate-parcel',[LogisticController::class,'store_allocate'])->name('allocate-parcel');

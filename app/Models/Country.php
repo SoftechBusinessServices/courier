@@ -17,7 +17,7 @@ class Country extends Model
 
     public function parcel()
     {
-        return $this->hasMany(ParcelRegistration::class, 'country_id', 'id');
+        return $this->hasMany(Parcel::class, 'country_id', 'id');
     }
     public function company()
     {
@@ -42,5 +42,9 @@ class Country extends Model
     public function logistic(){
 
         return $this->hasMany(Logistic::class,'country_id','id');
+    }
+    public function country_consignee(){
+
+        return $this->hasMany(ParcelConsignee::class, 'country_id','id');
     }
 }

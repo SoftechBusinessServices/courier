@@ -98,22 +98,22 @@
     <!--processed collapsed table  -->
     <div class="container">
         <div class="collapse" id="processtable">
-            <div class="card card-body">
+            <div class="card card-body mb-0">
                 <div class="row">
                     <div class="col-12">
                         <!--write your code here  -->
 
                         <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title"></h4>
-                                <h4 class="card-title-desc text-dark ">
-                                    Procssed Orders
+                            <div class="card-body bg-light border rounded">
+                                <h4 class="card-title-desc text-dark mb-2 p-3" style="background-color: #d6dbf8">
+                                    Processed Parcels
                                 </h4>
-                                @if (isset($regions))
+                                @if (isset($parcels))
                                     <table id="datatable-buttons"
                                         class="table table-bordered dt-responsive nowrap w-100 table-sm text-center table-sm">
                                         <thead>
                                             <tr class="text-center">
+                                                <th>S.No</th>
                                                 <th>Parcel ID</th>
                                                 <th>Parcel Destination</th>
                                                 <th>Despatch Date</th>
@@ -129,20 +129,35 @@
                                                 $i = 1;
                                             @endphp
                                             @if ($regions->count() > 0)
-                                                @foreach ($regions as $item)
+                                                @foreach ($parcels as $item)
                                                     <tr>
-                                                        <td>{{ $i++ }} <a
-                                                                href="{{ url('fetch-region/' . $item->id) }}"
+                                                        <td>{{ $i++ }}</td>
+                                                        <td>
+                                                            {{ $item->pl_id }} |
+                                                            <a href="{{ url('fetch-region/' . $item->id) }}"
                                                                 class="btn btn-outline-secondary btn-sm delete"
                                                                 title="View">
                                                                 <i class="far fa-eye"></i>
-                                                            </a> </td>
-                                                        <td>{{ $item->name }}</td>
-                                                        <td> 02/02/02 </td>
-                                                        <td> 02 </td>
-                                                        <td> 02 </td>
-                                                        <td> <button type="button"
-                                                                class="btn btn-outline-info btn-sm">Allocate</button>
+                                                            </a>
+                                                        </td>
+                                                        <td>{{ $item->consignee_country }}</td>
+                                                        <td>
+                                                            @php
+                                                                $month = date('d/m/Y', strtotime($item->created_at));
+                                                                // dd($month);
+                                                                echo $month;
+                                                            @endphp
+                                                        </td>
+                                                        <td> {{ $item->pl_weight }} </td>
+                                                        <td> {{ $item->pl_final }} </td>
+                                                        <td>
+                                                            <a class="btn btn-outline-info btn-sm parcel_allocate"
+                                                                title="add" data-bs-toggle="modal"
+                                                                data-bs-target="#allocatemodal"
+                                                                id="{{ $item->pl_id }}">
+                                                                Allocate
+                                                            </a>
+
                                                         </td>
                                                         <td style="">
 
@@ -188,15 +203,15 @@
     <!--Allocate collapsed table  -->
     <div class="container">
         <div class="collapse" id="allocatetable">
-            <div class="card card-body">
+            <div class="card card-body mb-0">
                 <div class="row">
                     <div class="col-12">
                         <!--write your code here  -->
 
                         <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title"></h4>
-                                <h4 class="card-title-desc text-dark ">
+                            <div class="card-body bg-light border rounded">
+
+                                <h4 class="card-title-desc text-dark m-0 p-3" style="background-color: #d6dbf8">
                                     Allocated
                                 </h4>
                                 @if (isset($regions))
@@ -685,7 +700,7 @@
     aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header" style="background-color: #d6dbf8">
                 <h5 class="modal-title" id="myLargeModalLabel">Add New Parcel</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -747,6 +762,7 @@
                                             </span>
                                         @enderror
                                     </div>
+
                                 </div>
                             </div>
                             <div class="row">
@@ -804,7 +820,7 @@
                                         <input type="number"
                                             class="form-control @error('pl_final') is-invalid @enderror"
                                             id="pl_final" name="pl_final" min="0"
-                                            value="{{ old('pl_final') }}" required autofocus>
+                                            value="{{ old('pl_final') }}" required autofocus readonly>
 
                                         @error('pl_final')
                                             <span class="invalid-feedback" role="alert">
@@ -874,9 +890,9 @@
                                                                 <select name="disp_currency[]" id="disp_currency[]"
                                                                     class="form-control @error('company_currency') is-invalid @enderror">
 
-                                                                    <option value="pkr">PKR</option>
-                                                                    <option value="usd">USD</option>
-                                                                    <option value="euro">Euro</option>
+                                                                    <option value="0">PKR</option>
+                                                                    <option value="1">USD</option>
+                                                                    <option value="2">Euro</option>
                                                                 </select>
                                                                 @error('disp_currency')
                                                                     <span class="invalid-feedback" role="alert">
@@ -1019,101 +1035,103 @@
                                         <div class="col-md-6">
                                             <label for="username3" class="form-label">Contact
                                                 Person</label>
-                                                <input type="text"  data-inputmask="'mask': '0399-99999999'" required=""  type = "number" maxlength = "12" name="shipper_phone"
+                                            <input type="text" data-inputmask="'mask': '0399-99999999'"
+                                                required="" type="number" maxlength="12" name="shipper_phone"
                                                 class="form-control @error('shipper_phone') is-invalid @enderror"
+                                                @error('shipper_phone')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                                </div>
 
-                                            @error('shipper_phone')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <label for="basicpill-phoneno-input">Select Country:</label>
+                                                <select
+                                                    class="form-control @error('shipper_country_id') is-invalid @enderror"
+                                                    name="shipper_country_id" id="shipper_country_id">
+                                                    <option value=""> ------------- Select One Country
+                                                        -------------
+                                                    </option>
+                                                    @foreach ($countries as $country)
+                                                        <option value="{{ $country->id }}">{{ $country->name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                                @error('shipper_country_id')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="basicpill-phoneno-input">State/
+                                                    Province /Region:</label>
+                                                <input type="text"
+                                                    class="form-control @error('shipper_state') is-invalid @enderror"
+                                                    name="shipper_state" id="shipper_state">
+                                                @error('shipper_state')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label for="basicpill-phoneno-input">City:</label>
+                                                <input type="text"
+                                                    class="form-control @error('shipper_city') is-invalid @enderror"
+                                                    name="shipper_city" id="shipper_city">
+                                                @error('shipper_city')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="basicpill-phoneno-input">ZIP:</label>
+                                                <input type="text"
+                                                    class="form-control @error('shipper_zip') is-invalid @enderror"
+                                                    name="shipper_zip" id="shipper_zip">
+                                                @error('shipper_zip')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label for="basicpill-phoneno-input">Address
+                                                    Line1:</label>
+                                                <input type="text"
+                                                    class="form-control @error('shipper_add1') is-invalid @enderror"
+                                                    name="shipper_add1" id="shipper_add1">
+                                                @error('shipper_add1')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="basicpill-phoneno-input">Address
+                                                    Line2:</label>
+                                                <input type="text"
+                                                    class="form-control @error('shipper_add2') is-invalid @enderror"
+                                                    name="shipper_add2" id="shipper_add2">
+                                                @error('shipper_add2')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
                                         </div>
 
                                     </div>
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <label for="basicpill-phoneno-input">Select Country:</label>
-                                            <select
-                                                class="form-control @error('shipper_country_id') is-invalid @enderror"
-                                                name="shipper_country_id" id="shipper_country_id">
-                                                <option value=""> ------------- Select One Country -------------
-                                                </option>
-                                                @foreach ($countries as $country)
-                                                    <option value="{{ $country->id }}">{{ $country->name }}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('shipper_country_id')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="basicpill-phoneno-input">State/
-                                                Province /Region:</label>
-                                            <input type="text"
-                                                class="form-control @error('shipper_state') is-invalid @enderror"
-                                                name="shipper_state" id="shipper_state">
-                                            @error('shipper_state')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label for="basicpill-phoneno-input">City:</label>
-                                            <input type="text"
-                                                class="form-control @error('shipper_city') is-invalid @enderror"
-                                                name="shipper_city" id="shipper_city">
-                                            @error('shipper_city')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="basicpill-phoneno-input">ZIP:</label>
-                                            <input type="text"
-                                                class="form-control @error('shipper_zip') is-invalid @enderror"
-                                                name="shipper_zip" id="shipper_zip">
-                                            @error('shipper_zip')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label for="basicpill-phoneno-input">Address
-                                                Line1:</label>
-                                            <input type="text"
-                                                class="form-control @error('shipper_add1') is-invalid @enderror"
-                                                name="shipper_add1" id="shipper_add1">
-                                            @error('shipper_add1')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="basicpill-phoneno-input">Address
-                                                Line2:</label>
-                                            <input type="text"
-                                                class="form-control @error('shipper_add2') is-invalid @enderror"
-                                                name="shipper_add2" id="shipper_add2">
-                                            @error('shipper_add2')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-
                                 </div>
-                            </div>
 
                         </section>
 
@@ -1281,6 +1299,72 @@
     </div>
 </div>
 
+<!------------------Region Modal---------------------->
+<div class="modal fade" id="allocatemodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #d6dbf8">
+                <h5 class="modal-title">Region Modal</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ url('allocate-parcel') }}" method="POST">
+                    @csrf
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Parcel ID</th>
+                            <th>Select Vendor</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" name="parcell_id" value="" id="parcell_id"
+                                    class="form-control" readonly>
+                            </td>
+                            <td>
+                                <select class="form-select" name="vendor_id" required
+                                    class="form-control table-responsive @error('vendor_id') is-invalid @enderror">
+                                    @foreach ($logistics as $logistic)
+                                        <option value="{{ $logistic->id }}">
+                                            {{ $logistic->vendor_name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @error('vendor_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Enter Vendor Tracking ID </th>
+                            <th>Enter Vendor Charges</th>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="vendor_track_id" id="vendor_track_id"
+                                    placeholder="Vendor Tracking ID" class="form-control" />
+                            </td>
+                            <td>
+                                <input type="number" name="vendor_track_charges" id="vendor_track_charges"
+                                    placeholder="Vendor Charges" class="form-control" />
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="modal-footer">
+                        <!-- Toogle to second dialog -->
+                        <button type="submit" form="allocateform" class="btn btn-primary " id="modal_submit"
+                            value="Submit">Submit</button>
+                        <button type="button" class="btn btn-secondary" id="modal_close1"
+                            data-bs-dismiss="modal">Close</button>
+                    </div>
+            </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
 
 
 
@@ -1311,12 +1395,50 @@
             });
         });
 
+        $(function() {
+            $("#pl_discount").blur(function() {
+
+                var pl_charges = parseInt($('#pl_charges').val());
+                var pl_extras = parseInt($('#pl_extras').val());
+                var pl_discount = parseInt($('#pl_discount').val());
+                var pl_total = (pl_charges + pl_extras) - pl_discount;
+                $('#pl_final').val(pl_total);
+
+            }); // discount blur function closed
+            $("#pl_charges").blur(function() {
+
+                var pl_charges = parseInt($('#pl_charges').val());
+                var pl_extras = parseInt($('#pl_extras').val());
+                var pl_discount = parseInt($('#pl_discount').val());
+                var pl_total = (pl_charges + pl_extras) - pl_discount;
+                $('#pl_final').val(pl_total);
+
+            }); // discount blur function closed
+            $("#pl_extras").blur(function() {
+
+                var pl_charges = parseInt($('#pl_charges').val());
+                var pl_extras = parseInt($('#pl_extras').val());
+                var pl_discount = parseInt($('#pl_discount').val());
+                var pl_total = (pl_charges + pl_extras) - pl_discount;
+                $('#pl_final').val(pl_total);
+
+            }); // discount blur function closed
+
+            $('.parcel_allocate').on('click', function(e) {
+                e.preventDefault();
+                console.log(this.id);
+                $('#parcell_id').val(this.id);
+            });
+
+        });
 
     }); //ready function closed
 </script>
 <script data-rishi-type="text/javascript" data-cfasync="false" data-no-optimize="1" data-no-defer="1"
     data-no-minify="1">
     $(document).ready(function() {
+
+
         $('.repeater').repeater({
             show: function() {
                 $(this).slideDown();
@@ -1329,6 +1451,6 @@
         });
     });
 </script>
-<script>
+{{--  <script>
     $(":input").inputmask();
-</script>
+</script>  --}}

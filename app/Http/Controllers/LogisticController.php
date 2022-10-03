@@ -115,4 +115,9 @@ class LogisticController extends Controller
             return redirect()->back()->with('success', "Record Not Deleted...");
         }
     }
+
+    public function store_allocate(Request $request){
+        dd(1);
+
+    }
 }

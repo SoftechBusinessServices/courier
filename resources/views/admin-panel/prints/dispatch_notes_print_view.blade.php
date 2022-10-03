@@ -3,7 +3,7 @@
 @section('content')
     <div class="">
 
-        <div class="page-content">
+        <div class="page-content px-0 py-2">
             <div class="container">
                 {{-- @dd($data); --}}
                 <!-- start page title -->

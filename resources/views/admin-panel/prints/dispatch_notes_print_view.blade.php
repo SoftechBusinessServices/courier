@@ -33,7 +33,7 @@
                                     <div class="mb-0">
                                         <div class="row">
                                             <div class="col">
-                                                <img src="assets/images/courier-logo.png" alt="logo" height="60" />
+                                                <img src="assets/images/courier-logo.png" alt="logo" height="50" />
                                             </div>
                                             <div class="col">
                                                 <label for="">SBS Courier Services</label><br>
@@ -67,7 +67,7 @@
                                                 <td>DHL Via Dubai</td>
                                             </tr>
                                         </tbody>
-                                        <hr>
+
                                     </table>
                                 </div>
 
@@ -79,11 +79,11 @@
                                     <table class="table table-nowrap table-sm  table-responsive-sm">
                                         <thead>
                                             <tr>
-                                                <th>Content</th>
-                                                <th>Condition</th>
-                                                <th>Currency</th>
-                                                <th>Price</th>
-                                                <th>Quantity</th>
+                                                <th scope="col">Content</th>
+                                                <th scope="col">Condition</th>
+                                                <th scope="col">Currency</th>
+                                                <th scope="col">Price</th>
+                                                <th scope="col">Quantity</th>
                                             </tr>
                                         </thead>
 
@@ -96,7 +96,7 @@
                                                 <td>50</td>
                                             </tr>
                                         </tbody>
-                                        <hr>
+
                                     </table>
                                 </div>
 
@@ -108,31 +108,31 @@
                                     <table class="table table-nowrap table-sm  table-responsive-sm">
                                         <thead>
                                             <tr>
-                                                <th>Company Name</th>
-                                                <th>Contact Number</th>
-                                                <th>Country</th>
-                                                <th>State</th>
-                                                <th>City</th>
-                                                <th>Zip Code</th>
-                                                <th>Address Line1</th>
-                                                <th>Address Line2</th>
+                                                <th scope="col">Company Name</th>
+                                                <th scope="col">Contact Number</th>
+                                                <th scope="col">Country</th>
+                                                <th scope="col">State</th>
+                                                <th scope="col">City</th>
+                                                <th scope="col">Zip Code</th>
+                                                <th scope="col">Address Line1</th>
+                                                <th scope="col">Address Line2</th>
 
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>Softech Business Services</td>
-                                                <td>03109488696</td>
-                                                <td>Pakistan</td>
-                                                <td>Khyber Pakhtunkhwa</td>
-                                                <td>Peshawar</td>
-                                                <td>25000</td>
-                                                <td>Khyber Bazar, Peshawar</td>
-                                                <td>Charsadda Road, Peshawar</td>
+                                                <td scope="col">Softech Business Services</td>
+                                                <td scope="col">03109488696</td>
+                                                <td scope="col">Pakistan</td>
+                                                <td scope="col">Khyber Pakhtunkhwa</td>
+                                                <td scope="col">Peshawar</td>
+                                                <td scope="col">25000</td>
+                                                <td scope="col">Khyber Bazar, Peshawar</td>
+                                                <td scope="col">Charsadda Road, Peshawar</td>
 
                                             </tr>
                                         </tbody>
-                                        <hr>
+
                                     </table>
                                 </div>
 
@@ -144,15 +144,15 @@
                                     <table class="table table-nowrap table-sm  table-responsive-sm">
                                         <thead>
                                             <tr>
-                                                <th>Receiver Name</th>
-                                                <th>Contact Number</th>
-                                                <th>Business Name</th>
-                                                <th>Country</th>
-                                                <th>State</th>
-                                                <th>City</th>
-                                                <th>Zip Code</th>
-                                                <th>Address Line1</th>
-                                                <th>Address Line2</th>
+                                                <th scope="col">Receiver Name</th>
+                                                <th scope="col">Contact Number</th>
+                                                <th scope="col">Business Name</th>
+                                                <th scope="col">Country</th>
+                                                <th scope="col">State</th>
+                                                <th scope="col">City</th>
+                                                <th scope="col">Zip Code</th>
+                                                <th scope="col">Address Line1</th>
+                                                <th scope="col">Address Line2</th>
 
                                             </tr>
                                         </thead>
@@ -170,7 +170,7 @@
 
                                             </tr>
                                         </tbody>
-                                        <hr>
+
                                     </table>
                                 </div>
 

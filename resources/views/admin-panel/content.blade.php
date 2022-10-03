@@ -109,9 +109,11 @@
 
                         <div class="card">
                             <div class="card-body bg-light border rounded">
-                                <h4 class="card-title-desc text-dark mb-2 p-3" style="background-color: #d6dbf8">
-                                    Processed Parcels
-                                </h4>
+                                <div class="modal-header mb-2" style="background-color: #d6dbf8">
+                                    <h5 class="modal-title">Processed Modal</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+
                                 @if (isset($parcels))
                                     <table id="datatable-buttons"
                                         class="table table-bordered dt-responsive nowrap w-100 table-sm text-center table-sm">
@@ -205,9 +207,10 @@
 
                         <div class="card">
                             <div class="card-body bg-light border rounded">
-                                <h4 class="card-title-desc text-dark mb-2 p-3" style="background-color: #d6dbf8">
-                                    Allocated Parcels
-                                </h4>
+                                <div class="modal-header mb-2" style="background-color: #d6dbf8">
+                                    <h5 class="modal-title">Allocated Parcells</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
                                 @if (isset($parcels))
                                 <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100 table-sm text-center">
                                         <thead>

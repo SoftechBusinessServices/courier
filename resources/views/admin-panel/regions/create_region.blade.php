@@ -13,9 +13,8 @@
 
                         <div class="card">
                             <div class="card-body">
-                                <p class="card-title-desc text-dark">
-                                    <a href="{{ route('home') }}" class="btn btn-primary btn-md text-white">Back</a>
-                                    <a href="{{ route('home') }}" class="btn btn-dark btn-md text-white">Dashboard </a>
+                                <p class="card-title-desc text-dark mb-2 py-4 px-2 rounded" style="background-color: #d6dbf8">
+
                                     <span class="font-size-20 font-weight-bold"> Countries under selected
                                         <a href="#"> Region</a>
 
@@ -105,6 +104,10 @@
                                         </tbody>
                                     </table>
                                 @endif
+                                <div class="d-flex justify-content-between my-2">
+                                    <a href="{{ route('add-region') }}" class="btn btn-primary btn-md text-white">Back</a>
+                                    <a href="{{ route('home') }}" class="btn btn-dark btn-md text-white">Dashboard </a>
+                                </div>
                             </div>
 
 

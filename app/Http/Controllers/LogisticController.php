@@ -125,20 +125,20 @@ class LogisticController extends Controller
 
             'parcell_id' => 'required',
             'vendor_id' => 'required',
-            'vendor_track_id' => 'required',
-            'vendor_track_id' => 'required',
+            'vendor_tracking_id' => 'required',
+            'vendor_tracking_charges' => 'required',
         ]);
 
         $data  = [
             'pl_id' => $request->parcell_id,
             'vendor_id' => $request->vendor_id,
-            'vendor_track_id' => $request->vendor_track_id,
-            'vendor_track_id' => $request->vendor_track_id,
+            'vendor_tracking_id' => $request->vendor_tracking_id,
+            'vendor_tracking_charges' => $request->vendor_tracking_charges,
         ];
 
         $record = Parcel::find($id);
         // dd($record);
-
+        $record->pl_status = "allocated";
         $data = $record->update($data);
         // dd($data);
         if ($data) {

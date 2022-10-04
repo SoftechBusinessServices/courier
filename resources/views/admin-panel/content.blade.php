@@ -86,10 +86,10 @@
                     </div>
                     <div class="modal-footer flex-nowrap p-0 justify-content-center">
                         <a class="btn btn-primary btn-md text-white " data-bs-toggle="modal"
-                            data-bs-target="#usermodal">Add
+                            data-bs-target="#paymentmodal">Add
                             Method </a>
-                        <a class="btn btn-success btn-md text-white" href="{{ route('add-user') }}">Users
-                            List
+                        <a class="btn btn-success btn-md text-white" href="{{ route('add-user') }}">Payment List
+
                         </a>
 
                     </div>
@@ -110,8 +110,9 @@
                         <div class="card">
                             <div class="card-body bg-light border rounded">
                                 <div class="modal-header mb-2" style="background-color: #d6dbf8">
-                                    <h5 class="modal-title">Processed Modal</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <h5 class="modal-title">Processed Parcels</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                                 </div>
 
                                 @if (isset($parcels))
@@ -167,13 +168,13 @@
                                                         <td style="">
 
 
-                                                            <a href="{{ url('edit-region/' . $item->id) }}"
+                                                            <a href="{{ url('edit-parcel/' . $item->id) }}"
                                                                 class="btn btn-outline-warning btn-sm delete"
                                                                 title="Edit">
                                                                 <i class="fas fa-pencil-alt"></i>
                                                             </a>
                                                             |
-                                                            <a href="{{ url('delete-region/' . $item->id) }}"
+                                                            <a href="{{ url('delete-parcel/' . $item->id) }}"
                                                                 class="btn btn-outline-danger btn-sm delete"
                                                                 title="Delete"
                                                                 onclick="return confirm('Are you sure to delete Record?')">
@@ -209,10 +210,12 @@
                             <div class="card-body bg-light border rounded">
                                 <div class="modal-header mb-2" style="background-color: #d6dbf8">
                                     <h5 class="modal-title">Allocated Parcells</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                                 </div>
                                 @if (isset($parcels))
-                                <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100 table-sm text-center">
+                                    <table id="datatable"
+                                        class="table table-bordered dt-responsive  nowrap w-100 table-sm text-center">
                                         <thead>
                                             <tr class="text-center">
                                                 <th>S.No</th>
@@ -258,19 +261,19 @@
                                                         <td> {{ $item->pl_final }} </td>
                                                         <td>
                                                             <a class="btn btn-outline-info btn-sm parcel_allocate"
-                                                            title="add" data-bs-toggle="modal"
-                                                            data-bs-target="#trackingmodal"
-                                                            id="{{ $item->pl_id }}">
-                                                            {{ $item->id }}
-                                                        </a>
+                                                                title="add" data-bs-toggle="modal"
+                                                                data-bs-target="#trackingmodal"
+                                                                id="{{ $item->pl_id }}">
+                                                                {{ $item->id }}
+                                                            </a>
                                                         </td>
                                                         <td>
                                                             <a class="btn btn-outline-primary btn-sm parcel_allocate"
-                                                            title="add" data-bs-toggle="modal"
-                                                            data-bs-target="#vendorcharges"
-                                                            id="{{ $item->pl_id }}">
-                                                            {{ $item->id }}
-                                                        </a>
+                                                                title="add" data-bs-toggle="modal"
+                                                                data-bs-target="#vendorcharges"
+                                                                id="{{ $item->pl_id }}">
+                                                                {{ $item->id }}
+                                                            </a>
                                                         </td>
 
                                                         <td>
@@ -481,7 +484,7 @@
                             </td>
                             <td>
                                 <input type="text" name="tracking_id" value="" id="tracking_id"
-                                    class="form-control" >
+                                    class="form-control">
                             </td>
                         </tr>
                         <br>
@@ -523,7 +526,7 @@
                             </td>
                             <td>
                                 <input type="text" name="track_id" value="" id="track_id"
-                                    class="form-control" >
+                                    class="form-control">
                             </td>
                         </tr>
                         <br>
@@ -585,11 +588,11 @@
                             <th>Enter Vendor Charges</th>
                         </tr>
                         <tr>
-                            <td><input type="text" name="vendor_track_id" id="vendor_track_id"
+                            <td><input type="text" name="vendor_tracking_id" id="vendor_tracking_id"
                                     placeholder="Vendor Tracking ID" class="form-control" />
                             </td>
                             <td>
-                                <input type="number" name="vendor_track_charges" id="vendor_track_charges"
+                                <input type="number" name="vendor_tracking_id" id="vendor_tracking_id"
                                     placeholder="Vendor Charges" class="form-control" />
                             </td>
                         </tr>
@@ -610,7 +613,44 @@
 </div>
 
 <!------------------User Modal---------------------->
+<div class="modal fade" id="paymentmodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #d6dbf8">
+                <h5 class="modal-title">Payments Methods</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="paymentform" class="needs-validation" novalidate method="POST"
+                    action="{{ route('store-payment-method') }}">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="username4" class="form-label">Add Payment method</label>
+                        <input type="text" placeholder="Enter username" required
+                            class="form-control @error('payment_method') is-invalid @enderror" name="payment_method"
+                            value="{{ old('payment_method') }}" required autocomplete="payment_method" autofocus>
 
+                        @error('payment_method')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="modal-footer">
+                        <!-- Toogle to second dialog -->
+                        <button type="submit" form="paymentform" class="btn btn-primary " id="modal_submit"
+                            value="Submit">Submit</button>
+                        <button type="button" class="btn btn-secondary" id="modal_close1"
+                            data-bs-dismiss="modal">Close</button>
+                    </div>
+            </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<!------------------User Modal---------------------->
 <div class="modal fade" id="usermodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -693,6 +733,7 @@
         </div>
     </div>
 </div>
+
 <!------------------Region Modal---------------------->
 <div class="modal fade" id="regionmodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
@@ -885,594 +926,612 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="noteform" method="POST" action="{{ route('store-parcel') }}" novalidate
-                    enctype="multipart/form-data">
+                <!-- This script got from frontendfreecode.com -->
+                <form method="POST" action="{{ route('store-parcel') }}" enctype="multipart/form-data" novalidate>
                     @csrf
-                    <div id="basic-example">
-                        <h3>Parcel Details</h3>
-                        <section>
-                            <div class="row">
+                    <div class="container">
+                        <div id="app">
+                            <step-navigation :steps="steps" :currentstep="currentstep">
+                            </step-navigation>
 
-                                <div class="col-lg-4">
-                                    <div class="mb-3">
-                                        <label for="basicpill-namecard-input">No of Boxes</label>
-                                        <input type="number"
-                                            class="form-control @error('pl_boxes') is-invalid @enderror"
-                                            id="pl_boxes" name="pl_boxes" min="0"
-                                            value="{{ old('pl_boxes') }}" required autofocus>
+                            <div v-show="currentstep == 1">
 
-                                        @error('pl_boxes')
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="mb-3">
+                                            <label for="basicpill-namecard-input">No of Boxes</label>
+                                            <input type="number"
+                                                class="form-control @error('pl_boxes') is-invalid @enderror"
+                                                id="pl_boxes" name="pl_boxes" min="0"
+                                                value="{{ old('pl_boxes') }}" required autofocus>
+
+                                            @error('pl_boxes')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="mb-3">
+                                            <label for="basicpill-namecard-input">Weight in <span
+                                                    class="text-danger text-ecnter">KG</span></label>
+                                            <input type="number"
+                                                class="form-control @error('pl_weight') is-invalid @enderror"
+                                                id="pl_weight" name="pl_weight" min="0"
+                                                value="{{ old('pl_weight') }}" required autofocus>
+
+                                            @error('pl_weight')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="mb-3">
+                                            <label for="basicpill-namecard-input">Select Shipping Service</label>
+                                            <select name="service_id" id="service_id"
+                                                class="form-control @error('serrvice_id') is-invalid @enderror">
+                                                <option value="">---- Select One Service ----</option>
+                                                @foreach ($services as $row)
+                                                    <option value="{{ $row->id }}"> {{ $row->service_name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+
+                                            @error('service_id')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="mb-3">
+                                            <label for="basicpill-namecard-input">Charges</label>
+                                            <input type="number"
+                                                class="form-control @error('pl_charges') is-invalid @enderror"
+                                                id="pl_charges" name="pl_charges" min="0"
+                                                value="{{ old('pl_charges') }}" required autofocus>
+
+                                            @error('pl_charges')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="mb-3">
+                                            <label for="basicpill-namecard-input">Extras</label>
+                                            <input type="number"
+                                                class="form-control @error('pl_extras') is-invalid @enderror"
+                                                id="pl_extras" name="pl_extras" min="0"
+                                                value="{{ old('pl_extras') }}" required autofocus>
+
+                                            @error('pl_extras')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="mb-3">
+                                            <label for="basicpill-namecard-input">Discount</label>
+                                            <input type="number"
+                                                class="form-control @error('pl_discount') is-invalid @enderror"
+                                                id="pl_discount" name="pl_discount" min="0"
+                                                value="{{ old('pl_discount') }}" required autofocus>
+
+                                            @error('pl_discount')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="mb-3">
+                                            <label for="basicpill-namecard-input">Final Charges</label>
+                                            <input type="number"
+                                                class="form-control @error('pl_final') is-invalid @enderror"
+                                                id="pl_final" name="pl_final" min="0"
+                                                value="{{ old('pl_final') }}" required autofocus readonly>
+
+                                            @error('pl_final')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-8">
+                                        <div class="mb-3">
+                                            <label for="basicpill-namecard-input">Parcel Description</label>
+                                            <textarea name="pl_description" id="pl_description" cols="1" rows="1"
+                                                class="form-control @error('pl_description') is-invalid @enderror">
+                                       </textarea>
+                                            @error('pl_description')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div v-show="currentstep == 2">
+
+                                <div class="repeater">
+                                    <div data-repeater-list="userData">
+                                        <div data-repeater-item="">
+                                            <div class="row">
+                                                <div class="form-group col">
+                                                    <label for="name">Contents</label>
+                                                    <input type="text" id="disp_content" name="disp_content[]"
+                                                        class="form-control @error('disp_content') is-invalid @enderror">
+                                                    @error('disp_content')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                                <div class="form-group col">
+                                                    <label for="message">Condition</label>
+                                                    <select name="disp_condition[]" id="disp_condition"
+                                                        class="form-control @error('disp_condition') is-invalid @enderror">
+
+                                                        <option value="new">New</option>
+                                                        <option value="used">Used</option>
+
+                                                    </select>
+                                                    @error('disp_condition')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                                <div class="form-group col">
+                                                    <label for="message">Currency</label>
+                                                    <select name="disp_currency[]" id="disp_currency[]"
+                                                        class="form-control @error('company_currency') is-invalid @enderror">
+
+                                                        <option value="0">PKR</option>
+                                                        <option value="1">USD</option>
+                                                        <option value="2">Euro</option>
+                                                    </select>
+                                                    @error('disp_currency')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                                <div class="form-group col">
+                                                    <label for="resume">Price</label>
+                                                    <input type="number" id="disp_price" name="disp_price[]"
+                                                        min="0"
+                                                        class="form-control @error('disp_price') is-invalid @enderror" />
+                                                    @error('disp_price')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                                <div class="form-group col">
+                                                    <label for="subject">QTY</label>
+                                                    <input type="number" id="disp_quantity" name="disp_quantity[]"
+                                                        min="0"
+                                                        class="form-control @error('disp_quantity') is-invalid @enderror" />
+                                                    @error('disp_quantity')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                                <div class="form-group col">
+                                                    <label for="resume">Total</label>
+                                                    <input type="number" id="disp_total" name="disp_total[]"
+                                                        min="0"
+                                                        class="form-control @error('disp_total') is-invalid @enderror" />
+                                                    @error('disp_total')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                                <div class="form-group col mt-4">
+                                                    <button type="button" class="btn btn-danger btn-md"
+                                                        data-repeater-delete="">Delete</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input data-repeater-create="" type="button" class="btn btn-success btn-sm"
+                                        value="Add Notes"><br><br>
+                                    {{--  <input type="submit" form="notform" name="submit" class="btn btn-primary" value="Submit">  --}}
+                                </div>
+
+                            </div>
+
+                            <div v-show="currentstep == 3">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="Tracking" class="form-label">Tracking ID</label>
+                                        <input type="text" id="username9" required
+                                            class="form-control @error('pl_id') is-invalid @enderror" name="pl_id"
+                                            value="{{ $abc }}" autofocus readonly>
+
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="Parcel1" class="form-label">Parcel Date</label>
+                                        <input type="date" required id="pl_date"
+                                            class="form-control @error('pl_date') is-invalid @enderror"
+                                            name="pl_date" value="{{ old('pl_date') }}" required autofocus>
+
+                                        @error('pl_date')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
-                                    <div class="mb-3">
-                                        <label for="basicpill-namecard-input">Weight in <span
-                                                class="text-danger text-ecnter">KG</span></label>
-                                        <input type="number"
-                                            class="form-control @error('pl_weight') is-invalid @enderror"
-                                            id="pl_weight" name="pl_weight" min="0"
-                                            value="{{ old('pl_weight') }}" required autofocus>
-
-                                        @error('pl_weight')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="mb-3">
-                                        <label for="basicpill-namecard-input">Select Shipping Service</label>
-                                        <select name="service_id" id="service_id"
-                                            class="form-control @error('serrvice_id') is-invalid @enderror">
-                                            <option value="">---- Select One Service ----</option>
-                                            @foreach ($services as $row)
-                                                <option value="{{ $row->id }}"> {{ $row->service_name }}
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="Search" class="form-label">Search Phone Number</label>
+                                        <input class="form-control @error('pl_phone_id') is-invalid @enderror"
+                                            list="datalistOptions" id="exampleDataList"
+                                            placeholder="Type to search..." name="pl_phone_id">
+                                        <datalist id="datalistOptions">
+                                            @foreach ($services as $item)
+                                                <option value="{{ $item->id }}">
+                                                    {{ $item->service_name }}
                                                 </option>
                                             @endforeach
-                                        </select>
-
-                                        @error('service_id')
+                                        </datalist>
+                                        @error('pl_phone_id')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
+                                    {{--  <div class="col-md-6">
+                                        <label for="service" class="form-label">Services Type</label>
+                                        <input type="text" data-inputmask="'mask': '0399-99999999'" type="number"
+                                            maxlength="12" class="form-control @error('company_phone') is-invalid @enderror"
+                                            name="company_phone" value="{{ old('company_phone') }}" required autocomplete="phone"
+                                            autofocus>
 
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <div class="mb-3">
-                                        <label for="basicpill-namecard-input">Charges</label>
-                                        <input type="number"
-                                            class="form-control @error('pl_charges') is-invalid @enderror"
-                                            id="pl_charges" name="pl_charges" min="0"
-                                            value="{{ old('pl_charges') }}" required autofocus>
-
-                                        @error('pl_charges')
+                                        @error('company_phone')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
+                                    </div>  --}}
+                                    <div class="col-md-6 mt-4">
+                                        <label for="chkPassport ">
+                                            <input type="checkbox" id="chkPassport" />
+                                            Add New Shipper
+                                        </label>
+
                                     </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="mb-3">
-                                        <label for="basicpill-namecard-input">Extras</label>
-                                        <input type="number"
-                                            class="form-control @error('pl_extras') is-invalid @enderror"
-                                            id="pl_extras" name="pl_extras" min="0"
-                                            value="{{ old('pl_extras') }}" required autofocus>
+                                    <div id="dvAddShipper" style="display: none">
+                                        <hr>
+                                        <div class="row">
 
-                                        @error('pl_extras')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="mb-3">
-                                        <label for="basicpill-namecard-input">Discount</label>
-                                        <input type="number"
-                                            class="form-control @error('pl_discount') is-invalid @enderror"
-                                            id="pl_discount" name="pl_discount" min="0"
-                                            value="{{ old('pl_discount') }}" required autofocus>
+                                            <div class="col-md-6">
+                                                <label for="username2" class="form-label">Company
+                                                    Name</label>
+                                                <input type="text" placeholder="Company Name" required
+                                                    class="form-control @error('company_name') is-invalid @enderror"
+                                                    name="company_name" value="{{ old('company_name') }}" required
+                                                    autocomplete="company_name" autofocus>
 
-                                        @error('pl_discount')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <div class="mb-3">
-                                        <label for="basicpill-namecard-input">Final Charges</label>
-                                        <input type="number"
-                                            class="form-control @error('pl_final') is-invalid @enderror"
-                                            id="pl_final" name="pl_final" min="0"
-                                            value="{{ old('pl_final') }}" required autofocus readonly>
-
-                                        @error('pl_final')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-8">
-                                    <div class="mb-3">
-                                        <label for="basicpill-namecard-input">Parcel Description</label>
-                                        <textarea name="pl_description" id="pl_description" cols="1" rows="1"
-                                            class="form-control @error('pl_description') is-invalid @enderror">
-                                       </textarea>
-                                        @error('pl_description')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
-
-                        </section>
-
-                        <h3 class="font-size-12">Dispatch Note</h3>
-                        <section>
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h4 class="card-title mb-4">Dispatch Note</h4>
-
-                                            <div class="repeater">
-                                                <div data-repeater-list="userData">
-                                                    <div data-repeater-item="">
-                                                        <div class="row">
-                                                            <div class="form-group col">
-                                                                <label for="name">Contents</label>
-                                                                <input type="text" id="disp_content"
-                                                                    name="disp_content[]"
-                                                                    class="form-control @error('disp_content') is-invalid @enderror">
-                                                                @error('disp_content')
-                                                                    <span class="invalid-feedback" role="alert">
-                                                                        <strong>{{ $message }}</strong>
-                                                                    </span>
-                                                                @enderror
-                                                            </div>
-                                                            <div class="form-group col">
-                                                                <label for="message">Condition</label>
-                                                                <select name="disp_condition[]" id="disp_condition"
-                                                                    class="form-control @error('disp_condition') is-invalid @enderror">
-
-                                                                    <option value="new">New</option>
-                                                                    <option value="used">Used</option>
-
-                                                                </select>
-                                                                @error('disp_condition')
-                                                                    <span class="invalid-feedback" role="alert">
-                                                                        <strong>{{ $message }}</strong>
-                                                                    </span>
-                                                                @enderror
-                                                            </div>
-                                                            <div class="form-group col">
-                                                                <label for="message">Currency</label>
-                                                                <select name="disp_currency[]" id="disp_currency[]"
-                                                                    class="form-control @error('company_currency') is-invalid @enderror">
-
-                                                                    <option value="0">PKR</option>
-                                                                    <option value="1">USD</option>
-                                                                    <option value="2">Euro</option>
-                                                                </select>
-                                                                @error('disp_currency')
-                                                                    <span class="invalid-feedback" role="alert">
-                                                                        <strong>{{ $message }}</strong>
-                                                                    </span>
-                                                                @enderror
-                                                            </div>
-                                                            <div class="form-group col">
-                                                                <label for="resume">Price</label>
-                                                                <input type="number" id="disp_price"
-                                                                    name="disp_price[]" min="0"
-                                                                    class="form-control @error('disp_price') is-invalid @enderror" />
-                                                                @error('disp_price')
-                                                                    <span class="invalid-feedback" role="alert">
-                                                                        <strong>{{ $message }}</strong>
-                                                                    </span>
-                                                                @enderror
-                                                            </div>
-                                                            <div class="form-group col">
-                                                                <label for="subject">QTY</label>
-                                                                <input type="number" id="disp_quantity"
-                                                                    name="disp_quantity[]" min="0"
-                                                                    class="form-control @error('disp_quantity') is-invalid @enderror" />
-                                                                @error('disp_quantity')
-                                                                    <span class="invalid-feedback" role="alert">
-                                                                        <strong>{{ $message }}</strong>
-                                                                    </span>
-                                                                @enderror
-                                                            </div>
-                                                            <div class="form-group col">
-                                                                <label for="resume">Total</label>
-                                                                <input type="number" id="disp_total"
-                                                                    name="disp_total[]" min="0"
-                                                                    class="form-control @error('disp_total') is-invalid @enderror" />
-                                                                @error('disp_total')
-                                                                    <span class="invalid-feedback" role="alert">
-                                                                        <strong>{{ $message }}</strong>
-                                                                    </span>
-                                                                @enderror
-                                                            </div>
-                                                            <div class="form-group col mt-4">
-                                                                <button type="button" class="btn btn-danger btn-md"
-                                                                    data-repeater-delete="">Delete</button>
-                                                            </div>
-                                                        </div>
+                                                @error('company_name')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="username3" class="form-label">Contact
+                                                    Person</label>
+                                                <input type="text" data-inputmask="'mask': '0399-99999999'"
+                                                    required="" type="number" maxlength="12"
+                                                    name="shipper_phone"
+                                                    class="form-control @error('shipper_phone') is-invalid @enderror"
+                                                    @error('shipper_phone')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
                                                     </div>
-                                                </div>
-                                                <input data-repeater-create="" type="button"
-                                                    class="btn btn-success btn-sm" value="Add Notes"><br><br>
-                                                {{--  <input type="submit" form="notform" name="submit" class="btn btn-primary" value="Submit">  --}}
+
                                             </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
-                        <h3>Shipper</h3>
-                        <section>
-
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="Tracking" class="form-label">Tracking ID</label>
-                                    <input type="text" id="username9" required
-                                        class="form-control @error('pl_id') is-invalid @enderror" name="pl_id"
-                                        value="{{ $abc }}" autofocus readonly>
-
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="Parcel1" class="form-label">Parcel Date</label>
-                                    <input type="date" required id="pl_date"
-                                        class="form-control @error('pl_date') is-invalid @enderror" name="pl_date"
-                                        value="{{ old('pl_date') }}" required autofocus>
-
-                                    @error('pl_date')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label for="Search" class="form-label">Search Phone Number</label>
-                                    <input class="form-control @error('pl_phone_id') is-invalid @enderror"
-                                        list="datalistOptions" id="exampleDataList" placeholder="Type to search..."
-                                        name="pl_phone_id">
-                                    <datalist id="datalistOptions">
-                                        @foreach ($services as $item)
-                                            <option value="{{ $item->id }}">
-                                                {{ $item->service_name }}
-                                            </option>
-                                        @endforeach
-                                    </datalist>
-                                    @error('pl_phone_id')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                {{--  <div class="col-md-6">
-                                    <label for="service" class="form-label">Services Type</label>
-                                    <input type="text" data-inputmask="'mask': '0399-99999999'" type="number"
-                                        maxlength="12" class="form-control @error('company_phone') is-invalid @enderror"
-                                        name="company_phone" value="{{ old('company_phone') }}" required autocomplete="phone"
-                                        autofocus>
-
-                                    @error('company_phone')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>  --}}
-                                <div class="col-md-6 mt-4">
-                                    <label for="chkPassport ">
-                                        <input type="checkbox" id="chkPassport" />
-                                        Add New Shipper
-                                    </label>
-
-                                </div>
-                                <div id="dvAddShipper" style="display: none">
-                                    <hr>
-                                    <div class="row">
-
-                                        <div class="col-md-6">
-                                            <label for="username2" class="form-label">Company
-                                                Name</label>
-                                            <input type="text" placeholder="Company Name" required
-                                                class="form-control @error('company_name') is-invalid @enderror"
-                                                name="company_name" value="{{ old('company_name') }}" required
-                                                autocomplete="company_name" autofocus>
-
-                                            @error('company_name')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="username3" class="form-label">Contact
-                                                Person</label>
-                                            <input type="text" data-inputmask="'mask': '0399-99999999'"
-                                                required="" type="number" maxlength="12" name="shipper_phone"
-                                                class="form-control @error('shipper_phone') is-invalid @enderror"
-                                                @error('shipper_phone')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                                </div>
-
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <label for="basicpill-phoneno-input">Select Country:</label>
-                                                <select
-                                                    class="form-control @error('shipper_country_id') is-invalid @enderror"
-                                                    name="shipper_country_id" id="shipper_country_id">
-                                                    <option value=""> ------------- Select One Country
-                                                        -------------
-                                                    </option>
-                                                    @foreach ($countries as $country)
-                                                        <option value="{{ $country->id }}">{{ $country->name }}
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <label for="basicpill-phoneno-input">Select Country:</label>
+                                                    <select
+                                                        class="form-control @error('shipper_country_id') is-invalid @enderror"
+                                                        name="shipper_country_id" id="shipper_country_id">
+                                                        <option value=""> ------------- Select One Country
+                                                            -------------
                                                         </option>
-                                                    @endforeach
-                                                </select>
-                                                @error('shipper_country_id')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
+                                                        @foreach ($countries as $country)
+                                                            <option value="{{ $country->id }}">
+                                                                {{ $country->name }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                    @error('shipper_country_id')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="basicpill-phoneno-input">State/
+                                                        Province /Region:</label>
+                                                    <input type="text"
+                                                        class="form-control @error('shipper_state') is-invalid @enderror"
+                                                        name="shipper_state" id="shipper_state">
+                                                    @error('shipper_state')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <label for="basicpill-phoneno-input">State/
-                                                    Province /Region:</label>
-                                                <input type="text"
-                                                    class="form-control @error('shipper_state') is-invalid @enderror"
-                                                    name="shipper_state" id="shipper_state">
-                                                @error('shipper_state')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label for="basicpill-phoneno-input">City:</label>
+                                                    <input type="text"
+                                                        class="form-control @error('shipper_city') is-invalid @enderror"
+                                                        name="shipper_city" id="shipper_city">
+                                                    @error('shipper_city')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="basicpill-phoneno-input">ZIP:</label>
+                                                    <input type="text"
+                                                        class="form-control @error('shipper_zip') is-invalid @enderror"
+                                                        name="shipper_zip" id="shipper_zip">
+                                                    @error('shipper_zip')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label for="basicpill-phoneno-input">City:</label>
-                                                <input type="text"
-                                                    class="form-control @error('shipper_city') is-invalid @enderror"
-                                                    name="shipper_city" id="shipper_city">
-                                                @error('shipper_city')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label for="basicpill-phoneno-input">Address
+                                                        Line1:</label>
+                                                    <input type="text"
+                                                        class="form-control @error('shipper_add1') is-invalid @enderror"
+                                                        name="shipper_add1" id="shipper_add1">
+                                                    @error('shipper_add1')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="basicpill-phoneno-input">Address
+                                                        Line2:</label>
+                                                    <input type="text"
+                                                        class="form-control @error('shipper_add2') is-invalid @enderror"
+                                                        name="shipper_add2" id="shipper_add2">
+                                                    @error('shipper_add2')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <label for="basicpill-phoneno-input">ZIP:</label>
-                                                <input type="text"
-                                                    class="form-control @error('shipper_zip') is-invalid @enderror"
-                                                    name="shipper_zip" id="shipper_zip">
-                                                @error('shipper_zip')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label for="basicpill-phoneno-input">Address
-                                                    Line1:</label>
-                                                <input type="text"
-                                                    class="form-control @error('shipper_add1') is-invalid @enderror"
-                                                    name="shipper_add1" id="shipper_add1">
-                                                @error('shipper_add1')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="basicpill-phoneno-input">Address
-                                                    Line2:</label>
-                                                <input type="text"
-                                                    class="form-control @error('shipper_add2') is-invalid @enderror"
-                                                    name="shipper_add2" id="shipper_add2">
-                                                @error('shipper_add2')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                        </div>
 
+                                        </div>
                                     </div>
                                 </div>
-
-                        </section>
-
-                        <!-- Confirm Details -->
-                        <h3>Consignee</h3>
-                        <section>
-
-                            <div class="row">
-
-                                <div class="col-md-6">
-                                    <label for="username0" class="form-label">Consignee
-                                        Name</label>
-                                    <input type="text" placeholder="Receiver Name" required
-                                        class="form-control @error('consignee_name') is-invalid @enderror"
-                                        name="consignee_name" value="{{ old('consignee_name') }}" required
-                                        autocomplete="name" autofocus>
-
-                                    @error('consignee_name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="username13" class="form-label">Receiver Phone
-                                        Number</label>
-                                    <input type="text" data-inputmask="'mask': '0399-99999999'" type="number"
-                                        maxlength="12"
-                                        class="form-control @error('consignee_phone') is-invalid @enderror"
-                                        name="consignee_phone" value="{{ old('consignee_phone') }}" required
-                                        autocomplete="consignee_phone" autofocus>
-
-                                    @error('consignee_phone')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-
                             </div>
-                            <div class="row mt-3 mb-2">
-                                <div class="col-md-6">
-                                    <label for="chkCompany">
-                                        <input type="checkbox" id="chkCompany" />
-                                        Is it Business?
-                                    </label>
-                                </div>
-                                <div class="col-md-6">
-                                    <div id="dvCompany" style="display: none">
-                                        <input type="text"
-                                            class="form-control @error('consignee_business') is-invalid @enderror"
-                                            id="consignee_business" name="consignee_business"
-                                            placeholder="Business Title" />
-                                        @error('consignee_business')
+                            <div v-show="currentstep == 4">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="username0" class="form-label">Consignee
+                                            Name</label>
+                                        <input type="text" placeholder="Receiver Name" required
+                                            class="form-control @error('consignee_name') is-invalid @enderror"
+                                            name="consignee_name" value="{{ old('consignee_name') }}" required
+                                            autocomplete="name" autofocus>
+
+                                        @error('consignee_name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="username13" class="form-label">Receiver Phone
+                                            Number</label>
+                                        <input type="text" data-inputmask="'mask': '0399-99999999'" type="number"
+                                            maxlength="12"
+                                            class="form-control @error('consignee_phone') is-invalid @enderror"
+                                            name="consignee_phone" value="{{ old('consignee_phone') }}" required
+                                            autocomplete="consignee_phone" autofocus>
+
+                                        @error('consignee_phone')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <label for="basicpill-phoneno-input">Select Country:</label>
-                                    <select class="form-control @error('consignee_country_id') is-invalid @enderror"
-                                        name="consignee_country_id" id="consignee_country_id">
-                                        <option value=""> ------------- Select One Country -------------
-                                        </option>
-                                        @foreach ($countries as $country)
-                                            <option value="{{ $country->id }}">{{ $country->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('consignee_country_id')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                <div class="row mt-3 mb-2">
+                                    <div class="col-md-6">
+                                        <label for="chkCompany">
+                                            <input type="checkbox" id="chkCompany" />
+                                            Is it Business?
+                                        </label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div id="dvCompany" style="display: none">
+                                            <input type="text"
+                                                class="form-control @error('consignee_business') is-invalid @enderror"
+                                                id="consignee_business" name="consignee_business"
+                                                placeholder="Business Title" />
+                                            @error('consignee_business')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <label for="basicpill-phoneno-input">State/
-                                        Province /Region:</label>
-                                    <input type="text"
-                                        class="form-control @error('consignee_state') is-invalid @enderror"
-                                        name="consignee_state" id="consignee_region">
-                                    @error('consignee_state')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label for="basicpill-phoneno-input">Select Country:</label>
+                                        <select
+                                            class="form-control @error('consignee_country_id') is-invalid @enderror"
+                                            name="consignee_country_id" id="consignee_country_id">
+                                            <option value=""> ------------- Select One Country -------------
+                                            </option>
+                                            @foreach ($countries as $country)
+                                                <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('consignee_country_id')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="basicpill-phoneno-input">State/
+                                            Province /Region:</label>
+                                        <input type="text"
+                                            class="form-control @error('consignee_state') is-invalid @enderror"
+                                            name="consignee_state" id="consignee_region">
+                                        @error('consignee_state')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label for="basicpill-phoneno-input">City:</label>
-                                    <input type="text"
-                                        class="form-control @error('consignee_city') is-invalid @enderror"
-                                        name="consignee_city" id="consignee_city">
-                                    @error('consignee_city')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="basicpill-phoneno-input">City:</label>
+                                        <input type="text"
+                                            class="form-control @error('consignee_city') is-invalid @enderror"
+                                            name="consignee_city" id="consignee_city">
+                                        @error('consignee_city')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="basicpill-phoneno-input">ZIP:</label>
+                                        <input type="text"
+                                            class="form-control @error('consignee_zip') is-invalid @enderror"
+                                            name="consignee_zip" id="consignee_zip">
+                                        @error('consignee_zip')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <label for="basicpill-phoneno-input">ZIP:</label>
-                                    <input type="text"
-                                        class="form-control @error('consignee_zip') is-invalid @enderror"
-                                        name="consignee_zip" id="consignee_zip">
-                                    @error('consignee_zip')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="basicpill-phoneno-input">Address
+                                            Line1:</label>
+                                        <input type="text"
+                                            class="form-control @error('consignee_add1') is-invalid @enderror"
+                                            name="consignee_add1" id="consignee_add1">
+                                        @error('consignee_add1')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="basicpill-phoneno-input">Address
+                                            Line2:</label>
+                                        <input type="text"
+                                            class="form-control @error('consignee_add2') is-invalid @enderror"
+                                            name="consignee_add2" id="consignee_add2">
+                                        @error('consignee_add2')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label for="basicpill-phoneno-input">Address
-                                        Line1:</label>
-                                    <input type="text"
-                                        class="form-control @error('consignee_add1') is-invalid @enderror"
-                                        name="consignee_add1" id="consignee_add1">
-                                    @error('consignee_add1')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="basicpill-phoneno-input">Address
-                                        Line2:</label>
-                                    <input type="text"
-                                        class="form-control @error('consignee_add2') is-invalid @enderror"
-                                        name="consignee_add2" id="consignee_add2">
-                                    @error('consignee_add2')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+
+                                <div class="row mt-3 mb-2">
+                                    <div class="col-md-6">
+                                        Dispatch Notes Printout
+                                        <a href="{{ url('/dispatch-notes-print-view') }}"
+                                            class="btn btn-info waves-effect waves-light me-1"><i
+                                                class="fa fa-print"></i></a>
+                                    </div>
+                                    <div class="col-md-6">
+                                        Customer Receipt Printout
+                                        <a href="{{ url('/customer-receipt-print-view') }}"
+                                            class="btn btn-info waves-effect waves-light me-1"><i
+                                                class="fa fa-print"></i></a>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="row mt-3 mb-2">
-                                <div class="col-md-6">
-                                    Dispatch Notes Printout
-                                    <a href="{{ url('/dispatch-notes-print-view') }}"
-                                        class="btn btn-info waves-effect waves-light me-1"><i
-                                            class="fa fa-print"></i></a>
-                                </div>
-                                <div class="col-md-6">
-                                    Customer Receipt Printout
-                                    <a href="{{ url('/customer-receipt-print-view') }}"
-                                        class="btn btn-info waves-effect waves-light me-1"><i
-                                            class="fa fa-print"></i></a>
-                                </div>
+                            <step v-for="step in steps" :currentstep="currentstep" :key="step.id"
+                                :step="step" :stepcount="steps.length" @step-change="stepChanged">
+                            </step>
+
+                            <script type="x-template" id="step-navigation-template">
+                            <ol class="step-indicator">
+                                <li v-for="step in steps" is="step-navigation-step" :key="step.id" :step="step" :currentstep="currentstep">
+                                </li>
+                            </ol>
+                        </script>
+
+                            <script type="x-template" id="step-navigation-step-template">
+                            <li :class="indicatorclass">
+                                <div class="step"><i :class="step.icon_class"></i></div>
+                                <div class="caption hidden-xs hidden-sm">Step <span v-text="step.id"></span>: <span v-text="step.title"></span></div>
+                            </li>
+                        </script>
+
+                            <script type="x-template" id="step-template">
+                            <div class="step-wrapper" :class="stepWrapperClass">
+                                <button type="button" class="btn btn-primary" @click="lastStep" :disabled="firststep">
+                                    Back
+                                </button>
+                                <button type="button" class="btn btn-primary" @click="nextStep" :disabled="laststep">
+                                    Next
+                                </button>
+                                <button type="submit" class="btn btn-primary" v-if="laststep">
+                                    Submit
+                                </button>
                             </div>
-                        </section>
+                        </script>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <input type="submit" form="noteform" class="btn btn-outline-info btn-block" value="Submit">
-                    </div>
+                </form>
 
             </div>
         </div>
@@ -1566,3 +1625,108 @@
 {{--  <script>
     $(":input").inputmask();
 </script>  --}}
+<script>
+    Vue.component("step-navigation-step", {
+        template: "#step-navigation-step-template",
+
+        props: ["step", "currentstep"],
+
+        computed: {
+            indicatorclass() {
+                return {
+                    active: this.step.id == this.currentstep,
+                    complete: this.currentstep > this.step.id
+                };
+
+            }
+        }
+    });
+
+
+
+    Vue.component("step-navigation", {
+        template: "#step-navigation-template",
+
+        props: ["steps", "currentstep"]
+    });
+
+
+    Vue.component("step", {
+        template: "#step-template",
+
+        props: ["step", "stepcount", "currentstep"],
+
+        computed: {
+            active() {
+                return this.step.id == this.currentstep;
+            },
+
+            firststep() {
+                return this.currentstep == 1;
+            },
+
+            laststep() {
+                return this.currentstep == this.stepcount;
+            },
+
+            stepWrapperClass() {
+                return {
+                    active: this.active
+                };
+
+            }
+        },
+
+
+        methods: {
+            nextStep() {
+                this.$emit("step-change", this.currentstep + 1);
+            },
+
+            lastStep() {
+                this.$emit("step-change", this.currentstep - 1);
+            }
+        }
+    });
+
+
+
+    new Vue({
+        el: "#app",
+
+        data: {
+            currentstep: 1,
+
+            steps: [{
+                    id: 1,
+                    title: "Parcel Registration",
+                    icon_class: "fa fa-map-marker"
+                },
+
+                {
+                    id: 2,
+                    title: "Dispatch Notes",
+                    icon_class: "fa fa-folder-open"
+                },
+
+                {
+                    id: 3,
+                    title: "Shipper Details",
+                    icon_class: "fa fa-paper-plane"
+                },
+
+                {
+                    id: 4,
+                    title: "Consignee Details",
+                    icon_class: "fa fa-get-pocket"
+                }
+            ]
+        },
+
+        methods: {
+            stepChanged(step) {
+                this.currentstep = step;
+            }
+        }
+    });
+</script>

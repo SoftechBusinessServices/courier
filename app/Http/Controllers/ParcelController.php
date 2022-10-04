@@ -83,7 +83,6 @@ class ParcelController extends Controller
             ];
             $record = Parcel::create($data);
             session()->now('message', 'Success! parcel Added.');
-
         } else {
             dd(3);
             return back()->with('error', "Parcel insertion failed!");
@@ -94,8 +93,18 @@ class ParcelController extends Controller
 
             // dd('phone_search not null');
             $request->validate([
-                $request->pl_phone_id]);
-            // dd(5);
+                $request->pl_phone_id
+            ]);
+            $data  = [
+
+                'pl_id' => $request->pl_id,
+                'pl_date' => $request->pl_date,
+                'pl_phone_id' => $request->pl_phone_id,
+            ];
+            $record = ParcelShipper::create($data);
+            session()->now('message', 'Success! parcel Added.');
+            // dd(00);
+
         } //old_parcel_shipper
         else {
             // dd(6);
@@ -152,7 +161,7 @@ class ParcelController extends Controller
             'pl_id' => 'required',
             'consignee_name' => 'required',
             'consignee_phone' => 'required',
-            'consignee_business' => 'required',
+            // 'consignee_business' => 'required',
             'consignee_country_id' => 'required',
             'consignee_state' => 'required',
             'consignee_city' => 'required',
@@ -162,54 +171,66 @@ class ParcelController extends Controller
 
         ]);
         // dd(12);
-        if($consignee_validated){
+        if ($consignee_validated) {
             // dd(13);
-            // dd($request->all());
-            //consignee details insertion
-            $data  = [
+            if ($request->consignee_business !== null) {
 
-                'pl_id' => $request->pl_id,
-                'consignee_name' => $request->consignee_name,
-                'consignee_phone' => $request->consignee_phone,
-                'consignee_business' => $request->consignee_business,
-                'consignee_country_id' => $request->consignee_country_id,
-                'consignee_state' => $request->consignee_state,
-                'consignee_city' => $request->consignee_city,
-                'consignee_zip' => $request->consignee_zip,
-                'consignee_address1' => $request->consignee_add1,
-                'consignee_address2' => $request->consignee_add2,
-            ];
+                $data = [
+                    'pl_id' => $request->pl_id,
+                    'consignee_name' => $request->consignee_name,
+                    'consignee_phone' => $request->consignee_phone,
+                    'consignee_country_id' => $request->consignee_country_id,
+                    'consignee_state' => $request->consignee_state,
+                    'consignee_city' => $request->consignee_city,
+                    'consignee_zip' => $request->consignee_zip,
+                    'consignee_address1' => $request->consignee_add1,
+                    'consignee_address2' => $request->consignee_add2,
+                    'consignee_business' => $request->consignee_business
+                ];
+
+            } else{
+                $data  = [
+
+                    'pl_id' => $request->pl_id,
+                    'consignee_name' => $request->consignee_name,
+                    'consignee_phone' => $request->consignee_phone,
+                    'consignee_country_id' => $request->consignee_country_id,
+                    'consignee_state' => $request->consignee_state,
+                    'consignee_city' => $request->consignee_city,
+                    'consignee_zip' => $request->consignee_zip,
+                    'consignee_address1' => $request->consignee_add1,
+                    'consignee_address2' => $request->consignee_add2,
+                ];
+            }
+
+
             $record = ParcelConsignee::create($data);
             session()->now('message', 'Success! parcel Added.');
             // dd(20);
-        }
-        else {
-            dd(21);
+        } else {
+            // dd(21);
             return redirect()->back()->with('error', "Consignee Datails not Inserted!");
         }
 
-        // dd(23);
-            // dd($request->all());
-            $a = $request->userData['0']['disp_content'];
-            // dd($a);
+        $a = $request->userData['0']['disp_content'];
 
-            for($i =0; $i < count($request->userData); $i++){
-                // dd(24);
 
-                $data = [
-                    'pl_id'  => $request->pl_id,
-                    'disp_content'  =>  $request->userData[$i]['disp_content'],
-                    'disp_condition'  =>  $request->userData[$i]['disp_condition'],
-                    'currency_id'  =>  $request->userData[$i]['disp_currency'],
-                    'disp_price'  =>  $request->userData[$i]['disp_price'],
-                    'disp_quantity'  =>  $request->userData[$i]['disp_quantity'],
-                    'disp_total'  =>  $request->userData[$i]['disp_total'],
+        for ($i = 0; $i < count($request->userData); $i++) {
+            // dd(24);
 
-                ];
-                $record = ParcelNote::create($data);
-                session()->now('message', 'Success! parcel Added.');
+            $data = [
+                'pl_id'  => $request->pl_id,
+                'disp_content'  =>  $request->userData[$i]['disp_content'],
+                'disp_condition'  =>  $request->userData[$i]['disp_condition'],
+                'currency_id'  =>  $request->userData[$i]['disp_currency'],
+                'disp_price'  =>  $request->userData[$i]['disp_price'],
+                'disp_quantity'  =>  $request->userData[$i]['disp_quantity'],
+                'disp_total'  =>  $request->userData[$i]['disp_total'],
 
-            }
+            ];
+            $record = ParcelNote::create($data);
+            session()->now('message', 'Success! parcel Added.');
+        }
 
         // dd(25);
 
@@ -219,6 +240,7 @@ class ParcelController extends Controller
             return redirect()->back()->with('error', "Record Not inserted ---");
         }
     }
+
     public function edit_parcel($id)
     {
         // dd($id);

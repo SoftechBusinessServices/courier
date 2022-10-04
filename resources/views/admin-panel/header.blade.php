@@ -1,5 +1,5 @@
 <header id="page-topbar" >
-    <div class="navbar-header "  >
+    <div class="navbar-header text-white " style="background-color: #2a3042; color:white"  >
         <div class="d-flex">
             <!-- LOGO -->
             <div class="navbar-brand-box">

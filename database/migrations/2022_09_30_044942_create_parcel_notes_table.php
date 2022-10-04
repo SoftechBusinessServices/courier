@@ -18,7 +18,7 @@ class CreateParcelNotesTable extends Migration
             $table->string('pl_id')->nullable();
             $table->longText('disp_content')->nullable();
             $table->string('disp_condition')->nullable();
-            $table->foreignId('currency_id')->nullable();
+            $table->string('currency_id')->nullable();
             // $table->foreign('region_id')->references('id')->on('regions')->onDelete('cascade');
             $table->float('disp_price')->nullable();
             $table->integer('disp_quantity')->nullable();

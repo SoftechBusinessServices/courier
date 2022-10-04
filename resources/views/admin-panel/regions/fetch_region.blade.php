@@ -13,10 +13,9 @@
 
                         <div class="card">
                             <div class="card-body">
-                                <p class="card-title-desc text-dark">
-                                    <a href="{{ route('add-region') }}" class="btn btn-primary btn-md text-white">Back</a>
-                                    <a href="{{ route('home') }}" class="btn btn-dark btn-md text-white">Dashboard </a>
-                                    <span class="font-size-20 font-weight-bold"> Countries under selected <a href="#"> Region</a>
+                                <p class="card-title-desc text-dark mb-2 py-4 rounded" style="background-color: #d6dbf8">
+
+                                    <span class="font-size-20 font-weight-bold"> aaCountries under selected  <a href="#"> Region</a>
 
                                     </span>
 
@@ -83,6 +82,13 @@
                                         </tbody>
                                     </table>
                                 @endif
+
+
+                                <!-- Back & Dashboard btns -->
+                                <div class="justfy-content-between">
+                                    <a href="{{ route('add-region') }}" class="btn btn-primary btn-md text-white">Back</a>
+                                    <a href="{{ route('home') }}" class="btn btn-dark btn-md text-white">Dashboard </a>
+                                </div>
                             </div>
 
 

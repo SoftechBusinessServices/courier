@@ -22,7 +22,7 @@ class CreateParcelShippersTable extends Migration
             $table->string('shipper_phone')->nullable();
             // $table->foreignId('region_id');
             // $table->foreign('region_id')->references('id')->on('regions')->onDelete('cascade');
-            $table->foreignId('shipper_country_id');
+            $table->foreignId('shipper_country_id')->nullable();
             // $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
             $table->string('shipper_state')->nullable();
             $table->string('shipper_city')->nullable();

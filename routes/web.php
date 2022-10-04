@@ -14,6 +14,7 @@ use App\Http\Controllers\ParcelRegistrationController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\LogisticController;
 use App\Http\Controllers\ParcelController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RepresentativeController;
 use App\Http\Controllers\ServicesController;
@@ -150,3 +151,8 @@ Route::post('store-testing/',[TestController::class,'store_testing'])->name('sto
 Route::get('search', [Select2SearchController::class,'index']);
 Route::get('ajax-autocomplete-search', [Select2SearchController::class,'selectSearch']);
 Route::post('allocate-parcel',[LogisticController::class,'store_allocate'])->name('allocate-parcel');
+
+Route::post('store-payment-method/',[PaymentController::class,'store_payment_method'])->name('store-payment-method');
+Route::get('edit-payment-method/',[PaymentController::class,'edit_payment_method'])->name('edit-payment-method');
+Route::get('fetch-payment-method/',[PaymentController::class,'fetch_payment_method'])->name('fetch-payment-method');
+Route::get('delete-payment-method/{id}',[PaymentController::class,'destroy_payment_method'])->name('delete-payment-method');

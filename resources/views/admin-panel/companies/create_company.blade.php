@@ -13,9 +13,8 @@
 
                         <div class="card">
                             <div class="card-body">
-                                <p class="card-title-desc text-dark">
-                                    <a href="{{ route('home') }}" class="btn btn-dark btn-md text-white">Dashboard </a>
-                                    <a href="{{ route('add-region') }}" class="btn btn-primary btn-md text-white">Back</a>
+                                <p class="card-title-desc text-dark mb-2 py-4 rounded" style="background-color: #d6dbf8">
+
                                     {{-- <a class="btn btn-success btn-md text-white " data-bs-toggle="modal"
                                         data-bs-target="#countrymodal">Add Country</a> --}}
                                     <span class="font-size-22 font-weight-bold ml-2"> Countries under selected Regions
@@ -119,7 +118,11 @@
                                         </tbody>
                                     </table>
                                 @endif
-
+                                <!-- Back & Dashboard btns -->
+                                <div class="d-flex justify-content-between my-2">
+                                    <a href="{{ route('add-region') }}" class="btn btn-primary btn-md text-white">Back</a>
+                                    <a href="{{ route('home') }}" class="btn btn-dark btn-md text-white">Dashboard </a>
+                                </div>
                             </div>
 
 
@@ -129,5 +132,5 @@
             </div>
         </div>
     </div>
-   
+
 @endsection

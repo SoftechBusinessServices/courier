@@ -13,11 +13,11 @@ class Logistic extends Model
     use SoftDeletes;
     protected $guarded = [];
 
-    protected $fillables = ['logistic_name', 'vendor_name', 'vendor_email', 'vendor_phone', 'vendor_address', 'country_id','status'];
+    protected $fillables = ['logistic_name', 'vendor_email', 'vendor_phone', 'vendor_address', 'services','status'];
 
-    public function countries(){
+    public function logistic_service(){
 
-        return $this->belongsTo(Country::class, 'country_id','id');
+        return $this->hasMany(Service::class,'id');
     }
 
 }

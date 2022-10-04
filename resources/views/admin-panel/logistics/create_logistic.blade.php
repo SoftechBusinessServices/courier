@@ -49,7 +49,7 @@
                                                     <td>{{ $i++ }}</td>
                                                     {{--  <td>{{ $item->companies->email }}</td>  --}}
                                                     <td>{{ $item->logistic_name }}</td>
-                                                    <td>{{ $item->vendor_name }}</td>
+                                                    <td>{{ $item->logistic_service }}</td>
                                                     <td>{{ $item->vendor_email }}</td>
                                                     <td>{{ $item->vendor_phone }}</td>
                                                     <td>{{ $item->vendor_address }}</td>

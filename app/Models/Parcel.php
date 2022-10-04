@@ -14,8 +14,8 @@ class Parcel extends Model
     protected $guarded = [];
 
     protected $fillables = [
-        'pl_id','pl_boxes', 'service_id','pl_weight','pl_charges', 'pl_extras',
-         'pl_discount', 'pl_final', 'pl_discription','pl_status', 'status'
+        'pl_id', 'pl_boxes', 'service_id', 'pl_weight', 'pl_charges', 'pl_extras',
+        'pl_discount', 'pl_final', 'pl_discription', 'pl_status','shipper_country_id','payment_id', 'status'
     ];
 
     public function country()
@@ -35,4 +35,16 @@ class Parcel extends Model
         return $this->belongsTo(Service::class, 'service_id', 'id');
     }
 
+    public function allocate_parcel()
+    {
+        return $this->belongsTo(AllocateParcel::class,'pl_id','id');
+    }
+    public function parcel_country(){
+
+        return $this->hasMany(Country::class, 'pl_id','id');
+    }
+    public function parcel_service(){
+
+        return $this->belongsTo(Service::class, 'service_id','id');
+    }
 }

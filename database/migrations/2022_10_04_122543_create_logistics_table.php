@@ -16,7 +16,7 @@ class CreateLogisticsTable extends Migration
         Schema::create('logistics', function (Blueprint $table) {
             $table->id();
             $table->string('logistic_name')->nullable();
-            $table->longText('services_id');
+            $table->longText('services');
             $table->string('vendor_email')->unique();
             $table->string('vendor_phone')->nullable();
             $table->text('vendor_address')->nullable();

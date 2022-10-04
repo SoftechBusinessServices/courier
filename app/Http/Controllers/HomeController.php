@@ -13,6 +13,7 @@ use App\Models\Parcel;
 use Illuminate\Http\Request;
 use App\Models\ShippingCharge;
 use App\Models\ParcelRegistration;
+use App\Models\PaymentMethod;
 use App\Models\Service;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -62,9 +63,11 @@ class HomeController extends Controller
         $companies = Company::all();
         $currencies = Currency::all();
         $services = Service::all();
-        $parcels = Parcel::all();
+        $processed_parcels = Parcel::where('pl_status', 'processed')->get();
+        $allocated_parcels =  Parcel::where('pl_status', 'allocated')->get();
         $logistics = Logistic::all();
-        return view('admin-panel.master',  compact('data', 'regions',  'countries', 'companies', 'currencies','customers','services','abc','parcels','logistics'));
+        $payment_methods = PaymentMethod::all();
+        return view('admin-panel.master',  compact('data', 'regions',  'countries', 'companies', 'currencies','customers','services','abc','processed_parcels','allocated_parcels','logistics','payment_methods'));
 
         // return view('home');
     }

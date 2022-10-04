@@ -109,7 +109,7 @@
 
                                 <!-- Back & Dashboard btns -->
                                 <div class="d-flex justify-content-between my-2">
-                                    <a href="{{ route('add-region') }}" class="btn btn-primary btn-md text-white">Back</a>
+                                    <a href="{{ route('home') }}" class="btn btn-primary btn-md text-white">Back</a>
                                     <a href="{{ route('home') }}" class="btn btn-dark btn-md text-white">Dashboard </a>
                                 </div>
                             </div>

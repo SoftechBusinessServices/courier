@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAllocateParcels extends Migration
+class CreatePaymentMethodsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateAllocateParcels extends Migration
      */
     public function up()
     {
-        Schema::create('allocate_parcels', function (Blueprint $table) {
+        Schema::create('payment_methods', function (Blueprint $table) {
             $table->id();
+            $table->string('payment_method')->nullable();
+            $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -26,6 +29,6 @@ class CreateAllocateParcels extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('allocate_parcels');
+        Schema::dropIfExists('payment_methods');
     }
 }

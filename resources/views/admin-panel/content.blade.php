@@ -86,11 +86,10 @@
                     </div>
                     <div class="modal-footer flex-nowrap p-0 justify-content-center">
                         <a class="btn btn-primary btn-md text-white " data-bs-toggle="modal"
-                            data-bs-target="#paymentmodal">Add
-                            Method </a>
-                        <a class="btn btn-success btn-md text-white" href="{{ route('add-user') }}">Payment List
+                            data-bs-target="#paymentmodal">Payment Details </a>
+                        {{-- <a class="btn btn-success btn-md text-white" href="{{ route('add-user') }}">Payment List
 
-                        </a>
+                        </a> --}}
 
                     </div>
                 </div>
@@ -115,18 +114,19 @@
                                         aria-label="Close"></button>
                                 </div>
 
-                                @if (isset($parcels))
+                                @if (isset($processed_parcels))
                                     <table id="datatable-buttons"
                                         class="table table-bordered dt-responsive nowrap w-100 table-sm text-center table-sm">
                                         <thead>
                                             <tr class="text-center">
                                                 <th>S.No</th>
                                                 <th>Parcel ID</th>
-                                                <th>Parcel<br></th>
+                                                <th>Parcel<br>Destination</th>
                                                 <th>Despatch<br>Date</th>
                                                 {{-- <th>Subcategories</th> --}}
                                                 <th>Weight <br>(kilogram)</th>
                                                 <th>Parcel <br>Charges</th>
+                                                <th>Required<br>Service</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
@@ -135,8 +135,8 @@
                                             @php
                                                 $i = 1;
                                             @endphp
-                                            @if ($regions->count() > 0)
-                                                @foreach ($parcels as $item)
+                                            @if ($processed_parcels->count() > 0)
+                                                @foreach ($processed_parcels as $item)
                                                     <tr>
                                                         <td>{{ $i++ }}</td>
                                                         <td>
@@ -146,7 +146,7 @@
                                                                 <i class="far fa-eye"> {{ $item->pl_id }}</i>
                                                             </a>
                                                         </td>
-                                                        <td>{{ $item->consignee_country }}</td>
+                                                        <td>{{ $item->country_parcel }}</td>
                                                         <td>
                                                             @php
                                                                 $month = date('d/m/Y', strtotime($item->created_at));
@@ -156,18 +156,16 @@
                                                         </td>
                                                         <td> {{ $item->pl_weight }} </td>
                                                         <td> {{ $item->pl_final }} </td>
+                                                        <td> {{ $item->parcel_service->service_name }} </td>
                                                         <td>
                                                             <a class="btn btn-outline-info btn-sm parcel_allocate"
                                                                 title="add" data-bs-toggle="modal"
                                                                 data-bs-target="#allocatemodal"
-                                                                id="{{ $item->pl_id }}">
+                                                                id="{{ $item->pl_id }}" ser_id ={{ $item->service_id }}>
                                                                 Allocate
                                                             </a>
-
                                                         </td>
                                                         <td style="">
-
-
                                                             <a href="{{ url('edit-parcel/' . $item->id) }}"
                                                                 class="btn btn-outline-warning btn-sm delete"
                                                                 title="Edit">
@@ -213,7 +211,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
-                                @if (isset($parcels))
+                                @if (isset($allocated_parcels))
                                     <table id="datatable"
                                         class="table table-bordered dt-responsive  nowrap w-100 table-sm text-center">
                                         <thead>
@@ -236,8 +234,8 @@
                                             @php
                                                 $i = 1;
                                             @endphp
-                                            @if ($regions->count() > 0)
-                                                @foreach ($parcels as $item)
+                                            @if ($allocated_parcels->count() > 0)
+                                                @foreach ($allocated_parcels as $item)
                                                     <tr>
                                                         <td>{{ $i++ }}</td>
                                                         <td>
@@ -331,7 +329,7 @@
                     <a href="#" class="nav-link text-dark">
                         <img src="{{ asset('assets/images/setting.png') }}" alt="">
 
-                        <h3 class="">Setting </h3>
+                        <h3 class="">Settings</h3>
                     </a>
                 </div>
 
@@ -406,6 +404,7 @@
                     </div>
                     <!-- customers closed -->
 
+
                     <!-- Regions  -->
                     <div class="col ">
                         <div class="modal-content rounded-3 shadow">
@@ -434,23 +433,21 @@
                         <div class="modal-content rounded-3 shadow">
                             <div class="modal-body  text-center">
                                 <a href="#" class="nav-link text-dark">
-                                    <img src="{{ asset('assets/images/customers.png') }}" alt="">
+                                    <img src="{{ asset('assets/images/payments.png') }}" alt="">
 
-                                    <h3 class="mb-0 mt-2">Customers</h3>
+                                    <h4 class="mb-0 mt-2">Payment Methods</h4>
                                 </a>
                             </div>
                             <div class="modal-footer flex-nowrap p-0 justify-content-center">
                                 <a class="btn btn-primary btn-md text-white " data-bs-toggle="modal"
-                                    data-bs-target="#companymodal">Add
-                                    Customer </a>
+                                    data-bs-target="#paymentmodal">Add
+                                    Method </a>
                                 <a class="btn btn-success btn-md text-white "
-                                    href="{{ route('add-company') }}">Companies List
+                                    href="{{ route('add-payment-method') }}">Payment List
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <!-- Customers Closed -->
-
 
                 </div>
             </div>
@@ -555,21 +552,23 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ url('allocate-parcel') }}" method="POST" id="sadabahar">
+                <form action="{{ url('store-allocate') }}" method="POST" id="allocateform" novalidate >
                     @csrf
-                    <table class="table table-bordered">
-                        <tr>
-                            <th>Parcel ID</th>
-                            <th>Select Vendor</th>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="text" name="parcell_id" value="" id="parcell_id"
-                                    class="form-control" readonly>
-                            </td>
-                            <td>
-                                <select class="form-select" name="vendor_id" required
-                                    class="form-control table-responsive @error('vendor_id') is-invalid @enderror">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="">Parcel ID</label>
+                            <input type="text" name="parcell_id" value="" id="parcell_id"
+                            class="form-control" readonly>
+                        </div>
+                        {{-- <div class="col-md-6">
+                            <label for="">Service Used</label>
+                            <input type="text" name="service_used_id" value="" id="service_used_id"
+                            class="form-control" readonly>
+                        </div> --}}
+                         <div class="col">
+                            <label for="">Select Vendor</label>
+                            <select name="vendor_id" required
+                                    class="form-select table-responsive @error('vendor_id') is-invalid @enderror">
                                     @foreach ($logistics as $logistic)
                                         <option value="{{ $logistic->id }}">
                                             {{ $logistic->vendor_name }}
@@ -581,26 +580,12 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Enter Vendor Tracking ID </th>
-                            <th>Enter Vendor Charges</th>
-                        </tr>
-                        <tr>
-                            <td><input type="text" name="vendor_tracking_id" id="vendor_tracking_id"
-                                    placeholder="Vendor Tracking ID" class="form-control" />
-                            </td>
-                            <td>
-                                <input type="number" name="vendor_tracking_id" id="vendor_tracking_id"
-                                    placeholder="Vendor Charges" class="form-control" />
-                            </td>
-                        </tr>
-                    </table>
+                        </div>
+                    </div>
 
                     <div class="modal-footer">
                         <!-- Toogle to second dialog -->
-                        <button type="submit" form="sadabahar" class="btn btn-primary " id="modal_submit"
+                        <button type="submit" form="allocateform" class="btn btn-primary " id="modal_submit"
                             value="Submit">Submit</button>
                         <button type="button" class="btn btn-secondary" id="modal_close1"
                             data-bs-dismiss="modal">Close</button>
@@ -835,7 +820,7 @@
                                 </div>
                                 <div class="col-md-12 mb-2">
                                     <label for="select2Multiple">Tag Services</label>
-                                    <select class="select2-multiple form-control " name="tags[]" multiple="multiple"
+                                    <select class="select2-multiple form-control " name="services[]" multiple="multiple"
                                         style="width: 100%" id="select2Multiple">
                                         @foreach ($services as $item)
                                             <option value="{{ $item->id }}">
@@ -973,7 +958,7 @@
                                             <label for="basicpill-namecard-input">Select Shipping Service</label>
                                             <select name="service_id" id="service_id"
                                                 class="form-control @error('serrvice_id') is-invalid @enderror">
-                                                <option value="">---- Select One Service ----</option>
+                                                <option value="">  ----Choose one Service----  </option>
                                                 @foreach ($services as $row)
                                                     <option value="{{ $row->id }}"> {{ $row->service_name }}
                                                     </option>
@@ -1053,8 +1038,26 @@
                                             @enderror
                                         </div>
                                     </div>
+                                    <div class="col-lg-4">
+                                        <div class="mb-3">
+                                            <label for="basicpill-namecard-input">Select Payment Method</label>
+                                            <select name="payment_method_id" id="payment_method_id"
+                                                class="form-control @error('payment_method_id') is-invalid @enderror">
+                                                <option value="">-- Select Payment Method --</option>
+                                                @foreach ($payment_methods as $row)
+                                                    <option value="{{ $row->id }}"> {{ $row->payment_method }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            @error('payment_method_id')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
 
-                                    <div class="col-lg-8">
+                                    <div class="col-lg-4">
                                         <div class="mb-3">
                                             <label for="basicpill-namecard-input">Parcel Description</label>
                                             <textarea name="pl_description" id="pl_description" cols="1" rows="1"
@@ -1599,6 +1602,7 @@
                 e.preventDefault();
                 console.log(this.id);
                 $('#parcell_id').val(this.id);
+                // $('#service_used_id').val(this.ser_id);
             });
 
         });

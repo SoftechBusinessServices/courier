@@ -137,8 +137,6 @@ Route::post('reset-password', [ForgotPasswordController::class, 'ResetPasswordSt
 Route::get('region/delete/{id}', [RegionController::class, 'destroy']);
 
 
-
-
 Route::get('add-service/',[ServicesController::class,'create_service'])->name('add-service');
 Route::post('store-service/',[ServicesController::class,'store_service'])->name('store-service');
 Route::get('edit-service/{id}', [ServicesController::class, 'edit_service']);
@@ -150,9 +148,11 @@ Route::get('service-forceDelete/{id}', [ServicesController::class, 'service_forc
 Route::post('store-testing/',[TestController::class,'store_testing'])->name('store-testing');
 Route::get('search', [Select2SearchController::class,'index']);
 Route::get('ajax-autocomplete-search', [Select2SearchController::class,'selectSearch']);
-Route::post('allocate-parcel',[LogisticController::class,'store_allocate'])->name('allocate-parcel');
 
+Route::get('add-payment-method/',[PaymentController::class,'create_payment_method'])->name('add-payment-method');
 Route::post('store-payment-method/',[PaymentController::class,'store_payment_method'])->name('store-payment-method');
 Route::get('edit-payment-method/',[PaymentController::class,'edit_payment_method'])->name('edit-payment-method');
 Route::get('fetch-payment-method/',[PaymentController::class,'fetch_payment_method'])->name('fetch-payment-method');
 Route::get('delete-payment-method/{id}',[PaymentController::class,'destroy_payment_method'])->name('delete-payment-method');
+
+Route::post('store-allocate',[LogisticController::class,'store_allocate'])->name('store-allocate');

@@ -56,6 +56,7 @@ class ParcelController extends Controller
 
             'pl_id' => 'required',
             'service_id' => 'required',
+            'payment_method_id' => 'required',
             'pl_boxes' => 'required',
             'pl_weight' => 'required',
             'pl_charges' => 'required',
@@ -80,7 +81,11 @@ class ParcelController extends Controller
                 'pl_discount' => $request->pl_discount,
                 'pl_final' => $request->pl_final,
                 'pl_description' => $request->pl_description,
+                'payment_id' => $request->payment_method_id,
             ];
+            if($request->shipping_country_id !=null){
+                $data =['shipping_country_id'=>$request->shipping_country_id];
+            }
             $record = Parcel::create($data);
             session()->now('message', 'Success! parcel Added.');
         } else {

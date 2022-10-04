@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PaymentMethod;
 use App\Models\Region;
 use Illuminate\Http\Request;
 
@@ -9,21 +10,21 @@ class PaymentController extends Controller
 {
     //
      //
-     public function add_payment_method()
+     public function create_payment_method()
      {
-         $data = Region::all();
-         return view('admin-panel.regions.create_region', compact('data'));
+         $data = PaymentMethod::all();
+         return view('admin-panel.payments.create_payment_method', compact('data'));
      }
      public function store_payment_method(Request $request)
      {
-         // dd($request->all());
+        //  dd($request->all());
          $request->validate([
 
-             'name' => 'required|unique:regions',
+             'payment_method' => 'required|unique:payment_methods',
          ]);
 
-         $data = ['name' => $request->name];
-         $data = Region::create($data);
+         $data = ['payment_method' => $request->payment_method];
+         $data = PaymentMethod::create($data);
 
          if ($data) {
              return redirect()->back()->with('success', "Record inserted Successfully");

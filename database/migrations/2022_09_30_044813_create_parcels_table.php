@@ -19,6 +19,10 @@ class CreateParcelsTable extends Migration
             $table->integer('pl_boxes')->nullable();
             $table->float('pl_weight')->nullable();
             $table->foreignId('service_id')->nullable();
+            // $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
+            $table->foreignId('shipper_country_id')->nullable();
+            // $table->foreign('region_id')->references('id')->on('regions')->onDelete('cascade');
+            $table->foreignId('payment_id')->nullable();
             // $table->foreign('region_id')->references('id')->on('regions')->onDelete('cascade');
             $table->float('pl_charges')->nullable();
             $table->float('pl_extras')->nullable();

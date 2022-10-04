@@ -14,12 +14,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <p class="card-title-desc text-dark mb-2 py-4 px-2 rounded" style="background-color: #d6dbf8">
-
-                                    <span class="font-size-20 font-weight-bold"> Countries under selected
-                                        <a href="#"> Region</a>
-
-                                    </span>
-
+                                    <span class="font-size-20 font-weight-bold">Regions Details</span>
                                 </p>
                                 @if (isset($data))
                                     <table id="datatable-buttons"
@@ -47,18 +42,10 @@
                                                         <td>{{ $i++ }}</td>
                                                         <td>{{ $item->name }}</td>
                                                         <td>
-                                                            <i class="fa-solid fa-circle-4">{{ $item->count('id') }}</i>
-                                                            |<a class="btn btn-outline-primary btn-sm plus_btn" title="add"
+                                                            <a class="btn btn-outline-primary btn-sm plus_btn" title="add"
                                                                 data-bs-toggle="modal" data-bs-target="#countrymodal" id="{{ $item->id }}">
                                                                 <i class="fas fa-plus-circle"></i>
                                                             </a>
-                                                            {{--  <a href="{{ url('create-country/'.$item->id) }}"
-                                                                class="btn btn-outline-primary btn-sm delete"
-                                                                title="add">
-                                                                <i class="fas fa-plus-circle"></i>
-                                                            </a>
-                                                            <span class="text-dark">|</span>
-                                                            {{ $item->count() }}  --}}
                                                             <span class="text-dark">|</span>
                                                             <a href="{{ url('fetch-region/' . $item->id) }}"
                                                                 class="btn btn-outline-primary btn-sm delete"
@@ -104,8 +91,9 @@
                                         </tbody>
                                     </table>
                                 @endif
+                                <!-- Back & Dashboard btns -->
                                 <div class="d-flex justify-content-between my-2">
-                                    <a href="{{ route('add-region') }}" class="btn btn-primary btn-md text-white">Back</a>
+                                    <a href="{{ route('home') }}" class="btn btn-primary btn-md text-white">Back</a>
                                     <a href="{{ route('home') }}" class="btn btn-dark btn-md text-white">Dashboard </a>
                                 </div>
                             </div>

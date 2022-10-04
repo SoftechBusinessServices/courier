@@ -15,4 +15,8 @@ class Service extends Model
 
     protected $fillables = ['service_name','status'];
 
+    public function service_parcel(){
+
+        return $this->hasMany(Parcel::class, 'service_id','id');
+    }
 }

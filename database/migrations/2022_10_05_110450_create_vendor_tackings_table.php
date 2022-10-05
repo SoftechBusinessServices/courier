@@ -15,7 +15,7 @@ class CreateVendorTackingsTable extends Migration
     {
         Schema::create('vendor_tackings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pl_id')->nullable();
+            $table->text('pl_id')->nullable();
             // $table->foreign('pl_id')->references('id')->on('parcels')->onDelete('cascade');
             $table->string('vendor_tracking_id')->nullable();
             // $table->Integer('vendor_id')->nullable();
@@ -23,7 +23,6 @@ class CreateVendorTackingsTable extends Migration
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
             $table->softDeletes();
-
         });
     }
 

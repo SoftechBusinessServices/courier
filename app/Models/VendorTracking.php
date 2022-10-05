@@ -13,7 +13,7 @@ class VendorTracking extends Model
     use HasFactory, Notifiable;
     use SoftDeletes;
     protected $guarded = [];
-
+    protected $table = "vendor_trackings";
     protected $fillables = [
         'pl_id', 'vendor_tracking_id','status'
     ];

@@ -454,7 +454,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ url('vendor-charges-update') }}" method="POST" id="sadabahar">
+                <form action="{{ url('vendor-tracking-charges') }}" method="POST" id="vendor-tracking-charges">
                     @csrf
                     <table class="table table-bordered">
                         <tr>
@@ -476,7 +476,7 @@
 
                     <div class="modal-footer">
                         <!-- Toogle to second dialog -->
-                        <button type="submit" form="sadabahar" class="btn btn-primary " id="modal_submit"
+                        <button type="submit" form="vendor-tracking-charges" class="btn btn-primary " id="modal_submit"
                             value="Submit">Submit</button>
                         <button type="button" class="btn btn-secondary" id="modal_close1"
                             data-bs-dismiss="modal">Close</button>

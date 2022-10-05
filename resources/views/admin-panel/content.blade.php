@@ -1526,7 +1526,7 @@
                             console.log(data);
                             if (data) {
                                 $('.delivered_status').empty();
-                                $('.delivered_status').append();
+                                $('.delivered_status').append('already delivered');
 
                             } else {
                                 $('.delivered_status').empty();

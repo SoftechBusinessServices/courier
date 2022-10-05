@@ -175,11 +175,13 @@
                                 </div>
 
                                 <div class="d-print-none">
-                                    <div class="float-end">
+                                    <div class="d-flex justify-content-between">
+                                       <div class="d-flex justify-content-between"> <a href="{{ route('home') }}"
+                                        class="btn btn-dark btn-md text-white btn-sm m-2 px-2">Back </a>
                                         <a href="{{ route('home') }}"
-                                        class="btn btn-dark btn-md text-white btn-sm m-2 p-2">Dashboard </a>
+                                        class="btn btn-dark btn-md text-white btn-sm m-2 px-2">Dashboard </a></div>
                                         <a href="javascript:window.print()"
-                                            class="btn btn-success waves-effect waves-light me-1 mr-4"><i
+                                            class="btn btn-success waves-effect waves-light  mr-4 pt-2 pb-0 px-3"><i
                                                 class="fa fa-print"></i></a>
                                     </div>
                                 </div>

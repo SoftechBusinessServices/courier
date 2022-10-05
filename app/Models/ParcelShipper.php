@@ -18,4 +18,5 @@ class ParcelShipper extends Model
          'shipper_state', 'shipper_city', 'shipper_zip','shipper_address1','shipper_address2', 'status'
     ];
 
+    
 }

@@ -2,8 +2,6 @@
 
 @section('content')
     <div>
-
-
         <div class=" bg-light  pt-4 px-4"
             style="background-image: url('{{ asset('assets/images/bg-image.jpg') }}'); height: 100vh; background-position: center; background-repeat: no-repeat; background-size: cover; padding-bottom:50px">
             <div class="container" style="margin-top: 70px; ">
@@ -12,7 +10,6 @@
                     <div class="col">
                         <!--write your code here  -->
                         <div class="row">
-
                             <div class="col p-0">
                                 <div class="card overflow-hidden">
                                     <div class="bg-primary bg-soft">
@@ -193,6 +190,7 @@
                                                                             <strong>{{ $errors->first('current-password') }}</strong>
                                                                         </span>
                                                                     @endif
+                                                                    
                                                                 </div>
                                                             </div>
 
@@ -210,6 +208,8 @@
                                                                             <strong>{{ $errors->first('new-password') }}</strong>
                                                                         </span>
                                                                     @endif
+                                                                </div>
+                                                                <div class="show-hode-password d-flex float-right"> <input type="checkbox" class="btn btn-light  " onclick="togglePassword()">Show Password
                                                                 </div>
                                                             </div>
 
@@ -547,3 +547,15 @@
     </div>
     <!-- end modal -->
 @endsection
+
+
+<script>
+        function togglePassword() {
+        var x = document.getElementById("new-password");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+</script>

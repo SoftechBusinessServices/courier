@@ -6,11 +6,11 @@
     <!-- fist container  -->
     <div class="row gx-5 mb-2">
         <!-- Parcel  -->
-        <div class="col ">
+        <div class=" col-12 col-md-6 col-lg-3 col-sm-6 ">
             <div class="p-3 border bg-light">
                 <div class="modal-content rounded-3 shadow">
-                    <div class="modal-body p-4 text-center">
-                        <a href="#" class="nav-link text-dark">
+                    <div class="modal-body py-4 px-0 text-center">
+                        <a href="#" class="nav-link text-dark px-0">
                             <img src="{{ asset('assets/images/parcel-new.png') }}" alt="">
 
                             <h3 class="mb-0 mt-2">New Parcels</h3>
@@ -27,10 +27,10 @@
         </div>
 
         <!-- Processed -->
-        <div class="col">
+        <div class=" col-12 col-md-6 col-lg-3 col-sm-6">
             <div class="p-3 border bg-light">
                 <div class="modal-content rounded-3 shadow">
-                    <div class="modal-body p-4 text-center">
+                    <div class="modal-body py-4 text-center">
                         <a href="#" class="nav-link text-dark">
                             <img src="{{ asset('assets/images/parcel-processed.png') }}" alt="">
 
@@ -49,10 +49,10 @@
         </div>
 
         <!-- Allocated -->
-        <div class="col">
+        <div class=" col-12 col-md-6 col-lg-3 col-sm-6">
             <div class="p-3 border bg-light">
                 <div class="modal-content rounded-3 shadow">
-                    <div class="modal-body p-4 text-center">
+                    <div class="modal-body py-4 text-center">
                         <a href="#" class="nav-link text-dark">
                             <img src="{{ asset('assets/images/allocated.png') }}" alt="">
 
@@ -71,10 +71,10 @@
 
         </div>
         <!-- Payments -->
-        <div class="col">
+        <div class=" col-12 col-md-6 col-lg-3 col-sm-6">
             <div class="p-3 border bg-light">
                 <div class="modal-content rounded-3 shadow">
-                    <div class="modal-body p-4 text-center">
+                    <div class="modal-body py-4 text-center">
                         <a href="#" class="nav-link text-dark">
                             <img src="{{ asset('assets/images/payments.png') }}" alt="">
 
@@ -99,81 +99,83 @@
         <div class="collapse" id="processtable">
             <div class="card card-body mb-0">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-12 px-0">
                         <!--write your code here  -->
 
-                        <div class="card">
-                            <div class="card-body bg-light border rounded">
+                        <div class="card px-0">
+                            <div class="card-body bg-light border rounded px-0">
                                 <div class="modal-header mb-2" style="background-color: #d6dbf8">
                                     <h5 class="modal-title">Processed Parcels</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <a class="btn-close" data-toggle="collapse" href="#processtable" role="button" aria-expanded="false" aria-controls="collapseExample"><span aria-hidden="true"></span></a>
                                 </div>
 
                                 @if (isset($processed_parcels))
-                                <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100 table-sm text-center table-sm">
-                                    <thead>
-                                        <tr class="text-center">
-                                            <th>S.No</th>
-                                            <th>Parcel ID</th>
-                                            <th>Parcel<br>Destination</th>
-                                            <th>Despatch<br>Date</th>
-                                            {{-- <th>Subcategories</th> --}}
-                                            <th>Weight <br>(kilogram)</th>
-                                            <th>Parcel <br>Charges</th>
-                                            <th>Required<br>Service</th>
-                                            <th>Parcel<br>Status</th>
-                                            {{-- <th>Action</th> --}}
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @php
-                                        $i = 1;
-                                        @endphp
-                                        @if ($processed_parcels->count() > 0)
-                                        @foreach ($processed_parcels as $item)
-                                        <tr>
-                                            <td>{{ $i++ }}</td>
-                                            <td>
-                                                <a href="{{ url('fetch-region/' . $item->id) }}" class="btn btn-outline-secondary btn-sm delete" title="View">
-                                                    <i class="far fa-eye"> {{ $item->pl_id }}</i>
-                                                </a>
-                                            </td>
-                                            <td>{{ $item->consignee_parcel }}</td>
-                                            <td>
-                                                @php
-                                                $month = date('d/m/Y', strtotime($item->created_at));
-                                                // dd($month);
-                                                echo $month;
-                                                @endphp
-                                            </td>
-                                            <td> {{ $item->pl_weight }} </td>
-                                            <td> {{ $item->pl_final }} </td>
-                                            <td> {{ $item->parcel_service->service_name }} </td>
-                                            <td>
-                                                <a id="todolink" class="btn btn-outline-info btn-sm parcel_allocate" title="add" data-bs-toggle="modal" data-bs-target="#allocatemodal" href="#allocatemodal" data-id="{{ $item->pl_id }}" data-prod-id="{{ $item->service_id }}">
-                                                    Allocate
-                                                </a>
-                                            </td>
-                                            {{-- <td style="">
+                                <div class="table-responsive">
+                                    <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100 table-sm text-center table-sm">
+                                        <thead>
+                                            <tr class="text-center">
+                                                <th>S.No</th>
+                                                <th>Parcel ID</th>
+                                                <th>Parcel<br>Destination</th>
+                                                <th>Despatch<br>Date</th>
+                                                {{-- <th>Subcategories</th> --}}
+                                                <th>Weight <br>(kilogram)</th>
+                                                <th>Parcel <br>Charges</th>
+                                                <th>Required<br>Service</th>
+                                                <th>Parcel<br>Status</th>
+                                                {{-- <th>Action</th> --}}
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @php
+                                            $i = 1;
+                                            @endphp
+                                            @if ($processed_parcels->count() > 0)
+                                            @foreach ($processed_parcels as $item)
+                                            <tr>
+                                                <td>{{ $i++ }}</td>
+                                                <td>
+                                                    <a href="{{ url('fetch-region/' . $item->id) }}" class="btn btn-outline-secondary btn-sm delete" title="View">
+                                                        <i class="far fa-eye"> {{ $item->pl_id }}</i>
+                                                    </a>
+                                                </td>
+                                                <td>{{ $item->consignee_parcel }}</td>
+                                                <td>
+                                                    @php
+                                                    $month = date('d/m/Y', strtotime($item->created_at));
+                                                    // dd($month);
+                                                    echo $month;
+                                                    @endphp
+                                                </td>
+                                                <td> {{ $item->pl_weight }} </td>
+                                                <td> {{ $item->pl_final }} </td>
+                                                <td> {{ $item->parcel_service->service_name }} </td>
+                                                <td>
+                                                    <a id="todolink" class="btn btn-outline-info btn-sm parcel_allocate" title="add" data-bs-toggle="modal" data-bs-target="#allocatemodal" href="#allocatemodal" data-id="{{ $item->pl_id }}" data-prod-id="{{ $item->service_id }}">
+                                                        Allocate
+                                                    </a>
+                                                </td>
+                                                {{-- <td style="">
                                                             <a href="{{ url('edit-parcel/' . $item->id) }}"
-                                            class="btn btn-outline-warning btn-sm delete"
-                                            title="Edit">
-                                            <i class="fas fa-pencil-alt"></i>
-                                            </a>
-                                            |
-                                            <a href="{{ url('delete-parcel/' . $item->id) }}" class="btn btn-outline-danger btn-sm delete" title="Delete" onclick="return confirm('Are you sure to delete Record?')">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </a>
-                                            </td> --}}
-                                        </tr>
-                                        @endforeach
-                                        @else
-                                        <tr>
-                                            <td><code>No record found...</code></td>
-                                        </tr>
-                                        @endif
-                                    </tbody>
-                                </table>
+                                                class="btn btn-outline-warning btn-sm delete"
+                                                title="Edit">
+                                                <i class="fas fa-pencil-alt"></i>
+                                                </a>
+                                                |
+                                                <a href="{{ url('delete-parcel/' . $item->id) }}" class="btn btn-outline-danger btn-sm delete" title="Delete" onclick="return confirm('Are you sure to delete Record?')">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </a>
+                                                </td> --}}
+                                            </tr>
+                                            @endforeach
+                                            @else
+                                            <tr>
+                                                <td><code>No record found...</code></td>
+                                            </tr>
+                                            @endif
+                                        </tbody>
+                                    </table>
+                                </div>
                                 @endif
                             </div>
 
@@ -183,93 +185,97 @@
             </div>
         </div>
     </div>
-    <div class="container">
+    <div class="container ">
         <div class="collapse" id="allocatetable">
             <div class="card card-body mb-0">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-12 px-0">
                         <!--write your code here  -->
+                        <div class="">
+                            <div class="card px-0">
+                                <div class="card-body bg-light border rounded px-0">
+                                    <div class="modal-header mb-2" style="background-color: #d6dbf8">
+                                        <h5 class="modal-title">Allocated Parcells</h5>
 
-                        <div class="card">
-                            <div class="card-body bg-light border rounded">
-                                <div class="modal-header mb-2" style="background-color: #d6dbf8">
-                                    <h5 class="modal-title">Allocated Parcells</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                @if (isset($allocated_parcels))
-                                <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100 table-sm text-center">
-                                    <thead>
-                                        <tr class="text-center">
-                                            <th>S.No</th>
-                                            <th>Parcel ID</th>
-                                            <th>Parcel<br>Destination</th>
-                                            <th>Despatch<br>Date</th>
-                                            {{-- <th>Subcategories</th> --}}
-                                            <th>Weight<br>(kilogram)</th>
-                                            <th>Parcel<br>Cost</th>
-                                            <th>Vendor<br>Name</th>
-                                            <th>Tracking<br>ID</th>
-                                            <th>Vendor<br>Charges</th>
-                                            <th>Parcel<br>Status</th>
-                                            {{-- <th>Action</th>  --}}
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @php
-                                        $i = 1;
-                                        @endphp
-                                        @if ($allocated_parcels->count() > 0)
-                                        @foreach ($allocated_parcels as $item)
-                                        <tr>
-                                            <td>{{ $i++ }}</td>
-                                            <td>
-
-                                                <a href="{{ url('fetch-region/' . $item->id) }}" class="btn btn-outline-secondary btn-sm delete" title="View">
-                                                    <i class="far fa-eye"> {{ $item->pl_id }}</i>
-                                                </a>
-                                            </td>
-                                            <td>{{ $item->consignee_country }}</td>
-                                            <td>
+                                        <a class="btn-close" data-toggle="collapse" href="#allocatetable" role="button" aria-expanded="false" aria-controls="collapseExample"><span aria-hidden="true"></span></a>
+                                    </div>
+                                    @if (isset($allocated_parcels))
+                                    <div class="table-responsive">
+                                        <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100 table-sm text-center">
+                                            <thead>
+                                                <tr class="text-center font-size-14">
+                                                    <th>S.No</th>
+                                                    <th>Parcel ID</th>
+                                                    <th>Parcel<br>Destination</th>
+                                                    <th>Despatch<br>Date</th>
+                                                    {{-- <th>Subcategories</th> --}}
+                                                    <th>Weight<br>(kilogram)</th>
+                                                    <th>Parcel<br>Cost</th>
+                                                    <th>Vendor<br>Name</th>
+                                                    <th>Tracking<br>ID</th>
+                                                    <th>Vendor<br>Charges</th>
+                                                    <th>Parcel<br>Status</th>
+                                                    {{-- <th>Action</th>  --}}
+                                                </tr>
+                                            </thead>
+                                            <tbody>
                                                 @php
-                                                $month = date('d/m/Y', strtotime($item->created_at));
-                                                // dd($month);
-                                                echo $month;
+                                                $i = 1;
                                                 @endphp
-                                            </td>
-                                            <td> {{ $item->pl_weight }} </td>
-                                            <td> {{ $item->pl_final }} </td>
-                                            <td> {{ $item->vendor_id }} </td>
-                                            <td>
-                                                <a class="btn btn-outline-success btn-sm tracking_btn" title="add" data-bs-toggle="modal" data-bs-target="#trackingmodal" id="{{ $item->pl_id }}">
-                                                    update
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <a class="btn btn-outline-primary btn-sm charges_btn" title="add" data-bs-toggle="modal" data-bs-target="#vendorcharges" id="{{ $item->pl_id }}">
-                                                    update
-                                                </a>
-                                            </td>
+                                                @if ($allocated_parcels->count() > 0)
+                                                @foreach ($allocated_parcels as $item)
+                                                <tr>
+                                                    <td>{{ $i++ }}</td>
+                                                    <td>
 
-                                            <td>
-                                                <a class="btn btn-outline-info btn-sm delivered_status" title="add" id="{{ $item->pl_id }}">
-                                                    Delivered
-                                                </a>
+                                                        <a href="{{ url('fetch-region/' . $item->id) }}" class="btn btn-outline-secondary btn-sm delete" title="View">
+                                                            <i class="far fa-eye"> {{ $item->pl_id }}</i>
+                                                        </a>
+                                                    </td>
+                                                    <td>{{ $item->consignee_country }}</td>
+                                                    <td>
+                                                        @php
+                                                        $month = date('d/m/Y', strtotime($item->created_at));
+                                                        // dd($month);
+                                                        echo $month;
+                                                        @endphp
+                                                    </td>
+                                                    <td> {{ $item->pl_weight }} </td>
+                                                    <td> {{ $item->pl_final }} </td>
+                                                    <td> {{ $item->vendor_id }} </td>
+                                                    <td>
+                                                        <a class="btn btn-outline-success btn-sm tracking_btn" title="add" data-bs-toggle="modal" data-bs-target="#trackingmodal" id="{{ $item->pl_id }}">
+                                                            update
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        <a class="btn btn-outline-primary btn-sm charges_btn" title="add" data-bs-toggle="modal" data-bs-target="#vendorcharges" id="{{ $item->pl_id }}">
+                                                            update
+                                                        </a>
+                                                    </td>
 
-                                            </td>
+                                                    <td>
+                                                        <a class="btn btn-outline-info btn-sm delivered_status" title="add" id="{{ $item->pl_id }}">
+                                                            Delivered
+                                                        </a>
 
-                                        </tr>
-                                        @endforeach
-                                        @else
-                                        <tr>
-                                            <td><code>No record found...</code></td>
-                                        </tr>
-                                        @endif
-                                    </tbody>
-                                </table>
-                                @endif
-                            </div>
+                                                    </td>
 
-                        </div> <!-- end col -->
+                                                </tr>
+                                                @endforeach
+                                                @else
+                                                <tr>
+                                                    <td><code>No record found...</code></td>
+                                                </tr>
+                                                @endif
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    @endif
+                                </div>
+
+                            </div> <!-- end col -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -384,7 +390,7 @@
                     <div class="col ">
                         <div class="modal-content rounded-3 shadow">
                             <div class="modal-body  text-center">
-                                <a href="#" class="nav-link text-dark">
+                                <a href="#" class="nav-link text-dark px-0">
                                     <img src="{{ asset('assets/images/payments.png') }}" alt="">
 
                                     <h4 class="mb-0 mt-2">Payment Methods</h4>
@@ -648,8 +654,8 @@
                         <label for="userpassword" class="form-label">{{ __('Password') }}</label>
                         <div class="input-group auth-pass-inputgroup">
                             <input type="password" id="userpassword" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password" placeholder="Enter password" value="{{ old('password') }}" required>
-                            {{-- <button class="btn btn-light " type="button" id="password-addon"><i
-                                    class="mdi mdi-eye-outline" onclick="togglePassword"></i></button> --}}
+                            <!-- {{-- <button class="btn btn-light " type="button" id="password-addon"><i
+                                    class="mdi mdi-eye-outline" onclick="togglePassword"></i></button> --}} -->
 
 
 
@@ -658,6 +664,8 @@
                                 <strong>{{ $message }}</strong>
                             </span>
                             @enderror
+                        </div>
+                        <div class="show-hode-password d-flex float-right"> <input type="checkbox" class="btn btn-light  " onclick="togglePassword()">Show Password
                         </div>
                     </div>
                     <div class="mb-3">
@@ -669,7 +677,6 @@
                         </span>
                         @enderror
                     </div>
-                    <input type="checkbox" class="btn btn-light " onclick="togglePassword()">Show Password
 
                     <div class="modal-footer">
                         <!-- Toogle to second dialog -->
@@ -1520,7 +1527,7 @@
                             if (data) {
                                 $('.delivered_status').empty();
                                 $('.delivered_status').append();
-                               
+
                             } else {
                                 $('.delivered_status').empty();
                             }

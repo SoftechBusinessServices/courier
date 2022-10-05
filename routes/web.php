@@ -162,3 +162,6 @@ Route::get('getSelected/{id}', [LogisticController::class, 'getSelected']);
 
 Route::post('vendor-tracking',[VendorTrackingController::class,'vendor_tracking'])->name('vendor-tracking');
 Route::post('vendor-tracking-charges',[VendorTrackingController::class,'vendor_tracking_charges'])->name('vendor-tracking-charges');
+Route::get('changeStatus',[VendorTrackingController::class,'changeUserStatus'])->name('changeStatus');
+
+Route::get('getDeliveredStatus/{id}', [VendorTrackingController::class, 'getDeliveredStatus']);

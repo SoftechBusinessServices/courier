@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Parcel;
 use App\Models\VendorCharges;
-use App\Models\VendorTracking;
+use App\Models\VendorIdTracking;
 use Illuminate\Http\Request;
 
 class VendorTrackingController extends Controller
@@ -20,7 +21,7 @@ class VendorTrackingController extends Controller
             'pl_id' => $request->parcell_idd,
             'vendor_tracking_id' => $request->tracking_idd,
         ];
-         $data = VendorTracking::create($data);
+         $data =VendorIdTracking::create($data);
 
          return redirect()->back()->with('success',"Vendor Tracking ID has been assigned.");
     }
@@ -35,8 +36,28 @@ class VendorTrackingController extends Controller
             'pl_id' => $request->parcell_iddd,
             'vendor_tracking_charges' => $request->vendor_charges,
         ];
-         $data = VendorCharges::create($data);
+         $data = VendorIdTracking::create($data);
 
          return redirect()->back()->with('success',"Vendor Charges has been Updated.");
     }
+
+    public function changeUserStatus(Request $request)
+    {
+        $user = Parcel::find($request->user_id);
+        $user->status = $request->status;
+        $user->save();
+  
+        return response()->json(['success'=>'User status change successfully.']);
+    }
+
+    public function getDeliveredStatus($id){
+        // dd($id);
+        $record = Parcel::where('pl_id', $id)->first();
+        $record->pl_status = "delivered";
+        $data_updated = $record->update();
+        // return response()->json($shipping);
+        return response()->json(['success'=>'User status change successfully.']);
+    }
+
+
 }

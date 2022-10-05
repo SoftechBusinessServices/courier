@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVendorTackingsTable extends Migration
+class CreateVendorIdTrackingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,7 @@ class CreateVendorTackingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('vendor_tackings', function (Blueprint $table) {
-            $table->id();
+        Schema::create('vendor_id_trackings', function (Blueprint $table) {
             $table->text('pl_id')->nullable();
             // $table->foreign('pl_id')->references('id')->on('parcels')->onDelete('cascade');
             $table->string('vendor_tracking_id')->nullable();
@@ -33,6 +32,6 @@ class CreateVendorTackingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vendor_tackings');
+        Schema::dropIfExists('vendor_id_trackings');
     }
 }

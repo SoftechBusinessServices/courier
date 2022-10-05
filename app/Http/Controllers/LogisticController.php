@@ -19,6 +19,7 @@ class LogisticController extends Controller
         // dd($data);
         return view('admin-panel.logistics.create_logistic', compact('data', 'countries'));
     }
+
     public function store_logistic(Request $request)
     {
         // dd($request->all());
@@ -27,19 +28,25 @@ class LogisticController extends Controller
             'vendor_email'          =>  'required',
             'vendor_phone'          =>  'required',
             'vendor_address'          =>  'required',
-            'services'                  =>  'required',
+            'service_id'                  =>  'required',
         ]);
-        $data = [
-            'logistic_name' => $request->logistic_name,
-            'vendor_email' => $request->vendor_email,
-            'vendor_phone' => $request->vendor_phone,
-            'vendor_address' => $request->vendor_address,
-        ];
-        // $data['tags'] = implode(",", $request->tags);
-        $data['services'] = json_encode($request->services);
-        $post = Logistic::create($data);
-        // dd($post);
-        return redirect('add-logistic')->with('success', "Record Added Successfully");
+
+        for ($i = 0; $i < count($request->service_id); $i++) {
+            // dd(24);
+
+            $data = [
+
+                'logistic_name' => $request->logistic_name,
+                'vendor_email' => $request->vendor_email,
+                'vendor_phone' => $request->vendor_phone,
+                'vendor_address' => $request->vendor_address,
+                'service_id'  => $request->service_id[$i],
+
+            ];
+            $record = Logistic::create($data);
+
+        }
+        return redirect()->back()->with('success', "Record inserted Successfully");
     }
 
     public function edit_logistic($id)
@@ -108,16 +115,18 @@ class LogisticController extends Controller
         $request->validate([
 
             'parcell_id' => 'required',
+            'service_used_id' => 'required',
             'vendor_id' => 'required',
-            'vendor_tracking_id' => 'required',
-            'vendor_tracking_charges' => 'required',
+            // 'vendor_tracking_id' => 'required',
+            // 'vendor_tracking_charges' => 'required',
         ]);
 
         $data  = [
             'pl_id' => $request->parcell_id,
+            'service_id' => $request->service_used_id,
             'vendor_id' => $request->vendor_id,
-            'vendor_tracking_id' => $request->vendor_tracking_id,
-            'vendor_tracking_charges' => $request->vendor_tracking_charges,
+            // 'vendor_tracking_id' => $request->vendor_tracking_id,
+            // 'vendor_tracking_charges' => $request->vendor_tracking_charges,
         ];
         AllocateParcel::create($data);
 
@@ -132,5 +141,12 @@ class LogisticController extends Controller
         } else {
             return redirect()->back()->with('error', "Record Not Updated...");
         }
+    }
+
+    public function getSelected($id)
+    {
+        // dd($id);
+        $shipping = Logistic::where('service_id', $id)->get();
+        return response()->json($shipping);
     }
 }

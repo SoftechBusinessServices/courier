@@ -1,129 +1,131 @@
 @extends('admin-panel.index')
 
 @section('content')
-    <div class="container " style="padding-top:5% ">
+    <div>
 
 
-        <div class="container-fluid bg-light rounded pt-4 px-4">
+        <div class=" bg-light  pt-4 px-4"
+            style="background-image: url('{{ asset('assets/images/bg-image.jpg') }}'); height: 100vh; background-position: center; background-repeat: no-repeat; background-size: cover; padding-bottom:50px">
+            <div class="container" style="margin-top: 70px; ">
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col">
+                        <!--write your code here  -->
+                        <div class="row">
 
-            <!-- start page title -->
-            <div class="row">
-                <div class="col">
-                    <!--write your code here  -->
-                    <div class="row">
-
-                        <div class="col">
-                            <div class="card overflow-hidden">
-                                <div class="bg-primary bg-soft">
-                                    <div class="row">
-                                        <div class="col-8">
-                                            <div class="text-primary p-3">
-                                                <h5 class="text-primary">Welcome Back !</h5>
-                                                <p>User Profile Information</p>
+                            <div class="col p-0">
+                                <div class="card overflow-hidden">
+                                    <div class="bg-primary bg-soft">
+                                        <div class="row">
+                                            <div class="col-8">
+                                                <div class="text-primary p-3">
+                                                    <h5 class="text-primary">Welcome Back !</h5>
+                                                    <p>User Profile Information</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-4 align-self-end">
-                                            <img src="{{ asset('assets/images/profile-img.png') }}" alt=""
-                                                class="img-fluid">
+                                            <div class="col-4 align-self-end">
+                                                <img src="{{ asset('assets/images/profile-img.png') }}" alt=""
+                                                    class="img-fluid">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="card-body pt-0">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="avatar-md profile-user-wid mb-4">
-                                                <img src="{{ asset('assets/images/users/admin.png') }}" alt=""
-                                                    class="img-thumbnail rounded-circle">
-                                            </div>
-                                            <h5 class="font-size-15 text-truncate">{{ $data->name }}</h5>
-                                            {{-- <h5 class="text-muted font-size-15 text-truncate">{{ $data->email }}</h5> --}}
-                                            <p class="text-muted mb-0 text-truncate">Laravel Developer</p>
-                                            {{-- <p class="text-muted mb-0 text-truncate">California, United States</p> --}}
-                                        </div>
-
-                                        <div class="col-sm-6">
-                                            <div class="pt-4">
-
-                                                <div class="row">
-                                                    <div class="col-6 bg-light rounded">
-                                                        <h5 class="font-size-15">125</h5>
-                                                        <p class="text-muted mb-0">Projects</p>
-                                                    </div>
-                                                    <div class="col-6 bg-light rounded">
-                                                        <h5 class="font-size-15">$1245</h5>
-                                                        <p class="text-muted mb-0">Revenue</p>
-                                                    </div>
+                                    <div class="card-body pt-0">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="avatar-md profile-user-wid mb-4">
+                                                    <img src="{{ asset('assets/images/users/admin.png') }}" alt=""
+                                                        class="img-thumbnail rounded-circle">
                                                 </div>
-                                                <div class="mt-4">
-                                                    <a href="javascript: void(0);"
-                                                        class="btn btn-success waves-effect waves-light btn-sm"
-                                                        data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
-                                                        Change Password
+                                                <h5 class="font-size-15 text-truncate">{{ $data->name }}</h5>
+                                                {{-- <h5 class="text-muted font-size-15 text-truncate">{{ $data->email }}</h5> --}}
+                                                <p class="text-muted mb-0 text-truncate">Laravel Developer</p>
+                                                {{-- <p class="text-muted mb-0 text-truncate">California, United States</p> --}}
+                                            </div>
 
-                                                    </a>
-                                                    {{--  <a href="javascript: void(0);"
+                                            <div class="col-sm-6">
+                                                <div class="pt-4">
+
+                                                    <div class="row">
+                                                        <div class="col-6 bg-light rounded">
+                                                            <h5 class="font-size-15">125</h5>
+                                                            <p class="text-muted mb-0">Projects</p>
+                                                        </div>
+                                                        <div class="col-6 bg-light rounded">
+                                                            <h5 class="font-size-15">$1245</h5>
+                                                            <p class="text-muted mb-0">Revenue</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mt-4">
+                                                        <a href="javascript: void(0);"
+                                                            class="btn btn-success waves-effect waves-light btn-sm"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target=".transaction-detailModal">
+                                                            Change Password
+
+                                                        </a>
+                                                        {{--  <a href="javascript: void(0);"
                                                             class="btn btn-primary waves-effect waves-light btn-sm"
                                                             data-bs-toggle="modal"
                                                             data-bs-target=".transaction-detailModal2">
                                                             Edit
 
                                                         </a>  --}}
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <!-- end card -->
                             </div>
-                            <!-- end card -->
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title mb-4">Personal Information</h4>
+                        <div class="row">
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title mb-4">Personal Information</h4>
 
-                                    <p class="text-muted mb-4"></p>
-                                    <div class="table-responsive">
-                                        <table class="table table-nowrap mb-0">
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">Full Name :</th>
-                                                    <td>{{ $data->name }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Mobile :</th>
-                                                    <td>(123) 123 1234</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">E-mail :</th>
-                                                    <td>{{ $data->email }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Location :</th>
-                                                    <td>California, United States</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="mt-4 justify-content-center">
-                                        <a href="{{ route('home') }}"
-                                            class="btn btn-dark btn-md text-white btn-sm">Dashboard </a>
-                                        <a href="javascript: void(0);"
-                                            class="btn btn-primary waves-effect waves-light btn-sm" data-bs-toggle="modal"
-                                            data-bs-target=".transaction-detailModal3">
-                                            Edit Profile
-                                        </a>
+                                        <p class="text-muted mb-4"></p>
+                                        <div class="table-responsive">
+                                            <table class="table table-nowrap mb-0">
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row">Full Name :</th>
+                                                        <td>{{ $data->name }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Mobile :</th>
+                                                        <td>(123) 123 1234</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">E-mail :</th>
+                                                        <td>{{ $data->email }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Location :</th>
+                                                        <td>California, United States</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="mt-4 justify-content-center">
+                                            <a href="{{ route('home') }}"
+                                                class="btn btn-dark btn-md text-white btn-sm">Dashboard </a>
+                                            <a href="javascript: void(0);"
+                                                class="btn btn-primary waves-effect waves-light btn-sm"
+                                                data-bs-toggle="modal" data-bs-target=".transaction-detailModal3">
+                                                Edit Profile
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
+                                <!-- end card -->
                             </div>
-                            <!-- end card -->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 
     <!-- Transaction Modal -->

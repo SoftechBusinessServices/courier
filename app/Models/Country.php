@@ -43,13 +43,14 @@ class Country extends Model
 
         return $this->hasMany(Logistic::class,'country_id','id');
     }
-    public function country_consignee(){
 
-        return $this->hasMany(ParcelConsignee::class, 'country_id','id');
-    }
     public function country_parcel(){
 
         return $this->belongsTo(Parcel::class, 'pl_id','id');
     }
 
+    public function country_consignee(){
+
+        return  $this->hasMany(ParcelConsignee::class,'consignee_country_id','id');
+    }
 }

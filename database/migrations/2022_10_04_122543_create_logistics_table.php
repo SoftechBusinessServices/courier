@@ -16,8 +16,9 @@ class CreateLogisticsTable extends Migration
         Schema::create('logistics', function (Blueprint $table) {
             $table->id();
             $table->string('logistic_name')->nullable();
-            $table->longText('services');
-            $table->string('vendor_email')->unique();
+            $table->Integer('service_id')->nullable();
+            // $table->foreign('region_id')->references('id')->on('regions')->onDelete('cascade');
+            $table->string('vendor_email')->nullable();
             $table->string('vendor_phone')->nullable();
             $table->text('vendor_address')->nullable();
             $table->enum('status', ['active', 'inactive'])->default('active');

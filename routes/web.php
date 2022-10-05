@@ -151,8 +151,10 @@ Route::get('ajax-autocomplete-search', [Select2SearchController::class,'selectSe
 
 Route::get('add-payment-method/',[PaymentController::class,'create_payment_method'])->name('add-payment-method');
 Route::post('store-payment-method/',[PaymentController::class,'store_payment_method'])->name('store-payment-method');
-Route::get('edit-payment-method/',[PaymentController::class,'edit_payment_method'])->name('edit-payment-method');
+Route::get('edit-payment-method/{id}',[PaymentController::class,'edit_payment_method'])->name('edit-payment-method');
 Route::get('fetch-payment-method/',[PaymentController::class,'fetch_payment_method'])->name('fetch-payment-method');
+Route::post('update-payment-method/{id}',[PaymentController::class,'update_payment_method'])->name('update-payment-method');
 Route::get('delete-payment-method/{id}',[PaymentController::class,'destroy_payment_method'])->name('delete-payment-method');
 
 Route::post('store-allocate',[LogisticController::class,'store_allocate'])->name('store-allocate');
+Route::get('getSelected/{id}', [LogisticController::class, 'getSelected']);

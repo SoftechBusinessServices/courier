@@ -14,7 +14,7 @@
                         <div class="card">
                             <div class="card-body">
 
-                                <h4 class="card-title">Customer Detailsssss
+                                <h4 class="card-title">Customer Details
                                     <a href="{{ url('/home') }}" class="btn btn-primary btn-sm ml-2">Home</a>
                                     <a href="{{ url('/customers-print-view') }}" class="btn btn-info btn-sm ml-2">Print Preview</a>
                                 </h4>

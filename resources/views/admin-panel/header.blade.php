@@ -1,25 +1,25 @@
 <header id="page-topbar" >
-    <div class="navbar-header text-white " style="background-color: #2a3042; color:white"  >
+    <div class="navbar-header text-light " style="background-color: #5668aa; "  >
         <div class="d-flex">
             <!-- LOGO -->
             <div class="navbar-brand-box">
                 <a href="{{ ('/') }}" class="logo logo-dark">
-                    <span class="logo-sm">
-                        <img src="assets/images/logo.svg" alt="" height="22">
-                    </span>
+                    {{-- <span class="logo-sm">
+                        <img src="assets/images/logoBFS.png" alt="" height="50">
+                    </span> --}}
                     <span class="logo-lg">
-                        <img src="assets/images/logo-dark.png" alt="" height="17">
+                        <img src="assets/images/logoBFS.png" alt="" height="58">
                     </span>
                 </a>
 
-                <a href="{{ ('/') }}" class="logo logo-light">
+                {{-- <a href="{{ ('/') }}" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="assets/images/logo-light.svg" alt="" height="22">
+                        <img src="assets/images/logoBFS.png" alt="" >
                     </span>
                     <span class="logo-lg">
-                        <img src="assets/images/logo-light.png" alt="" height="19">
+                        <img src="assets/images/logoBFS.png" alt="" >
                     </span>
-                </a>
+                </a> --}}
             </div>
 
             {{-- <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect" id="vertical-menu-btn">
@@ -68,17 +68,17 @@
             </div>
 
             <div class="dropdown d-none d-lg-inline-block ms-1">
-                <button type="button" class="btn header-item noti-icon waves-effect" data-toggle="fullscreen">
+                <button type="button" class="btn header-item noti-icon waves-effect color-light"  data-toggle="fullscreen">
                     <i class="bx bx-fullscreen"></i>
                 </button>
             </div>
 
             <div class="dropdown d-inline-block">
-                <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
+                <button type="button" class="btn header-item waves-effect " style="background-color: #5668aa; "  id="page-header-user-dropdown"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img class="rounded-circle header-profile-user" src="{{asset('assets/images/users/admin.png')}}"
                         alt="Header Avatar">
-                    <span class="d-none d-xl-inline-block ms-1" key="t-henry">{{ Auth::user()->name }}</span>
+                    <span class="d-none d-xl-inline-block ms-1 text-white" key="t-henry">{{ Auth::user()->name }}</span>
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">

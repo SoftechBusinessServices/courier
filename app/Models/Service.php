@@ -19,8 +19,10 @@ class Service extends Model
 
         return $this->hasMany(Parcel::class, 'service_id','id');
     }
-    public function service_logistic(){
-
-        return $this->hasMany(Logistic::class, 'service','id');
+    public function logistic()
+    {
+        return $this->hasMany(Logistic::class, 'service_id', 'id');
     }
+
+
 }

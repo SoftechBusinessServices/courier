@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use PHPUnit\Framework\Constraint\Count;
 
 class ParcelConsignee extends Model
 {
@@ -19,6 +20,10 @@ class ParcelConsignee extends Model
     ];
     public function consignee_country(){
 
-        return $this->belongsTo(Country::class, 'country_id','id');
+        return  $this->belongsTo(Country::class,'consignee_country_id','id');
+    }
+    public function consignee_parcel(){
+
+        return $this->hasMany(Parcel::class, 'pl_id','id');
     }
 }

@@ -1,4 +1,4 @@
-<div class="page-content px-5" style="padding:0; padding-top:6%;">
+<div class="page-content px-5" style="padding:0; padding-top:88px;">
     <div class="page-title-box d-sm-flex  justify-content-left  ">
         <h4 class="mb-sm-0 font-size-18"><a href="{{ route('home') }}">Dashboard</a></h4>
     </div>
@@ -146,7 +146,7 @@
                                                                 <i class="far fa-eye"> {{ $item->pl_id }}</i>
                                                             </a>
                                                         </td>
-                                                        <td>{{ $item->country_parcel }}</td>
+                                                        <td>{{ $item->consignee_parcel }}</td>
                                                         <td>
                                                             @php
                                                                 $month = date('d/m/Y', strtotime($item->created_at));
@@ -158,10 +158,12 @@
                                                         <td> {{ $item->pl_final }} </td>
                                                         <td> {{ $item->parcel_service->service_name }} </td>
                                                         <td>
-                                                            <a class="btn btn-outline-info btn-sm parcel_allocate"
+                                                            <a id="todolink"
+                                                                class="btn btn-outline-info btn-sm parcel_allocate"
                                                                 title="add" data-bs-toggle="modal"
-                                                                data-bs-target="#allocatemodal"
-                                                                id="{{ $item->pl_id }}" ser_id ={{ $item->service_id }}>
+                                                                data-bs-target="#allocatemodal" href="#allocatemodal"
+                                                                data-id="{{ $item->pl_id }}"
+                                                                data-prod-id="{{ $item->service_id }}">
                                                                 Allocate
                                                             </a>
                                                         </td>
@@ -277,7 +279,7 @@
                                                         <td>
                                                             <a class="btn btn-outline-info btn-sm parcel_allocate"
                                                                 title="add" data-bs-toggle="modal"
-                                                                data-bs-target="#allocatemodal"
+                                                                data-bs-target="#allocatedmodal"
                                                                 id="{{ $item->pl_id }}">
                                                                 Delivered
                                                             </a>
@@ -500,7 +502,7 @@
         </div>
     </div>
 </div>
-<!------------------Tracing Modal---------------------->
+<!------------------TracKing Modal---------------------->
 <div class="modal fade" id="trackingmodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -552,6 +554,58 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+                <form action="{{ url('store-allocate') }}" method="POST" id="allocateform" novalidate>
+                    @csrf
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="">Parcel ID</label>
+                            <input type="text" name="parcell_id" value="" id="parcell_id"
+                            class="form-control" readonly>
+                        </div>
+                       <div class="col-md-6">
+                            <label for="">Service Used</label>
+                            <input type="text" name="service_used_id" value="" id="service_used_id"
+                            class="form-control" readonly>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="course" class="form-label">Select Vendor for Selected Service</label>
+                                <select class="form-select table-responsive @error('vendor_id') is-invalid @enderror" name="vendor_id" id="vendor_id"></select>
+                                @error('vendor_id')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                            </div>
+                        </div>
+
+                    </div>
+                    {{-- <div id='order-id'></div>
+                    <div id='prod-id'></div> --}}
+
+
+                    <div class="modal-footer">
+                        <!-- Toogle to second dialog -->
+                        <button type="submit" form="allocateform" class="btn btn-primary " id="modal_submit"
+                            value="Submit">Submit</button>
+                        <button type="button" class="btn btn-secondary" id="modal_close1"
+                            data-bs-dismiss="modal">Close</button>
+                    </div>
+            </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<!------------------Allocate Modal---------------------->
+{{-- <div class="modal fade" id="allocatedmodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #d6dbf8">
+                <h5 class="modal-title">Allocate Your Parcel to a Vendor</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
                 <form action="{{ url('store-allocate') }}" method="POST" id="allocateform" novalidate >
                     @csrf
                     <div class="row mb-3">
@@ -560,11 +614,11 @@
                             <input type="text" name="parcell_id" value="" id="parcell_id"
                             class="form-control" readonly>
                         </div>
-                        {{-- <div class="col-md-6">
+                       <div class="col-md-6">
                             <label for="">Service Used</label>
                             <input type="text" name="service_used_id" value="" id="service_used_id"
                             class="form-control" readonly>
-                        </div> --}}
+                        </div>
                          <div class="col">
                             <label for="">Select Vendor</label>
                             <select name="vendor_id" required
@@ -595,7 +649,7 @@
 
         </div>
     </div>
-</div>
+</div> --}}
 
 <!------------------User Modal---------------------->
 <div class="modal fade" id="paymentmodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
@@ -680,8 +734,10 @@
                                 class="form-control @error('password') is-invalid @enderror" name="password"
                                 autocomplete="new-password" placeholder="Enter password"
                                 value="{{ old('password') }}" required>
-                            <button class="btn btn-light " type="button" id="password-addon"><i
-                                    class="mdi mdi-eye-outline"></i></button>
+                            {{-- <button class="btn btn-light " type="button" id="password-addon"><i
+                                    class="mdi mdi-eye-outline" onclick="togglePassword"></i></button> --}}
+
+
 
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -703,7 +759,7 @@
                             </span>
                         @enderror
                     </div>
-
+                    <input type="checkbox" class="btn btn-light " onclick="togglePassword()">Show Password
 
                     <div class="modal-footer">
                         <!-- Toogle to second dialog -->
@@ -820,8 +876,8 @@
                                 </div>
                                 <div class="col-md-12 mb-2">
                                     <label for="select2Multiple">Tag Services</label>
-                                    <select class="select2-multiple form-control " name="services[]" multiple="multiple"
-                                        style="width: 100%" id="select2Multiple">
+                                    <select class="select2-multiple form-control " name="service_id[]"
+                                        multiple="multiple" style="width: 100%" id="select2Multiple">
                                         @foreach ($services as $item)
                                             <option value="{{ $item->id }}">
                                                 {{ $item->service_name }}
@@ -958,7 +1014,7 @@
                                             <label for="basicpill-namecard-input">Select Shipping Service</label>
                                             <select name="service_id" id="service_id"
                                                 class="form-control @error('serrvice_id') is-invalid @enderror">
-                                                <option value="">  ----Choose one Service----  </option>
+                                                <option value=""> ----Choose one Service---- </option>
                                                 @foreach ($services as $row)
                                                     <option value="{{ $row->id }}"> {{ $row->service_name }}
                                                     </option>
@@ -1520,14 +1576,14 @@
                         </script>
 
                             <script type="x-template" id="step-template">
-                            <div class="step-wrapper" :class="stepWrapperClass">
-                                <button type="button" class="btn btn-primary" @click="lastStep" :disabled="firststep">
-                                    Back
+                            <div class="step-wrapper float-end" :class="stepWrapperClass">
+                                <button type="button" class="btn btn-primary mx-1" @click="lastStep" :disabled="firststep">
+                                    &#60; Back
                                 </button>
-                                <button type="button" class="btn btn-primary" @click="nextStep" :disabled="laststep">
-                                    Next
+                                <button type="button" class="btn btn-primary mx-1" @click="nextStep" :disabled="laststep">
+                                    Next &#62;
                                 </button>
-                                <button type="submit" class="btn btn-primary" v-if="laststep">
+                                <button type="submit" class="btn btn-primary mx-1" v-if="laststep">
                                     Submit
                                 </button>
                             </div>
@@ -1600,9 +1656,39 @@
 
             $('.parcel_allocate').on('click', function(e) {
                 e.preventDefault();
-                console.log(this.id);
-                $('#parcell_id').val(this.id);
-                // $('#service_used_id').val(this.ser_id);
+
+                $('#parcell_id').val($(this).data('id'));
+                $('#service_used_id').val($(this).data('prod-id'));
+
+                var pl_id = ($(this).data('id'));
+                var service_id =($(this).data('prod-id'));
+                // alert(pl_id);
+                // alert(service_id);
+                if(service_id) {
+
+                   $.ajax({
+                    url: "{{ url('/getSelected') }}/" + service_id,
+                       type: "GET",
+                    //    data : {"_token":"{{ csrf_token() }}"},
+                    //    dataType: "json",
+                       success:function(data)
+                       {
+                        console.log(data);
+                         if(data){
+                            $('#vendor_id').empty();
+                            $('#vendor_id').append('<option hidden>Choose Vendor</option>');
+                            $.each(data, function(key, course){
+                                $('select[name="vendor_id"]').append('<option value="'+ course.id +'">' + course.logistic_name+ '</option>');
+                            });
+                        }else{
+                            $('#vendor_id').empty();
+                        }
+                     }
+                   });
+               }else{
+                 $('#vendor_id').empty();
+               }
+
             });
 
         });
@@ -1733,4 +1819,23 @@
             }
         }
     });
+
+
+
+    function togglePassword() {
+        var x = document.getElementById("userpassword");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+    // function togglePassword () {
+    //   var x = document.getElementById("password-confirm");
+    //   if (x.type === "password") {
+    //     x.type = "text";
+    //   } else {
+    //     x.type = "password";
+    //   }
+    // }
 </script>

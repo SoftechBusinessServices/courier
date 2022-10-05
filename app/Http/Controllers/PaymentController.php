@@ -33,27 +33,27 @@ class PaymentController extends Controller
          }
      }
 
-     public function edit_region($id)
+     public function edit_payment_method($id)
      {
+        // dd(1);
+        $record = PaymentMethod::find($id);
+        $data = PaymentMethod::all();
 
-         $record = Region::find($id);
-         $data = Region::all();
-
-         return view('admin-panel.regions.edit_region', compact('data', 'record'));
+        return view('admin-panel.payments.edit_payment_method', compact('data', 'record'));
      }
      public function update_payment_method(Request $request, $id)
      {
-
+        // dd(2);
          $request->validate([
-             'name' => 'required',
+             'payment_method' => 'required',
          ]);
 
-         $record = Region::find($id);
-         $data = ['name' => $request->name];
+         $record = PaymentMethod::find($id);
+         $data = ['payment_method' => $request->payment_method];
          $data = $record->update($data);
 
          if ($data) {
-             return redirect('add-region')->with('success', "Record Updated Successfully");
+             return redirect('add-payment-method')->with('success', "Record Updated Successfully");
          } else {
              return redirect()->back()->with('error', "Record Not Updated...");
          }
@@ -61,11 +61,11 @@ class PaymentController extends Controller
 
      public function destroy_payment_method($id)
      {
-         $data = Region::find($id);
+         $data = PaymentMethod::find($id);
          $data = $data->delete();
 
          if ($data) {
-             return redirect('add-region')->with('success', "Record Deleted");
+             return redirect('add-payment-method')->with('success', "Record Deleted");
          } else {
              return redirect()->back()->with('success', "Record Not Deleted");
          }

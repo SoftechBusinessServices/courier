@@ -20,19 +20,17 @@
                                     </span>
                                 </p>
                                 @if (isset($data))
+                                {{-- @dd($data); --}}
                                 <table id="datatable-buttons"
                                     class="table table-bordered dt-responsive nowrap w-100 table-sm table-responsive ">
                                     <thead>
                                         <tr>
                                             <th>S.No</th>
-                                            {{--  <th>Company Email</th>  --}}
                                             <th>Logistic Name</th>
                                             <th>Vendor Name</th>
                                             <th>Email</th>
                                             <th>Phone</th>
                                             <th>Address</th>
-                                            {{-- <th>Country</th> --}}
-                                            {{--  <th>Company Name </th>  --}}
                                             <th>Joining date</th>
                                             <th>Action</th>
                                         </tr>
@@ -49,7 +47,7 @@
                                                     <td>{{ $i++ }}</td>
                                                     {{--  <td>{{ $item->companies->email }}</td>  --}}
                                                     <td>{{ $item->logistic_name }}</td>
-                                                    <td>{{ $item->logistic_service }}</td>
+                                                    <td>{{ $item->service->service_name}}</td>
                                                     <td>{{ $item->vendor_email }}</td>
                                                     <td>{{ $item->vendor_phone }}</td>
                                                     <td>{{ $item->vendor_address }}</td>

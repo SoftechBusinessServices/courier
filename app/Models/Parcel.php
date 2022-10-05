@@ -39,9 +39,9 @@ class Parcel extends Model
     {
         return $this->belongsTo(AllocateParcel::class,'pl_id','id');
     }
-    public function parcel_country(){
+    public function parcel_consignee(){
 
-        return $this->hasMany(Country::class, 'pl_id','id');
+        return $this->belongsTo(ParcelConsignee::class, 'pl_id','id');
     }
     public function parcel_service(){
 

@@ -67,6 +67,7 @@ class HomeController extends Controller
         $allocated_parcels =  Parcel::where('pl_status', 'allocated')->get();
         $logistics = Logistic::all();
         $payment_methods = PaymentMethod::all();
+
         return view('admin-panel.master',  compact('data', 'regions',  'countries', 'companies', 'currencies','customers','services','abc','processed_parcels','allocated_parcels','logistics','payment_methods'));
 
         // return view('home');

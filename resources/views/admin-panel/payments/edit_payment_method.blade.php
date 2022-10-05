@@ -1,40 +1,83 @@
 @extends('admin-panel.index')
 
 @section('content')
-    <div class="main-content container">
+    <div class="main-content">
 
         <div class="page-content">
             <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    Edit Region
+                                </h4>
+                                <p class="card-title-desc"></p>
+                                <form class="needs-validation" novalidate action="{{ url('update-payment-method/' . $record->id) }}"
+                                    method="POST">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                {{-- <label for="validationCustom01" class="form-label">Category Name:</label> --}}
+                                                <input type="text" name="payment_method" class="form-control"
+                                                    id="validationCustom01" value="{{ $record->payment_method }}" required>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check mb-3">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    id="invalidCheck" required>
+                                                <label class="form-check-label" for="invalidCheck">
+                                                    Agree to terms and conditions
+                                                </label>
+                                                <div class="invalid-feedback">
+                                                    You must agree before submitting.
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <button class="btn btn-primary" type="submit">Submit form</button>
+                                            </div>
+                                        </div>
 
-                <!-- start page title -->
+                                    </div>
+
+
+                                </form>
+                            </div>
+                        </div>
+                        <!-- end card -->
+                    </div> <!-- end col -->
+
+                </div>
+
                 <div class="row">
                     <div class="col-12">
                         <!--write your code here  -->
 
                         <div class="card">
                             <div class="card-body">
-                                <p class="card-title-desc text-dark mb-2 py-4 rounded" style="background-color: #d6dbf8">
 
-
-                                    {{--  <a class="btn btn-success btn-md text-white " data-bs-toggle="modal"
-                                        data-bs-target="#countrymodal">Add Country</a>  --}}
-                                    <span class="font-size-22 font-weight-bold ml-2"> Services Details
-                                    </span>
-                                </p>
+                                <h4 class="card-title"></h4>
+                                <h4 class="card-title-desc text-dark ">
+                                    Product Categories Details
+                                </h4>
                                 @if (isset($data))
                                     <table id="datatable-buttons"
                                         class="table table-bordered dt-responsive nowrap w-100 table-sm text-center">
-
                                         <thead>
                                             <tr>
                                                 <th>S.No</th>
-                                                <th>Service Name</th>
-                                                <th>Date</th>
+                                                <th>Region</th>
+                                                {{-- <th>Subcategories</th> --}}
                                                 <th>Status</th>
                                                 <th>Action</th>
-
                                             </tr>
                                         </thead>
+
 
                                         <tbody>
                                             @php
@@ -44,14 +87,9 @@
                                                 @foreach ($data as $item)
                                                     <tr>
                                                         <td>{{ $i++ }}</td>
-                                                        <td>{{ $item->service_name }}</td>
-                                                        <td>
-                                                            @php
-                                                                $month = date('d/m/Y', strtotime($item->created_at));
-                                                                // dd($month);
-                                                                echo $month;
-                                                            @endphp
-                                                        </td>
+                                                        <td>{{ $item->payment_method }}</td>
+
+
                                                         <td>
                                                             @if ($item->status == 'inactive')
                                                                 <button type="button" class="btn btn-danger  btn-sm">
@@ -61,15 +99,16 @@
                                                                     {{ $item->status }} </button>
                                                             @endif
                                                         </td>
-                                                        <td style="">
+                                                        </td>
 
-                                                            <a href="{{ url('edit-service/' . $item->id) }}"
+                                                        <td style="">
+                                                            <a href="{{ url('edit-payment-method/' . $item->id) }}"
                                                                 class="btn btn-outline-warning btn-sm delete"
                                                                 title="Edit">
                                                                 <i class="fas fa-pencil-alt"></i>
                                                             </a>
                                                             |
-                                                            <a href="{{ url('delete-service/' . $item->id) }}"
+                                                            <a href="{{ url('delete-payment-method/' . $item->id) }}"
                                                                 class="btn btn-outline-danger btn-sm delete" title="Delete"
                                                                 onclick="return confirm('Are you sure to delete Record?')">
                                                                 <i class="fas fa-trash-alt"></i>
@@ -88,13 +127,7 @@
                                         </tbody>
                                     </table>
                                 @endif
-
-                                <div class="d-flex justify-content-between my-2">
-                                    <a href="{{ route('home') }}" class="btn btn-primary btn-md text-white">&#60; Back</a>
-                                    <a href="{{ route('home') }}" class="btn btn-dark btn-md text-white">Dashboard </a>
-                                </div>
                             </div>
-
 
                         </div> <!-- end col -->
                     </div>
@@ -102,6 +135,5 @@
             </div>
         </div>
     </div>
-
-
+    {{-- <script src="{{asset('assets/js/pages/form-validation.init.js')}}"></script> --}}
 @endsection

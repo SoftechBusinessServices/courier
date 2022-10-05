@@ -127,8 +127,8 @@
                                                 <th>Weight <br>(kilogram)</th>
                                                 <th>Parcel <br>Charges</th>
                                                 <th>Required<br>Service</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
+                                                <th>Parcel<br>Status</th>
+                                                {{-- <th>Action</th> --}}
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -167,7 +167,7 @@
                                                                 Allocate
                                                             </a>
                                                         </td>
-                                                        <td style="">
+                                                        {{-- <td style="">
                                                             <a href="{{ url('edit-parcel/' . $item->id) }}"
                                                                 class="btn btn-outline-warning btn-sm delete"
                                                                 title="Edit">
@@ -180,7 +180,7 @@
                                                                 onclick="return confirm('Are you sure to delete Record?')">
                                                                 <i class="fas fa-trash-alt"></i>
                                                             </a>
-                                                        </td>
+                                                        </td> --}}
                                                     </tr>
                                                 @endforeach
                                             @else
@@ -228,7 +228,7 @@
                                                 <th>Vendor<br>Name</th>
                                                 <th>Tracking<br>ID</th>
                                                 <th>Vendor<br>Charges</th>
-                                                <th>Status</th>
+                                                <th>Parcel<br>Status</th>
                                                 {{--  <th>Action</th>  --}}
                                             </tr>
                                         </thead>
@@ -258,21 +258,21 @@
                                                         </td>
                                                         <td> {{ $item->pl_weight }} </td>
                                                         <td> {{ $item->pl_final }} </td>
-                                                        <td> {{ $item->pl_final }} </td>
+                                                        <td> {{ $item->vendor_id }} </td>
                                                         <td>
-                                                            <a class="btn btn-outline-info btn-sm parcel_allocate"
+                                                            <a class="btn btn-outline-success btn-sm tracking_btn"
                                                                 title="add" data-bs-toggle="modal"
                                                                 data-bs-target="#trackingmodal"
                                                                 id="{{ $item->pl_id }}">
-                                                                {{ $item->id }}
+                                                                update
                                                             </a>
                                                         </td>
                                                         <td>
-                                                            <a class="btn btn-outline-primary btn-sm parcel_allocate"
+                                                            <a class="btn btn-outline-primary btn-sm charges_btn"
                                                                 title="add" data-bs-toggle="modal"
                                                                 data-bs-target="#vendorcharges"
                                                                 id="{{ $item->pl_id }}">
-                                                                {{ $item->id }}
+                                                                update
                                                             </a>
                                                         </td>
 
@@ -285,22 +285,7 @@
                                                             </a>
 
                                                         </td>
-                                                        {{--  <td style="">
 
-
-                                                            <a href="{{ url('edit-region/' . $item->id) }}"
-                                                                class="btn btn-outline-warning btn-sm delete"
-                                                                title="Edit">
-                                                                <i class="fas fa-pencil-alt"></i>
-                                                            </a>
-                                                            |
-                                                            <a href="{{ url('delete-region/' . $item->id) }}"
-                                                                class="btn btn-outline-danger btn-sm delete"
-                                                                title="Delete"
-                                                                onclick="return confirm('Are you sure to delete Record?')">
-                                                                <i class="fas fa-trash-alt"></i>
-                                                            </a>
-                                                        </td>  --}}
                                                     </tr>
                                                 @endforeach
                                             @else
@@ -474,7 +459,7 @@
                     <table class="table table-bordered">
                         <tr>
                             <th>Parcel ID</th>
-                            <th>Tracking ID</th>
+                            <th>Enter Vendor Charges</th>
                         </tr>
                         <tr>
                             <td>
@@ -482,7 +467,7 @@
                                     class="form-control" readonly>
                             </td>
                             <td>
-                                <input type="text" name="tracking_id" value="" id="tracking_id"
+                                <input type="text" name="vendor_charges"  id="vendor_charges"
                                     class="form-control">
                             </td>
                         </tr>
@@ -511,12 +496,12 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ url('tracking-parcel') }}" method="POST" id="sadabahar">
+                <form action="{{ url('vendor-tracking') }}" method="POST" id="vendor-tracking-id">
                     @csrf
                     <table class="table table-bordered">
                         <tr>
                             <th>Parcel ID</th>
-                            <th>Tracking ID</th>
+                            <th>Enter Vendor Tracking ID</th>
                         </tr>
                         <tr>
                             <td>
@@ -524,7 +509,7 @@
                                     class="form-control" readonly>
                             </td>
                             <td>
-                                <input type="text" name="track_id" value="" id="track_id"
+                                <input type="text" name="tracking_idd" value="" id="tracking_idd"
                                     class="form-control">
                             </td>
                         </tr>
@@ -533,7 +518,7 @@
 
                     <div class="modal-footer">
                         <!-- Toogle to second dialog -->
-                        <button type="submit" form="sadabahar" class="btn btn-primary " id="modal_submit"
+                        <button type="submit" form="vendor-tracking-id" class="btn btn-primary " id="modal_submit"
                             value="Submit">Submit</button>
                         <button type="button" class="btn btn-secondary" id="modal_close1"
                             data-bs-dismiss="modal">Close</button>
@@ -560,23 +545,19 @@
                         <div class="col-md-6">
                             <label for="">Parcel ID</label>
                             <input type="text" name="parcell_id" value="" id="parcell_id"
-                            class="form-control" readonly>
+                                class="form-control" readonly>
                         </div>
-                       <div class="col-md-6">
-                            <label for="">Service Used</label>
-                            <input type="text" name="service_used_id" value="" id="service_used_id"
-                            class="form-control" readonly>
-                        </div>
-                        <div class="col">
-                            <div class="mb-3">
-                                <label for="course" class="form-label">Select Vendor for Selected Service</label>
-                                <select class="form-select table-responsive @error('vendor_id') is-invalid @enderror" name="vendor_id" id="vendor_id"></select>
-                                @error('vendor_id')
+                        <div class="col-md-6">
+                            <label for="course" class="form-label">Select Vendor for Service </label>
+                            <select class="form-control" name="vendor_id" id="vendor_id"></select>
+                            @error('vendor_id')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                            </div>
+                            {{-- <label for="">Service Used</label> --}}
+                            <input type="hidden" name="service_used_id" value="" id="service_used_id"
+                                class="form-control">
                         </div>
 
                     </div>
@@ -1661,37 +1642,51 @@
                 $('#service_used_id').val($(this).data('prod-id'));
 
                 var pl_id = ($(this).data('id'));
-                var service_id =($(this).data('prod-id'));
+                var service_id = ($(this).data('prod-id'));
                 // alert(pl_id);
                 // alert(service_id);
-                if(service_id) {
+                if (service_id) {
 
-                   $.ajax({
-                    url: "{{ url('/getSelected') }}/" + service_id,
-                       type: "GET",
-                    //    data : {"_token":"{{ csrf_token() }}"},
-                    //    dataType: "json",
-                       success:function(data)
-                       {
-                        console.log(data);
-                         if(data){
-                            $('#vendor_id').empty();
-                            $('#vendor_id').append('<option hidden>Choose Vendor</option>');
-                            $.each(data, function(key, course){
-                                $('select[name="vendor_id"]').append('<option value="'+ course.id +'">' + course.logistic_name+ '</option>');
-                            });
-                        }else{
-                            $('#vendor_id').empty();
+                    $.ajax({
+                        url: "{{ url('/getSelected') }}/" + service_id,
+                        type: "GET",
+                        //    data : {"_token":"{{ csrf_token() }}"},
+                        //    dataType: "json",
+                        success: function(data) {
+                            console.log(data);
+                            if (data) {
+                                $('#vendor_id').empty();
+                                $('#vendor_id').append(
+                                    '<option hidden>Choose Vendor</option>');
+                                $.each(data, function(key, course) {
+                                    $('select[name="vendor_id"]').append(
+                                        '<option value="' + course.id +
+                                        '">' + course.logistic_name +
+                                        '</option>');
+                                });
+                            } else {
+                                $('#vendor_id').empty();
+                            }
                         }
-                     }
-                   });
-               }else{
-                 $('#vendor_id').empty();
-               }
+                    });
+                } else {
+                    $('#vendor_id').empty();
+                }
 
             });
 
+            $('.tracking_btn').on('click', function(e) {
+                e.preventDefault();
+                // alert(1);
+                $('#parcell_idd').val(this.id);
+            });
+            $('.charges_btn').on('click', function(e) {
+                e.preventDefault();
+                // alert(2);
+                $('#parcell_iddd').val(this.id);
+            });
         });
+
 
     }); //ready function closed
 </script>

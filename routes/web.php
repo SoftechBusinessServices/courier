@@ -19,6 +19,7 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RepresentativeController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\VendorTrackingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -158,3 +159,6 @@ Route::get('delete-payment-method/{id}',[PaymentController::class,'destroy_payme
 
 Route::post('store-allocate',[LogisticController::class,'store_allocate'])->name('store-allocate');
 Route::get('getSelected/{id}', [LogisticController::class, 'getSelected']);
+
+Route::post('vendor-tracking',[VendorTrackingController::class,'vendor_tracking'])->name('vendor-tracking');
+Route::post('vendor-tracking-charges',[VendorTrackingController::class,'vendor_tracking_charges'])->name('vendor-tracking-charges');

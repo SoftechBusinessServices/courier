@@ -64,7 +64,7 @@ class HomeController extends Controller
         $currencies = Currency::all();
         $services = Service::all();
         $processed_parcels = Parcel::where('pl_status', 'processed')->get();
-        $allocated_parcels =  Parcel::where('pl_status', 'allocated')->get();
+        $allocated_parcels =  Parcel::where('pl_status', 'allocated'||'pl_status','delivered')->get();
         $logistics = Logistic::all();
         $payment_methods = PaymentMethod::all();
 

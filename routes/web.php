@@ -160,6 +160,8 @@ Route::get('delete-payment-method/{id}',[PaymentController::class,'destroy_payme
 
 Route::post('store-allocate',[LogisticController::class,'store_allocate'])->name('store-allocate');
 Route::get('getSelected/{id}', [LogisticController::class, 'getSelected']);
+Route::get('search', [ParcelController::class, 'search']);
+// Route::get('getNumberSearch/{id}', [ParcelController::class, 'getNumberSearch']);
 
 Route::post('vendor-tracking',[VendorTrackingController::class,'vendor_tracking'])->name('vendor-tracking');
 Route::post('vendor-tracking-charges',[VendorTrackingController::class,'vendor_tracking_charges'])->name('vendor-tracking-charges');

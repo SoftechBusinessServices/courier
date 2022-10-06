@@ -13,7 +13,7 @@
         @include('admin-panel.content')
 
         <!-- end main content-->
-        {{--  @include('admin-panel.footer')  --}}
+        {{-- @include('admin-panel.footer')  --}}
 
     </div>
 
@@ -36,7 +36,7 @@
 
     <!-- form advanced init -->
 
-     <script src="{{ asset('assets/libs/select2/js/select2.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/select2/js/select2.min.js') }}"></script>
 
     <!-- Required datatable js -->
     <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
@@ -66,10 +66,13 @@
     <!-- form wizard init -->
     <script src="{{ asset('assets/js/pages/form-wizard.init.js')}}"></script>
 
-      <!-- form repeater js -->
-      <script src="{{ asset('assets/libs/jquery.repeater/jquery.repeater.min.js')}}"></script>
-
-     
+    <!-- form repeater js -->
+    <!-- <script src="{{ asset('assets/libs/jquery.repeater/jquery.repeater.min.js')}}"></script> -->
+    <!-- <script src="{{ asset('assets/js/pages/form-repeater.int.js')}}"></script> -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" data-rishi-type="text/javascript" data-cfasync="false" data-no-optimize="1" data-no-defer="1" data-no-minify="1"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.repeater/1.2.1/jquery.repeater.min.js" data-cfasync="false" data-no-optimize="1" data-no-defer="1" data-no-minify="1"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.repeater/1.2.1/jquery.repeater.js" data-cfasync="false" data-no-optimize="1" data-no-defer="1" data-no-minify="1"></script>
+   
 
 
     {{-- toastr js --}}
@@ -79,11 +82,11 @@
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> --}}
     <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
 
-     <!-- Sweet Alerts js -->
-     <script src="{{ asset('assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
+    <!-- Sweet Alerts js -->
+    <script src="{{ asset('assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
 
-     <!-- Sweet alert init js-->
-     <script src="{{ asset('assets/js/pages/sweet-alerts.init.js') }}"></script>
+    <!-- Sweet alert init js-->
+    <script src="{{ asset('assets/js/pages/sweet-alerts.init.js') }}"></script>
 
     <!-- App js -->
     <script src="{{ asset('assets/js/app.js') }}"></script>
@@ -94,10 +97,12 @@
     <script>
         $(document).ready(function() {
             toastr.options.timeOut = 10000;
-            @if (Session::has('error'))
-                toastr.error('{{ Session::get('error') }}');
-            @elseif (Session::has('success'))
-                toastr.success('{{ Session::get('success') }}');
+            @if(Session::has('error'))
+            toastr.error('{{ Session::get('
+                error ') }}');
+            @elseif(Session::has('success'))
+            toastr.success('{{ Session::get('
+                success ') }}');
             @endif
         });
     </script>
@@ -105,16 +110,15 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <script>
-      $(document).ready(function() {
-          // Select2 Multiple
-          $('.select2-multiple').select2({
-              placeholder: "Select Multiple Services",
-              allowClear: true
-          });
+        $(document).ready(function() {
+            // Select2 Multiple
+            $('.select2-multiple').select2({
+                placeholder: "Select Multiple Services",
+                allowClear: true
+            });
 
-      });
-
-  </script>
+        });
+    </script>
 </body>
 
 

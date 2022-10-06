@@ -235,7 +235,7 @@
                                                     <td> {{ $item->pl_weight }} </td>
                                                     <td> {{ $item->pl_final }} </td>
                                                     <td> {{ $item->vendor_id }} </td>
-                                                    <td>
+                                                    <td id="trackingModal_{{ $item->pl_id }}">
                                                         <a class="btn btn-outline-success btn-sm tracking_btn" title="add" data-bs-toggle="modal" data-bs-target="#trackingmodal" id="{{ $item->pl_id }}">
                                                             update
                                                         </a>
@@ -453,7 +453,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ url('vendor-tracking') }}" method="POST" id="vendor-tracking-id">
+                <!-- <form action="{{ url('vendor-tracking') }}" method="POST" id="vendor-tracking-id"> -->
+                <form method="POST" id="vendor-tracking-id">
                     @csrf
                     <table class="table table-bordered">
                         <tr>
@@ -473,7 +474,7 @@
 
                     <div class="modal-footer">
                         <!-- Toogle to second dialog -->
-                        <button type="submit" form="vendor-tracking-id" class="btn btn-primary " id="modal_submit" value="Submit">Submit</button>
+                        <button type="submit" form="vendor-tracking-id" class="btn btn-primary vendor-tracking-id" id="modal_submit" value="Submit">Submit</button>
                         <button type="button" class="btn btn-secondary" id="modal_close1" data-bs-dismiss="modal">Close</button>
                     </div>
             </div>
@@ -977,7 +978,6 @@
 
                             <div class="page">
                                 <div class="title">Dispatch Notes:</div>
-
                                 <div class="repeater">
                                     <div data-repeater-list="userData">
                                         <div data-repeater-item="">
@@ -1052,10 +1052,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <input data-repeater-create="" type="button" class="btn btn-success btn-sm btn-block" value="Add Notes"><br><br>
-
+                                    <input data-repeater-create="" type="button" class="btn btn-success btn-sm" value="Add Notes"><br><br>
                                 </div>
-
 
                                 <div class="field btns">
                                     <button class="prev-1 prev">Previous</button>
@@ -1086,8 +1084,13 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="Search" class="form-label">Search Phone Number</label>
-                                        <input class="form-control @error('pl_phone_id') is-invalid @enderror"  id="pl_phone_id" placeholder="Type to search..." name="pl_phone_id">
-                                       
+                                        <input class="form-control @error('pl_phone_id') is-invalid @enderror" id="pl_phone_id" placeholder="Type to search..." name="pl_phone_id">
+                                        <table>
+                                            <tbody id="content_manager">
+
+                                            </tbody>
+                                        </table>
+
                                         @error('pl_phone_id')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -1102,7 +1105,7 @@
                                         </label>
 
                                     </div>
-                                    <div id="dvAddShipper" style="display: none">
+                                    <div id="dvAddShipper">
                                         <hr>
                                         <div class="row">
 
@@ -1247,7 +1250,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div id="dvCompany" style="display: none">
-                                            <input type="text" class="form-control @error('consignee_business') is-invalid @enderror" id="consignee_business" name="consignee_business" placeholder="Business Title" />
+                                            <input type="text" class="form-control @error('consignee_business') is-invalid @enderror" id="consignee_business" value="" name="consignee_business" placeholder="Business Title" />
                                             @error('consignee_business')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -1352,11 +1355,13 @@
 <script>
     $(document).ready(function() {
 
+
         $(function() {
             $("#chkPassport").click(function() {
+
                 if ($(this).is(":checked")) {
 
-                    $("#exampleDataList").val('');
+                    $("#pl_phone_id").val('');
                     $("#dvAddShipper").show();
                 } else {
                     $("#dvAddShipper").hide();
@@ -1369,106 +1374,90 @@
                 if ($(this).is(":checked")) {
                     $("#dvCompany").show();
                 } else {
+                    $("#consignee_business").val('');
                     $("#dvCompany").hide();
                 }
             });
         });
 
         $(function() {
-            $("#pl_discount").blur(function() {
+                $("#pl_discount").blur(function() {
 
-                var pl_charges = parseInt($('#pl_charges').val());
-                var pl_extras = parseInt($('#pl_extras').val());
-                var pl_discount = parseInt($('#pl_discount').val());
-                var pl_total = (pl_charges + pl_extras) - pl_discount;
-                $('#pl_final').val(pl_total);
+                    var pl_charges = parseInt($('#pl_charges').val());
+                    var pl_extras = parseInt($('#pl_extras').val());
+                    var pl_discount = parseInt($('#pl_discount').val());
+                    var pl_total = (pl_charges + pl_extras) - pl_discount;
+                    $('#pl_final').val(pl_total);
 
-            }); // discount blur function closed
-            $("#pl_charges").blur(function() {
+                }); // discount blur function closed
+                $("#pl_charges").blur(function() {
 
-                var pl_charges = parseInt($('#pl_charges').val());
-                var pl_extras = parseInt($('#pl_extras').val());
-                var pl_discount = parseInt($('#pl_discount').val());
-                var pl_total = (pl_charges + pl_extras) - pl_discount;
-                $('#pl_final').val(pl_total);
+                    var pl_charges = parseInt($('#pl_charges').val());
+                    var pl_extras = parseInt($('#pl_extras').val());
+                    var pl_discount = parseInt($('#pl_discount').val());
+                    var pl_total = (pl_charges + pl_extras) - pl_discount;
+                    $('#pl_final').val(pl_total);
 
-            }); // discount blur function closed
-            $("#pl_extras").blur(function() {
+                }); // discount blur function closed
+                $("#pl_extras").blur(function() {
 
-                var pl_charges = parseInt($('#pl_charges').val());
-                var pl_extras = parseInt($('#pl_extras').val());
-                var pl_discount = parseInt($('#pl_discount').val());
-                var pl_total = (pl_charges + pl_extras) - pl_discount;
-                $('#pl_final').val(pl_total);
+                    var pl_charges = parseInt($('#pl_charges').val());
+                    var pl_extras = parseInt($('#pl_extras').val());
+                    var pl_discount = parseInt($('#pl_discount').val());
+                    var pl_total = (pl_charges + pl_extras) - pl_discount;
+                    $('#pl_final').val(pl_total);
 
-            }); // discount blur function closed
+                }); // discount blur function closed
 
-            $('.parcel_allocate').on('click', function(e) {
-                e.preventDefault();
+                $('.parcel_allocate').on('click', function(e) {
+                    e.preventDefault();
 
-                $('#parcell_id').val($(this).data('id'));
-                $('#service_used_id').val($(this).data('prod-id'));
+                    $('#parcell_id').val($(this).data('id'));
+                    $('#service_used_id').val($(this).data('prod-id'));
 
-                var pl_id = ($(this).data('id'));
-                var service_id = ($(this).data('prod-id'));
-                // alert(pl_id);
-                // alert(service_id);
-                if (service_id) {
+                    var pl_id = ($(this).data('id'));
+                    var service_id = ($(this).data('prod-id'));
+                    // alert(pl_id);
+                    // alert(service_id);
+                    if (service_id) {
 
-                    $.ajax({
-                        url: "{{ url('/getSelected') }}/" + service_id,
-                        type: "GET",
-                        //    data : {"_token":"{{ csrf_token() }}"},
-                        //    dataType: "json",
-                        success: function(data) {
-                            console.log(data);
-                            if (data) {
-                                $('#vendor_id').empty();
-                                $('#vendor_id').append(
-                                    '<option hidden>Choose Vendor</option>');
-                                $.each(data, function(key, course) {
-                                    $('select[name="vendor_id"]').append(
-                                        '<option value="' + course.id +
-                                        '">' + course.logistic_name +
-                                        '</option>');
-                                });
-                            } else {
-                                $('#vendor_id').empty();
+                        $.ajax({
+                            url: "{{ url('/getSelected') }}/" + service_id,
+                            type: "GET",
+                            //    data : {"_token":"{{ csrf_token() }}"},
+                            //    dataType: "json",
+                            success: function(data) {
+                                console.log(data);
+                                if (data) {
+                                    $('#vendor_id').empty();
+                                    $('#vendor_id').append(
+                                        '<option hidden>Choose Vendor</option>');
+                                    $.each(data, function(key, course) {
+                                        $('select[name="vendor_id"]').append(
+                                            '<option value="' + course.id +
+                                            '">' + course.logistic_name +
+                                            '</option>');
+                                    });
+                                } else {
+                                    $('#vendor_id').empty();
+                                }
                             }
-                        }
-                    });
-                } else {
-                    $('#vendor_id').empty();
-                }
-
-            });
-
-            $('.tracking_btn').on('click', function(e) {
-                e.preventDefault();
-                // alert(1);
-                var track_id = $('#parcell_idd').val(this.id);
-
-
-                $.ajax({
-                    // url: "{{ url('/getDeliveredStatus') }}/" + pl_id,
-                    // type: "GET",
-                    //    data : {"_token":"{{ csrf_token() }}"},
-                    //    dataType: "json",
-                    success: function(data_id) {
-                        console.log(response);
-                        alert(data_id);
-                        // if (data) {
-                        //     $('.tracking_btn').empty();
-                        //     $('.tracking_btn').append('data.id');
-
-                        // } else {
-                        //     $('.tracking_btn').empty();
-                        // }
+                        });
+                    } else {
+                        $('#vendor_id').empty();
                     }
+
                 });
 
+                $('.tracking_btn').on('click', function(e) {
+                        e.preventDefault();
+                        // alert(1);
+                         track_id = this.id;
+                         $('#parcell_idd').val(this.id);
+                        // console.log(data_id);
 
-            });
+
+                });
 
             $('.charges_btn').on('click', function(e) {
                 e.preventDefault();
@@ -1505,16 +1494,39 @@
             });
         });
 
-        $(":input").inputmask();
+    $(":input").inputmask();
 
-        function togglePassword() {
-            var x = document.getElementById("userpassword");
-            if (x.type === "password") {
-                x.type = "text";
-            } else {
-                x.type = "password";
-            }
+    function togglePassword() {
+        var x = document.getElementById("userpassword");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
         }
+    }
+
+    $('#pl_phone_id').on('blur', function() {
+
+        $value = $(this).val();
+        // alert($value);
+        $.ajax({
+
+            url: "{{ url('/search') }}",
+            type: "GET",
+            data: {
+                'search': $value
+            },
+            success: function(data) {
+
+                console.log(data);
+
+                $('#pl_phone_id').val(data.shipper_phone);
+
+            }
+
+        })
+
+    });
 
     }); //ready function closed
 </script>
@@ -1533,4 +1545,35 @@
         });
     });
     //form-wizard
+</script>
+
+<script>
+    $('body').on('submit','#vendor-tracking-id',function(e){
+        e.preventDefault();
+        var fdata = new FormData(this);
+        // console.log(Object.fromEntries(fdata)); return false;
+        $.ajax({
+            url: "{{ route('vendor-tracking') }}",
+            type: "POST",
+            data: fdata,
+            processData: false,
+            contentType: false,
+            // processCache : false,
+            success: function(data) {
+                
+              if(data.success == 0){
+                $.each(data.errors,function(x,y){
+                    toastr.error(y[0],'error');
+                });
+              }
+              if(data.success == 1){
+                $('#trackingModal_'+track_id).text(data.data.vendor_tracking_id);
+                toastr.success('record updated','success');
+                // console.log(track_id);
+              }
+
+            }
+
+        })
+    });
 </script>

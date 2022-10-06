@@ -217,7 +217,7 @@ class ParcelController extends Controller
             return redirect()->back()->with('error', "Consignee Datails not Inserted!");
         }
 
-        $a = $request->userData['0']['disp_content'];
+        // $a = $request->userData['0']['disp_content'];
 
 
         for ($i = 0; $i < count($request->userData); $i++) {
@@ -237,7 +237,7 @@ class ParcelController extends Controller
             session()->now('message', 'Success! parcel Added.');
         }
 
-        // dd(25);
+        dd(25);
 
         if ($data) {
             return redirect()->back()->with('success', "Record inserted Successfully");
@@ -321,4 +321,25 @@ class ParcelController extends Controller
             return redirect()->back()->with('success', "Record Not Deleted...");
         }
     }
+
+    public function search(Request $request){
+        
+        
+        // dd($request->all());
+        $output = "";
+        $employee = ParcelShipper::where('shipper_phone', 'Like' ,'%'.$request->search.'%')->first();
+
+        // foreach($employee as $row){
+
+        //     $output.=
+        //     '<tr>
+        //     <td>'.$row->shipper_phone.'<td>
+        //     <tr>';
+
+        // }
+
+        return response($employee);
+    }
+
+
 }

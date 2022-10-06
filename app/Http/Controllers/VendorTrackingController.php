@@ -6,27 +6,28 @@ use App\Models\Parcel;
 use App\Models\VendorCharges;
 use App\Models\VendorIdTracking;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class VendorTrackingController extends Controller
 {
     //
     public function vendor_tracking(Request $request){
 
-        // dd($request->all());
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'parcell_idd' => 'required',
             'tracking_idd' => 'required',
         ]);
+ 
+        if ($validator->fails()) {
+            $errors = $validator->errors();
+            return response()->json(['success' => 0,'errors' => $errors]);
+        }
         $data = [
             'pl_id' => $request->parcell_idd,
             'vendor_tracking_id' => $request->tracking_idd,
         ];
-        //  $data =VendorIdTracking::create($data);
          $data_id = VendorIdTracking::create($data);
-        // dd($data_id);
-        // $shipping = VendorIdTracking::where('id', $data_id)->get();
-        return response()->json($data_id);
-        //  return redirect()->back()->with('success',"Vendor Tracking ID has been assigned.");
+        return response()->json(['success' => 1,'data' => $data_id]);
     }
     public function vendor_tracking_charges(Request $request){
 
@@ -39,7 +40,7 @@ class VendorTrackingController extends Controller
             'pl_id' => $request->parcell_iddd,
             'vendor_tracking_charges' => $request->vendor_charges,
         ];
-         $data = VendorIdTracking::create($data);
+         $data = VendorCharges::create($data);
         
          return redirect()->back()->with('success',"Vendor Charges has been Updated.");
     }

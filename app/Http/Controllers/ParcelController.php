@@ -248,12 +248,21 @@ class ParcelController extends Controller
 
     public function edit_parcel($id)
     {
-        // dd($id);
+        dd($id);
         $data = Parcel::find($id);
         $countries = Country::all();
         // dd($data);
         return view('admin-panel.parcels.edit_parcel', compact('data', 'countries'));
     }
+    public function parcel_details($id)
+    {
+        // dd($id);
+        $data = Parcel::where('id',$id)->first();
+        // dd($data);
+        
+        return view('admin-panel.parcels.parcel_details', compact('data'));
+    }
+
     public function update_parcel(Request $request, $id)
     {
         // dd($request->all());

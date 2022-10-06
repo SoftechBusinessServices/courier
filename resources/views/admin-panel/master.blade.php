@@ -54,6 +54,7 @@
     <!-- Datatable init js -->
     <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
     <script src="{{ asset('assets/js/app.js') }}"></script>
+    <script src="{{ asset('assets/js/script.js') }}"></script>
 
     <!-- echarts js -->
     <script src="{{ asset('assets/libs/echarts/echarts.min.js') }}"></script>
@@ -68,7 +69,7 @@
       <!-- form repeater js -->
       <script src="{{ asset('assets/libs/jquery.repeater/jquery.repeater.min.js')}}"></script>
 
-      <script src="{{ asset('assets/js/pages/form-repeater.int.js')}}"></script>
+     
 
 
     {{-- toastr js --}}

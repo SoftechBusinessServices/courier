@@ -42,7 +42,6 @@
                         <a class="btn btn-primary" data-toggle="collapse" href="#processtable" role="button" aria-expanded="false" aria-controls="collapseExample">Processed
                             Parcels</a>
 
-
                     </div>
                 </div>
             </div>
@@ -118,12 +117,11 @@
                                                 <th>Parcel ID</th>
                                                 <th>Parcel<br>Destination</th>
                                                 <th>Despatch<br>Date</th>
-                                                {{-- <th>Subcategories</th> --}}
                                                 <th>Weight <br>(kilogram)</th>
                                                 <th>Parcel <br>Charges</th>
                                                 <th>Required<br>Service</th>
+                                                <th>Print<br>Options</th>
                                                 <th>Parcel<br>Status</th>
-                                                {{-- <th>Action</th> --}}
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -135,7 +133,7 @@
                                             <tr>
                                                 <td>{{ $i++ }}</td>
                                                 <td>
-                                                    <a href="{{ url('fetch-region/' . $item->id) }}" class="btn btn-outline-secondary btn-sm delete" title="View">
+                                                    <a href="{{ url('parcel-details/' . $item->id) }}" class="btn btn-outline-secondary btn-sm delete" title="View">
                                                         <i class="far fa-eye"> {{ $item->pl_id }}</i>
                                                     </a>
                                                 </td>
@@ -151,21 +149,16 @@
                                                 <td> {{ $item->pl_final }} </td>
                                                 <td> {{ $item->parcel_service->service_name }} </td>
                                                 <td>
+                                                    <a href="{{ url('/dispatch-notes-print-view') }}" class="btn btn-success waves-effect waves-light me-1 btn-sm"><i class="fa fa-print">Notes</i></a>
+                                                    |
+                                                    <a href="{{ url('/customer-receipt-print-view') }}" class="btn btn-info waves-effect waves-light me-1 btn-sm"><i class="fa fa-print">Receipt</i></a>
+                                                </td>
+                                                <td>
                                                     <a id="todolink" class="btn btn-outline-info btn-sm parcel_allocate" title="add" data-bs-toggle="modal" data-bs-target="#allocatemodal" href="#allocatemodal" data-id="{{ $item->pl_id }}" data-prod-id="{{ $item->service_id }}">
                                                         Allocate
                                                     </a>
                                                 </td>
-                                                {{-- <td style="">
-                                                            <a href="{{ url('edit-parcel/' . $item->id) }}"
-                                                class="btn btn-outline-warning btn-sm delete"
-                                                title="Edit">
-                                                <i class="fas fa-pencil-alt"></i>
-                                                </a>
-                                                |
-                                                <a href="{{ url('delete-parcel/' . $item->id) }}" class="btn btn-outline-danger btn-sm delete" title="Delete" onclick="return confirm('Are you sure to delete Record?')">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                </a>
-                                                </td> --}}
+
                                             </tr>
                                             @endforeach
                                             @else
@@ -208,14 +201,14 @@
                                                     <th>Parcel ID</th>
                                                     <th>Parcel<br>Destination</th>
                                                     <th>Despatch<br>Date</th>
-                                                    {{-- <th>Subcategories</th> --}}
+
                                                     <th>Weight<br>(kilogram)</th>
                                                     <th>Parcel<br>Cost</th>
                                                     <th>Vendor<br>Name</th>
                                                     <th>Tracking<br>ID</th>
                                                     <th>Vendor<br>Charges</th>
                                                     <th>Parcel<br>Status</th>
-                                                    {{-- <th>Action</th>  --}}
+
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -227,8 +220,7 @@
                                                 <tr>
                                                     <td>{{ $i++ }}</td>
                                                     <td>
-
-                                                        <a href="{{ url('fetch-region/' . $item->id) }}" class="btn btn-outline-secondary btn-sm delete" title="View">
+                                                        <a href="{{ url('parcel-details/' . $item->id) }}" class="btn btn-outline-secondary btn-sm delete" title="View">
                                                             <i class="far fa-eye"> {{ $item->pl_id }}</i>
                                                         </a>
                                                     </td>
@@ -535,54 +527,6 @@
         </div>
     </div>
 </div>
-<!------------------Allocate Modal---------------------->
-{{-- <div class="modal fade" id="allocatedmodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header" style="background-color: #d6dbf8">
-                <h5 class="modal-title">Allocate Your Parcel to a Vendor</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="{{ url('store-allocate') }}" method="POST" id="allocateform" novalidate >
-@csrf
-<div class="row mb-3">
-    <div class="col-md-6">
-        <label for="">Parcel ID</label>
-        <input type="text" name="parcell_id" value="" id="parcell_id" class="form-control" readonly>
-    </div>
-    <div class="col-md-6">
-        <label for="">Service Used</label>
-        <input type="text" name="service_used_id" value="" id="service_used_id" class="form-control" readonly>
-    </div>
-    <div class="col">
-        <label for="">Select Vendor</label>
-        <select name="vendor_id" required class="form-select table-responsive @error('vendor_id') is-invalid @enderror">
-            @foreach ($logistics as $logistic)
-            <option value="{{ $logistic->id }}">
-                {{ $logistic->vendor_name }}
-            </option>
-            @endforeach
-        </select>
-        @error('vendor_id')
-        <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-        @enderror
-    </div>
-</div>
-
-<div class="modal-footer">
-    <!-- Toogle to second dialog -->
-    <button type="submit" form="allocateform" class="btn btn-primary " id="modal_submit" value="Submit">Submit</button>
-    <button type="button" class="btn btn-secondary" id="modal_close1" data-bs-dismiss="modal">Close</button>
-</div>
-</div>
-</form>
-
-</div>
-</div>
-</div> --}}
 
 <!------------------User Modal---------------------->
 <div class="modal fade" id="paymentmodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
@@ -671,6 +615,7 @@
                     <div class="mb-3">
                         <label for="userpassword" for="password-confirm" class="form-label">{{ __('Confirm Password') }}</label>
                         <input id="password-confirm" type="password" class="form-control @error('company_phone') is-invalid @enderror" name="password_confirmation" required autocomplete="new-password" value="{{ old('password_confirmation') }}">
+
                         @error('password_confirmation')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -859,15 +804,43 @@
             </div>
             <div class="modal-body">
                 <!-- This script got from frontendfreecode.com -->
-                <form method="POST" action="{{ route('store-parcel') }}" enctype="multipart/form-data" novalidate>
-                    @csrf
-                    <div class="container">
-                        <div id="app">
-                            <step-navigation :steps="steps" :currentstep="currentstep">
-                            </step-navigation>
-
-                            <div v-show="currentstep == 1">
-
+                <div class="container">
+                    <header>Signup Form</header>
+                    <!-- <div class="progress-bar">
+                        <div class="step">
+                        <p>Name</p>
+                        <div class="bullet">
+                            <span>1</span>
+                        </div>
+                        <div class="check fas fa-check"></div>
+                        </div>
+                        <div class="step">
+                        <p>Contact</p>
+                        <div class="bullet">
+                            <span>2</span>
+                        </div>
+                        <div class="check fas fa-check"></div>
+                        </div>
+                        <div class="step">
+                        <p>Birth</p>
+                        <div class="bullet">
+                            <span>3</span>
+                        </div>
+                        <div class="check fas fa-check"></div>
+                        </div>
+                        <div class="step">
+                        <p>Submit</p>
+                        <div class="bullet">
+                            <span>4</span>
+                        </div>
+                        <div class="check fas fa-check"></div>
+                        </div>
+                    </div> -->
+                    <div class="form-outer">
+                        <form method="POST" action="{{ route('store-parcel') }}" enctype="multipart/form-data" novalidate>
+                            @csrf
+                            <div class="page slide-page">
+                                <div class="title">Parcel Details:</div>
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="mb-3">
@@ -897,7 +870,7 @@
                                         <div class="mb-3">
                                             <label for="basicpill-namecard-input">Select Shipping Service</label>
                                             <select name="service_id" id="service_id" class="form-control @error('serrvice_id') is-invalid @enderror">
-                                                <option value=""> ----Choose one Service---- </option>
+                                                <option value="">- Choose one Service -</option>
                                                 @foreach ($services as $row)
                                                 <option value="{{ $row->id }}"> {{ $row->service_name }}
                                                 </option>
@@ -969,7 +942,7 @@
                                         <div class="mb-3">
                                             <label for="basicpill-namecard-input">Select Payment Method</label>
                                             <select name="payment_method_id" id="payment_method_id" class="form-control @error('payment_method_id') is-invalid @enderror">
-                                                <option value="">-- Select Payment Method --</option>
+                                                <option value="">- Select Payment Method -</option>
                                                 @foreach ($payment_methods as $row)
                                                 <option value="{{ $row->id }}"> {{ $row->payment_method }}
                                                 </option>
@@ -997,9 +970,13 @@
                                     </div>
                                 </div>
 
+                                <div class="field">
+                                    <button class="firstNext next">Next</button>
+                                </div>
                             </div>
 
-                            <div v-show="currentstep == 2">
+                            <div class="page">
+                                <div class="title">Dispatch Notes:</div>
 
                                 <div class="repeater">
                                     <div data-repeater-list="userData">
@@ -1075,13 +1052,20 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <input data-repeater-create="" type="button" class="btn btn-success btn-sm" value="Add Notes"><br><br>
-                                    {{-- <input type="submit" form="notform" name="submit" class="btn btn-primary" value="Submit">  --}}
+                                    <input data-repeater-create="" type="button" class="btn btn-success btn-sm btn-block" value="Add Notes"><br><br>
+
                                 </div>
 
+
+                                <div class="field btns">
+                                    <button class="prev-1 prev">Previous</button>
+                                    <button class="next-1 next">Next</button>
+                                </div>
                             </div>
 
-                            <div v-show="currentstep == 3">
+                            <div class="page">
+                                <div class="title">Shipper Details:</div>
+
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label for="Tracking" class="form-label">Tracking ID</label>
@@ -1102,305 +1086,265 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="Search" class="form-label">Search Phone Number</label>
-                                        <input class="form-control @error('pl_phone_id') is-invalid @enderror" list="datalistOptions" id="exampleDataList" placeholder="Type to search..." name="pl_phone_id">
-                                        <datalist id="datalistOptions">
-                                            @foreach ($services as $item)
-                                            <option value="{{ $item->id }}">
-                                                {{ $item->service_name }}
-                                            </option>
-                                            @endforeach
-                                        </datalist>
+                                        <input class="form-control @error('pl_phone_id') is-invalid @enderror"  id="pl_phone_id" placeholder="Type to search..." name="pl_phone_id">
+                                       
                                         @error('pl_phone_id')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                         @enderror
                                     </div>
-                                    {{-- <div class="col-md-6">
-                                        <label for="service" class="form-label">Services Type</label>
-                                        <input type="text" data-inputmask="'mask': '0399-99999999'" type="number"
-                                            maxlength="12" class="form-control @error('company_phone') is-invalid @enderror"
-                                            name="company_phone" value="{{ old('company_phone') }}" required autocomplete="phone"
-                                    autofocus>
 
-                                    @error('company_phone')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div> --}}
-                                <div class="col-md-6 mt-4">
-                                    <label for="chkPassport ">
-                                        <input type="checkbox" id="chkPassport" />
-                                        Add New Shipper
-                                    </label>
+                                    <div class="col-md-6 mt-4">
+                                        <label for="chkPassport ">
+                                            <input type="checkbox" id="chkPassport" />
+                                            Add New Shipper
+                                        </label>
 
-                                </div>
-                                <div id="dvAddShipper" style="display: none">
-                                    <hr>
-                                    <div class="row">
+                                    </div>
+                                    <div id="dvAddShipper" style="display: none">
+                                        <hr>
+                                        <div class="row">
 
-                                        <div class="col-md-6">
-                                            <label for="username2" class="form-label">Company
-                                                Name</label>
-                                            <input type="text" placeholder="Company Name" required class="form-control @error('company_name') is-invalid @enderror" name="company_name" value="{{ old('company_name') }}" required autocomplete="company_name" autofocus>
+                                            <div class="col-md-6">
+                                                <label for="username2" class="form-label">Company
+                                                    Name</label>
+                                                <input type="text" placeholder="Company Name" required class="form-control @error('company_name') is-invalid @enderror" name="company_name" value="{{ old('company_name') }}" required autocomplete="company_name" autofocus>
 
-                                            @error('company_name')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
+                                                @error('company_name')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="service" class="form-label">Shipper Phone:</label>
+                                                <input type="text" name="shipper_phone" data-inputmask="'mask': '0399-99999999'" type="number" maxlength="12" class="form-control @error('shipper_phone') is-invalid @enderror" name="company_phone" value="{{ old('shipper_phone') }}" required autocomplete="phone" autofocus>
+
+                                                @error('shipper_phone')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
+
                                         </div>
-                                        <div class="col-md-6">
-                                            <label for="username3" class="form-label">Contact
-                                                Person</label>
-                                            <input type="text" data-inputmask="'mask': '0399-99999999'" required="" type="number" maxlength="12" name="shipper_phone" class="form-control @error('shipper_phone') is-invalid @enderror" @error('shipper_phone') <span class="invalid-feedback" role="alert">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <label for="basicpill-phoneno-input">Select Country:</label>
+                                                <select class="form-control @error('shipper_country_id') is-invalid @enderror" name="shipper_country_id" id="shipper_country_id">
+                                                    <option value=""> ------------- Select One Country
+                                                        -------------
+                                                    </option>
+                                                    @foreach ($countries as $country)
+                                                    <option value="{{ $country->id }}">
+                                                        {{ $country->name }}
+                                                    </option>
+                                                    @endforeach
+                                                </select>
+                                                @error('shipper_country_id')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="basicpill-phoneno-input">State/
+                                                    Province /Region:</label>
+                                                <input type="text" class="form-control @error('shipper_state') is-invalid @enderror" name="shipper_state" id="shipper_state">
+                                                @error('shipper_state')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label for="basicpill-phoneno-input">City:</label>
+                                                <input type="text" class="form-control @error('shipper_city') is-invalid @enderror" name="shipper_city" id="shipper_city">
+                                                @error('shipper_city')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="basicpill-phoneno-input">ZIP:</label>
+                                                <input type="text" class="form-control @error('shipper_zip') is-invalid @enderror" name="shipper_zip" id="shipper_zip">
+                                                @error('shipper_zip')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label for="basicpill-phoneno-input">Address
+                                                    Line1:</label>
+                                                <input type="text" class="form-control @error('shipper_add1') is-invalid @enderror" name="shipper_add1" id="shipper_add1">
+                                                @error('shipper_add1')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="basicpill-phoneno-input">Address
+                                                    Line2:</label>
+                                                <input type="text" class="form-control @error('shipper_add2') is-invalid @enderror" name="shipper_add2" id="shipper_add2">
+                                                @error('shipper_add2')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="field btns">
+                                    <button class="prev-2 prev">Previous</button>
+                                    <button class="next-2 next">Next</button>
+                                </div>
+                            </div>
+
+                            <div class="page">
+                                <div class="title">Consignee Details:</div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="username0" class="form-label">Consignee
+                                            Name</label>
+                                        <input type="text" placeholder="Receiver Name" required class="form-control @error('consignee_name') is-invalid @enderror" name="consignee_name" value="{{ old('consignee_name') }}" required autocomplete="name" autofocus>
+
+                                        @error('consignee_name')
+                                        <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="username13" class="form-label">Receiver Phone
+                                            Number</label>
+                                        <input type="text" data-inputmask="'mask': '0399-99999999'" type="number" maxlength="12" class="form-control @error('consignee_phone') is-invalid @enderror" name="consignee_phone" value="{{ old('consignee_phone') }}" required autocomplete="consignee_phone" autofocus>
 
+                                        @error('consignee_phone')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <label for="basicpill-phoneno-input">Select Country:</label>
-                                            <select class="form-control @error('shipper_country_id') is-invalid @enderror" name="shipper_country_id" id="shipper_country_id">
-                                                <option value=""> ------------- Select One Country
-                                                    -------------
-                                                </option>
-                                                @foreach ($countries as $country)
-                                                <option value="{{ $country->id }}">
-                                                    {{ $country->name }}
-                                                </option>
-                                                @endforeach
-                                            </select>
-                                            @error('shipper_country_id')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="basicpill-phoneno-input">State/
-                                                Province /Region:</label>
-                                            <input type="text" class="form-control @error('shipper_state') is-invalid @enderror" name="shipper_state" id="shipper_state">
-                                            @error('shipper_state')
+                                </div>
+                                <div class="row mt-3 mb-2">
+                                    <div class="col-md-6">
+                                        <label for="chkCompany">
+                                            <input type="checkbox" id="chkCompany" />
+                                            Is it Business?
+                                        </label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div id="dvCompany" style="display: none">
+                                            <input type="text" class="form-control @error('consignee_business') is-invalid @enderror" id="consignee_business" name="consignee_business" placeholder="Business Title" />
+                                            @error('consignee_business')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label for="basicpill-phoneno-input">City:</label>
-                                            <input type="text" class="form-control @error('shipper_city') is-invalid @enderror" name="shipper_city" id="shipper_city">
-                                            @error('shipper_city')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="basicpill-phoneno-input">ZIP:</label>
-                                            <input type="text" class="form-control @error('shipper_zip') is-invalid @enderror" name="shipper_zip" id="shipper_zip">
-                                            @error('shipper_zip')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label for="basicpill-phoneno-input">Select Country:</label>
+                                        <select class="form-control @error('consignee_country_id') is-invalid @enderror" name="consignee_country_id" id="consignee_country_id">
+                                            <option value=""> ------------- Select One Country -------------
+                                            </option>
+                                            @foreach ($countries as $country)
+                                            <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('consignee_country_id')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label for="basicpill-phoneno-input">Address
-                                                Line1:</label>
-                                            <input type="text" class="form-control @error('shipper_add1') is-invalid @enderror" name="shipper_add1" id="shipper_add1">
-                                            @error('shipper_add1')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="basicpill-phoneno-input">Address
-                                                Line2:</label>
-                                            <input type="text" class="form-control @error('shipper_add2') is-invalid @enderror" name="shipper_add2" id="shipper_add2">
-                                            @error('shipper_add2')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
+                                    <div class="col-md-6">
+                                        <label for="basicpill-phoneno-input">State/
+                                            Province /Region:</label>
+                                        <input type="text" class="form-control @error('consignee_state') is-invalid @enderror" name="consignee_state" id="consignee_region">
+                                        @error('consignee_state')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="basicpill-phoneno-input">City:</label>
+                                        <input type="text" class="form-control @error('consignee_city') is-invalid @enderror" name="consignee_city" id="consignee_city">
+                                        @error('consignee_city')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="basicpill-phoneno-input">ZIP:</label>
+                                        <input type="text" class="form-control @error('consignee_zip') is-invalid @enderror" name="consignee_zip" id="consignee_zip">
+                                        @error('consignee_zip')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="basicpill-phoneno-input">Address
+                                            Line1:</label>
+                                        <input type="text" class="form-control @error('consignee_add1') is-invalid @enderror" name="consignee_add1" id="consignee_add1">
+                                        @error('consignee_add1')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="basicpill-phoneno-input">Address
+                                            Line2:</label>
+                                        <input type="text" class="form-control @error('consignee_add2') is-invalid @enderror" name="consignee_add2" id="consignee_add2">
+                                        @error('consignee_add2')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="row mt-3 mb-2">
 
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div v-show="currentstep == 4">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="username0" class="form-label">Consignee
-                                    Name</label>
-                                <input type="text" placeholder="Receiver Name" required class="form-control @error('consignee_name') is-invalid @enderror" name="consignee_name" value="{{ old('consignee_name') }}" required autocomplete="name" autofocus>
 
-                                @error('consignee_name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <div class="col-md-6">
-                                <label for="username13" class="form-label">Receiver Phone
-                                    Number</label>
-                                <input type="text" data-inputmask="'mask': '0399-99999999'" type="number" maxlength="12" class="form-control @error('consignee_phone') is-invalid @enderror" name="consignee_phone" value="{{ old('consignee_phone') }}" required autocomplete="consignee_phone" autofocus>
 
-                                @error('consignee_phone')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="row mt-3 mb-2">
-                            <div class="col-md-6">
-                                <label for="chkCompany">
-                                    <input type="checkbox" id="chkCompany" />
-                                    Is it Business?
-                                </label>
-                            </div>
-                            <div class="col-md-6">
-                                <div id="dvCompany" style="display: none">
-                                    <input type="text" class="form-control @error('consignee_business') is-invalid @enderror" id="consignee_business" name="consignee_business" placeholder="Business Title" />
-                                    @error('consignee_business')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
+                                <div class="field btns">
+                                    <button class="prev-3 prev">Previous</button>
+                                    <button class="submit">Submit</button>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <label for="basicpill-phoneno-input">Select Country:</label>
-                                <select class="form-control @error('consignee_country_id') is-invalid @enderror" name="consignee_country_id" id="consignee_country_id">
-                                    <option value=""> ------------- Select One Country -------------
-                                    </option>
-                                    @foreach ($countries as $country)
-                                    <option value="{{ $country->id }}">{{ $country->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('consignee_country_id')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <div class="col-md-6">
-                                <label for="basicpill-phoneno-input">State/
-                                    Province /Region:</label>
-                                <input type="text" class="form-control @error('consignee_state') is-invalid @enderror" name="consignee_state" id="consignee_region">
-                                @error('consignee_state')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="basicpill-phoneno-input">City:</label>
-                                <input type="text" class="form-control @error('consignee_city') is-invalid @enderror" name="consignee_city" id="consignee_city">
-                                @error('consignee_city')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <div class="col-md-6">
-                                <label for="basicpill-phoneno-input">ZIP:</label>
-                                <input type="text" class="form-control @error('consignee_zip') is-invalid @enderror" name="consignee_zip" id="consignee_zip">
-                                @error('consignee_zip')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="basicpill-phoneno-input">Address
-                                    Line1:</label>
-                                <input type="text" class="form-control @error('consignee_add1') is-invalid @enderror" name="consignee_add1" id="consignee_add1">
-                                @error('consignee_add1')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                            <div class="col-md-6">
-                                <label for="basicpill-phoneno-input">Address
-                                    Line2:</label>
-                                <input type="text" class="form-control @error('consignee_add2') is-invalid @enderror" name="consignee_add2" id="consignee_add2">
-                                @error('consignee_add2')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mt-3 mb-2">
-                            <div class="col-md-6">
-                                Dispatch Notes Printout
-                                <a href="{{ url('/dispatch-notes-print-view') }}" class="btn btn-info waves-effect waves-light me-1"><i class="fa fa-print"></i></a>
-                            </div>
-                            <div class="col-md-6">
-                                Customer Receipt Printout
-                                <a href="{{ url('/customer-receipt-print-view') }}" class="btn btn-info waves-effect waves-light me-1"><i class="fa fa-print"></i></a>
-                            </div>
-                        </div>
+                        </form>
                     </div>
-
-                    <step v-for="step in steps" :currentstep="currentstep" :key="step.id" :step="step" :stepcount="steps.length" @step-change="stepChanged">
-                    </step>
-
-                    <script type="x-template" id="step-navigation-template">
-                        <ol class="step-indicator">
-                                <li v-for="step in steps" is="step-navigation-step" :key="step.id" :step="step" :currentstep="currentstep">
-                                </li>
-                            </ol>
-                        </script>
-
-                    <script type="x-template" id="step-navigation-step-template">
-                        <li :class="indicatorclass">
-                                <div class="step"><i :class="step.icon_class"></i></div>
-                                <div class="caption hidden-xs hidden-sm">Step <span v-text="step.id"></span>: <span v-text="step.title"></span></div>
-                            </li>
-                        </script>
-
-                    <script type="x-template" id="step-template">
-                        <div class="step-wrapper float-end" :class="stepWrapperClass">
-                                <button type="button" class="btn btn-primary mx-1" @click="lastStep" :disabled="firststep">
-                                    &#60; Back
-                                </button>
-                                <button type="button" class="btn btn-primary mx-1" @click="nextStep" :disabled="laststep">
-                                    Next &#62;
-                                </button>
-                                <button type="submit" class="btn btn-primary mx-1" v-if="laststep">
-                                    Submit
-                                </button>
-                            </div>
-                        </script>
+                </div>
             </div>
         </div>
-        </form>
-
     </div>
 </div>
 </div>
-</div>
+
 
 
 <!---------------------- JAVASCRIPT-------------------->
@@ -1502,7 +1446,28 @@
             $('.tracking_btn').on('click', function(e) {
                 e.preventDefault();
                 // alert(1);
-                $('#parcell_idd').val(this.id);
+                var track_id = $('#parcell_idd').val(this.id);
+
+
+                $.ajax({
+                    // url: "{{ url('/getDeliveredStatus') }}/" + pl_id,
+                    // type: "GET",
+                    //    data : {"_token":"{{ csrf_token() }}"},
+                    //    dataType: "json",
+                    success: function(data_id) {
+                        console.log(response);
+                        alert(data_id);
+                        // if (data) {
+                        //     $('.tracking_btn').empty();
+                        //     $('.tracking_btn').append('data.id');
+
+                        // } else {
+                        //     $('.tracking_btn').empty();
+                        // }
+                    }
+                });
+
+
             });
 
             $('.charges_btn').on('click', function(e) {
@@ -1510,6 +1475,7 @@
                 // alert(2);
                 $('#parcell_iddd').val(this.id);
             });
+
 
             $('.delivered_status').on('click', function(e) {
                 e.preventDefault();
@@ -1526,7 +1492,7 @@
                             console.log(data);
                             if (data) {
                                 $('.delivered_status').empty();
-                                $('.delivered_status').append('already delivered');
+                                $('.delivered_status').append('Done');
 
                             } else {
                                 $('.delivered_status').empty();
@@ -1539,12 +1505,21 @@
             });
         });
 
+        $(":input").inputmask();
+
+        function togglePassword() {
+            var x = document.getElementById("userpassword");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
 
     }); //ready function closed
 </script>
 <script data-rishi-type="text/javascript" data-cfasync="false" data-no-optimize="1" data-no-defer="1" data-no-minify="1">
     $(document).ready(function() {
-
 
         $('.repeater').repeater({
             show: function() {
@@ -1557,131 +1532,5 @@
             },
         });
     });
-</script>
-{{-- <script>
-    $(":input").inputmask();
-</script>  --}}
-<script>
-    Vue.component("step-navigation-step", {
-        template: "#step-navigation-step-template",
-
-        props: ["step", "currentstep"],
-
-        computed: {
-            indicatorclass() {
-                return {
-                    active: this.step.id == this.currentstep,
-                    complete: this.currentstep > this.step.id
-                };
-
-            }
-        }
-    });
-
-
-
-    Vue.component("step-navigation", {
-        template: "#step-navigation-template",
-
-        props: ["steps", "currentstep"]
-    });
-
-
-    Vue.component("step", {
-        template: "#step-template",
-
-        props: ["step", "stepcount", "currentstep"],
-
-        computed: {
-            active() {
-                return this.step.id == this.currentstep;
-            },
-
-            firststep() {
-                return this.currentstep == 1;
-            },
-
-            laststep() {
-                return this.currentstep == this.stepcount;
-            },
-
-            stepWrapperClass() {
-                return {
-                    active: this.active
-                };
-
-            }
-        },
-
-
-        methods: {
-            nextStep() {
-                this.$emit("step-change", this.currentstep + 1);
-            },
-
-            lastStep() {
-                this.$emit("step-change", this.currentstep - 1);
-            }
-        }
-    });
-
-
-
-    new Vue({
-        el: "#app",
-
-        data: {
-            currentstep: 1,
-
-            steps: [{
-                    id: 1,
-                    title: "Parcel Registration",
-                    icon_class: "fa fa-map-marker"
-                },
-
-                {
-                    id: 2,
-                    title: "Dispatch Notes",
-                    icon_class: "fa fa-folder-open"
-                },
-
-                {
-                    id: 3,
-                    title: "Shipper Details",
-                    icon_class: "fa fa-paper-plane"
-                },
-
-                {
-                    id: 4,
-                    title: "Consignee Details",
-                    icon_class: "fa fa-get-pocket"
-                }
-            ]
-        },
-
-        methods: {
-            stepChanged(step) {
-                this.currentstep = step;
-            }
-        }
-    });
-
-
-
-    function togglePassword() {
-        var x = document.getElementById("userpassword");
-        if (x.type === "password") {
-            x.type = "text";
-        } else {
-            x.type = "password";
-        }
-    }
-    // function togglePassword () {
-    //   var x = document.getElementById("password-confirm");
-    //   if (x.type === "password") {
-    //     x.type = "text";
-    //   } else {
-    //     x.type = "password";
-    //   }
-    // }
+    //form-wizard
 </script>

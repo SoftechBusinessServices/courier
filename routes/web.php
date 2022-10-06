@@ -64,6 +64,7 @@ Route::post('/store-parcel', [ParcelController::class, 'store_parcel'])->name('s
 Route::get('edit-parcel/{id}', [ParcelController::class, 'edit_parcel']);
 Route::post('update-parcel/{id}', [ParcelController::class, 'update_parcel']);
 Route::get('delete-parcel/{id}', [ParcelController::class, 'destroy_parcel'])->name('delete-parcel');
+Route::get('parcel-details/{id}', [ParcelController::class, 'parcel_details'])->name('parcel-details');
 
 //ajax dependent
 // Route::get('getSelected/{id}', [ShippingChargesController::class, 'getSelected']);

@@ -21,9 +21,12 @@ class VendorTrackingController extends Controller
             'pl_id' => $request->parcell_idd,
             'vendor_tracking_id' => $request->tracking_idd,
         ];
-         $data =VendorIdTracking::create($data);
-
-         return redirect()->back()->with('success',"Vendor Tracking ID has been assigned.");
+        //  $data =VendorIdTracking::create($data);
+         $data_id = VendorIdTracking::create($data);
+        // dd($data_id);
+        // $shipping = VendorIdTracking::where('id', $data_id)->get();
+        return response()->json($data_id);
+        //  return redirect()->back()->with('success',"Vendor Tracking ID has been assigned.");
     }
     public function vendor_tracking_charges(Request $request){
 
@@ -37,7 +40,7 @@ class VendorTrackingController extends Controller
             'vendor_tracking_charges' => $request->vendor_charges,
         ];
          $data = VendorIdTracking::create($data);
-
+        
          return redirect()->back()->with('success',"Vendor Charges has been Updated.");
     }
 

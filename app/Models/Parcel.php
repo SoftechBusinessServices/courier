@@ -15,7 +15,7 @@ class Parcel extends Model
 
     protected $fillables = [
         'pl_id', 'pl_boxes', 'service_id', 'pl_weight', 'pl_charges', 'pl_extras',
-        'pl_discount', 'pl_final', 'pl_discription', 'pl_status','shipper_country_id','payment_id', 'status'
+        'pl_discount', 'pl_final', 'pl_discription', 'pl_status','shipper_country_id','consignee_country_id','payment_id', 'status'
     ];
 
     public function country()
@@ -50,5 +50,9 @@ class Parcel extends Model
     public function parcel_tracking(){
 
         return $this->hasOne(VendorIdTracking::class,'pl_id','id');
+    }
+    public function parcel_country(){
+
+        return $this->belongsTo(Country::class,'consignee_country_id','id');
     }
 }

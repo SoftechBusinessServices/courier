@@ -137,7 +137,7 @@
                                                         <i class="far fa-eye"> {{ $item->pl_id }}</i>
                                                     </a>
                                                 </td>
-                                                <td>{{ $item->consignee_parcel }}</td>
+                                                <td>{{ $item->country_parcel }}</td>
                                                 <td>
                                                     @php
                                                     $month = date('d/m/Y', strtotime($item->created_at));

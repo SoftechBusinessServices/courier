@@ -46,7 +46,7 @@ class Country extends Model
 
     public function country_parcel(){
 
-        return $this->belongsTo(Parcel::class, 'pl_id','id');
+        return $this->hasMany(Parcel::class, 'consignee_country_id','id');
     }
 
     public function country_consignee(){

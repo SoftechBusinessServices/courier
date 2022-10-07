@@ -845,7 +845,7 @@
                     <div class="form-outer">
                         <form method="POST" action="{{ route('store-parcel') }}" enctype="multipart/form-data" novalidate>
                             @csrf
-                            <div class="page slide-page">
+                            <div class="page slide-page pb-0">
                                 <div class="title ">Parcel Details:</div> <hr>
                                 <div class="row">
                                     <div class="col-lg-4">
@@ -981,13 +981,13 @@
                                 </div>
                             </div>
 
-                            <div class="page">
+                            <div class="page pb-0">
                                 <div class="title ">Dispatch Notes:</div> <hr>
                                 <div class="repeater">
                                     <div data-repeater-list="userData">
                                         <div data-repeater-item="">
                                             <div class="row">
-                                                <div class="form-group col-3 "  >
+                                                <div class="form-group col-4 col-sm-4  "  >
                                                     <label for="name">Contents</label>
                                                     <input style="padding:6px 0px" type="text" id="disp_content" name="disp_content[]" class="form-control @error('disp_content') is-invalid @enderror">
                                                     @error('disp_content')

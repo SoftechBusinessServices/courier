@@ -1,199 +1,209 @@
 @extends('admin-panel.index')
 
 @section('content')
-    <div class="">
+<div class="">
 
-        <div class="page-content">
-            <div class="container">
-                {{-- @dd($data); --}}
-                <!-- start page title -->
-                <div class="row">
-                    <div class="col-12">
-                        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                            {{--  <h4 class="mb-sm-0 font-size-18">Detail</h4>  --}}
-                            <h4 class="float-end font-size-16"> Dispatch Notes Receipt </h4>
-                            <div class="page-title-right">
-                                <ol class="breadcrumb m-0 text-bold text-decoration-underline">
-                                    <li class="breadcrumb-item">Tracking ID:PL-12345</li>
-                                    <li class="breadcrumb-item  text-bold">Dated:{{ date('d/y/m') }}</li>
-                                </ol>
-                            </div>
-
+    <div class="page-content px-0 " style=" padding:0px;padding-top:75px;">
+        <div class="container p-0">
+            {{-- @dd($data); --}}
+            <!-- start page title -->
+            <div class="row ">
+                <div class="col-12 ">
+                    <div class="page-title-box d-sm-flex align-items-center justify-content-between p-1 px-3">
+                        {{-- <h4 class="mb-sm-0 font-size-18">Detail</h4>  --}}
+                        <h4 class="float-end font-size-16"> Dispatch Notes Receipt </h4>
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0 text-bold text-decoration-underline">
+                                <li class="breadcrumb-item">Tracking ID:PL-12345</li>
+                                <li class="breadcrumb-item  text-bold">Dated:{{ date('d/y/m') }}</li>
+                            </ol>
                         </div>
+
                     </div>
                 </div>
-                <!-- end page title -->
+            </div>
+            <!-- end page title -->
 
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="invoice-title">
-                                    {{--  <h4 class="float-end font-size-16"> Dispatch Notes Receipt </h4>  --}}
-                                    <div class="mb-0">
-                                        <div class="row">
-                                            <div class="col">
-                                                <img src="assets/images/courier-logo.png" alt="logo" height="60" />
-                                            </div>
-                                            <div class="col">
-                                                <label for="">SBS Courier Services</label><br>
-                                               <p>Email: sbsservice@mail.com</p>
-                                            </div>
-                                            <div class="col">
-                                                <label for="">Phone: 091-21336444</label><br>
-                                                <p>Address: G15 markaz, Green Acre Plaza, Islamabad, Pakistan</p>
-                                            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body px-3 py-0">
+                            <div class="invoice-title">
+                                {{-- <h4 class="float-end font-size-16">Customer Receipt </h4>  --}}
+                                <div class="mb-0">
+                                    <div class="row">
+                                        <div class="col">
+                                            <img src="assets/images/courier-logo.png" alt="logo" height="50" />
+                                        </div>
+                                        <div class="col">
+                                            <label for="">SBS Courier Services</label><br>
+                                            <p>Email: sbsservice@mail.com</p>
+                                        </div>
+                                        <div class="col">
+                                            <label for="">Phone: 091-21336444</label><br>
+                                            <p>Address: G15 markaz, Green Acre Plaza, Islamabad, Pakistan</p>
                                         </div>
                                     </div>
                                 </div>
-                                <hr>
-                                <div class=" ">
-                                    <h3 class="font-size-15 fw-bold">Parcel Details</h3>
+                            </div>
+                            <hr class="m-0 mb-2">
+                            <div class=" ">
+                                <h3 class="font-size-15 fw-bold">Parcel Details</h3>
 
-                                </div>
-                                <div class="text-center">
+                            </div>
+                            <div class="text-center">
+                                <div class="table-responsive">
                                     <table class="table table-nowrap table-sm table-responsive-sm">
                                         <thead>
                                             <tr>
-                                                <th>No of Boxes</th>
-                                                <th>Weight</th>
-                                                <th>Service</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">No of Boxes</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Weight</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Service</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>4</td>
-                                                <td>12</td>
-                                                <td>DHL Via Dubai</td>
+                                                <td class="py-1 px-0 font-size-14">4</td>
+                                                <td class="py-1 px-0 font-size-14">12</td>
+                                                <td class="py-1 px-0 font-size-14">DHL Via Dubai</td>
                                             </tr>
                                         </tbody>
-                                        <hr>
+
                                     </table>
                                 </div>
+                            </div>
 
-                                <hr>
-                                <div class="">
-                                    <h3 class="font-size-15 fw-bold">Dispatch Note</h3>
-                                </div>
-                                <div class="text-center">
+                            <hr class="m-0 mb-2">
+                            <!-- <div class="">
+                                <h3 class="font-size-15 fw-bold">Dispatch Note</h3>
+                            </div>
+                            <div class="text-center">
+                                <div class="table-responsive">
                                     <table class="table table-nowrap table-sm  table-responsive-sm">
                                         <thead>
                                             <tr>
-                                                <th>Content</th>
-                                                <th>Condition</th>
-                                                <th>Currency</th>
-                                                <th>Price</th>
-                                                <th>Quantity</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Content</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Condition</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Currency</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Price</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Quantity</th>
                                             </tr>
                                         </thead>
 
                                         <tbody>
                                             <tr>
-                                                <td>Shoes</td>
-                                                <td>Used</td>
-                                                <td>PKR</td>
-                                                <td>200</td>
-                                                <td>50</td>
+                                                <td class="py-1 px-0 font-size-14">Shoes</td>
+                                                <td class="py-1 px-0 font-size-14">Used</td>
+                                                <td class="py-1 px-0 font-size-14">PKR</td>
+                                                <td class="py-1 px-0 font-size-14">200</td>
+                                                <td class="py-1 px-0 font-size-14">50</td>
                                             </tr>
                                         </tbody>
-                                        <hr>
+
                                     </table>
                                 </div>
+                            </div> -->
 
-                                <hr>
-                                <div class="">
-                                    <h3 class="font-size-15 fw-bold">Sender Details</h3>
-                                </div>
-                                <div class="text-center">
+                           
+                            <hr class="m-0 mb-2">
+                            <div class="">
+                                <h3 class="font-size-15 fw-bold">Receiver Details</h3>
+                            </div>
+                            <div class="text-center">
+                                <div class="table-responsive">
                                     <table class="table table-nowrap table-sm  table-responsive-sm">
                                         <thead>
                                             <tr>
-                                                <th>Company Name</th>
-                                                <th>Contact Number</th>
-                                                <th>Country</th>
-                                                <th>State</th>
-                                                <th>City</th>
-                                                <th>Zip Code</th>
-                                                <th>Address Line1</th>
-                                                <th>Address Line2</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Receiver Name</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Number</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Business Name</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Country</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">State</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">City</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Zip Code</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Address Line1</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Address Line2</th>
 
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>Softech Business Services</td>
-                                                <td>03109488696</td>
-                                                <td>Pakistan</td>
-                                                <td>Khyber Pakhtunkhwa</td>
-                                                <td>Peshawar</td>
-                                                <td>25000</td>
-                                                <td>Khyber Bazar, Peshawar</td>
-                                                <td>Charsadda Road, Peshawar</td>
+                                                <td class="py-1 px-0 font-size-14">Qazi Wajid Iqbal</td>
+                                                <td class="py-1 px-0 font-size-14">03451231211</td>
+                                                <td class="py-1 px-0 font-size-14">Apex College Lahore</td>
+                                                <td class="py-1 px-0 font-size-14">Pakistan</td>
+                                                <td class="py-1 px-0 font-size-14">Punjab</td>
+                                                <td class="py-1 px-0 font-size-14">Lahore</td>
+                                                <td class="py-1 px-0 font-size-14">25000</td>
+                                                <td class="py-1 px-0 font-size-14">Hall Road, Lahore</td>
+                                                <td class="py-1 px-0 font-size-14">Fazal e Haq Rd, Gulshan Block</td>
 
                                             </tr>
                                         </tbody>
-                                        <hr>
+
                                     </table>
                                 </div>
+                            </div>
 
-                                <hr>
-                                <div class="">
-                                    <h3 class="font-size-15 fw-bold">Receiver Details</h3>
-                                </div>
-                                <div class="text-center">
+
+                            <hr class="m-0 mb-2">
+                            <div class="">
+                                <h3 class="font-size-15 fw-bold">Sender Details</h3>
+                            </div>
+                            <div class="text-center">
+                                <div class="table-responsive">
                                     <table class="table table-nowrap table-sm  table-responsive-sm">
                                         <thead>
                                             <tr>
-                                                <th>Receiver Name</th>
-                                                <th>Contact Number</th>
-                                                <th>Business Name</th>
-                                                <th>Country</th>
-                                                <th>State</th>
-                                                <th>City</th>
-                                                <th>Zip Code</th>
-                                                <th>Address Line1</th>
-                                                <th>Address Line2</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Company Name</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Number</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Country</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">State</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">City</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Zip Code</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Address Line1</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Address Line2</th>
 
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>Qazi Wajid Iqbal</td>
-                                                <td>03451231211</td>
-                                                <td>Apex College Lahore</td>
-                                                <td>Pakistan</td>
-                                                <td>Punjab</td>
-                                                <td>Lahore</td>
-                                                <td>25000</td>
-                                                <td>Hall Road, Lahore</td>
-                                                <td>Fazal e Haq Rd, Gulshan Block</td>
+                                                <td class="py-1 px-0 font-size-14">Softech Business Services</td>
+                                                <td class="py-1 px-0 font-size-14">03109488696</td>
+                                                <td class="py-1 px-0 font-size-14">Pakistan</td>
+                                                <td class="py-1 px-0 font-size-14">Khyber Pakhtunkhwa</td>
+                                                <td class="py-1 px-0 font-size-14">Peshawar</td>
+                                                <td class="py-1 px-0 font-size-14">25000</td>
+                                                <td class="py-1 px-0 font-size-14">Khyber Bazar, Peshawar</td>
+                                                <td class="py-1 px-0 font-size-14">Charsadda Road, Peshawar</td>
 
                                             </tr>
                                         </tbody>
-                                        <hr>
+
                                     </table>
                                 </div>
+                            </div>
 
-                                <div class="d-print-none">
-                                    <div class="float-end">
-                                        <a href="{{ route('home') }}"
-                                        class="btn btn-dark btn-md text-white btn-sm m-2 p-2">Dashboard </a>
-                                        <a href="javascript:window.print()"
-                                            class="btn btn-success waves-effect waves-light me-1"><i
-                                                class="fa fa-print"></i></a>
+                            
+                            <div class="d-print-none">
+                                <div class="d-flex justify-content-between">
+                                    <div class="d-flex justify-content-between"> <a href="{{ route('home') }}" class="btn btn-dark btn-md text-white btn-sm m-2 px-2">Back </a>
+                                        <a href="{{ route('home') }}" class="btn btn-dark btn-md text-white btn-sm m-2 px-2">Dashboard </a>
                                     </div>
+                                    <a href="javascript:window.print()" class="btn btn-success waves-effect waves-light  mr-4 pt-2 pb-0 px-3"><i class="fa fa-print"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- end row -->
+            </div>
+            <!-- end row -->
 
-            </div> <!-- container-fluid -->
-        </div>
-        <!-- End Page-content -->
+        </div> <!-- container-fluid -->
+    </div>
+    <!-- End Page-content -->
 
-        {{-- <footer class="footer">
+    {{-- <footer class="footer">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6">

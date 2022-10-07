@@ -266,18 +266,10 @@
          @media only screen and (max-width: 600px) {
             form .page .field button {
              width: 20%;
-             height: calc(50% + 1px);
-           
-            
-             margin-top: -20px;
-             border-radius: 5px;
-             color: #fff;
-             cursor: pointer;
-             font-size: 18px;
-             font-weight: 500;
-             letter-spacing: 1px;
-             text-transform: uppercase;
-             transition: 0.5s ease;
+             height: calc(60% + 1px);
+         }
+         .slide-page{
+            padding: 0px;
          }
 }
      </style>

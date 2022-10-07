@@ -115,7 +115,7 @@ class PrintController extends Controller
         $countries = Country::all();
         // $charges = ShippingCharge::all();
         // dd($charges);
-        return view('admin-panel.prints.currencies_print_view', compact('data', 'regions',  'countries'));
+        return view('admin-panel.prints.customer_receipt_print_view', compact('data', 'regions',  'countries'));
     }
 
 

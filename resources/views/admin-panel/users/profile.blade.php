@@ -77,7 +77,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col">
+                            <div class="col p-0">
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="card-title mb-4">Personal Information</h4>

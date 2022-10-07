@@ -1487,7 +1487,8 @@
                             console.log(data);
                             if (data) {
                                 $('.delivered_status').empty();
-                                $('.delivered_status').append('Done');
+                                $('.delivered_status').append('Dilevered');
+                                $('.delivered_status').addClass("text-danger");
 
                             } else {
                                 $('.delivered_status').empty();
@@ -1575,6 +1576,8 @@
                 if (data.success == 1) {
                     $('#trackingModal_' + track_id).text(data.data.vendor_tracking_id);
                     toastr.success('record updated', 'success');
+                    $('#trackingmodal').modal('hide');
+                    
                     // console.log(track_id);
                 }
 
@@ -1604,6 +1607,7 @@
                 if (data.success == 1) {
                     $('#trackingModal2_' + track_id2).text(data.data.vendor_tracking_charges);
                     toastr.success('record updated', 'success');
+                    $('#vendorcharges').modal('hide');
                     // console.log(track_id);
                 }
 

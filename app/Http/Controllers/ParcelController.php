@@ -237,7 +237,7 @@ class ParcelController extends Controller
             session()->now('message', 'Success! parcel Added.');
         }
 
-        dd(25);
+        // dd(25);
 
         if ($data) {
             return redirect()->back()->with('success', "Record inserted Successfully");

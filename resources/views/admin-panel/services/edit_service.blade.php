@@ -14,12 +14,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <p class="card-title-desc text-dark">
-                                    <a href="{{ route('home') }}" class="btn btn-dark btn-md text-white">Dashboard </a>
-
-                                    {{--  <a class="btn btn-success btn-md text-white " data-bs-toggle="modal"
-                                        data-bs-target="#countrymodal">Add Country</a>  --}}
-                                    <span class="font-size-22 font-weight-bold ml-4"> Edit Service Form
-                                    </span>
+                                    <a href="#" class="btn btn-dark btn-md text-white float-left">Edit Service Form </a>
+                                    <br><hr>
                                     <form class="needs-validation" novalidate action="{{ url('update-service/' . $record->id) }}"
                                         method="POST">
                                         @csrf
@@ -124,6 +120,13 @@
                                         </tbody>
                                     </table>
                                 @endif
+
+                                
+                            <!-- Back & Dashboard btns -->
+                            <div class="d-flex justify-content-between my-2">
+                                <a href="{{ route('home') }}" class="btn btn-primary btn-md text-white">Back</a>
+                                <a href="{{ route('home') }}" class="btn btn-dark btn-md text-white">Dashboard </a>
+                            </div>
                             </div>
 
 

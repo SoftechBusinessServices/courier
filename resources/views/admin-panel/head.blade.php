@@ -66,19 +66,19 @@
              background: #d43f8d;
          }
 
-         .container {
+         /* .container {
              width: 100% !important;
              background: #fff;
              text-align: center;
              border-radius: 5px;
              padding: 50px 35px 10px 35px;
-         }
+         } */
 
-         .container header {
+         /* .container header {
              font-size: 35px;
              font-weight: 600;
              margin: 0 0 30px 0;
-         }
+         } */
 
          .container .form-outer {
              width: 100% !important;
@@ -93,18 +93,21 @@
          .form-outer form .page {
              width: 25%;
              transition: margin-left 0.3s ease-in-out;
+             padding: 15px;
          }
 
          .form-outer form .page .title {
              text-align: left;
              font-size: 25px;
              font-weight: 500;
+          
          }
 
          .form-outer form .page .field {
              width: 330px;
              height: 45px;
-             margin: 45px 0;
+             margin: 35px 0;
+             margin-bottom: 0;
              display: flex;
              position: relative;
          }
@@ -133,9 +136,9 @@
 
          form .page .field button {
              width: 100%;
-             height: calc(100% + 5px);
+             height: calc(100% + 1px);
              border: none;
-             background: #d33f8d;
+             background:  #2a7efc;
              margin-top: -20px;
              border-radius: 5px;
              color: #fff;
@@ -258,6 +261,25 @@
              display: block;
              color: #fff;
          }
+
+
+         @media only screen and (max-width: 600px) {
+            form .page .field button {
+             width: 20%;
+             height: calc(50% + 1px);
+           
+            
+             margin-top: -20px;
+             border-radius: 5px;
+             color: #fff;
+             cursor: pointer;
+             font-size: 18px;
+             font-weight: 500;
+             letter-spacing: 1px;
+             text-transform: uppercase;
+             transition: 0.5s ease;
+         }
+}
      </style>
 
      <style>

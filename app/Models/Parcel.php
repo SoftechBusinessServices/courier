@@ -47,4 +47,8 @@ class Parcel extends Model
 
         return $this->belongsTo(Service::class, 'service_id','id');
     }
+    public function parcel_tracking(){
+
+        return $this->hasOne(VendorIdTracking::class,'pl_id','id');
+    }
 }

@@ -31,18 +31,27 @@ class VendorTrackingController extends Controller
     }
     public function vendor_tracking_charges(Request $request){
 
-        // dd($request->all());
-        $request->validate([
+       
+        $validator = Validator::make($request->all(), [
             'parcell_iddd' => 'required',
-            'vendor_charges' => 'required',
+            'parcell_iddd' => 'required',
         ]);
+ 
+        if ($validator->fails()) {
+            $errors = $validator->errors();
+            return response()->json(['success' => 0,'errors' => $errors]);
+        }
         $data = [
             'pl_id' => $request->parcell_iddd,
             'vendor_tracking_charges' => $request->vendor_charges,
         ];
-         $data = VendorCharges::create($data);
-        
-         return redirect()->back()->with('success',"Vendor Charges has been Updated.");
+        $data_id = $data = VendorCharges::create($data);
+        return response()->json(['success' => 1,'data' => $data_id]);
+        // $request->validate([
+        //     'parcell_iddd' => 'required',
+        //     'parcell_iddd' => 'required',
+        // ]);    
+        //  return redirect()->back()->with('success',"Vendor Charges has been Updated.");
     }
 
     public function changeUserStatus(Request $request)

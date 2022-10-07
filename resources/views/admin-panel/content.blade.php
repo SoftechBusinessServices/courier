@@ -240,17 +240,21 @@
                                                             update
                                                         </a>
                                                     </td>
-                                                    <td>
+                                                    <td id="trackingModal2_{{ $item->pl_id }}">
                                                         <a class="btn btn-outline-primary btn-sm charges_btn" title="add" data-bs-toggle="modal" data-bs-target="#vendorcharges" id="{{ $item->pl_id }}">
                                                             update
                                                         </a>
                                                     </td>
 
                                                     <td>
+                                                        @if ($item->pl_status == 'delivered')
+                                                        <button type="button" class="btn btn-danger btn-sm disabled">
+                                                            {{ $item->pl_status }} </button>
+                                                        @else
                                                         <a class="btn btn-outline-info btn-sm delivered_status" title="add" id="{{ $item->pl_id }}">
-                                                            Delivered
-                                                        </a>
-
+                                                           Deliver
+                                                        </a>                                                    
+                                                        @endif
                                                     </td>
 
                                                 </tr>
@@ -415,7 +419,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ url('vendor-tracking-charges') }}" method="POST" id="vendor-tracking-charges">
+                <!-- <form action="{{ url('vendor-tracking-charges') }}" method="POST" id="vendor-tracking-charges"> -->
+                <form method="POST" id="vendor-tracking-charges">
                     @csrf
                     <table class="table table-bordered">
                         <tr>
@@ -803,10 +808,10 @@
                 <h5 class="modal-title" id="myLargeModalLabel">Add New Parcel</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="padding: 0px;">
                 <!-- This script got from frontendfreecode.com -->
                 <div class="container">
-                    <header>Signup Form</header>
+                    <!-- <header>Signup Form</header> -->
                     <!-- <div class="progress-bar">
                         <div class="step">
                         <p>Name</p>
@@ -841,7 +846,7 @@
                         <form method="POST" action="{{ route('store-parcel') }}" enctype="multipart/form-data" novalidate>
                             @csrf
                             <div class="page slide-page">
-                                <div class="title">Parcel Details:</div>
+                                <div class="title ">Parcel Details:</div> <hr>
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="mb-3">
@@ -972,28 +977,28 @@
                                 </div>
 
                                 <div class="field">
-                                    <button class="firstNext next">Next</button>
+                                    <button class="firstNext next ">Next</button>
                                 </div>
                             </div>
 
                             <div class="page">
-                                <div class="title">Dispatch Notes:</div>
+                                <div class="title ">Dispatch Notes:</div> <hr>
                                 <div class="repeater">
                                     <div data-repeater-list="userData">
                                         <div data-repeater-item="">
                                             <div class="row">
-                                                <div class="form-group col">
+                                                <div class="form-group col-3 "  >
                                                     <label for="name">Contents</label>
-                                                    <input type="text" id="disp_content" name="disp_content[]" class="form-control @error('disp_content') is-invalid @enderror">
+                                                    <input style="padding:6px 0px" type="text" id="disp_content" name="disp_content[]" class="form-control @error('disp_content') is-invalid @enderror">
                                                     @error('disp_content')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                     @enderror
                                                 </div>
-                                                <div class="form-group col">
+                                                <div class="form-group col" style="margin: 0 5px; padding:0px">
                                                     <label for="message">Condition</label>
-                                                    <select name="disp_condition[]" id="disp_condition" class="form-control @error('disp_condition') is-invalid @enderror">
+                                                    <select  name="disp_condition[]" id="disp_condition" class="form-control @error('disp_condition') is-invalid @enderror">
 
                                                         <option value="new">New</option>
                                                         <option value="used">Used</option>
@@ -1005,9 +1010,9 @@
                                                     </span>
                                                     @enderror
                                                 </div>
-                                                <div class="form-group col">
+                                                <div class="form-group col" style="margin: 0 5px; padding:0px">
                                                     <label for="message">Currency</label>
-                                                    <select name="disp_currency[]" id="disp_currency[]" class="form-control @error('company_currency') is-invalid @enderror">
+                                                    <select  name="disp_currency[]" id="disp_currency[]" class="form-control @error('company_currency') is-invalid @enderror">
 
                                                         <option value="0">PKR</option>
                                                         <option value="1">USD</option>
@@ -1019,35 +1024,35 @@
                                                     </span>
                                                     @enderror
                                                 </div>
-                                                <div class="form-group col">
+                                                <div class="form-group col" style="margin: 0 5px; padding:0px">
                                                     <label for="resume">Price</label>
-                                                    <input type="number" id="disp_price" name="disp_price[]" min="0" class="form-control @error('disp_price') is-invalid @enderror" />
+                                                    <input style="padding:6px 0px" type="number" id="disp_price" name="disp_price[]" min="0" class="form-control @error('disp_price') is-invalid @enderror" />
                                                     @error('disp_price')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                     @enderror
                                                 </div>
-                                                <div class="form-group col">
+                                                <div class="form-group col" style="margin: 0 5px; padding:0px">
                                                     <label for="subject">QTY</label>
-                                                    <input type="number" id="disp_quantity" name="disp_quantity[]" min="0" class="form-control @error('disp_quantity') is-invalid @enderror" />
+                                                    <input style="padding:6px 0px" type="number" id="disp_quantity" name="disp_quantity[]" min="0" class="form-control @error('disp_quantity') is-invalid @enderror" />
                                                     @error('disp_quantity')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                     @enderror
                                                 </div>
-                                                <div class="form-group col">
+                                                <div class="form-group col" style="margin:0 5px; padding:0px">
                                                     <label for="resume">Total</label>
-                                                    <input type="number" id="disp_total" name="disp_total[]" min="0" class="form-control @error('disp_total') is-invalid @enderror" />
+                                                    <input style="padding:6px 0px" type="number" id="disp_total" name="disp_total[]" min="0" class="form-control @error('disp_total') is-invalid @enderror" />
                                                     @error('disp_total')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                     @enderror
                                                 </div>
-                                                <div class="form-group col mt-4">
-                                                    <button type="button" class="btn btn-danger btn-md" data-repeater-delete="">Delete</button>
+                                                <div class="form-group col mt-4" >
+                                                    <button style="margin-top: 7px;"type="button" class="btn btn-danger btn-md" data-repeater-delete="">Delete</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -1061,8 +1066,8 @@
                                 </div>
                             </div>
 
-                            <div class="page">
-                                <div class="title">Shipper Details:</div>
+                            <div class="page pb-0" >
+                                <div class="title">Shipper Details:</div> <hr>
 
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
@@ -1215,7 +1220,7 @@
                             </div>
 
                             <div class="page">
-                                <div class="title">Consignee Details:</div>
+                                <div class="title">Consignee Details:</div> <hr>
 
                                 <div class="row">
                                     <div class="col-md-6">
@@ -1381,87 +1386,88 @@
         });
 
         $(function() {
-                $("#pl_discount").blur(function() {
+            $("#pl_discount").blur(function() {
 
-                    var pl_charges = parseInt($('#pl_charges').val());
-                    var pl_extras = parseInt($('#pl_extras').val());
-                    var pl_discount = parseInt($('#pl_discount').val());
-                    var pl_total = (pl_charges + pl_extras) - pl_discount;
-                    $('#pl_final').val(pl_total);
+                var pl_charges = parseInt($('#pl_charges').val());
+                var pl_extras = parseInt($('#pl_extras').val());
+                var pl_discount = parseInt($('#pl_discount').val());
+                var pl_total = (pl_charges + pl_extras) - pl_discount;
+                $('#pl_final').val(pl_total);
 
-                }); // discount blur function closed
-                $("#pl_charges").blur(function() {
+            }); // discount blur function closed
+            $("#pl_charges").blur(function() {
 
-                    var pl_charges = parseInt($('#pl_charges').val());
-                    var pl_extras = parseInt($('#pl_extras').val());
-                    var pl_discount = parseInt($('#pl_discount').val());
-                    var pl_total = (pl_charges + pl_extras) - pl_discount;
-                    $('#pl_final').val(pl_total);
+                var pl_charges = parseInt($('#pl_charges').val());
+                var pl_extras = parseInt($('#pl_extras').val());
+                var pl_discount = parseInt($('#pl_discount').val());
+                var pl_total = (pl_charges + pl_extras) - pl_discount;
+                $('#pl_final').val(pl_total);
 
-                }); // discount blur function closed
-                $("#pl_extras").blur(function() {
+            }); // discount blur function closed
+            $("#pl_extras").blur(function() {
 
-                    var pl_charges = parseInt($('#pl_charges').val());
-                    var pl_extras = parseInt($('#pl_extras').val());
-                    var pl_discount = parseInt($('#pl_discount').val());
-                    var pl_total = (pl_charges + pl_extras) - pl_discount;
-                    $('#pl_final').val(pl_total);
+                var pl_charges = parseInt($('#pl_charges').val());
+                var pl_extras = parseInt($('#pl_extras').val());
+                var pl_discount = parseInt($('#pl_discount').val());
+                var pl_total = (pl_charges + pl_extras) - pl_discount;
+                $('#pl_final').val(pl_total);
 
-                }); // discount blur function closed
+            }); // discount blur function closed
 
-                $('.parcel_allocate').on('click', function(e) {
-                    e.preventDefault();
+            $('.parcel_allocate').on('click', function(e) {
+                e.preventDefault();
 
-                    $('#parcell_id').val($(this).data('id'));
-                    $('#service_used_id').val($(this).data('prod-id'));
+                $('#parcell_id').val($(this).data('id'));
+                $('#service_used_id').val($(this).data('prod-id'));
 
-                    var pl_id = ($(this).data('id'));
-                    var service_id = ($(this).data('prod-id'));
-                    // alert(pl_id);
-                    // alert(service_id);
-                    if (service_id) {
+                var pl_id = ($(this).data('id'));
+                var service_id = ($(this).data('prod-id'));
+                // alert(pl_id);
+                // alert(service_id);
+                if (service_id) {
 
-                        $.ajax({
-                            url: "{{ url('/getSelected') }}/" + service_id,
-                            type: "GET",
-                            //    data : {"_token":"{{ csrf_token() }}"},
-                            //    dataType: "json",
-                            success: function(data) {
-                                console.log(data);
-                                if (data) {
-                                    $('#vendor_id').empty();
-                                    $('#vendor_id').append(
-                                        '<option hidden>Choose Vendor</option>');
-                                    $.each(data, function(key, course) {
-                                        $('select[name="vendor_id"]').append(
-                                            '<option value="' + course.id +
-                                            '">' + course.logistic_name +
-                                            '</option>');
-                                    });
-                                } else {
-                                    $('#vendor_id').empty();
-                                }
+                    $.ajax({
+                        url: "{{ url('/getSelected') }}/" + service_id,
+                        type: "GET",
+                        //    data : {"_token":"{{ csrf_token() }}"},
+                        //    dataType: "json",
+                        success: function(data) {
+                            console.log(data);
+                            if (data) {
+                                $('#vendor_id').empty();
+                                $('#vendor_id').append(
+                                    '<option hidden>Choose Vendor</option>');
+                                $.each(data, function(key, course) {
+                                    $('select[name="vendor_id"]').append(
+                                        '<option value="' + course.id +
+                                        '">' + course.logistic_name +
+                                        '</option>');
+                                });
+                            } else {
+                                $('#vendor_id').empty();
                             }
-                        });
-                    } else {
-                        $('#vendor_id').empty();
-                    }
+                        }
+                    });
+                } else {
+                    $('#vendor_id').empty();
+                }
 
-                });
+            });
 
-                $('.tracking_btn').on('click', function(e) {
-                        e.preventDefault();
-                        // alert(1);
-                         track_id = this.id;
-                         $('#parcell_idd').val(this.id);
-                        // console.log(data_id);
+            $('.tracking_btn').on('click', function(e) {
+                e.preventDefault();
+                // alert(1);
+                track_id = this.id;
+                $('#parcell_idd').val(this.id);
+                // console.log(data_id);
 
 
-                });
+            });
 
             $('.charges_btn').on('click', function(e) {
                 e.preventDefault();
                 // alert(2);
+                track_id2 = this.id;
                 $('#parcell_iddd').val(this.id);
             });
 
@@ -1494,39 +1500,39 @@
             });
         });
 
-    $(":input").inputmask();
+        $(":input").inputmask();
 
-    function togglePassword() {
-        var x = document.getElementById("userpassword");
-        if (x.type === "password") {
-            x.type = "text";
-        } else {
-            x.type = "password";
-        }
-    }
-
-    $('#pl_phone_id').on('blur', function() {
-
-        $value = $(this).val();
-        // alert($value);
-        $.ajax({
-
-            url: "{{ url('/search') }}",
-            type: "GET",
-            data: {
-                'search': $value
-            },
-            success: function(data) {
-
-                console.log(data);
-
-                $('#pl_phone_id').val(data.shipper_phone);
-
+        function togglePassword() {
+            var x = document.getElementById("userpassword");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
             }
+        }
 
-        })
+        $('#pl_phone_id').on('blur', function() {
 
-    });
+            $value = $(this).val();
+            // alert($value);
+            $.ajax({
+
+                url: "{{ url('/search') }}",
+                type: "GET",
+                data: {
+                    'search': $value
+                },
+                success: function(data) {
+
+                    console.log(data);
+
+                    $('#pl_phone_id').val(data.shipper_phone);
+
+                }
+
+            })
+
+        });
 
     }); //ready function closed
 </script>
@@ -1548,7 +1554,7 @@
 </script>
 
 <script>
-    $('body').on('submit','#vendor-tracking-id',function(e){
+    $('body').on('submit', '#vendor-tracking-id', function(e) {
         e.preventDefault();
         var fdata = new FormData(this);
         // console.log(Object.fromEntries(fdata)); return false;
@@ -1560,17 +1566,46 @@
             contentType: false,
             // processCache : false,
             success: function(data) {
-                
-              if(data.success == 0){
-                $.each(data.errors,function(x,y){
-                    toastr.error(y[0],'error');
-                });
-              }
-              if(data.success == 1){
-                $('#trackingModal_'+track_id).text(data.data.vendor_tracking_id);
-                toastr.success('record updated','success');
-                // console.log(track_id);
-              }
+
+                if (data.success == 0) {
+                    $.each(data.errors, function(x, y) {
+                        toastr.error(y[0], 'error');
+                    });
+                }
+                if (data.success == 1) {
+                    $('#trackingModal_' + track_id).text(data.data.vendor_tracking_id);
+                    toastr.success('record updated', 'success');
+                    // console.log(track_id);
+                }
+
+            }
+
+        })
+    });
+
+    $('body').on('submit', '#vendor-tracking-charges', function(e) {
+        e.preventDefault();
+        var fdata = new FormData(this);
+        // console.log(Object.fromEntries(fdata)); return false;
+        $.ajax({
+            url: "{{ route('vendor-tracking-charges') }}",
+            type: "POST",
+            data: fdata,
+            processData: false,
+            contentType: false,
+            // processCache : false,
+            success: function(data) {
+
+                if (data.success == 0) {
+                    $.each(data.errors, function(x, y) {
+                        toastr.error(y[0], 'error');
+                    });
+                }
+                if (data.success == 1) {
+                    $('#trackingModal2_' + track_id2).text(data.data.vendor_tracking_charges);
+                    toastr.success('record updated', 'success');
+                    // console.log(track_id);
+                }
 
             }
 

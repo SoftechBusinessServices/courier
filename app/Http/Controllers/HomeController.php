@@ -3,18 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Parcel;
 use App\Models\Region;
 use App\Models\Company;
 use App\Models\Country;
+use App\Models\Service;
 use App\Models\Currency;
 use App\Models\Customer;
 use App\Models\Logistic;
-use App\Models\Parcel;
 use Illuminate\Http\Request;
+use App\Models\PaymentMethod;
 use App\Models\ShippingCharge;
 use App\Models\ParcelRegistration;
-use App\Models\PaymentMethod;
-use App\Models\Service;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -63,8 +64,17 @@ class HomeController extends Controller
         $companies = Company::all();
         $currencies = Currency::all();
         $services = Service::all();
+        // $processed_parcels = Parcel::where('pl_status', 'processed')->get();
         $processed_parcels = Parcel::where('pl_status', 'processed')->get();
         $allocated_parcels =  Parcel::where('pl_status', 'allocated')->orWhere('pl_status', 'delivered')->get();
+        // dd($processed_parcels);
+        // $allocated_parcels =  DB::table("parcels")
+        // ->join('vendor_id_trackings', 'vendor_id_trackings.pl_id', '=', 'parcels.pl_id')
+        // ->select('parcels.*', 'vendor_id_trackings.vendor_tracking_id as tracking_id')
+        // ->where('parcels.pl_status', 'allocated')
+        // ->get();
+        // dd($allocated_parcels);
+       
         $logistics = Logistic::all();
         $payment_methods = PaymentMethod::all();
 

@@ -16,4 +16,8 @@ class VendorIdTracking extends Model
     protected $fillables = [
         'pl_id', 'vendor_tracking_id','status'
     ];
+    public function tracking_parcel(){
+
+        return $this->belongsTo(Parcel::class,'pl_id','id');
+    }
 }

@@ -6,6 +6,7 @@ use App\Models\AllocateParcel;
 use App\Models\Country;
 use App\Models\Logistic;
 use App\Models\Parcel;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class LogisticController extends Controller
@@ -54,8 +55,9 @@ class LogisticController extends Controller
         //
         $data = Logistic::find($id);
         $countries = Country::all();
+        $services = Service::all();
         // dd($data);
-        return view('admin-panel.logistics.edit_logistic', compact('data', 'countries'));
+        return view('admin-panel.logistics.edit_logistic', compact('data', 'countries','services'));
     }
     public function update_logistic(Request $request, $id)
     {

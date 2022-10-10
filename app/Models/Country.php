@@ -15,10 +15,7 @@ class Country extends Model
 
     protected $fillable = ['region_id', 'name'];
 
-    public function parcel()
-    {
-        return $this->hasMany(Parcel::class, 'country_id', 'id');
-    }
+   
     public function company()
     {
         return $this->hasMany(Company::class, 'country_id', 'id');
@@ -44,9 +41,9 @@ class Country extends Model
         return $this->hasMany(Logistic::class,'country_id','id');
     }
 
-    public function country_parcel(){
+    public function parcel(){
 
-        return $this->hasMany(Parcel::class, 'consignee_country_id','id');
+        return $this->hasMany(Parcel::class, 'shipper_country_id','id');
     }
 
     public function country_consignee(){

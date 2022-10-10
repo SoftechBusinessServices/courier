@@ -22,8 +22,8 @@ class ParcelConsignee extends Model
 
         return  $this->belongsTo(Country::class,'consignee_country_id','id');
     }
-    public function consignee_parcel(){
+    public function parcel(){
 
-        return $this->hasMany(Parcel::class, 'pl_id','id');
+        return $this->belongsTo(Parcel::class, 'pl_id','id');
     }
 }

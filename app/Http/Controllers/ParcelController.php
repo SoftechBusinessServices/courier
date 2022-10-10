@@ -257,7 +257,7 @@ class ParcelController extends Controller
     public function parcel_details($id)
     {
         // dd($id);
-        $data = Parcel::find($id);
+        $data = Parcel::with('consignee')->find($id);
         // dd($data);
     
         return view('admin-panel.parcels.parcel_details', compact('data'));

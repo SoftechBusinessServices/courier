@@ -16,7 +16,7 @@
                                 <ol class="breadcrumb m-0 text-bold text-decoration-underline">
                                     <li class="breadcrumb-item">Tracking ID: <span class="text-bold">{{$data->pl_id}}</span></li>
                                     <li class="breadcrumb-item  text-bold">Service Used: <span class="text-bold text-primary">{{ $data->parcel_service->service_name  }}</span></li>
-                                    <li class="breadcrumb-item  text-bold">Destination: <span class="m-1 text-bold text-primary">{{ $data->parcel_service->service_name  }}</span></li>
+                                    <li class="breadcrumb-item  text-bold">Destination: <span class="m-1 text-bold text-primary">{{ $data->country->name }}</span></li>
                                     <li class="breadcrumb-item  text-bold">Status: <span class="text-bold text-danger">{{ $data->pl_status }}</span></li>
                                     <li class="breadcrumb-item  text-bold">Dated: <span class="text-bold">{{ date('d/y/m') }}</span></li>
                                 </ol>
@@ -70,7 +70,7 @@
                                                 <th class="py-1 px-0 font-size-14" scope="col">Country</th>
                                             </tr>
                                             <tr>
-                                                <td class="py-1 px-0 font-size-14">Qazi Wajid Iqbal</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->consignee_name}}</td>
                                                 <td class="py-1 px-0 font-size-14">03451231211</td>
                                                 <td class="py-1 px-0 font-size-14">Apex College Lahore</td>
                                                 <td class="py-1 px-0 font-size-14">Pakistan</td>

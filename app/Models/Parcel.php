@@ -20,7 +20,7 @@ class Parcel extends Model
 
     public function country()
     {
-        return $this->belongsTo(Country::class, 'country_id', 'id');
+        return $this->belongsTo(Country::class,'shipper_country_id','id');
     }
     // public function shipping()
     // {
@@ -39,9 +39,9 @@ class Parcel extends Model
     {
         return $this->belongsTo(AllocateParcel::class,'pl_id','id');
     }
-    public function parcel_consignee(){
+    public function consignee(){
 
-        return $this->belongsTo(ParcelConsignee::class, 'pl_id','id');
+        return $this->hasOne(ParcelConsignee::class,'pl_id','id');
     }
     public function parcel_service(){
 

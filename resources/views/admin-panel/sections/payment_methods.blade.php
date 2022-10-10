@@ -21,8 +21,8 @@
 
                     <div class="modal-footer">
                         <!-- Toogle to second dialog -->
-                        <button type="submit" form="paymentform" class="btn btn-primary " id="modal_submit" value="Submit">Submit</button>
-                        <button type="button" class="btn btn-secondary" id="modal_close1" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" form="paymentform" class="btn btn-primary " id="modal_submit6" value="Submit">Submit</button>
+                        <button type="button" class="btn btn-secondary" id="modal_close6" data-bs-dismiss="modal">Close</button>
                     </div>
             </div>
             </form>

@@ -15,7 +15,7 @@ class CreateAllocateParcelsTable extends Migration
     {
         Schema::create('allocate_parcels', function (Blueprint $table) {
             $table->id();
-            $table->string('pl_id')->nullable();
+            $table->integer('pl_id')->nullable();
             $table->Integer('service_id')->nullable();
             // $table->foreign('region_id')->references('id')->on('regions')->onDelete('cascade');
             $table->Integer('vendor_id')->nullable();

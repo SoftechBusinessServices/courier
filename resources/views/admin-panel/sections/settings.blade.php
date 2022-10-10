@@ -146,8 +146,8 @@
 
                         <div class="modal-footer">
                             <!-- Toogle to second dialog -->
-                            <button type="submit" form="regionform" class="btn btn-primary " id="modal_submit" value="Submit">Submit</button>
-                            <button type="button" class="btn btn-secondary" id="modal_close1" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" form="regionform" class="btn btn-primary " id="modal_submit8" value="Submit">Submit</button>
+                            <button type="button" class="btn btn-secondary" id="modal_close8" data-bs-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </form>
@@ -238,8 +238,8 @@
 
             <div class="modal-footer">
                 <!-- Toogle to second dialog -->
-                <button type="submit" form="form2" class="btn btn-primary " id="modal_submit" value="Submit">Submit</button>
-                <button type="button" class="btn btn-secondary" id="modal_close1" data-bs-dismiss="modal">Close</button>
+                <button type="submit" form="form2" class="btn btn-primary " id="modal_submit9" value="Submit">Submit</button>
+                <button type="button" class="btn btn-secondary" id="modal_close9" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
         </form>
@@ -271,8 +271,8 @@
 
                         <div class="modal-footer">
                             <!-- Toogle to second dialog -->
-                            <button type="submit" form="serviceform" class="btn btn-primary " id="modal_submit" value="Submit">Submit</button>
-                            <button type="button" class="btn btn-secondary" id="modal_close1" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" form="serviceform" class="btn btn-primary " id="modal_submit7" value="Submit">Submit</button>
+                            <button type="button" class="btn btn-secondary" id="modal_close7" data-bs-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </form>

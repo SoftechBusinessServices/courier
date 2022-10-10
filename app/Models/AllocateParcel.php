@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Logistic;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -14,7 +15,7 @@ class AllocateParcel extends Model
     protected $guarded = [];
 
     protected $fillables = [
-        'pl_id','service_id', 'vendor_id','status'
+        'pl_id', 'service_id', 'vendor_id', 'status'
     ];
 
     public function country()
@@ -30,9 +31,12 @@ class AllocateParcel extends Model
     {
         return $this->belongsTo(Service::class, 'service_id', 'id');
     }
-public function allocate_parcel(){
+    public function allocate()
+    {
+        return $this->hasMany(Parcel::class, 'pl_id', 'id');
+    }
+    public function allocate_logistic(){
 
-    return $this->hasMany(Parcel::class,'pl_id','id');
-}
-
+        return $this->belongsTo(Logistic::class, 'vendor_id','id');
+    }
 }

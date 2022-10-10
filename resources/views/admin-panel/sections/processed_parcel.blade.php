@@ -12,7 +12,8 @@
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="">Parcel ID</label>
-                            <input type="text" name="parcell_id" value="" id="parcell_id" class="form-control" readonly>
+                            <input type="hidden" name="parcell_id" value="" id="parcell_id" class="form-control" readonly>
+                            <input type="text" name="parcell_id2" value="" id="parcell_id2" class="form-control" readonly>
                         </div>
                         <div class="col-md-6">
                             <label for="course" class="form-label">Select Vendor for Service </label>
@@ -33,8 +34,8 @@
 
                     <div class="modal-footer">
                         <!-- Toogle to second dialog -->
-                        <button type="submit" form="allocateform" class="btn btn-primary " id="modal_submit" value="Submit">Submit</button>
-                        <button type="button" class="btn btn-secondary" id="modal_close1" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" form="allocateform" class="btn btn-primary " id="modal_submit2" value="Submit">Submit</button>
+                        <button type="button" class="btn btn-secondary" id="modal_close2" data-bs-dismiss="modal">Close</button>
                     </div>
             </div>
             </form>
@@ -103,7 +104,7 @@
                                                     <a href="{{ url('/customer-receipt-print-view') }}" class="btn btn-info waves-effect waves-light me-1 btn-sm"><i class="fa fa-print">Receipt</i></a>
                                                 </td>
                                                 <td>
-                                                    <a id="todolink" class="btn btn-outline-info btn-sm parcel_allocate" title="add" data-bs-toggle="modal" data-bs-target="#allocatemodal" href="#allocatemodal" data-id="{{ $item->pl_id }}" data-prod-id="{{ $item->service_id }}">
+                                                    <a id="todolink" class="btn btn-outline-info btn-sm parcel_allocate" title="add" data-bs-toggle="modal" data-bs-target="#allocatemodal" href="#allocatemodal" data-id="{{ $item->id }}" data-pl-id ="{{$item->pl_id}}" data-prod-id="{{ $item->service_id }}">
                                                         Allocate
                                                     </a>
                                                 </td>
@@ -136,6 +137,7 @@
             e.preventDefault();
 
             $('#parcell_id').val($(this).data('id'));
+            $('#parcell_id2').val($(this).data('pl-id'));
             // alert(data.id);
             $('#service_used_id').val($(this).data('prod-id'));
 

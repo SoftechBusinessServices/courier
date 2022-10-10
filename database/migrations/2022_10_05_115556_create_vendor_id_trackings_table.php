@@ -15,7 +15,7 @@ class CreateVendorIdTrackingsTable extends Migration
     {
         Schema::create('vendor_id_trackings', function (Blueprint $table) {
             $table->id();
-            $table->text('pl_id')->nullable();
+            $table->integer('pl_id')->nullable();
             // $table->foreign('pl_id')->references('id')->on('parcels')->onDelete('cascade');
             $table->string('vendor_tracking_id')->nullable();
             // $table->Integer('vendor_id')->nullable();

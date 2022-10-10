@@ -15,7 +15,7 @@ class CreateParcelShippersTable extends Migration
     {
         Schema::create('parcel_shippers', function (Blueprint $table) {
             $table->id();
-            $table->string('pl_id')->nullable();
+            $table->integer('pl_id')->nullable();
             $table->date('pl_date')->nullable();
             $table->text('pl_phone_id')->nullable();
             $table->string('company_name')->nullable();

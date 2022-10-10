@@ -638,7 +638,7 @@
         
     }); // ready function closed here
 </script>
-<script data-rishi-type="text/javascript" data-cfasync="false" data-no-optimize="1" data-no-defer="1" data-no-minify="1">
+<script data-rishi-type="text/javascript">
     $(document).ready(function() {
 
         $('.repeater').repeater({

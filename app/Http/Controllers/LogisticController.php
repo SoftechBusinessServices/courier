@@ -117,6 +117,7 @@ class LogisticController extends Controller
         $request->validate([
 
             'parcell_id' => 'required',
+            'parcell_id2' => 'required',
             'service_used_id' => 'required',
             'vendor_id' => 'required',
             // 'vendor_tracking_id' => 'required',
@@ -130,9 +131,9 @@ class LogisticController extends Controller
             // 'vendor_tracking_id' => $request->vendor_tracking_id,
             // 'vendor_tracking_charges' => $request->vendor_tracking_charges,
         ];
-        AllocateParcel::create($data);
-
-        $record = Parcel::where('pl_id', $id)->first();
+        $AllocateParcel =AllocateParcel::create($data);
+        // dd($AllocateParcel);
+        $record = Parcel::where('id', $id)->first();
         $record->pl_status = "allocated";
         $data_updated = $record->update();
         // dd($data_updated);

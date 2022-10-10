@@ -17,7 +17,7 @@
 
     </div>
 
-    {{-- <div class="rightbar-overlay"></div> --}}
+   
 
     <!-- JAVASCRIPT -->
     <script src="{{ asset('assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>

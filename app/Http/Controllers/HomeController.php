@@ -44,11 +44,12 @@ class HomeController extends Controller
 
         if (isset($lastParcel)) {
             // Sum 1 + last id
-            $abc =  $parcel->pl_id = date('Y') . '-' . 'PL-00000' . ($lastParcel->id + 1);
+            // $abc =  $parcel->pl_id = date('Y') . '-' . 'PL-00000' . ($lastParcel->id + 1);
+            $abc =  $parcel->pl_id = 'PL-00000' . ($lastParcel->id + 1);
             // $data['pl_id'] = $a;
             // return $abc;
         } else {
-            $abc = $parcel->pl_id  = date('Y') . '-' . 'PL-000001';
+            $abc = $parcel->pl_id  = 'PL-000001';
             // $data['pl_id'] = $b;
             // return $abc;
         }
@@ -67,15 +68,19 @@ class HomeController extends Controller
         $services = Service::all();
         // $processed_parcels = Parcel::where('pl_status', 'processed')->get();
         $processed_parcels = Parcel::with('country','consignee')->where('pl_status', 'processed')->get();
+        DB::enableQueryLog();
         // $processed_parcels = Parcel::with('country','consignee')->where('pl_status', 'processed')->get();
-        $allocated_parcels =  Parcel::with('country')->where('pl_status', 'allocated')->orWhere('pl_status', 'delivered')->get();
-        // dd($processed_parcels);
-        // $allocated_parcels =  DB::table("parcels")
-        // ->join('vendor_id_trackings', 'vendor_id_trackings.pl_id', '=', 'parcels.pl_id')
-        // ->select('parcels.*', 'vendor_id_trackings.vendor_tracking_id as tracking_id')
-        // ->where('parcels.pl_status', 'allocated')
-        // ->get();
+        $allocated_parcels =  Parcel::with(['country','allocate_parcel' => function($query){
+            $query->with(['service','allocate_logistic']);
+        }])
+            ->whereIn(
+                'pl_status', ['allocated','delivered']
+                )
+            // ->orWhere('pl_status', 'delivered')
+            ->get();
+            // dd(DB::getQueryLog());
         // dd($allocated_parcels);
+     
        
         $logistics = Logistic::all();
         $payment_methods = PaymentMethod::all();

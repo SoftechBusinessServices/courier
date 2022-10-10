@@ -15,7 +15,7 @@ class CreateParcelNotesTable extends Migration
     {
         Schema::create('parcel_notes', function (Blueprint $table) {
             $table->id();
-            $table->string('pl_id')->nullable();
+            $table->integer('pl_id')->nullable();
             $table->longText('disp_content')->nullable();
             $table->string('disp_condition')->nullable();
             $table->string('currency_id')->nullable();

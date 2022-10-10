@@ -19,4 +19,9 @@ class Logistic extends Model
     {
         return $this->belongsTo(Service::class, 'service_id', 'id');
     }
+    public function logistic_allocate(){
+
+        return $this->hasMany(AllocateParcel::class,'vendor_id','id');
+    }
+    
 }

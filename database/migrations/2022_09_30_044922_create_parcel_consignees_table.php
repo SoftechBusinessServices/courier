@@ -15,7 +15,7 @@ class CreateParcelConsigneesTable extends Migration
     {
         Schema::create('parcel_consignees', function (Blueprint $table) {
             $table->id();
-            $table->string('pl_id')->nullable();
+            $table->integer('pl_id')->nullable();
             // $table->date('pl_date')->nullable();
             $table->string('consignee_name')->nullable();
             $table->string('consignee_phone')->nullable();

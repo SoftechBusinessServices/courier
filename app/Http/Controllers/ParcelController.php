@@ -16,28 +16,16 @@ class ParcelController extends Controller
     //
     public function add_parcel()
     {
-        $lastParcel =   Parcel::orderBy('created_at', 'desc')->first();
+       
 
-        $parcel = new Parcel();
-
-        if (isset($lastParcel)) {
-            // Sum 1 + last id
-            $abc =  $parcel->pl_id = date('Y') . '-' . 'PL-00000' . ($lastParcel->id + 1);
-            // $data['pl_id'] = $a;
-            return $abc;
-        } else {
-            $abc = $parcel->pl_id  = date('Y') . '-' . 'PL-000001';
-            // $data['pl_id'] = $b;
-            return $abc;
-        }
-
-        //
+    
         $data = Parcel::all();
         // dd($data);
         $regions = Region::all();
         $countries = Country::all();
         $currencies = Currency::all();
         // dd($charges);
+        
         return view('admin-panel.parcels.create_parcel', compact('data', 'regions', 'currencies', 'countries', 'abc'));
     }
 
@@ -89,10 +77,11 @@ class ParcelController extends Controller
                 $data =['shipping_country_id'=>$request->shipping_country_id];
             }
            
-            $record = Parcel::create($data);
+            $record_id = Parcel::create($data)->id;
+            // dd($record_id);
             session()->now('message', 'Success! parcel Added.');
         } else {
-            dd(3);
+            dd(3333);
             return back()->with('error', "Parcel insertion failed!");
         }
         // dd(4);
@@ -105,7 +94,7 @@ class ParcelController extends Controller
             ]);
             $data  = [
 
-                'pl_id' => $request->pl_id,
+                'pl_id' => $record_id,
                 'pl_date' => $request->pl_date,
                 'pl_phone_id' => $request->pl_phone_id,
             ];
@@ -138,7 +127,7 @@ class ParcelController extends Controller
                 // $pl_phone_id= $request->shipper_phone;
                 $data  = [
 
-                    'pl_id' => $request->pl_id,
+                    'pl_id' =>  $record_id,
                     'pl_date' => $request->pl_date,
                     'pl_phone_id' => "123",
                     'company_name' => $request->company_name,
@@ -184,7 +173,7 @@ class ParcelController extends Controller
             if ($request->consignee_business !== null) {
 
                 $data = [
-                    'pl_id' => $request->pl_id,
+                    'pl_id' =>  $record_id,
                     'consignee_name' => $request->consignee_name,
                     'consignee_phone' => $request->consignee_phone,
                     'consignee_country_id' => $request->consignee_country_id,
@@ -199,7 +188,7 @@ class ParcelController extends Controller
             } else{
                 $data  = [
 
-                    'pl_id' => $request->pl_id,
+                    'pl_id' =>  $record_id,
                     'consignee_name' => $request->consignee_name,
                     'consignee_phone' => $request->consignee_phone,
                     'consignee_country_id' => $request->consignee_country_id,
@@ -227,7 +216,7 @@ class ParcelController extends Controller
             // dd(24);
 
             $data = [
-                'pl_id'  => $request->pl_id,
+                'pl_id'  =>  $record_id,
                 'disp_content'  =>  $request->userData[$i]['disp_content'],
                 'disp_condition'  =>  $request->userData[$i]['disp_condition'],
                 'currency_id'  =>  $request->userData[$i]['disp_currency'],

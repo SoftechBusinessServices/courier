@@ -46,8 +46,8 @@
 
                     <div class="modal-footer">
                         <!-- Toogle to second dialog -->
-                        <button type="submit" form="vendor-tracking-id" class="btn btn-primary vendor-tracking-id" id="modal_submit" value="Submit">Submit</button>
-                        <button type="button" class="btn btn-secondary" id="modal_close1" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" form="vendor-tracking-id" class="btn btn-primary vendor-tracking-id" id="modal_submit5" value="Submit">Submit</button>
+                        <button type="button" class="btn btn-secondary" id="modal_close5" data-bs-dismiss="modal">Close</button>
                     </div>
             </div>
             </form>

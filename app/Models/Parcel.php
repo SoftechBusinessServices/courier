@@ -37,7 +37,7 @@ class Parcel extends Model
 
     public function allocate_parcel()
     {
-        return $this->belongsTo(AllocateParcel::class,'pl_id','id');
+        return $this->hasMany(AllocateParcel::class,'pl_id','id');
     }
     public function consignee(){
 

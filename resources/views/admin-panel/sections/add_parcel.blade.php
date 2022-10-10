@@ -556,7 +556,8 @@
 <script>
     $(document).ready(function() {
 
-
+        $(":input").inputmask();
+        
         $(function() {
             $("#chkPassport").click(function() {
 
@@ -634,6 +635,22 @@
 
         });
 
-
+        
     }); // ready function closed here
+</script>
+<script data-rishi-type="text/javascript" data-cfasync="false" data-no-optimize="1" data-no-defer="1" data-no-minify="1">
+    $(document).ready(function() {
+
+        $('.repeater').repeater({
+            show: function() {
+                $(this).slideDown();
+            },
+            hide: function(deleteElement) {
+                if (confirm('Are you sure you want to delete this element?')) {
+                    $(this).slideUp(deleteElement);
+                }
+            },
+        });
+    });
+    //form-wizard
 </script>

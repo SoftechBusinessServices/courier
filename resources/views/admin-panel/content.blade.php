@@ -81,9 +81,9 @@
                     </div>
                     <div class="modal-footer flex-nowrap p-0 justify-content-center">
 
-                        <a class="btn btn-primary btn-md text-white font-size-12 " data-toggle="collapse" href="#balancesheettable" role="button" aria-expanded="false" aria-controls="collapseExample">Balance Sheet</a>
-                        <a class="btn btn-info btn-md text-white font-size-12 " data-toggle="collapse" href="#vendortable" role="button" aria-expanded="false" aria-controls="collapseExample">Vendor Payment</a>
-                        <a class="btn btn-success btn-md text-white font-size-12 " data-toggle="collapse" href="#customertable" role="button" aria-expanded="false" aria-controls="collapseExample">Customer Payment</a>
+                        <a class="btn btn-primary btn-md text-white font-size-10 " data-toggle="collapse" href="#balancesheettable" role="button" aria-expanded="false" aria-controls="collapseExample">Balance Sheet</a>
+                        <a class="btn btn-info btn-md text-white font-size-10 " data-toggle="collapse" href="#vendortable" role="button" aria-expanded="false" aria-controls="collapseExample">Vendor Payment</a>
+                        <a class="btn btn-success btn-md text-white font-size-10 " data-toggle="collapse" href="#customertable" role="button" aria-expanded="false" aria-controls="collapseExample">Customer Payment</a>
 
 
                     </div>
@@ -108,13 +108,6 @@
 </div>
 
 
-<!------------------Vendor Charges Update ---------------------->
-
-
-<!------------------vendor_payment_modal---------------------->
-
-
-<!------------------customer_payment_modal---------------------->
 @include('admin-panel.sections.customer_payment')
 
 
@@ -132,36 +125,6 @@
 
 <!---------------------- JAVASCRIPT-------------------->
 
-<script>
-    $(document).ready(function() {
 
-        $(":input").inputmask();
 
-        function togglePassword() {
-            var x = document.getElementById("userpassword");
-            if (x.type === "password") {
-                x.type = "text";
-            } else {
-                x.type = "password";
-            }
-        }
-
-    }); // ready function closed here
-</script>
-<script data-rishi-type="text/javascript" data-cfasync="false" data-no-optimize="1" data-no-defer="1" data-no-minify="1">
-    $(document).ready(function() {
-
-        $('.repeater').repeater({
-            show: function() {
-                $(this).slideDown();
-            },
-            hide: function(deleteElement) {
-                if (confirm('Are you sure you want to delete this element?')) {
-                    $(this).slideUp(deleteElement);
-                }
-            },
-        });
-    });
-    //form-wizard
-</script>
 

@@ -43,7 +43,6 @@
     </div>
 </div>
 
-
 <div class="container">
         <div class="collapse" id="processtable">
             <div class="card card-body mb-0">

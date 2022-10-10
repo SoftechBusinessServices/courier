@@ -70,3 +70,20 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+
+        $(":input").inputmask();
+
+        function togglePassword() {
+            var x = document.getElementById("userpassword");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+
+    }); // ready function closed here
+</script>

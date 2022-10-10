@@ -1,5 +1,5 @@
 <header id="page-topbar" >
-    <div class="navbar-header text-light " style="background-color: #5668aa; "  >
+    <div class="navbar-header text-light " style="background-color: dark;"  >
         <div class="d-flex">
             <!-- LOGO -->
             <div class="navbar-brand-box">
@@ -36,26 +36,7 @@
         <div class="d-flex">
 
             <div class="dropdown d-inline-block d-lg-none ms-2">
-                {{-- <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-search-dropdown"
-                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="mdi mdi-magnify"></i>
-                </button> --}}
-                {{-- <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
-                    aria-labelledby="page-header-search-dropdown">
-
-                    <form class="p-3">
-                        <div class="form-group m-0">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search ..."
-                                    aria-label="Recipient's username">
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary" type="submit"><i
-                                            class="mdi mdi-magnify"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div> --}}
+               
             </div>
 
             <div class="dropdown d-inline-block">
@@ -74,11 +55,11 @@
             </div>
 
             <div class="dropdown d-inline-block">
-                <button type="button" class="btn header-item waves-effect " style="background-color: #5668aa; "  id="page-header-user-dropdown"
+                <button type="button" class="btn header-item waves-effect"  id="page-header-user-dropdown"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img class="rounded-circle header-profile-user" src="{{asset('assets/images/users/admin.png')}}"
                         alt="Header Avatar">
-                    <span class="d-none d-xl-inline-block ms-1 text-white" key="t-henry">{{ Auth::user()->name }}</span>
+                    <span class="d-none d-xl-inline-block ms-1 text-dark" key="t-henry">{{ Auth::user()->name }}</span>
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">

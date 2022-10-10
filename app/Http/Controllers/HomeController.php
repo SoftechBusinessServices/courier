@@ -60,6 +60,7 @@ class HomeController extends Controller
         // $charges = ShippingCharge::all();
         $customers = Customer::all();
         // dd(1);
+        $users = User::all();
         $countries = Country::all();
         $companies = Company::all();
         $currencies = Currency::all();
@@ -77,8 +78,9 @@ class HomeController extends Controller
        
         $logistics = Logistic::all();
         $payment_methods = PaymentMethod::all();
-
-        return view('admin-panel.master',  compact('data', 'regions',  'countries', 'companies', 'currencies','customers','services','abc','processed_parcels','allocated_parcels','logistics','payment_methods'));
+        $vendors =  Logistic::all()->unique('logistic_name');
+        // dd($vendors);
+        return view('admin-panel.master',  compact('data', 'regions',  'countries', 'companies', 'currencies','customers','services','abc','processed_parcels','allocated_parcels','logistics','payment_methods','users','vendors'));
 
         // return view('home');
     }

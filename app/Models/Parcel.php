@@ -20,7 +20,7 @@ class Parcel extends Model
 
     public function country()
     {
-        return $this->belongsTo(Country::class,'shipper_country_id','id');
+        return $this->belongsTo(Country::class,'consignee_country_id','id');
     }
     // public function shipping()
     // {

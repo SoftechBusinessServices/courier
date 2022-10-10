@@ -14,7 +14,7 @@
                                 </div>
 
                                 <div class="page-title-left m-3">
-                                    <a class="btn btn-info btn-md text-white font-size-12 " data-bs-toggle="modal" data-bs-target="#vendor_payment_modal">Select Vendor</a>
+                                    <a class="btn btn-info btn-md text-white font-size-12 " data-bs-toggle="modal" data-bs-target="#vendor_payment_modal">Select Date</a>
                                 </div>
                                 @if (isset($countries))
                                 <div class="table-responsive">
@@ -24,12 +24,9 @@
                                                 <th>S.No</th>
                                                 <th>Date</th>
                                                 <th>Parcel ID</th>
-                                                <th>Parcel<br>Destination</th>
-                                                <th>Parcel <br>Charges</th>
-                                                <!-- <th>Receivable<br>Amount</th> -->
-                                                <th>Paid<br>Amount</th>
-                                                <th>Balance</th>
-
+                                                <th>Receivable <br>Charges</th>
+                                                <th>Payable<br>Charges</th>
+                                    
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -53,12 +50,12 @@
                                                         <i class="far fa-eye"> {{ $item->id }}</i>
                                                     </a>
                                                 </td>
-                                                <td>{{ $item->name }}</td>
+                                                <!-- <td>{{ $item->name }}</td> -->
 
                                                 <td> {{ $item->id }} </td>
                                                 <td> {{ $item->id }} </td>
                                                 <!-- <td> {{ $item->id }} </td> -->
-                                                <td> {{ $item->id }} </td>
+                                                <!-- <td> {{ $item->id }} </td> -->
 
                                             </tr>
                                             @endforeach

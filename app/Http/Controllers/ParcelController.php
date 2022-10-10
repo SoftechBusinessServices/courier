@@ -65,6 +65,7 @@ class ParcelController extends Controller
             'pl_final' => 'required',
             'pl_description' => 'required',
             'pl_date' => 'required',
+            'shipper_country_id' => 'required',
         ]);
         // dd(1);
         if ($parcel_validated) {
@@ -82,10 +83,12 @@ class ParcelController extends Controller
                 'pl_final' => $request->pl_final,
                 'pl_description' => $request->pl_description,
                 'payment_id' => $request->payment_method_id,
+                'consignee_country_id' => $request->consignee_country_id,
             ];
             if($request->shipping_country_id !=null){
                 $data =['shipping_country_id'=>$request->shipping_country_id];
             }
+           
             $record = Parcel::create($data);
             session()->now('message', 'Success! parcel Added.');
         } else {

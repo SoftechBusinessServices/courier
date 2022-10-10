@@ -67,6 +67,7 @@ class HomeController extends Controller
         $services = Service::all();
         // $processed_parcels = Parcel::where('pl_status', 'processed')->get();
         $processed_parcels = Parcel::with('country','consignee')->where('pl_status', 'processed')->get();
+        // $processed_parcels = Parcel::with('country','consignee')->where('pl_status', 'processed')->get();
         $allocated_parcels =  Parcel::with('country')->where('pl_status', 'allocated')->orWhere('pl_status', 'delivered')->get();
         // dd($processed_parcels);
         // $allocated_parcels =  DB::table("parcels")

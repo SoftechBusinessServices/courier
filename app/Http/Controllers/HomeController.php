@@ -71,11 +71,13 @@ class HomeController extends Controller
         // $processed_parcels = Parcel::where('pl_status', 'processed')->get();
         $processed_parcels = Parcel::with('country','consignee')->where('pl_status', 'processed')->get();
         // dd($processed_parcels);
+        $delivered_parcels = Parcel::with('parcel_tracking','parcel_charges',)->where('pl_status', 'delivered')->get();
+        // dd($delivered_parcels);
         //    dd(DB::getQueryLog());
         
         // DB::enableQueryLog();
         // $processed_parcels = Parcel::with('country','consignee')->where('pl_status', 'processed')->get();
-        $allocated_parcels =  Parcel::with(['country','parcel_tracking','parcel_charges','parcel_tracking','parcel_charges','allocate_parcel' => function($query){
+        $allocated_parcels =  Parcel::with(['country','parcel_tracking','parcel_charges','allocate_parcel' => function($query){
             $query->with(['service','allocate_logistic']);
         }])
             ->whereIn(
@@ -92,7 +94,7 @@ class HomeController extends Controller
         $payment_methods = PaymentMethod::all();
         $vendors =  Logistic::all()->unique('logistic_name');
         // dd($vendors);
-        return view('admin-panel.master',  compact('data', 'regions',  'countries', 'companies', 'currencies','customers','services','abc','processed_parcels','allocated_parcels','logistics','payment_methods','users','vendors'));
+        return view('admin-panel.master',  compact('data', 'regions',  'countries', 'companies', 'currencies','customers','services','abc','processed_parcels','allocated_parcels','logistics','payment_methods','users','vendors','delivered_parcels'));
 
         // return view('home');
     }

@@ -15,26 +15,28 @@
                             <div class="page-title-left m-3">
                                 <a class="btn btn-info btn-md text-white font-size-12 " data-bs-toggle="modal" data-bs-target="#vendor_payment_modal">Select Date</a>
                             </div>
-                            @if (isset($countries))
+
+                            @if (isset($delivered_parcels))
                             <div class="table-responsive">
                                 <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100 table-sm text-center table-sm">
                                     <thead>
                                         <tr class="text-center">
-                                            <th>S.No</th>
+                                            <th>S.NO</th>
                                             <th>Date</th>
                                             <th>Parcel ID</th>
+                                            <th>Tracking<br>ID</th>
                                             <th>Receivable <br>Charges</th>
                                             <th>Payable<br>Charges</th>
-
+                                            <th>Difference</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @php
                                         $i = 1;
                                         @endphp
+                                        @if ($delivered_parcels->count() > 0)
 
-                                        @if ($countries->count() > 0)
-                                        @foreach ($countries as $item)
+                                        @foreach ($delivered_parcels as $item)
                                         <tr>
                                             <td>{{ $i++ }}</td>
                                             <td>
@@ -46,16 +48,16 @@
                                             </td>
                                             <td>
                                                 <a href="{{ url('parcel-details/' . $item->id) }}" class="btn btn-outline-secondary btn-sm delete" title="View">
-                                                    <i class="far fa-eye"> {{ $item->id }}</i>
+                                                    <i class="far fa-eye"> {{ $item->pl_id }}</i>
                                                 </a>
                                             </td>
-                                            <!-- <td>{{ $item->name }}</td> -->
+                                          
 
-                                            <td> {{ $item->id }} </td>
-                                            <td> {{ $item->id }} </td>
-                                            <!-- <td> {{ $item->id }} </td> -->
-                                            <!-- <td> {{ $item->id }} </td> -->
-
+                                            <td>{{ $item->parcel_tracking->vendor_tracking_id}} </td>
+                                            <td>{{ $a = $item->pl_final }}</td>
+                                            <td>{{ $b =$item->parcel_charges->vendor_tracking_charges}} </td>
+                                            <td>{{$a-$b}}</td>
+                                            
                                         </tr>
                                         @endforeach
                                         @else
@@ -66,7 +68,8 @@
                                     </tbody>
                                 </table>
                             </div>
-                            @endif
+                            @endif    
+
                         </div>
 
                     </div> <!-- end col -->
@@ -92,35 +95,36 @@
                             <div class="page-title-left m-3">
                                 <a class="btn btn-info btn-md text-white font-size-12 " data-bs-toggle="modal" data-bs-target="#vendor_payment_modal">Add Vendor's Payment</a>
                             </div>
-                            @if (isset($allocated_parcels))
+
+                            @if (isset($delivered_parcels))
                             <div class="table-responsive">
                                 <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100 table-sm text-center table-sm">
                                     <thead>
                                         <tr class="text-center">
-                                            <th>S.No</th>
+                                            <th>S.NO</th>
                                             <th>Date</th>
-                                            <th>Vendor Name</th>
                                             <th>Parcel ID</th>
+                                            <th>Vendor Name</th>
                                             <th>Tracking<br>ID</th>
                                             <th>Vendor <br>Charges</th>
                                             <th>Payment<br>Method</th>
                                             <th>Bulk<br>Payment</th>
                                             <th>Balance</th>
-
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @php
                                         $i = 1;
                                         @endphp
+                                        @if ($delivered_parcels->count() > 0)
 
-                                        @if ($allocated_parcels->count() > 0)
-                                        @foreach ($allocated_parcels as $item)
+                                        @foreach ($delivered_parcels as $item)
                                         <tr>
                                             <td>{{ $i++ }}</td>
                                             <td>
                                                 @php
                                                 $month = date('d/m/Y', strtotime($item->created_at));
+                                                // dd($month);
                                                 echo $month;
                                                 @endphp
                                             </td>
@@ -129,14 +133,13 @@
                                                     <i class="far fa-eye"> {{ $item->pl_id }}</i>
                                                 </a>
                                             </td>
-                                            <td>{{ $item->parcel_tracking->vendor_tracking_id }}</td>
-                                            <td>{{ $item->parcel_charges }}</td>
+                                            <td>{{ $item->allocate_parcel['0']['allocate_logistic']['logistic_name'] }}</td>
 
-                                            
-                                            <td> {{ $item->id }} </td>
-                                            <td> {{ $item->id }} </td>
-                                            <td> {{ $item->id }} </td>
-
+                                            <td>{{ $item->parcel_tracking->vendor_tracking_id}} </td>
+                                            <td>{{ $item->parcel_charges->vendor_tracking_charges}} </td>
+                                            <td>{{$item->parcel_payment_method->payment_method}}</td>
+                                            <td>0</td>
+                                            <td>0</td>
                                         </tr>
                                         @endforeach
                                         @else
@@ -148,6 +151,7 @@
                                 </table>
                             </div>
                             @endif
+
                         </div>
 
                     </div> <!-- end col -->
@@ -173,7 +177,7 @@
                             <div class="page-title-left m-3">
                                 <a class="btn btn-info btn-md text-white font-size-12 " data-bs-toggle="modal" data-bs-target="#vendor_payment_modal">Select Customer</a>
                             </div>
-                            @if (isset($allocated_parcels))
+                            @if (isset($processed_parcels))
                             <div class="table-responsive">
                                 <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100 table-sm text-center table-sm">
                                     <thead>
@@ -183,7 +187,7 @@
                                             <th>Parcel ID</th>
                                             <th>Parcel<br>Destination</th>
                                             <th>Parcel <br>Charges</th>
-                                            <th>Receivable<br>Amount</th>
+                                            <!-- <th>Receivable<br>Amount</th> -->
                                             <th>Paid<br>Amount</th>
                                             <th>Balance</th>
 
@@ -194,8 +198,8 @@
                                         $i = 1;
                                         @endphp
 
-                                        @if ($allocated_parcels->count() > 0)
-                                        @foreach ($allocated_parcels as $item)
+                                        @if ($processed_parcels->count() > 0)
+                                        @foreach ($processed_parcels as $item)
                                         <tr>
                                             <td>{{ $i++ }}</td>
                                             <td>
@@ -206,14 +210,15 @@
                                                 @endphp
                                             </td>
                                             <td>
-
+                                                <a href="{{ url('parcel-details/' . $item->id) }}" class="btn btn-outline-secondary btn-sm delete" title="View">
+                                                    <i class="far fa-eye"> {{ $item->pl_id }}</i>
                                             </td>
-                                            <td>{{ $item->name }}</td>
+                                            <td>{{ $item->parcel_consignee->name }}</td>
 
-                                            <td> {{ $item->id }} </td>
-                                            <td> {{ $item->id }} </td>
-                                            <td> {{ $item->id }} </td>
-                                            <td> {{ $item->id }} </td>
+                                            <td> {{ $item->pl_final }} </td>
+                                            <td> {{ 0}} </td>
+                                            <td> {{ 0 }} </td>
+                                            <!-- <td> {{ $item->id }} </td> -->
 
                                         </tr>
                                         @endforeach

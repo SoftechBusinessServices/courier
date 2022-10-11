@@ -75,7 +75,7 @@ class HomeController extends Controller
         
         // DB::enableQueryLog();
         // $processed_parcels = Parcel::with('country','consignee')->where('pl_status', 'processed')->get();
-        $allocated_parcels =  Parcel::with(['country','parcel_tracking','parcel_charges','allocate_parcel' => function($query){
+        $allocated_parcels =  Parcel::with(['country','parcel_tracking','parcel_charges','parcel_tracking','parcel_charges','allocate_parcel' => function($query){
             $query->with(['service','allocate_logistic']);
         }])
             ->whereIn(
@@ -86,6 +86,7 @@ class HomeController extends Controller
             // dd(DB::getQueryLog());
         // dd($allocated_parcels);
      
+
        
         $logistics = Logistic::all();
         $payment_methods = PaymentMethod::all();

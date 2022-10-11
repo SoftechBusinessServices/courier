@@ -121,8 +121,8 @@ Route::get('/companies-print-view', [PrintController::class, 'companies_print_vi
 Route::get('/regions-print-view', [PrintController::class, 'regions_print_view']);
 Route::get('/countries-print-view', [PrintController::class, 'countries_print_view']);
 Route::get('/currencies-print-view', [PrintController::class, 'currencies_print_view']);
-Route::get('/dispatch-notes-print-view', [PrintController::class, 'dispatch_notes_print_view']);
-Route::get('/customer-receipt-print-view', [PrintController::class, 'customer_receipt_print_view']);
+Route::get('/dispatch-notes-print-view/{id}', [PrintController::class, 'dispatch_notes_print_view']);
+Route::get('/customer-receipt-print-view/{id}', [PrintController::class, 'customer_receipt_print_view']);
 
 Route::get('report', [ReportController::class, 'index'])->name('report');
 Route::get('daily-report', [ReportController::class, 'dailyReport'])->name('daily.report');

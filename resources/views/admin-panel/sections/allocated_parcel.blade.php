@@ -100,8 +100,8 @@
 
                                                 <td>
                                                     @if ($item->parcel_tracking !=null)
-                                                    <p>
-                                                        <button type="button" class="btn btn-success btn-sm disabled">
+                                                    <p id="tracking_id_style">
+                                                        <button type="button" class="btn bg-success text-white btn-sm disabled">
                                                             {{$item->parcel_tracking->vendor_tracking_id }}
                                                         </button>
                                                     </p>
@@ -116,9 +116,9 @@
 
                                                 <td>
                                                     @if ($item->parcel_charges !=null)
-                                                    <p>
-                                                        <button type="button" class="btn btn-success btn-sm disabled">
-                                                          
+                                                    <p id="tracking_charges_style">
+                                                        <button type="button" class="btn bg-primary text-white btn-sm disabled">
+                                                            {{$item->parcel_charges->vendor_tracking_charges }}
                                                         </button>
                                                     </p>
                                                     @else
@@ -256,7 +256,8 @@
                 }
                 if (data.success == 1) {
                     $('#trackingModal2_' + track_id2).text(data.data.vendor_tracking_charges);
-                    $('#trackingModal2_').addClass("text-white, bg-success");
+                    
+
                     toastr.success('record updated', 'success');
                     $('#vendor_charges_update').modal('hide');
                     // console.log(track_id);

@@ -39,7 +39,7 @@ class ParcelController extends Controller
     public function store_parcel(Request $request)
     {
 
-        dd($request->all());
+        // dd($request->all());
         $parcel_validated = $request->validate([
 
             'pl_id' => 'required',

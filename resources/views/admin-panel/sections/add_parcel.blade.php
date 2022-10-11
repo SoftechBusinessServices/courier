@@ -212,10 +212,9 @@
                                                 <div class="form-group col" style="margin: 0 5px; padding:0px">
                                                     <label for="message">Currency</label>
                                                     <select name="disp_currency[]" id="disp_currency[]" class="form-control @error('company_currency') is-invalid @enderror">
-
-                                                        <option value="0">PKR</option>
-                                                        <option value="1">USD</option>
-                                                        <option value="2">Euro</option>
+                                                        @foreach($currencies as $currency)
+                                                        <option value="{{$currency->id}}">{{$currency->name}}</option>
+                                                        @endforeach
                                                     </select>
                                                     @error('disp_currency')
                                                     <span class="invalid-feedback" role="alert">
@@ -638,7 +637,7 @@
         
     }); // ready function closed here
 </script>
-<script data-rishi-type="text/javascript">
+<script  data-rishi-type="text/javascript" data-cfasync="false" data-no-optimize="1" data-no-defer="1" data-no-minify="1">
     $(document).ready(function() {
 
         $('.repeater').repeater({

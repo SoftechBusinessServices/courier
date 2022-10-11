@@ -17,9 +17,9 @@
                                 <ol class="breadcrumb m-0 text-bold text-decoration-underline">
                                     <li class="breadcrumb-item">Tracking ID: <span class="text-bold">{{$data->pl_id}}</span></li>
                                     <li class="breadcrumb-item  text-bold">Service Used: <span class="text-bold text-primary">{{ $data->parcel_service->service_name  }}</span></li>
-                                    <li class="breadcrumb-item  text-bold">Destination: <span class="m-1 text-bold text-primary">{{ $data->country->name }}</span></li>
+                                    <li class="breadcrumb-item  text-bold">Destination: <span class="m-1 text-bold text-primary">{{$data->parcel_consignee->name }}</span></li>
                                     <li class="breadcrumb-item  text-bold">Status: <span class="text-bold text-danger">{{ $data->pl_status }}</span></li>
-                                    <li class="breadcrumb-item  text-bold">Dated: <span class="text-bold">{{ date('d/y/m') }}</span></li>
+                                    <li class="breadcrumb-item  text-bold">Dated: <span class="text-bold">{{ date('d,m,Y' ,strtotime($data->created_at)) }}</span></li>
                                 </ol>
                             </div>
                             <div class="text-center">
@@ -36,7 +36,7 @@
                                                 <td class="py-1 px-0 font-size-14">{{$data->pl_boxes}}</td>
                                                 <td class="py-1 px-0 font-size-14">{{$data->pl_weight}}</td>
                                                 <td class="py-1 px-0 font-size-14">{{$data->pl_final}}</td>
-                                                <td class="py-1 px-0 font-size-14">{{$data->payment_id}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->parcel_payment_method->payment_method}}</td>
                                             </tr>
                                             <tr>
                                                 <th class="py-1 px-0 font-size-14" scope="col">Charges</th>
@@ -75,7 +75,7 @@
                                                 <td class="py-1 px-0 font-size-14">{{$data->consignee->consignee_name}}</td>
                                                 <td class="py-1 px-0 font-size-14">{{$data->consignee->consignee_phone}}</td>
                                                 <td class="py-1 px-0 font-size-14">{{$data->consignee->consignee_business}}</td>
-                                                <td class="py-1 px-0 font-size-14">{{$data->consignee->consignee_country_id}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->parcel_consignee->name}}</td>
                                             </tr>
                                             <tr>
                                                 <th class="py-1 px-0 font-size-14" scope="col">State</th>
@@ -126,7 +126,7 @@
                                                 <td class="py-1 px-0 font-size-14">{{$data->shipper->company_name}}</td>
                                                 <td class="py-1 px-0 font-size-14">{{$data->shipper->shipper_phone}}</td>
                                                 <td class="py-1 px-0 font-size-14">{{$data->shipper->company_name}}</td>
-                                                <td class="py-1 px-0 font-size-14">{{$data->shipper->shipper_country_id}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->parcel_shipper->name}}</td>
                                             </tr>
                                             <tr>
                                                 <th class="py-1 px-0 font-size-14" scope="col">State</th>

@@ -59,8 +59,24 @@ class Parcel extends Model
 
         return $this->hasOne(VendorCharges::class,'pl_id','id');
     }
-    public function parcel_country(){
+    public function parcel_consignee(){
 
         return $this->belongsTo(Country::class,'consignee_country_id','id');
+    }
+    public function parcel_notes(){
+
+        return $this->hasMany(ParcelNote::class, 'pl_id','id');
+    }
+    public function parcel_payment_method(){
+
+        return $this->belongsTo(PaymentMethod::class,'payment_id','id');
+    }
+    public function parcel_shipper(){
+
+        return $this->belongsTo(Country::class,'shipper_country_id','id');
+    }
+    public function parcel_currency(){
+
+        return $this->belongsTo(Country::class,'shipper_country_id','id');
     }
 }

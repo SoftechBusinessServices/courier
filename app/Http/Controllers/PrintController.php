@@ -97,25 +97,21 @@ class PrintController extends Controller
         // dd($charges);
         return view('admin-panel.prints.currencies_print_view', compact('data', 'regions','countries'));
     }
-    public function dispatch_notes_print_view()
+    public function dispatch_notes_print_view($id)
     {
-        $data = Currency::all();
+        // dd(1);
+        $data = Parcel::with('consignee','parcel_notes')->find($id);
         // dd($data);
-        $regions = Region::all();
-        $countries = Country::all();
-        // $charges = ShippingCharge::all();
-        // dd($charges);
-        return view('admin-panel.prints.dispatch_notes_print_view', compact('data', 'regions',  'countries'));
+        
+        return view('admin-panel.prints.dispatch_notes_print_view', compact('data'));
     }
-    public function customer_receipt_print_view()
+    public function customer_receipt_print_view($id)
     {
-        $data = Currency::all();
+        // dd(1);
+        $data = Parcel::with('consignee')->find($id);
         // dd($data);
-        $regions = Region::all();
-        $countries = Country::all();
-        // $charges = ShippingCharge::all();
-        // dd($charges);
-        return view('admin-panel.prints.customer_receipt_print_view', compact('data', 'regions',  'countries'));
+      
+        return view('admin-panel.prints.customer_receipt_print_view', compact('data'));
     }
 
 

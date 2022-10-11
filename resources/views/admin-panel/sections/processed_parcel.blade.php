@@ -100,9 +100,9 @@
                                                 <td> {{ $item->pl_final }} </td>
                                                 <td> {{ $item->parcel_service->service_name }} </td>
                                                 <td>
-                                                    <a href="{{ url('/dispatch-notes-print-view') }}" class="btn btn-success waves-effect waves-light me-1 btn-sm"><i class="fa fa-print">Notes</i></a>
+                                                    <a href="{{ url('/dispatch-notes-print-view/'.$item->id) }}" class="btn btn-success waves-effect waves-light me-1 btn-sm"><i class="fa fa-print">Notes</i></a>
                                                     |
-                                                    <a href="{{ url('/customer-receipt-print-view') }}" class="btn btn-info waves-effect waves-light me-1 btn-sm"><i class="fa fa-print">Receipt</i></a>
+                                                    <a href="{{ url('/customer-receipt-print-view/'.$item->id) }}" class="btn btn-info waves-effect waves-light me-1 btn-sm"><i class="fa fa-print">Receipt</i></a>
                                                 </td>
                                                 <td>
                                                     <a id="todolink" class="btn btn-outline-info btn-sm parcel_allocate" title="add" data-bs-toggle="modal" data-bs-target="#allocatemodal" href="#allocatemodal" data-id="{{ $item->id }}" data-pl-id ="{{$item->pl_id}}" data-prod-id="{{ $item->service_id }}">

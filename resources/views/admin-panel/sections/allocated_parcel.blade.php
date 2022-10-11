@@ -118,7 +118,7 @@
                                                     @if ($item->parcel_charges !=null)
                                                     <p>
                                                         <button type="button" class="btn btn-success btn-sm disabled">
-                                                            <!-- {{$item->vendor_charges->vendor_charges_id }} -->
+                                                          
                                                         </button>
                                                     </p>
                                                     @else

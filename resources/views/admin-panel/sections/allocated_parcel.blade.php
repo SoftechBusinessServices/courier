@@ -17,7 +17,8 @@
                         </tr>
                         <tr>
                             <td>
-                                <input type="text" name="parcell_idd" value="" id="parcell_idd" class="form-control" readonly>
+                                <input type="text" name="parcel_idd2" value="" id="parcel_idd2" class="form-control" readonly>
+                                <input type="hidden" name="parcell_idd" value="" id="parcell_idd" class="form-control">
                             </td>
                             <td>
                                 <input type="text" name="tracking_idd" value="" id="tracking_idd" class="form-control">
@@ -94,17 +95,43 @@
                                                 </td>
                                                 <td> {{ $item->pl_weight }} </td>
                                                 <td> {{ $item->pl_final }} </td>
-                                                <td> {{ $item->allocate_parcel }} </td>
-                                                <td id="trackingModal_{{ $item->pl_id }}">
-                                                    <a class="btn btn-outline-success btn-sm tracking_btn" title="add" data-bs-toggle="modal" data-bs-target="#trackingmodal" id="{{ $item->pl_id }}">
-                                                        update
-                                                    </a>
+                                                <td> {{ $item->allocate_parcel['0']['allocate_logistic']['logistic_name'] }} </td>
+
+
+                                                <td>
+                                                    @if ($item->parcel_tracking !=null)
+                                                    <p>
+                                                        <button type="button" class="btn btn-success btn-sm disabled">
+                                                            {{$item->parcel_tracking->vendor_tracking_id }}
+                                                        </button>
+                                                    </p>
+                                                    @else
+                                                    <p id="trackingModal_{{ $item->id }}">
+                                                        <a class="btn btn-outline-success btn-sm tracking_btn" title="add" data-bs-toggle="modal" data-bs-target="#trackingmodal" id="{{ $item->id }}" data-pl-id="{{$item->pl_id}}">
+                                                            update
+                                                        </a>
+                                                    </p>
+                                                    @endif
                                                 </td>
-                                                <td id="trackingModal2_{{ $item->pl_id }}">
-                                                    <a class="btn btn-outline-primary btn-sm charges_btn" title="add" data-bs-toggle="modal" data-bs-target="#vendor_charges_update" id="{{ $item->pl_id }}">
-                                                        update
-                                                    </a>
+
+                                                <td>
+                                                    @if ($item->parcel_charges !=null)
+                                                    <p>
+                                                        <button type="button" class="btn btn-success btn-sm disabled">
+                                                            <!-- {{$item->vendor_charges->vendor_charges_id }} -->
+                                                        </button>
+                                                    </p>
+                                                    @else
+                                                    <p id="trackingModal2_{{ $item->id }}">
+                                                        <a class="btn btn-outline-primary btn-sm charges_btn" title="add" data-bs-toggle="modal" data-bs-target="#vendor_charges_update" id="{{ $item->id }}" data-pl-id="{{$item->pl_id}}">
+                                                            update
+                                                        </a>
+                                                    </p>
+                                                    @endif
                                                 </td>
+
+
+
 
                                                 <td>
                                                     @if ($item->pl_status == 'delivered')
@@ -156,7 +183,8 @@
                         </tr>
                         <tr>
                             <td>
-                                <input type="text" name="parcell_iddd" value="" id="parcell_iddd" class="form-control" readonly>
+                                <input type="text" name="parcel_iddd2" value="" id="parcel_iddd2" class="form-control" readonly>
+                                <input type="hidden" name="parcell_iddd" value="" id="parcell_iddd" class="form-control">
                             </td>
                             <td>
                                 <input type="text" name="vendor_charges" id="vendor_charges" class="form-control">
@@ -178,115 +206,117 @@
 </div>
 
 <script>
-    $(document).ready(function() {
+    $('body').on('submit', '#vendor-tracking-id', function(e) {
+        e.preventDefault();
+        var fdata = new FormData(this);
+        // console.log(Object.fromEntries(fdata)); return false;
+        $.ajax({
+            url: "{{ route('vendor-tracking') }}",
+            type: "POST",
+            data: fdata,
+            processData: false,
+            contentType: false,
+            // processCache : false,
+            success: function(data) {
 
-        $('body').on('submit', '#vendor-tracking-charges', function(e) {
-            e.preventDefault();
-            var fdata = new FormData(this);
-            // console.log(Object.fromEntries(fdata)); return false;
-            $.ajax({
-                url: "{{ route('vendor-tracking-charges') }}",
-                type: "POST",
-                data: fdata,
-                processData: false,
-                contentType: false,
-                // processCache : false,
-                success: function(data) {
+                if (data.success == 0) {
+                    $.each(data.errors, function(x, y) {
+                        toastr.error(y[0], 'error');
+                    });
+                }
+                if (data.success == 1) {
+                    $('#trackingModal_' + track_id).text(data.data.vendor_tracking_id);
+                    toastr.success('record updated', 'success');
+                    $('#trackingmodal').modal('hide');
 
-                    if (data.success == 0) {
-                        $.each(data.errors, function(x, y) {
-                            toastr.error(y[0], 'error');
-                        });
-                    }
-                    if (data.success == 1) {
-                        $('#trackingModal2_' + track_id2).text(data.data.vendor_tracking_charges);
-                        toastr.success('record updated', 'success');
-                        $('#vendor_charges_update').modal('hide');
-                        // console.log(track_id);
-                    }
-
+                    // console.log(track_id);
                 }
 
-            })
-        });
-
-
-        $('.tracking_btn').on('click', function(e) {
-            e.preventDefault();
-            // alert(1);
-            track_id = this.id;
-            $('#parcell_idd').val(this.id);
-            // console.log(data_id);
-
-
-        });
-
-        $('.charges_btn').on('click', function(e) {
-            e.preventDefault();
-            // alert(2);
-            track_id2 = this.id;
-            $('#parcell_iddd').val(this.id);
-        });
-
-
-        $('.delivered_status').on('click', function(e) {
-            e.preventDefault();
-            var pl_id = (this.id);
-            // alert(pl_id)
-            if (pl_id) {
-
-                $.ajax({
-                    url: "{{ url('/getDeliveredStatus') }}/" + pl_id,
-                    type: "GET",
-                    //    data : {"_token":"{{ csrf_token() }}"},
-                    //    dataType: "json",
-                    success: function(data) {
-                        console.log(data);
-                        if (data) {
-                            $('.delivered_status').empty();
-                            $('.delivered_status').append('Dilevered');
-                            $('.delivered_status').addClass("text-danger");
-
-                        } else {
-                            $('.delivered_status').empty();
-                        }
-                    }
-                });
-            } else {
-                $('.delivered_status').empty();
             }
-        });
 
-        $('body').on('submit', '#vendor-tracking-id', function(e) {
-            e.preventDefault();
-            var fdata = new FormData(this);
-            // console.log(Object.fromEntries(fdata)); return false;
-            $.ajax({
-                url: "{{ route('vendor-tracking') }}",
-                type: "POST",
-                data: fdata,
-                processData: false,
-                contentType: false,
-                // processCache : false,
-                success: function(data) {
+        })
+    });
+    $('body').on('submit', '#vendor-tracking-charges', function(e) {
+        e.preventDefault();
+        var fdata = new FormData(this);
+        // console.log(Object.fromEntries(fdata)); return false;
+        $.ajax({
+            url: "{{ route('vendor-tracking-charges') }}",
+            type: "POST",
+            data: fdata,
+            processData: false,
+            contentType: false,
+            // processCache : false,
+            success: function(data) {
 
-                    if (data.success == 0) {
-                        $.each(data.errors, function(x, y) {
-                            toastr.error(y[0], 'error');
-                        });
-                    }
-                    if (data.success == 1) {
-                        $('#trackingModal_' + track_id).text(data.data.vendor_tracking_id);
-                        toastr.success('record updated', 'success');
-                        $('#trackingmodal').modal('hide');
-
-                        // console.log(track_id);
-                    }
-
+                if (data.success == 0) {
+                    $.each(data.errors, function(x, y) {
+                        toastr.error(y[0], 'error');
+                    });
+                }
+                if (data.success == 1) {
+                    $('#trackingModal2_' + track_id2).text(data.data.vendor_tracking_charges);
+                    $('#trackingModal2_').addClass("text-white, bg-success");
+                    toastr.success('record updated', 'success');
+                    $('#vendor_charges_update').modal('hide');
+                    // console.log(track_id);
                 }
 
-            })
-        });
+            }
 
+        })
+    });
+
+
+    $('.tracking_btn').on('click', function(e) {
+        e.preventDefault();
+        // alert(1);
+        track_id = this.id;
+        $('#parcell_idd').val(this.id);
+        $('#parcel_idd2').val($(this).data('pl-id'));
+        // $('#parcel_idd2').val(this.data-id);
+        // $('#parcel_idd2').val($(this).data('data-id'));
+
+        // console.log(data_id);
+
+
+    });
+
+    $('.charges_btn').on('click', function(e) {
+        e.preventDefault();
+        // alert(2);
+        track_id2 = this.id;
+        $('#parcell_iddd').val(this.id);
+        $('#parcel_iddd2').val($(this).data('pl-id'));
+    });
+
+
+    $('.delivered_status').on('click', function(e) {
+        e.preventDefault();
+        var pl_id = (this.id);
+        // alert(pl_id)
+        if (pl_id) {
+
+            $.ajax({
+                url: "{{ url('/getDeliveredStatus') }}/" + pl_id,
+                type: "GET",
+                //    data : {"_token":"{{ csrf_token() }}"},
+                //    dataType: "json",
+                success: function(data) {
+                    console.log(data);
+                    if (data) {
+                        $('.delivered_status').empty();
+                        $('.delivered_status').append('Dilevered');
+                        $('.delivered_status').addClass("text-white");
+                        $('.delivered_status').addClass("bg-danger");
+
+                    } else {
+                        $('.delivered_status').empty();
+                    }
+                }
+            });
+        } else {
+            $('.delivered_status').empty();
+        }
     });
 </script>

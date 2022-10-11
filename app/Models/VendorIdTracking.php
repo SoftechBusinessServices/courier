@@ -18,6 +18,6 @@ class VendorIdTracking extends Model
     ];
     public function tracking_parcel(){
 
-        return $this->belongsTo(Parcel::class,'pl_id','id');
+        return $this->hasMany(Parcel::class,'pl_id','id');
     }
 }

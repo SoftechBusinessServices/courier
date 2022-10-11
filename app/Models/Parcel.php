@@ -22,10 +22,10 @@ class Parcel extends Model
     {
         return $this->belongsTo(Country::class,'consignee_country_id','id');
     }
-    // public function shipping()
-    // {
-    //     return $this->belongsTo(ShippingCharge::class, 'region_id', 'id');
-    // }
+    public function country_shipper()
+    {
+        return $this->belongsTo(Country::class, 'shipper_country_id', 'id');
+    }
     public function region()
     {
         return $this->belongsTo(Region::class, 'region_id', 'id');
@@ -43,6 +43,10 @@ class Parcel extends Model
 
         return $this->hasOne(ParcelConsignee::class,'pl_id','id');
     }
+    public function shipper(){
+
+        return $this->hasOne(ParcelShipper::class,'pl_id','id');
+    }
     public function parcel_service(){
 
         return $this->belongsTo(Service::class, 'service_id','id');
@@ -50,6 +54,10 @@ class Parcel extends Model
     public function parcel_tracking(){
 
         return $this->hasOne(VendorIdTracking::class,'pl_id','id');
+    }
+    public function parcel_charges(){
+
+        return $this->hasOne(VendorCharges::class,'pl_id','id');
     }
     public function parcel_country(){
 

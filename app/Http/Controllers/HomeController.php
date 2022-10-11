@@ -66,11 +66,16 @@ class HomeController extends Controller
         $companies = Company::all();
         $currencies = Currency::all();
         $services = Service::all();
+
+        DB::enableQueryLog();
         // $processed_parcels = Parcel::where('pl_status', 'processed')->get();
         $processed_parcels = Parcel::with('country','consignee')->where('pl_status', 'processed')->get();
-        DB::enableQueryLog();
+        // dd($processed_parcels);
+        //    dd(DB::getQueryLog());
+        
+        // DB::enableQueryLog();
         // $processed_parcels = Parcel::with('country','consignee')->where('pl_status', 'processed')->get();
-        $allocated_parcels =  Parcel::with(['country','allocate_parcel' => function($query){
+        $allocated_parcels =  Parcel::with(['country','parcel_tracking','parcel_charges','allocate_parcel' => function($query){
             $query->with(['service','allocate_logistic']);
         }])
             ->whereIn(

@@ -79,7 +79,7 @@
                                             $i = 1;
                                             @endphp
                                             @if ($processed_parcels->count() > 0)
-                                            <!-- @foreach ($processed_parcels as $item) -->
+                                            @foreach ($processed_parcels as $item)
                                             <tr>
                                                 <td>{{ $i++ }}</td>
                                                 <td>
@@ -88,6 +88,7 @@
                                                     </a>
                                                 </td>
                                                 <td>{{ $item->country->name}}</td>
+                                             
                                                 <td>
                                                     @php
                                                     $month = date('d/m/Y', strtotime($item->created_at));

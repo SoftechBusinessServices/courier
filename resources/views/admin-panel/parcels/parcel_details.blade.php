@@ -12,7 +12,8 @@
                         <div class="card-body px-3 py-0">
 
                             <div class="page-title-right">
-                            <h3 class="m-2 font-size-22 fw-bold">Consignee Details</h3>
+                                <h3 class="m-2 font-size-22 fw-bold">Parcel Details </h3>
+
                                 <ol class="breadcrumb m-0 text-bold text-decoration-underline">
                                     <li class="breadcrumb-item">Tracking ID: <span class="text-bold">{{$data->pl_id}}</span></li>
                                     <li class="breadcrumb-item  text-bold">Service Used: <span class="text-bold text-primary">{{ $data->parcel_service->service_name  }}</span></li>
@@ -46,7 +47,7 @@
                                             <tr>
                                                 <td class="py-1 px-0 font-size-14">{{$data->pl_charges}}</td>
                                                 <td class="py-1 px-0 font-size-14">{{$data->pl_extras}}</td>
-                                                <td class="py-1 px-0 font-size-14">{{$data->discount}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->pl_discount}}</td>
                                                 <td class="py-1 px-0 font-size-14">{{$data->pl_description}}</td>
                                             </tr>
                                         </tbody>
@@ -57,7 +58,8 @@
 
                             <hr class="m-0 mb-1">
                             <div class="">
-                            <h3 class="m-2 font-size-22 fw-bold">Consignee Details</h3>
+                                <h3 class="m-2 font-size-22 fw-bold">Consignee Details</h3>
+                                <!-- {{$data->consignee}} -->
                             </div>
                             <div class="text-center">
                                 <div class="table-responsive">
@@ -70,10 +72,10 @@
                                                 <th class="py-1 px-0 font-size-14" scope="col">Country</th>
                                             </tr>
                                             <tr>
-                                                <td class="py-1 px-0 font-size-14">{{$data->consignee_name}}</td>
-                                                <td class="py-1 px-0 font-size-14">03451231211</td>
-                                                <td class="py-1 px-0 font-size-14">Apex College Lahore</td>
-                                                <td class="py-1 px-0 font-size-14">Pakistan</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->consignee->consignee_name}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->consignee->consignee_phone}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->consignee->consignee_business}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->consignee->consignee_country_id}}</td>
                                             </tr>
                                             <tr>
                                                 <th class="py-1 px-0 font-size-14" scope="col">State</th>
@@ -82,22 +84,22 @@
                                                 <th class="py-1 px-0 font-size-14" scope="col">Zip Code</th>
                                             </tr>
                                             <tr>
-                                            <td class="py-1 px-0 font-size-14">Punjab</td>
-                                            <td class="py-1 px-0 font-size-14">Lahore</td>
-                                            <td class="py-1 px-0 font-size-14">25000</td>
-                                            <td class="py-1 px-0 font-size-14">25000</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->consignee->consignee_state}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->consignee->consignee_city}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->consignee->consignee_state}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->consignee->consignee_state}}</td>
                                             </tr>
                                             <tr>
                                                 <th class="py-1 px-0 font-size-14" scope="col">Address Line1</th>
                                                 <th class="py-1 px-0 font-size-14" scope="col">Address Line2</th>
                                             </tr>
                                             <tr>
-                                                <td class="py-1 px-0 font-size-14">Hall Road, Lahore</td>
-                                                <td class="py-1 px-0 font-size-14">Fazal e Haq Rd, Gulshan Block</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->consignee->consignee_address1}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->consignee->consignee_address2}}</td>
                                             </tr>
 
 
-                                           
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -106,12 +108,14 @@
 
                             <hr class="m-0 mb-1">
                             <div class="">
-                            <h3 class="m-2 font-size-22 fw-bold">Shipper Details</h3>
+                                <h3 class="m-2 font-size-22 fw-bold">Shipper Details</h3>
+                                <!-- {{$data->shipper}} -->
+                              
                             </div>
                             <div class="text-center">
                                 <div class="table-responsive">
                                     <table class="table table-nowrap table-sm  table-responsive-sm">
-                                    <tbody>
+                                        <tbody>
                                             <tr>
                                                 <th class="py-1 px-0 font-size-14" scope="col">Receiver Name</th>
                                                 <th class="py-1 px-0 font-size-14" scope="col">Number</th>
@@ -119,10 +123,10 @@
                                                 <th class="py-1 px-0 font-size-14" scope="col">Country</th>
                                             </tr>
                                             <tr>
-                                                <td class="py-1 px-0 font-size-14">Qazi Wajid Iqbal</td>
-                                                <td class="py-1 px-0 font-size-14">03451231211</td>
-                                                <td class="py-1 px-0 font-size-14">Apex College Lahore</td>
-                                                <td class="py-1 px-0 font-size-14">Pakistan</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->shipper->company_name}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->shipper->shipper_phone}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->shipper->company_name}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->shipper->shipper_country_id}}</td>
                                             </tr>
                                             <tr>
                                                 <th class="py-1 px-0 font-size-14" scope="col">State</th>
@@ -131,22 +135,25 @@
                                                 <th class="py-1 px-0 font-size-14" scope="col">Zip Code</th>
                                             </tr>
                                             <tr>
-                                            <td class="py-1 px-0 font-size-14">Punjab</td>
-                                            <td class="py-1 px-0 font-size-14">Lahore</td>
-                                            <td class="py-1 px-0 font-size-14">25000</td>
-                                            <td class="py-1 px-0 font-size-14">25000</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->shipper->shipper_state}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->shipper->shipper_city}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->shipper->shipper_zip}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->shipper->shipper_zip}}</td>
+                                               
+                                                
                                             </tr>
                                             <tr>
                                                 <th class="py-1 px-0 font-size-14" scope="col">Address Line1</th>
                                                 <th class="py-1 px-0 font-size-14" scope="col">Address Line2</th>
                                             </tr>
                                             <tr>
-                                                <td class="py-1 px-0 font-size-14">Hall Road, Lahore</td>
-                                                <td class="py-1 px-0 font-size-14">Fazal e Haq Rd, Gulshan Block</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->shipper->shipper_address1}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->shipper->shipper_address2}}</td>
+                                                
                                             </tr>
 
 
-                                           
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -165,7 +172,7 @@
                             </div>
                         </div>
                     </div>
-                </div>+
+                </div>
             </div>
             <!-- end row -->
 

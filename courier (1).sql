@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 11, 2022 at 07:19 PM
+-- Generation Time: Oct 12, 2022 at 07:29 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 7.4.30
 
@@ -45,7 +45,10 @@ CREATE TABLE `allocate_parcels` (
 INSERT INTO `allocate_parcels` (`id`, `pl_id`, `service_id`, `vendor_id`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 1, 4, 4, 'active', '2022-10-11 08:16:11', '2022-10-11 08:16:11', NULL),
 (2, 2, 1, 8, 'active', '2022-10-11 08:16:29', '2022-10-11 08:16:29', NULL),
-(3, 3, 3, 7, 'active', '2022-10-11 08:16:44', '2022-10-11 08:16:44', NULL);
+(3, 3, 3, 7, 'active', '2022-10-11 08:16:44', '2022-10-11 08:16:44', NULL),
+(4, 4, 4, 4, 'active', '2022-10-12 01:30:44', '2022-10-12 01:30:44', NULL),
+(5, 5, 4, 4, 'active', '2022-10-12 01:32:11', '2022-10-12 01:32:11', NULL),
+(6, 6, 3, 7, 'active', '2022-10-12 04:51:52', '2022-10-12 04:51:52', NULL);
 
 -- --------------------------------------------------------
 
@@ -270,12 +273,14 @@ CREATE TABLE `parcels` (
 INSERT INTO `parcels` (`id`, `pl_id`, `pl_boxes`, `pl_weight`, `service_id`, `shipper_country_id`, `consignee_country_id`, `payment_id`, `pl_charges`, `pl_extras`, `pl_discount`, `pl_final`, `pl_description`, `pl_status`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'PL-000001', 44, 25.00, 4, 2, 5, 1, 66.00, 76.00, 39.00, 203.00, 'Sint aliquam amet', 'delivered', 'active', '2022-10-10 11:54:27', '2022-10-11 10:16:23', NULL),
 (2, 'PL-000002', 29, 87.00, 1, 4, 4, 4, 72.00, 67.00, 98.00, 410.00, 'Sint dolores sit mi', 'delivered', 'active', '2022-10-10 11:54:42', '2022-10-11 11:57:27', NULL),
-(3, 'PL-000003', 92, 5.00, 3, 2, 6, 2, 14.00, 7.00, 99.00, -78.00, 'Omnis enim excepturi', 'allocated', 'active', '2022-10-10 11:54:56', '2022-10-11 08:16:44', NULL),
-(4, 'PL-000004', 99, 93.00, 4, 3, 2, 2, 88.00, 64.00, 87.00, 65.00, 'Et ipsum eligendi N', 'processed', 'active', '2022-10-11 05:02:39', '2022-10-11 05:10:28', NULL),
-(5, 'PL-000005', 6, 2.00, 4, 1, 3, 4, 90.00, 62.00, 76.00, 76.00, 'Sunt saepe nobis des', 'processed', 'active', '2022-10-11 05:03:05', '2022-10-11 05:15:18', NULL),
-(6, 'PL-000006', 94, 50.00, 3, 4, 6, 1, 69.00, 57.00, 36.00, 90.00, 'Culpa dolore quam s', 'processed', 'active', '2022-10-11 05:03:27', '2022-10-11 05:13:12', NULL),
+(3, 'PL-000003', 92, 5.00, 3, 2, 6, 2, 14.00, 7.00, 99.00, 780.00, 'Omnis enim excepturi', 'delivered', 'active', '2022-10-10 11:54:56', '2022-10-12 01:33:02', NULL),
+(4, 'PL-000004', 99, 93.00, 4, 3, 2, 2, 88.00, 64.00, 87.00, 65.00, 'Et ipsum eligendi N', 'allocated', 'active', '2022-10-11 05:02:39', '2022-10-12 05:06:57', NULL),
+(5, 'PL-000005', 6, 2.00, 4, 1, 3, 4, 90.00, 62.00, 76.00, 76.00, 'Sunt saepe nobis des', 'allocated', 'active', '2022-10-11 05:03:05', '2022-10-12 01:32:11', NULL),
+(6, 'PL-000006', 94, 50.00, 3, 4, 6, 1, 69.00, 57.00, 36.00, 190.00, 'Culpa dolore quam s', 'delivered', 'active', '2022-10-11 05:03:27', '2022-10-12 04:52:38', NULL),
 (7, 'PL-000007', 9, 24.00, 1, 6, 2, 2, 610.00, 13.00, 82.00, 541.00, 'Enim dolor libero no', 'processed', 'active', '2022-10-11 05:14:48', '2022-10-11 05:18:16', NULL),
-(8, 'PL-000008', 32, 100.00, 1, 2, 1, 3, 58.00, 20.00, 33.00, 45.00, 'Tempora voluptatem a', 'processed', 'active', '2022-10-11 05:15:06', '2022-10-11 05:21:38', NULL);
+(8, 'PL-000008', 32, 100.00, 1, 2, 1, 3, 58.00, 20.00, 33.00, 45.00, 'Tempora voluptatem a', 'processed', 'active', '2022-10-11 05:15:06', '2022-10-11 05:21:38', NULL),
+(9, 'PL-000009', 60, 36.00, 4, NULL, 4, 3, 79.00, 95.00, 52.00, 122.00, 'Minus perferendis Na', 'processed', 'active', '2022-10-12 09:50:54', '2022-10-12 09:50:54', NULL),
+(10, 'PL-0000010', 47, 42.00, 3, NULL, 1, 1, 16.00, 48.00, 26.00, 38.00, 'Culpa eos placeat', 'processed', 'active', '2022-10-12 09:53:50', '2022-10-12 09:53:50', NULL);
 
 -- --------------------------------------------------------
 
@@ -313,7 +318,9 @@ INSERT INTO `parcel_consignees` (`id`, `pl_id`, `consignee_name`, `consignee_pho
 (5, 5, 'Lawrence Beard', '0317-4316258', 'Sint elit est dist', 3, 'Ullamco eum et rem r', 'In et tenetur eum ni', '51412', 'Omnis ut rerum eius', 'Debitis iure nostrud', 'active', '2022-10-11 05:03:05', '2022-10-11 05:03:05', NULL),
 (6, 6, 'Jessamine Banks', '0313-5665191', 'Nihil minus laborios', 6, 'Laborum quod sit con', 'Vitae nostrud irure', '26499', 'Dolore consequatur', 'Tempora quos et assu', 'active', '2022-10-11 05:03:27', '2022-10-11 05:03:27', NULL),
 (7, 7, 'Kieran Contreras', '0311-2392751', NULL, 2, 'Fugiat assumenda sed', 'Sint non ducimus do', '28807', 'Explicabo Suscipit', 'Est in aliquam odio', 'active', '2022-10-11 05:14:48', '2022-10-11 05:14:48', NULL),
-(8, 8, 'Cole Solis', '0314-2554261', 'dsfdsfsdfs', 1, 'Hic incididunt saepe', 'Nihil fugiat consect', '68234', 'Sed deleniti omnis i', 'Ipsum minim dolores', 'active', '2022-10-11 05:15:06', '2022-10-11 05:15:06', NULL);
+(8, 8, 'Cole Solis', '0314-2554261', 'dsfdsfsdfs', 1, 'Hic incididunt saepe', 'Nihil fugiat consect', '68234', 'Sed deleniti omnis i', 'Ipsum minim dolores', 'active', '2022-10-11 05:15:06', '2022-10-11 05:15:06', NULL),
+(9, 9, 'Rama Mcdaniel', '0316-9261515', 'Voluptates voluptate', 4, 'Commodo dolor dolore', 'Quam obcaecati sit v', '98286', 'Omnis maiores eaque', 'Pariatur Exercitati', 'active', '2022-10-12 09:50:54', '2022-10-12 09:50:54', NULL),
+(10, 10, 'Denton Britt', '0312-9111923', 'Voluptates voluptate', 1, 'Deleniti nisi dolor', 'Ut accusantium ut la', '45352', 'Dolorem esse natus p', 'In quas asperiores i', 'active', '2022-10-12 09:53:50', '2022-10-12 09:53:50', NULL);
 
 -- --------------------------------------------------------
 
@@ -354,7 +361,9 @@ INSERT INTO `parcel_notes` (`id`, `pl_id`, `disp_content`, `disp_condition`, `cu
 (11, 6, 'Earum ut enim harum', 'new', '2', 111.00, 432, 84.00, 'active', '2022-10-11 05:03:27', '2022-10-11 05:03:27', NULL),
 (12, 6, 'Reprehenderit pariat', 'used', '2', 387.00, 692, 53.00, 'active', '2022-10-11 05:03:27', '2022-10-11 05:03:27', NULL),
 (13, 7, 'Quia molestiae incid', 'used', '1', 679.00, 671, 37.00, 'active', '2022-10-11 05:14:48', '2022-10-11 05:14:48', NULL),
-(14, 8, 'Sint dolore aut odio', 'new', '3', 664.00, 446, 1.00, 'active', '2022-10-11 05:15:06', '2022-10-11 05:15:06', NULL);
+(14, 8, 'Sint dolore aut odio', 'new', '3', 664.00, 446, 1.00, 'active', '2022-10-11 05:15:06', '2022-10-11 05:15:06', NULL),
+(15, 9, 'Voluptas qui aut nem', 'used', '2', 824.00, 876, 88.00, 'active', '2022-10-12 09:50:54', '2022-10-12 09:50:54', NULL),
+(16, 10, 'Culpa aliquam qui i', 'new', '0', 455.00, 890, 0.00, 'active', '2022-10-12 09:53:50', '2022-10-12 09:53:50', NULL);
 
 -- --------------------------------------------------------
 
@@ -393,7 +402,9 @@ INSERT INTO `parcel_shippers` (`id`, `pl_id`, `pl_date`, `pl_phone_id`, `company
 (5, 5, '2012-08-01', '123', 'Vaughan Bruce Plc', '0319-4644822', 1, 'Placeat natus non q', 'Quidem fugit sunt', '65707', 'Sunt cum nostrum dig', 'Voluptatem in incid', 'active', '2022-10-11 05:03:05', '2022-10-11 05:03:05', NULL),
 (6, 6, '1976-06-18', '123', 'Arnold Carlson Inc', '0311-5640853', 4, 'Quis adipisci sequi', 'Nemo sunt soluta qua', '84526', 'Omnis ea nihil enim', 'Pariatur Mollit aut', 'active', '2022-10-11 05:03:27', '2022-10-11 05:03:27', NULL),
 (7, 7, '1971-07-24', '123', 'Contreras Bean Traders', '0311-1336626', 6, 'Dolore non qui sint', 'Laborum maiores aute', '61527', 'Officiis distinctio', 'Quia iure fugit vol', 'active', '2022-10-11 05:14:48', '2022-10-11 05:14:48', NULL),
-(8, 8, '2015-05-20', '123', 'Noble Levy Plc', '0315-4266516', 2, 'Harum distinctio Si', 'Quibusdam velit off', '16265', 'Aut suscipit facilis', 'Est sit autem volupt', 'active', '2022-10-11 05:15:06', '2022-10-11 05:15:06', NULL);
+(8, 8, '2015-05-20', '123', 'Noble Levy Plc', '0315-4266516', 2, 'Harum distinctio Si', 'Quibusdam velit off', '16265', 'Aut suscipit facilis', 'Est sit autem volupt', 'active', '2022-10-11 05:15:06', '2022-10-11 05:15:06', NULL),
+(9, 9, '1971-05-09', '123', 'Jacobs Pitts Plc', '0314-2142918', 2, 'Suscipit non accusam', 'Cumque ipsum tempori', '47116', 'Mollit voluptatem u', 'Et ad voluptatum dol', 'active', '2022-10-12 09:50:54', '2022-10-12 09:50:54', NULL),
+(10, 10, '2000-12-04', '123', 'Powell Puckett Associates', '0312-8861764', 1, 'Dolore reiciendis qu', 'Et temporibus non fu', '79628', 'Rerum voluptatem al', 'Illo facilis velit a', 'active', '2022-10-12 09:53:50', '2022-10-12 09:53:50', NULL);
 
 -- --------------------------------------------------------
 
@@ -528,7 +539,9 @@ CREATE TABLE `vendor_charges` (
 
 INSERT INTO `vendor_charges` (`id`, `pl_id`, `vendor_tracking_charges`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 1, '101', 'active', '2022-10-11 10:15:57', '2022-10-11 10:15:57', NULL),
-(2, 2, '102', 'active', '2022-10-11 11:57:14', '2022-10-11 11:57:14', NULL);
+(2, 2, '102', 'active', '2022-10-11 11:57:14', '2022-10-11 11:57:14', NULL),
+(3, 3, '103', 'active', '2022-10-12 01:32:49', '2022-10-12 01:32:49', NULL),
+(4, 6, '106', 'active', '2022-10-12 04:52:21', '2022-10-12 04:52:21', NULL);
 
 -- --------------------------------------------------------
 
@@ -552,7 +565,9 @@ CREATE TABLE `vendor_id_trackings` (
 
 INSERT INTO `vendor_id_trackings` (`id`, `pl_id`, `vendor_tracking_id`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 1, 't1', 'active', '2022-10-11 10:15:44', '2022-10-11 10:15:44', NULL),
-(2, 2, 't2', 'active', '2022-10-11 11:57:08', '2022-10-11 11:57:08', NULL);
+(2, 2, 't2', 'active', '2022-10-11 11:57:08', '2022-10-11 11:57:08', NULL),
+(3, 3, 't3', 'active', '2022-10-12 01:32:38', '2022-10-12 01:32:38', NULL),
+(4, 6, 't6', 'active', '2022-10-12 04:52:13', '2022-10-12 04:52:13', NULL);
 
 --
 -- Indexes for dumped tables
@@ -684,7 +699,7 @@ ALTER TABLE `vendor_id_trackings`
 -- AUTO_INCREMENT for table `allocate_parcels`
 --
 ALTER TABLE `allocate_parcels`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `companies`
@@ -732,25 +747,25 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `parcels`
 --
 ALTER TABLE `parcels`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `parcel_consignees`
 --
 ALTER TABLE `parcel_consignees`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `parcel_notes`
 --
 ALTER TABLE `parcel_notes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `parcel_shippers`
 --
 ALTER TABLE `parcel_shippers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `payment_methods`
@@ -780,13 +795,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `vendor_charges`
 --
 ALTER TABLE `vendor_charges`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `vendor_id_trackings`
 --
 ALTER TABLE `vendor_id_trackings`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

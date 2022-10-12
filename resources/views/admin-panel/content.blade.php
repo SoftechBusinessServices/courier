@@ -93,23 +93,19 @@
     </div>
     <!-- Row1 closed -->
 
-
     @include('admin-panel.sections.processed_parcel')
 
-
-
     @include('admin-panel.sections.allocated_parcel')
-    <!-- Setting container -->
-
+  
     @include('admin-panel.sections.vendor_payment')
 
+    <!-- Setting container -->
     @include('admin-panel.sections.settings')
 
 </div>
 
 
 @include('admin-panel.sections.customer_payment')
-
 
 <!------------------Payment Modal---------------------->
 @include('admin-panel.sections.payment_methods')

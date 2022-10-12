@@ -18,6 +18,7 @@ use App\Models\ParcelRegistration;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -69,36 +70,55 @@ class HomeController extends Controller
 
         DB::enableQueryLog();
         // $processed_parcels = Parcel::where('pl_status', 'processed')->get();
-        $processed_parcels = Parcel::with('country','consignee')->where('pl_status', 'processed')->get();
+        $processed_parcels = Parcel::with('country', 'consignee')->where('pl_status', 'processed')->get();
         // dd($processed_parcels);
-        $delivered_parcels = Parcel::with('parcel_tracking','parcel_charges',)->where('pl_status', 'delivered')->get();
+        $delivered_parcels = Parcel::with('parcel_tracking', 'parcel_charges',)->where('pl_status', 'delivered')->get();
         // dd($delivered_parcels);
         //    dd(DB::getQueryLog());
-        
+
         // DB::enableQueryLog();
         // $processed_parcels = Parcel::with('country','consignee')->where('pl_status', 'processed')->get();
-        $allocated_parcels =  Parcel::with(['country','parcel_tracking','parcel_charges','allocate_parcel' => function($query){
-            $query->with(['service','allocate_logistic']);
+        $allocated_parcels =  Parcel::with(['country', 'parcel_tracking', 'parcel_charges', 'allocate_parcel' => function ($query) {
+            $query->with(['service', 'allocate_logistic']);
         }])
             ->whereIn(
-                'pl_status', ['allocated','delivered']
-                )
+                'pl_status',
+                ['allocated', 'delivered']
+            )
             // ->orWhere('pl_status', 'delivered')
             ->get();
-            // dd(DB::getQueryLog());
+        // dd(DB::getQueryLog());
         // dd($allocated_parcels);
-     
 
-       
+
+
         $logistics = Logistic::all();
         $payment_methods = PaymentMethod::all();
         $vendors =  Logistic::all()->unique('logistic_name');
         // dd($vendors);
-        return view('admin-panel.master',  compact('data', 'regions',  'countries', 'companies', 'currencies','customers','services','abc','processed_parcels','allocated_parcels','logistics','payment_methods','users','vendors','delivered_parcels'));
+        return view('admin-panel.master',  compact('data', 'regions',  'countries', 'companies', 'currencies', 'customers', 'services', 'abc', 'processed_parcels', 'allocated_parcels', 'logistics', 'payment_methods', 'users', 'vendors', 'delivered_parcels'));
 
         // return view('home');
     }
 
+    public function theme_view(){
+        return view('front-panel.index');
+    }
+
+    public function dailyReport(Request $request)
+    {
+        $start_date = Carbon::parse($request->start_date)
+            ->toDateTimeString();
+
+        $end_date = Carbon::parse($request->end_date)
+            ->toDateTimeString();
+
+        $users = Parcel::whereBetween('created_at', [$start_date, $end_date])->where('pl_status', 'delivered')->get();
+     
+    //    dd($users);
+
+        return view('admin-panel.report', compact('users'));
+    }
     public function update_user(Request $request, $id)
     {
 
@@ -160,35 +180,34 @@ class HomeController extends Controller
         } else {
             return redirect()->back()->with("error", "Your New password does not same as Confirm password.");
         }
-
-
     }
 
-    public function store_user(Request $request){
+    public function store_user(Request $request)
+    {
 
         // dd($request->all());
         $request->validate([
-            'name'=> 'required',
-            'email'=> 'required',
-            'password'=> 'required',
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
         ]);
 
         $data = [
-            'name' =>$request->name,
-            'email' =>$request->email,
-            'password' =>$request->password,
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
         ];
         $data = User::create($data);
-        if($data){
+        if ($data) {
 
-            return redirect()->back()->with('success',"Record Inserted Successfully");
-        }
-        else{
+            return redirect()->back()->with('success', "Record Inserted Successfully");
+        } else {
 
-            return redirect()->back()->with('error',"Insertion Failed!");
+            return redirect()->back()->with('error', "Insertion Failed!");
         }
     }
-    public function fetch_user(){
+    public function fetch_user()
+    {
 
         $data = User::all();
         return view('admin-panel.users.fetch_user', compact('data'));
@@ -205,7 +224,4 @@ class HomeController extends Controller
             return redirect()->back()->with('success', "Record Not Deleted");
         }
     }
-
-
-
 }

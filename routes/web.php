@@ -35,6 +35,7 @@ use App\Http\Controllers\VendorTrackingController;
 Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('/');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/theme', [App\Http\Controllers\HomeController::class, 'theme_view'])->name('theme');
 
 //Users Routes
 Route::get('add-user/',[HomeController::class,'fetch_user'])->name('add-user');
@@ -125,7 +126,7 @@ Route::get('/dispatch-notes-print-view/{id}', [PrintController::class, 'dispatch
 Route::get('/customer-receipt-print-view/{id}', [PrintController::class, 'customer_receipt_print_view']);
 
 Route::get('report', [ReportController::class, 'index'])->name('report');
-Route::get('daily-report', [ReportController::class, 'dailyReport'])->name('daily.report');
+
 
 Route::post('update-user/{id}', [HomeController::class, 'update_user']);
 Route::get('profile/{id}', [HomeController::class, 'profile']);
@@ -168,3 +169,5 @@ Route::post('vendor-tracking-charges',[VendorTrackingController::class,'vendor_t
 Route::get('changeStatus',[VendorTrackingController::class,'changeUserStatus'])->name('changeStatus');
 
 Route::get('getDeliveredStatus/{id}', [VendorTrackingController::class, 'getDeliveredStatus']);
+
+Route::get('daily-report', [HomeController::class, 'dailyReport'])->name('daily.report');

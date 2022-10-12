@@ -13,7 +13,7 @@
                             </div>
 
                             <div class="page-title-left m-3">
-                                <a class="btn btn-info btn-md text-white font-size-12 " data-bs-toggle="modal" data-bs-target="#vendor_payment_modal">Select Date</a>
+                                <a class="btn btn-info btn-md text-white font-size-12 " data-bs-toggle="modal" data-bs-target="#balance_sheet_modal">Select Date</a>
                             </div>
 
                             @if (isset($delivered_parcels))
@@ -51,13 +51,13 @@
                                                     <i class="far fa-eye"> {{ $item->pl_id }}</i>
                                                 </a>
                                             </td>
-                                          
 
-                                            <td>{{ $item->parcel_tracking->vendor_tracking_id}} </td>
+
+                                            <td>{{ $item->parcel_tracking}} </td>
                                             <td>{{ $a = $item->pl_final }}</td>
                                             <td>{{ $b =$item->parcel_charges->vendor_tracking_charges}} </td>
                                             <td>{{$a-$b}}</td>
-                                            
+
                                         </tr>
                                         @endforeach
                                         @else
@@ -68,7 +68,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            @endif    
+                            @endif
 
                         </div>
 
@@ -290,6 +290,47 @@
                         <button type="submit" form="vendor-tracking-id" class="btn btn-primary vendor-tracking-id" id="modal_submit11" value="Submit">Submit</button>
                         <button type="button" class="btn btn-secondary" id="modal_close11" data-bs-dismiss="modal">Close</button>
                     </div>
+            </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="balance_sheet_modal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #d6dbf8">
+                <h5 class="modal-title">Datewise Fetching Record</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- <form action="{{ url('vendor-tracking') }}" method="POST" id="vendor-tracking-id"> -->
+                <form id="balance_sheet_modal" action="{{ route('daily.report') }}" method="get">
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">From Date</label>
+                                <input type="date" class="form-control" name="start_date">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">To Date</label>
+                                <input type="date" class="form-control" name="end_date">
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary" value="Submit">
+                        </div>
+                    </div>
+                </form>
+
             </div>
             </form>
 

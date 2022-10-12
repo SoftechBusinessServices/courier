@@ -9,65 +9,72 @@
                         <div class="card-body bg-light border rounded px-0">
                             <div class="modal-header mb-2" style="background-color: #d6dbf8">
                                 <h5 class="modal-title">Balance Sheet Report</h5>
-                                <a class="btn-close" data-toggle="collapse" href="#balancesheettable" role="button" aria-expanded="false" aria-controls="collapseExample"><span aria-hidden="true"></span></a>
+                                <a class="btn-close" data-toggle="collapse" href="#balancesheettable" role="button"
+                                    aria-expanded="false" aria-controls="collapseExample"><span
+                                        aria-hidden="true"></span></a>
                             </div>
 
                             <div class="page-title-left m-3">
-                                <a class="btn btn-info btn-md text-white font-size-12 " data-bs-toggle="modal" data-bs-target="#balance_sheet_modal">Select Date</a>
+                                <a class="btn btn-info btn-md text-white font-size-12 " data-bs-toggle="modal"
+                                    data-bs-target="#balance_sheet_modal">Select Date</a>
                             </div>
 
                             @if (isset($delivered_parcels))
-                            <div class="table-responsive">
-                                <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100 table-sm text-center table-sm">
-                                    <thead>
-                                        <tr class="text-center">
-                                            <th>S.NO</th>
-                                            <th>Date</th>
-                                            <th>Parcel ID</th>
-                                            <th>Tracking<br>ID</th>
-                                            <th>Receivable <br>Charges</th>
-                                            <th>Payable<br>Charges</th>
-                                            <th>Difference</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @php
-                                        $i = 1;
-                                        @endphp
-                                        @if ($delivered_parcels->count() > 0)
+                                <div class="table-responsive">
+                                    <table id="datatable-buttons"
+                                        class="table table-bordered dt-responsive nowrap w-100 table-sm text-center table-sm">
+                                        <thead>
+                                            <tr class="text-center">
+                                                <th>S.NO</th>
+                                                <th>Date</th>
+                                                <th>Parcel ID</th>
+                                                <th>Tracking<br>ID</th>
+                                                <th>Receivable <br>Charges</th>
+                                                <th>Payable<br>Charges</th>
+                                                <th>Difference</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @php
+                                                $i = 1;
+                                            @endphp
+                                            @if ($delivered_parcels->count() > 0)
 
-                                        @foreach ($delivered_parcels as $item)
-                                        <tr>
-                                            <td>{{ $i++ }}</td>
-                                            <td>
-                                                @php
-                                                $month = date('d/m/Y', strtotime($item->created_at));
-                                                // dd($month);
-                                                echo $month;
-                                                @endphp
-                                            </td>
-                                            <td>
-                                                <a href="{{ url('parcel-details/' . $item->id) }}" class="btn btn-outline-secondary btn-sm delete" title="View">
-                                                    <i class="far fa-eye"> {{ $item->pl_id }}</i>
-                                                </a>
-                                            </td>
+                                                @foreach ($delivered_parcels as $item)
+                                                    <tr>
+                                                        <td>{{ $i++ }}</td>
+                                                        <td>
+                                                            @php
+                                                                $month = date('d/m/Y', strtotime($item->created_at));
+                                                                // dd($month);
+                                                                echo $month;
+                                                            @endphp
+                                                        </td>
+                                                        <td>
+                                                            <a href="{{ url('parcel-details/' . $item->id) }}"
+                                                                class="btn btn-outline-secondary btn-sm delete"
+                                                                title="View">
+                                                                <i class="far fa-eye"> {{ $item->pl_id }}</i>
+                                                            </a>
+                                                        </td>
 
 
-                                            <td>{{ $item->parcel_tracking}} </td>
-                                            <td>{{ $a = $item->pl_final }}</td>
-                                            <td>{{ $b =$item->parcel_charges->vendor_tracking_charges}} </td>
-                                            <td>{{$a-$b}}</td>
+                                                        <td>{{ $item->parcel_tracking->vendor_tracking_id }} </td>
+                                                        <td>{{ $a = $item->pl_final }}</td>
+                                                        <td>{{ $b = $item->parcel_charges->vendor_tracking_charges }}
+                                                        </td>
+                                                        <td>{{ $a - $b }}</td>
 
-                                        </tr>
-                                        @endforeach
-                                        @else
-                                        <tr>
-                                            <td><code>No record found...</code></td>
-                                        </tr>
-                                        @endif
-                                    </tbody>
-                                </table>
-                            </div>
+                                                    </tr>
+                                                @endforeach
+                                            @else
+                                                <tr>
+                                                    <td><code>No record found...</code></td>
+                                                </tr>
+                                            @endif
+                                        </tbody>
+                                    </table>
+                                </div>
                             @endif
 
                         </div>
@@ -89,31 +96,44 @@
                         <div class="card-body bg-light border rounded px-0">
                             <div class="modal-header mb-2" style="background-color: #d6dbf8">
                                 <h5 class="modal-title">Vendor Payment Section</h5>
-                                <a class="btn-close" data-toggle="collapse" href="#vendortable" role="button" aria-expanded="false" aria-controls="collapseExample"><span aria-hidden="true"></span></a>
+                                <a class="btn-close" data-toggle="collapse" href="#vendortable" role="button"
+                                    aria-expanded="false" aria-controls="collapseExample"><span
+                                        aria-hidden="true"></span></a>
 
                             </div>
                             <div class="page-title-left m-3">
-                                <a class="btn btn-info btn-md text-white font-size-12 " data-bs-toggle="modal" data-bs-target="#vendor_payment_modal">Add Vendor's Payment</a>
+                                <a class="btn btn-info btn-md text-white font-size-12 " data-bs-toggle="modal"
+                                    data-bs-target="#vendor_payment_modal">Add Vendor's Payment</a>
+                                <div class="form-group">
+                                    <label for="">Select vendor</label>
+                                    <select name="" id="vendor-payment-select" class="form-control col-2">
+                                        <option value="">Select</option>
+                                        @foreach ($vendors as $vendor)
+                                            <option value="{{ $vendor->id }}"> {{ $vendor->logistic_name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
 
                             @if (isset($delivered_parcels))
-                            <div class="table-responsive">
-                                <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100 table-sm text-center table-sm">
-                                    <thead>
-                                        <tr class="text-center">
-                                            <th>S.NO</th>
-                                            <th>Date</th>
-                                            <th>Parcel ID</th>
-                                            <th>Vendor Name</th>
-                                            <th>Tracking<br>ID</th>
-                                            <th>Vendor <br>Charges</th>
-                                            <th>Payment<br>Method</th>
-                                            <th>Bulk<br>Payment</th>
-                                            <th>Balance</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @php
+                                <div class="table-responsive">
+                                    <table id="datatable-buttons"
+                                        class="table table-bordered dt-responsive nowrap w-100 table-sm text-center table-sm  vendor-payment-table">
+                                        <thead>
+                                            <tr class="text-center">
+                                                <th>S.NO</th>
+                                                <th>Date</th>
+                                                <th>Parcel ID</th>
+                                                <th>Vendor Name</th>
+                                                <th>Tracking<br>ID</th>
+                                                <th>Vendor <br>Charges</th>
+                                                <th>Payment<br>Method</th>
+                                                <th>Bulk<br>Payment</th>
+                                                <th>Balance</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {{-- @php
                                         $i = 1;
                                         @endphp
                                         @if ($delivered_parcels->count() > 0)
@@ -146,10 +166,10 @@
                                         <tr>
                                             <td><code>No record found...</code></td>
                                         </tr>
-                                        @endif
-                                    </tbody>
-                                </table>
-                            </div>
+                                        @endif --}}
+                                        </tbody>
+                                    </table>
+                                </div>
                             @endif
 
                         </div>
@@ -171,65 +191,71 @@
                         <div class="card-body bg-light border rounded px-0">
                             <div class="modal-header mb-2" style="background-color: #d6dbf8">
                                 <h5 class="modal-title">Customer Payment Section</h5>
-                                <a class="btn-close" data-toggle="collapse" href="#customertable" role="button" aria-expanded="false" aria-controls="collapseExample"><span aria-hidden="true"></span></a>
+                                <a class="btn-close" data-toggle="collapse" href="#customertable" role="button"
+                                    aria-expanded="false" aria-controls="collapseExample"><span
+                                        aria-hidden="true"></span></a>
                             </div>
 
                             <div class="page-title-left m-3">
-                                <a class="btn btn-info btn-md text-white font-size-12 " data-bs-toggle="modal" data-bs-target="#vendor_payment_modal">Select Customer</a>
+                                <a class="btn btn-info btn-md text-white font-size-12 " data-bs-toggle="modal"
+                                    data-bs-target="#vendor_payment_modal">Select Customer</a>
                             </div>
                             @if (isset($processed_parcels))
-                            <div class="table-responsive">
-                                <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100 table-sm text-center table-sm">
-                                    <thead>
-                                        <tr class="text-center">
-                                            <th>S.No</th>
-                                            <th>Date</th>
-                                            <th>Parcel ID</th>
-                                            <th>Parcel<br>Destination</th>
-                                            <th>Parcel <br>Charges</th>
-                                            <!-- <th>Receivable<br>Amount</th> -->
-                                            <th>Paid<br>Amount</th>
-                                            <th>Balance</th>
+                                <div class="table-responsive">
+                                    <table id="datatable-buttons"
+                                        class="table table-bordered dt-responsive nowrap w-100 table-sm text-center table-sm">
+                                        <thead>
+                                            <tr class="text-center">
+                                                <th>S.No</th>
+                                                <th>Date</th>
+                                                <th>Parcel ID</th>
+                                                <th>Parcel<br>Destination</th>
+                                                <th>Parcel <br>Charges</th>
+                                                <!-- <th>Receivable<br>Amount</th> -->
+                                                <th>Paid<br>Amount</th>
+                                                <th>Balance</th>
 
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @php
-                                        $i = 1;
-                                        @endphp
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @php
+                                                $i = 1;
+                                            @endphp
 
-                                        @if ($processed_parcels->count() > 0)
-                                        @foreach ($processed_parcels as $item)
-                                        <tr>
-                                            <td>{{ $i++ }}</td>
-                                            <td>
-                                                @php
-                                                $month = date('d/m/Y', strtotime($item->created_at));
-                                                // dd($month);
-                                                echo $month;
-                                                @endphp
-                                            </td>
-                                            <td>
-                                                <a href="{{ url('parcel-details/' . $item->id) }}" class="btn btn-outline-secondary btn-sm delete" title="View">
-                                                    <i class="far fa-eye"> {{ $item->pl_id }}</i>
-                                            </td>
-                                            <td>{{ $item->parcel_consignee->name }}</td>
+                                            @if ($processed_parcels->count() > 0)
+                                                @foreach ($processed_parcels as $item)
+                                                    <tr>
+                                                        <td>{{ $i++ }}</td>
+                                                        <td>
+                                                            @php
+                                                                $month = date('d/m/Y', strtotime($item->created_at));
+                                                                // dd($month);
+                                                                echo $month;
+                                                            @endphp
+                                                        </td>
+                                                        <td>
+                                                            <a href="{{ url('parcel-details/' . $item->id) }}"
+                                                                class="btn btn-outline-secondary btn-sm delete"
+                                                                title="View">
+                                                                <i class="far fa-eye"> {{ $item->pl_id }}</i>
+                                                        </td>
+                                                        <td>{{ $item->parcel_consignee->name }}</td>
 
-                                            <td> {{ $item->pl_final }} </td>
-                                            <td> {{ 0}} </td>
-                                            <td> {{ 0 }} </td>
-                                            <!-- <td> {{ $item->id }} </td> -->
+                                                        <td> {{ $item->pl_final }} </td>
+                                                        <td> {{ 0 }} </td>
+                                                        <td> {{ 0 }} </td>
+                                                        <!-- <td> {{ $item->id }} </td> -->
 
-                                        </tr>
-                                        @endforeach
-                                        @else
-                                        <tr>
-                                            <td><code>No record found...</code></td>
-                                        </tr>
-                                        @endif
-                                    </tbody>
-                                </table>
-                            </div>
+                                                    </tr>
+                                                @endforeach
+                                            @else
+                                                <tr>
+                                                    <td><code>No record found...</code></td>
+                                                </tr>
+                                            @endif
+                                        </tbody>
+                                    </table>
+                                </div>
                             @endif
                         </div>
 
@@ -260,15 +286,16 @@
                         <tr>
                             <td>
                                 <select name="vendor_payment_name" id="vendor_payment_name" class="form-control">
-                                    @foreach($vendors as $vendor)
-                                    <option value="{{$vendor->id}}"> {{$vendor->logistic_name}}</option>
+                                    @foreach ($vendors as $vendor)
+                                        <option value="{{ $vendor->id }}"> {{ $vendor->logistic_name }}</option>
                                     @endforeach
                                 </select>
                             </td>
                             <td>
                                 <select name="vendor_payment_method" id="vendor_payment_method" class="form-control">
-                                    @foreach($payment_methods as $payment_method)
-                                    <option value="{{$payment_method->id}}"> {{$payment_method->payment_method}}</option>
+                                    @foreach ($payment_methods as $payment_method)
+                                        <option value="{{ $payment_method->id }}">
+                                            {{ $payment_method->payment_method }}</option>
                                     @endforeach
                                 </select>
                             </td>
@@ -277,7 +304,8 @@
 
                             <th>Enter Amount</th>
                             <td>
-                                <input type="text" name="vendor_payment_amount" value="" id="vendor_payment_amount" class="form-control">
+                                <input type="text" name="vendor_payment_amount" value=""
+                                    id="vendor_payment_amount" class="form-control">
                             </td>
 
 
@@ -287,8 +315,10 @@
 
                     <div class="modal-footer">
                         <!-- Toogle to second dialog -->
-                        <button type="submit" form="vendor-tracking-id" class="btn btn-primary vendor-tracking-id" id="modal_submit11" value="Submit">Submit</button>
-                        <button type="button" class="btn btn-secondary" id="modal_close11" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" form="vendor-tracking-id" class="btn btn-primary vendor-tracking-id"
+                            id="modal_submit11" value="Submit">Submit</button>
+                        <button type="button" class="btn btn-secondary" id="modal_close11"
+                            data-bs-dismiss="modal">Close</button>
                     </div>
             </div>
             </form>
@@ -337,3 +367,60 @@
         </div>
     </div>
 </div>
+<script>
+    $('body').on('change', '#vendor-payment-select', function(e) {
+        // e.prevent
+        id = $(this).val();
+        if (id == "") {
+            return false;
+        }
+
+        try {
+
+            $.ajax({
+
+                url: "{{ url('/get-vendor-parcels-list') }}",
+                type: "GET",
+                data: {
+                    'id': id
+                },
+                success: function(data) {
+                    var html = '';
+                    $.each(data, function(k, v) {
+                        html += '<tr>';
+
+                        html += '<td>';
+                        html += v.id;
+                        html += '</td>';
+
+                        html += '<td>';
+                        html += v.allocate_parcel[0].created_at;
+                        html += '</td>';
+
+                        html += '<td>';
+                        html += v.pl_id;
+                        html += '</td>';
+
+                        html += '<td>';
+                        html += v.allocate_parcel[0].vendor_id;
+                        html += '</td>';
+                        
+                        html += '<td>';
+                        html += v.parcel_tracking.vendor_tracking_id;
+                        html += '</td>';
+                        html += '<td>';
+                        html += v.parcel_charges.vendor_tracking_charges;
+                        html += '</td>';
+
+                        
+                        html += '</tr>';
+                    });
+                    $('.vendor-payment-table>tbody').html(html);
+                }
+            });
+
+        } catch (e) {
+            console.log(e);
+        }
+    });
+</script>

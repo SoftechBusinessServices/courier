@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AllocateParcel;
 use App\Models\Parcel;
 use App\Models\Region;
 use App\Models\Country;
@@ -333,5 +334,14 @@ class ParcelController extends Controller
         return response($employee);
     }
 
+    public function parcel_details_list(Request $request)
+    {
+        $alocatedids = AllocateParcel::where('vendor_id',$request->id)->pluck('pl_id');
+        $delivered_parcels = Parcel::with('allocate_parcel','parcel_tracking', 'parcel_charges',)
+            ->where('pl_status', 'delivered')
+            ->whereIn('id',$alocatedids)
+            ->get();
+        return $delivered_parcels;
+    }
 
 }

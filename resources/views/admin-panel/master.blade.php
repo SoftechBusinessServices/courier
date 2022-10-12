@@ -54,7 +54,7 @@
     <!-- Datatable init js -->
     <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
     <script src="{{ asset('assets/js/app.js') }}"></script>
-    <script src="{{ asset('assets/js/script.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/script.js') }}"></script> --}}
 
     <!-- echarts js -->
     <script src="{{ asset('assets/libs/echarts/echarts.min.js') }}"></script>
@@ -93,6 +93,9 @@
     <script>
         $(":input").inputmask();
     </script>
+
+    {{-- toastr js --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 
     <script>
         $(document).ready(function() {

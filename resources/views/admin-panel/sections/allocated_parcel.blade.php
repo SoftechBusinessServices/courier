@@ -99,7 +99,7 @@
 
 
                                                 <td>
-                                                    @if ($item->parcel_tracking !=null)
+                                                    @if ($item->parcel_tracking !=null || $item->parcel_tracking)
                                                     <p id="tracking_id_style">
                                                         <button type="button" class="btn bg-success text-white btn-sm disabled">
                                                             {{$item->parcel_tracking->vendor_tracking_id }}
@@ -133,14 +133,17 @@
 
 
 
-                                                <td>
+                                                <td id="deliver_status_{{$item->pl_id}}">
                                                     @if ($item->pl_status == 'delivered')
                                                     <button type="button" class="btn btn-danger btn-sm disabled">
                                                         {{ $item->pl_status }} </button>
                                                     @else
-                                                    <a class="btn btn-outline-info btn-sm delivered_status" title="add" id="{{ $item->pl_id }}">
-                                                        Deliver
-                                                    </a>
+                                                        {{-- @php var_dump(empty($item->parcel_charges)); @endphp --}}
+                                                        @if($item->parcel_charges->vendor_tracking_charges != "" || $item->parcel_tracking->vendor_tracking_id != "")
+                                                            <a class="btn btn-outline-info btn-sm delivered_status" title="add" id="{{ $item->pl_id }}">
+                                                                Deliver
+                                                            </a>
+                                                        @endif
                                                     @endif
                                                 </td>
 
@@ -256,7 +259,7 @@
                     });
                 }
                 if (data.success == 1) {
-                    $('#trackingModal2_' + track_id2).text(data.data.vendor_tracking_charges);
+                    $('#trackingModal2_' + track_id2).html('<button type="button" class="btn bg-success text-white btn-sm disabled">'+data.data.vendor_tracking_charges+'</button>');
                     
 
                     toastr.success('record updated', 'success');
@@ -296,6 +299,7 @@
     $('.delivered_status').on('click', function(e) {
         e.preventDefault();
         var pl_id = (this.id);
+        var el = $(this);
         // alert(pl_id)
         if (pl_id) {
 
@@ -308,9 +312,9 @@
                     console.log(data);
                     if (data) {
                         $('.delivered_status').empty();
-                        $('.delivered_status').append('Dilevered');
-                        $('.delivered_status').addClass("text-white");
-                        $('.delivered_status').addClass("bg-danger");
+                        // $('.delivered_status').append('Dilevered');
+                        $('#deliver_status_'+pl_id).html('<button type="button" class="btn btn-danger btn-sm disabled">Deliverd</button>');
+                        // $('.delivered_status').addClass("bg-danger");
 
                     } else {
                         $('.delivered_status').empty();

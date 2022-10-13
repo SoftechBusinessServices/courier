@@ -236,6 +236,7 @@
 
         })
     });
+    
     $('body').on('submit', '#vendor-tracking-charges', function(e) {
         e.preventDefault();
         var fdata = new FormData(this);

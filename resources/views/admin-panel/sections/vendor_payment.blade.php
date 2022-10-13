@@ -233,7 +233,7 @@
                             @if (isset($delivered_parcels))
                                 <div class="table-responsive">
                                     <table id="datatable-buttons"
-                                        class="table table-bordered dt-responsive nowrap w-100 table-sm text-center table-sm">
+                                        class="table table-bordered dt-responsive nowrap w-100 table-sm text-center table-sm balance-sheet-table">
                                         <thead>
                                             <tr class="text-center">
                                                 <th>S.NO</th>
@@ -246,7 +246,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @php
+                                            {{-- @php
                                                 $i = 1;
                                             @endphp
                                             @if ($delivered_parcels->count() > 0)
@@ -282,7 +282,7 @@
                                                 <tr>
                                                     <td><code>No record found...</code></td>
                                                 </tr>
-                                            @endif
+                                            @endif --}}
                                         </tbody>
                                     </table>
                                 </div>
@@ -418,8 +418,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <!-- <form action="{{ url('vendor-tracking') }}" method="POST" id="vendor-tracking-id"> -->
-                <form id="balance_sheet_modal" action="{{ route('daily.report') }}" method="get">
+                {{-- <form id="balance_sheet_modal" action="{{ route('daily.report') }}" method="get"> --}}
+                <form id="balance_sheet_form" method="POST">
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
@@ -437,9 +437,9 @@
                     </div>
 
                     <hr>
-                    <div class="col-md-2">
+                    <div class="col-md-4">
                         <div class="form-group">
-                            <input type="submit" class="btn btn-primary" value="Submit">
+                            <button type="submit" form="balance_sheet_form" class="btn btn-primary " id="modal_submit14" value="Submit">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -450,6 +450,7 @@
         </div>
     </div>
 </div>
+
 <script>
     $('body').on('change', '#vendor-payment-select', function(e) {
         // e.prevent
@@ -533,28 +534,33 @@
                         html += '</td>';
 
                         html += '<td>';
-                        html += v.allocate_parcel[0].created_at;
+                        html += v.created_at;
                         html += '</td>';
-
+                        
                         html += '<td>';
                         html += v.pl_id;
                         html += '</td>';
 
                         html += '<td>';
-                        html += v.allocate_parcel[0].vendor_id;
+                        html += v.parcel_consignee.name;
                         html += '</td>';
 
                         html += '<td>';
-                        html += v.parcel_tracking.vendor_tracking_id;
+                        html += v.pl_final;
                         html += '</td>';
+                        
                         html += '<td>';
-                        html += v.parcel_charges.vendor_tracking_charges;
+                        html += '<input type="text" class="form-control" name="customer_pay" id="customer_pay" placeholder="Enter Payment">';
                         html += '</td>';
-
+                            
+                        html += '<td>';
+                        html += '<input type="hidden" class="form-control" name="customer_dues" id="customer_dues" >';
+                        html += '</td>';
+                            
 
                         html += '</tr>';
                     });
-                    $('.vendor-payment-table>tbody').html(html);
+                    $('.customer-payment-table>tbody').html(html);
                 }
             });
 
@@ -562,4 +568,72 @@
             console.log(e);
         }
     });
+    
+    //date-range picker
+    $('body').on('submit', '#balance_sheet_form', function(e) {
+        e.preventDefault();
+        alert(1);
+        var fdata = new FormData(this);
+        // console.log(Object.fromEntries(fdata)); return false;
+        $.ajax({
+            url: "{{ route('date-wise-tracking') }}",
+            type: "POST",
+            data: fdata,
+            processData: false,
+            contentType: false,
+            // processCache : false,
+            success: function(data) {
+                console.log(data);
+                
+                $('#balance-sheet-modal').modal('hide');
+
+                var html = '';
+                    $.each(data, function(k, v) {
+                        html += '<tr>';
+
+                        html += '<td>';
+                        html += v.id;
+                        html += '</td>';
+
+                        html += '<td>';
+                        html += v.created_at;
+                        html += '</td>';
+                        
+                        html += '<td>';
+                        html += v.pl_id;
+                        html += '</td>';
+
+                        html += '<td>';
+                        html += v.parcel_tracking.vendor_tracking_id;
+                        html += '</td>';
+
+                         html += '<td>';
+                        html += rp =v.pl_final;
+                        html += '</td>';
+
+                        html += '<td>';
+                        html += pp=v.parcel_charges.vendor_tracking_charges;
+                        html += '</td>';
+
+                        html += '<td>';
+                       bp = rp-pp 
+                       html += bp;
+                        html += '</td>';
+                        // html += '<td>';
+                        // html += '<input type="text" class="form-control" name="customer_pay" id="customer_pay" placeholder="Enter Payment">';
+                        // html += '</td>';
+                            
+                        // html += '<td>';
+                        // html += '<input type="hidden" class="form-control" name="customer_dues" id="customer_dues" >';
+                        // html += '</td>';
+                            
+
+                        html += '</tr>';
+                    });
+                    $('.balance-sheet-table>tbody').html(html);
+                }
+           
+        }); //ajax function closed 
+
+    }); // on-submit function closed
 </script>

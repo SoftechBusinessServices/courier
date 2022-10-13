@@ -173,3 +173,4 @@ Route::get('changeStatus',[VendorTrackingController::class,'changeUserStatus'])-
 Route::get('getDeliveredStatus/{id}', [VendorTrackingController::class, 'getDeliveredStatus']);
 
 Route::get('daily-report', [HomeController::class, 'dailyReport'])->name('daily.report');
+Route::post('date-wise-tracking',[ParcelController::class,'date_tracking'])->name('date-wise-tracking');

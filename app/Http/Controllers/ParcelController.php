@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AllocateParcel;
+use Carbon\Carbon;
 use App\Models\Parcel;
 use App\Models\Region;
 use App\Models\Country;
 use App\Models\Currency;
-use App\Models\ParcelConsignee;
 use App\Models\ParcelNote;
-use App\Models\ParcelShipper;
 use Illuminate\Http\Request;
+use App\Models\ParcelShipper;
+use App\Models\AllocateParcel;
+use App\Models\ParcelConsignee;
 
 class ParcelController extends Controller
 {
@@ -349,12 +350,25 @@ class ParcelController extends Controller
         // dd($parcel_shipper_details);
         $customer_ids = ParcelShipper::where('pl_phone_id',$request->id)->pluck('pl_id');
         // echo $customer_ids;
-        $delivered_parcels = Parcel::with('allocate_parcel','parcel_tracking', 'parcel_charges')
+        $delivered_parcels = Parcel::with('allocate_parcel','parcel_tracking', 'parcel_charges','parcel_consignee')
             // ->where('pl_status', 'delivered')
             ->whereIn('id',$customer_ids)
             ->get();
-            echo $delivered_parcels;
+            // echo $delivered_parcels;
         return $delivered_parcels;
     }
+    public function date_tracking(Request $request)
+    {
+        $start_date = Carbon::parse($request->start_date)
+            ->toDateTimeString();
 
+        $end_date = Carbon::parse($request->end_date)
+            ->toDateTimeString();
+
+        $dated_data = Parcel::with('parcel_tracking', 'parcel_charges')->whereBetween('created_at', [$start_date, $end_date])->where('pl_status', 'delivered')->get();
+        return response()->json($dated_data);
+    //    dd($users);
+
+        // return view('admin-panel.report', compact('users'));
+    }
 }

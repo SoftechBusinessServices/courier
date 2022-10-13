@@ -121,10 +121,14 @@ class HomeController extends Controller
 
         $users = Parcel::whereBetween('created_at', [$start_date, $end_date])->where('pl_status', 'delivered')->get();
      
+        return $users;
     //    dd($users);
 
-        return view('admin-panel.report', compact('users'));
+        // return view('admin-panel.report', compact('users'));
     }
+
+
+    
     public function update_user(Request $request, $id)
     {
 

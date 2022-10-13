@@ -66,7 +66,8 @@ Route::get('edit-parcel/{id}', [ParcelController::class, 'edit_parcel']);
 Route::post('update-parcel/{id}', [ParcelController::class, 'update_parcel']);
 Route::get('delete-parcel/{id}', [ParcelController::class, 'destroy_parcel'])->name('delete-parcel');
 Route::get('parcel-details/{id}', [ParcelController::class, 'parcel_details'])->name('parcel-details');
-Route::get('/get-vendor-parcels-list',[ParcelController::class, 'parcel_details_list']);
+Route::get('/get-vendor-parcels-list',[ParcelController::class, 'vendor_details_list']);
+Route::get('/get-customer-parcels-list',[ParcelController::class, 'customer_details_list']);
 
 //ajax dependent
 // Route::get('getSelected/{id}', [ShippingChargesController::class, 'getSelected']);

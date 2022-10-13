@@ -334,13 +334,26 @@ class ParcelController extends Controller
         return response($employee);
     }
 
-    public function parcel_details_list(Request $request)
+    public function vendor_details_list(Request $request)
     {
         $alocatedids = AllocateParcel::where('vendor_id',$request->id)->pluck('pl_id');
         $delivered_parcels = Parcel::with('allocate_parcel','parcel_tracking', 'parcel_charges',)
             ->where('pl_status', 'delivered')
             ->whereIn('id',$alocatedids)
             ->get();
+        return $delivered_parcels;
+    }
+    public function customer_details_list(Request $request)
+    {
+        // $parcel_shipper_details = Parcel::with('country', 'consignee','parcel_shipper_details')->whereIn('pl_status', ['processed','delivered','allocated'])->get();
+        // dd($parcel_shipper_details);
+        $customer_ids = ParcelShipper::where('pl_phone_id',$request->id)->pluck('pl_id');
+        // echo $customer_ids;
+        $delivered_parcels = Parcel::with('allocate_parcel','parcel_tracking', 'parcel_charges')
+            // ->where('pl_status', 'delivered')
+            ->whereIn('id',$customer_ids)
+            ->get();
+            echo $delivered_parcels;
         return $delivered_parcels;
     }
 

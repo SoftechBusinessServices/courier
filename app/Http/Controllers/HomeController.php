@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use App\Models\PaymentMethod;
 use App\Models\ShippingCharge;
 use App\Models\ParcelRegistration;
+use App\Models\ParcelShipper;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -69,14 +70,19 @@ class HomeController extends Controller
         $services = Service::all();
 
         DB::enableQueryLog();
-        // $processed_parcels = Parcel::where('pl_status', 'processed')->get();
+        
+        // $parcel_shipper_details = Parcel::with('country', 'consignee','parcel_shipper_details')->whereIn('pl_status', ['processed','delivered','allocated'])->get();
+        // dd($parcel_shipper_details);
+        $shipper_names = ParcelShipper::with('shipper_parcel_details')->get(['id','pl_phone_id','company_name'])->unique('company_name');
+        // dd($shipper_names);
         $processed_parcels = Parcel::with('country', 'consignee')->where('pl_status', 'processed')->get();
         // dd($processed_parcels);
+        
         $delivered_parcels = Parcel::with('parcel_tracking', 'parcel_charges',)->where('pl_status', 'delivered')->get();
         // dd($delivered_parcels);
         //    dd(DB::getQueryLog());
-
         // DB::enableQueryLog();
+        
         // $processed_parcels = Parcel::with('country','consignee')->where('pl_status', 'processed')->get();
         $allocated_parcels =  Parcel::with(['country', 'parcel_tracking', 'parcel_charges', 'allocate_parcel' => function ($query) {
             $query->with(['service', 'allocate_logistic']);
@@ -96,7 +102,7 @@ class HomeController extends Controller
         $payment_methods = PaymentMethod::all();
         $vendors =  Logistic::all()->unique('logistic_name');
         // dd($vendors);
-        return view('admin-panel.master',  compact('data', 'regions',  'countries', 'companies', 'currencies', 'customers', 'services', 'abc', 'processed_parcels', 'allocated_parcels', 'logistics', 'payment_methods', 'users', 'vendors', 'delivered_parcels'));
+        return view('admin-panel.master',  compact('data', 'regions',  'countries', 'companies', 'currencies', 'customers', 'services', 'abc', 'processed_parcels', 'allocated_parcels', 'logistics', 'payment_methods', 'users', 'vendors', 'delivered_parcels','shipper_names'));
 
         // return view('home');
     }

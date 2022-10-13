@@ -79,4 +79,8 @@ class Parcel extends Model
 
         return $this->belongsTo(Country::class,'shipper_country_id','id');
     }
+    public function parcel_shipper_details(){
+
+        return $this->hasMany(ParcelShipper::class,'pl_id','id');
+    }
 }

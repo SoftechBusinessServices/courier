@@ -85,7 +85,10 @@ class HomeController extends Controller
         
         // $processed_parcels = Parcel::with('country','consignee')->where('pl_status', 'processed')->get();
         $allocated_parcels =  Parcel::with(['country', 'parcel_tracking', 'parcel_charges', 'allocate_parcel' => function ($query) {
-            $query->with(['service', 'allocate_logistic']);
+            $query->with(['service', 'allocate_logistic'=> function($query){
+            
+                $query->with('logistic_company');
+            }]);
         }])
             ->whereIn(
                 'pl_status',

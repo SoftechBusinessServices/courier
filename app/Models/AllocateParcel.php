@@ -39,4 +39,5 @@ class AllocateParcel extends Model
 
         return $this->belongsTo(Logistic::class, 'vendor_id','id');
     }
+    
 }

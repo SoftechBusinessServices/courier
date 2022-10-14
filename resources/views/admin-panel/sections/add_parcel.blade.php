@@ -171,8 +171,8 @@
                         <div class="tab">Dispatch Notes:
                             <hr>
                             <div class="repeater">
-                                <div data-repeater-list="userData">
-                                    <div data-repeater-item="">
+                                {{-- <div data-repeater-list="userData">
+                                    <div data-repeater-item=""> --}}
                                         <div class="row">
                                             <div class="form-group col-4 col-sm-4  ">
                                                 <label for="name">Contents</label>
@@ -216,9 +216,10 @@
                                             </div>
                                             <div class="form-group col" style="margin: 0 5px; padding:0px">
                                                 <label for="resume">Price</label>
-                                                <input style="padding:6px 0px" type="number" id="disp_price"
+                                                <input style="padding:6px 0px" type="number" id="disp_price_0"  
+                                                    data-flag ="0"
                                                     name="disp_price[]" min="0"
-                                                    class="form-control @error('disp_price') is-invalid @enderror" />
+                                                    class="form-control 0 disp_price @error('disp_price') is-invalid @enderror" />
                                                 @error('disp_price')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -227,9 +228,10 @@
                                             </div>
                                             <div class="form-group col" style="margin: 0 5px; padding:0px">
                                                 <label for="subject">QTY</label>
-                                                <input style="padding:6px 0px" type="number" id="disp_quantity"
+                                                <input style="padding:6px 0px" type="number" id="disp_quantity_0"  
+                                                    data-flag ="0"
                                                     name="disp_quantity[]" min="0"
-                                                    class="form-control @error('disp_quantity') is-invalid @enderror" />
+                                                    class="form-control 0 disp_quantity @error('disp_quantity') is-invalid @enderror" />
                                                 @error('disp_quantity')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -238,9 +240,10 @@
                                             </div>
                                             <div class="form-group col" style="margin:0 5px; padding:0px">
                                                 <label for="resume">Total</label>
-                                                <input style="padding:6px 0px" type="number" id="disp_total"
+                                                <input style="padding:6px 0px" type="number" id="disp_total_0" 
+                                                    data-flag ="0"
                                                     name="disp_total[]" min="0"
-                                                    class="form-control @error('disp_total') is-invalid @enderror" />
+                                                    class="form-control  0 @error('disp_total') is-invalid @enderror" />
                                                 @error('disp_total')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -249,15 +252,16 @@
                                             </div>
                                             <div class="form-group col mt-4">
                                                 <button style="margin-top: 7px;" type="button"
-                                                    class="btn btn-danger btn-md"
-                                                    data-repeater-delete="">Delete</button>
+                                                    class="btn btn-danger btn-md delete-btn"
+                                                    >Delete</button>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <input data-repeater-create="" type="button" class="btn btn-success btn-sm"
-                                    value="Add Notes"><br><br>
+                                    {{-- </div>
+                                </div> --}}
+                                
                             </div><br>
+                            <input data-repeater-create="" type="button" class="btn btn-success btn-sm add-more-btn"
+                                    value="Add Notes"><br><br>
                         </div>
 
                         <div class="tab">Shipper Details:
@@ -284,7 +288,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6">
+                                {{-- <div class="col-md-6">
                                     <label for="Search" class="form-label">Search Phone Number</label>
                                     <input class="form-control @error('pl_phone_id') is-invalid @enderror"
                                         id="pl_phone_id" placeholder="Type to search..." name="pl_phone_id">
@@ -299,7 +303,7 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
-                                </div>
+                                </div> --}}
 
                                 <div class="col-md-6 mt-4">
                                     <label for="chkPassport ">
@@ -349,9 +353,7 @@
                                             <select
                                                 class="form-control @error('shipper_country_id') is-invalid @enderror"
                                                 name="shipper_country_id" id="shipper_country_id">
-                                                <option value=""> ------------- Select One Country
-                                                    -------------
-                                                </option>
+                                                <option value=""> -Select One Country- </option>
                                                 @foreach ($countries as $country)
                                                     <option value="{{ $country->id }}">
                                                         {{ $country->name }}
@@ -747,23 +749,159 @@
 
         });
 
+        //repeater data calculations
+        // $(function() {
+            // $("#disp_price").blur(function() {
+               
+            //     var disp_price = parseInt($(this).val());
+            //     var disp_quantity = parseInt($('#disp_quantity').val());
+            //     // var pl_discount = parseInt($('#pl_discount').val());
+            //     var disp_total = (disp_price*disp_quantity);
+            //     $('#disp_total').val(disp_total);
+
+            // }); // discount blur function closed
+            // $("#disp_quantity").blur(function() {
+             
+            //     var disp_price = parseInt($('#disp_price').val());
+            //     var disp_quantity = parseInt($('#disp_quantity').val());
+            //     // var pl_discount = parseInt($('#pl_discount').val());
+            //     var disp_total = (disp_price*disp_quantity);
+            //     $('#disp_total').val(disp_total);
+
+            // });
+            
+        // });
 
     }); // ready function closed here
-</script>
-<script data-rishi-type="text/javascript" data-cfasync="false" data-no-optimize="1" data-no-defer="1"
-    data-no-minify="1">
-    $(document).ready(function() {
+    $('body').on('click',function(){
 
-        $('.repeater').repeater({
-            show: function() {
-                $(this).slideDown();
-            },
-            hide: function(deleteElement) {
-                if (confirm('Are you sure you want to delete this element?')) {
-                    $(this).slideUp(deleteElement);
-                }
-            },
-        });
+    })
+</script>
+<script 
+{{-- data-rishi-type="text/javascript"
+ data-cfasync="false"
+  data-no-optimize="1"
+   data-no-defer="1"
+    data-no-minify="1" --}}
+    >
+    $(document).ready(function() {
+        // initEmpty: false,
+        // $('.repeater').repeater({
+        //     show: function() {
+        //         $(this).slideDown();
+        //     },
+        //     hide: function(deleteElement) {
+        //         if (confirm('Are you sure you want to delete this element?')) {
+        //             $(this).slideUp(deleteElement);
+        //         }
+        //     },
+        // });
     });
     //form-wizard
+    increment = 0;
+    flag = 0;
+    $('body').on('click','.add-more-btn',function(){
+        flag++;
+        var clonHtml = `<div class="row">
+                                            <div class="form-group col-4 col-sm-4  ">
+                                                <label for="name">Contents</label>
+                                                <input style="padding:6px 0px" type="text" id="disp_content"
+                                                    name="disp_content[]"
+                                                    class="form-control @error('disp_content') is-invalid @enderror">
+                                                @error('disp_content')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="form-group col" style="margin: 0 5px; padding:0px">
+                                                <label for="message">Condition</label>
+                                                <select name="disp_condition[]" id="disp_condition"
+                                                    class="form-control @error('disp_condition') is-invalid @enderror">
+                                                    <option value="new">New</option>
+                                                    <option value="used">Used</option>
+
+                                                </select>
+                                                @error('disp_condition')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="form-group col" style="margin: 0 5px; padding:0px">
+                                                <label for="message">Currency</label>
+                                                <select name="disp_currency[]" id="disp_currency[]"
+                                                    class="form-control @error('company_currency') is-invalid @enderror">
+
+                                                    <option value="0">PKR</option>
+                                                    <option value="1">USD</option>
+                                                    <option value="2">Euro</option>
+                                                </select>
+                                                @error('disp_currency')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="form-group col" style="margin: 0 5px; padding:0px">
+                                                <label for="resume">Price</label>
+                                                <input style="padding:6px 0px" type="number" id="disp_price_`+flag+`" data-flag="`+flag+`"
+                                                    name="disp_price[]" min="0"
+                                                    class="form-control disp_price  `+flag+` @error('disp_price') is-invalid @enderror" />
+                                                @error('disp_price')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="form-group col" style="margin: 0 5px; padding:0px">
+                                                <label for="subject">QTY</label>
+                                                <input style="padding:6px 0px" type="number" id="disp_quantity_`+flag+`" data-flag="`+flag+`"
+                                                    name="disp_quantity[]" min="0"
+                                                    class="form-control  disp_quantity `+flag+` @error('disp_quantity') is-invalid @enderror" />
+                                                @error('disp_quantity')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="form-group col" style="margin:0 5px; padding:0px">
+                                                <label for="resume">Total</label>
+                                                <input style="padding:6px 0px" type="number" id="disp_total_`+flag+`" data-flag="`+flag+`"
+                                                    name="disp_total[]" min="0"
+                                                    class="form-control   `+flag+` @error('disp_total') is-invalid @enderror" />
+                                                @error('disp_total')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="form-group col mt-4">
+                                                <button style="margin-top: 7px;" type="button"
+                                                    class="btn btn-danger delete-btn btn-md">Delete</button>
+                                            </div>
+                                        </div>`;
+        $('.repeater').append(clonHtml);
+        increment++;
+       
+    });
+    $('body').on('click','.delete-btn',function(){
+        // alert(increment); return false;
+        if(increment == 0){
+             alert('cannot deleted');
+             return false;
+        }
+        $(this).parent().parent().remove();
+        increment--;
+    });
+
+    $('body').on('blur','.disp_quantity',function(){
+        var flagClass = $(this).data('flag');
+        var disp_price = $('#disp_price_'+flag).val();
+        var disp_quantity = $('#disp_quantity_'+flag).val();
+        var disp_total = (disp_price*disp_quantity);
+        $('#disp_total_'+flag).val(disp_total);
+    });
+
+    
 </script>

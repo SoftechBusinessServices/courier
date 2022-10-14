@@ -23,7 +23,7 @@ class Logistic extends Model
 
         return $this->hasMany(AllocateParcel::class,'vendor_id','id');
     }
-   public function logisctic_company(){
+   public function logistic_company(){
 
     return $this->belongsTo(Company::class,'company_id','id');
    } 

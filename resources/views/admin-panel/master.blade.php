@@ -67,8 +67,9 @@
     <script src="{{ asset('assets/js/pages/form-wizard.init.js')}}"></script>
 
     <!-- form repeater js -->
+        <script src="{{ asset('assets/js/pages/form-repeater.int.js')}}"></script>
     <script src="{{ asset('assets/libs/jquery.repeater/jquery.repeater.min.js')}}"></script>
-    <script src="{{ asset('assets/js/pages/form-repeater.int.js')}}"></script>
+
     <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js" data-rishi-type="text/javascript" data-cfasync="false" data-no-optimize="1" data-no-defer="1" data-no-minify="1"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.repeater/1.2.1/jquery.repeater.min.js" data-cfasync="false" data-no-optimize="1" data-no-defer="1" data-no-minify="1"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.repeater/1.2.1/jquery.repeater.js" data-cfasync="false" data-no-optimize="1" data-no-defer="1" data-no-minify="1"></script>

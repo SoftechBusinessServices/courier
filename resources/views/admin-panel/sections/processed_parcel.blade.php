@@ -162,7 +162,7 @@
                             $.each(data, function(key, course) {
                                 $('select[name="vendor_id"]').append(
                                     '<option value="' + course.id +
-                                    '">' + course.logistic_name +
+                                    '">' + course.logistic_company.name +
                                     '</option>');
                             });
                         } else {

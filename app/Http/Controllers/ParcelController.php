@@ -19,8 +19,6 @@ class ParcelController extends Controller
     public function add_parcel()
     {
        
-
-    
         $data = Parcel::all();
         // dd($data);
         $regions = Region::all();
@@ -74,10 +72,11 @@ class ParcelController extends Controller
                 'pl_description' => $request->pl_description,
                 'payment_id' => $request->payment_method_id,
                 'consignee_country_id' => $request->consignee_country_id,
+                'shipper_country_id' => $request->shipper_country_id,
             ];
-            if($request->shipping_country_id !=null){
-                $data =['shipping_country_id'=>$request->shipping_country_id];
-            }
+            // if($request->shipping_country_id !=null){
+            //     $data =['shipper_country_id'=>$request->shipper_country_id];
+            // }
            
             $record_id = Parcel::create($data)->id;
             // dd($record_id);
@@ -214,17 +213,17 @@ class ParcelController extends Controller
         // $a = $request->userData['0']['disp_content'];
 
 
-        for ($i = 0; $i < count($request->userData); $i++) {
+        for ($i = 0; $i < count($request->disp_content); $i++) {
             // dd(24);
 
             $data = [
                 'pl_id'  =>  $record_id,
-                'disp_content'  =>  $request->userData[$i]['disp_content'],
-                'disp_condition'  =>  $request->userData[$i]['disp_condition'],
-                'currency_id'  =>  $request->userData[$i]['disp_currency'],
-                'disp_price'  =>  $request->userData[$i]['disp_price'],
-                'disp_quantity'  =>  $request->userData[$i]['disp_quantity'],
-                'disp_total'  =>  $request->userData[$i]['disp_total'],
+                'disp_content'  =>  $request->disp_content[$i],
+                'disp_condition'  =>  $request->disp_condition[$i],
+                'currency_id'  =>  $request->disp_currency[$i],
+                'disp_price'  =>  $request->disp_price[$i],
+                'disp_quantity'  =>  $request->disp_quantity[$i],
+                'disp_total'  =>  $request->disp_total[$i],
 
             ];
             $record = ParcelNote::create($data);
@@ -233,11 +232,11 @@ class ParcelController extends Controller
 
         // dd(25);
 
-        if ($data) {
+        // if ($data) {
             return redirect()->back()->with('success', "Record inserted Successfully");
-        } else {
-            return redirect()->back()->with('error', "Record Not inserted ---");
-        }
+        // } else {
+        //     return redirect()->back()->with('error', "Record Not inserted ---");
+        // }
     }
 
     public function edit_parcel($id)

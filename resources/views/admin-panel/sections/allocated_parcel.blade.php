@@ -65,6 +65,7 @@
 
                                                 <th>Weight<br>(kilogram)</th>
                                                 <th>Parcel<br>Cost</th>
+                                                <th>Service<br>Name</th>
                                                 <th>Vendor<br>Name</th>
                                                 <th>Tracking<br>ID</th>
                                                 <th>Vendor<br>Charges</th>
@@ -95,7 +96,10 @@
                                                 </td>
                                                 <td> {{ $item->pl_weight }} </td>
                                                 <td> {{ $item->pl_final }} </td>
-                                                {{-- <td> {{ $item->allocate_parcel['0']['allocate_logistic']['logistic_name'] }} </td> --}}
+                                                
+                                                {{-- <td> {{ $item->allocate_parcel['0']['allocate_logistic']['name'] }} </td> --}}
+                                                <td> {{ $item['allocate_parcel']['0']['service']['service_name']}} </td>
+                                                <td> {{ $item->allocate_parcel['0']['allocate_logistic']['logistic_company']['name'] }} </td>
 
 
                                                 <td>
@@ -225,7 +229,9 @@
                     });
                 }
                 if (data.success == 1) {
-                    $('#trackingModal_' + track_id).text(data.data.vendor_tracking_id);
+                    // $('#trackingModal_' + track_id).text(data.data.vendor_tracking_id);
+                    $('#trackingModal_' + track_id).html('<button type="button" class="btn bg-success text-white btn-sm disabled">'+data.data.vendor_tracking_id+'</button>');
+                    
                     toastr.success('record updated', 'success');
                     $('#trackingmodal').modal('hide');
 
@@ -256,9 +262,8 @@
                     });
                 }
                 if (data.success == 1) {
-                    $('#trackingModal2_' + track_id2).html('<button type="button" class="btn bg-success text-white btn-sm disabled">'+data.data.vendor_tracking_charges+'</button>');
+                    $('#trackingModal2_' + track_id2).html('<button type="button" class="btn bg-primary text-white btn-sm disabled">'+data.data.vendor_tracking_charges+'</button>');
                     
-
                     toastr.success('record updated', 'success');
                     $('#vendor_charges_update').modal('hide');
                     // console.log(track_id);

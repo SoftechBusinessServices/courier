@@ -83,4 +83,8 @@ class Parcel extends Model
 
         return $this->hasMany(ParcelShipper::class,'pl_id','id');
     }
+    public function parcel_allocate(){
+
+        return $this->hasMany(AllocateParcel::class,'pl_id','id');
+    }
 }

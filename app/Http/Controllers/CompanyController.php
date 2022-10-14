@@ -6,20 +6,21 @@ use App\Models\Company;
 use App\Models\CompanyRepresentative;
 use App\Models\Country;
 use Illuminate\Http\Request;
+use PHPUnit\Framework\Constraint\Count;
 
 class CompanyController extends Controller
 {
     //
-    public function getCompany($id)
-    {
-        $course  = CompanyRepresentative::where('company_id', $id)->get();
-        return response()->json($course);
-    }
+    // public function getCompany($id)
+    // {
+    //     $course  = CompanyRepresentative::where('company_id', $id)->get();
+    //     return response()->json($course);
+    // }
 
     public function add_company()
     {
         $data = Company::all();
-        $countries = Country::all();
+       $countries = Country::all();
         // dd($data);
         return view('admin-panel.companies.create_company', compact('data', 'countries'));
     }
@@ -28,51 +29,54 @@ class CompanyController extends Controller
         // dd($request->all());
         $validatedData = $request->validate([
 
-            'fname' => 'required',
-            'lname' => 'required',
+            'name' => 'required',
+            // 'fname' => 'required',
+            // 'lname' => 'required',
             'email' => 'required',
             'phone' => 'required',
             // 'country_id' => 'required',
-            'address' => 'required',
-            'ntn_no' => 'required',
-            'web_url' => 'required',
+            // 'address' => 'required',
+            // 'ntn_no' => 'required',
+            // 'web_url' => 'required',
         ]);
 
         $data  = [
-            'fname' => $request->fname,
-            'lname' => $request->lname,
+            'name' => $request->name,
+            // 'fname' => $request->fname,
+            // 'lname' => $request->lname,
             'email' => $request->email,
             'phone' => $request->phone,
             // 'country_id' => $request->country_id,
-            'address' => $request->address,
-            'ntn_no' => $request->ntn_no,
-            'web_url' => $request->web_url,
+            // 'address' => $request->address,
+            // 'ntn_no' => $request->ntn_no,
+            // 'web_url' => $request->web_url,
         ];
 
         $company_id = Company::create($data)->id;
         // dd($company_id);
 
-        if($request->answer == "yes"){
-            // dd(1);
-        $represent = [
-             'company_id'=> $company_id,
-            'represent_name'=> $request->represent_name,
-            'represent_email'=> $request->represent_email,
-            'represent_phone'=> $request->represent_phone,
-            // 'represent_address'=> $request->represent_address,
-        ];
-        $represent = CompanyRepresentative::create($represent)->id;
+        // if($request->answer == "yes"){
+        //     // dd(1);
+        // $represent = [
+        //      'company_id'=> $company_id,
+        //     'represent_name'=> $request->represent_name,
+        //     'represent_email'=> $request->represent_email,
+        //     'represent_phone'=> $request->represent_phone,
+        //     // 'represent_address'=> $request->represent_address,
+        // ];
+        // $represent = CompanyRepresentative::create($represent)->id;
 
-        if($represent){
-            return redirect()->back()->with('success', "Company with Representative added Successfully");
-        }
+        // if($represent){
+        //     return redirect()->back()->with('success', "Company with Representative added Successfully");
+        // }
 
-        }  //representative
-        else{
-            if ($company_id) {
-                return redirect()->back()->with('success', "Company added Successfully");
-            }
-        }
+        // }  //representative
+        // else{
+        //     if ($company_id) {
+        //         return redirect()->back()->with('success', "Company added Successfully");
+        //     }
+        // }
+        return redirect()->back()->with('success', "Company added Successfully");
     }
     public function edit_company($id)
     {
@@ -89,26 +93,39 @@ class CompanyController extends Controller
         // dd($record);
         $validatedData = $request->validate([
 
-            'fname' => 'required',
-            'lname' => 'required',
+            'name' => 'required',
+            // 'fname' => 'required',
+            // 'lname' => 'required',
             'email' => 'required',
             'phone' => 'required',
-            'country_id' => 'required',
-            'address' => 'required',
-            'ntn_no' => 'required',
-            'web_url' => 'required',
+            // 'country_id' => 'required',
+            // 'address' => 'required',
+            // 'ntn_no' => 'required',
+            // 'web_url' => 'required',
         ]);
 
+        // $data  = [
+        //     'fname' => $request->fname,
+        //     'lname' => $request->lname,
+        //     'email' => $request->email,
+        //     'phone' => $request->phone,
+        //     'country_id' => $request->country_id,
+        //     'address' => $request->address,
+        //     'ntn_no' => $request->ntn_no,
+        //     'web_url' => $request->web_url,
+        // ];
         $data  = [
-            'fname' => $request->fname,
-            'lname' => $request->lname,
+            'name' => $request->name,
+            // 'fname' => $request->fname,
+            // 'lname' => $request->lname,
             'email' => $request->email,
             'phone' => $request->phone,
-            'country_id' => $request->country_id,
-            'address' => $request->address,
-            'ntn_no' => $request->ntn_no,
-            'web_url' => $request->web_url,
+            // 'country_id' => $request->country_id,
+            // 'address' => $request->address,
+            // 'ntn_no' => $request->ntn_no,
+            // 'web_url' => $request->web_url,
         ];
+
         $data = $record->update($data);
         // dd($data);
         if ($data) {
@@ -132,13 +149,13 @@ class CompanyController extends Controller
         }
     }
 
-    public function fetch_representative($id = NULL)
-    {
-        // dd($id);
-        $data = CompanyRepresentative::where('company_id', $id)->get();
-        // dd($data);
-        $company_id = Company::find($id)->id;
-        return view('admin-panel.companies.fetch_representative', compact('data','company_id'));
-    }
+    // public function fetch_representative($id = NULL)
+    // {
+    //     // dd($id);
+    //     $data = CompanyRepresentative::where('company_id', $id)->get();
+    //     // dd($data);
+    //     $company_id = Company::find($id)->id;
+    //     return view('admin-panel.companies.fetch_representative', compact('data','company_id'));
+    // }
 
 }

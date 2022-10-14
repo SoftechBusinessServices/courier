@@ -81,9 +81,9 @@
                     </div>
                     <div class="modal-footer flex-nowrap p-0 justify-content-center">
 
-                        <a class="btn btn-info btn-md text-white font-size-12 p-2 " data-toggle="collapse" href="#vendortable" role="button" aria-expanded="false" aria-controls="collapseExample">Vendor Payment</a>
-                        <a class="btn btn-success btn-md text-white font-size-12 p-2" data-toggle="collapse" href="#customertable" role="button" aria-expanded="false" aria-controls="collapseExample">Customer Payment</a>
-                        <a class="btn btn-primary btn-md text-white font-size-12 p-2 " data-toggle="collapse" href="#balancesheettable" role="button" aria-expanded="false" aria-controls="collapseExample">Balance Sheet</a>
+                        <a class="btn btn-info btn-md text-white font-size-12 " data-toggle="collapse" href="#vendortable" role="button" aria-expanded="false" aria-controls="collapseExample">Vendors</a>
+                        <a class="btn btn-success btn-md text-white font-size-12" data-toggle="collapse" href="#customertable" role="button" aria-expanded="false" aria-controls="collapseExample">Customers</a>
+                        <a class="btn btn-primary btn-md text-white font-size-12 " data-toggle="collapse" href="#balancesheettable" role="button" aria-expanded="false" aria-controls="collapseExample">Balance Sheet</a>
 
 
                     </div>

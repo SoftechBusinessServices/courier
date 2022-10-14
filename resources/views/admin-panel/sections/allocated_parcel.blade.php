@@ -95,7 +95,7 @@
                                                 </td>
                                                 <td> {{ $item->pl_weight }} </td>
                                                 <td> {{ $item->pl_final }} </td>
-                                                <td> {{ $item->allocate_parcel['0']['allocate_logistic']['logistic_name'] }} </td>
+                                                {{-- <td> {{ $item->allocate_parcel['0']['allocate_logistic']['logistic_name'] }} </td> --}}
 
 
                                                 <td>
@@ -130,20 +130,17 @@
                                                     @endif
                                                 </td>
 
-
-
-
                                                 <td id="deliver_status_{{$item->pl_id}}">
                                                     @if ($item->pl_status == 'delivered')
                                                     <button type="button" class="btn btn-danger btn-sm disabled">
                                                         {{ $item->pl_status }} </button>
                                                     @else
                                                         {{-- @php var_dump(empty($item->parcel_charges)); @endphp --}}
-                                                        @if($item->parcel_charges->vendor_tracking_charges != "" || $item->parcel_tracking->vendor_tracking_id != "")
+                                                        {{-- @if($item->parcel_charges->vendor_tracking_charges != "" || $item->parcel_tracking->vendor_tracking_id != "")
                                                             <a class="btn btn-outline-info btn-sm delivered_status" title="add" id="{{ $item->pl_id }}">
                                                                 Deliver
                                                             </a>
-                                                        @endif
+                                                        @endif --}}
                                                     @endif
                                                 </td>
 

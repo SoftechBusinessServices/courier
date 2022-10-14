@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AllocateParcel;
+use App\Models\Company;
 use App\Models\Country;
 use App\Models\Logistic;
 use App\Models\Parcel;
@@ -25,19 +26,22 @@ class LogisticController extends Controller
     {
         // dd($request->all());
         $data = $request->validate([
+            // 'company_id'          =>  'required',
             'logistic_name'          =>  'required',
             'vendor_email'          =>  'required',
             'vendor_phone'          =>  'required',
             'vendor_address'          =>  'required',
             'service_id'                  =>  'required',
         ]);
-
+        $data1  =['name'=>$request->logistic_name];
+        $record_id = Company::create($data1)->id;
+        // dd($record_id);
         for ($i = 0; $i < count($request->service_id); $i++) {
             // dd(24);
 
             $data = [
 
-                'logistic_name' => $request->logistic_name,
+                'company_id' => $record_id,
                 'vendor_email' => $request->vendor_email,
                 'vendor_phone' => $request->vendor_phone,
                 'vendor_address' => $request->vendor_address,
@@ -52,7 +56,7 @@ class LogisticController extends Controller
 
     public function edit_logistic($id)
     {
-        //
+        dd($id);
         $data = Logistic::find($id);
         $countries = Country::all();
         $services = Service::all();
@@ -65,8 +69,9 @@ class LogisticController extends Controller
         //   dd($request->all());
         $validatedData = $request->validate([
 
-            'country_id' => 'required',
-            'logistic_name' => 'required',
+            // 'country_id' => 'required',
+            // 'logistic_name' => 'required',
+            'company_id' => 'required',
             'vendor_name' => 'required',
             'vendor_email' => 'required',
             'vendor_phone' => 'required',
@@ -75,8 +80,8 @@ class LogisticController extends Controller
         ]);
 
         $data  = [
-            'country_id' => $request->country_id,
-            'logistic_name' => $request->logistic_name,
+            // 'country_id' => $request->country_id,
+            'company_id' => $request->company_id,
             'vendor_name' => $request->vendor_name,
             'vendor_email' => $request->vendor_email,
             'vendor_phone' => $request->vendor_phone,

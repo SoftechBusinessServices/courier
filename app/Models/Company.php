@@ -13,7 +13,8 @@ class Company extends Model
     use SoftDeletes;
     protected $guarded = [];
 
-    protected $fillables = ['fname','lname','email', 'phone', 'address', 'country_id', 'ntn_no', 'web_url', 'status' ];
+    // protected $fillables = ['fname','lname','email', 'phone', 'address', 'country_id', 'ntn_no', 'web_url', 'status' ];
+    protected $fillables = ['name','status' ];
 
     public function customer()
     {

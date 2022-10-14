@@ -25,7 +25,47 @@
                                         <div class="col-md-12">
 
                                             <div class="row">
-                                                <div class="col-md-6 mb-3">
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="username" class="form-label">Company Name</label>
+                                                    <input type="text" id="username"
+                                                        class="form-control @error('name') is-invalid @enderror"
+                                                        name="name" value="{{ $data->name }}" required
+                                                        autocomplete="name" autofocus>
+
+                                                    @error('name')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="useremail" class="form-label">Company Email</label>
+                                                    <input type="email" id="useremail"
+                                                        class="form-control @error('email') is-invalid @enderror"
+                                                        name="email" value="{{ $data->email }}" autocomplete="email"
+                                                        required>
+
+                                                    @error('email')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="username" class="form-label">Company Phone Number</label>
+                                                    <input type="text" data-inputmask="'mask': '0399-99999999'" required
+                                                        type="number" maxlength="12"
+                                                        class="form-control @error('phone') is-invalid @enderror"
+                                                        name="phone" value="{{ $data->phone }}" autocomplete="phone"
+                                                        autofocus>
+
+                                                    @error('phone')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                                {{-- <div class="col-md-6 mb-3">
                                                     <label for="username" class="form-label">First Name</label>
                                                     <input type="text" id="username"
                                                         class="form-control @error('fname') is-invalid @enderror"
@@ -50,40 +90,14 @@
                                                             <strong>{{ $message }}</strong>
                                                         </span>
                                                     @enderror
-                                                </div>
+                                                </div> --}}
                                             </div>
 
-                                            <div class="row">
-                                                <div class="col-md-6 mb-3">
-                                                    <label for="useremail" class="form-label">Company Email</label>
-                                                    <input type="email" id="useremail"
-                                                        class="form-control @error('email') is-invalid @enderror"
-                                                        name="email" value="{{ $data->email }}" autocomplete="email"
-                                                        required>
+                                            {{-- <div class="row">
+                                               
+                                            </div> --}}
 
-                                                    @error('email')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                                <div class="col-md-6 mb-3">
-                                                    <label for="username" class="form-label">Company Phone Number</label>
-                                                    <input type="text" data-inputmask="'mask': '0399-99999999'" required
-                                                        type="number" maxlength="12"
-                                                        class="form-control @error('phone') is-invalid @enderror"
-                                                        name="phone" value="{{ $data->phone }}" autocomplete="phone"
-                                                        autofocus>
-
-                                                    @error('phone')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
+                                            {{-- <div class="row">
                                                 <div class="col-md-6 mb-3">
                                                     <label for="username" class="form-label">Company Website URL</label>
                                                     <input type="url" id="web_url" name="web_url" required
@@ -110,9 +124,9 @@
                                                         </span>
                                                     @enderror
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
-                                            <div class="row">
+                                            {{-- <div class="row">
                                                 <div class="col-md-6 mb-3">
                                                     <label for="address" class="form-label">Company Address</label>
                                                     <textarea name="address" id="address" class="form-control text-left" cols="1" rows="1">
@@ -126,7 +140,7 @@
                                                             <option value="{{ $country->id }}"
                                                                 {{ $country->id == $data->country_id ? 'selected' : '' }}>
                                                                 {{ $country->name }}
-                                                                {{-- -{{ $country->code }} --}}
+                                                              
                                                             </option>
                                                         @endforeach
                                                     </select>
@@ -136,7 +150,7 @@
                                                         </span>
                                                     @enderror
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <hr>
                                             <div class="col-md-6 mb-0">
                                                 <br>

@@ -15,7 +15,7 @@
                         <div class="card-body">
                             <p class="card-title-desc text-dark mb-2 py-4 rounded px-2" style="background-color: #d6dbf8">
 
-                                <span class="font-size-20 font-weight-bold">Vendors List</a>
+                                <span class="font-size-20 font-weight-bold">Vendors with Comanit List</a>
                                 </span>
                             </p>
                             @if (isset($data))
@@ -24,7 +24,7 @@
                                 <thead>
                                     <tr>
                                         <th>S.No</th>
-                                        <th>Logistic Name</th>
+                                        <th>Company Name</th>
                                         <th>Service Name</th>
                                         <th>Email</th>
                                         <th>Phone</th>
@@ -44,7 +44,7 @@
                                     <tr>
                                         <td>{{ $i++ }}</td>
                                         {{-- <td>{{ $item->companies->email }}</td> --}}
-                                        <td>{{ $item->logistic_name }}</td>
+                                        <td>{{ $item->logisctic_company->name }}</td>
                                         <td>{{ $item->service->service_name}}</td>
                                         <td>{{ $item->vendor_email }}</td>
                                         <td>{{ $item->vendor_phone }}</td>
@@ -78,10 +78,10 @@
                                             <a href="{{ url('edit-logistic/' . $item->id) }}" class="btn btn-outline-warning btn-sm edit" title="Edit">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
-                                            |
+                                            {{-- |
                                             <a href="{{ url('delete-logistic/' . $item->id) }}" class="btn btn-outline-danger btn-sm delete" title="Delete" onclick="return confirm('Are you sure to delete Record?')">
                                                 <i class="fas fa-trash-alt"></i>
-                                            </a>
+                                            </a> --}}
                                         </td>
                                     </tr>
                                     @endforeach

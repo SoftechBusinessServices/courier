@@ -8,14 +8,14 @@
             </div>
             <div class="modal-body" style="padding: 0px;">
                 <!-- This script got from frontendfreecode.com -->
-                <div class="container">
-
+                <div class="container"> 
+                    
                     <form method="POST" action="{{ route('store-parcel') }}" enctype="multipart/form-data" novalidate
                         id="regForm">
                         @csrf
-                        
+                        <h4 class="text-center text-info mb-3"> New Parcel Registration <br><p class="text-dark bold font-bold"><u>({{ $abc }})</u></p> </h4> <hr>
                         <!-- One "tab" for each step in the form: -->
-                        <div class="tab"> <h5>Parcel Details:</h5>
+                        <div class="tab"> <h5 class="text-danger">Parcel Details:</h5>
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="mb-3">
@@ -168,7 +168,7 @@
                             </div>
 
                         </div>
-                        <div class="tab">Dispatch Notes:
+                        <div class="tab">  <h5 class="text-danger">Dispatch Notes:</h5>
                             <hr>
                             <div class="repeater">
                                 {{-- <div data-repeater-list="userData">
@@ -264,7 +264,7 @@
                                     value="Add Notes"><br><br>
                         </div>
 
-                        <div class="tab">Shipper Details:
+                        <div class="tab"><h5 class="text-danger">Shipper Details:</h5>
                             <hr>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
@@ -305,14 +305,14 @@
                                     @enderror
                                 </div> --}}
 
-                                <div class="col-md-6 mt-4">
+                                {{-- <div class="col-md-6 mt-4">
                                     <label for="chkPassport ">
                                         <input type="checkbox" id="chkPassport" />
                                         Add New Shipper
                                     </label>
 
-                                </div>
-                                <div id="dvAddShipper">
+                                </div> --}}
+                                {{-- <div id="dvAddShipper"> --}}
                                     <hr>
                                     <div class="row">
 
@@ -430,12 +430,12 @@
                                         </div><br>
                                     </div>
 
-                                </div>
+                                {{-- </div> --}}
                             </div>
                             <br><hr>
                         </div>
 
-                        <div class="tab">Consignee Details:
+                        <div class="tab"><h5 class="text-danger">Consignee Details:</h5>
                             <hr>
                             <div class="row">
                                 <div class="col-md-6">
@@ -469,12 +469,12 @@
                                 </div>
                             </div>
                             <div class="row mt-3 mb-2">
-                                <div class="col-md-6">
+                                {{-- <div class="col-md-6">
                                     <label for="chkCompany">
                                         <input type="checkbox" id="chkCompany" />
                                         Is it Business?
                                     </label>
-                                </div>
+                                </div> --}}
                                 <div class="col-md-6">
                                     <div id="dvCompany" style="display: none">
                                         <input type="text"
@@ -494,8 +494,7 @@
                                     <label for="basicpill-phoneno-input">Select Country:</label>
                                     <select class="form-control @error('consignee_country_id') is-invalid @enderror"
                                         name="consignee_country_id" id="consignee_country_id">
-                                        <option value=""> ------------- Select One Country -------------
-                                        </option>
+                                        <option value=""> ---Select One Country--- </option>
                                         @foreach ($countries as $country)
                                             <option value="{{ $country->id }}">{{ $country->name }}</option>
                                         @endforeach
@@ -750,27 +749,37 @@
         });
 
         //repeater data calculations
-        // $(function() {
-            // $("#disp_price").blur(function() {
-               
-            //     var disp_price = parseInt($(this).val());
-            //     var disp_quantity = parseInt($('#disp_quantity').val());
-            //     // var pl_discount = parseInt($('#pl_discount').val());
-            //     var disp_total = (disp_price*disp_quantity);
-            //     $('#disp_total').val(disp_total);
-
-            // }); // discount blur function closed
-            // $("#disp_quantity").blur(function() {
-             
-            //     var disp_price = parseInt($('#disp_price').val());
-            //     var disp_quantity = parseInt($('#disp_quantity').val());
-            //     // var pl_discount = parseInt($('#pl_discount').val());
-            //     var disp_total = (disp_price*disp_quantity);
-            //     $('#disp_total').val(disp_total);
-
-            // });
+        $(function() {
             
-        // });
+            $("#disp_price").blur(function() {
+               
+                var disp_price = parseInt($(this).val());
+                var disp_quantity = parseInt($('#disp_quantity').val());
+                // var pl_discount = parseInt($('#pl_discount').val());
+                var disp_total = (disp_price*disp_quantity);
+                $('#disp_total').val(disp_total);
+
+            }); // discount blur function closed
+            $("#disp_quantity").blur(function() {
+             
+                var disp_price = parseInt($('#disp_price').val());
+                var disp_quantity = parseInt($('#disp_quantity').val());
+                // var pl_discount = parseInt($('#pl_discount').val());
+                var disp_total = (disp_price*disp_quantity);
+                $('#disp_total').val(disp_total);
+
+            });
+            $("#disp_total").blur(function() {
+             
+                var disp_price = parseInt($('#disp_price').val());
+                var disp_quantity = parseInt($('#disp_quantity').val());
+                // var pl_discount = parseInt($('#pl_discount').val());
+                var disp_total = (disp_price*disp_quantity);
+                $('#disp_total').val(disp_total);
+
+            });
+            
+        });
 
     }); // ready function closed here
     $('body').on('click',function(){

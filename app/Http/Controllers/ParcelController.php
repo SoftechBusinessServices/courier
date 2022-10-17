@@ -337,7 +337,7 @@ class ParcelController extends Controller
     public function vendor_details_list(Request $request)
     {   
         $alocatedids = AllocateParcel::where('vendor_id',$request->id)->pluck('pl_id');
-        echo $alocatedids;
+        // echo $alocatedids;
         $delivered_parcels = Parcel::with('allocate_parcel','parcel_tracking', 'parcel_charges',)
             ->where('pl_status', 'delivered')
             ->whereIn('id',$alocatedids)
@@ -349,15 +349,16 @@ class ParcelController extends Controller
     {
         // $parcel_shipper_details = Parcel::with('country', 'consignee','parcel_shipper_details')->whereIn('pl_status', ['processed','delivered','allocated'])->get();
         // dd($parcel_shipper_details);
-        $customer_ids = ParcelShipper::where('pl_phone_id',$request->id)->pluck('pl_id');
+        $customer_ids = ParcelShipper::where('company_name',$request->id)->pluck('pl_id');
         // echo $customer_ids;
         $delivered_parcels = Parcel::with('allocate_parcel','parcel_tracking', 'parcel_charges','parcel_consignee')
-            // ->where('pl_status', 'delivered')
+            ->where('pl_status', 'delivered')
             ->whereIn('id',$customer_ids)
             ->get();
             // echo $delivered_parcels;
         return $delivered_parcels;
     }
+
     public function date_tracking(Request $request)
     {
         $start_date = Carbon::parse($request->start_date)

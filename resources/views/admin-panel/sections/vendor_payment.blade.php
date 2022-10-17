@@ -102,7 +102,7 @@
                                                 <option value="" class="form-control">Select Vendor</option>
                                                 {{-- @dd($vendors) --}}
                                                 @foreach ($vendors as $vendor)
-                                                    <option class="form-control" value="{{ $vendor->id }}">
+                                                    <option class="form-control" value="{{ $vendor->company_id }}">
                                                         {{ $vendor->logistic_company->name }}</option>
                                                 @endforeach
                                             </select>
@@ -211,11 +211,13 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             {{-- <label for="">Select vendor</label> --}}
+                                            {{-- @dd($shipper_names); --}}
                                             <select name="" id="customer-payment-select" class="form-control">
                                                 <option value="" class="form-control">Select Customer</option>
-                                                @foreach ($shipper_names as $row)
-                                                    <option class="form-control" value="{{ $row->pl_phone_id }}">
-                                                        {{ $row->company_name }}</option>
+                                               
+                                                @foreach ($shipper_names as $shipper_name)
+                                                    <option class="form-control" value="{{ $shipper_name->company_name }}">
+                                                        {{ $shipper_name->company_name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -574,6 +576,7 @@
                 },
                 success: function(data) {
                     var html = '';
+                    console.log(data);
                     $.each(data, function(k, v) {
                         html += '<tr>';
 
@@ -630,6 +633,7 @@
                 },
                 success: function(data) {
                     var html = '';
+                    console.log(data);
                     $.each(data, function(k, v) {
                         html += '<tr>';
 

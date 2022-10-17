@@ -73,7 +73,8 @@ class HomeController extends Controller
         
         // $parcel_shipper_details = Parcel::with('country', 'consignee','parcel_shipper_details')->whereIn('pl_status', ['processed','delivered','allocated'])->get();
         // dd($parcel_shipper_details);
-        $shipper_names = ParcelShipper::with('shipper_parcel_details')->get(['id','pl_phone_id','company_name'])->unique('company_name');
+        // $shipper_names = ParcelShipper::with('shipper_parcel_details')->get(['id','pl_phone_id','company_name'])->unique('company_name');
+        $shipper_names = ParcelShipper::with('shipper_parcel_details')->get()->unique('company_name');
         // dd($shipper_names);
         $processed_parcels = Parcel::with('country', 'consignee')->where('pl_status', 'processed')->get();
         // dd($processed_parcels);

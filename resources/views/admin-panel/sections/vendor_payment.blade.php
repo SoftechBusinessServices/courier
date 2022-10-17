@@ -101,9 +101,9 @@
                                             <select name="" id="vendor-payment-select" class="form-control">
                                                 <option value="" class="form-control">Select Vendor</option>
                                                 {{-- @dd($vendors) --}}
-                                                @foreach ($vendors as $vendor)
-                                                    <option class="form-control" value="{{ $vendor->company_id }}">
-                                                        {{ $vendor->logistic_company->name }}</option>
+                                                @foreach ($companies as $company)
+                                                    <option class="form-control" value="{{ $company->id }}">
+                                                        {{ $company->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>

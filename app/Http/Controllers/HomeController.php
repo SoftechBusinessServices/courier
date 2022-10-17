@@ -105,6 +105,7 @@ class HomeController extends Controller
         $logistics = Logistic::all();
         $payment_methods = PaymentMethod::all();
         $vendors =  Logistic::with('logistic_company')->get();
+        $companies = Company::get();
         // dd($vendors);
         return view('admin-panel.master',  compact('data', 'regions',  'countries', 'companies', 'currencies', 'customers', 'services', 'abc', 'processed_parcels', 'allocated_parcels', 'logistics', 'payment_methods', 'users', 'vendors', 'delivered_parcels','shipper_names'));
 

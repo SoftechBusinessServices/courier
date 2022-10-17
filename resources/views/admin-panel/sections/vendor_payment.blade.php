@@ -593,7 +593,8 @@
                         html += '</td>';
 
                         html += '<td>';
-                        html += v.allocate_parcel[0].vendor_id;
+                        // html += v.allocate_parcel[0].vendor_id;
+                        html += v.allocate_parcel['0']['allocate_logistic']['logistic_name'];
                         html += '</td>';
 
                         html += '<td>';

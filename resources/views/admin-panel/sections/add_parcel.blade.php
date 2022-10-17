@@ -475,8 +475,9 @@
                                         Is it Business?
                                     </label>
                                 </div> --}}
-                                <div class="col-md-6">
-                                    <div id="dvCompany" style="display: none">
+                                <div class="col-md-12">
+                                    {{-- <div id="dvCompany" style="display: none"> --}}
+                                        <label for="onsignee_business">Consignee's Business Title </label>
                                         <input type="text"
                                             class="form-control @error('consignee_business') is-invalid @enderror"
                                             id="consignee_business" value="" name="consignee_business"
@@ -486,7 +487,7 @@
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
-                                    </div>
+                                    {{-- </div> --}}
                                 </div>
                             </div>
                             <div class="row">

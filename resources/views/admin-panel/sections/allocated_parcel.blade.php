@@ -145,6 +145,9 @@
                                                                 Deliver
                                                             </a>
                                                         @endif --}}
+                                                        <a class="btn btn-outline-info btn-sm delivered_status" title="add" id="{{ $item->pl_id }}">
+                                                            Deliver
+                                                        </a>
                                                     @endif
                                                 </td>
 

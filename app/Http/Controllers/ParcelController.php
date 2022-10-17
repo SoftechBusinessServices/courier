@@ -341,6 +341,7 @@ class ParcelController extends Controller
             ->where('pl_status', 'delivered')
             ->whereIn('id',$alocatedids)
             ->get();
+            echo($delivered_parcels);
         return $delivered_parcels;
     }
     public function customer_details_list(Request $request)

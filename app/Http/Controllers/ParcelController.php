@@ -335,13 +335,14 @@ class ParcelController extends Controller
     }
 
     public function vendor_details_list(Request $request)
-    {
+    {   
         $alocatedids = AllocateParcel::where('vendor_id',$request->id)->pluck('pl_id');
+        echo $alocatedids;
         $delivered_parcels = Parcel::with('allocate_parcel','parcel_tracking', 'parcel_charges',)
             ->where('pl_status', 'delivered')
             ->whereIn('id',$alocatedids)
             ->get();
-            echo($delivered_parcels);
+            // echo($delivered_parcels);
         return $delivered_parcels;
     }
     public function customer_details_list(Request $request)

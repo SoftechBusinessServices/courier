@@ -102,7 +102,7 @@
                                                 <option value="" class="form-control">Select Vendor</option>
                                                 {{-- @dd($vendors) --}}
                                                 @foreach ($vendors as $vendor)
-                                                    <option class="form-control" value="{{ $vendor->company_id }}">
+                                                    <option class="form-control" value="{{ $vendor->id }}">
                                                         {{ $vendor->logistic_company->name }}</option>
                                                 @endforeach
                                             </select>

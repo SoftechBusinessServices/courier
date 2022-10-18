@@ -60,7 +60,7 @@ body {
 
 #regForm {
   background-color: #ffffff;
-  margin: 100px auto;
+  margin: 5px auto;
   font-family: Raleway;
   padding: 40px;
   width: 100%;

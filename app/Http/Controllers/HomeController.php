@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Parcel;
 use App\Models\Region;
 use App\Models\Company;
+use App\Models\ContactUs;
 use App\Models\Country;
 use App\Models\Service;
 use App\Models\Currency;
@@ -20,6 +21,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Redirect;
 
 class HomeController extends Controller
 {
@@ -70,7 +72,7 @@ class HomeController extends Controller
         $services = Service::all();
 
         DB::enableQueryLog();
-        
+
         // $parcel_shipper_details = Parcel::with('country', 'consignee','parcel_shipper_details')->whereIn('pl_status', ['processed','delivered','allocated'])->get();
         // dd($parcel_shipper_details);
         // $shipper_names = ParcelShipper::with('shipper_parcel_details')->get(['id','pl_phone_id','company_name'])->unique('company_name');
@@ -78,16 +80,16 @@ class HomeController extends Controller
         // dd($shipper_names);
         $processed_parcels = Parcel::with('country', 'consignee')->where('pl_status', 'processed')->get();
         // dd($processed_parcels);
-        
+
         $delivered_parcels = Parcel::with('parcel_tracking', 'parcel_charges',)->where('pl_status', 'delivered')->get();
         // dd($delivered_parcels);
         //    dd(DB::getQueryLog());
         // DB::enableQueryLog();
-        
+
         // $processed_parcels = Parcel::with('country','consignee')->where('pl_status', 'processed')->get();
         $allocated_parcels =  Parcel::with(['country', 'parcel_tracking', 'parcel_charges', 'allocate_parcel' => function ($query) {
-            $query->with(['service', 'allocate_logistic'=> function($query){
-            
+            $query->with(['service', 'allocate_logistic' => function ($query) {
+
                 $query->with('logistic_company');
             }]);
         }])
@@ -107,12 +109,13 @@ class HomeController extends Controller
         $vendors =  Logistic::with('logistic_company')->get();
         $companies = Company::get();
         // dd($vendors);
-        return view('admin-panel.master',  compact('data', 'regions',  'countries', 'companies', 'currencies', 'customers', 'services', 'abc', 'processed_parcels', 'allocated_parcels', 'logistics', 'payment_methods', 'users', 'vendors', 'delivered_parcels','shipper_names'));
+        return view('admin-panel.master',  compact('data', 'regions',  'countries', 'companies', 'currencies', 'customers', 'services', 'abc', 'processed_parcels', 'allocated_parcels', 'logistics', 'payment_methods', 'users', 'vendors', 'delivered_parcels', 'shipper_names'));
 
         // return view('home');
     }
 
-    public function theme_view(){
+    public function theme_view()
+    {
         return view('front-panel.index');
     }
 
@@ -125,15 +128,15 @@ class HomeController extends Controller
             ->toDateTimeString();
 
         $users = Parcel::whereBetween('created_at', [$start_date, $end_date])->where('pl_status', 'delivered')->get();
-     
+
         return $users;
-    //    dd($users);
+        //    dd($users);
 
         // return view('admin-panel.report', compact('users'));
     }
 
 
-    
+
     public function update_user(Request $request, $id)
     {
 
@@ -239,4 +242,52 @@ class HomeController extends Controller
             return redirect()->back()->with('success', "Record Not Deleted");
         }
     }
+
+    public function contact_us(Request $request)
+    {
+
+        // dd($request->all());
+        $request->validate(
+            [
+                'name' => 'required',
+                'email' => 'required',
+                'phone' => 'required',
+                'message' => 'required'
+            ]
+        );
+        // dd(2);
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'message' => $request->message,
+        ];
+
+        $data = ContactUs::create($data);
+        if ($data) {
+            return redirect()->back()->with('success', "Your Message has been Sent, We will Contact you Soon!");
+        }
+    }
+
+
+    public function search_tracking_id(Request $request)
+    {
+        if ($request->ajax()) {
+            $output = "";
+            $products = DB::table('parcels')->where('pl_id', 'LIKE', '%' . $request->search . "%")->get();
+            if ($products) {
+                foreach ($products as $key => $product) {
+                    $output .= '<tr>' .
+                        '<td>' . $product->id . '</td>' .
+                        '<td>' . $product->pl_id . '</td>' .
+                        '<td>' . $product->pl_final . '</td>' .
+                        '<td>' . $product->pl_status . '</td>' .
+                        '</tr>';
+                }
+                return Response($output);
+            }
+        }
+    }
+
+
 }

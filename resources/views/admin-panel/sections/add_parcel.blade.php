@@ -13,7 +13,9 @@
                     <form method="POST" action="{{ route('store-parcel') }}" enctype="multipart/form-data" novalidate
                         id="regForm">
                         @csrf
-                        <h4 class="text-center text-info mb-3"> New Parcel Registration <br><p class="text-dark bold font-bold"><u>({{ $abc }})</u></p> </h4> <hr>
+                        <h4 class="text-center text-info"> New Parcel Registration 
+                            {{-- <p class="text-dark bold font-bold"><u>({{ $abc }})</u></p> --}}
+                         </h4> <hr>
                         <!-- One "tab" for each step in the form: -->
                         <div class="tab"> <h5 class="text-danger">Parcel Details:</h5>
                             <div class="row">

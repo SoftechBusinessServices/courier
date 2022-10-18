@@ -12,8 +12,8 @@
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" href="{{asset('assets2/images/favicon.ico')}}" type="image/x-icon" />
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('images/favicon.png')}}" />
+    <link rel="icon" href="{{ asset('assets2/images/favicon.ico') }}" type="image/x-icon" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.png') }}" />
 
     <!-- Page Title -->
     <title>B-F-S</title>
@@ -22,62 +22,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- [if lt IE 9]>
-        <script src="{{ asset('assets2/js/html5shiv.min.js')}}"></script>
-        <script src="{{ asset('assets2/js/respond.min.js')}}"></script>
-	<![endif] -->
+        <script src="{{ asset('assets2/js/html5shiv.min.js') }}"></script>
+        <script src="{{ asset('assets2/js/respond.min.js') }}"></script>
+ <![endif] -->
 
     <!-- Bootstrap Css-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets2/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets2/css/bootstrap.min.css') }}">
 
     <!-- Fontawesome Css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets2/css/fontawesome/css/font-awesome.min.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets2/css/fontawesome/css/font-awesome.min.css') }}" />
 
     <!-- Flaticon Css-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets2/css/flaticon.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets2/css/flaticon.min.css') }}">
 
     <!-- Animate Css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets2/css/animate.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets2/css/animate.min.css') }}">
 
     <!-- Owl Carousel Css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets2/css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets2/css/owl.carousel.min.css') }}">
 
     <!-- Bootstrap Select Css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets2/css/bootstrap-select.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets2/css/bootstrap-select.min.css') }}">
 
     <!-- Magnific Popup Css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets2/css/magnific-popup.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets2/css/magnific-popup.min.css') }}">
 
     <!-- Loader Css-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets2/css/loader.min.css')}}">
+    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('assets2/css/loader.min.css')}}"> --}}
 
     <!-- Main Style Css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets2/css/style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets2/css/style.css') }}">
 
     <!-- Color Theme Change Css -->
-    <link rel="stylesheet" class="skin" type="text/css" href="{{ asset('assets2/css/skin/skin-1.css')}}">
+    <link rel="stylesheet" class="skin" type="text/css" href="{{ asset('assets2/css/skin/skin-1.css') }}">
 
     <!-- Custom Css-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets2/css/custom.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets2/css/custom.css') }}">
 
     <!-- Side Switcher Css-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets2/css/switcher.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets2/css/switcher.css') }}">
 
     <!-- Revolution Slider Css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets2/plugins/revolution/revolution/css/settings.css')}}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('assets2/plugins/revolution/revolution/css/settings.css') }}">
 
     <!-- Revolution Slider Css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets2/plugins/revolution/revolution/css/navigation.css')}}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('assets2/plugins/revolution/revolution/css/navigation.css') }}">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
+        rel="stylesheet">
 
     <!-- Tracking  -->
-    <link rel="stylesheet" href="{{ asset('assets2/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets2/style.css') }}">
     <!-- <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css"> -->
-
-
 
 </head>
 
@@ -97,7 +100,8 @@
                             </ul>
                             <ul class="list-inline pull-right tb-social-liner">
                                 <li><a href="javascript:void(0);" class="fa fa-facebook"></a></li>
-                                <li><a href="javascript:void(0);" class="fa fa-whatsapp"></a></li>
+                                <li><a href="mailto:Bestfreightsys@gmail.com" class="fa fa-envelope"></a></li>
+                                <li><a href="https://wa.me/03008631512" class="fa fa-whatsapp"></a></li>
                                 <li><a href="javascript:void(0);" class="fa fa-instagram"></a></li>
                             </ul>
 
@@ -109,10 +113,15 @@
             <!-- header-midle  -->
             <div class="main-bar header-middle bg-white">
                 <div class="container">
+
                     <div class="logo-header">
-                        <a href="#">
-                            <img src="{{ asset('assets2/images/logo-real.png')}}" width="216" height="37" alt="" />
+                        {{-- <p class="font-size-12">Best Freight System</P> --}}
+                        <a href="#" class="">
+
+                            <img src="{{ asset('assets2/images/logo5.png') }}" />
+
                         </a>
+
                     </div>
                     <!-- phone number -- email address  -->
                     <div class="header-info">
@@ -124,7 +133,7 @@
                                     </div>
                                     <div class="icon-content">
                                         <strong>Phone Number</strong>
-                                        <span>0312-0955975</span>
+                                        <span>+92 300 8631512</span>
                                     </div>
                                 </div>
                             </li>
@@ -135,7 +144,7 @@
                                     </div>
                                     <div class="icon-content">
                                         <strong>Email Address</strong>
-                                        <span>codewithsaadi@gamil.com</span>
+                                        <span>Bestfreightsys@gmail.com</span>
                                     </div>
                                 </div>
                             </li>
@@ -148,7 +157,8 @@
                 <div class="main-bar header-botton nav-bg-primary">
                     <div class="container">
                         <!-- NAV Toggle Button -->
-                        <button data-target=".header-nav" data-toggle="collapse" type="button" class="navbar-toggle collapsed">
+                        <button data-target=".header-nav" data-toggle="collapse" type="button"
+                            class="navbar-toggle collapsed">
                             <span class="sr-only">Toggle navigation</span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
@@ -157,8 +167,11 @@
                         <!-- ExTRA Nav -->
                         <div class="extra-nav">
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" style="border: none;" data-toggle="modal" data-target=".bd-example-modal-lg">Track
-                                Your Order</button>
+                            <button type="button" class="btn btn-warning" style="border: none;" data-toggle="modal"
+                                data-target=".bd-example-modal-lg">Track
+                                Your Parcel</button>
+                            <a href="{{ url('login') }}" class="btn bg-white" style="border: none;">
+                                Login to Dashboard</a>
 
 
                         </div>
@@ -198,114 +211,339 @@
                 <div class="tp-banner-container">
                     <div class="tp-banner">
                         <!-- START REVOLUTION SLIDER 5.4.1 -->
-                        <div id="rev_slider_1077_1_wrapper" class="rev_slider_wrapper fullscreen-container" data-alias="scroll-effect136" data-source="gallery" style="background-color:#111111;padding:0px;">
+                        <div id="rev_slider_1077_1_wrapper" class="rev_slider_wrapper fullscreen-container"
+                            data-alias="scroll-effect136" data-source="gallery"
+                            style="background-color:#111111;padding:0px;">
                             <!-- START REVOLUTION SLIDER 5.4.1 fullscreen mode -->
-                            <div id="rev_slider_1077_1" class="rev_slider fullscreenbanner" style="display:none;" data-version="5.4.1">
+                            <div id="rev_slider_1077_1" class="rev_slider fullscreenbanner" style="display:none;"
+                                data-version="5.4.1">
                                 <ul>
                                     <!-- SLIDE 1 -->
-                                    <li data-index="rs-100" data-transition="slotfade-vertical" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="1000" data-thumb="images/main-slider/slider1/slide1.jpg" data-rotate="0" data-fstransition="fade" data-fsmasterspeed="1500" data-fsslotamount="7" data-saveperformance="off" data-title="Big &amp; Bold" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+                                    <li data-index="rs-100" data-transition="slotfade-vertical"
+                                        data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"
+                                        data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut"
+                                        data-masterspeed="1000" data-thumb="images/main-slider/slider1/slide1.jpg"
+                                        data-rotate="0" data-fstransition="fade" data-fsmasterspeed="1500"
+                                        data-fsslotamount="7" data-saveperformance="off" data-title="Big &amp; Bold"
+                                        data-param1="" data-param2="" data-param3="" data-param4="" data-param5=""
+                                        data-param6="" data-param7="" data-param8="" data-param9="" data-param10=""
+                                        data-description="">
                                         <!-- MAIN IMAGE -->
-                                        <img src="{{ asset('assets2/images/main-slider/slider1/slider1.jpg')}}" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
+                                        <img src="{{ asset('assets2/images/main-slider/slider1/slider1.jpg') }}"
+                                            alt="" data-bgposition="center center" data-bgfit="cover"
+                                            data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg"
+                                            data-no-retina>
                                         <!-- LAYERS -->
 
                                         <!-- LAYER NR. 1 -->
-                                        <div class="tp-caption tp-shape tp-shapewrapper  " id="slide-100-layer-1" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['top','top','top','top']" data-voffset="['0','0','0','0']" data-width="full" data-height="['400','400','400','550']" data-whitespace="nowrap" data-type="shape" data-basealign="slide" data-responsive_offset="off" data-responsive="off" data-frames='[{"from":"opacity:0;","speed":100,"to":"o:1;","delay":0,"ease":"Power2.easeInOut"},{"delay":"wait","speed":0,"to":"opacity:0;","ease":"nothing"}]' data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 5;background-color:rgba(0, 0, 0, 0.50);border-color:rgba(0, 0, 0, 0);
+                                        <div class="tp-caption tp-shape tp-shapewrapper  " id="slide-100-layer-1"
+                                            data-x="['center','center','center','center']"
+                                            data-hoffset="['0','0','0','0']" data-y="['top','top','top','top']"
+                                            data-voffset="['0','0','0','0']" data-width="full"
+                                            data-height="['400','400','400','550']" data-whitespace="nowrap"
+                                            data-type="shape" data-basealign="slide" data-responsive_offset="off"
+                                            data-responsive="off"
+                                            data-frames='[{"from":"opacity:0;","speed":100,"to":"o:1;","delay":0,"ease":"Power2.easeInOut"},{"delay":"wait","speed":0,"to":"opacity:0;","ease":"nothing"}]'
+                                            data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]"
+                                            data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]"
+                                            data-paddingleft="[0,0,0,0]"
+                                            style="z-index: 5;background-color:rgba(0, 0, 0, 0.50);border-color:rgba(0, 0, 0, 0);
                                             border-width:0px;background:linear-gradient(to top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.4) 100%);cursor:default;">
                                         </div>
 
                                         <!-- LAYER NR. 2 -->
-                                        <div class="tp-caption tp-shape tp-shapewrapper  " id="slide-100-layer-2" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['bottom','bottom','bottom','bottom']" data-voffset="['0','0','0','0']" data-width="full" data-height="['400','400','400','550']" data-whitespace="nowrap" data-type="shape" data-basealign="slide" data-responsive_offset="off" data-responsive="off" data-frames='[{"from":"opacity:0;","speed":1500,"to":"o:1;","delay":0,"ease":"Power2.easeInOut"},{"delay":"wait","speed":1000,"to":"opacity:0;","ease":"nothing"}]' data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 5;background-color:rgba(0, 0, 0, 0.50);border-color:rgba(0, 0, 0, 0);
+                                        <div class="tp-caption tp-shape tp-shapewrapper  " id="slide-100-layer-2"
+                                            data-x="['center','center','center','center']"
+                                            data-hoffset="['0','0','0','0']"
+                                            data-y="['bottom','bottom','bottom','bottom']"
+                                            data-voffset="['0','0','0','0']" data-width="full"
+                                            data-height="['400','400','400','550']" data-whitespace="nowrap"
+                                            data-type="shape" data-basealign="slide" data-responsive_offset="off"
+                                            data-responsive="off"
+                                            data-frames='[{"from":"opacity:0;","speed":1500,"to":"o:1;","delay":0,"ease":"Power2.easeInOut"},{"delay":"wait","speed":1000,"to":"opacity:0;","ease":"nothing"}]'
+                                            data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]"
+                                            data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]"
+                                            data-paddingleft="[0,0,0,0]"
+                                            style="z-index: 5;background-color:rgba(0, 0, 0, 0.50);border-color:rgba(0, 0, 0, 0);
                                             border-width:0px;background:linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%);cursor:default;">
                                         </div>
 
                                         <!-- LAYER NR. 3 -->
-                                        <div class="tp-caption BigBold-Title   tp-resizeme" id="slide-100-layer-3" data-x="['left','left','left','left']" data-hoffset="['50','50','30','17']" data-y="['bottom','bottom','bottom','bottom']" data-voffset="['110','110','180','180']" data-fontsize="['90','70','50','30']" data-lineheight="['100','90','60','60']" data-fontweight="['900','900','900','900']" data-width="['none','none','none','400']" data-height="none" data-whitespace="['nowrap','nowrap','nowrap','normal']" data-type="text" data-basealign="slide" data-responsive_offset="off" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];","speed":1500,"to":"o:1;","delay":500,"ease":"Power3.easeInOut"},
-                                            {"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;","ease":"Power2.easeInOut"}]' data-textAlign="['left','left','left','left']" data-paddingtop="[10,10,10,10]" data-paddingright="[0,0,0,0]" data-paddingbottom="[10,10,10,10]" data-paddingleft="[0,0,0,0]" style="z-index: 6; 
+                                        <div class="tp-caption BigBold-Title   tp-resizeme" id="slide-100-layer-3"
+                                            data-x="['left','left','left','left']"
+                                            data-hoffset="['50','50','30','17']"
+                                            data-y="['bottom','bottom','bottom','bottom']"
+                                            data-voffset="['110','110','180','180']"
+                                            data-fontsize="['90','70','50','30']"
+                                            data-lineheight="['100','90','60','60']"
+                                            data-fontweight="['900','900','900','900']"
+                                            data-width="['none','none','none','400']" data-height="none"
+                                            data-whitespace="['nowrap','nowrap','nowrap','normal']" data-type="text"
+                                            data-basealign="slide" data-responsive_offset="off"
+                                            data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];","speed":1500,"to":"o:1;","delay":500,"ease":"Power3.easeInOut"},
+                                            {"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;","ease":"Power2.easeInOut"}]'
+                                            data-textAlign="['left','left','left','left']"
+                                            data-paddingtop="[10,10,10,10]" data-paddingright="[0,0,0,0]"
+                                            data-paddingbottom="[10,10,10,10]" data-paddingleft="[0,0,0,0]"
+                                            style="z-index: 6; 
                                             text-transform:uppercase;
                                             color:#fff;
                                             font-family: 'Roboto', sans-serif;
-                                            "><span class="text-primary"> Fast Air</span> Delivery</div>
+                                            ">
+                                            <span class="text-primary"> Fast Air</span> Delivery
+                                        </div>
 
                                         <!-- LAYER NR. 4 -->
-                                        <div class="tp-caption BigBold-SubTitle  " id="slide-100-layer-4" data-x="['left','left','left','left']" data-hoffset="['55','55','33','20']" data-y="['bottom','bottom','bottom','bottom']" data-voffset="['40','1','74','78']" data-fontsize="['15','15','15','13']" data-lineheight="['24','24','24','20']" data-width="['410','410','410','280']" data-height="['60','100','100','100']" data-whitespace="normal" data-type="text" data-basealign="slide" data-responsive_offset="off" data-responsive="off" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","speed":1500,"to":"o:1;","delay":650,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"y:50px;opacity:0;","ease":"Power2.easeInOut"}]' data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 7; 
+                                        <div class="tp-caption BigBold-SubTitle  " id="slide-100-layer-4"
+                                            data-x="['left','left','left','left']"
+                                            data-hoffset="['55','55','33','20']"
+                                            data-y="['bottom','bottom','bottom','bottom']"
+                                            data-voffset="['40','1','74','78']" data-fontsize="['15','15','15','13']"
+                                            data-lineheight="['24','24','24','20']"
+                                            data-width="['410','410','410','280']"
+                                            data-height="['60','100','100','100']" data-whitespace="normal"
+                                            data-type="text" data-basealign="slide" data-responsive_offset="off"
+                                            data-responsive="off"
+                                            data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","speed":1500,"to":"o:1;","delay":650,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"y:50px;opacity:0;","ease":"Power2.easeInOut"}]'
+                                            data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]"
+                                            data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]"
+                                            data-paddingleft="[0,0,0,0]"
+                                            style="z-index: 7; 
                                             color:#fff;
-                                            "> Best Fright System (B-F-S) provides logistics and transportation
+                                            ">
+                                            Best Fright System (B-F-S) provides logistics and transportation
                                             services via sea,
                                             land and
                                             air. We will protect you from risk.
                                         </div>
 
                                         <!-- LAYER NR. 5 -->
-                                        <div class="tp-caption BigBold-Button rev-btn " id="slide-100-layer-5" data-x="['left','left','left','left']" data-hoffset="['480','480','30','20']" data-y="['bottom','bottom','bottom','bottom']" data-voffset="['20','20','20','20']" data-width="none" data-height="none" data-whitespace="nowrap" data-type="button" data-actions='[{"event":"click","action":"scrollbelow","offset":"px","delay":""}]' data-basealign="slide" data-responsive_offset="off" data-responsive="off" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","speed":1500,"to":"o:1;","delay":650,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"y:50px;opacity:0;","ease":"Power2.easeInOut"},{"frame":"hover","speed":"300","ease":"Power1.easeInOut","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(255, 255, 255, 1.00);bc:rgba(255, 255, 255, 1.00);bw:1px 1px 1px 1px;"}]' data-textAlign="['left','left','left','left']" data-paddingtop="[15,15,15,15]" data-paddingright="[50,50,50,50]" data-paddingbottom="[15,15,15,15]" data-paddingleft="[50,50,0,0]" style="z-index: 8; "> </div>
+                                        <div class="tp-caption BigBold-Button rev-btn " id="slide-100-layer-5"
+                                            data-x="['left','left','left','left']"
+                                            data-hoffset="['480','480','30','20']"
+                                            data-y="['bottom','bottom','bottom','bottom']"
+                                            data-voffset="['20','20','20','20']" data-width="none" data-height="none"
+                                            data-whitespace="nowrap" data-type="button"
+                                            data-actions='[{"event":"click","action":"scrollbelow","offset":"px","delay":""}]'
+                                            data-basealign="slide" data-responsive_offset="off" data-responsive="off"
+                                            data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","speed":1500,"to":"o:1;","delay":650,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"y:50px;opacity:0;","ease":"Power2.easeInOut"},{"frame":"hover","speed":"300","ease":"Power1.easeInOut","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(255, 255, 255, 1.00);bc:rgba(255, 255, 255, 1.00);bw:1px 1px 1px 1px;"}]'
+                                            data-textAlign="['left','left','left','left']"
+                                            data-paddingtop="[15,15,15,15]" data-paddingright="[50,50,50,50]"
+                                            data-paddingbottom="[15,15,15,15]" data-paddingleft="[50,50,0,0]"
+                                            style="z-index: 8; "> </div>
 
 
                                     </li>
                                     <!-- SLIDE 2 -->
-                                    <li data-index="rs-200" data-transition="slotfade-vertical" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="1000" data-thumb="images/main-slider/slider1/slide2.jpg" data-rotate="0" data-fstransition="fade" data-fsmasterspeed="1500" data-fsslotamount="7" data-saveperformance="off" data-title="Big &amp; Bold" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+                                    <li data-index="rs-200" data-transition="slotfade-vertical"
+                                        data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"
+                                        data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut"
+                                        data-masterspeed="1000" data-thumb="images/main-slider/slider1/slide2.jpg"
+                                        data-rotate="0" data-fstransition="fade" data-fsmasterspeed="1500"
+                                        data-fsslotamount="7" data-saveperformance="off" data-title="Big &amp; Bold"
+                                        data-param1="" data-param2="" data-param3="" data-param4="" data-param5=""
+                                        data-param6="" data-param7="" data-param8="" data-param9="" data-param10=""
+                                        data-description="">
                                         <!-- MAIN IMAGE -->
-                                        <img src="{{ asset('assets2/images/main-slider/slider1/slider2.jpg')}}" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
+                                        <img src="{{ asset('assets2/images/main-slider/slider1/slider2.jpg') }}"
+                                            alt="" data-bgposition="center center" data-bgfit="cover"
+                                            data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg"
+                                            data-no-retina>
                                         <!-- LAYERS -->
 
                                         <!-- LAYER NR. 1 -->
-                                        <div class="tp-caption tp-shape tp-shapewrapper  " id="slide-200-layer-1" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['top','top','top','top']" data-voffset="['0','0','0','0']" data-width="full" data-height="['400','400','400','550']" data-whitespace="nowrap" data-type="shape" data-basealign="slide" data-responsive_offset="off" data-responsive="off" data-frames='[{"from":"opacity:0;","speed":100,"to":"o:1;","delay":0,"ease":"Power2.easeInOut"},{"delay":"wait","speed":0,"to":"opacity:0;","ease":"nothing"}]' data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 5;background-color:rgba(0, 0, 0, 0.50);border-color:rgba(0, 0, 0, 0);
+                                        <div class="tp-caption tp-shape tp-shapewrapper  " id="slide-200-layer-1"
+                                            data-x="['center','center','center','center']"
+                                            data-hoffset="['0','0','0','0']" data-y="['top','top','top','top']"
+                                            data-voffset="['0','0','0','0']" data-width="full"
+                                            data-height="['400','400','400','550']" data-whitespace="nowrap"
+                                            data-type="shape" data-basealign="slide" data-responsive_offset="off"
+                                            data-responsive="off"
+                                            data-frames='[{"from":"opacity:0;","speed":100,"to":"o:1;","delay":0,"ease":"Power2.easeInOut"},{"delay":"wait","speed":0,"to":"opacity:0;","ease":"nothing"}]'
+                                            data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]"
+                                            data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]"
+                                            data-paddingleft="[0,0,0,0]"
+                                            style="z-index: 5;background-color:rgba(0, 0, 0, 0.50);border-color:rgba(0, 0, 0, 0);
                                             border-width:0px;background:linear-gradient(to top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.4) 100%);cursor:default;">
                                         </div>
 
                                         <!-- LAYER NR. 2 -->
-                                        <div class="tp-caption tp-shape tp-shapewrapper  " id="slide-200-layer-2" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['bottom','bottom','bottom','bottom']" data-voffset="['0','0','0','0']" data-width="full" data-height="['400','400','400','550']" data-whitespace="nowrap" data-type="shape" data-basealign="slide" data-responsive_offset="off" data-responsive="off" data-frames='[{"from":"opacity:0;","speed":1500,"to":"o:1;","delay":0,"ease":"Power2.easeInOut"},{"delay":"wait","speed":1000,"to":"opacity:0;","ease":"nothing"}]' data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 5;background-color:rgba(0, 0, 0, 0.50);border-color:rgba(0, 0, 0, 0);
+                                        <div class="tp-caption tp-shape tp-shapewrapper  " id="slide-200-layer-2"
+                                            data-x="['center','center','center','center']"
+                                            data-hoffset="['0','0','0','0']"
+                                            data-y="['bottom','bottom','bottom','bottom']"
+                                            data-voffset="['0','0','0','0']" data-width="full"
+                                            data-height="['400','400','400','550']" data-whitespace="nowrap"
+                                            data-type="shape" data-basealign="slide" data-responsive_offset="off"
+                                            data-responsive="off"
+                                            data-frames='[{"from":"opacity:0;","speed":1500,"to":"o:1;","delay":0,"ease":"Power2.easeInOut"},{"delay":"wait","speed":1000,"to":"opacity:0;","ease":"nothing"}]'
+                                            data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]"
+                                            data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]"
+                                            data-paddingleft="[0,0,0,0]"
+                                            style="z-index: 5;background-color:rgba(0, 0, 0, 0.50);border-color:rgba(0, 0, 0, 0);
                                             border-width:0px;background:linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%);cursor:default;">
                                         </div>
 
                                         <!-- LAYER NR. 3 -->
-                                        <div class="tp-caption BigBold-Title   tp-resizeme" id="slide-200-layer-3" data-x="['left','left','left','left']" data-hoffset="['50','50','30','17']" data-y="['bottom','bottom','bottom','bottom']" data-voffset="['110','110','180','180']" data-fontsize="['90','70','50','30']" data-lineheight="['100','90','60','60']" data-fontweight="['900','900','900','900']" data-width="['none','none','none','400']" data-height="none" data-whitespace="['nowrap','nowrap','nowrap','normal']" data-type="text" data-basealign="slide" data-responsive_offset="off" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];","speed":1500,"to":"o:1;","delay":500,"ease":"Power3.easeInOut"},
-                                            {"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;","ease":"Power2.easeInOut"}]' data-textAlign="['left','left','left','left']" data-paddingtop="[10,10,10,10]" data-paddingright="[0,0,0,0]" data-paddingbottom="[10,10,10,10]" data-paddingleft="[0,0,0,0]" style="z-index: 6; 
+                                        <div class="tp-caption BigBold-Title   tp-resizeme" id="slide-200-layer-3"
+                                            data-x="['left','left','left','left']"
+                                            data-hoffset="['50','50','30','17']"
+                                            data-y="['bottom','bottom','bottom','bottom']"
+                                            data-voffset="['110','110','180','180']"
+                                            data-fontsize="['90','70','50','30']"
+                                            data-lineheight="['100','90','60','60']"
+                                            data-fontweight="['900','900','900','900']"
+                                            data-width="['none','none','none','400']" data-height="none"
+                                            data-whitespace="['nowrap','nowrap','nowrap','normal']" data-type="text"
+                                            data-basealign="slide" data-responsive_offset="off"
+                                            data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];","speed":1500,"to":"o:1;","delay":500,"ease":"Power3.easeInOut"},
+                                            {"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;","ease":"Power2.easeInOut"}]'
+                                            data-textAlign="['left','left','left','left']"
+                                            data-paddingtop="[10,10,10,10]" data-paddingright="[0,0,0,0]"
+                                            data-paddingbottom="[10,10,10,10]" data-paddingleft="[0,0,0,0]"
+                                            style="z-index: 6; 
                                             text-transform:uppercase;
                                             color:#fff;
                                             font-family: 'Roboto', sans-serif;
-                                            "><span class="text-primary"> World Class</span> Logistics </div>
+                                            ">
+                                            <span class="text-primary"> World Class</span> Logistics
+                                        </div>
 
                                         <!-- LAYER NR. 4 -->
-                                        <div class="tp-caption BigBold-SubTitle  " id="slide-200-layer-4" data-x="['left','left','left','left']" data-hoffset="['55','55','33','20']" data-y="['bottom','bottom','bottom','bottom']" data-voffset="['40','1','74','78']" data-fontsize="['15','15','15','13']" data-lineheight="['24','24','24','20']" data-width="['410','410','410','280']" data-height="['60','100','100','100']" data-whitespace="normal" data-type="text" data-basealign="slide" data-responsive_offset="off" data-responsive="off" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","speed":1500,"to":"o:1;","delay":650,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"y:50px;opacity:0;","ease":"Power2.easeInOut"}]' data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 7; 
+                                        <div class="tp-caption BigBold-SubTitle  " id="slide-200-layer-4"
+                                            data-x="['left','left','left','left']"
+                                            data-hoffset="['55','55','33','20']"
+                                            data-y="['bottom','bottom','bottom','bottom']"
+                                            data-voffset="['40','1','74','78']" data-fontsize="['15','15','15','13']"
+                                            data-lineheight="['24','24','24','20']"
+                                            data-width="['410','410','410','280']"
+                                            data-height="['60','100','100','100']" data-whitespace="normal"
+                                            data-type="text" data-basealign="slide" data-responsive_offset="off"
+                                            data-responsive="off"
+                                            data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","speed":1500,"to":"o:1;","delay":650,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"y:50px;opacity:0;","ease":"Power2.easeInOut"}]'
+                                            data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]"
+                                            data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]"
+                                            data-paddingleft="[0,0,0,0]"
+                                            style="z-index: 7; 
                                             color:#fff;
-                                            ">Best Fright System (B-F-S) provides logistics and transportation
+                                            ">
+                                            Best Fright System (B-F-S) provides logistics and transportation
                                             services via sea,
                                             land and
                                             air. We will protect you from risk.
                                         </div>
 
                                         <!-- LAYER NR. 5 -->
-                                        <div class="tp-caption BigBold-Button rev-btn " id="slide-200-layer-5" data-x="['left','left','left','left']" data-hoffset="['480','480','30','20']" data-y="['bottom','bottom','bottom','bottom']" data-voffset="['20','20','20','20']" data-width="none" data-height="none" data-whitespace="nowrap" data-type="button" data-actions='[{"event":"click","action":"scrollbelow","offset":"px","delay":""}]' data-basealign="slide" data-responsive_offset="off" data-responsive="off" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","speed":1500,"to":"o:1;","delay":650,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"y:50px;opacity:0;","ease":"Power2.easeInOut"},{"frame":"hover","speed":"300","ease":"Power1.easeInOut","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(255, 255, 255, 1.00);bc:rgba(255, 255, 255, 1.00);bw:1px 1px 1px 1px;"}]' data-textAlign="['left','left','left','left']" data-paddingtop="[15,15,15,15]" data-paddingright="[50,50,50,50]" data-paddingbottom="[15,15,15,15]" data-paddingleft="[50,50,0,0]" style="z-index: 8; "> </div>
+                                        <div class="tp-caption BigBold-Button rev-btn " id="slide-200-layer-5"
+                                            data-x="['left','left','left','left']"
+                                            data-hoffset="['480','480','30','20']"
+                                            data-y="['bottom','bottom','bottom','bottom']"
+                                            data-voffset="['20','20','20','20']" data-width="none" data-height="none"
+                                            data-whitespace="nowrap" data-type="button"
+                                            data-actions='[{"event":"click","action":"scrollbelow","offset":"px","delay":""}]'
+                                            data-basealign="slide" data-responsive_offset="off" data-responsive="off"
+                                            data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","speed":1500,"to":"o:1;","delay":650,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"y:50px;opacity:0;","ease":"Power2.easeInOut"},{"frame":"hover","speed":"300","ease":"Power1.easeInOut","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(255, 255, 255, 1.00);bc:rgba(255, 255, 255, 1.00);bw:1px 1px 1px 1px;"}]'
+                                            data-textAlign="['left','left','left','left']"
+                                            data-paddingtop="[15,15,15,15]" data-paddingright="[50,50,50,50]"
+                                            data-paddingbottom="[15,15,15,15]" data-paddingleft="[50,50,0,0]"
+                                            style="z-index: 8; "> </div>
 
 
                                     </li>
                                     <!-- SLIDE 3 -->
-                                    <li data-index="rs-300" data-transition="slotfade-vertical" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="1000" data-thumb="images/main-slider/slider1/slide3.jpg" data-rotate="0" data-fstransition="fade" data-fsmasterspeed="1500" data-fsslotamount="7" data-saveperformance="off" data-title="Big &amp; Bold" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+                                    <li data-index="rs-300" data-transition="slotfade-vertical"
+                                        data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"
+                                        data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut"
+                                        data-masterspeed="1000" data-thumb="images/main-slider/slider1/slide3.jpg"
+                                        data-rotate="0" data-fstransition="fade" data-fsmasterspeed="1500"
+                                        data-fsslotamount="7" data-saveperformance="off" data-title="Big &amp; Bold"
+                                        data-param1="" data-param2="" data-param3="" data-param4="" data-param5=""
+                                        data-param6="" data-param7="" data-param8="" data-param9="" data-param10=""
+                                        data-description="">
                                         <!-- MAIN IMAGE -->
-                                        <img src="{{ asset('assets2/images/main-slider/slider1/slider3.jpeg')}}" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
+                                        <img src="{{ asset('assets2/images/main-slider/slider1/slider3.jpeg') }}"
+                                            alt="" data-bgposition="center center" data-bgfit="cover"
+                                            data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg"
+                                            data-no-retina>
                                         <!-- LAYERS -->
 
                                         <!-- LAYER NR. 1 -->
-                                        <div class="tp-caption tp-shape tp-shapewrapper  " id="slide-300-layer-1" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['top','top','top','top']" data-voffset="['0','0','0','0']" data-width="full" data-height="['400','400','400','550']" data-whitespace="nowrap" data-type="shape" data-basealign="slide" data-responsive_offset="off" data-responsive="off" data-frames='[{"from":"opacity:0;","speed":100,"to":"o:1;","delay":0,"ease":"Power2.easeInOut"},{"delay":"wait","speed":0,"to":"opacity:0;","ease":"nothing"}]' data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 5;background-color:rgba(0, 0, 0, 0.50);border-color:rgba(0, 0, 0, 0);
+                                        <div class="tp-caption tp-shape tp-shapewrapper  " id="slide-300-layer-1"
+                                            data-x="['center','center','center','center']"
+                                            data-hoffset="['0','0','0','0']" data-y="['top','top','top','top']"
+                                            data-voffset="['0','0','0','0']" data-width="full"
+                                            data-height="['400','400','400','550']" data-whitespace="nowrap"
+                                            data-type="shape" data-basealign="slide" data-responsive_offset="off"
+                                            data-responsive="off"
+                                            data-frames='[{"from":"opacity:0;","speed":100,"to":"o:1;","delay":0,"ease":"Power2.easeInOut"},{"delay":"wait","speed":0,"to":"opacity:0;","ease":"nothing"}]'
+                                            data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]"
+                                            data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]"
+                                            data-paddingleft="[0,0,0,0]"
+                                            style="z-index: 5;background-color:rgba(0, 0, 0, 0.50);border-color:rgba(0, 0, 0, 0);
                                             border-width:0px;background:linear-gradient(to top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.4) 100%);cursor:default;">
                                         </div>
 
                                         <!-- LAYER NR. 2 -->
-                                        <div class="tp-caption tp-shape tp-shapewrapper  " id="slide-300-layer-2" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['bottom','bottom','bottom','bottom']" data-voffset="['0','0','0','0']" data-width="full" data-height="['400','400','400','550']" data-whitespace="nowrap" data-type="shape" data-basealign="slide" data-responsive_offset="off" data-responsive="off" data-frames='[{"from":"opacity:0;","speed":1500,"to":"o:1;","delay":0,"ease":"Power2.easeInOut"},{"delay":"wait","speed":1000,"to":"opacity:0;","ease":"nothing"}]' data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 5;background-color:rgba(0, 0, 0, 0.50);border-color:rgba(0, 0, 0, 0);
+                                        <div class="tp-caption tp-shape tp-shapewrapper  " id="slide-300-layer-2"
+                                            data-x="['center','center','center','center']"
+                                            data-hoffset="['0','0','0','0']"
+                                            data-y="['bottom','bottom','bottom','bottom']"
+                                            data-voffset="['0','0','0','0']" data-width="full"
+                                            data-height="['400','400','400','550']" data-whitespace="nowrap"
+                                            data-type="shape" data-basealign="slide" data-responsive_offset="off"
+                                            data-responsive="off"
+                                            data-frames='[{"from":"opacity:0;","speed":1500,"to":"o:1;","delay":0,"ease":"Power2.easeInOut"},{"delay":"wait","speed":1000,"to":"opacity:0;","ease":"nothing"}]'
+                                            data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]"
+                                            data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]"
+                                            data-paddingleft="[0,0,0,0]"
+                                            style="z-index: 5;background-color:rgba(0, 0, 0, 0.50);border-color:rgba(0, 0, 0, 0);
                                             border-width:0px;background:linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%);cursor:default;">
                                         </div>
 
                                         <!-- LAYER NR. 3 -->
-                                        <div class="tp-caption BigBold-Title   tp-resizeme" id="slide-300-layer-3" data-x="['left','left','left','left']" data-hoffset="['50','50','30','17']" data-y="['bottom','bottom','bottom','bottom']" data-voffset="['110','110','180','180']" data-fontsize="['90','70','50','30']" data-lineheight="['100','90','60','60']" data-fontweight="['900','900','900','900']" data-width="['none','none','none','400']" data-height="none" data-whitespace="['nowrap','nowrap','nowrap','normal']" data-type="text" data-basealign="slide" data-responsive_offset="off" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];","speed":1500,"to":"o:1;","delay":500,"ease":"Power3.easeInOut"},
-                                            {"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;","ease":"Power2.easeInOut"}]' data-textAlign="['left','left','left','left']" data-paddingtop="[10,10,10,10]" data-paddingright="[0,0,0,0]" data-paddingbottom="[10,10,10,10]" data-paddingleft="[0,0,0,0]" style="z-index: 6; 
+                                        <div class="tp-caption BigBold-Title   tp-resizeme" id="slide-300-layer-3"
+                                            data-x="['left','left','left','left']"
+                                            data-hoffset="['50','50','30','17']"
+                                            data-y="['bottom','bottom','bottom','bottom']"
+                                            data-voffset="['110','110','180','180']"
+                                            data-fontsize="['90','70','50','30']"
+                                            data-lineheight="['100','90','60','60']"
+                                            data-fontweight="['900','900','900','900']"
+                                            data-width="['none','none','none','400']" data-height="none"
+                                            data-whitespace="['nowrap','nowrap','nowrap','normal']" data-type="text"
+                                            data-basealign="slide" data-responsive_offset="off"
+                                            data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];","speed":1500,"to":"o:1;","delay":500,"ease":"Power3.easeInOut"},
+                                            {"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;","ease":"Power2.easeInOut"}]'
+                                            data-textAlign="['left','left','left','left']"
+                                            data-paddingtop="[10,10,10,10]" data-paddingright="[0,0,0,0]"
+                                            data-paddingbottom="[10,10,10,10]" data-paddingleft="[0,0,0,0]"
+                                            style="z-index: 6; 
                                             text-transform:uppercase;
                                             color:#fff;
                                             font-family: 'Roboto', sans-serif;
-                                            "><span class="text-primary"> Fast Delivery</span> Services </div>
+                                            ">
+                                            <span class="text-primary"> Fast Delivery</span> Services
+                                        </div>
 
                                         <!-- LAYER NR. 4 -->
-                                        <div class="tp-caption BigBold-SubTitle  " id="slide-300-layer-4" data-x="['left','left','left','left']" data-hoffset="['55','55','33','20']" data-y="['bottom','bottom','bottom','bottom']" data-voffset="['40','1','74','78']" data-fontsize="['15','15','15','13']" data-lineheight="['24','24','24','20']" data-width="['410','410','410','280']" data-height="['60','100','100','100']" data-whitespace="normal" data-type="text" data-basealign="slide" data-responsive_offset="off" data-responsive="off" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","speed":1500,"to":"o:1;","delay":650,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"y:50px;opacity:0;","ease":"Power2.easeInOut"}]' data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 7; 
+                                        <div class="tp-caption BigBold-SubTitle  " id="slide-300-layer-4"
+                                            data-x="['left','left','left','left']"
+                                            data-hoffset="['55','55','33','20']"
+                                            data-y="['bottom','bottom','bottom','bottom']"
+                                            data-voffset="['40','1','74','78']" data-fontsize="['15','15','15','13']"
+                                            data-lineheight="['24','24','24','20']"
+                                            data-width="['410','410','410','280']"
+                                            data-height="['60','100','100','100']" data-whitespace="normal"
+                                            data-type="text" data-basealign="slide" data-responsive_offset="off"
+                                            data-responsive="off"
+                                            data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","speed":1500,"to":"o:1;","delay":650,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"y:50px;opacity:0;","ease":"Power2.easeInOut"}]'
+                                            data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]"
+                                            data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]"
+                                            data-paddingleft="[0,0,0,0]"
+                                            style="z-index: 7; 
                                             color:#fff;
-                                            ">Best Fright System (B-F-S) provides logistics and transportation
+                                            ">
+                                            Best Fright System (B-F-S) provides logistics and transportation
                                             services via sea,
                                             land and
                                             air.
@@ -313,7 +551,19 @@
                                         </div>
 
                                         <!-- LAYER NR. 5 -->
-                                        <div class="tp-caption BigBold-Button rev-btn " id="slide-300-layer-5" data-x="['left','left','left','left']" data-hoffset="['480','480','30','20']" data-y="['bottom','bottom','bottom','bottom']" data-voffset="['20','20','20','20']" data-width="none" data-height="none" data-whitespace="nowrap" data-type="button" data-actions='[{"event":"click","action":"scrollbelow","offset":"px","delay":""}]' data-basealign="slide" data-responsive_offset="off" data-responsive="off" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","speed":1500,"to":"o:1;","delay":650,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"y:50px;opacity:0;","ease":"Power2.easeInOut"},{"frame":"hover","speed":"300","ease":"Power1.easeInOut","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(255, 255, 255, 1.00);bc:rgba(255, 255, 255, 1.00);bw:1px 1px 1px 1px;"}]' data-textAlign="['left','left','left','left']" data-paddingtop="[15,15,15,15]" data-paddingright="[50,50,50,50]" data-paddingbottom="[15,15,15,15]" data-paddingleft="[50,50,0,0]" style="z-index: 8; "></div>
+                                        <div class="tp-caption BigBold-Button rev-btn " id="slide-300-layer-5"
+                                            data-x="['left','left','left','left']"
+                                            data-hoffset="['480','480','30','20']"
+                                            data-y="['bottom','bottom','bottom','bottom']"
+                                            data-voffset="['20','20','20','20']" data-width="none" data-height="none"
+                                            data-whitespace="nowrap" data-type="button"
+                                            data-actions='[{"event":"click","action":"scrollbelow","offset":"px","delay":""}]'
+                                            data-basealign="slide" data-responsive_offset="off" data-responsive="off"
+                                            data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","speed":1500,"to":"o:1;","delay":650,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"y:50px;opacity:0;","ease":"Power2.easeInOut"},{"frame":"hover","speed":"300","ease":"Power1.easeInOut","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(255, 255, 255, 1.00);bc:rgba(255, 255, 255, 1.00);bw:1px 1px 1px 1px;"}]'
+                                            data-textAlign="['left','left','left','left']"
+                                            data-paddingtop="[15,15,15,15]" data-paddingright="[50,50,50,50]"
+                                            data-paddingbottom="[15,15,15,15]" data-paddingleft="[50,50,0,0]"
+                                            style="z-index: 8; "></div>
 
 
                                     </li>
@@ -328,12 +578,14 @@
 
 
             <!-- Modal Tracking -->
-            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+                aria-labelledby="myLargeModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header d-flex flex-row" style="background-color: rgb(135, 150, 179);">
                             <h4 class="modal-title" id="exampleModalLabel">
-                                Order Details<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                Parcel Details<button type="button" class="close" data-dismiss="modal"
+                                    aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button></h4>
                         </div>
@@ -342,42 +594,68 @@
                                 <!-- Tracking  -->
                                 <div id="ordertracking" class="">
                                     <article class="card ">
-                                        <p class="border" style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">My Orders
-                                            / Tracking </p>
+                                        {{-- <p class="border" style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">My Orders
+                                            / Tracking </p> --}}
                                         <div class="card-body">
                                             <!-- Enter ID -->
+
                                             <nav class="navbar navbar-light bg-light justify-content-between">
-                                                <a class="navbar-brand">Enter Your Tracking ID:</a>
-                                                <form class="form-inline">
-                                                    <input id="tracking-id" class="form-control mr-sm-2" type="text" placeholder="Tracking ID" aria-label="Search">
-                                                    <button onclick="myFunction()" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                                                </form>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <a class="navbar-brand">Enter Your Tracking ID:</a>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <form class="form-inline" id="tracking-form">
+                                                            <input id="tracking-id"
+                                                                class="form-control block mr-sm-12" type="text"
+                                                                placeholder="Tracking ID" aria-label="Search">
+                                                            <button onclick="myFunction()"
+                                                                class="btn btn-outline-success my-2 my-sm-0"
+                                                                type="submit" name="submit">Search</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
                                             </nav>
-                                            <ul id="myUL" class="d-none">
+
+
+                                            {{-- <ul id="myUL" class="d-none">
                                                 <li><a href="#">123</a></li>
                                                 <li><a href="#">234</a></li>
                                                 <li><a href="#">345</a></li>
                                                 <li><a href="#">456</a></li>
-                                            </ul>
+                                            </ul> --}}
                                             <!-- order details  -->
                                             <article class="card " style="border: 1px solid rgba(0, 0, 0, 0.1);">
                                                 <div class="card-body row text-center ">
-                                                    <div class="col">
-                                                        <strong>Estimated Delivery time: &nbsp;</strong>29 nov 2019
-                                                    </div>
-                                                    <div class="col ">
-                                                        <strong>Shipping BY: &nbsp;</strong>BLUEDART, | <i class="fa fa-phone"></i>+159 8675986
-                                                    </div>
-                                                    <div class="col">
-                                                        <strong>Status: &nbsp;</strong> Picked by the courier
-                                                    </div>
-                                                    <div class="col">
-                                                        <strong>Tracking #: &nbsp;</strong> BD045903594059
-                                                    </div>
+                                                    <table class="table table-bordered table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>ID</th>
+                                                                <th>Product Name</th>
+                                                                <th>Description</th>
+                                                                <th>Price</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        </tbody>
+                                                    </table>
+                                                    {{-- <div class="col">
+                                                    <strong>Estimated Delivery time: &nbsp;</strong>29 nov 2019
+                                                </div>
+                                                <div class="col ">
+                                                    <strong>Shipping BY: &nbsp;</strong>BLUEDART, | <i
+                                                        class="fa fa-phone"></i>+159 8675986
+                                                </div>
+                                                <div class="col">
+                                                    <strong>Status: &nbsp;</strong> Picked by the courier
+                                                </div>
+                                                <div class="col">
+                                                    <strong>Tracking #: &nbsp;</strong> BD045903594059
+                                                </div> --}}
                                                 </div>
                                             </article>
                                             <!-- order State -->
-                                            <div style="border: 1px solid rgba(0, 0, 0, 0.1); padding: 500px auto;">
+                                            {{-- <div style="border: 1px solid rgba(0, 0, 0, 0.1); padding: 500px auto;">
                                                 <div class="track" style="border: 1px solid rgba(0, 0, 0, 0.1);">
                                                     <div class="step active">
                                                         <span class="icon"> <i class="fa fa-user"></i></span>
@@ -394,7 +672,7 @@
                                                     <span class="text">Ready for pickup</span>
                                                     </div> -->
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </article>
                                 </div>
@@ -431,9 +709,11 @@
                         <div class="row">
                             <div>
                                 <div class="col-md-4 col-sm-6 m-b30">
-                                    <div class="mt-icon-box-wraper center  p-a30 bgcall-block  bdr-1 bdr-solid bdr-primary hover-shadow">
+                                    <div
+                                        class="mt-icon-box-wraper center  p-a30 bgcall-block  bdr-1 bdr-solid bdr-primary hover-shadow">
                                         <div class="mt-icon-box-sm radius bdr-2 bdr-solid bdr-white m-b20">
-                                            <span class="icon-cell  text-primary"><i class="flaticon-transport-4"></i></span>
+                                            <span class="icon-cell  text-primary"><i
+                                                    class="flaticon-transport-4"></i></span>
                                         </div>
                                         <div class="icon-content">
                                             <h4 class="mt-tilte  m-b15 text-primary">Cargo Transportation</h4>
@@ -444,9 +724,11 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-sm-6 m-b30">
-                                    <div class="mt-icon-box-wraper  center  p-a30 bgcall-block  bdr-1 bdr-solid bdr-primary  hover-shadow">
+                                    <div
+                                        class="mt-icon-box-wraper  center  p-a30 bgcall-block  bdr-1 bdr-solid bdr-primary  hover-shadow">
                                         <div class="mt-icon-box-sm radius bdr-2 bdr-solid bdr-white m-b20">
-                                            <span class="icon-cell  text-primary"><i class="flaticon-truck"></i></span>
+                                            <span class="icon-cell  text-primary"><i
+                                                    class="flaticon-truck"></i></span>
                                         </div>
                                         <div class="icon-content">
                                             <h4 class="mt-tilte  m-b15 text-primary">Ground Shipping</h4>
@@ -457,9 +739,11 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-sm-6  m-b30">
-                                    <div class="mt-icon-box-wraper center p-a30 bgcall-block  bdr-1 bdr-solid bdr-primary hover-shadow ">
+                                    <div
+                                        class="mt-icon-box-wraper center p-a30 bgcall-block  bdr-1 bdr-solid bdr-primary hover-shadow ">
                                         <div class="mt-icon-box-sm radius bdr-2 bdr-solid bdr-white m-b20">
-                                            <span class="icon-cell  text-primary"><i class="flaticon-airplane"></i></span>
+                                            <span class="icon-cell  text-primary"><i
+                                                    class="flaticon-airplane"></i></span>
                                         </div>
                                         <div class="icon-content">
                                             <h4 class="mt-tilte  m-b15 text-primary">Air Freight</h4>
@@ -471,9 +755,11 @@
                                 </div>
 
                                 <div class="col-md-4 col-sm-6 m-b30">
-                                    <div class="mt-icon-box-wraper center  p-a30 bgcall-block  bdr-1 bdr-solid bdr-primary hover-shadow ">
+                                    <div
+                                        class="mt-icon-box-wraper center  p-a30 bgcall-block  bdr-1 bdr-solid bdr-primary hover-shadow ">
                                         <div class="mt-icon-box-sm radius bdr-2 bdr-solid bdr-white m-b20">
-                                            <span class="icon-cell  text-primary"><i class="flaticon-ship-1"></i></span>
+                                            <span class="icon-cell  text-primary"><i
+                                                    class="flaticon-ship-1"></i></span>
                                         </div>
                                         <div class="icon-content">
                                             <h4 class="mt-tilte  m-b15 text-primary">Ocean Freight</h4>
@@ -484,9 +770,11 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-sm-6   m-b30">
-                                    <div class="mt-icon-box-wraper center  p-a30 bgcall-block  bdr-1 bdr-solid bdr-primary hover-shadow">
+                                    <div
+                                        class="mt-icon-box-wraper center  p-a30 bgcall-block  bdr-1 bdr-solid bdr-primary hover-shadow">
                                         <div class="mt-icon-box-sm radius bdr-2 bdr-solid bdr-white m-b20">
-                                            <span class="icon-cell  text-primary"><i class="flaticon-forklift-1"></i></span>
+                                            <span class="icon-cell  text-primary"><i
+                                                    class="flaticon-forklift-1"></i></span>
                                         </div>
                                         <div class="icon-content">
                                             <h4 class="mt-tilte  m-b15 text-primary">Packaging & Storage</h4>
@@ -497,9 +785,11 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-sm-6  m-b30">
-                                    <div class="mt-icon-box-wraper center p-a30 bgcall-block  bdr-1 bdr-solid bdr-primary hover-shadow">
+                                    <div
+                                        class="mt-icon-box-wraper center p-a30 bgcall-block  bdr-1 bdr-solid bdr-primary hover-shadow">
                                         <div class="mt-icon-box-sm radius bdr-2 bdr-solid bdr-white m-b20">
-                                            <span class="icon-cell  text-primary"><i class="flaticon-transport-6"></i></span>
+                                            <span class="icon-cell  text-primary"><i
+                                                    class="flaticon-transport-6"></i></span>
                                         </div>
                                         <div class="icon-content">
                                             <h4 class="mt-tilte  m-b15 text-primary">Road Freight</h4>
@@ -516,14 +806,15 @@
             </div>
 
             <!-- Shipment Solution-->
-            <div class="section-full p-t80 p-b50 bg-no-repeat bg-center bg-white" style="background-image:url(images/background/bg-map.png);">
+            <div class="section-full p-t80 p-b50 bg-no-repeat bg-center bg-white"
+                style="background-image:url(images/background/bg-map.png);">
 
                 <div class="container">
                     <div class="row">
                         <div class="col-md-5">
                             <div class="mt-box m-b30">
                                 <div class="mt-thum-bx mt-img-effect  mt-img-overlay2">
-                                    <img src="{{ asset('assets2/images/shipment.jpg')}}" alt="">
+                                    <img src="{{ asset('assets2/images/shipment.jpg') }}" alt="">
                                 </div>
                             </div>
                         </div>
@@ -546,28 +837,32 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
-                                    <div class="m-b30 text-black mt-icon-box-wraper center bdr-1 bdr-solid bdr-gray-light  bg-white p-a20">
+                                    <div
+                                        class="m-b30 text-black mt-icon-box-wraper center bdr-1 bdr-solid bdr-gray-light  bg-white p-a20">
                                         <div class="counter font-42 font-weight-800 m-b15 text-primary">450</div>
                                         <h4 class="m-tb0">Delivered Packages</h4>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6 col-sm-6">
-                                    <div class="m-b30 text-black mt-icon-box-wraper center bdr-1 bdr-solid bdr-gray-light bg-white p-a20">
+                                    <div
+                                        class="m-b30 text-black mt-icon-box-wraper center bdr-1 bdr-solid bdr-gray-light bg-white p-a20">
                                         <div class="counter font-42 font-weight-800 m-b15 text-primary">15</div>
                                         <h4 class="m-tb0">Countries Covered</h4>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6 col-sm-6">
-                                    <div class="m-b30 text-black mt-icon-box-wraper center bdr-1 bdr-solid bdr-gray-light bg-white p-a20">
+                                    <div
+                                        class="m-b30 text-black mt-icon-box-wraper center bdr-1 bdr-solid bdr-gray-light bg-white p-a20">
                                         <div class="counter font-42 font-weight-800 m-b15  text-primary">670</div>
                                         <h4 class="m-tb0">Satisfied Clients</h4>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6 col-sm-6">
-                                    <div class="m-b30 text-black mt-icon-box-wraper center bdr-1 bdr-solid bdr-gray-light bg-white p-a20">
+                                    <div
+                                        class="m-b30 text-black mt-icon-box-wraper center bdr-1 bdr-solid bdr-gray-light bg-white p-a20">
                                         <div class="counter font-42 font-weight-800 m-b15 text-primary">1200</div>
                                         <h4 class="m-tb0">Tons of Goods</h4>
                                     </div>
@@ -696,9 +991,11 @@
                             <!-- block 1 -->
                             <div class="col-md-4 col-sm-6 col-xs-6 col-xs-100pc">
                                 <div class="mt-box m-b30">
-                                    <div class="mt-icon-box-wraper  p-a30 left bg-white  hover-border-outer hover-border">
+                                    <div
+                                        class="mt-icon-box-wraper  p-a30 left bg-white  hover-border-outer hover-border">
                                         <div class="icon-md radius m-b15">
-                                            <span class="icon-cell  text-primary"><i class="flaticon-transport-6"></i></span>
+                                            <span class="icon-cell  text-primary"><i
+                                                    class="flaticon-transport-6"></i></span>
                                         </div>
                                         <div class="icon-content">
                                             <h4 class="mt-tilte  m-b15"><a href="#">Road Freight</a></h4>
@@ -707,9 +1004,11 @@
                                     </div>
                                 </div>
                                 <div class="mt-box m-b30">
-                                    <div class="mt-icon-box-wraper  p-a30 left bg-white  hover-border-outer hover-border">
+                                    <div
+                                        class="mt-icon-box-wraper  p-a30 left bg-white  hover-border-outer hover-border">
                                         <div class="icon-md radius m-b15">
-                                            <span class="icon-cell  text-primary"><i class="flaticon-airplane"></i></span>
+                                            <span class="icon-cell  text-primary"><i
+                                                    class="flaticon-airplane"></i></span>
                                         </div>
                                         <div class="icon-content">
                                             <h4 class="mt-tilte  m-b15"><a href="#">Air Freight</a></h4>
@@ -722,16 +1021,19 @@
                             <div class="col-md-4 col-sm-6 col-xs-6 col-xs-100pc">
                                 <div class="mt-box m-b30">
                                     <div class="mt-media mid-img-verticle">
-                                        <a href="#"><img src="{{ asset('assets2/images/truck.png')}}" alt=""></a>
+                                        <a href="#"><img src="{{ asset('assets2/images/truck.png') }}"
+                                                alt=""></a>
                                     </div>
                                 </div>
                             </div>
                             <!-- block 3 -->
                             <div class="col-md-4 col-sm-12 col-xs-12">
                                 <div class="mt-box m-b30">
-                                    <div class="mt-icon-box-wraper  p-a30 left bg-white   hover-border-outer hover-border">
+                                    <div
+                                        class="mt-icon-box-wraper  p-a30 left bg-white   hover-border-outer hover-border">
                                         <div class="icon-md radius m-b15">
-                                            <span class="icon-cell  text-primary"><i class="flaticon-ship-1"></i></span>
+                                            <span class="icon-cell  text-primary"><i
+                                                    class="flaticon-ship-1"></i></span>
                                         </div>
                                         <div class="icon-content">
                                             <h4 class="mt-tilte  m-b15"><a href="#">Sea Freight</a></h4>
@@ -740,9 +1042,11 @@
                                     </div>
                                 </div>
                                 <div class="mt-box m-b30">
-                                    <div class="mt-icon-box-wraper  p-a30 left bg-white   hover-border-outer hover-border">
+                                    <div
+                                        class="mt-icon-box-wraper  p-a30 left bg-white   hover-border-outer hover-border">
                                         <div class="icon-md radius m-b15">
-                                            <span class="icon-cell  text-primary"><i class="flaticon-forklift-1"></i></span>
+                                            <span class="icon-cell  text-primary"><i
+                                                    class="flaticon-forklift-1"></i></span>
                                         </div>
                                         <div class="icon-content">
                                             <h4 class="mt-tilte  m-b15"><a href="#">Warehouse</a></h4>
@@ -758,13 +1062,16 @@
             </div>
 
             <!-- Latest Project -- -->
-            <div id="gellery" class="section-full  p-tb80 bg-full-height bg-secondry bg-repeat-x city-slide-image" style="background-image:url(images/background/bg-trans-1.png);">
+            <div id="gellery" class="section-full  p-tb80 bg-full-height bg-secondry bg-repeat-x city-slide-image"
+                style="background-image:url(images/background/bg-trans-1.png);">
                 <div class="container-fluid">
                     <div class="fillter-left-content">
                         <div class="filter-left-part shake_image">
-                            <img src="{{ asset('assets2/images/truck-2.png')}}" alt="">
-                            <span class="tyre-position"><img src="{{ asset('assets2/images/rotate-tyer.png')}}" alt="" class="spin-tyres"></span>
-                            <img class="blink-image" src="{{ asset('assets2/images/light-blink.png')}}" alt="">
+                            <img src="{{ asset('assets2/images/truck-2.png') }}" alt="">
+                            <span class="tyre-position"><img src="{{ asset('assets2/images/rotate-tyer.png') }}"
+                                    alt="" class="spin-tyres"></span>
+                            <img class="blink-image" src="{{ asset('assets2/images/light-blink.png') }}"
+                                alt="">
                         </div>
 
                         <div class="container">
@@ -785,12 +1092,14 @@
                                 <div class="filter-carousal-1">
                                     <!-- IMAGE CAROUSEL START -->
                                     <div class="section-content">
-                                        <div class="owl-carousel owl-carousel-filter  owl-btn-vertical-center fillter-nav-left">
+                                        <div
+                                            class="owl-carousel owl-carousel-filter  owl-btn-vertical-center fillter-nav-left">
                                             <!-- Block 1 -->
                                             <div class="item overflow-hide">
                                                 <div class="mt-box">
                                                     <div class="mt-img-effect overlay-2">
-                                                        <img src="{{ asset('assets2/images/gallery/portrait/pic1.jpg')}}" alt="">
+                                                        <img src="{{ asset('assets2/images/gallery/portrait/pic1.jpg') }}"
+                                                            alt="">
                                                         <div class="overlay-2-bg bg-black"></div>
                                                         <div class="overlay-2-content">
                                                             <div class="p-a30 p-b20">
@@ -810,7 +1119,8 @@
                                             <div class="item overflow-hide">
                                                 <div class="mt-box">
                                                     <div class="mt-img-effect overlay-2">
-                                                        <img src="images/gallery/portrait/pic2.jpg')}}" alt="">
+                                                        <img src="images/gallery/portrait/pic2.jpg')}}"
+                                                            alt="">
                                                         <div class="overlay-2-bg bg-black"></div>
                                                         <div class="overlay-2-content">
                                                             <div class="p-a30 p-b20">
@@ -828,7 +1138,8 @@
                                             <div class="item overflow-hide">
                                                 <div class="mt-box">
                                                     <div class="mt-img-effect overlay-2">
-                                                        <img src="{{asset('assets2/images/gallery/portrait/pic3.jpg')}}" alt="">
+                                                        <img src="{{ asset('assets2/images/gallery/portrait/pic3.jpg') }}"
+                                                            alt="">
                                                         <div class="overlay-2-bg bg-black"></div>
                                                         <div class="overlay-2-content">
                                                             <div class="p-a30 p-b20">
@@ -846,7 +1157,8 @@
                                             <div class="item  overflow-hide">
                                                 <div class="mt-box">
                                                     <div class="mt-img-effect overlay-2">
-                                                        <img src="{{asset('assets2/images/gallery/portrait/pic4.jpg')}}" alt="">
+                                                        <img src="{{ asset('assets2/images/gallery/portrait/pic4.jpg') }}"
+                                                            alt="">
                                                         <div class="overlay-2-bg bg-black"></div>
                                                         <div class="overlay-2-content">
                                                             <div class="p-a30 p-b20">
@@ -865,7 +1177,8 @@
                                             <div class="item  overflow-hide">
                                                 <div class="mt-box">
                                                     <div class="mt-img-effect overlay-2">
-                                                        <img src="{{asset('assets2/images/gallery/portrait/pic5.jpg')}}" alt="">
+                                                        <img src="{{ asset('assets2/images/gallery/portrait/pic5.jpg') }}"
+                                                            alt="">
                                                         <div class="overlay-2-bg bg-black"></div>
                                                         <div class="overlay-2-content">
                                                             <div class="p-a30 p-b20">
@@ -883,7 +1196,8 @@
                                             <div class="item overflow-hide">
                                                 <div class="mt-box">
                                                     <div class="mt-img-effect overlay-2">
-                                                        <img src="{{ asset('assets2/images/gallery/portrait/pic6.jpg')}}" alt="">
+                                                        <img src="{{ asset('assets2/images/gallery/portrait/pic6.jpg') }}"
+                                                            alt="">
                                                         <div class="overlay-2-bg bg-black"></div>
                                                         <div class="overlay-2-content">
                                                             <div class="p-a30 p-b20">
@@ -902,7 +1216,8 @@
                                             <div class="item overflow-hide">
                                                 <div class="mt-box">
                                                     <div class="mt-img-effect overlay-2">
-                                                        <img src="{{ asset('assets2/images/gallery/portrait/pic7.jpg')}}" alt="">
+                                                        <img src="{{ asset('assets2/images/gallery/portrait/pic7.jpg') }}"
+                                                            alt="">
                                                         <div class="overlay-2-bg bg-black"></div>
                                                         <div class="overlay-2-content">
                                                             <div class="p-a30 p-b20">
@@ -920,7 +1235,8 @@
                                             <div class="item overflow-hide">
                                                 <div class="mt-box">
                                                     <div class="mt-img-effect overlay-2">
-                                                        <img src="{{ asset('assets2/images/gallery/portrait/pic8.jpg')}}" alt="">
+                                                        <img src="{{ asset('assets2/images/gallery/portrait/pic8.jpg') }}"
+                                                            alt="">
                                                         <div class="overlay-2-bg bg-black"></div>
                                                         <div class="overlay-2-content">
                                                             <div class="p-a30 p-b20">
@@ -965,7 +1281,9 @@
                             <div class="col-md-4 col-sm-6 col-xs-6 col-xs-100pc  m-b30">
                                 <div class="mt-team-seven ">
                                     <div class="mt-team-media mt-img-effect off-color bg-white">
-                                        <a href="javascript:void(0);"><img src="{{ asset('assets2/images/our-team5/p1.png')}}" class="" alt=""></a>
+                                        <a href="javascript:void(0);"><img
+                                                src="{{ asset('assets2/images/our-team5/p1.png') }}" class=""
+                                                alt=""></a>
                                     </div>
                                     <div class="mt-team-info text-center p-a30 bg-white">
                                         <h4 class="mt-team-title m-t0 m-b15"><a href="javascript:void(0);">Susan
@@ -984,7 +1302,9 @@
                             <div class="col-md-4 col-sm-6 col-xs-6 col-xs-100pc m-b30">
                                 <div class="mt-team-seven ">
                                     <div class="mt-team-media mt-img-effect off-color bg-white">
-                                        <a href="javascript:void(0);"><img src="{{ asset('assets2/images/our-team5/p2.png')}}" alt=""></a>
+                                        <a href="javascript:void(0);"><img
+                                                src="{{ asset('assets2/images/our-team5/p2.png') }}"
+                                                alt=""></a>
                                     </div>
                                     <div class="mt-team-info text-center p-a30 bg-white">
                                         <h4 class="mt-team-title m-t0 m-b15"><a href="javascript:void(0);">Joe
@@ -1004,7 +1324,9 @@
                             <div class="col-md-4 col-sm-12 col-xs-12 col-xs-100pc m-b30">
                                 <div class="mt-team-seven ">
                                     <div class="mt-team-media mt-img-effect off-color bg-white">
-                                        <a href="javascript:void(0);"><img src="{{ asset('assets2/images/our-team5/p3.png')}}" alt=""></a>
+                                        <a href="javascript:void(0);"><img
+                                                src="{{ asset('assets2/images/our-team5/p3.png') }}"
+                                                alt=""></a>
                                     </div>
                                     <div class="mt-team-info text-center p-a30 bg-white">
                                         <h4 class="mt-team-title m-t0 m-b15"><a href="javascript:void(0);">May
@@ -1051,9 +1373,11 @@
                         <div class="row">
                             <div class="equal-wraper">
                                 <div class="col-md-4 col-sm-6">
-                                    <div class="mt-icon-box-wraper  p-a30 bgcall-block hover-shadow hover-border-outer hover-border m-b30">
+                                    <div
+                                        class="mt-icon-box-wraper  p-a30 bgcall-block hover-shadow hover-border-outer hover-border m-b30">
                                         <div class="icon-md radius m-b15">
-                                            <span class="icon-cell  text-white"><i class="flaticon-people-1"></i></span>
+                                            <span class="icon-cell  text-white"><i
+                                                    class="flaticon-people-1"></i></span>
                                         </div>
                                         <div class="icon-content">
                                             <h4 class="mt-tilte  m-b15 text-primary">Customer Satisfication Tools
@@ -1065,7 +1389,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-sm-6">
-                                    <div class="mt-icon-box-wraper   p-a30 bgcall-block hover-shadow hover-border-outer hover-border m-b30">
+                                    <div
+                                        class="mt-icon-box-wraper   p-a30 bgcall-block hover-shadow hover-border-outer hover-border m-b30">
                                         <div class="icon-md radius m-b15 text-primary">
                                             <span class="icon-cell  text-white"><i class="flaticon-pencil"></i></span>
                                         </div>
@@ -1078,9 +1403,11 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-sm-6">
-                                    <div class="mt-icon-box-wraper  p-a30 bgcall-block hover-shadow hover-border-outer hover-border m-b30">
+                                    <div
+                                        class="mt-icon-box-wraper  p-a30 bgcall-block hover-shadow hover-border-outer hover-border m-b30">
                                         <div class="icon-md radius m-b15">
-                                            <span class="icon-cell  text-white"><i class="flaticon-wallet"></i></span>
+                                            <span class="icon-cell  text-white"><i
+                                                    class="flaticon-wallet"></i></span>
                                         </div>
                                         <div class="icon-content">
                                             <h4 class="mt-tilte  m-b15 text-primary">Freight Payment Options</h4>
@@ -1090,9 +1417,11 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-sm-6">
-                                    <div class="mt-icon-box-wraper  p-a30 bgcall-block hover-shadow hover-border-outer hover-border m-b30">
+                                    <div
+                                        class="mt-icon-box-wraper  p-a30 bgcall-block hover-shadow hover-border-outer hover-border m-b30">
                                         <div class="icon-md radius m-b15">
-                                            <span class="icon-cell  text-white"><i class="flaticon-solution"></i></span>
+                                            <span class="icon-cell  text-white"><i
+                                                    class="flaticon-solution"></i></span>
                                         </div>
                                         <div class="icon-content">
                                             <h4 class="mt-tilte  m-b15 text-primary">Compliance Solutions</h4>
@@ -1102,9 +1431,11 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-sm-6">
-                                    <div class="mt-icon-box-wraper   p-a30 bgcall-block hover-shadow hover-border-outer hover-border m-b30">
+                                    <div
+                                        class="mt-icon-box-wraper   p-a30 bgcall-block hover-shadow hover-border-outer hover-border m-b30">
                                         <div class="icon-md radius m-b15">
-                                            <span class="icon-cell  text-white"><i class="flaticon-time-passing"></i></span>
+                                            <span class="icon-cell  text-white"><i
+                                                    class="flaticon-time-passing"></i></span>
                                         </div>
                                         <div class="icon-content">
                                             <h4 class="mt-tilte  m-b15 text-primary">Timely Delivery</h4>
@@ -1114,9 +1445,11 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-sm-6">
-                                    <div class="mt-icon-box-wraper  p-a30 bgcall-block hover-shadow hover-border-outer hover-border m-b30">
+                                    <div
+                                        class="mt-icon-box-wraper  p-a30 bgcall-block hover-shadow hover-border-outer hover-border m-b30">
                                         <div class="icon-md radius m-b15">
-                                            <span class="icon-cell  text-white"><i class="flaticon-customer-service"></i></span>
+                                            <span class="icon-cell  text-white"><i
+                                                    class="flaticon-customer-service"></i></span>
                                         </div>
                                         <div class="icon-content">
                                             <h4 class="mt-tilte  m-b15 text-primary">24 / 7 Service</h4>
@@ -1132,7 +1465,8 @@
             </div>
 
             <!-- Testimonials -->
-            <div class="section-full p-t80 p-b80 bg-center bg-full-height bg-no-repeat bg-gray" style="background-image:url(images/background/bg-map.png);">
+            <div class="section-full p-t80 p-b80 bg-center bg-full-height bg-no-repeat bg-gray"
+                style="background-image:url(images/background/bg-map.png);">
                 <div class="container">
                     <!-- TITLE START -->
                     <div class="section-head text-center">
@@ -1149,7 +1483,9 @@
                                 <div class="testimonial-2  clearfix bg-white">
 
                                     <div class="testimonial-detail">
-                                        <div class="testimonial-pic shadow"><img src="{{ asset('assets2/images/testimonials/pic1.jpg')}}" width="100" height="100" alt=""></div>
+                                        <div class="testimonial-pic shadow"><img
+                                                src="{{ asset('assets2/images/testimonials/pic1.jpg') }}"
+                                                width="100" height="100" alt=""></div>
                                     </div>
 
                                     <div class="testimonial-text">
@@ -1166,7 +1502,9 @@
                                 <div class="testimonial-2 clearfix bg-white">
 
                                     <div class="testimonial-detail ">
-                                        <div class="testimonial-pic shadow"><img src="{{ asset('assets2/images/testimonials/ahad.jpg')}}" width="100" height="100" alt=""></div>
+                                        <div class="testimonial-pic shadow"><img
+                                                src="{{ asset('assets2/images/testimonials/ahad.jpg') }}"
+                                                width="100" height="100" alt=""></div>
 
                                     </div>
 
@@ -1183,7 +1521,9 @@
                                 <div class="testimonial-2  clearfix  bg-white">
 
                                     <div class="testimonial-detail">
-                                        <div class="testimonial-pic shadow"><img src="{{ asset('assets2/images/testimonials/bisma.jpeg')}}" width="100" height="100" alt=""></div>
+                                        <div class="testimonial-pic shadow"><img
+                                                src="{{ asset('assets2/images/testimonials/bisma.jpeg') }}"
+                                                width="100" height="100" alt=""></div>
                                     </div>
 
                                     <div class="testimonial-text">
@@ -1202,7 +1542,8 @@
             </div>
 
             <!-- Contact Us  -->
-            <div id="contact" class="section-full bg-white bg-right-center bg-no-repeat" style="background-image:url(images/background/bg-trans-2.png);">
+            <div id="contact" class="section-full bg-white bg-right-center bg-no-repeat"
+                style="background-image:url(images/background/bg-trans-2.png);">
                 <div class="container">
                     <div class="row conntact-home">
                         <div class="col-lg-5 col-md-5 col-sm-12">
@@ -1211,18 +1552,23 @@
                                 <div class="section-content p-lr30 p-tb30">
                                     <div class="call-back-form" style="z-index:1; position:relative">
                                         <h2 class="text-white m-t0">Contact Us</h2>
-                                        <form class="cons-contact-form2 form-transparent" method="post" action="form-handler2.php">
+                                        {{-- <form class="cons-contact-form2 form-transparent" method="POST" action="{{ route('contact-us') }}"> --}}
+                                        <form class="" method="POST" action="{{ route('contact-us') }}">
+                                            @csrf
                                             <div class="form-group">
-                                                <input name="username" type="text" required class="form-control" placeholder="Name">
+                                                <input type="text" name="name" value="{{ old('name') }}"
+                                                    required class="form-control" placeholder="Name">
                                             </div>
                                             <div class="form-group">
-                                                <input name="email" type="text" class="form-control" required placeholder="Email">
+                                                <input type="text" name="email" class="form-control"
+                                                    value="{{ old('email') }}" required placeholder="Email">
                                             </div>
                                             <div class="form-group">
-                                                <input name="phone" type="text" class="form-control" required placeholder="Phone">
+                                                <input type="text" name="phone" class="form-control"
+                                                    value="{{ old('phone') }}" required placeholder="Phone">
                                             </div>
                                             <div class="form-group">
-                                                <textarea name="message" class="form-control" rows="3" placeholder="Message"></textarea>
+                                                <textarea name="message" class="form-control" rows="3" placeholder="Message">{{ old('message') }}</textarea>
                                             </div>
                                             <button type="submit" class="site-button ">
                                                 <span class="font-weight-700 inline-block  p-lr15">Submit</span>
@@ -1236,7 +1582,7 @@
 
                             <div class="mt-box">
                                 <div class="mt-media">
-                                    <img src="{{ asset('assets2/images/con-1.png')}}" alt="">
+                                    <img src="{{ asset('assets2/images/con-1.png') }}" alt="">
                                 </div>
                             </div>
 
@@ -1258,15 +1604,20 @@
                             <div class="widget widget_about text-white">
                                 <h4 class="widget-title">About Company</h4>
                                 <div class="logo-footer clearfix p-b15">
-                                    <a href="index.html"><img src="{{ asset('assets2/images/logo-real.png')}}" width="171" height="49" alt="" /></a>
+                                    <a href="index.html"><img src="{{ asset('assets2/images/logo-real.png') }}"
+                                            width="171" height="49" alt="" /></a>
                                 </div>
-                                <p>Lorem ipsum this is dummy text dolor sit amet check this text, consecte tura
-                                    dipiscing elit, sed do eiusmod tempor doler is incididunt. </p>
+                                {{-- <p>Lorem ipsum this is dummy text dolor sit amet check this text, consecte tura
+                                    dipiscing elit, sed do eiusmod tempor doler is incididunt. </p> --}}
                                 <ul>
-                                    <li> <i class="fa fa-phone text-primary"></i> <b class="p-lr5 text-uppercase">Tel
-                                            :</b> (987) 654-3210 </li>
-                                    <li><i class="fa fa-envelope text-primary"></i> <b class="p-lr5 text-uppercase">Email : </b>7xthemehelp@gmail.com</li>
-                                    <li><i class="fa fa-location-arrow text-primary"></i> <b class="p-lr5 text-uppercase">Location :</b> Street 4 ,45 Ny City</li>
+                                    <li> <i class="fa fa-phone text-primary"></i> <b
+                                            class="p-lr5 text-uppercase">Tel
+                                            :</b> (+92) 300 8631512 </li>
+                                    <li><i class="fa fa-envelope text-primary"></i> <b
+                                            class="p-lr5 text-uppercase">Email : </b>Bestfreightsys@gmail.com</li>
+                                    <li><i class="fa fa-location-arrow text-primary"></i> <b
+                                            class="p-lr5 text-uppercase">Location :</b>Al Amin market Fateh Garh Road
+                                        Sialkot</li>
                                 </ul>
                             </div>
                         </div>
@@ -1281,7 +1632,8 @@
                                     <li><a href="#team">Our Team</a></li>
                                     <li><a href="#contact">Contact</a></li>
                                 </ul>
-                                <button type="button" class="btn btn-primary my-2" style="border: none;" data-toggle="modal" data-target=".bd-example-modal-lg">Track
+                                <button type="button" class="btn btn-primary my-2" style="border: none;"
+                                    data-toggle="modal" data-target=".bd-example-modal-lg">Track
                                     Your Order</button>
                             </div>
                         </div>
@@ -1307,7 +1659,7 @@
         <button class="scroltop"><span class="fa fa-space-shuttle relative" id="btn-vibrate"></span></button>
     </div>
     <!-- Loading Div ===== -->
-    <div class="loading-area">
+    {{-- <div class="loading-area">
         <div class="loading-box"></div>
         <div class="loading-pic">
             <div class="loading_progress-container">
@@ -1318,7 +1670,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Loading Div ====== -->
 
 
@@ -1326,46 +1678,46 @@
     <!-- JAVASCRIPT  FILES ========================================= -->
 
     <!-- JQUERY.MIN JS -->
-    <script src="{{ asset('assets2/js/jquery-1.12.4.min.js')}}"></script>
+    <script src="{{ asset('assets2/js/jquery-1.12.4.min.js') }}"></script>
     <!-- BOOTSTRAP.MIN JS -->
-    <script src="{{ asset('assets2/js/bootstrap.min.js')}}"></script>
+    <script src="{{ asset('assets2/js/bootstrap.min.js') }}"></script>
     <!-- FORM JS -->
-    <script src="{{ asset('assets2/js/bootstrap-select.min.js')}}"></script>
+    <script src="{{ asset('assets2/js/bootstrap-select.min.js') }}"></script>
     <!-- FORM JS -->
-    <script src="{{ asset('assets2/js/jquery.bootstrap-touchspin.min.js')}}"></script>
+    <script src="{{ asset('assets2/js/jquery.bootstrap-touchspin.min.js') }}"></script>
     <!-- MAGNIFIC-POPUP JS -->
-    <script src="{{ asset('assets2/js/magnific-popup.min.js')}}"></script>
+    <script src="{{ asset('assets2/js/magnific-popup.min.js') }}"></script>
     <!-- WAYPOINTS JS -->
-    <script src="{{ asset('assets2/js/waypoints.min.js')}}"></script>
+    <script src="{{ asset('assets2/js/waypoints.min.js') }}"></script>
     <!-- COUNTERUP JS -->
-    <script src="{{ asset('assets2/js/counterup.min.js')}}"></script>
+    <script src="{{ asset('assets2/js/counterup.min.js') }}"></script>
     <!-- COUNTERUP JS -->
-    <script src="{{ asset('assets2/js/waypoints-sticky.min.js')}}"></script>
+    <script src="{{ asset('assets2/js/waypoints-sticky.min.js') }}"></script>
     <!-- MASONRY  -->
-    <script src="{{ asset('assets2/js/isotope.pkgd.min.js')}}"></script>
+    <script src="{{ asset('assets2/js/isotope.pkgd.min.js') }}"></script>
     <!-- OWL  SLIDER  -->
-    <script src="{{ asset('assets2/js/owl.carousel.min.js')}}"></script>
+    <script src="{{ asset('assets2/js/owl.carousel.min.js') }}"></script>
     <!-- OWL  SLIDER  -->
-    <script src="{{ asset('assets2/js/jquery.owl-filter.js')}}"></script>
+    <script src="{{ asset('assets2/js/jquery.owl-filter.js') }}"></script>
     <!-- PARALLAX BG IMAGE   -->
-    <script src="{{ asset('assets2/js/stellar.min.js')}}"></script>
+    <script src="{{ asset('assets2/js/stellar.min.js') }}"></script>
     <!-- ON SCROLL CONTENT ANIMTE   -->
-    <script src="{{ asset('assets2/js/scrolla.min.js')}}"></script>
+    <script src="{{ asset('assets2/js/scrolla.min.js') }}"></script>
     <!-- CUSTOM FUCTIONS  -->
-    <script src="{{ asset('assets2/js/custom.js')}}"></script>
+    <script src="{{ asset('assets2/js/custom.js') }}"></script>
     <!-- SHORTCODE FUCTIONS  -->
-    <script src="{{ asset('assets2/js/shortcode.js')}}"></script>
+    <script src="{{ asset('assets2/js/shortcode.js') }}"></script>
     <!-- SWITCHER FUCTIONS  -->
-    <script src="{{ asset('assets2/js/switcher.js')}}"></script>
+    <script src="{{ asset('assets2/js/switcher.js') }}"></script>
     <!-- BACKGROUND SCROLL -->
-    <script src="{{ asset('assets2/js/jquery.bgscroll.js')}}"></script>
+    <script src="{{ asset('assets2/js/jquery.bgscroll.js') }}"></script>
 
     <!-- SLIDER REVOLUTION -->
-    <script src="{{ asset('assets2/plugins/revolution/revolution/js/jquery.themepunch.tools.min.js')}}"></script>
-    <script src="{{ asset('assets2/plugins/revolution/revolution/js/jquery.themepunch.revolution.min.js')}}"></script>
-    <script src="{{ asset('assets2/plugins/revolution/revolution/js/extensions/revolution-plugin.js')}}"></script>
+    <script src="{{ asset('assets2/plugins/revolution/revolution/js/jquery.themepunch.tools.min.js') }}"></script>
+    <script src="{{ asset('assets2/plugins/revolution/revolution/js/jquery.themepunch.revolution.min.js') }}"></script>
+    <script src="{{ asset('assets2/plugins/revolution/revolution/js/extensions/revolution-plugin.js') }}"></script>
     <!-- REVOLUTION SLIDER SCRIPT -->
-    <script src="{{ asset('assets2/js/rev-script-3.js')}}"></script>
+    <script src="{{ asset('assets2/js/rev-script-3.js') }}"></script>
 
 
 
@@ -1393,7 +1745,59 @@
             }
         }
     </script>
+    {{-- toastr js --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 
+    <script>
+        $(document).ready(function() {
+            toastr.options.timeOut = 10000;
+            @if (Session::has('error'))
+                toastr.error(
+                    '{{ Session::get('
+                                                                                    error ') }}'
+                    );
+            @elseif (Session::has('success'))
+                toastr.success(
+                    '{{ Session::get('
+                                                                                    success ') }}'
+                    );
+            @endif
+        });
+
+        // $('body').on('submit', '#tracking-form', function(e) {
+
+        //     e.preventDefault();
+        //     tracking_id = (this).val();
+        //     alert(tracking_id);
+        // });
+    </script>
+
+    <script type="text/javascript">
+
+        $('body').on('submit', '#tracking-form', function(e) {
+
+            e.preventDefault();
+            $value = $(this).val();
+
+            $.ajax({
+                type: 'get',
+                url: '{{ URL::to('search-tracking-id') }}',
+                data: {
+                    'search': $value
+                },
+                success: function(data) {
+                    $('tbody').html(data);
+                }
+            });
+        })
+    </script>
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: {
+                'csrftoken': '{{ csrf_token() }}'
+            }
+        });
+    </script>
 
 </body>
 

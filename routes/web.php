@@ -174,3 +174,12 @@ Route::get('getDeliveredStatus/{id}', [VendorTrackingController::class, 'getDeli
 
 Route::get('daily-report', [HomeController::class, 'dailyReport'])->name('daily.report');
 Route::post('date-wise-tracking',[ParcelController::class,'date_tracking'])->name('date-wise-tracking');
+Route::post('contact-us', [HomeController::class, 'contact_us'])->name('contact-us');
+
+Route::get('/tracking-id-search',[HomeController::class,'search_tracking_id'])->name('tracking-id-search');
+Route::get('/vendor-payment',[PaymentController::class,'vendor_payment'])->name('vendor-payment');
+Route::get('/customer-payment',[PaymentController::class,'customer_payment'])->name('customer-payment');
+Route::get('/balance-sheet',[PaymentController::class,'balance_sheet'])->name('balance-sheet');
+Route::get('/get-vendor-payment-dues',[PaymentController::class,'get_vendor_payment_dues'])->name('get-vendor-payment-dues');
+
+Route::post('vendor-payment-add', [PaymentController::class, 'vendor_payment_add'])->name('vendor-payment-add');

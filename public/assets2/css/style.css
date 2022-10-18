@@ -9359,9 +9359,10 @@ ol.comment-list li.comment .comment-respond .comment-form p {
 .logo-header img,
 .logo-footer img {
   max-width: 100%;
-  width: auto;
-  height: auto;
+ /* width: auto;
+  height: auto;*/
   vertical-align: middle;
+  
 }
 
 .logo-footer > a {

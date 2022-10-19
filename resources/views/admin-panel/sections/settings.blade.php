@@ -21,11 +21,11 @@
                             </a>
                         </div>
                         <div class="modal-footer flex-nowrap p-0 justify-content-center">
-                            <a class="btn btn-primary btn-md text-white " data-bs-toggle="modal"
-                                data-bs-target="#usermodal">Add
+                            <a class="btn btn-primary btn-md text-white font-size-10" data-bs-toggle="modal"
+                                data-bs-target="#usermodal">Add User
                                 </a>
-                            <a class="btn btn-success btn-md text-white" href="{{ route('add-user') }}">
-                                List
+                            <a class="btn btn-success btn-md text-white font-size-10" href="{{ route('add-user') }}">
+                                Users List
                             </a>
 
                         </div>

@@ -1101,8 +1101,10 @@
                             vendor_id: vendor_id
                         },
                         success: function(data) {
-                          
-                          $('#show_vendor_balance').val(data);
+                        //   console.log(data);
+                        // data =JSON.stringify(data);
+
+                          $('#show_vendor_balance').val(data.vendor_tracking_charges);
                           $('#add_balance_vendor_id').val(vendor_id);
                         }
                     })

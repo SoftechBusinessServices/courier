@@ -16,6 +16,7 @@ use App\Models\ParcelShipper;
 use App\Models\PaymentMethod;
 use App\Models\AllocateParcel;
 use App\Models\PaymentLog;
+use App\Models\VendorCharges;
 use Illuminate\Support\Facades\DB;
 
 class PaymentController extends Controller
@@ -217,10 +218,12 @@ class PaymentController extends Controller
      }
 
      public function get_vendor_payment_dues(Request $request){
-
-        $record = PaymentLog::where('vcid', $request->vendor_id)->latest()->take(1)->first();
-        $remaingAmount = ($record) ? $record->remaining_amount : 0;
-        return $remaingAmount;
+        // dd($request->all());
+        // $record = PaymentLog::where('vcid', $request->vendor_id)->latest()->take(1)->first();
+        $record = VendorCharges::where('vendor_id', $request->vendor_id)->latest()->take(1)->first();
+        // $remaingAmount = ($record) ? $record->remaining_amount : 0;
+        // return $remaingAmount;
+        return response()->json( $record);
      }
 
      public function vendor_payment_add(Request $request){

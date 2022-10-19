@@ -145,14 +145,15 @@
                                                         {{ $item->pl_status }} </button>
                                                     @else
                                                         {{-- @php var_dump(empty($item->parcel_charges)); @endphp --}}
-                                                        @if($item->parcel_with_charges->vendor_tracking_charges != "" || $item->parcel_with_tracking->vendor_tracking_id != "")
-                                                            <a class="btn btn-outline-info btn-sm delivered_status" title="add" id="{{ $item->pl_id }}">
+                                                        @if( $item->parcel_with_charges != ""  ||  $item->parcel_with_tracking != "")
+                                                            
+                                                        <a class="btn btn-outline-info btn-sm delivered_status" title="add" id="{{ $item->pl_id }}">
                                                                 Deliver
                                                             </a>
                                                         @endif
-                                                        {{-- <a class="btn btn-outline-info btn-sm delivered_status" title="add" id="{{ $item->pl_id }}">
+                                                        <a class="btn btn-outline-info btn-sm delivered_status" title="add" id="{{ $item->pl_id }}">
                                                             Deliver
-                                                        </a> --}}
+                                                        </a>
                                                     @endif
                                                 </td>
 

@@ -99,7 +99,29 @@
                                     </table>
                                 </div>
                                 <div class="col-2">
+                                  
+                                        <table class="table table-sm">
+                                            <tr>
+                                                <th>Total Payable: </th>
+                                                <td><input type="text" name="vendor_total_payable" value=" {{$totalAmount}}"></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Total Paid: </th>
+                                                <td><input type="text" name="vendor_total_paid" value="{{$totalpaid}}"></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Total Dues: </th>
+                                                @php
+                                                $dues = $totalAmount-$totalpaid;
+                                                @endphp
+                                                <td><input type="text" name="vendor_total_dues" value="{{ $dues}}"></td>
+                                            </tr>
+                                        </table>
+                                          
+                                   
                                     
+                                    
+
                                 </div>
                             </div>
 

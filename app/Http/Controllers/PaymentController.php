@@ -94,13 +94,14 @@ class PaymentController extends Controller
             ->get();
             // dd($data);
         $data['totalAmount'] = array_sum ($data['allocated_parcels']->pluck('vendor_tracking_charges')->toArray());
-
+        // dd( $data['totalAmount'] );
         $data['payment_logs'] = DB::table('payment_logs')
             ->where('payment_logs.customer_type','2')
             ->where('payment_logs.vcid',$vendor_id)
             ->orderBy('payment_logs.id','DESC')
             ->get();
         // $data['totalpaid'] = array_sum($data['payment_logs']->pluck('collected_amount')->toArray());
+        // dd($data['totalpaid']);
         $check = PaymentLog::where('vcid', $request->vendor_id)->latest()->take(1)->first();
         $remaingAmount = ($check) ? $check->remaining_amount : 0;
         $data['totalpaid'] =  $remaingAmount;

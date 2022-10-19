@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use League\CommonMark\Extension\Table\Table;
 
 class CreatePaymentLogsTable extends Migration
 {
@@ -18,6 +17,7 @@ class CreatePaymentLogsTable extends Migration
             $table->id();
             $table->enum('customer_type',[1,2])->default(1)->comment('1=customer,2=vendor');
             $table->bigInteger('vcid')->comment('vendor customer id');
+            $table->bigInteger('payment_method_id');
             $table->bigInteger('invoice_id');
             $table->float('collected_amount');
             $table->float('remaining_amount');

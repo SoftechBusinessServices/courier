@@ -85,7 +85,9 @@ class PaymentController extends Controller
      }
 
      public function vendor_payment(Request $request){
+       
         $vendor_id = ($request->has('vendor')) ? $request->vendor : 0;
+        
         $data['allocated_parcels'] = DB::table('allocate_parcels')
             ->leftJoin('parcels','parcels.id','=','allocate_parcels.pl_id')
             ->leftJoin('vendor_charges','vendor_charges.pl_id','=','allocate_parcels.pl_id')
@@ -94,8 +96,10 @@ class PaymentController extends Controller
             ->orderBy('allocate_parcels.vendor_id','DESC')
             ->get();
             // dd($data);
+
         $data['totalAmount'] = array_sum ($data['allocated_parcels']->pluck('vendor_tracking_charges')->toArray());
         // dd( $data['totalAmount'] );
+        
         $data['payment_logs'] = DB::table('payment_logs')
             ->where('payment_logs.customer_type','2')
             ->where('payment_logs.vcid',$vendor_id)
@@ -103,112 +107,20 @@ class PaymentController extends Controller
             ->get();
         // $data['totalpaid'] = array_sum($data['payment_logs']->pluck('collected_amount')->toArray());
         // dd($data['totalpaid']);
+        
         $check = PaymentLog::where('vcid', $request->vendor_id)->latest()->take(1)->first();
+        
         $remaingAmount = ($check) ? $check->remaining_amount : 0;
         $data['totalpaid'] =  $remaingAmount;
         $data['companies'] = Company::all();
         // dd($data['payment_logs']);
         return view('admin-panel.payments.vendor_payments')->with($data);
-        //  $data = Parcel::all();
-        // // dd($data);
-        // $regions = Region::all();
-        // $countries = Country::all();
-        // // $charges = ShippingCharge::all();
-        // $customers = Customer::all();
-        // // dd(1);
-        // $users = User::all();
-        // $countries = Country::all();
-
-        // $currencies = Currency::all();
-        // $services = Service::all();
-        
-        // $shipper_names = ParcelShipper::with('shipper_parcel_details')->get()->unique('company_name');
-        // // dd($shipper_names);
-        // $processed_parcels = Parcel::with('country', 'consignee')->where('pl_status', 'processed')->get();
-        // // dd($processed_parcels);
-
-        // $delivered_parcels = Parcel::with('parcel_tracking', 'parcel_charges',)->where('pl_status', 'delivered')->get();
-        // // dd($delivered_parcels);
-        // //    dd(DB::getQueryLog());
-        // // DB::enableQueryLog();
-
-        // // $processed_parcels = Parcel::with('country','consignee')->where('pl_status', 'processed')->get();
-        // $allocated_parcels =  Parcel::with(['country', 'parcel_tracking', 'parcel_charges', 'allocate_parcel' => function ($query) {
-        //     $query->with(['service', 'allocate_logistic' => function ($query) {
-
-        //         $query->with('logistic_company');
-        //     }]);
-        // }])
-        //     ->whereIn(
-        //         'pl_status',
-        //         ['allocated', 'delivered']
-        //     )
-        //     // ->orWhere('pl_status', 'delivered')
-        //     ->get();
-        // // dd(DB::getQueryLog());
-        // // dd($allocated_parcels);
-
-
-
-        // $logistics = Logistic::all();
-        // $payment_methods = PaymentMethod::all();
-        // $vendors =  Logistic::with('logistic_company')->get();
-        // $companies = Company::get();
-        // // dd($vendors);
-        // // dd($data);
-        // return view('admin-panel.payments.vendor_payments',compact('data', 'regions',  'countries', 'companies', 'currencies', 'customers', 'services',  'processed_parcels', 'allocated_parcels', 'logistics', 'payment_methods', 'users', 'vendors', 'delivered_parcels', 'shipper_names'));
+       
      }
 
      public function customer_payment(){
-       
-        $data = Parcel::all();
-        // dd($data);
-        $regions = Region::all();
-        $countries = Country::all();
-        // $charges = ShippingCharge::all();
-        $customers = Customer::all();
-        // dd(1);
-        $users = User::all();
-        $countries = Country::all();
-        $companies = Company::all();
-        $currencies = Currency::all();
-        $services = Service::all();
+       dd(1);
         
-        $shipper_names = ParcelShipper::with('shipper_parcel_details')->get()->unique('company_name');
-        // dd($shipper_names);
-        $processed_parcels = Parcel::with('country', 'consignee')->where('pl_status', 'processed')->get();
-        // dd($processed_parcels);
-
-        $delivered_parcels = Parcel::with('parcel_tracking', 'parcel_charges',)->where('pl_status', 'delivered')->get();
-        // dd($delivered_parcels);
-        //    dd(DB::getQueryLog());
-        // DB::enableQueryLog();
-
-        // $processed_parcels = Parcel::with('country','consignee')->where('pl_status', 'processed')->get();
-        $allocated_parcels =  Parcel::with(['country', 'parcel_tracking', 'parcel_charges', 'allocate_parcel' => function ($query) {
-            $query->with(['service', 'allocate_logistic' => function ($query) {
-
-                $query->with('logistic_company');
-            }]);
-        }])
-            ->whereIn(
-                'pl_status',
-                ['allocated', 'delivered']
-            )
-            // ->orWhere('pl_status', 'delivered')
-            ->get();
-        // dd(DB::getQueryLog());
-        // dd($allocated_parcels);
-
-
-
-        $logistics = Logistic::all();
-        $payment_methods = PaymentMethod::all();
-        $vendors =  Logistic::with('logistic_company')->get();
-        $companies = Company::get();
-        // dd($vendors);
-        // dd($data);
-        return view('admin-panel.payments.customer_payments', compact('data', 'regions',  'countries', 'companies', 'currencies', 'customers', 'services',  'processed_parcels', 'allocated_parcels', 'logistics', 'payment_methods', 'users', 'vendors', 'delivered_parcels', 'shipper_names'));
      }
 
      
@@ -227,15 +139,19 @@ class PaymentController extends Controller
      }
 
      public function vendor_payment_add(Request $request){
-        
-        $record = PaymentLog::where('vcid', $request->add_balance_vendor_id)->latest()->take(1)->first();
+            // dd($request->all());
+        $record = PaymentLog::where('vcid', $request->vendor_id)->latest()->take(1)->first();
         $remaingAmount = ($record) ? $record->remaining_amount : 0;
+        
+        $totalAmount = array_sum (VendorCharges::where('vendor_id',$request->vendor_id)->pluck('vendor_tracking_charges')->toArray());
+        // dd( $totalAmount);
         $insert = [
             'customer_type' => '2',
-            'vcid' => $request->add_balance_vendor_id,
+            'vcid' => $request->vendor_id,
+            'payment_method_id' => $request->payment_method_id,
             'invoice_id' => 0,
             'collected_amount' => $request->collected_amount,
-            'remaining_amount' => $remaingAmount - $request->collected_amount,
+            'remaining_amount' => $totalAmount - $request->collected_amount,
         ];
         // dd($insert, $request->all());
         PaymentLog::create($insert);

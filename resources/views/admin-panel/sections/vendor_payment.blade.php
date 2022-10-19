@@ -517,7 +517,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="">Select Vendor</label>
-                                <select name="customer_type" id="customer_type" class="form-control">
+                                <select name="vendor_id" id="customer_type" class="form-control">
                                     <option value="" class="form-control">Select Vendor</option>
                                     {{-- @dd($vendors) --}}
                                     @foreach ($companies as $company)

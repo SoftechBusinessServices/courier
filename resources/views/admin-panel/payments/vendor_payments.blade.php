@@ -11,132 +11,138 @@
                     <div class="col-12">
                         <!--write your code here  -->
 
-                        <div class="card">
-                            <div class="card-body">
-                                <p class="card-title-desc text-dark mb-2 py-1 px-2 rounded text-center" style="background-color: #d6dbf8">
+                        <div class="card ">
+                            <div class="card-body m-2">
+                                <p class="card-title-desc text-dark mb-2 py-1 px-2 rounded text-center"
+                                    style="background-color: #d6dbf8">
                                     <span class="font-size-20 font-weight-bold text-center">Vendor Payment Details</span>
                                 </p>
                                 <form method="get" id="searchForm">
                                     <div class="row">
-                                        <div class="col-md-2">
-                                            <div class="form-group p-3">
+                                        <div class="col-2">
+                                            <div class="form-group mt-2">
+                                                <label for="" class="text-danger ml-2">Choose One Vendor </label>
                                                 <select name="vendor" id="vendor-payment-select" class="form-control"
                                                     onchange="$('#searchForm').submit()">
                                                     <option value="" class="form-control">Select Vendor</option>
                                                     {{-- @dd($vendors) --}}
                                                     @foreach ($companies as $company)
-                                                        <option class="form-control" value="{{ $company->id }}" @if(request()->vendor == $company->id) selected @endif>
+                                                        <option class="form-control" value="{{ $company->id }}"
+                                                            @if (request()->vendor == $company->id) selected @endif>
                                                             {{ $company->name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
-
                                         </div>
                                     </div>
-
-                                    <div class="col-md-1 offset-3">
+                                </form>
+                                <div class="row">
+                                    <div class="col-5 border">
+                                        <h6 class="text-center mt-2 font-weight-bold text-center text-secondary border">Vendor Charges Table</h6>
+                                        <hr>
+                                        <table id="datatable"
+                                            class="table table-bordered dt-responsive  nowrap w-100 table-sm text-center table-sm ">
+                                            <thead>
+                                                <tr>
+                                                    <td>#</td>
+                                                    <td>Date</td>
+                                                    <td>Parcel ID</td>
+                                                    <td>Tracking ID</td>
+                                                    <td>Vendor Charges</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @forelse ($allocated_parcels as $row)
+                                                    <tr>
+                                                        <td>{{ $loop->iteration }}</td>
+                                                        <td>{{ date('d F Y', strtotime($row->created_at)) }}</td>
+                                                        <td>{{ $row->pl_id }}</td>
+                                                        <td>{{ $row->vendor_tracking_id }}</td>
+                                                        <td>{{ $row->vendor_tracking_charges }}</td>
+                                                    </tr>
+                                                @empty
+                                                    <p>No data</p>
+                                                @endforelse
+                                            </tbody>
+                                        </table>
 
                                     </div>
-                            </div>
-                            </form>
-                            <div class="row">
-                                <div class="col-5 border" >
-                                    <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100 table-sm text-center table-sm">
-                                        <thead>
-                                            <tr>
-                                                <td>#</td>
-                                                <td>Date</td>
-                                                <td>Parcel ID</td>
-                                                <td>Tracking ID</td>
-                                                <td>Vendor Charges</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @forelse ($allocated_parcels as $row)
+                                    <div class="col-5 border">
+                                        <h6 class="text-center mt-2 font-weight-bold text-center text-secondary border">Vendor Payments Table</h6>
+                                        <hr>
+                                        <table id="datatable1"  class="table table-bordered dt-responsive nowrap w-100 table-sm">
+                                            <thead>
                                                 <tr>
-                                                    <td>{{$loop->iteration}}</td>
-                                                    <td>{{date('d F Y',strtotime($row->created_at))}}</td>
-                                                    <td>{{$row->pl_id}}</td>
-                                                    <td>{{$row->vendor_tracking_id}}</td>
-                                                    <td>{{$row->vendor_tracking_charges}}</td>
+                                                    <td>#</td>
+                                                    <td>Date</td>
+                                                    <td>Paid Amount</td>
+                                                    <td>Remaing Amount </td>
                                                 </tr>
-                                            @empty
-                                                <p>No data</p>
-                                            @endforelse
-                                        </tbody>
-                                    </table>
-
-                                </div>
-                                <div class="col-5 border">
-                                    <table id="datatable-buttons"
-                                    class="table table-bordered dt-responsive nowrap w-100 table-sm">
-                                        <thead>
-                                            <tr>
-                                                <td>#</td>
-                                                <td>Date</td>
-                                                <td>Paid Amount</td>
-                                                <td>Remaing Amount </td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @forelse ($payment_logs as $row)
-                                                <tr>
-                                                    <td>{{$loop->iteration}}</td>
-                                                    <td>{{date('d F Y',strtotime($row->created_at))}}</td>
-                                                    <td>{{$row->collected_amount}}</td>
-                                                    <td>{{$row->remaining_amount}}</td>
-                                                    {{-- <td>{{$row->vendor_tracking_charges}}</td> --}}
-                                                </tr>
-                                            @empty
-                                                <tr>
-                                                    <td colspan="4">
-                                                        <div class="text-danger">
-                                                            No record ..
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            @endforelse
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="col-2 border">
+                                            </thead>
+                                            <tbody>
+                                                @forelse ($payment_logs as $row)
+                                                    <tr>
+                                                        <td>{{ $loop->iteration }}</td>
+                                                        <td>{{ date('d F Y', strtotime($row->created_at)) }}</td>
+                                                        <td>{{ $row->collected_amount }}</td>
+                                                        <td>{{ $row->remaining_amount }}</td>
+                                                        {{-- <td>{{$row->vendor_tracking_charges}}</td> --}}
+                                                    </tr>
+                                                @empty
+                                                    <tr>
+                                                        <td colspan="4">
+                                                            <div class="text-danger">
+                                                                No record ..
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                @endforelse
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-2 border">
+                                        <h6 class="text-center mt-2 font-weight-bold text-center text-secondary border">Vendor Dues Table</h6>
+                                        <hr>
                                         <table class="table table-sm">
                                             <tr>
                                                 <th>Total Payable: </th>
-                                                <td><input type="text" name="vendor_total_payable" value=" {{$totalAmount}}"></td>
+                                                <td><input type="text" name="vendor_total_payable"
+                                                        value=" {{ $totalAmount }}" readonly></td>
                                             </tr>
                                             <tr>
                                                 <th>Total Paid: </th>
-                                                <td><input type="text" name="vendor_total_paid" value="{{$totalpaid}}"></td>
+                                                <td><input type="text" name="vendor_total_paid"
+                                                        value="{{ $totalpaid }}" readonly></td>
                                             </tr>
                                             <tr>
                                                 <th>Total Dues: </th>
                                                 @php
-                                                $dues = $totalAmount-$totalpaid;
+                                                    $dues = $totalAmount - $totalpaid;
                                                 @endphp
-                                                <td><input type="text" name="vendor_total_dues" value="{{ $dues}}"></td>
+                                                <td><input type="text" name="vendor_total_dues"
+                                                        value="{{ $dues }}" readonly></td>
                                             </tr>
                                         </table>
-                                          
-                                   
-                                    
-                                    
 
+
+
+
+
+                                    </div>
+                                </div>
+
+                                <!-- Back & Dashboard btns -->
+                                <div class="d-flex justify-content-between my-2">
+                                    <a href="{{ route('home') }}" class="btn btn-primary btn-md text-white">&#60; Back</a>
+                                    <a href="{{ route('home') }}" class="btn btn-dark btn-md text-white">Dashboard </a>
                                 </div>
                             </div>
 
-                            <!-- Back & Dashboard btns -->
-                            <div class="d-flex justify-content-between my-2">
-                                <a href="{{ route('home') }}" class="btn btn-primary btn-md text-white">&#60; Back</a>
-                                <a href="{{ route('home') }}" class="btn btn-dark btn-md text-white">Dashboard </a>
-                            </div>
-                        </div>
 
-
-                    </div> <!-- end col -->
+                        </div> <!-- end col -->
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 @endsection

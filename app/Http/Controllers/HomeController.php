@@ -49,11 +49,11 @@ class HomeController extends Controller
         if (isset($lastParcel)) {
             // Sum 1 + last id
             // $abc =  $parcel->pl_id = date('Y') . '-' . 'PL-00000' . ($lastParcel->id + 1);
-            $abc =  $parcel->pl_id = 'PL-00000' . ($lastParcel->id + 1);
+            $abc =  $parcel->pl_id = 'PL00000' . ($lastParcel->id + 1);
             // $data['pl_id'] = $a;
             // return $abc;
         } else {
-            $abc = $parcel->pl_id  = 'PL-000001';
+            $abc = $parcel->pl_id  = 'PL000001';
             // $data['pl_id'] = $b;
             // return $abc;
         }
@@ -78,19 +78,33 @@ class HomeController extends Controller
         // $shipper_names = ParcelShipper::with('shipper_parcel_details')->get(['id','pl_phone_id','company_name'])->unique('company_name');
         $shipper_names = ParcelShipper::with('shipper_parcel_details')->get()->unique('company_name');
         // dd($shipper_names);
-        $processed_parcels = Parcel::with('country', 'consignee')->where('pl_status', 'processed')->get();
+        // $processed_parcels = Parcel::with('country', 'consignee')->where('pl_status', 'processed')->get();
+        $processed_parcels = Parcel::with(['parcel_with_payment','parcel_with_service','parcel_with_shipper'=>function($query){
+            $query->with('shipper_with_country');
+        } ,'parcel_with_consignee'=>function($query){
+            $query->with('consignee_with_country');
+        }])
+        ->where('pl_status', 'processed')->get();
         // dd($processed_parcels);
-
-        $delivered_parcels = Parcel::with('parcel_tracking', 'parcel_charges',)->where('pl_status', 'delivered')->get();
+        
+        $delivered_parcels = Parcel::with('parcel_with_tracking', 'parcel_with_charges')->where('pl_status', 'delivered')->get();
         // dd($delivered_parcels);
         //    dd(DB::getQueryLog());
         // DB::enableQueryLog();
 
         // $processed_parcels = Parcel::with('country','consignee')->where('pl_status', 'processed')->get();
-        $allocated_parcels =  Parcel::with(['country', 'parcel_tracking', 'parcel_charges', 'allocate_parcel' => function ($query) {
-            $query->with(['service', 'allocate_logistic' => function ($query) {
+        $allocated_parcels =  Parcel::with(['parcel_with_tracking', 'parcel_with_charges', 
+        
+        'parcel_with_shipper'=>function($query){
+            $query->with('shipper_with_country');
 
-                $query->with('logistic_company');
+        } ,'parcel_with_consignee'=>function($query){
+            $query->with('consignee_with_country');
+        },
+        'parcel_with_allocate' => function ($query) {
+            $query->with(['allocate_with_service', 'allocate_with_logistic' => function ($query) {
+
+                $query->with('logistic_with_company');
             }]);
         }])
             ->whereIn(
@@ -99,14 +113,15 @@ class HomeController extends Controller
             )
             // ->orWhere('pl_status', 'delivered')
             ->get();
-        // dd(DB::getQueryLog());
-        // dd($allocated_parcels);
-
-
+            
+            // dd($allocated_parcels);
+            
+            // dd(DB::getQueryLog());
 
         $logistics = Logistic::all();
         $payment_methods = PaymentMethod::all();
-        $vendors =  Logistic::with('logistic_company')->get();
+        $vendors =  Logistic::with('logistic_with_company')->get();
+        // dd($vendors);
         $companies = Company::get();
         // dd($vendors);
         return view('admin-panel.master',  compact('data', 'regions',  'countries', 'companies', 'currencies', 'customers', 'services', 'abc', 'processed_parcels', 'allocated_parcels', 'logistics', 'payment_methods', 'users', 'vendors', 'delivered_parcels', 'shipper_names'));

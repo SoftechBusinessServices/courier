@@ -16,12 +16,14 @@ class CreateParcelsTable extends Migration
         Schema::create('parcels', function (Blueprint $table) {
             $table->id();
             $table->string('pl_id')->nullable();
+            $table->Integer('shipper_id')->nullable();
+            $table->Integer('consignee_id')->nullable();
             $table->integer('pl_boxes')->nullable();
             $table->float('pl_weight')->nullable();
             $table->foreignId('service_id')->nullable();
             // $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
-            $table->foreignId('shipper_country_id')->nullable();
-            $table->foreignId('consignee_country_id')->nullable();
+            // $table->foreignId('shipper_country_id')->nullable();
+            // $table->foreignId('consignee_country_id')->nullable();
             // $table->foreign('region_id')->references('id')->on('regions')->onDelete('cascade');
             $table->foreignId('payment_id')->nullable();
             // $table->foreign('region_id')->references('id')->on('regions')->onDelete('cascade');

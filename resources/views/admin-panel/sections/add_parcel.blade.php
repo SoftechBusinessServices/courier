@@ -290,35 +290,29 @@
                                 </div>
                             </div>
                             <div class="row">
-                                {{-- <div class="col-md-6">
-                                    <label for="Search" class="form-label">Search Phone Number</label>
-                                    <input class="form-control @error('pl_phone_id') is-invalid @enderror"
-                                        id="pl_phone_id" placeholder="Type to search..." name="pl_phone_id">
-                                    <table>
-                                        <tbody id="content_manager">
+                             <div class="col-md-6">
+                                    <label for="Search" class="form-label">Select Existing Customer </label>
+                                    <select name="shipper_id" id="shipper_id" class="form-control">
+                                        <option value=""> -Select One Customer- </option>
+                                        @foreach($shipper_names as $shipper_name)
+                                        <option value="{{$shipper_name->id}}">{{$shipper_name->company_name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div> 
 
-                                        </tbody>
-                                    </table>
-
-                                    @error('pl_phone_id')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div> --}}
-
-                                {{-- <div class="col-md-6 mt-4">
+                                <div class="col-md-6 mt-4">
                                     <label for="chkPassport ">
                                         <input type="checkbox" id="chkPassport" />
                                         Add New Shipper
                                     </label>
 
-                                </div> --}}
-                                {{-- <div id="dvAddShipper"> --}}
+                                </div> 
+                            </div>
+                                <div id="dvAddShipper">
                                     <hr>
                                     <div class="row">
 
-                                        <div class="col-md-6">
+                                        <div class="col-md-6 mb-2">
                                             <label for="username2" class="form-label">Company
                                                 Name</label>
                                             <input type="text" placeholder="Company Name" required
@@ -332,7 +326,7 @@
                                                 </span>
                                             @enderror
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-6 mb-2">
                                             <label for="service" class="form-label">Shipper Phone:</label>
                                             <input type="text" name="shipper_phone"
                                                 data-inputmask="'mask': '0399-99999999'" type="number"
@@ -350,7 +344,7 @@
 
                                     </div>
                                     <div class="row">
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-6 mb-2">
                                             <label for="basicpill-phoneno-input">Select Country:</label>
                                             <select
                                                 class="form-control @error('shipper_country_id') is-invalid @enderror"
@@ -393,7 +387,7 @@
                                                 </span>
                                             @enderror
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-6 mb-2">
                                             <label for="basicpill-phoneno-input">ZIP:</label>
                                             <input type="text"
                                                 class="form-control @error('shipper_zip') is-invalid @enderror"
@@ -418,7 +412,7 @@
                                                 </span>
                                             @enderror
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-6 mb-2">
                                             <label for="basicpill-phoneno-input">Address
                                                 Line2:</label>
                                             <input type="text"
@@ -431,14 +425,47 @@
                                             @enderror
                                         </div><br>
                                     </div>
+                                </div>
 
-                                {{-- </div> --}}
-                            </div>
                             <br><hr>
                         </div>
 
                         <div class="tab"><h5 class="text-danger">Consignee Details:</h5>
                             <hr>
+                            <div class="row mt-3 mb-2">
+                                <div class="col-md-12">
+                                    <label for="onsignee_business">Consignee's Business Title </label>
+                                        <input type="text"
+                                            class="form-control @error('consignee_business') is-invalid @enderror"
+                                            id="consignee_business" value="" name="consignee_business"
+                                            placeholder="Business Title" />
+                                        @error('consignee_business')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                </div>
+                                {{-- <div class="col-md-6">
+                                    <label for="chkCompany">
+                                        <input type="checkbox" id="chkCompany" />
+                                       Business Ti
+                                    </label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div id="dvCompany" style="display: none">
+                                        <label for="onsignee_business">Consignee's Business Title </label>
+                                        <input type="text"
+                                            class="form-control @error('consignee_business') is-invalid @enderror"
+                                            id="consignee_business" value="" name="consignee_business"
+                                            placeholder="Business Title" />
+                                        @error('consignee_business')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div> --}}
+                            </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="username0" class="form-label">Consignee
@@ -470,28 +497,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="row mt-3 mb-2">
-                                {{-- <div class="col-md-6">
-                                    <label for="chkCompany">
-                                        <input type="checkbox" id="chkCompany" />
-                                        Is it Business?
-                                    </label>
-                                </div> --}}
-                                <div class="col-md-12">
-                                    {{-- <div id="dvCompany" style="display: none"> --}}
-                                        <label for="onsignee_business">Consignee's Business Title </label>
-                                        <input type="text"
-                                            class="form-control @error('consignee_business') is-invalid @enderror"
-                                            id="consignee_business" value="" name="consignee_business"
-                                            placeholder="Business Title" />
-                                        @error('consignee_business')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    {{-- </div> --}}
-                                </div>
-                            </div>
+                         
                             <div class="row">
                                 <div class="col-lg-6">
                                     <label for="basicpill-phoneno-input">Select Country:</label>
@@ -640,7 +646,7 @@
         // This function deals with validation of the form fields
         var x, y, i, valid = true;
         x = document.getElementsByClassName("tab");
-        y = x[currentTab].getElementsByTagName("input");
+        y = x[currentTab].getElementsByTagName("");
         // A loop that checks every input field in the current tab:
         for (i = 0; i < y.length; i++) {
             // If a field is empty...
@@ -673,13 +679,14 @@
     $(document).ready(function() {
 
         $(":input").inputmask();
-
+        $("#dvAddShipper").hide();
         $(function() {
+
             $("#chkPassport").click(function() {
 
                 if ($(this).is(":checked")) {
 
-                    $("#pl_phone_id").val('');
+                    $("#shipper_id").val('');
                     $("#dvAddShipper").show();
                 } else {
                     $("#dvAddShipper").hide();

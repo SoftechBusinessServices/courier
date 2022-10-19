@@ -66,7 +66,7 @@
                                                 <th>S.No</th>
                                                 <th>Parcel ID</th>
                                                 <th>Parcel<br>Destination</th>
-                                                <th>Despatch<br>Date</th>
+                                                <th>Dispatch<br>Date</th>
                                                 <th>Weight <br>(kilogram)</th>
                                                 <th>Parcel <br>Charges</th>
                                                 <th>Required<br>Service</th>
@@ -87,7 +87,8 @@
                                                         <i class="far fa-eye"> {{ $item->pl_id }}</i>
                                                     </a>
                                                 </td>
-                                                <td>{{ $item->country->name}}</td>
+                                                <td>{{ $item->parcel_with_consignee->consignee_with_country->name}}</td>
+                                                {{-- <td>{{ $item->country->name}}</td> --}}
                                              
                                                 <td>
                                                     @php
@@ -98,7 +99,7 @@
                                                 </td>
                                                 <td> {{ $item->pl_weight }} </td>
                                                 <td> {{ $item->pl_final }} </td>
-                                                <td> {{ $item->parcel_service->service_name }} </td>
+                                                <td> {{ $item->parcel_with_service->service_name }} </td>
                                                 <td>
                                                     <a href="{{ url('/dispatch-notes-print-view/'.$item->id) }}" class="btn btn-success waves-effect waves-light me-1 btn-sm"><i class="fa fa-print font-size-12">Dispatch Notes</i></a>
                                                     |
@@ -162,7 +163,7 @@
                             $.each(data, function(key, course) {
                                 $('select[name="vendor_id"]').append(
                                     '<option value="' + course.id +
-                                    '">' + course.logistic_company.name +
+                                    '">' + course.logistic_with_company.name +
                                     '</option>');
                             });
                         } else {

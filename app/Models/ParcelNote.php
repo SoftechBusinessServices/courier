@@ -18,7 +18,7 @@ class ParcelNote extends Model
          'disp_total','status'
         ];
 
-    public function notes_currency(){
+    public function notes_with_currency(){
 
         return $this->belongsTo(Currency::class,'currency_id','id');
     }

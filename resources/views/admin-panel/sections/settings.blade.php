@@ -1,4 +1,5 @@
-<div class="page-content" style="padding:0;  padding-top:2%;">
+{{-- <div class="page-content" style="padding:0;  padding-top:2%;"> --}}
+    <div class="page-content px-5" style="padding:0; padding-top:88px;">
     <div class=" border bg-light">
         <div class="modal modal-alert position-static d-block  " tabindex="-1" role="dialog" id="modalChoice">
             <div class="modal-body  text-center">
@@ -9,7 +10,7 @@
                 </a>
             </div>
 
-            <div class="row gx-5">
+            <div class="row gx-5 mb-2">
 
                 <div class="col  ">
                     <div class="modal-content rounded-3 shadow">
@@ -23,8 +24,8 @@
                         <div class="modal-footer flex-nowrap p-0 justify-content-center">
                             <a class="btn btn-primary btn-md text-white " data-bs-toggle="modal"
                                 data-bs-target="#usermodal">Add
-                                User </a>
-                            <a class="btn btn-success btn-md text-white" href="{{ route('add-user') }}">Users
+                                </a>
+                            <a class="btn btn-success btn-md text-white" href="{{ route('add-user') }}">
                                 List
                             </a>
 

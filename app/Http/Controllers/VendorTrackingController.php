@@ -13,9 +13,11 @@ class VendorTrackingController extends Controller
     //
     public function vendor_tracking(Request $request){
 
+        // dd($request->all());
         $validator = Validator::make($request->all(), [
             'parcell_idd' => 'required',
             'tracking_idd' => 'required',
+            'vendor_id_tracked' => 'required',
         ]);
  
         if ($validator->fails()) {
@@ -24,17 +26,21 @@ class VendorTrackingController extends Controller
         }
         $data = [
             'pl_id' => $request->parcell_idd,
+            'vendor_id' => $request->vendor_id_tracked,
             'vendor_tracking_id' => $request->tracking_idd,
         ];
          $data_id = VendorIdTracking::create($data);
         return response()->json(['success' => 1,'data' => $data_id]);
     }
+
+
     public function vendor_tracking_charges(Request $request){
 
        
         $validator = Validator::make($request->all(), [
             'parcell_iddd' => 'required',
-            'parcell_iddd' => 'required',
+            'vendor_id_charged' => 'required',
+            'vendor_charges' => 'required',
         ]);
  
         if ($validator->fails()) {
@@ -43,6 +49,7 @@ class VendorTrackingController extends Controller
         }
         $data = [
             'pl_id' => $request->parcell_iddd,
+            'vendor_id' => $request->vendor_id_charged,
             'vendor_tracking_charges' => $request->vendor_charges,
         ];
         $data_id = $data = VendorCharges::create($data);

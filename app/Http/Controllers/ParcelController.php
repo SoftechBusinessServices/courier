@@ -18,14 +18,14 @@ class ParcelController extends Controller
     //
     public function add_parcel()
     {
-       
+
         $data = Parcel::all();
         // dd($data);
         $regions = Region::all();
         $countries = Country::all();
         $currencies = Currency::all();
         // dd($charges);
-        
+
         return view('admin-panel.parcels.create_parcel', compact('data', 'regions', 'currencies', 'countries', 'abc'));
     }
 
@@ -40,77 +40,11 @@ class ParcelController extends Controller
     {
 
         // dd($request->all());
-        $parcel_validated = $request->validate([
 
-            'pl_id' => 'required',
-            'service_id' => 'required',
-            'payment_method_id' => 'required',
-            'pl_boxes' => 'required',
-            'pl_weight' => 'required',
-            'pl_charges' => 'required',
-            'pl_extras' => 'required',
-            'pl_discount' => 'required',
-            'pl_final' => 'required',
-            'pl_description' => 'required',
-            'pl_date' => 'required',
-            'shipper_country_id' => 'required',
-        ]);
-        // dd(1);
-        if ($parcel_validated) {
-            // dd(2);
-            //parcel_insertion
-            $data  = [
-
-                'pl_id' => $request->pl_id,
-                'pl_boxes' => $request->pl_boxes,
-                'pl_weight' => $request->pl_weight,
-                'service_id' => $request->service_id,
-                'pl_charges' => $request->pl_charges,
-                'pl_extras' => $request->pl_extras,
-                'pl_discount' => $request->pl_discount,
-                'pl_final' => $request->pl_final,
-                'pl_description' => $request->pl_description,
-                'payment_id' => $request->payment_method_id,
-                'consignee_country_id' => $request->consignee_country_id,
-                'shipper_country_id' => $request->shipper_country_id,
-            ];
-            // if($request->shipping_country_id !=null){
-            //     $data =['shipper_country_id'=>$request->shipper_country_id];
-            // }
-           
-            $record_id = Parcel::create($data)->id;
-            // dd($record_id);
-            session()->now('message', 'Success! parcel Added.');
-        } else {
-            dd(3333);
-            return back()->with('error', "Parcel insertion failed!");
-        }
-        // dd(4);
-        //pacel_phone_searching
-        if ($request->pl_phone_id  !== null) {
-
-            // dd('phone_search not null');
-            $request->validate([
-                $request->pl_phone_id
-            ]);
-            $data  = [
-
-                'pl_id' => $record_id,
-                'pl_date' => $request->pl_date,
-                'pl_phone_id' => $request->pl_phone_id,
-            ];
-            $record = ParcelShipper::create($data);
-            session()->now('message', 'Success! parcel Added.');
-            // dd(00);
-
-        } //old_parcel_shipper
-        else {
-            // dd(6);
-            // dd('Phone search null');
+        if ($request->shipper_id  == null) {
+            // dd(111111);
             $shipper_validated = $request->validate([
 
-                'pl_id' => 'required',
-                'pl_date' => 'required',
                 'company_name' => 'required',
                 'shipper_phone' => 'required',
                 'shipper_country_id' => 'required',
@@ -120,17 +54,41 @@ class ParcelController extends Controller
                 'shipper_add1' => 'required',
                 'shipper_add2' => 'required',
             ]);
+            // dd(22);
+            $consignee_validated = $request->validate([
 
-            // dd(7);
-            if ($shipper_validated) {
-                // dd(8);
-                //shipper details insertion
-                // $pl_phone_id= $request->shipper_phone;
+                'pl_id' => 'required',
+                'consignee_name' => 'required',
+                'consignee_phone' => 'required',
+                'consignee_business' => 'required',
+                'consignee_country_id' => 'required',
+                'consignee_state' => 'required',
+                'consignee_city' => 'required',
+                'consignee_zip' => 'required',
+                'consignee_add1' => 'required',
+                'consignee_add2' => 'required',
+
+            ]);
+            // dd(33);
+            $parcel_validated = $request->validate([
+
+                'pl_id' => 'required',
+                'service_id' => 'required',
+                'payment_method_id' => 'required',
+                'pl_boxes' => 'required',
+                'pl_weight' => 'required',
+                'pl_charges' => 'required',
+                'pl_extras' => 'required',
+                'pl_discount' => 'required',
+                'pl_final' => 'required',
+                'pl_description' => 'required',
+                // 'pl_date' => 'required',
+                // 'shipper_country_id' => 'required',
+            ]);
+            // dd(44);
+            if ($shipper_validated && $consignee_validated && $parcel_validated) {
+                // dd(55);
                 $data  = [
-
-                    'pl_id' =>  $record_id,
-                    'pl_date' => $request->pl_date,
-                    'pl_phone_id' => "123",
                     'company_name' => $request->company_name,
                     'shipper_phone' => $request->shipper_phone,
                     'shipper_country_id' => $request->shipper_country_id,
@@ -140,58 +98,17 @@ class ParcelController extends Controller
                     'shipper_address1' => $request->shipper_add1,
                     'shipper_address2' => $request->shipper_add2,
                 ];
-                $record = ParcelShipper::create($data);
+
+                $shipper_id = ParcelShipper::create($data)->id;
                 session()->now('message', 'Success! parcel Added.');
-                // dd(00);
-            } else {
-                dd(9);
-                return redirect()->back()->with('error', "Shipper Datails not Inserted!");
-            }
+                // dd($shipper_id);
 
-            // dd(10);
-        } // new_parcel_shipper
-
-
-        // dd(11);
-        // dd($request->all());
-        $consignee_validated = $request->validate([
-
-            'pl_id' => 'required',
-            'consignee_name' => 'required',
-            'consignee_phone' => 'required',
-            // 'consignee_business' => 'required',
-            'consignee_country_id' => 'required',
-            'consignee_state' => 'required',
-            'consignee_city' => 'required',
-            'consignee_zip' => 'required',
-            'consignee_add1' => 'required',
-            'consignee_add2' => 'required',
-
-        ]);
-        // dd(12);
-        if ($consignee_validated) {
-            // dd(13);
-            if ($request->consignee_business !== null) {
-
-                $data = [
-                    'pl_id' =>  $record_id,
-                    'consignee_name' => $request->consignee_name,
-                    'consignee_phone' => $request->consignee_phone,
-                    'consignee_country_id' => $request->consignee_country_id,
-                    'consignee_state' => $request->consignee_state,
-                    'consignee_city' => $request->consignee_city,
-                    'consignee_zip' => $request->consignee_zip,
-                    'consignee_address1' => $request->consignee_add1,
-                    'consignee_address2' => $request->consignee_add2,
-                    'consignee_business' => $request->consignee_business
-                ];
-
-            } else{
                 $data  = [
 
-                    'pl_id' =>  $record_id,
+                    // 'pl_id' =>  $record_id,
                     'consignee_name' => $request->consignee_name,
                     'consignee_phone' => $request->consignee_phone,
+                    'consignee_business' => $request->consignee_business,
                     'consignee_country_id' => $request->consignee_country_id,
                     'consignee_state' => $request->consignee_state,
                     'consignee_city' => $request->consignee_city,
@@ -199,45 +116,153 @@ class ParcelController extends Controller
                     'consignee_address1' => $request->consignee_add1,
                     'consignee_address2' => $request->consignee_add2,
                 ];
-            }
+                $consignee_id = ParcelConsignee::create($data)->id;
+                session()->now('message', 'Success! parcel Added.');
+                // dd($consignee_id);
 
 
-            $record = ParcelConsignee::create($data);
-            session()->now('message', 'Success! parcel Added.');
-            // dd(20);
-        } else {
-            // dd(21);
-            return redirect()->back()->with('error', "Consignee Datails not Inserted!");
-        }
+                $data  = [
 
-        // $a = $request->userData['0']['disp_content'];
+                    'pl_id' => $request->pl_id,
+                    'shipper_id' => $shipper_id,
+                    'consignee_id' =>$consignee_id,
+                    'pl_boxes' => $request->pl_boxes,
+                    'pl_weight' => $request->pl_weight,
+                    'service_id' => $request->service_id,
+                    'pl_charges' => $request->pl_charges,
+                    'pl_extras' => $request->pl_extras,
+                    'pl_discount' => $request->pl_discount,
+                    'pl_final' => $request->pl_final,
+                    'pl_description' => $request->pl_description,
+                    'payment_id' => $request->payment_method_id,
+                    // 'consignee_country_id' => $request->consignee_country_id,
+                    // 'shipper_country_id' => $request->shipper_country_id,
+                ];
+                // dd(2);
+                $pl_id = Parcel::create($data)->id;
+                // dd($pl_id);
 
 
-        for ($i = 0; $i < count($request->disp_content); $i++) {
-            // dd(24);
+                // $a = $request->userData['0']['disp_content'];
+                for ($i = 0; $i < count($request->disp_content); $i++) {
+                    // dd(24);
 
-            $data = [
-                'pl_id'  =>  $record_id,
-                'disp_content'  =>  $request->disp_content[$i],
-                'disp_condition'  =>  $request->disp_condition[$i],
-                'currency_id'  =>  $request->disp_currency[$i],
-                'disp_price'  =>  $request->disp_price[$i],
-                'disp_quantity'  =>  $request->disp_quantity[$i],
-                'disp_total'  =>  $request->disp_total[$i],
+                    $data = [
+                        'pl_id'  =>  $pl_id,
+                        'disp_content'  =>  $request->disp_content[$i],
+                        'disp_condition'  =>  $request->disp_condition[$i],
+                        'currency_id'  =>  $request->disp_currency[$i],
+                        'disp_price'  =>  $request->disp_price[$i],
+                        'disp_quantity'  =>  $request->disp_quantity[$i],
+                        'disp_total'  =>  $request->disp_total[$i],
 
-            ];
-            $record = ParcelNote::create($data);
-            session()->now('message', 'Success! parcel Added.');
-        }
-
-        // dd(25);
-
-        // if ($data) {
+                    ];
+                    $record = ParcelNote::create($data);
+                    session()->now('message', 'Success! parcel Added.');
+                    
+                } //for loop closed
+               
+               
+            }  //parcel validated
+            // dd(99);
             return redirect()->back()->with('success', "Record inserted Successfully");
-        // } else {
-        //     return redirect()->back()->with('error', "Record Not inserted ---");
-        // }
-    }
+        } //if shipper-id-NULL-selected
+        
+        else {
+            // dd(22222);
+            $consignee_validated = $request->validate([
+
+                'pl_id' => 'required',
+                'consignee_name' => 'required',
+                'consignee_phone' => 'required',
+                'consignee_business' => 'required',
+                'consignee_country_id' => 'required',
+                'consignee_state' => 'required',
+                'consignee_city' => 'required',
+                'consignee_zip' => 'required',
+                'consignee_add1' => 'required',
+                'consignee_add2' => 'required',
+
+            ]);
+            $parcel_validated = $request->validate([
+
+                'pl_id' => 'required',
+                'service_id' => 'required',
+                'payment_method_id' => 'required',
+                'pl_boxes' => 'required',
+                'pl_weight' => 'required',
+                'pl_charges' => 'required',
+                'pl_extras' => 'required',
+                'pl_discount' => 'required',
+                'pl_final' => 'required',
+                'pl_description' => 'required',
+                // 'pl_date' => 'required',
+                // 'shipper_country_id' => 'required',
+            ]);
+            if ($consignee_validated && $parcel_validated) {
+                // dd(1);
+                $data  = [
+
+                    // 'pl_id' =>  $record_id,
+                    'consignee_name' => $request->consignee_name,
+                    'consignee_phone' => $request->consignee_phone,
+                    'consignee_business' => $request->consignee_business,
+                    'consignee_country_id' => $request->consignee_country_id,
+                    'consignee_state' => $request->consignee_state,
+                    'consignee_city' => $request->consignee_city,
+                    'consignee_zip' => $request->consignee_zip,
+                    'consignee_address1' => $request->consignee_add1,
+                    'consignee_address2' => $request->consignee_add2,
+                ];
+                $consignee_id = ParcelConsignee::create($data)->id;
+                session()->now('message', 'Success! parcel Added.');
+                // return $consignee_id;
+         
+                $data  = [
+
+                    'pl_id' => $request->pl_id,
+                    'shipper_id' => $request->shipper_id,
+                    'consignee_id' =>$consignee_id,
+                    'pl_boxes' => $request->pl_boxes,
+                    'pl_weight' => $request->pl_weight,
+                    'service_id' => $request->service_id,
+                    'pl_charges' => $request->pl_charges,
+                    'pl_extras' => $request->pl_extras,
+                    'pl_discount' => $request->pl_discount,
+                    'pl_final' => $request->pl_final,
+                    'pl_description' => $request->pl_description,
+                    'payment_id' => $request->payment_method_id,
+                    // 'consignee_country_id' => $request->consignee_country_id,
+                    // 'shipper_country_id' => $request->shipper_country_id,
+                ];
+                $pl_id = Parcel::create($data)->id;
+
+                // $a = $request->userData['0']['disp_content'];
+                for ($i = 0; $i < count($request->disp_content); $i++) {
+                    // dd(24);
+
+                    $data = [
+                        'pl_id'  =>  $pl_id,
+                        'disp_content'  =>  $request->disp_content[$i],
+                        'disp_condition'  =>  $request->disp_condition[$i],
+                        'currency_id'  =>  $request->disp_currency[$i],
+                        'disp_price'  =>  $request->disp_price[$i],
+                        'disp_quantity'  =>  $request->disp_quantity[$i],
+                        'disp_total'  =>  $request->disp_total[$i],
+
+                    ];
+                    $record = ParcelNote::create($data);
+                    
+                    session()->now('message', 'Success! parcel Added.');
+                 
+                } //for loop closed
+
+
+            }  //parcel validated
+
+            return redirect()->back()->with('success', "Record inserted Successfully");
+        }
+    } //store-parcel function closed
 
     public function edit_parcel($id)
     {
@@ -250,9 +275,19 @@ class ParcelController extends Controller
     public function parcel_details($id)
     {
         // dd($id);
-        $data = Parcel::with('consignee')->find($id);
+        $data = Parcel::with(['parcel_with_payment','parcel_with_service','parcel_with_shipper'=>function($query){
+            $query->with('shipper_with_country');
+
+        } ,'parcel_with_consignee'=>function($query){
+            $query->with('consignee_with_country');
+
+        },'parcel_with_notes'=>function($query){
+            $query->with('notes_with_currency');
+
+        }])->find($id);
+
         // dd($data);
-    
+
         return view('admin-panel.parcels.parcel_details', compact('data'));
     }
 
@@ -315,12 +350,13 @@ class ParcelController extends Controller
         }
     }
 
-    public function search(Request $request){
-        
-        
+    public function search(Request $request)
+    {
+
+
         // dd($request->all());
         $output = "";
-        $employee = ParcelShipper::where('shipper_phone', 'Like' ,'%'.$request->search.'%')->first();
+        $employee = ParcelShipper::where('shipper_phone', 'Like', '%' . $request->search . '%')->first();
 
         // foreach($employee as $row){
 
@@ -335,27 +371,27 @@ class ParcelController extends Controller
     }
 
     public function vendor_details_list(Request $request)
-    {   
-        $alocatedids = AllocateParcel::where('vendor_id',$request->id)->pluck('pl_id');
+    {
+        $alocatedids = AllocateParcel::where('vendor_id', $request->id)->pluck('pl_id');
         // echo $alocatedids;
-        $delivered_parcels = Parcel::with('allocate_parcel','parcel_tracking', 'parcel_charges',)
+        $delivered_parcels = Parcel::with('allocate_parcel', 'parcel_tracking', 'parcel_charges',)
             ->where('pl_status', 'delivered')
-            ->whereIn('id',$alocatedids)
+            ->whereIn('id', $alocatedids)
             ->get();
-            // echo($delivered_parcels);
+        // echo($delivered_parcels);
         return $delivered_parcels;
     }
     public function customer_details_list(Request $request)
     {
         // $parcel_shipper_details = Parcel::with('country', 'consignee','parcel_shipper_details')->whereIn('pl_status', ['processed','delivered','allocated'])->get();
         // dd($parcel_shipper_details);
-        $customer_ids = ParcelShipper::where('company_name',$request->id)->pluck('pl_id');
+        $customer_ids = ParcelShipper::where('company_name', $request->id)->pluck('pl_id');
         // echo $customer_ids;
-        $delivered_parcels = Parcel::with('allocate_parcel','parcel_tracking', 'parcel_charges','parcel_consignee')
+        $delivered_parcels = Parcel::with('allocate_parcel', 'parcel_tracking', 'parcel_charges', 'parcel_consignee')
             ->where('pl_status', 'delivered')
-            ->whereIn('id',$customer_ids)
+            ->whereIn('id', $customer_ids)
             ->get();
-            // echo $delivered_parcels;
+        // echo $delivered_parcels;
         return $delivered_parcels;
     }
 
@@ -369,7 +405,7 @@ class ParcelController extends Controller
 
         $dated_data = Parcel::with('parcel_tracking', 'parcel_charges')->whereBetween('created_at', [$start_date, $end_date])->where('pl_status', 'delivered')->get();
         return response()->json($dated_data);
-    //    dd($users);
+        //    dd($users);
 
         // return view('admin-panel.report', compact('users'));
     }

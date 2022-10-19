@@ -13,13 +13,13 @@
 
                         <div class="card">
                             <div class="card-body">
-                                <p class="card-title-desc text-dark mb-2 py-1 px-2 rounded" style="background-color: #d6dbf8">
-                                    <span class="font-size-20 font-weight-bold">Vendor Payment Details</span>
+                                <p class="card-title-desc text-dark mb-2 py-1 px-2 rounded text-center" style="background-color: #d6dbf8">
+                                    <span class="font-size-20 font-weight-bold text-center">Vendor Payment Details</span>
                                 </p>
                                 <form method="get" id="searchForm">
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <div class="form-group">
+                                            <div class="form-group p-3">
                                                 <select name="vendor" id="vendor-payment-select" class="form-control"
                                                     onchange="$('#searchForm').submit()">
                                                     <option value="" class="form-control">Select Vendor</option>
@@ -40,8 +40,8 @@
                             </div>
                             </form>
                             <div class="row">
-                                <div class="col-5">
-                                    <table class="table table-hover">
+                                <div class="col-5 border" >
+                                    <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100 table-sm text-center table-sm">
                                         <thead>
                                             <tr>
                                                 <td>#</td>
@@ -67,8 +67,9 @@
                                     </table>
 
                                 </div>
-                                <div class="col-5">
-                                    <table class="table table-hover">
+                                <div class="col-5 border">
+                                    <table id="datatable-buttons"
+                                    class="table table-bordered dt-responsive nowrap w-100 table-sm">
                                         <thead>
                                             <tr>
                                                 <td>#</td>
@@ -98,8 +99,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class="col-2">
-                                  
+                                <div class="col-2 border">
                                         <table class="table table-sm">
                                             <tr>
                                                 <th>Total Payable: </th>

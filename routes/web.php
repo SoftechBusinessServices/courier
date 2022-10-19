@@ -183,3 +183,5 @@ Route::get('/balance-sheet',[PaymentController::class,'balance_sheet'])->name('b
 Route::get('/get-vendor-payment-dues',[PaymentController::class,'get_vendor_payment_dues'])->name('get-vendor-payment-dues');
 
 Route::post('vendor-payment-add', [PaymentController::class, 'vendor_payment_add'])->name('vendor-payment-add');
+
+// Route::get('ajax-autocomplete-search', [ParcelController::class,'selectSearch']);

@@ -100,7 +100,18 @@ class PrintController extends Controller
     public function dispatch_notes_print_view($id)
     {
         // dd(1);
-        $data = Parcel::with('consignee','parcel_notes')->find($id);
+        // $data = Parcel::with('consignee','parcel_notes')->find($id);
+        $data = Parcel::with(['parcel_with_payment','parcel_with_service','parcel_with_shipper'=>function($query){
+            $query->with('shipper_with_country');
+
+        } ,'parcel_with_consignee'=>function($query){
+            $query->with('consignee_with_country');
+
+        },'parcel_with_notes'=>function($query){
+            $query->with('notes_with_currency');
+
+        }])->find($id);
+       
         // dd($data);
         
         return view('admin-panel.prints.dispatch_notes_print_view', compact('data'));
@@ -108,7 +119,16 @@ class PrintController extends Controller
     public function customer_receipt_print_view($id)
     {
         // dd(1);
-        $data = Parcel::with('consignee')->find($id);
+        $data = Parcel::with(['parcel_with_payment','parcel_with_service','parcel_with_shipper'=>function($query){
+            $query->with('shipper_with_country');
+
+        } ,'parcel_with_consignee'=>function($query){
+            $query->with('consignee_with_country');
+
+        },'parcel_with_notes'=>function($query){
+            $query->with('notes_with_currency');
+
+        }])->find($id);
         // dd($data);
       
         return view('admin-panel.prints.customer_receipt_print_view', compact('data'));

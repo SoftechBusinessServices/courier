@@ -154,7 +154,7 @@ class LogisticController extends Controller
     public function getSelected($id)
     {
         // dd($id);
-        $shipping = Logistic::with('logistic_company')->where('service_id', $id)->get();
+        $shipping = Logistic::with('logistic_with_company')->where('service_id', $id)->get();
         return response()->json($shipping);
     }
 }

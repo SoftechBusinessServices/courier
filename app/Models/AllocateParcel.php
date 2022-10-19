@@ -18,26 +18,29 @@ class AllocateParcel extends Model
         'pl_id', 'service_id', 'vendor_id', 'status'
     ];
 
-    public function country()
-    {
-        return $this->belongsTo(Country::class, 'country_id', 'id');
-    }
-
-    public function region()
-    {
-        return $this->belongsTo(Region::class, 'region_id', 'id');
-    }
-    public function service()
+    public function allocate_with_service()
     {
         return $this->belongsTo(Service::class, 'service_id', 'id');
     }
-    public function allocate()
-    {
-        return $this->hasMany(Parcel::class, 'pl_id', 'id');
-    }
-    public function allocate_logistic(){
+    public function allocate_with_logistic(){
 
         return $this->belongsTo(Logistic::class, 'vendor_id','id');
     }
+    
+    // public function country()
+    // {
+    //     return $this->belongsTo(Country::class, 'country_id', 'id');
+    // }
+
+    // public function region()
+    // {
+    //     return $this->belongsTo(Region::class, 'region_id', 'id');
+    // }
+   
+    // public function allocate()
+    // {
+    //     return $this->hasMany(Parcel::class, 'pl_id', 'id');
+    // }
+  
     
 }

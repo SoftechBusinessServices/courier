@@ -54,8 +54,8 @@
 
                                 <ol class="breadcrumb m-0 text-bold text-decoration-underline">
                                     <li class="breadcrumb-item">Tracking ID: <span class="text-bold">{{$data->pl_id}}</span></li>
-                                    <li class="breadcrumb-item  text-bold">Service Used: <span class="text-bold text-primary">{{ $data->parcel_service->service_name  }}</span></li>
-                                    <li class="breadcrumb-item  text-bold">Destination: <span class="m-1 text-bold text-primary">{{ $data->parcel_consignee->name }}</span></li>
+                                    <li class="breadcrumb-item  text-bold">Service Used: <span class="text-bold text-primary">{{ $data->parcel_with_service->service_name  }}</span></li>
+                                    <li class="breadcrumb-item  text-bold">Destination: <span class="m-1 text-bold text-primary">{{ $data->parcel_with_consignee->name }}</span></li>
                                     <li class="breadcrumb-item  text-bold">Status: <span class="text-bold text-danger">{{ $data->pl_status }}</span></li>
                                     <li class="breadcrumb-item  text-bold">Dated: <span class="text-bold">{{ date('d,m,Y' ,strtotime($data->created_at)) }}</span></li>
                                 </ol>
@@ -74,7 +74,7 @@
                                                 <td class="py-1 px-0 font-size-14">{{$data->pl_boxes}}</td>
                                                 <td class="py-1 px-0 font-size-14">{{$data->pl_weight}}</td>
                                                 <td class="py-1 px-0 font-size-14">{{$data->pl_final}}</td>
-                                                <td class="py-1 px-0 font-size-14">{{$data->parcel_payment_method->payment_method}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->parcel_with_payment->payment_method}}</td>
                                             </tr>
                                             <tr>
                                                 <th class="py-1 px-0 font-size-14" scope="col">Charges</th>
@@ -110,10 +110,10 @@
                                                 <th class="py-1 px-0 font-size-14" scope="col">Country</th>
                                             </tr>
                                             <tr>
-                                                <td class="py-1 px-0 font-size-14">{{$data->consignee->consignee_name}}</td>
-                                                <td class="py-1 px-0 font-size-14">{{$data->consignee->consignee_phone}}</td>
-                                                <td class="py-1 px-0 font-size-14">{{$data->consignee->consignee_business}}</td>
-                                                <td class="py-1 px-0 font-size-14">{{$data->parcel_consignee->name}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->parcel_with_consignee->consignee_name}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->parcel_with_consignee->consignee_phone}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->parcel_with_consignee->consignee_business}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->parcel_with_consignee->consignee_with_country->name}}</td>
                                             </tr>
                                             <tr>
                                                 <th class="py-1 px-0 font-size-14" scope="col">State</th>
@@ -122,18 +122,18 @@
                                                 <th class="py-1 px-0 font-size-14" scope="col">Zip Code</th>
                                             </tr>
                                             <tr>
-                                                <td class="py-1 px-0 font-size-14">{{$data->consignee->consignee_state}}</td>
-                                                <td class="py-1 px-0 font-size-14">{{$data->consignee->consignee_city}}</td>
-                                                <td class="py-1 px-0 font-size-14">{{$data->consignee->consignee_state}}</td>
-                                                <td class="py-1 px-0 font-size-14">{{$data->consignee->consignee_state}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->parcel_with_consignee->consignee_state}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->parcel_with_consignee->consignee_city}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->parcel_with_consignee->consignee_state}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->parcel_with_consignee->consignee_state}}</td>
                                             </tr>
                                             <tr>
                                                 <th class="py-1 px-0 font-size-14" scope="col">Address Line1</th>
                                                 <th class="py-1 px-0 font-size-14" scope="col">Address Line2</th>
                                             </tr>
                                             <tr>
-                                                <td class="py-1 px-0 font-size-14">{{$data->consignee->consignee_address1}}</td>
-                                                <td class="py-1 px-0 font-size-14">{{$data->consignee->consignee_address2}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->parcel_with_consignee->consignee_address1}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->parcel_with_consignee->consignee_address2}}</td>
                                             </tr>
 
 
@@ -160,10 +160,10 @@
                                                 <th class="py-1 px-0 font-size-14" scope="col">Country</th>
                                             </tr>
                                             <tr>
-                                                <td class="py-1 px-0 font-size-14">{{$data->shipper->company_name}}</td>
-                                                <td class="py-1 px-0 font-size-14">{{$data->shipper->shipper_phone}}</td>
-                                                <td class="py-1 px-0 font-size-14">{{$data->shipper->company_name}}</td>
-                                                <td class="py-1 px-0 font-size-14">{{$data->parcel_shipper->name}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->parcel_with_shipper->company_name}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->parcel_with_shipper->shipper_phone}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->parcel_with_shipper->company_name}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->parcel_with_shipper->shipper_with_country->name}}</td>
                                             </tr>
                                             <tr>
                                                 <th class="py-1 px-0 font-size-14" scope="col">State</th>
@@ -172,10 +172,10 @@
                                                 <th class="py-1 px-0 font-size-14" scope="col">Zip Code</th>
                                             </tr>
                                             <tr>
-                                                <td class="py-1 px-0 font-size-14">{{$data->shipper->shipper_state}}</td>
-                                                <td class="py-1 px-0 font-size-14">{{$data->shipper->shipper_city}}</td>
-                                                <td class="py-1 px-0 font-size-14">{{$data->shipper->shipper_zip}}</td>
-                                                <td class="py-1 px-0 font-size-14">{{$data->shipper->shipper_zip}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->parcel_with_shipper->shipper_state}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->parcel_with_shipper->shipper_city}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->parcel_with_shipper->shipper_zip}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->parcel_with_shipper->shipper_zip}}</td>
                                                
                                                 
                                             </tr>
@@ -184,8 +184,8 @@
                                                 <th class="py-1 px-0 font-size-14" scope="col">Address Line2</th>
                                             </tr>
                                             <tr>
-                                                <td class="py-1 px-0 font-size-14">{{$data->shipper->shipper_address1}}</td>
-                                                <td class="py-1 px-0 font-size-14">{{$data->shipper->shipper_address2}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->parcel_with_shipper->shipper_address1}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->parcel_with_shipper->shipper_address2}}</td>
                                                 
                                             </tr>
 

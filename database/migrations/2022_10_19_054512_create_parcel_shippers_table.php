@@ -15,14 +15,13 @@ class CreateParcelShippersTable extends Migration
     {
         Schema::create('parcel_shippers', function (Blueprint $table) {
             $table->id();
-            $table->integer('pl_id')->nullable();
+            // $table->integer('pl_id')->nullable();
             $table->date('pl_date')->nullable();
-            $table->text('pl_phone_id')->nullable();
             $table->string('company_name')->nullable();
             $table->string('shipper_phone')->nullable();
+            $table->foreignId('shipper_country_id')->nullable();
             // $table->foreignId('region_id');
             // $table->foreign('region_id')->references('id')->on('regions')->onDelete('cascade');
-            $table->foreignId('shipper_country_id')->nullable();
             // $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
             $table->string('shipper_state')->nullable();
             $table->string('shipper_city')->nullable();

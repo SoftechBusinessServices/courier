@@ -93,14 +93,14 @@
                         <a class="btn btn-info btn-md text-white font-size-12"
                         href="{{route('balance-sheet')}}" role="button" >Balance Sheet</a> --}}
                         <a class="btn btn-info btn-md text-white font-size-12 " data-toggle="collapse"
-                        href="#vendorpaytable" role="button" aria-expanded="false"
-                        aria-controls="collapseExample">Vendors</a> 
+                            href="#vendorpaytable" role="button" aria-expanded="false"
+                            aria-controls="collapseExample">Vendors</a>
                         <a class="btn btn-success btn-md text-white font-size-12" data-toggle="collapse"
-                        href="#customerpaytable" role="button" aria-expanded="false"
-                        aria-controls="collapseExample">Customers</a>
+                            href="#customerpaytable" role="button" aria-expanded="false"
+                            aria-controls="collapseExample">Customers</a>
 
-                        
-                       
+
+
                         <a class="btn btn-primary btn-md text-white font-size-12 " data-toggle="collapse"
                             href="#balancesheettable" role="button" aria-expanded="false"
                             aria-controls="collapseExample">Balance Sheet</a>
@@ -122,13 +122,10 @@
         @include('admin-panel.sections.customer_payment')
 
     </div>
-
-    <!-- Setting container -->
-    @include('admin-panel.sections.settings')
-
 </div>
 
-
+<!-- Setting container -->
+@include('admin-panel.sections.settings')
 <!------------------User Modal---------------------->
 @include('admin-panel.sections.users')
 @include('admin-panel.sections.services')
@@ -136,7 +133,7 @@
 @include('admin-panel.sections.regions')
 @include('admin-panel.sections.methods')
 
-<!------------------Payment Modal---------------------->
+
 
 
 

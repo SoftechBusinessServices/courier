@@ -1,5 +1,4 @@
-{{-- <div class="page-content" style="padding:0;  padding-top:2%;"> --}}
-    <div class="page-content px-5" style="padding:0; padding-top:88px;">
+<div class="page-content" style="padding:0;  padding-top:2%;">
     <div class=" border bg-light">
         <div class="modal modal-alert position-static d-block  " tabindex="-1" role="dialog" id="modalChoice">
             <div class="modal-body  text-center">

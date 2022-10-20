@@ -1,5 +1,5 @@
-<div class="page-content" style="padding:0;  padding-top:2%;">
-    <div class=" border bg-light">
+<div class="page-content" style="padding:12;  padding-top:2%;">
+    <div class="border bg-light m-4">
         <div class="modal modal-alert position-static d-block  " tabindex="-1" role="dialog" id="modalChoice">
             <div class="modal-body  text-center">
                 <a href="#" class="nav-link text-dark">
@@ -9,7 +9,7 @@
                 </a>
             </div>
 
-            <div class="row gx-5 mb-2">
+            <div class="row gx-5 mb-2 p-4">
 
                 <div class="col  ">
                     <div class="modal-content rounded-3 shadow">
@@ -65,11 +65,11 @@
 
                         </div>
                         <div class="modal-footer flex-nowrap p-0 justify-content-center">
-                            <a class="btn btn-primary btn-md text-white " data-bs-toggle="modal"
-                                data-bs-target="#servicemodal">Add
+                            <a class="btn btn-primary btn-md text-white font-size-10" data-bs-toggle="modal"
+                                data-bs-target="#servicemodal">Add Service
                             </a>
-                            <a class="btn btn-success btn-md text-white" href="{{ route('add-service') }}">
-                                List
+                            <a class="btn btn-success btn-md text-white font-size-10" href="{{ route('add-service') }}">
+                                Service List
                             </a>
 
                         </div>
@@ -88,10 +88,10 @@
 
                         </div>
                         <div class="modal-footer flex-nowrap p-0 justify-content-center">
-                            <a class="btn btn-primary btn-md text-white " data-bs-toggle="modal"
-                                data-bs-target="#logisticmodal">Add
+                            <a class="btn btn-primary btn-md text-white font-size-10" data-bs-toggle="modal"
+                                data-bs-target="#logisticmodal">Add Vendor
                             </a>
-                            <a href="{{ route('add-logistic') }}" class="btn btn-success btn-md text-white ">List
+                            <a href="{{ route('add-logistic') }}" class="btn btn-success btn-md text-white font-size-10">Vendors List
                             </a>
 
                         </div>
@@ -112,11 +112,11 @@
 
                         </div>
                         <div class="modal-footer flex-nowrap p-0 justify-content-center">
-                            <a class="btn btn-primary btn-md text-white " data-bs-toggle="modal"
-                                data-bs-target="#regionmodal">Add
+                            <a class="btn btn-primary btn-md text-white font-size-10 " data-bs-toggle="modal"
+                                data-bs-target="#regionmodal">Add Region
                             </a>
-                            <a class="btn btn-success btn-md text-white" href="{{ route('add-region') }}">
-                                List
+                            <a class="btn btn-success btn-md text-white font-size-10" href="{{ route('add-region') }}">
+                                Regions List
                             </a>
 
                         </div>
@@ -134,11 +134,11 @@
                             </a>
                         </div>
                         <div class="modal-footer flex-nowrap p-0 justify-content-center">
-                            <a class="btn btn-primary btn-md text-white " data-bs-toggle="modal"
-                                data-bs-target="#payment_method_modal">Add
+                            <a class="btn btn-primary btn-md text-white font-size-10" data-bs-toggle="modal"
+                                data-bs-target="#payment_method_modal">Add Method
                             </a>
-                            <a class="btn btn-success btn-md text-white " href="{{ route('add-payment-method') }}">
-                                List
+                            <a class="btn btn-success btn-md text-white font-size-10" href="{{ route('add-payment-method') }}">
+                                Methods List
                             </a>
                         </div>
                     </div>

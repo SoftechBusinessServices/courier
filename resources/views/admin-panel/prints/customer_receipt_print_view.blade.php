@@ -11,7 +11,7 @@
                 <div class="col-12 ">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between p-1 px-3 text-bold">
                         {{-- <h4 class="mb-sm-0 font-size-18">Detail</h4>  --}}
-                        <h4 class="float-end font-size-16"> Customer Notes Receipt </h4>
+                        <h4 class="float-end font-size-16"> Customer Receipt Print Preview </h4>
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0 text-bold text-decoration-underline ">
                                 <li class="breadcrumb-item">Tracking ID: {{$data->pl_id}}</li>
@@ -55,7 +55,7 @@
                                 <ol class="breadcrumb m-0 text-bold text-decoration-underline">
                                     <li class="breadcrumb-item">Tracking ID: <span class="text-bold">{{$data->pl_id}}</span></li>
                                     <li class="breadcrumb-item  text-bold">Service Used: <span class="text-bold text-primary">{{ $data->parcel_with_service->service_name  }}</span></li>
-                                    <li class="breadcrumb-item  text-bold">Destination: <span class="m-1 text-bold text-primary">{{ $data->parcel_with_consignee->name }}</span></li>
+                                    <li class="breadcrumb-item  text-bold">Destination: <span class=" text-bold text-primary">{{  $data->parcel_with_consignee->consignee_with_country->name }}</span></li>
                                     <li class="breadcrumb-item  text-bold">Status: <span class="text-bold text-danger">{{ $data->pl_status }}</span></li>
                                     <li class="breadcrumb-item  text-bold">Dated: <span class="text-bold">{{ date('d,m,Y' ,strtotime($data->created_at)) }}</span></li>
                                 </ol>

@@ -21,7 +21,7 @@
                                 @if (isset($data))
                                     {{-- @dd($data); --}}
                                     <table id="datatable-buttons"
-                                        class="table table-bordered dt-responsive nowrap w-100 table-sm table-responsive ">
+                                        class="table table-bordered dt-responsive nowrap w-100 table-sm  ">
                                         <thead>
                                             <tr>
                                                 <th>S.No</th>
@@ -47,7 +47,7 @@
                                                         {{-- <td>{{ $item->companies->email }}</td> --}}
                                                         <td>{{ $item->logistic_with_company->name }}</td>
                                                         <td>
-                                                            {{ $item->logistic_with_service->service_name}}
+                                                            {{ $item->logistic_with_service->service_name }}
 
                                                         </td>
                                                         <td>{{ $item->vendor_email }}</td>
@@ -74,7 +74,7 @@
                                                         </td>
 
                                                         <td style="width: 100px">
-                                                            <a href="{{ url('print-parcel/' . $item->id) }}"
+                                                            {{-- <a href="{{ url('print-parcel/' . $item->id) }}"
                                                                 class="btn btn-outline-dark btn-sm print" title="Print">
                                                                 <i class="fas fa-regular fa-print"></i>
                                                             </a>
@@ -83,11 +83,13 @@
                                                             <a href="{{ url('edit-logistic/' . $item->id) }}"
                                                                 class="btn btn-outline-warning btn-sm edit" title="Edit">
                                                                 <i class="fas fa-pencil-alt"></i>
+                                                            </a> --}}
+                                                            {{-- | --}}
+                                                            <a href="{{ url('delete-logistic/' . $item->id) }}"
+                                                                class="btn btn-outline-danger btn-sm delete" title="Delete"
+                                                                onclick="return confirm('Are you sure to delete Record?')">
+                                                                <i class="fas fa-trash-alt"></i>
                                                             </a>
-                                                            {{-- |
-                                            <a href="{{ url('delete-logistic/' . $item->id) }}" class="btn btn-outline-danger btn-sm delete" title="Delete" onclick="return confirm('Are you sure to delete Record?')">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </a> --}}
                                                         </td>
                                                     </tr>
                                                 @endforeach

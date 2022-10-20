@@ -205,10 +205,10 @@
                                                 <label for="message">Currency</label>
                                                 <select name="disp_currency[]" id="disp_currency[]"
                                                     class="form-control @error('company_currency') is-invalid @enderror">
-
-                                                    <option value="0">PKR</option>
-                                                    <option value="1">USD</option>
-                                                    <option value="2">Euro</option>
+                                                <option value="">-----</option>
+                                                   @foreach($currencies as $currency)
+                                                   <option value="{{$currency->id}}">{{ $currency->name." , ".$currency->symbol}}</option>
+                                                   @endforeach
                                                 </select>
                                                 @error('disp_currency')
                                                     <span class="invalid-feedback" role="alert">
@@ -294,8 +294,8 @@
                                     <label for="Search" class="form-label">Select Existing Customer </label>
                                     <select name="shipper_id" id="shipper_id" class="form-control">
                                         <option value=""> -Select One Customer- </option>
-                                        @foreach($shipper_names as $shipper_name)
-                                        <option value="{{$shipper_name->id}}">{{$shipper_name->company_name}}</option>
+                                        @foreach($customers as $customer)
+                                        <option value="{{$customer->id}}">{{$customer->company_name}}</option>
                                         @endforeach
                                     </select>
                                 </div> 

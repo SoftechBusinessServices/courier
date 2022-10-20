@@ -179,9 +179,11 @@ Route::post('contact-us', [HomeController::class, 'contact_us'])->name('contact-
 Route::get('/tracking-id-search',[HomeController::class,'search_tracking_id'])->name('tracking-id-search');
 Route::get('/vendor-payment',[PaymentController::class,'vendor_payment'])->name('vendor-payment');
 Route::get('/customer-payment',[PaymentController::class,'customer_payment'])->name('customer-payment');
+
 Route::get('/balance-sheet',[PaymentController::class,'balance_sheet'])->name('balance-sheet');
 Route::get('/get-vendor-payment-dues',[PaymentController::class,'get_vendor_payment_dues'])->name('get-vendor-payment-dues');
-
 Route::post('vendor-payment-add', [PaymentController::class, 'vendor_payment_add'])->name('vendor-payment-add');
+Route::get('/get-customer-payment-dues',[PaymentController::class,'get_customer_payment_dues'])->name('get-customer-payment-dues');
+Route::post('customer-payment-add', [PaymentController::class, 'customer_payment_add'])->name('customer-payment-add');
 
 // Route::get('ajax-autocomplete-search', [ParcelController::class,'selectSearch']);

@@ -216,13 +216,13 @@
                                         </thead>
 
                                         <tbody>
-                                            <!-- {{$data->parcel_with_notes}} -->
+                                            {{-- @dd($data->parcel_with_notes); --}}
                                             @if( $data->parcel_with_notes->count() >0)
                                             @foreach($data->parcel_with_notes as $item)
                                             <tr>
                                                 <td class="py-1 px-0 font-size-14">{{$item->disp_content}}</td>
                                                 <td class="py-1 px-0 font-size-14">{{$item->disp_condition}}</td>
-                                                <td class="py-1 px-0 font-size-14">{{$item->notes_with_currency->name}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{ $item->notes_with_currency->name }}</td>
                                                 <td class="py-1 px-0 font-size-14">{{$item->disp_price}}</td>
                                                 <td class="py-1 px-0 font-size-14">{{$item->disp_quantity}}</td>  
                                             </tr>

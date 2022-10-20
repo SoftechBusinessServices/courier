@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AllocateParcel;
 use App\Models\User;
 use App\Models\Parcel;
 use App\Models\Region;
@@ -73,12 +74,9 @@ class HomeController extends Controller
 
         DB::enableQueryLog();
 
-        // $parcel_shipper_details = Parcel::with('country', 'consignee','parcel_shipper_details')->whereIn('pl_status', ['processed','delivered','allocated'])->get();
-        // dd($parcel_shipper_details);
-        // $shipper_names = ParcelShipper::with('shipper_parcel_details')->get(['id','pl_phone_id','company_name'])->unique('company_name');
-        $shipper_names = ParcelShipper::with('shipper_parcel_details')->get()->unique('company_name');
-        // dd($shipper_names);
-        // $processed_parcels = Parcel::with('country', 'consignee')->where('pl_status', 'processed')->get();
+        $customers = ParcelShipper::get();
+        // dd($customers);
+
         $processed_parcels = Parcel::with(['parcel_with_payment','parcel_with_service','parcel_with_shipper'=>function($query){
             $query->with('shipper_with_country');
         } ,'parcel_with_consignee'=>function($query){
@@ -89,42 +87,48 @@ class HomeController extends Controller
         
         $delivered_parcels = Parcel::with('parcel_with_tracking', 'parcel_with_charges')->where('pl_status', 'delivered')->get();
         // dd($delivered_parcels);
-        //    dd(DB::getQueryLog());
+        // dd(DB::getQueryLog());
         // DB::enableQueryLog();
-
-        // $processed_parcels = Parcel::with('country','consignee')->where('pl_status', 'processed')->get();
-        $allocated_parcels =  Parcel::with(['parcel_with_tracking', 'parcel_with_charges', 
-        
-        'parcel_with_shipper'=>function($query){
-            $query->with('shipper_with_country');
-
-        } ,'parcel_with_consignee'=>function($query){
-            $query->with('consignee_with_country');
-        },
-        'parcel_with_allocate' => function ($query) {
-            $query->with(['allocate_with_service', 'allocate_with_logistic' => function ($query) {
-
-                $query->with('logistic_with_company');
-            }]);
-        }])
-            ->whereIn(
-                'pl_status',
-                ['allocated', 'delivered']
-            )
-            // ->orWhere('pl_status', 'delivered')
-            ->get();
-            
-            // dd($allocated_parcels);
-            
-            // dd(DB::getQueryLog());
-
         $logistics = Logistic::all();
         $payment_methods = PaymentMethod::all();
         $vendors =  Logistic::with('logistic_with_company')->get();
         // dd($vendors);
         $companies = Company::get();
-        // dd($vendors);
-        return view('admin-panel.master',  compact('data', 'regions',  'countries', 'companies', 'currencies', 'customers', 'services', 'abc', 'processed_parcels', 'allocated_parcels', 'logistics', 'payment_methods', 'users', 'vendors', 'delivered_parcels', 'shipper_names'));
+        // dd($companies);
+
+        $allocated_parcels = AllocateParcel::with([
+            'allocate_with_service',
+            'allocate_with_logistic',
+            'allocate_with_parcel' => function ($query){
+                $query->with([ 'parcel_with_tracking','parcel_with_charges','parcel_with_consignee' => function($query){
+                    $query->with('consignee_with_country');
+                },]);
+            },
+        ]) ->get();
+        // $allocated_parcels =  Parcel::with(['parcel_with_tracking', 'parcel_with_charges', 
+        
+        // 'parcel_with_shipper'=>function($query){
+        //     $query->with('shipper_with_country');
+
+        // } ,'parcel_with_consignee'=>function($query){
+        //     $query->with('consignee_with_country');
+        // },
+        // 'parcel_with_allocate' => function ($query) {
+        //     $query->with(['allocate_with_service', 'allocate_with_logistic' => function ($query) {
+
+        //         $query->with('logistic_with_company');
+        //     }]);
+        // }])
+        //     ->whereIn(
+        //         'pl_status',
+        //         ['allocated', 'delivered']
+        //     )
+        //     // ->orWhere('pl_status', 'delivered')
+        //     ->get();
+            // dd($allocated_parcels);  
+            // dd(DB::getQueryLog());
+            // dd($allocated_parcels);
+        return view('admin-panel.master',  compact('data', 'regions',  'countries', 'companies', 'currencies', 'customers', 'services', 'abc', 'processed_parcels', 'allocated_parcels', 'logistics', 'payment_methods', 'users', 'vendors', 'delivered_parcels', 'customers'));
 
         // return view('home');
     }

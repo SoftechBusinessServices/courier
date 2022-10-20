@@ -162,7 +162,7 @@
                                 '<option hidden>Choose Vendor</option>');
                             $.each(data, function(key, course) {
                                 $('select[name="vendor_id"]').append(
-                                    '<option value="' + course.id +
+                                    '<option value="' + course.logistic_with_company.id +
                                     '">' + course.logistic_with_company.name +
                                     '</option>');
                             });

@@ -18,9 +18,8 @@
 
                     </div>
                     <div class="modal-footer flex-nowrap p-0 justify-content-center">
-                        <a class="btn btn-primary btn-md text-white waves-effect waves-light " data-bs-toggle="modal"
-                            data-bs-target="#parcelmodal">Add
-                            Parcel </a>
+                        <a class="font-size-10 btn btn-primary btn-md text-white waves-effect waves-light " data-bs-toggle="modal"
+                            data-bs-target="#parcelmodal">Add New Parcel </a>
                     </div>
                 </div>
             </div>
@@ -39,7 +38,7 @@
                     </div>
                     <div class="modal-footer flex-nowrap p-0 justify-content-center d-flex flex-direction-column">
                         <!-- add customer  -->
-                        <a class="btn btn-primary" data-toggle="collapse" href="#processtable"
+                        <a class="btn btn-primary font-size-10 " data-toggle="collapse" href="#processtable"
                             data-target="#processtable" role="button" aria-expanded="false"
                             aria-controls="collapseExample">Processed
                             Parcels</a>
@@ -62,7 +61,7 @@
                     </div>
                     <div class="modal-footer flex-nowrap p-0 justify-content-center d-flex flex-direction-column">
                         <!-- add customer  -->
-                        <a class="btn btn-primary" data-toggle="collapse" href="#allocatetable" role="button"
+                        <a class="btn btn-primary font-size-10 " data-toggle="collapse" href="#allocatetable" role="button"
                             aria-expanded="false" aria-controls="collapseExample">Allocated
                             Parcels</a>
 
@@ -92,13 +91,15 @@
                         href="{{route('customer-payment')}}" role="button" >Customers</a>
                         <a class="btn btn-info btn-md text-white font-size-12"
                         href="{{route('balance-sheet')}}" role="button" >Balance Sheet</a> --}}
-                        <a class="btn btn-info btn-md text-white font-size-10 " data-toggle="collapse"
-                            href="#vendorpaytable" role="button" aria-expanded="false"
-                            aria-controls="collapseExample">Vendors</a>
+                        
                         <a class="btn btn-success btn-md text-white font-size-10" data-toggle="collapse"
                             href="#customerpaytable" role="button" aria-expanded="false"
                             aria-controls="collapseExample">Customers</a>
 
+                        <a class="btn btn-info btn-md text-white font-size-10 " data-toggle="collapse"
+                            href="#vendorpaytable" role="button" aria-expanded="false"
+                            aria-controls="collapseExample">Vendors</a>
+                        
                         <a class="btn btn-dark btn-md text-white font-size-10" data-toggle="collapse"
                             href="#balancesheettable" role="button" aria-expanded="false"
                             aria-controls="collapseExample">Balance-Sheet</a>
@@ -115,9 +116,12 @@
 
         @include('admin-panel.sections.allocated_parcel')
 
-        @include('admin-panel.sections.vendor_payment')
+        @include('admin-panel.sections.customer_payment_section')
 
-        @include('admin-panel.sections.customer_payment')
+        @include('admin-panel.sections.vendor_payment_section')
+        
+        @include('admin-panel.sections.balance_sheet_section')
+
 
     </div>
 </div>

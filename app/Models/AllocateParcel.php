@@ -24,7 +24,12 @@ class AllocateParcel extends Model
     }
     public function allocate_with_logistic(){
 
-        return $this->belongsTo(Logistic::class, 'vendor_id','id');
+        return $this->belongsTo(Company::class, 'vendor_id','id');
+    }
+    
+    public function allocate_with_parcel()
+    {
+        return $this->belongsTo(Parcel::class, 'pl_id', 'id');
     }
     
     // public function country()

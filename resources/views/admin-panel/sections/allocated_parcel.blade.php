@@ -7,7 +7,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <!-- <form action="{{ url('vendor-tracking') }}" method="POST" id="vendor-tracking-id"> -->
+
                 <form method="POST" id="vendor-tracking-id">
                     @csrf
                     <table class="table table-bordered">
@@ -17,22 +17,28 @@
                         </tr>
                         <tr>
                             <td>
-                                <input type="text" name="parcel_idd2" value="" id="parcel_idd2" class="form-control" readonly>
-                                <input type="hidden" name="parcell_idd" value="" id="parcell_idd" class="form-control">
-                                
-                                <br><input type="hidden" name="vendor_id_tracked" value="" id="vendor_id_tracked" class="form-control" readonly>
+                                <input type="text" name="parcel_idd2" value="" id="parcel_idd2"
+                                    class="form-control" readonly>
+                                <input type="hidden" name="parcell_idd" value="" id="parcell_idd"
+                                    class="form-control">
+
+                                <br><input type="text" name="vendor_id_tracked" value="" id="vendor_id_tracked"
+                                    class="form-control" readonly>
                             </td>
                             <td>
-                                <input type="text" name="tracking_idd" value="" id="tracking_idd" class="form-control">
+                                <input type="text" name="tracking_idd" value="" id="tracking_idd"
+                                    class="form-control">
                             </td>
                         </tr>
                         <br>
                     </table>
 
                     <div class="modal-footer">
-                        <!-- Toogle to second dialog -->
-                        <button type="submit" form="vendor-tracking-id" class="btn btn-primary vendor-tracking-id" id="modal_submit3" value="Submit">Submit</button>
-                        <button type="button" class="btn btn-secondary" id="modal_close3" data-bs-dismiss="modal">Close</button>
+
+                        <button type="submit" form="vendor-tracking-id" class="btn btn-primary vendor-tracking-id"
+                            id="modal_submit3" value="Submit">Submit</button>
+                        <button type="button" class="btn btn-secondary" id="modal_close3"
+                            data-bs-dismiss="modal">Close</button>
                     </div>
             </div>
             </form>
@@ -53,120 +59,151 @@
                                 <div class="modal-header mb-2" style="background-color: #d6dbf8">
                                     <h5 class="modal-title">Allocated Parcells</h5>
 
-                                    <a class="btn-close" data-toggle="collapse" href="#allocatetable" role="button" aria-expanded="false" aria-controls="collapseExample"><span aria-hidden="true"></span></a>
+                                    <a class="btn-close" data-toggle="collapse" href="#allocatetable" role="button"
+                                        aria-expanded="false" aria-controls="collapseExample"><span
+                                            aria-hidden="true"></span></a>
                                 </div>
                                 @if (isset($allocated_parcels))
-                                <div class="table-responsive">
-                                    <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100 table-sm text-center">
-                                        <thead>
-                                            <tr class="text-center font-size-14">
-                                                <th>S.No</th>
-                                                <th>Parcel ID</th>
-                                                <th>Parcel<br>Destination</th>
-                                                <th>Despatch<br>Date</th>
+                                    <div class="table-responsive">
+                                        <table id="datatable"
+                                            class="table table-bordered dt-responsive  nowrap w-100 table-sm text-center">
+                                            <thead>
+                                                <tr class="text-center font-size-14">
+                                                    <th>S.No</th>
+                                                    <th>Parcel ID</th>
+                                                    <th>Parcel<br>Destination</th>
+                                                    <th>Despatch<br>Date</th>
 
-                                                <th>Weight<br>(kilogram)</th>
-                                                <th>Parcel<br>Cost</th>
-                                                <th>Service<br>Name</th>
-                                                <th>Vendor<br>Name</th>
-                                                <th>Tracking<br>ID</th>
-                                                <th>Vendor<br>Charges</th>
-                                                <th>Parcel<br>Status</th>
+                                                    <th>Weight<br>(kilogram)</th>
+                                                    <th>Parcel<br>Cost</th>
+                                                    <th>Service<br>Name</th>
+                                                    <th>Vendor<br>Name</th>
+                                                    <th>Tracking<br>ID</th>
+                                                    <th>Vendor<br>Charges</th>
+                                                    <th>Parcel<br>Status</th>
 
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @php
-                                            $i = 1;
-                                            @endphp
-                                            @if ($allocated_parcels->count() > 0)
-                                            @foreach ($allocated_parcels as $item)
-                                            <tr>
-                                                <td>{{ $i++ }}</td>
-                                                <td>
-                                                    <a href="{{ url('parcel-details/' . $item->id) }}" class="btn btn-outline-secondary btn-sm delete" title="View">
-                                                        <i class="far fa-eye"> {{ $item->pl_id }}</i>
-                                                    </a>
-                                                </td>
-                                                <td>{{ $item->parcel_with_consignee->consignee_with_country->name }}</td>
-                                                <td>
-                                                    @php
-                                                    $month = date('d/m/Y', strtotime($item->created_at));
-                                                    // dd($month);
-                                                    echo $month;
-                                                    @endphp
-                                                </td>
-                                                <td> {{ $item->pl_weight }} </td>
-                                                <td> {{ $item->pl_final }} </td>
-                                                {{-- <td> {{ $item->parcel_with_allocate->vendor_id }} </td> --}}
-                                                
-                                                {{-- <td> {{ $item->allocate_parcel['0']['allocate_logistic']['name'] }} </td> --}}
-                                                <td> {{ $item['parcel_with_allocate']['0']['allocate_with_service']['service_name']}} </td>
-                                                <td> {{ $item->parcel_with_allocate['0']['allocate_with_logistic']['logistic_with_company']['name'] }} </td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @php
+                                                    $i = 1;
+                                                @endphp
+                                                @if ($allocated_parcels->count() > 0)
+                                                    @foreach ($allocated_parcels as $item)
+                                                        <tr>
+                                                            <td>{{ $i++ }}</td>
+                                                            <td>
+                                                                <a href="{{ url('parcel-details/' . $item->id) }}"
+                                                                    class="btn btn-outline-secondary btn-sm delete"
+                                                                    title="View">
+                                                                    <i class="far fa-eye"> {{ $item->pl_id }}</i>
+                                                                </a>
+                                                            </td>
+                                                            <td>
+                                                                {{ $item->allocate_with_parcel->parcel_with_consignee->consignee_with_country->name }}
+                                                            </td>
+                                                            <td>
+                                                                @php
+                                                                    $month = date('d/m/Y', strtotime($item->allocate_with_parcel->created_at));
+                                                                    
+                                                                    echo $month;
+                                                                @endphp
+                                                            </td>
+                                                            <td> {{ $item->allocate_with_parcel->pl_weight }} </td>
+                                                            <td> {{ $item->allocate_with_parcel->pl_final }} </td>
 
 
-                                                <td>
-                                                    {{-- $item['parcel_with_allocate']['0']['vendor_id']  --}}
-                                                    @if ($item->parcel_with_tracking !=null )
-                                                    <p id="tracking_id_style">
-                                                        <button type="button" class="btn bg-success text-white btn-sm disabled">
-                                                            {{$item['parcel_with_tracking']['vendor_tracking_id']}}
-                                                        </button>
-                                                    </p>
-                                                    @else
-                                                    <p id="trackingModal_{{ $item->id }}">
-                                                        <a class="btn btn-outline-success btn-sm tracking_btn" title="add" data-bs-toggle="modal" data-bs-target="#trackingmodal" id="{{ $item->id }}" data-pl-id="{{$item->pl_id}}" data-vendor-id="{{ $item['parcel_with_allocate']['0']['vendor_id'] }}">
-                                                            update
-                                                        </a>
-                                                    </p>
-                                                    @endif
-                                                </td>
 
-                                                <td>
-                                                    @if ($item->parcel_with_charges !=null)
-                                                    <p id="tracking_charges_style">
-                                                        <button type="button" class="btn bg-primary text-white btn-sm disabled">
-                                                            {{$item['parcel_with_charges']['vendor_tracking_charges']}}
-                                                        </button>
-                                                    </p>
-                                                    @else
-                                                    <p id="trackingModal2_{{ $item->id }}">
-                                                        <a class="btn btn-outline-primary btn-sm charges_btn" title="add" data-bs-toggle="modal" data-bs-target="#vendor_charges_update" id="{{ $item->id }}" data-pl-id="{{$item->pl_id}}" data-vendor-id="{{ $item['parcel_with_allocate']['0']['vendor_id'] }}">
-                                                            update
-                                                        </a>
-                                                    </p>
-                                                    @endif
-                                                </td>
+                                                            <td>
+                                                                {{ $item->allocate_with_service->service_name }}
 
-                                                <td id="deliver_status_{{$item->pl_id}}">
-                                                   
-                                                    @if ($item->pl_status == 'delivered')
-                                                    <button type="button" class="btn btn-danger btn-sm disabled">
-                                                        {{ $item->pl_status }} </button>
-                                                    @else
-                                                        {{-- @php var_dump(empty($item->parcel_charges)); @endphp --}}
-                                                        @if( $item->parcel_with_charges != ""  ||  $item->parcel_with_tracking != "")
-                                                            
-                                                        <a class="btn btn-outline-info btn-sm delivered_status" title="add" id="{{ $item->pl_id }}">
-                                                                Deliver
-                                                            </a>
-                                                        @endif
-                                                        <a class="btn btn-outline-info btn-sm delivered_status" title="add" id="{{ $item->pl_id }}">
-                                                            Deliver
-                                                        </a>
-                                                    @endif
-                                                </td>
+                                                            </td>
+                                                            <td> {{ $item->allocate_with_logistic->name }} </td>
 
-                                            </tr>
-                                            @endforeach
-                                            @else
-                                            <tr>
-                                                <td><code>No record found...</code></td>
-                                            </tr>
-                                            @endif
-                                        </tbody>
-                                    </table>
-                                </div>
+
+
+                                                            <td>
+
+
+
+                                                                @if ($item->allocate_with_parcel->parcel_with_tracking)
+                                                                    <p id="tracking_id_style">
+                                                                        <button type="button"
+                                                                            class="btn bg-success text-white btn-sm disabled">
+                                                                            {{ $item->allocate_with_parcel->parcel_with_tracking->vendor_tracking_id }}
+                                                                        </button>
+                                                                    </p>
+                                                                @else
+                                                                    <p id="trackingModal_{{ $item->id }}">
+                                                                        <a class="btn btn-outline-success btn-sm tracking_btn"
+                                                                            title="add" data-bs-toggle="modal"
+                                                                            data-bs-target="#trackingmodal"
+                                                                            id="{{ $item->id }}"
+                                                                            data-pl-id="{{ $item->pl_id }}"
+                                                                            data-vendor-id="{{ $item->vendor_id }}">
+                                                                            update
+                                                                        </a>
+                                                                    </p>
+                                                                @endif
+                                                            </td>
+
+                                                            <td>
+                                                                @php
+                                                                //    var_dump( $item
+                                                                //     ->allocate_with_parcel
+                                                                //     ->parcel_with_charges
+                                                                //     // ->vendor_tracking_charges
+                                                                //     )    
+                                                                @endphp
+                                                                @if ($item->allocate_with_parcel && $item->allocate_with_parcel->parcel_with_charges)
+                                                                    <p id="tracking_charges_style">
+                                                                        <button type="button"
+                                                                            class="btn bg-primary text-white btn-sm disabled">
+                                                                            {{ $item->allocate_with_parcel->parcel_with_charges->vendor_tracking_charges }}
+                                                                        </button>
+                                                                    </p>
+                                                                @else
+                                                                    <p id="trackingModal2_{{ $item->id }}">
+                                                                        <a class="btn btn-outline-primary btn-sm charges_btn"
+                                                                            title="add" data-bs-toggle="modal"
+                                                                            data-bs-target="#vendor_charges_update"
+                                                                            id="{{ $item->id }}"
+                                                                            data-pl-id="{{ $item->pl_id }}"
+                                                                            data-vendor-id="{{ $item->vendor_id }}">
+                                                                            update
+                                                                        </a>
+                                                                    </p>
+                                                                @endif
+                                                            </td>
+
+                                                            <td id="deliver_status_{{ $item->pl_id }}">
+                                                               
+                                                                @if ($item->allocate_with_parcel->pl_status == 'delivered')
+                                                                    <button type="button"
+                                                                        class="btn btn-danger btn-sm disabled">
+                                                                        {{ $item->allocate_with_parcel->pl_status }}
+                                                                    </button>
+                                                                @else
+                                                                    @if ($item->allocate_with_parcel && $item->allocate_with_parcel->parcel_with_charges  && $item->allocate_with_parcel->parcel_with_tracking )
+                                                                        <a class="btn btn-outline-info btn-sm delivered_status"
+                                                                            title="add"
+                                                                            id="{{ $item->allocate_with_parcel->pl_id }}">
+                                                                            Deliver
+                                                                        </a>
+                                                                    @endif 
+                                                                @endif
+                                                            </td>
+
+                                                        </tr>
+                                                    @endforeach
+                                                @else
+                                                    <tr>
+                                                        <td><code>No record found...</code></td>
+                                                    </tr>
+                                                @endif
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 @endif
                             </div>
 
@@ -186,7 +223,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <!-- <form action="{{ url('vendor-tracking-charges') }}" method="POST" id="vendor-tracking-charges"> -->
+
                 <form method="POST" id="vendor-tracking-charges">
                     @csrf
                     <table class="table table-bordered">
@@ -196,21 +233,27 @@
                         </tr>
                         <tr>
                             <td>
-                                <input type="text" name="parcel_iddd2" value="" id="parcel_iddd2" class="form-control" readonly>
-                                <input type="hidden" name="parcell_iddd" value="" id="parcell_iddd" class="form-control">
-                               <br> <input type="hidden" name="vendor_id_charged" value="" id="vendor_id_charged" class="form-control">
+                                <input type="text" name="parcel_iddd2" value="" id="parcel_iddd2"
+                                    class="form-control" readonly>
+                                <input type="hidden" name="parcell_iddd" value="" id="parcell_iddd"
+                                    class="form-control">
+                                <br> <input type="hidden" name="vendor_id_charged" value=""
+                                    id="vendor_id_charged" class="form-control">
                             </td>
                             <td>
-                                <input type="text" name="vendor_charges" id="vendor_charges" class="form-control">
+                                <input type="text" name="vendor_charges" id="vendor_charges"
+                                    class="form-control">
                             </td>
                         </tr>
                         <br>
                     </table>
 
                     <div class="modal-footer">
-                        <!-- Toogle to second dialog -->
-                        <button type="submit" form="vendor-tracking-charges" class="btn btn-primary " id="modal_submit4" value="Submit">Submit</button>
-                        <button type="button" class="btn btn-secondary" id="modal_close4" data-bs-dismiss="modal">Close</button>
+
+                        <button type="submit" form="vendor-tracking-charges" class="btn btn-primary "
+                            id="modal_submit4" value="Submit">Submit</button>
+                        <button type="button" class="btn btn-secondary" id="modal_close4"
+                            data-bs-dismiss="modal">Close</button>
                     </div>
             </div>
             </form>
@@ -241,8 +284,10 @@
                 if (data.success == 1) {
                     console.log(data)
                     // $('#trackingModal_' + track_id).text(data.data.vendor_tracking_id);
-                    $('#trackingModal_' + track_id).html('<button type="button" class="btn bg-success text-white btn-sm disabled">'+data.data.vendor_tracking_id+'</button>');
-                    
+                    $('#trackingModal_' + track_id).html(
+                        '<button type="button" class="btn bg-success text-white btn-sm disabled">' +
+                        data.data.vendor_tracking_id + '</button>');
+
                     toastr.success('record updated', 'success');
                     $('#trackingmodal').modal('hide');
 
@@ -253,7 +298,7 @@
 
         })
     });
-    
+
     $('body').on('submit', '#vendor-tracking-charges', function(e) {
         e.preventDefault();
         var fdata = new FormData(this);
@@ -273,8 +318,10 @@
                     });
                 }
                 if (data.success == 1) {
-                    $('#trackingModal2_' + track_id2).html('<button type="button" class="btn bg-primary text-white btn-sm disabled">'+data.data.vendor_tracking_charges+'</button>');
-                    
+                    $('#trackingModal2_' + track_id2).html(
+                        '<button type="button" class="btn bg-primary text-white btn-sm disabled">' +
+                        data.data.vendor_tracking_charges + '</button>');
+
                     toastr.success('record updated', 'success');
                     $('#vendor_charges_update').modal('hide');
                     // console.log(track_id);
@@ -292,7 +339,7 @@
         track_id = this.id;
         $('#parcell_idd').val(this.id);
         $('#parcel_idd2').val($(this).data('pl-id'));
-        
+
         $('#vendor_id_tracked').val($(this).data('vendor-id'));
 
     });
@@ -325,7 +372,9 @@
                     if (data) {
                         $('.delivered_status').empty();
                         // $('.delivered_status').append('Dilevered');
-                        $('#deliver_status_'+pl_id).html('<button type="button" class="btn btn-danger btn-sm disabled">Deliverd</button>');
+                        $('#deliver_status_' + pl_id).html(
+                            '<button type="button" class="btn btn-danger btn-sm disabled">Deliverd</button>'
+                        );
                         // $('.delivered_status').addClass("bg-danger");
 
                     } else {

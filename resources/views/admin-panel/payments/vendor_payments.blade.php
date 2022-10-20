@@ -1,6 +1,87 @@
 @extends('admin-panel.index')
 
 @section('content')
+    <style>
+        .page-header,
+        .page-header-space {
+            height: 100px;
+        }
+
+        .page-footer,
+        .page-footer-space {
+            height: 50px;
+        }
+
+        .page-footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            border-top: 1px solid black;
+            background: grey;
+            color: white;
+        }
+
+        .page-header {
+            position: fixed;
+            top: 0mm;
+            width: 100%;
+            border-bottom: 1px solid black;
+            background: grey;
+            color: white;
+        }
+
+        .page {
+            page-break-after: always;
+        }
+
+        @page {
+            /* margin: 20mm; */
+        }
+
+        @media print {
+            table {
+                font-size: 10px !important;
+            }
+
+            thead {
+                display: table-header-group;
+            }
+
+            tfoot {
+                display: table-footer-group;
+            }
+
+            .print-button {
+                display: none !important;
+            }
+
+            body {
+                margin: 0;
+            }
+        }
+
+        .invoice-title {
+            display: none;
+        }
+    </style>
+    <div class="invoice-title">
+        <div class="mb-0">
+            <div class="row">
+                <div class="col p-2 text-center">
+                    <img src="{{ asset('assets/images/LogoBFS.png') }}" alt="logo" height="60" covered />
+                </div>
+                <div class="col">
+                    <label for="">SBS Courier Services</label>
+                    <p>Email: sbsservice@mail.com</p>
+                    <label for="">Phone: 091-21336444</label>
+                </div>
+                <div class="col">
+                    <p>Address: G15 markaz, Green Acre Plaza, Islamabad, Pakistan</p>
+                    <p>Website: www.bfs.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="">
 
         <div class="page-content">
@@ -25,7 +106,7 @@
                                                 <select name="vendor" id="vendor-payment-select" class="form-control"
                                                     onchange="$('#searchForm').submit()">
                                                     <option value="" class="form-control">Select Vendor</option>
-                                                    {{-- @dd($vendors) --}}
+
                                                     @foreach ($companies as $company)
                                                         <option class="form-control" value="{{ $company->id }}"
                                                             @if (request()->vendor == $company->id) selected @endif>
@@ -34,13 +115,22 @@
                                                 </select>
                                             </div>
                                         </div>
+
+                                        <div class="col-1 mt-4 p-3">
+                                            <a href="#"
+                                                class="btn btn-success waves-effect waves-light  mr-4 pt-2 pb-0 print-btn-vendor-report px-3"><i
+                                                    class="fa fa-print">Print</i></a>
+                                        </div>
                                     </div>
                                 </form>
+
+                                <div class="print-div-customer-report">
                                 <div class="row">
                                     <div class="col-5 border">
-                                        <h6 class="text-center mt-2 font-weight-bold text-center text-secondary border">Vendor Charges Table</h6>
+                                        <h6 class="text-center mt-2 font-weight-bold text-center text-secondary border">
+                                            Vendor Charges Table</h6>
                                         <hr>
-                                        <table id="datatable"
+                                        <table 
                                             class="table table-bordered dt-responsive  nowrap w-100 table-sm text-center table-sm ">
                                             <thead>
                                                 <tr>
@@ -68,9 +158,11 @@
 
                                     </div>
                                     <div class="col-5 border">
-                                        <h6 class="text-center mt-2 font-weight-bold text-center text-secondary border">Vendor Payments Table</h6>
+                                        <h6 class="text-center mt-2 font-weight-bold text-center text-secondary border">
+                                            Vendor Payments Table</h6>
                                         <hr>
-                                        <table id="datatable1"  class="table table-bordered dt-responsive nowrap w-100 table-sm">
+                                        <table id="datatable1"
+                                            class="table table-bordered dt-responsive nowrap w-100 table-sm">
                                             <thead>
                                                 <tr>
                                                     <td>#</td>
@@ -100,8 +192,11 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                    {{-- @dd($totalAmount); --}}
+                                    {{-- @dd($totalpaid); --}}
                                     <div class="col-2 border">
-                                        <h6 class="text-center mt-2 font-weight-bold text-center text-secondary border">Vendor Dues Table</h6>
+                                        <h6 class="text-center mt-2 font-weight-bold text-center text-secondary border">
+                                            Vendor Dues Table</h6>
                                         <hr>
                                         <table class="table table-sm">
                                             <tr>
@@ -130,6 +225,7 @@
 
                                     </div>
                                 </div>
+                                </div>
 
                                 <!-- Back & Dashboard btns -->
                                 <div class="d-flex justify-content-between my-2">
@@ -145,4 +241,49 @@
             </div>
         </div>
     </div>
+
+    <script>
+        $('body').on('click', '.print-btn-vendor-report', function() {
+      var divToPrint = $('.print-div-customer-report').html();
+      var header = $('.invoice-title').html();
+      var frame1 = $('<iframe />');
+      frame1[0].name = "frame1";
+      frame1.css({
+          "position": "absolute",
+          "top": "-1000000px"
+      });
+      $("body").append(frame1);
+      var frameDoc = frame1[0].contentWindow ? frame1[0].contentWindow : frame1[0].contentDocument.document ?
+          frame1[0].contentDocument.document : frame1[0].contentDocument;
+      frameDoc.document.open();
+      //Create a new HTML document.
+      // frameDoc.document.write('<table><thead><tr><td>');
+      // frameDoc.document.write('<div class="page-header-space">');
+      //     frameDoc.document.write('header');
+      // frameDoc.document.write('</div></td></tr> </thead><tbody><tr><td><div class="page" style="line-height: 3">');
+      // frameDoc.document.write(divToPrint);
+      // frameDoc.document.write('</div></td></tr></tbody>');
+      // frameDoc.document.write('<tfoot><tr><td><div class="page-footer-space">');
+      // frameDoc.document.write("footer");
+      // frameDoc.document.write('</div></td></tr></tfoot></table>');
+      frameDoc.document.write('</head><body>');
+      //Append the external CSS file.
+      frameDoc.document.write(
+          '<link href="{{ asset('assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />'
+      );
+      frameDoc.document.write(
+          "<link href='{{ asset('assets/css/bootstrap.min.css') }}' id='bootstrap-style' rel='stylesheet' type='text/css' />"
+      );
+      //Append the DIV contents.
+      frameDoc.document.write(header);
+      frameDoc.document.write(divToPrint);
+      frameDoc.document.write('</body></html>');
+      frameDoc.document.close();
+      setTimeout(function() {
+          window.frames["frame1"].focus();
+          window.frames["frame1"].print();
+          frame1.remove();
+      }, 500);
+  });
+  </script>
 @endsection

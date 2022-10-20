@@ -10,4 +10,9 @@ class PaymentLog extends Model
 {
     protected $guarded  = [];
     use HasFactory,SoftDeletes;
+
+    public function paymentlog_with_method(){
+
+        return $this->belongsTo(PaymentMethod::class,'payment_method_id','id');
+    }
 }

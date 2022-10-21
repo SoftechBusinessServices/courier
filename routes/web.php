@@ -187,3 +187,4 @@ Route::get('/get-customer-payment-dues',[PaymentController::class,'get_customer_
 Route::post('customer-payment-add', [PaymentController::class, 'customer_payment_add'])->name('customer-payment-add');
 
 // Route::get('ajax-autocomplete-search', [ParcelController::class,'selectSearch']);
+Route::get('/search-tracking-id',[ParcelController::class, 'search_tracking_id']);

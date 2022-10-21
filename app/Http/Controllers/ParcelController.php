@@ -350,24 +350,12 @@ class ParcelController extends Controller
         }
     }
 
-    public function search(Request $request)
+    public function search_tracking_id(Request $request)
     {
-
-
-        // dd($request->all());
-        $output = "";
-        $employee = ParcelShipper::where('shipper_phone', 'Like', '%' . $request->search . '%')->first();
-
-        // foreach($employee as $row){
-
-        //     $output.=
-        //     '<tr>
-        //     <td>'.$row->shipper_phone.'<td>
-        //     <tr>';
-
-        // }
-
-        return response($employee);
+        // dd(1);
+        $employee = Parcel::where('pl_id', 'Like', '%' . $request->search . '%')->first();
+       
+       return response()->json($employee);
     }
 
     public function vendor_details_list(Request $request)

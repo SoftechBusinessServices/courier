@@ -607,7 +607,7 @@
                                                     </div>
                                                     <div class="col-md-8">
                                                         <form class="form-inline" id="tracking-form">
-                                                            <input id="tracking-id"
+                                                            <input id="tracking-id" name="tracking-id"
                                                                 class="form-control block mr-sm-12" type="text"
                                                                 placeholder="Tracking ID" aria-label="Search">
                                                             <button onclick="myFunction()"
@@ -620,25 +620,25 @@
 
 
                                             <!-- order details  -->
-                                      
-                                                <div class="card-body row text-center ">
-                                                    <table class="table table-bordered table-hover">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Parcel ID</th>
-                                                                <th>Reg Date</th>
-                                                                <th>Destination</th>
-                                                                <th>Status</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
 
-                                                        </tbody>
-                                                    </table>
-                                               
-                                                </div>
-                                        
-                                           
+                                            <div class="card-body row text-center ">
+                                                <table class="table table-bordered table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Parcel ID</th>
+                                                            <th>Reg Date</th>
+                                                            <th>Destination</th>
+                                                            <th>Status</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+
+
                                         </div>
                                     </article>
                                 </div>
@@ -1728,37 +1728,57 @@
             @if (Session::has('error'))
                 toastr.error(
                     '{{ Session::get('
-                                                                                                        error ') }}'
+                                                                                                                            error ') }}'
                 );
             @elseif (Session::has('success'))
                 toastr.success(
                     '{{ Session::get('
-                                                                                                        success ') }}'
+                                                                                                                            success ') }}'
                 );
             @endif
         });
-
     </script>
 
     <script type="text/javascript">
         $('body').on('submit', '#tracking-form', function(e) {
             e.preventDefault();
             alert(1);
-          
-            search_query = $(this).val();
-            alert(search_query);
-            
+
+            var search = $('#tracking-id').val();
+            alert(search);
+
             $.ajax({
-                
+
                 url: "{{ url('/search-tracking-id') }}",
                 type: "GET",
-                
                 data: {
-                    'search': $value
+                    'search': search
                 },
                 success: function(data) {
-
+                    // alert(data);
+                    // var html = '';
                     $('tbody').html(data);
+                    // html += '<tr>';
+
+                    // html += '<td>';
+                    // html += data;
+                    // html += '</td>';
+
+                    // html += '<td>';
+                    // html += data;
+                    // html += '</td>';
+
+                    // html += '<td>';
+                    // html += data;
+                    // html += '</td>';
+
+                    // html += '<td>';
+                    // html += data;
+                    // html += '</td>';
+
+                    // html += '</tr>';
+
+                    // $('.vendor-payment-table1>tbody').html(html);
                 }
             });
         })

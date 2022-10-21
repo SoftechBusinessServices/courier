@@ -134,6 +134,7 @@
                                                                         </button>
                                                                     </p>
                                                                 @else
+                                                                {{-- @php echo($item->id);  @endphp --}}
                                                                     <p id="trackingModal_{{ $item->id }}">
                                                                         <a class="btn btn-outline-success btn-sm tracking_btn"
                                                                             title="add" data-bs-toggle="modal"
@@ -164,6 +165,9 @@
                                                                         </button>
                                                                     </p>
                                                                 @else
+                                                              
+                                                              
+                                                                {{-- @php echo($item->id);  @endphp --}}
                                                                     <p id="trackingModal2_{{ $item->id }}">
                                                                         <a class="btn btn-outline-primary btn-sm charges_btn"
                                                                             title="add" data-bs-toggle="modal"
@@ -177,7 +181,7 @@
                                                                 @endif
                                                             </td>
 
-                                                            <td id="deliver_status_{{ $item->pl_id }}">
+                                                            <td id="deliver_status_btn_{{ $item->id }}">
                                                                
                                                                 @if ($item->allocate_with_parcel->pl_status == 'delivered')
                                                                     <button type="button"
@@ -186,7 +190,7 @@
                                                                     </button>
                                                                 @else
                                                                     @if ($item->allocate_with_parcel && $item->allocate_with_parcel->parcel_with_charges  && $item->allocate_with_parcel->parcel_with_tracking )
-                                                                        <a class="btn btn-outline-info btn-sm delivered_status"
+                                                                        <a class="btn btn-outline-info btn-sm change_delivered_status"
                                                                             title="add"
                                                                             id="{{ $item->pl_id }}">
                                                                             Deliver
@@ -285,11 +289,13 @@
                 if (data.success == 1) {
                     console.log(data)
                     // $('#trackingModal_' + track_id).text(data.data.vendor_tracking_id);
-                    $('#trackingModal_' + track_id).html(
+                    $('#trackingModal_' + data.data.id).html(
                         '<button type="button" class="btn bg-success text-white btn-sm disabled">' +
                         data.data.vendor_tracking_id + '</button>');
 
                     toastr.success('record updated', 'success');
+                    
+                    $(':input', this).val('');
                     $('#trackingmodal').modal('hide');
 
                     // console.log(track_id);
@@ -319,11 +325,13 @@
                     });
                 }
                 if (data.success == 1) {
-                    $('#trackingModal2_' + track_id2).html(
+                    $('#trackingModal2_'+ data.data.id).html(
                         '<button type="button" class="btn bg-primary text-white btn-sm disabled">' +
                         data.data.vendor_tracking_charges + '</button>');
 
                     toastr.success('record updated', 'success');
+                    
+                    $(':input', this).val('');
                     $('#vendor_charges_update').modal('hide');
                     // console.log(track_id);
                 }
@@ -348,7 +356,7 @@
     $('.charges_btn').on('click', function(e) {
         e.preventDefault();
         var pl_id1 = (this.id);
-        alert(pl_id1);
+        // alert(pl_id1);
         $('#parcel_id1').val($(this).data('pl-id'));
         $('#pl_id1').val(pl_id1);
         $('#selected_vendor_id1').val($(this).data('vendor-id'));
@@ -356,11 +364,11 @@
     });
 
 
-    $('.delivered_status').on('click', function(e) {
+    $('.change_delivered_status').on('click', function(e) {
         e.preventDefault();
         var pl_id = (this.id);
         var el = $(this);
-        alert(pl_id)
+        // alert(pl_id)
         if (pl_id) {
 
             $.ajax({
@@ -371,10 +379,11 @@
                 success: function(data) {
                     console.log(data);
                     if (data) {
-                        $('.delivered_status').empty();
-                        // $('.delivered_status').append('Dilevered');
-                        $('#deliver_status_' + pl_id).html(
-                            '<button type="button" class="btn btn-danger btn-sm disabled">Deliverd</button>'
+                        $('.change_delivered_status').empty();
+                        console.log(data);
+                        $('.change_delivered_status').append('Delivered');
+                        $('#deliver_status_btn_' + pl_id).html(
+                            '<button type="button" class="btn btn-danger btn-sm disabled">Delivered</button>'
                         );
                         // $('.delivered_status').addClass("bg-danger");
 

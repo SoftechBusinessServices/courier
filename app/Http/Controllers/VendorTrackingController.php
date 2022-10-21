@@ -68,7 +68,8 @@ class VendorTrackingController extends Controller
 
     public function getDeliveredStatus($id){
         // dd($id);
-        $record = Parcel::where('pl_id', $id)->first();
+        $record = Parcel::where('id', $id)->first();
+        // echo$record;
         $record->pl_status = "delivered";
         $data_updated = $record->update();
         // return response()->json($shipping);

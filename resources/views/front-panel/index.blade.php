@@ -222,7 +222,8 @@
                                     <li data-index="rs-100" data-transition="slotfade-vertical"
                                         data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"
                                         data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut"
-                                        data-masterspeed="1000" data-thumb="images/main-slider/slider1/slide1.jpg"
+                                        data-masterspeed="1000"
+                                        data-thumb="{{ asset('assets2/images/main-slider/slider1/slide1.jpg') }}"
                                         data-rotate="0" data-fstransition="fade" data-fsmasterspeed="1500"
                                         data-fsslotamount="7" data-saveperformance="off" data-title="Big &amp; Bold"
                                         data-param1="" data-param2="" data-param3="" data-param4="" data-param5=""
@@ -691,10 +692,14 @@
             <div id="services" class="section-full bg-change-section overlay-wraper p-t80 p-b50">
                 <div class="overlay-main bg-secondry opacity-09"></div>
                 <div class="bg-changer">
-                    <div class=" section-bg active" style="background-image:url(images/background/bg1.jpg)"></div>
-                    <div class="section-bg" style="background-image:url(images/background/bg2.webp)"></div>
-                    <div class="section-bg" style="background-image:url(images/background/bg1.jpg)"></div>
-                    <div class="section-bg" style="background-image:url(images/background/bg4.jpg)"></div>
+                    <div class=" section-bg active"
+                        style=" background-image: url('{{ asset('assets2/images/background/bg1.jpg') }}');"></div>
+                    <div class="section-bg"
+                        style=" background-image: url('{{ asset('assets2/images/background/bg2.webp') }}');"></div>
+                    <div class="section-bg"
+                        style=" background-image: url('{{ asset('assets2/images/background/bg1.jpg') }}');"></div>
+                    <div class="section-bg"
+                        style=" background-image: url('{{ asset('assets2/images/background/bg4.jpg') }}');"></div>
                 </div>
                 <div class="container">
                     <!-- TITLE START-->
@@ -807,7 +812,7 @@
 
             <!-- Shipment Solution-->
             <div class="section-full p-t80 p-b50 bg-no-repeat bg-center bg-white"
-                style="background-image:url(images/background/bg-map.png);">
+                style=" background-image: url('{{ asset('assets2/images/background/bg-map.png') }}');">
 
                 <div class="container">
                     <div class="row">
@@ -1063,7 +1068,7 @@
 
             <!-- Latest Project -- -->
             <div id="gellery" class="section-full  p-tb80 bg-full-height bg-secondry bg-repeat-x city-slide-image"
-                style="background-image:url(images/background/bg-trans-1.png);">
+                style=" background-image: url('{{ asset('assets2/images/background/bg-trans-1.png') }}');">
                 <div class="container-fluid">
                     <div class="fillter-left-content">
                         <div class="filter-left-part shake_image">
@@ -1119,7 +1124,7 @@
                                             <div class="item overflow-hide">
                                                 <div class="mt-box">
                                                     <div class="mt-img-effect overlay-2">
-                                                        <img src="images/gallery/portrait/pic2.jpg')}}"
+                                                        <img src="{{ asset('assets2/images/gallery/portrait/pic2.jpg') }}"
                                                             alt="">
                                                         <div class="overlay-2-bg bg-black"></div>
                                                         <div class="overlay-2-content">
@@ -1262,7 +1267,7 @@
             </div>
 
             <!-- Our Team -->
-            <div id="team" class="section-full text-center mt-our-team bg-gray p-t80 p-b50">
+            {{-- <div id="team" class="section-full text-center mt-our-team bg-gray p-t80 p-b50">
                 <div class="container">
 
                     <!-- TITLE START-->
@@ -1346,19 +1351,24 @@
                     </div>
 
                 </div>
-            </div>
-
-
+            </div> --}}
+            {{-- images/background/bg1.jpg --}}
             <!-- Why Choose -->
             <div class="section-full bg-change-section overlay-wraper p-t80 p-b50">
                 <div class="overlay-main bg-secondry opacity-09"></div>
                 <div class="bg-changer">
-                    <div class=" section-bg active" style="background-image:url(images/background/bg1.jpg)"></div>
-                    <div class="section-bg" style="background-image:url(images/background/bg2.jpg)"></div>
-                    <div class="section-bg" style="background-image:url(images/background/bg3.jpg)"></div>
-                    <div class="section-bg" style="background-image:url(images/background/bg4.jpg)"></div>
-                    <div class="section-bg" style="background-image:url(images/background/bg5.jpg)"></div>
-                    <div class="section-bg" style="background-image:url(images/background/bg6.jpg)"></div>
+                    <div class=" section-bg active"
+                        style=" background-image: url('{{ asset('assets2/images/background/bg1.jpg') }}');"></div>
+                    <div class="section-bg"
+                        style=" background-image: url('{{ asset('assets2/images/background/bg2.jpg') }}');"></div>
+                    <div class="section-bg"
+                        style=" background-image: url('{{ asset('assets2/images/background/bg3.jpg') }}');"></div>
+                    <div class="section-bg"
+                        style=" background-image: url('{{ asset('assets2/images/background/bg4.jpg') }}');"></div>
+                    <div class="section-bg"
+                        style=" background-image: url('{{ asset('assets2/images/background/bg5.jpg') }}');"></div>
+                    <div class="section-bg"
+                        style=" background-image: url('{{ asset('assets2/images/background/bg6.jpg') }}');"></div>
                 </div>
                 <div class="container">
                     <!-- TITLE START-->
@@ -1406,8 +1416,7 @@
                                     <div
                                         class="mt-icon-box-wraper  p-a30 bgcall-block hover-shadow hover-border-outer hover-border m-b30">
                                         <div class="icon-md radius m-b15">
-                                            <span class="icon-cell  text-white"><i
-                                                    class="flaticon-wallet"></i></span>
+                                            <span class="icon-cell  text-white"><i class="flaticon-wallet"></i></span>
                                         </div>
                                         <div class="icon-content">
                                             <h4 class="mt-tilte  m-b15 text-primary">Freight Payment Options</h4>
@@ -1465,8 +1474,8 @@
             </div>
 
             <!-- Testimonials -->
-            <div class="section-full p-t80 p-b80 bg-center bg-full-height bg-no-repeat bg-gray"
-                style="background-image:url(images/background/bg-map.png);">
+            {{-- <div class="section-full p-t80 p-b80 bg-center bg-full-height bg-no-repeat bg-gray"
+            style=" background-image: url('{{asset('assets2/images/background/bg-map.png')}}');">
                 <div class="container">
                     <!-- TITLE START -->
                     <div class="section-head text-center">
@@ -1539,11 +1548,11 @@
                     </div>
 
                 </div>
-            </div>
+            </div> --}}
 
             <!-- Contact Us  -->
             <div id="contact" class="section-full bg-white bg-right-center bg-no-repeat"
-                style="background-image:url(images/background/bg-trans-2.png);">
+                style=" background-image: url('{{ asset('assets2/images/background/bg-trans-2.png') }}');">
                 <div class="container">
                     <div class="row conntact-home">
                         <div class="col-lg-5 col-md-5 col-sm-12">
@@ -1629,12 +1638,12 @@
 
                                     <li><a href="#services">Services</a></li>
                                     <li><a href="#about">About</a></li>
-                                    <li><a href="#team">Our Team</a></li>
-                                    <li><a href="#contact">Contact</a></li>
+                                    {{-- <li><a href="#team">Our Team</a></li>
+                                    <li><a href="#contact">Contact</a></li> --}}
                                 </ul>
-                                <button type="button" class="btn btn-primary my-2" style="border: none;"
+                                <button type="button" class="btn btn-warning" style="border: none;"
                                     data-toggle="modal" data-target=".bd-example-modal-lg">Track
-                                    Your Order</button>
+                                    Your Parcel</button>
                             </div>
                         </div>
 
@@ -1754,13 +1763,13 @@
             @if (Session::has('error'))
                 toastr.error(
                     '{{ Session::get('
-                                                                                    error ') }}'
-                    );
+                                                                                                        error ') }}'
+                );
             @elseif (Session::has('success'))
                 toastr.success(
                     '{{ Session::get('
-                                                                                    success ') }}'
-                    );
+                                                                                                        success ') }}'
+                );
             @endif
         });
 
@@ -1773,7 +1782,6 @@
     </script>
 
     <script type="text/javascript">
-
         $('body').on('submit', '#tracking-form', function(e) {
 
             e.preventDefault();

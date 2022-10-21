@@ -176,7 +176,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="">Select Customer</label>
-                                <select name="customer_id" id="customer_type" class="form-control">
+                                <select name="customer_id" id="customer_type" class="form-control" required>
                                     <option value="" class="form-control">Select Customer</option>
                                     {{-- @dd($vendors) --}}
                                     @foreach ($customers as $customer)
@@ -195,7 +195,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="">Select Payment Method</label>
-                                <select name="payment_method_id" id="payment_method_id" class="form-control">
+                                <select name="payment_method_id" id="payment_method_id" class="form-control" required>
                                     <option value="">Select One Method</option>
                                     @foreach ($payment_methods as $payment_method)
                                         <option value="{{ $payment_method->id }}">
@@ -206,7 +206,7 @@
                             <div class="col-md-6 mb-3">
                                 <label for="">Enter Amount</label>
                                 <input type="text" name="collected_amount" value="" id="collected_amount"
-                                    class="form-control">
+                                    class="form-control" required>
                             </div>
                         </div>
 

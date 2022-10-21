@@ -213,7 +213,7 @@ class PaymentController extends Controller
             // dd($row);
             return redirect()->back()->with('success', "Successfully added.");
         } else {
-               dd(22);
+            //    dd(22);
             $remainingAmount = $totalAmount;
             // dd($remainingAmount);
             $insert = [

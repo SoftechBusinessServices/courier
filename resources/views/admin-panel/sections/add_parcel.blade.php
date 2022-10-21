@@ -10,7 +10,7 @@
                 <!-- This script got from frontendfreecode.com -->
                 <div class="container"> 
                     
-                    <form method="POST" action="{{ route('store-parcel') }}" enctype="multipart/form-data" novalidate
+                    <form method="POST" action="{{ route('store-parcel') }}" enctype="multipart/form-data"
                         id="regForm">
                         @csrf
                         <h4 class="text-center text-info"> New Parcel Registration 

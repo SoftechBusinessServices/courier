@@ -15,9 +15,9 @@ class VendorTrackingController extends Controller
 
         // dd($request->all());
         $validator = Validator::make($request->all(), [
-            'parcell_idd' => 'required',
-            'tracking_idd' => 'required',
-            'vendor_id_tracked' => 'required',
+            'pl_id' => 'required',
+            'selected_vendor_id' => 'required',
+            'vendor_tracking_id' => 'required',
         ]);
  
         if ($validator->fails()) {
@@ -25,9 +25,9 @@ class VendorTrackingController extends Controller
             return response()->json(['success' => 0,'errors' => $errors]);
         }
         $data = [
-            'pl_id' => $request->parcell_idd,
-            'vendor_id' => $request->vendor_id_tracked,
-            'vendor_tracking_id' => $request->tracking_idd,
+            'pl_id' => $request->pl_id,
+            'vendor_id' => $request->selected_vendor_id,
+            'vendor_tracking_id' => $request->vendor_tracking_id,
         ];
          $data_id = VendorIdTracking::create($data);
         return response()->json(['success' => 1,'data' => $data_id]);
@@ -36,11 +36,11 @@ class VendorTrackingController extends Controller
 
     public function vendor_tracking_charges(Request $request){
 
-       
+        // dd($request->all());
         $validator = Validator::make($request->all(), [
-            'parcell_iddd' => 'required',
-            'vendor_id_charged' => 'required',
-            'vendor_charges' => 'required',
+            'pl_id1' => 'required',
+            'selected_vendor_id1' => 'required',
+            'vendor_charges_id1' => 'required',
         ]);
  
         if ($validator->fails()) {
@@ -48,17 +48,13 @@ class VendorTrackingController extends Controller
             return response()->json(['success' => 0,'errors' => $errors]);
         }
         $data = [
-            'pl_id' => $request->parcell_iddd,
-            'vendor_id' => $request->vendor_id_charged,
-            'vendor_tracking_charges' => $request->vendor_charges,
+            'pl_id' => $request->pl_id1,
+            'vendor_id' => $request->selected_vendor_id1,
+            'vendor_tracking_charges' => $request->vendor_charges_id1,
         ];
-        $data_id = $data = VendorCharges::create($data);
-        return response()->json(['success' => 1,'data' => $data_id]);
-        // $request->validate([
-        //     'parcell_iddd' => 'required',
-        //     'parcell_iddd' => 'required',
-        // ]);    
-        //  return redirect()->back()->with('success',"Vendor Charges has been Updated.");
+        $data_id1 = $data = VendorCharges::create($data);
+        return response()->json(['success' => 1,'data' => $data_id1]);
+       
     }
 
     public function changeUserStatus(Request $request)

@@ -20,7 +20,8 @@
 
 </head>
   
-<body id="loading" style="background-image: url('{{ asset('assets/images/bg-image.jpg')}}'); height: 100%; background-position: center; background-repeat: no-repeat; background-size: cover; ">
+{{-- <body id="loading" style="background-image: url('{{ asset('assets/images/bg-image.jpg')}}'); height: 100%; background-position: center; background-repeat: no-repeat; background-size: cover; "> --}}
+<body id="loading" >
     <div class="account-pages my-5 pt-sm-5">
         <div class="container">
             <div class="row justify-content-center">

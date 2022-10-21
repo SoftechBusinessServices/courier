@@ -222,7 +222,7 @@
     //date-range picker
     $('body').on('submit', '#balance_sheet_form', function(e) {
         e.preventDefault();
-        alert(1);
+        // alert(1);
         var fdata = new FormData(this);
         // console.log(Object.fromEntries(fdata)); return false;
         $.ajax({

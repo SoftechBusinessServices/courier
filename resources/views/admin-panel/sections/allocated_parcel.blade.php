@@ -17,17 +17,17 @@
                         </tr>
                         <tr>
                             <td>
-                                <input type="text" name="parcel_idd2" value="" id="parcel_idd2"
+                                <input type="text" name="parcel_id" value="" id="parcel_id"
                                     class="form-control" readonly>
-                                <input type="hidden" name="parcell_idd" value="" id="parcell_idd"
+                                <input type="hidden" name="pl_id" value="" id="pl_id"
                                     class="form-control">
 
-                                <br><input type="text" name="vendor_id_tracked" value="" id="vendor_id_tracked"
+                                <br><input type="hidden" name="selected_vendor_id" value="" id="selected_vendor_id"
                                     class="form-control" readonly>
                             </td>
                             <td>
-                                <input type="text" name="tracking_idd" value="" id="tracking_idd"
-                                    class="form-control">
+                                <input type="text" name="vendor_tracking_id" value="" id="vendor_tracking_id"
+                                    class="form-control" required>
                             </td>
                         </tr>
                         <br>
@@ -138,13 +138,14 @@
                                                                         <a class="btn btn-outline-success btn-sm tracking_btn"
                                                                             title="add" data-bs-toggle="modal"
                                                                             data-bs-target="#trackingmodal"
-                                                                            id="{{ $item->id }}"
-                                                                            data-pl-id="{{ $item->pl_id }}"
+                                                                            id="{{ $item->pl_id }}"
+                                                                            data-pl-id="{{ $item->allocate_with_parcel->pl_id}}"
                                                                             data-vendor-id="{{ $item->vendor_id }}">
                                                                             update
                                                                         </a>
                                                                     </p>
                                                                 @endif
+                                                            </td>
                                                             </td>
 
                                                             <td>
@@ -167,8 +168,8 @@
                                                                         <a class="btn btn-outline-primary btn-sm charges_btn"
                                                                             title="add" data-bs-toggle="modal"
                                                                             data-bs-target="#vendor_charges_update"
-                                                                            id="{{ $item->id }}"
-                                                                            data-pl-id="{{ $item->pl_id }}"
+                                                                            id="{{ $item->pl_id }}"
+                                                                            data-pl-id="{{ $item->allocate_with_parcel->pl_id}}"
                                                                             data-vendor-id="{{ $item->vendor_id }}">
                                                                             update
                                                                         </a>
@@ -187,7 +188,7 @@
                                                                     @if ($item->allocate_with_parcel && $item->allocate_with_parcel->parcel_with_charges  && $item->allocate_with_parcel->parcel_with_tracking )
                                                                         <a class="btn btn-outline-info btn-sm delivered_status"
                                                                             title="add"
-                                                                            id="{{ $item->allocate_with_parcel->pl_id }}">
+                                                                            id="{{ $item->pl_id }}">
                                                                             Deliver
                                                                         </a>
                                                                     @endif 
@@ -233,16 +234,16 @@
                         </tr>
                         <tr>
                             <td>
-                                <input type="text" name="parcel_iddd2" value="" id="parcel_iddd2"
+                                <input type="text" name="parcel_id1" value="" id="parcel_id1"
                                     class="form-control" readonly>
-                                <input type="hidden" name="parcell_iddd" value="" id="parcell_iddd"
+                                <input type="hidden" name="pl_id1" value="" id="pl_id1"
                                     class="form-control">
-                                <br> <input type="hidden" name="vendor_id_charged" value=""
-                                    id="vendor_id_charged" class="form-control">
+                                <br> <input type="hidden" name="selected_vendor_id1" value=""
+                                    id="selected_vendor_id1" class="form-control">
                             </td>
                             <td>
-                                <input type="text" name="vendor_charges" id="vendor_charges"
-                                    class="form-control">
+                                <input type="text" name="vendor_charges_id1" id="vendor_charges_id1"
+                                    class="form-control" required>
                             </td>
                         </tr>
                         <br>
@@ -336,22 +337,22 @@
     $('.tracking_btn').on('click', function(e) {
         e.preventDefault();
         // alert(1);
-        track_id = this.id;
-        $('#parcell_idd').val(this.id);
-        $('#parcel_idd2').val($(this).data('pl-id'));
-
-        $('#vendor_id_tracked').val($(this).data('vendor-id'));
+        pl_id = this.id;
+       
+        $('#pl_id').val(pl_id);
+        $('#parcel_id').val($(this).data('pl-id'));
+        $('#selected_vendor_id').val($(this).data('vendor-id'));
 
     });
 
     $('.charges_btn').on('click', function(e) {
         e.preventDefault();
-        // alert(2);
-        track_id2 = this.id;
-        $('#parcell_iddd').val(this.id);
-        $('#parcel_iddd2').val($(this).data('pl-id'));
+        var pl_id1 = (this.id);
+        alert(pl_id1);
+        $('#parcel_id1').val($(this).data('pl-id'));
+        $('#pl_id1').val(pl_id1);
+        $('#selected_vendor_id1').val($(this).data('vendor-id'));
 
-        $('#vendor_id_charged').val($(this).data('vendor-id'));
     });
 
 
@@ -359,7 +360,7 @@
         e.preventDefault();
         var pl_id = (this.id);
         var el = $(this);
-        // alert(pl_id)
+        alert(pl_id)
         if (pl_id) {
 
             $.ajax({

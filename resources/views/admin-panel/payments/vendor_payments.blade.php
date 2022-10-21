@@ -103,7 +103,7 @@
                                         <div class="col-2">
                                             <div class="form-group mt-2">
                                                 <label for="" class="text-danger ml-2">Choose One Vendor </label>
-                                                <select name="vendor" id="vendor-payment-select" class="form-control"
+                                                <select name="vendor" id="vendor-payment-select" class="form-control" required
                                                     onchange="$('#searchForm').submit()">
                                                     <option value="" class="form-control">Select Vendor</option>
 

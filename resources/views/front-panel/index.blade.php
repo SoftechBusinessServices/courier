@@ -619,61 +619,26 @@
                                             </nav>
 
 
-                                            {{-- <ul id="myUL" class="d-none">
-                                                <li><a href="#">123</a></li>
-                                                <li><a href="#">234</a></li>
-                                                <li><a href="#">345</a></li>
-                                                <li><a href="#">456</a></li>
-                                            </ul> --}}
                                             <!-- order details  -->
-                                            <article class="card " style="border: 1px solid rgba(0, 0, 0, 0.1);">
+                                      
                                                 <div class="card-body row text-center ">
                                                     <table class="table table-bordered table-hover">
                                                         <thead>
                                                             <tr>
-                                                                <th>ID</th>
-                                                                <th>Product Name</th>
-                                                                <th>Description</th>
-                                                                <th>Price</th>
+                                                                <th>Parcel ID</th>
+                                                                <th>Reg Date</th>
+                                                                <th>Destination</th>
+                                                                <th>Status</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+
                                                         </tbody>
                                                     </table>
-                                                    {{-- <div class="col">
-                                                    <strong>Estimated Delivery time: &nbsp;</strong>29 nov 2019
+                                               
                                                 </div>
-                                                <div class="col ">
-                                                    <strong>Shipping BY: &nbsp;</strong>BLUEDART, | <i
-                                                        class="fa fa-phone"></i>+159 8675986
-                                                </div>
-                                                <div class="col">
-                                                    <strong>Status: &nbsp;</strong> Picked by the courier
-                                                </div>
-                                                <div class="col">
-                                                    <strong>Tracking #: &nbsp;</strong> BD045903594059
-                                                </div> --}}
-                                                </div>
-                                            </article>
-                                            <!-- order State -->
-                                            {{-- <div style="border: 1px solid rgba(0, 0, 0, 0.1); padding: 500px auto;">
-                                                <div class="track" style="border: 1px solid rgba(0, 0, 0, 0.1);">
-                                                    <div class="step active">
-                                                        <span class="icon"> <i class="fa fa-user"></i></span>
-                                                        <span class="text"> Received</span>
-                                                    </div>
-                                                    <div class="step active">
-                                                        <span class="icon"> <i class="fa fa-truck"></i></span>
-                                                        <span class="text"> Processed </span>
-                                                    </div>
-                                                    <div class="step "> <span class="icon"> <i class="fa fa-check"></i></span>
-                                                        <span class="text">Delivered</span>
-                                                    </div>
-                                                    <!-- <div class="step"> <span class="icon"> <i class="fa fa-box"></i> </span>
-                                                    <span class="text">Ready for pickup</span>
-                                                    </div> -->
-                                                </div>
-                                            </div> --}}
+                                        
+                                           
                                         </div>
                                     </article>
                                 </div>
@@ -1773,27 +1738,26 @@
             @endif
         });
 
-        // $('body').on('submit', '#tracking-form', function(e) {
-
-        //     e.preventDefault();
-        //     tracking_id = (this).val();
-        //     alert(tracking_id);
-        // });
     </script>
 
     <script type="text/javascript">
         $('body').on('submit', '#tracking-form', function(e) {
-
             e.preventDefault();
-            $value = $(this).val();
-
+            alert(1);
+          
+            search_query = $(this).val();
+            alert(search_query);
+            
             $.ajax({
-                type: 'get',
-                url: '{{ URL::to('search-tracking-id') }}',
+                
+                url: "{{ url('/search-tracking-id') }}",
+                type: "GET",
+                
                 data: {
                     'search': $value
                 },
                 success: function(data) {
+
                     $('tbody').html(data);
                 }
             });

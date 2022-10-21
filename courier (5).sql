@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 19, 2022 at 04:48 PM
+-- Generation Time: Oct 21, 2022 at 04:35 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -43,8 +43,11 @@ CREATE TABLE `allocate_parcels` (
 --
 
 INSERT INTO `allocate_parcels` (`id`, `pl_id`, `service_id`, `vendor_id`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 1, 3, 'active', '2022-10-19 06:41:05', '2022-10-19 06:41:05', NULL),
-(2, 2, 2, 6, 'active', '2022-10-19 07:29:03', '2022-10-19 07:29:03', NULL);
+(1, 1, 1, 3, 'active', '2022-10-21 05:45:56', '2022-10-21 05:45:56', NULL),
+(2, 2, 2, 3, 'active', '2022-10-21 05:46:49', '2022-10-21 05:46:49', NULL),
+(3, 3, 3, 1, 'active', '2022-10-21 05:46:58', '2022-10-21 05:46:58', NULL),
+(4, 4, 3, 3, 'active', '2022-10-21 06:16:13', '2022-10-21 06:16:13', NULL),
+(5, 5, 4, 4, 'active', '2022-10-21 06:16:19', '2022-10-21 06:16:19', NULL);
 
 -- --------------------------------------------------------
 
@@ -264,7 +267,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (70, '2022_10_19_054512_create_parcel_shippers_table', 11),
 (71, '2022_10_19_054523_create_parcel_consignees_table', 11),
 (72, '2022_10_19_054601_create_vendor_charges_table', 11),
-(73, '2022_10_19_054627_create_vendor_id_trackings_table', 11);
+(73, '2022_10_19_054627_create_vendor_id_trackings_table', 11),
+(74, '2022_10_19_173022_create_payment_logs_table', 12);
 
 -- --------------------------------------------------------
 
@@ -298,9 +302,17 @@ CREATE TABLE `parcels` (
 --
 
 INSERT INTO `parcels` (`id`, `pl_id`, `shipper_id`, `consignee_id`, `pl_boxes`, `pl_weight`, `service_id`, `payment_id`, `pl_charges`, `pl_extras`, `pl_discount`, `pl_final`, `pl_description`, `pl_status`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'PL000001', 1, 1, 70, 53.00, 1, 4, 250.00, 120.00, 30.00, 340.00, 'Non ut atque optio', 'delivered', 'active', '2022-10-19 05:24:41', '2022-10-19 09:09:32', NULL),
-(2, 'PL000002', 1, 2, 40, 100.00, 2, 3, 900.00, 300.00, 200.00, 1000.00, 'Autem ducimus atque', 'delivered', 'active', '2022-10-19 05:26:40', '2022-10-19 09:09:38', NULL),
-(3, 'PL000003', 2, 3, 49, 71.00, 1, 2, 690.00, 100.00, 340.00, 450.00, 'Voluptates ea modi t', 'processed', 'active', '2022-10-19 05:28:53', '2022-10-19 05:28:53', NULL);
+(1, 'PL000001', 1, 1, 85, 58.00, 1, 1, 510.00, 60.00, 20.00, 550.00, 'Quam rerum sint mod', 'processed', 'active', '2022-10-20 12:09:38', '2022-10-21 06:27:57', NULL),
+(2, 'PL000002', 2, 2, 10, 49.00, 2, 3, 990.00, 90.00, 80.00, 1000.00, 'Vero ullamco quisqua', 'processed', 'active', '2022-10-20 12:12:40', '2022-10-21 06:29:08', NULL),
+(3, 'PL000003', 1, 3, 14, 54.00, 3, 3, 710.00, 85.00, 45.00, 750.00, 'Doloremque rerum est', 'processed', 'active', '2022-10-20 12:14:44', '2022-10-21 06:29:14', NULL),
+(4, 'PL000004', 2, 4, 65, 100.00, 3, 4, 900.00, 160.00, 320.00, 740.00, 'Ex id laborum enim p', 'processed', 'active', '2022-10-20 12:16:50', '2022-10-21 06:29:43', NULL),
+(5, 'PL000005', 2, 5, 64, 1.00, 4, 2, 880.00, 130.00, 40.00, 970.00, 'Ea optio officia vo', 'processed', 'active', '2022-10-20 12:18:15', '2022-10-21 06:33:54', NULL),
+(6, 'PL000006', 1, 6, 16, 3.00, 4, 3, 930.00, 80.00, 90.00, 920.00, 'Harum dicta ea ut al', 'processed', 'active', '2022-10-20 12:19:26', '2022-10-21 05:36:30', NULL),
+(7, 'PL000007', 1, 7, 32, 87.00, 1, 2, 300.00, 80.00, 50.00, 330.00, 'Ea magnam consequatu', 'processed', 'active', '2022-10-20 12:20:16', '2022-10-21 02:42:14', NULL),
+(8, 'PL000008', 3, 8, 49, 18.00, 4, 1, 770.00, 340.00, 40.00, 1070.00, 'Voluptatem aut eaqu', 'processed', 'active', '2022-10-20 12:21:46', '2022-10-20 12:21:46', NULL),
+(9, 'PL000009', 4, 9, 85, 22.00, 1, 2, 820.00, 50.00, 240.00, 630.00, 'Explicabo Nam quasi', 'processed', 'active', '2022-10-20 12:23:07', '2022-10-20 12:23:07', NULL),
+(10, 'PL0000010', 4, 10, 20, 28.00, 1, 3, 730.00, 30.00, 60.00, 700.00, 'Earum cumque et iure', 'processed', 'active', '2022-10-20 12:23:57', '2022-10-20 12:23:57', NULL),
+(11, 'PL0000011', 3, 11, 90, 44.00, 2, 4, 400.00, 90.00, 40.00, 450.00, 'Quasi deleniti dolor', 'processed', 'active', '2022-10-20 12:24:51', '2022-10-20 12:24:51', NULL);
 
 -- --------------------------------------------------------
 
@@ -330,9 +342,17 @@ CREATE TABLE `parcel_consignees` (
 --
 
 INSERT INTO `parcel_consignees` (`id`, `consignee_name`, `consignee_phone`, `consignee_business`, `consignee_country_id`, `consignee_state`, `consignee_city`, `consignee_zip`, `consignee_address1`, `consignee_address2`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Zabih Khan', '0310-9700241', 'Zabhih Carporate', 4, 'sfdsf', 'sdfsdf', 'sdfsdf', 'sdfsadf', 'sdfsdaf', 'active', '2022-10-19 05:24:41', '2022-10-19 05:24:41', NULL),
-(2, 'Ahmed Riddle', '0314-4716510', 'Sunt excepteur assum', 6, 'Minim eos enim atque', 'Natus quis aut qui o', '14721', 'Dolorem harum conseq', 'Nisi rem pariatur D', 'active', '2022-10-19 05:26:40', '2022-10-19 05:26:40', NULL),
-(3, 'Coby Warren', '0318-7136584', 'Voluptate iure eveni', 5, 'Officiis inventore v', 'Voluptates ex nulla', '73755', 'Non explicabo Anim', 'Ea suscipit exercita', 'active', '2022-10-19 05:28:53', '2022-10-19 05:28:53', NULL);
+(1, 'Zahid Khan', '0311-9037942', 'Brothers Computers', 2, 'fsdfd', 'sdf', 'sdfsd', 'sdfdsf', 'sdfsd', 'active', '2022-10-20 12:09:38', '2022-10-20 12:09:38', NULL),
+(2, 'Asad Rahim', '0315-2200834', 'Almadin Computers', 3, 'sdfsd', 'sdfsdf', 'sdfsd', 'sdfsd', 'sdfsd', 'active', '2022-10-20 12:12:40', '2022-10-20 12:12:40', NULL),
+(3, 'Hameed Khan', '0312-9195566', 'jehangira computers', 4, 'sdf', 'sdfsdfs', 'sdfs', 'fsdf', 'sdfsd', 'active', '2022-10-20 12:14:44', '2022-10-20 12:14:44', NULL),
+(4, 'Waheed', '0314-9179689', 'Waheed computers', 4, 'gsfdg', 'hfghfg', 'fghfgh', 'trytry', 'ghfghfg', 'active', '2022-10-20 12:16:50', '2022-10-20 12:16:50', NULL),
+(5, 'Wajid', '0342-5611232', 'Wajid Computers', 5, 'dtr', 'dfgfd', 'ereter', 'fdgfdg', 'fdgfd', 'active', '2022-10-20 12:18:15', '2022-10-20 12:18:15', NULL),
+(6, 'waleed', '0301-2424524', 'Waleed Computers', 6, 'fsdfd', 'fsdf', 'sdfsd', 'sdf', 'sdfsdf', 'active', '2022-10-20 12:19:26', '2022-10-20 12:19:26', NULL),
+(7, 'Sopoline Tucker', '0315-8724422', 'Quo voluptatem moles', 5, 'Dignissimos quis ut', 'Possimus odit esse', '14652', 'A ex soluta omnis et', 'Obcaecati autem est', 'active', '2022-10-20 12:20:16', '2022-10-20 12:20:16', NULL),
+(8, 'waqas', '0319-7498464', 'Waqas Computers', 6, 'Dolorem commodo volu', 'Qui ipsum ea ex dolo', '29104', 'Quo laudantium erro', 'Repudiandae anim asp', 'active', '2022-10-20 12:21:46', '2022-10-20 12:21:46', NULL),
+(9, 'Nomlanga Powell', '0315-4376620', 'Vero eaque natus qui', 1, 'Aliquam irure quo oc', 'Corrupti aut sit qu', '24155', 'Ipsa necessitatibus', 'Doloribus excepteur', 'active', '2022-10-20 12:23:07', '2022-10-20 12:23:07', NULL),
+(10, 'Alan Hampton', '0312-9887678', 'harum', 1, 'Id voluptatem laboru', 'Rerum ducimus unde', '42806', 'Illum a ut explicab', 'Amet nostrum quasi', 'active', '2022-10-20 12:23:57', '2022-10-20 12:23:57', NULL),
+(11, 'Francis Dotson', '0313-3540320', 'Francis Dotsonli', 6, 'Quia ut accusantium', 'Impedit nulla Nam o', '90322', 'In quibusdam harum s', 'Et et ipsa aut est', 'active', '2022-10-20 12:24:51', '2022-10-20 12:24:51', NULL);
 
 -- --------------------------------------------------------
 
@@ -360,10 +380,17 @@ CREATE TABLE `parcel_notes` (
 --
 
 INSERT INTO `parcel_notes` (`id`, `pl_id`, `disp_content`, `disp_condition`, `currency_id`, `disp_price`, `disp_quantity`, `disp_total`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 'sdfsdf', 'new', '1', 34.00, 10, 340.00, 'active', '2022-10-19 05:24:41', '2022-10-19 05:24:41', NULL),
-(2, 2, 'terte', 'new', '3', 100.00, 10, 1000.00, 'active', '2022-10-19 05:26:40', '2022-10-19 05:26:40', NULL),
-(3, 3, 'Rerum officia suscip', 'used', '2', 225.00, 810, 36.00, 'active', '2022-10-19 05:28:53', '2022-10-19 05:28:53', NULL),
-(4, 3, 'Tempore ut qui sed', 'new', '1', 171.00, 7, 1197.00, 'active', '2022-10-19 05:28:53', '2022-10-19 05:28:53', NULL);
+(1, 1, 'dfsdfs', 'new', '1', 55.00, 10, 550.00, 'active', '2022-10-20 12:09:38', '2022-10-20 12:09:38', NULL),
+(2, 2, 'fgfd', 'used', '2', 100.00, 10, 1000.00, 'active', '2022-10-20 12:12:40', '2022-10-20 12:12:40', NULL),
+(3, 3, 'sdfsd', 'used', '1', 75.00, 10, 750.00, 'active', '2022-10-20 12:14:44', '2022-10-20 12:14:44', NULL),
+(4, 4, 'dfsd', 'new', '1', 74.00, 10, 740.00, 'active', '2022-10-20 12:16:50', '2022-10-20 12:16:50', NULL),
+(5, 5, 'tryrt', 'new', '1', 97.00, 10, 970.00, 'active', '2022-10-20 12:18:15', '2022-10-20 12:18:15', NULL),
+(6, 6, 'fgfdg', 'used', '1', 92.00, 10, 920.00, 'active', '2022-10-20 12:19:26', '2022-10-20 12:19:26', NULL),
+(7, 7, 'sdf', 'new', '1', 33.00, 10, 330.00, 'active', '2022-10-20 12:20:16', '2022-10-20 12:20:16', NULL),
+(8, 8, 'dfsdf', 'new', '1', 107.00, 10, 1070.00, 'active', '2022-10-20 12:21:46', '2022-10-20 12:21:46', NULL),
+(9, 9, 'Dolorem dignissimos', 'new', '1', 266.00, 353, 17.00, 'active', '2022-10-20 12:23:07', '2022-10-20 12:23:07', NULL),
+(10, 10, 'fsdfs', 'new', '2', 70.00, 10, 700.00, 'active', '2022-10-20 12:23:57', '2022-10-20 12:23:57', NULL),
+(11, 11, 'hjhjg', 'new', '3', 45.00, 10, 450.00, 'active', '2022-10-20 12:24:51', '2022-10-20 12:24:51', NULL);
 
 -- --------------------------------------------------------
 
@@ -392,8 +419,10 @@ CREATE TABLE `parcel_shippers` (
 --
 
 INSERT INTO `parcel_shippers` (`id`, `company_name`, `shipper_phone`, `shipper_country_id`, `shipper_state`, `shipper_city`, `shipper_zip`, `shipper_address1`, `shipper_address2`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Asad Shipper', '0312-9488696', 1, 'Maiores perspiciatis', 'Dolorem nemo incidid', '57686', 'Omnis sit culpa sit', 'Magnam dolorem occae', 'active', '2022-10-19 05:24:41', '2022-10-19 05:24:41', NULL),
-(2, 'Abid Khan Co', '0313-9123392', 3, 'Iure perferendis vol', 'Adipisicing sunt ut', '30406', 'Accusantium laborum', 'Est ea dolores dolor', 'active', '2022-10-19 05:28:53', '2022-10-19 05:28:53', NULL);
+(1, 'Softech sbs', '0310-9488696', 1, 'sdfdsf', 'sdfsd', 'sdfsd', 'sdfs', 'sdfs', 'active', '2022-10-20 12:09:38', '2022-10-20 12:09:38', NULL),
+(2, 'isfoftech', '0342-5652313', 2, 'fsdf', 'sdfsd', 'sdfsd', 'sdf', 'sdfs', 'active', '2022-10-20 12:12:40', '2022-10-20 12:12:40', NULL),
+(3, 'Salman Carporate', '0312-1212121', 2, 'fsdf', 'fddssd', 'sdfsd', 'sdfsd', 'sdfsd', 'active', '2022-10-20 12:21:46', '2022-10-20 12:21:46', NULL),
+(4, 'Raza Associates', '0313-0627888', 1, 'Sapiente sunt aut su', 'Qui pariatur Dolor', '68159', 'Ex aut amet ducimus', 'Suscipit et vel qui', 'active', '2022-10-20 12:23:07', '2022-10-20 12:23:07', NULL);
 
 -- --------------------------------------------------------
 
@@ -417,9 +446,10 @@ CREATE TABLE `payment_logs` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `customer_type` enum('1','2') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1' COMMENT '1=customer,2=vendor',
   `vcid` bigint(20) NOT NULL COMMENT 'vendor customer id',
+  `payment_method_id` bigint(20) NOT NULL,
   `invoice_id` bigint(20) NOT NULL,
   `collected_amount` double(8,2) NOT NULL,
-  `remaining_amount` float(12,2) NOT NULL,
+  `remaining_amount` double(8,2) NOT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -429,9 +459,12 @@ CREATE TABLE `payment_logs` (
 -- Dumping data for table `payment_logs`
 --
 
-INSERT INTO `payment_logs` (`id`, `customer_type`, `vcid`, `invoice_id`, `collected_amount`, `remaining_amount`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, '2', 1, 1, 100.00, 200.00, NULL, '2022-10-25 14:52:30', NULL),
-(3, '2', 1, 0, 100.00, 100.00, NULL, '2022-10-18 11:37:23', '2022-10-18 11:37:23');
+INSERT INTO `payment_logs` (`id`, `customer_type`, `vcid`, `payment_method_id`, `invoice_id`, `collected_amount`, `remaining_amount`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(1, '2', 2, 1, 0, 50.00, 50.00, NULL, '2022-10-20 12:57:52', '2022-10-20 12:57:52'),
+(4, '2', 1, 1, 0, 100.00, 500.00, NULL, '2022-10-20 13:27:52', '2022-10-20 13:27:52'),
+(5, '2', 1, 3, 0, 100.00, 400.00, NULL, '2022-10-20 13:28:08', '2022-10-20 13:28:08'),
+(6, '1', 1, 1, 0, 150.00, 2400.00, NULL, '2022-10-21 00:52:17', '2022-10-21 00:52:17'),
+(7, '2', 1, 3, 0, 100.00, 300.00, NULL, '2022-10-21 00:55:52', '2022-10-21 00:55:52');
 
 -- --------------------------------------------------------
 
@@ -554,8 +587,8 @@ CREATE TABLE `vendor_charges` (
 --
 
 INSERT INTO `vendor_charges` (`id`, `pl_id`, `vendor_id`, `vendor_tracking_charges`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 3, '100', 'active', '2022-10-19 08:10:16', '2022-10-19 08:10:16', NULL),
-(2, 2, 6, '200', 'active', '2022-10-19 09:02:04', '2022-10-19 09:02:04', NULL);
+(1, 1, 3, '100', 'active', '2022-10-21 07:00:48', '2022-10-21 07:00:48', NULL),
+(2, 2, 3, '200', 'active', '2022-10-21 07:01:09', '2022-10-21 07:01:09', NULL);
 
 -- --------------------------------------------------------
 
@@ -579,8 +612,8 @@ CREATE TABLE `vendor_id_trackings` (
 --
 
 INSERT INTO `vendor_id_trackings` (`id`, `pl_id`, `vendor_id`, `vendor_tracking_id`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 3, 't123', 'active', '2022-10-19 08:10:07', '2022-10-19 08:10:07', NULL),
-(2, 2, 6, 't124', 'active', '2022-10-19 09:01:58', '2022-10-19 09:01:58', NULL);
+(1, 1, 3, 't1', 'active', '2022-10-21 07:00:43', '2022-10-21 07:00:43', NULL),
+(2, 2, 3, 't2', 'active', '2022-10-21 07:01:02', '2022-10-21 07:01:02', NULL);
 
 --
 -- Indexes for dumped tables
@@ -723,7 +756,7 @@ ALTER TABLE `vendor_id_trackings`
 -- AUTO_INCREMENT for table `allocate_parcels`
 --
 ALTER TABLE `allocate_parcels`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `companies`
@@ -771,37 +804,37 @@ ALTER TABLE `logistics`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT for table `parcels`
 --
 ALTER TABLE `parcels`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `parcel_consignees`
 --
 ALTER TABLE `parcel_consignees`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `parcel_notes`
 --
 ALTER TABLE `parcel_notes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `parcel_shippers`
 --
 ALTER TABLE `parcel_shippers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `payment_logs`
 --
 ALTER TABLE `payment_logs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `payment_methods`

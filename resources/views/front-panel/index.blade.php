@@ -631,7 +631,7 @@
                                                             <th>Status</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody>
+                                                    <tbody id='tracking_record'>
 
                                                     </tbody>
                                                 </table>
@@ -1738,14 +1738,13 @@
             @endif
         });
     </script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js" ></script>
     <script type="text/javascript">
         $('body').on('submit', '#tracking-form', function(e) {
             e.preventDefault();
-            alert(1);
 
             var search = $('#tracking-id').val();
-            alert(search);
+            // alert(search);
 
             $.ajax({
 
@@ -1755,30 +1754,29 @@
                     'search': search
                 },
                 success: function(data) {
-                    console.log(data);
-                    // var html = '';
+                    var html = '';
                     // $('tbody').html(data);
-                    // html += '<tr>';
+                    html += '<tr>';
 
-                    // html += '<td>';
-                    // html += data;
-                    // html += '</td>';
+                    html += '<td>';
+                    html += data.pl_id;
+                    html += '</td>';
 
-                    // html += '<td>';
-                    // html += data;
-                    // html += '</td>';
+                    html += '<td>';
+                    html += moment(data.created_at).format('LLL');
+                    html += '</td>';
 
-                    // html += '<td>';
-                    // html += data;
-                    // html += '</td>';
+                    html += '<td>';
+                    html += data.pl_description;
+                    html += '</td>';
 
-                    // html += '<td>';
-                    // html += data;
-                    // html += '</td>';
+                    html += '<td> <span class="badge badge-info">';
+                    html += data.pl_status;
+                    html += '</span></td>';
 
-                    // html += '</tr>';
+                    html += '</tr>';
 
-                    // $('.vendor-payment-table1>tbody').html(html);
+                    $('#tracking_record').html(html);
                 }
             });
         })

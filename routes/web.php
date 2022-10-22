@@ -31,11 +31,14 @@ use App\Http\Controllers\VendorTrackingController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', function(){
+    return view('front-panel.index');
+})->name('theme');
 
 Auth::routes();
-Route::get('/', [HomeController::class, 'index'])->name('/');
+// Route::get('/', [HomeController::class, 'index'])->name('/');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/theme', [App\Http\Controllers\HomeController::class, 'theme_view'])->name('theme');
+
 
 //Users Routes
 Route::get('add-user/',[HomeController::class,'fetch_user'])->name('add-user');

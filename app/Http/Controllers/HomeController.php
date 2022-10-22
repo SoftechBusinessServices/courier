@@ -133,11 +133,6 @@ class HomeController extends Controller
         // return view('home');
     }
 
-    public function theme_view()
-    {
-        return view('front-panel.index');
-    }
-
     public function dailyReport(Request $request)
     {
         $start_date = Carbon::parse($request->start_date)

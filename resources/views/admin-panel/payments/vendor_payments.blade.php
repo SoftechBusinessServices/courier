@@ -103,8 +103,8 @@
                                         <div class="col-2">
                                             <div class="form-group mt-2">
                                                 <label for="" class="text-danger ml-2">Choose One Vendor </label>
-                                                <select name="vendor" id="vendor-payment-select" class="form-control" required
-                                                    onchange="$('#searchForm').submit()">
+                                                <select name="vendor" id="vendor-payment-select" class="form-control"
+                                                    required onchange="$('#searchForm').submit()">
                                                     <option value="" class="form-control">Select Vendor</option>
 
                                                     @foreach ($companies as $company)
@@ -125,62 +125,59 @@
                                 </form>
 
                                 <div class="print-div-customer-report">
-                                <div class="row mb-2">
-                                    <div class="col-12 border">
-                                        <h6 class="text-center mt-2 font-weight-bold text-center text-secondary border">
-                                            Vendor Charges Table</h6>
-                                        <hr>
-                                        <table 
-                                            class="table table-bordered dt-responsive  nowrap w-100 table-sm text-center table-sm ">
-                                            <thead>
-                                                <tr>
-                                                    <td>#</td>
-                                                    <td>Date</td>
-                                                    <td>Parcel ID</td>
-                                                    <td>Tracking ID</td>
-                                                    <td>Date</td>
-                                                    <td>Parcel ID</td>
-                                                    <td>Tracking ID</td>
-                                                    <td>Vendor Charges</td>
-                                                    {{-- <td>Vendor Name</td> --}}
-                                                    <td>Service Used</td>
-                                                    <td>Shipper Name</td>
-                                                    <td>Consignee Name</td>
-                                                    <td>Destination</td>
-                                                    <td>Payment Method</td>
-                                                    <td>Contents</td>
-                                                    <td>No of Boxes</td>
-                                                    <td>Weight</td>
-                                                    <td>Charges</td>
-                                                    <td>Balance</td>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @forelse ($allocated_parcels as $row)
+                                    <div class="row mb-2">
+                                        <div class="col-12 border">
+                                            <h6 class="text-center mt-2 font-weight-bold text-center text-secondary border">
+                                                Vendor Charges Table</h6>
+                                            <hr>
+                                            <table
+                                                class="table table-bordered dt-responsive  nowrap w-100 table-sm text-center table-sm ">
+                                                <thead>
                                                     <tr>
-                                                        <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ date('d F Y', strtotime($row->created_at)) }}</td>
-                                                        <td>{{ $row->pl_id }}</td>
-                                                        <td>{{ $row->vendor_tracking_id }}</td>
-                                                        <td>{{ $row->vendor_tracking_charges }}</td>
-                                                        <td>{{ $row->service_name }}</td>
-                                                        {{-- <td>{{ $row->parcel_with_shipper->company_name }}</td>
-                                                        <td>{{ $row->parcel_with_consignee->consignee_name }}</td>
-                                                        <td>{{ $row->parcel_with_consignee->consignee_with_country->name }} </td>
-                                                            <td>{{ $row->parcel_with_payment->payment_method }}</td> --}}
-                                                            <td>{{ $row->pl_description }}</td>
-                                                        <td>{{ $row->pl_boxes }}</td>
-                                                        <td>{{ $row->pl_weight }}</td>
-                                                         <td>{{ $row->pl_final }}</td>
+                                                        <td>#</td>
+                                                        <td>Date</td>
+                                                        <td>Parcel ID</td>
+                                                        <td>Tracking ID</td>
+                                                        <td>Vendor Charges</td>
+                                                        {{-- <td>Vendor Name</td> --}}
+                                                        <td>Service Used</td>
+                                                        <td>Shipper Name</td>
+                                                        <td>Consignee Name</td>
+                                                        <td>Destination</td>
+                                                        <td>Payment Method</td>
+                                                        <td>Contents</td>
+                                                        <td>No of Boxes</td>
+                                                        <td>Weight</td>
+                                                        <td>Charges</td>
+                                                        {{-- <td>Balance</td> --}}
                                                     </tr>
-                                                @empty
-                                                    <p>No data</p>
-                                                @endforelse
-                                            </tbody>
-                                        </table>
+                                                </thead>
+                                                <tbody>
+                                                    @forelse ($allocated_parcels as $row)
+                                                        <tr>
+                                                            <td>{{ $loop->iteration }}</td>
+                                                            <td>{{ date('d F Y', strtotime($row->created_at)) }}</td>
+                                                            <td>{{ $row->parcel_id }}</td>
+                                                            <td>{{ $row->vendor_tracking_id }}</td>
+                                                            <td>{{ $row->vendor_tracking_charges }}</td>
+                                                            <td>{{ $row->service_name }}</td>
+                                                            <td>{{$row->company_name}}</td>
+                                                            <td>{{$row->consignee_name}}</td>
+                                                            <td>{{ $row->name }}</td>
+                                                            <td>{{ $row->payment_method }}</td>
+                                                            <td>{{ $row->description }}</td>
+                                                            <td>{{ $row->pl_boxes }}</td>
+                                                            <td>{{ $row->pl_weight }}</td>
+                                                            <td>{{ $row->pl_final }}</td>
+                                                        </tr>
+                                                    @empty
+                                                        <p>No data</p>
+                                                    @endforelse
+                                                </tbody>
+                                            </table>
 
+                                        </div>
                                     </div>
-                                </div>
                                     <div class="row mt-5">
                                         <div class="col-8 border">
                                             <h6 class="text-center mt-2 font-weight-bold text-center text-secondary border">
@@ -243,70 +240,70 @@
                                                             value="{{ $dues }}" readonly></td>
                                                 </tr>
                                             </table>
-    
+
                                         </div>
                                     </div>
-                                   
-                                </div>
-                                </div>
 
-                                <!-- Back & Dashboard btns -->
-                                <div class="d-flex justify-content-between my-2">
-                                    <a href="{{ route('home') }}" class="btn btn-primary btn-md text-white">&#60; Back</a>
-                                    <a href="{{ route('home') }}" class="btn btn-dark btn-md text-white">Dashboard </a>
                                 </div>
                             </div>
 
+                            <!-- Back & Dashboard btns -->
+                            <div class="d-flex justify-content-between my-2">
+                                <a href="{{ route('home') }}" class="btn btn-primary btn-md text-white">&#60; Back</a>
+                                <a href="{{ route('home') }}" class="btn btn-dark btn-md text-white">Dashboard </a>
+                            </div>
+                        </div>
 
-                        </div> <!-- end col -->
-                    </div>
+
+                    </div> <!-- end col -->
                 </div>
             </div>
         </div>
     </div>
+    </div>
 
     <script>
         $('body').on('click', '.print-btn-vendor-report', function() {
-      var divToPrint = $('.print-div-customer-report').html();
-      var header = $('.invoice-title').html();
-      var frame1 = $('<iframe />');
-      frame1[0].name = "frame1";
-      frame1.css({
-          "position": "absolute",
-          "top": "-1000000px"
-      });
-      $("body").append(frame1);
-      var frameDoc = frame1[0].contentWindow ? frame1[0].contentWindow : frame1[0].contentDocument.document ?
-          frame1[0].contentDocument.document : frame1[0].contentDocument;
-      frameDoc.document.open();
-      //Create a new HTML document.
-      // frameDoc.document.write('<table><thead><tr><td>');
-      // frameDoc.document.write('<div class="page-header-space">');
-      //     frameDoc.document.write('header');
-      // frameDoc.document.write('</div></td></tr> </thead><tbody><tr><td><div class="page" style="line-height: 3">');
-      // frameDoc.document.write(divToPrint);
-      // frameDoc.document.write('</div></td></tr></tbody>');
-      // frameDoc.document.write('<tfoot><tr><td><div class="page-footer-space">');
-      // frameDoc.document.write("footer");
-      // frameDoc.document.write('</div></td></tr></tfoot></table>');
-      frameDoc.document.write('</head><body>');
-      //Append the external CSS file.
-      frameDoc.document.write(
-          '<link href="{{ asset('assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />'
-      );
-      frameDoc.document.write(
-          "<link href='{{ asset('assets/css/bootstrap.min.css') }}' id='bootstrap-style' rel='stylesheet' type='text/css' />"
-      );
-      //Append the DIV contents.
-      frameDoc.document.write(header);
-      frameDoc.document.write(divToPrint);
-      frameDoc.document.write('</body></html>');
-      frameDoc.document.close();
-      setTimeout(function() {
-          window.frames["frame1"].focus();
-          window.frames["frame1"].print();
-          frame1.remove();
-      }, 500);
-  });
-  </script>
+            var divToPrint = $('.print-div-customer-report').html();
+            var header = $('.invoice-title').html();
+            var frame1 = $('<iframe />');
+            frame1[0].name = "frame1";
+            frame1.css({
+                "position": "absolute",
+                "top": "-1000000px"
+            });
+            $("body").append(frame1);
+            var frameDoc = frame1[0].contentWindow ? frame1[0].contentWindow : frame1[0].contentDocument.document ?
+                frame1[0].contentDocument.document : frame1[0].contentDocument;
+            frameDoc.document.open();
+            //Create a new HTML document.
+            // frameDoc.document.write('<table><thead><tr><td>');
+            // frameDoc.document.write('<div class="page-header-space">');
+            //     frameDoc.document.write('header');
+            // frameDoc.document.write('</div></td></tr> </thead><tbody><tr><td><div class="page" style="line-height: 3">');
+            // frameDoc.document.write(divToPrint);
+            // frameDoc.document.write('</div></td></tr></tbody>');
+            // frameDoc.document.write('<tfoot><tr><td><div class="page-footer-space">');
+            // frameDoc.document.write("footer");
+            // frameDoc.document.write('</div></td></tr></tfoot></table>');
+            frameDoc.document.write('</head><body>');
+            //Append the external CSS file.
+            frameDoc.document.write(
+                '<link href="{{ asset('assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />'
+            );
+            frameDoc.document.write(
+                "<link href='{{ asset('assets/css/bootstrap.min.css') }}' id='bootstrap-style' rel='stylesheet' type='text/css' />"
+            );
+            //Append the DIV contents.
+            frameDoc.document.write(header);
+            frameDoc.document.write(divToPrint);
+            frameDoc.document.write('</body></html>');
+            frameDoc.document.close();
+            setTimeout(function() {
+                window.frames["frame1"].focus();
+                window.frames["frame1"].print();
+                frame1.remove();
+            }, 500);
+        });
+    </script>
 @endsection

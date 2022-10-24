@@ -126,14 +126,26 @@ class PaymentController extends Controller
 
         $data['allocated_parcels'] = DB::table('allocate_parcels')
             ->leftJoin('parcels', 'parcels.id', '=', 'allocate_parcels.pl_id')
+            ->leftJoin('payment_methods', 'parcels.payment_id', '=', 'payment_methods.id')
+            ->leftJoin('companies', 'companies.id', '=', 'allocate_parcels.vendor_id')
+            ->leftJoin('parcel_shippers', 'parcels.shipper_id', '=', 'parcel_shippers.id')
+            ->leftJoin('parcel_consignees', 'parcels.consignee_id', '=', 'parcel_consignees.id')
+            ->leftJoin('countries', 'countries.id', '=', 'parcel_consignees.consignee_country_id')
             ->leftJoin('vendor_charges', 'vendor_charges.pl_id', '=', 'allocate_parcels.pl_id')
             ->leftJoin('vendor_id_trackings', 'vendor_id_trackings.pl_id', '=', 'allocate_parcels.pl_id')
             ->leftJoin('services', 'allocate_parcels.service_id', '=', 'services.id')
             ->where('allocate_parcels.vendor_id', $vendor_id)
             ->orderBy('allocate_parcels.vendor_id', 'ASC')
             ->get();
-        dd($data['allocated_parcels']);
+            foreach($data['allocated_parcels'] as $row):
+                $description = Content::whereIn('id',json_decode($row->pl_description,true))
+                ->get()
+                ->pluck('name')
+                ->toArray();
+                $row->description = implode(" ", $description);
+            endforeach;
 
+            // dd($data['allocated_parcels']);
         $data['totalAmount'] = array_sum($data['allocated_parcels']->pluck('vendor_tracking_charges')->toArray());
         // dd( $data['totalAmount'] );
 
@@ -258,7 +270,14 @@ class PaymentController extends Controller
             ->where('pl_status', 'delivered')
             ->orderBy('shipper_id', 'DESC')
             ->get();
-        // dd( $data['allocated_parcels']);
+            foreach($data['allocated_parcels'] as $val):
+                
+                $description = Content::whereIn('id',$val->pl_description)
+                ->get()
+                ->pluck('name')->toArray();
+                $val->description = implode(" ", $description);
+            endforeach;
+ 
 
         $data['totalAmount'] = array_sum(Parcel::where('parcels.shipper_id', $customer_id)->pluck('pl_final')->toArray());
         // dd( $data['totalAmount'] );

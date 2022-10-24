@@ -255,7 +255,7 @@
                     html += '</td>';
 
                     html += '<td>';
-                    html += v.pl_id;
+                    html += v.parcel_id;
                     html += '</td>';
 
                     html += '<td>';

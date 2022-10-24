@@ -394,7 +394,13 @@ class ParcelController extends Controller
         $end_date = Carbon::parse($request->end_date)
             ->toDateTimeString();
 
-        $dated_data = Parcel::with('parcel_with_tracking', 'parcel_with_charges')->whereBetween('created_at', [$start_date, $end_date])->where('pl_status', 'delivered')->get();
+        $dated_data = Parcel::with(
+            'parcel_with_tracking', 
+            'parcel_with_charges'
+            )
+                ->whereBetween('created_at', [$start_date, $end_date])
+                ->where('pl_status', 'delivered')
+                ->get();
         return response()->json($dated_data);
         //    dd($users);
 

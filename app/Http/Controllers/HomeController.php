@@ -8,6 +8,7 @@ use App\Models\Parcel;
 use App\Models\Region;
 use App\Models\Company;
 use App\Models\ContactUs;
+use App\Models\Content;
 use App\Models\Country;
 use App\Models\Service;
 use App\Models\Currency;
@@ -105,30 +106,10 @@ class HomeController extends Controller
                 },]);
             },
         ]) ->get();
-        // $allocated_parcels =  Parcel::with(['parcel_with_tracking', 'parcel_with_charges', 
-        
-        // 'parcel_with_shipper'=>function($query){
-        //     $query->with('shipper_with_country');
+      
+        $contents = Content::all();
 
-        // } ,'parcel_with_consignee'=>function($query){
-        //     $query->with('consignee_with_country');
-        // },
-        // 'parcel_with_allocate' => function ($query) {
-        //     $query->with(['allocate_with_service', 'allocate_with_logistic' => function ($query) {
-
-        //         $query->with('logistic_with_company');
-        //     }]);
-        // }])
-        //     ->whereIn(
-        //         'pl_status',
-        //         ['allocated', 'delivered']
-        //     )
-        //     // ->orWhere('pl_status', 'delivered')
-        //     ->get();
-            // dd($allocated_parcels);  
-            // dd(DB::getQueryLog());
-            // dd($allocated_parcels);
-        return view('admin-panel.master',  compact('data', 'regions',  'countries', 'companies', 'currencies', 'customers', 'services', 'abc', 'processed_parcels', 'allocated_parcels', 'logistics', 'payment_methods', 'users', 'vendors', 'delivered_parcels', 'customers'));
+        return view('admin-panel.master',  compact('data','contents', 'regions',  'countries', 'companies', 'currencies', 'customers', 'services', 'abc', 'processed_parcels', 'allocated_parcels', 'logistics', 'payment_methods', 'users', 'vendors', 'delivered_parcels', 'customers'));
 
         // return view('home');
     }

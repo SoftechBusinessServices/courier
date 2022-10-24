@@ -18,7 +18,7 @@
 
                                     {{--  <a class="btn btn-success btn-md text-white " data-bs-toggle="modal"
                                         data-bs-target="#countrymodal">Add Country</a>  --}}
-                                    <span class="font-size-22 font-weight-bold ml-2"> Services Details
+                                    <span class="font-size-22 font-weight-bold ml-2"> Contents Details
                                     </span>
                                 </p>
                                 @if (isset($data))
@@ -28,7 +28,7 @@
                                         <thead>
                                             <tr>
                                                 <th>S.No</th>
-                                                <th>Service Name</th>
+                                                <th>Content Type</th>
                                                 <th>Date</th>
                                                 {{-- <th>Status</th> --}}
                                                 <th>Action</th>
@@ -44,7 +44,7 @@
                                                 @foreach ($data as $item)
                                                     <tr>
                                                         <td>{{ $i++ }}</td>
-                                                        <td>{{ $item->service_name }}</td>
+                                                        <td>{{ $item->name }}</td>
                                                         <td>
                                                             @php
                                                                 $month = date('d/m/Y', strtotime($item->created_at));
@@ -63,13 +63,13 @@
                                                         </td> --}}
                                                         <td style="">
 
-                                                            <a href="{{ url('edit-service/' . $item->id) }}"
+                                                            <a href="{{ url('edit-content/' . $item->id) }}"
                                                                 class="btn btn-outline-warning btn-sm delete"
                                                                 title="Edit">
                                                                 <i class="fas fa-pencil-alt"></i>
                                                             </a>
                                                             |
-                                                            <a href="{{ url('delete-service/' . $item->id) }}"
+                                                            <a href="{{ url('delete-content/' . $item->id) }}"
                                                                 class="btn btn-outline-danger btn-sm delete" title="Delete"
                                                                 onclick="return confirm('Are you sure to delete Record?')">
                                                                 <i class="fas fa-trash-alt"></i>

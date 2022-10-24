@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Content;
 use App\Models\Country;
 use App\Models\Service;
 use Illuminate\Http\Request;
@@ -67,7 +68,7 @@ class ServicesController extends Controller
         }
     }
 
-    public function destroy_country($id)
+    public function destroy_service($id)
     {
         $data = Service::find($id);
         $data = $data->delete();
@@ -91,9 +92,9 @@ class ServicesController extends Controller
         }
     }
 
-    public function country_forceDelete($id)
+    public function service_forceDelete($id)
     {
-        $data = Country::withTrashed()->where('id', $id)->forceDelete();
+        $data = Service::withTrashed()->where('id', $id)->forceDelete();
         if ($data) {
             return redirect()->back()->with('error', "Record Permanently Deleted");
         } else {
@@ -101,4 +102,88 @@ class ServicesController extends Controller
         }
     }
 
+    //contents functions are here
+    public function create_content()
+    {
+
+        $data = Content::all();
+        return view('admin-panel.contents.create_content', compact('data'));
+    }
+
+    public function store_content(Request $request)
+    {
+        // dd($request->all());
+        $validatedData = $request->validate(
+            [
+                'name' => 'required|unique:contents',
+            ]
+        );
+
+        $data = [
+            'name' => $request->name,
+        ];
+        $data = Content::create($data);
+
+        if ($data) {
+            return redirect()->back()->with('success', "Record inserted Successfully");
+        } else {
+            return redirect()->back()->with('error', "Record Not inserted...");
+        }
+    }
+
+    public function edit_content($id)
+    {
+        $record = Content::find($id);
+        $data = Content::all();
+        return view('admin-panel.contents.edit_content', compact('data','record'));
+    }
+    public function update_content(Request $request, $id)
+    {
+        // dd($request->all());
+        $validatedData = $request->validate(
+            [
+                'name' => 'required',
+            ]
+        );
+
+        $record = Content::find($id);
+
+        $data = [
+            'name' => $request->name,
+        ];
+
+        $data = $record->update($data);
+
+        if ($data) {
+            return redirect('add-content')->with('success', "Record Updated Successfully");
+        } else {
+            return redirect()->back()->with('error', "Record Not Updated...");
+        }
+    }
+
+    public function destroy_content($id)
+    {
+        $data = Content::find($id);
+        $data = $data->delete();
+
+        if ($data) {
+            return redirect('add-content')->with('success', "Record Deleted");
+        } else {
+            return redirect()->back()->with('success', "Record Not Deleted");
+        }
+    }
+
+    //restoring a record
+    public function restorecontent($id)
+    {
+        $data =  Content::withTrashed()->find($id)->restore();
+
+        if ($data) {
+            return redirect('add-content')->with('error', "Record Restored Successfully");
+        } else {
+            return redirect()->back()->with('success', "Record Not Restored");
+        }
+    }
+
+   
 }

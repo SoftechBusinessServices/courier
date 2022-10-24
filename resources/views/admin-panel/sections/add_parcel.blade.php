@@ -137,7 +137,19 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="mb-3">
-                                        <label for="basicpill-namecard-input">Payment Method</label>
+                                        <label for="basicpill-namecard-input">Description</label><br>
+                                        <select class="js-example-basic-multiple form-control"   style="height:10%; width:100%;" name="pl_description[]" multiple="multiple">
+                                          @foreach($contents as $content)
+                                            <option value="{{$content->id}}">{{$content->name}}</option>
+                                          @endforeach
+                                          </select>
+                                    </div>
+                                </div>
+                           
+
+                                <div class="col-lg-4">
+                                    <div class="mb-3">
+                                        <label for="select2Multiple">Payment Method</label>
                                         <select name="payment_method_id" id="payment_method_id"
                                             class="form-control @error('payment_method_id') is-invalid @enderror">
                                             <option value="">-Select Method-</option>
@@ -147,20 +159,6 @@
                                             @endforeach
                                         </select>
                                         @error('payment_method_id')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-4">
-                                    <div class="mb-3">
-                                        <label for="basicpill-namecard-input">Description</label>
-                                        <textarea name="pl_description" id="pl_description" cols="1" rows="1"
-                                            class="form-control @error('pl_description') is-invalid @enderror">
-                                   </textarea>
-                                        @error('pl_description')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -272,7 +270,7 @@
                                 <div class="col-md-6 mb-3">
                                     <label for="Tracking" class="form-label">Tracking ID</label>
                                     <input type="text" id="username9" required
-                                        class="form-control @error('pl_id') is-invalid @enderror" name="pl_id"
+                                        class="form-control @error('parcel_id') is-invalid @enderror" name="parcel_id"
                                         value="{{ $abc }}" autofocus readonly>
 
                                 </div>
@@ -329,8 +327,8 @@
                                         <div class="col-md-6 mb-2">
                                             <label for="service" class="form-label">Shipper Phone:</label>
                                             <input type="text" name="shipper_phone"
-                                                data-inputmask="'mask': '0399-99999999'" type="number"
-                                                maxlength="12"
+                                                data-inputmask="'mask': '0999-9999999999'" type="number"
+                                                maxlength="15"
                                                 class="form-control @error('shipper_phone') is-invalid @enderror"
                                                 name="company_phone" value="{{ old('shipper_phone') }}" required
                                                 autocomplete="phone" autofocus>
@@ -484,8 +482,8 @@
                                 <div class="col-md-6">
                                     <label for="username13" class="form-label">Receiver Phone
                                         Number</label>
-                                    <input type="text" data-inputmask="'mask': '0399-99999999'" type="number"
-                                        maxlength="12"
+                                    <input type="text"  data-inputmask="'mask': '0999-9999999999'" type="number"
+                                    maxlength="15"
                                         class="form-control @error('consignee_phone') is-invalid @enderror"
                                         name="consignee_phone" value="{{ old('consignee_phone') }}" required
                                         autocomplete="consignee_phone" autofocus>
@@ -923,4 +921,10 @@
     });
 
     
+</script>
+
+<script>
+    $(document).ready(function() {
+    $('.js-example-basic-multiple').select2();
+});
 </script>

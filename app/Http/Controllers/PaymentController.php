@@ -127,10 +127,11 @@ class PaymentController extends Controller
             ->leftJoin('parcels', 'parcels.id', '=', 'allocate_parcels.pl_id')
             ->leftJoin('vendor_charges', 'vendor_charges.pl_id', '=', 'allocate_parcels.pl_id')
             ->leftJoin('vendor_id_trackings', 'vendor_id_trackings.pl_id', '=', 'allocate_parcels.pl_id')
+            ->leftJoin('services', 'allocate_parcels.service_id', '=', 'services.id')
             ->where('allocate_parcels.vendor_id', $vendor_id)
             ->orderBy('allocate_parcels.vendor_id', 'ASC')
             ->get();
-        // dd($data);
+        dd($data['allocated_parcels']);
 
         $data['totalAmount'] = array_sum($data['allocated_parcels']->pluck('vendor_tracking_charges')->toArray());
         // dd( $data['totalAmount'] );
@@ -239,7 +240,12 @@ class PaymentController extends Controller
 
         $customer_id = ($request->has('customer')) ? $request->customer : 0;
 
-        $data['allocated_parcels'] = Parcel::with([
+        $data['allocated_parcels'] = Parcel::with(['parcel_with_payment','parcel_with_service','parcel_with_charges', 'parcel_with_tracking', 
+        
+        // 'parcel_with_tracking'  => function ($query) {
+        //     $query->with('tracking_with_allocate_parcel');
+        // },
+       
             'parcel_with_shipper' => function ($query) {
                 $query->with('shipper_with_country');
             },
@@ -248,6 +254,7 @@ class PaymentController extends Controller
             }
         ])
             ->where('shipper_id', $customer_id)
+            ->where('pl_status', 'delivered')
             ->orderBy('shipper_id', 'DESC')
             ->get();
         // dd( $data['allocated_parcels']);

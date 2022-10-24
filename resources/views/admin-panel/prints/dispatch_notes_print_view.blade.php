@@ -153,32 +153,34 @@
                             <hr class="m-0 mb-2">
                             <div class="page-title-right">
                                 <h3 class="m-2 font-size-16 fw-bold">Parcel Details </h3>
-
+{{-- 
                                 <ol class="breadcrumb m-0 text-bold text-decoration-underline">
                                     <li class="breadcrumb-item">Tracking ID: <span class="text-bold">{{$data->pl_id}}</span></li>
                                     <li class="breadcrumb-item  text-bold">Service Used: <span class="text-bold text-primary">{{ $data->parcel_with_service->service_name  }}</span></li>
                                     <li class="breadcrumb-item  text-bold">Destination: <span class="m-1 text-bold text-primary">{{ $data->parcel_with_consignee->name }}</span></li>
                                     <li class="breadcrumb-item  text-bold">Status: <span class="text-bold text-danger">{{ $data->pl_status }}</span></li>
                                     <li class="breadcrumb-item  text-bold">Dated: <span class="text-bold">{{ date('d,m,Y' ,strtotime($data->created_at)) }}</span></li>
-                                </ol>
+                                </ol> --}}
                             </div>
                             <div class="text-center">
                                 <div class="table-responsive">
                                     <table class="table table-nowrap table-sm table-responsive-sm">
                                         <tbody>
                                             <tr>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Parcel ID</th>
                                                 <th class="py-1 px-0 font-size-14" scope="col">No of Boxes</th>
                                                 <th class="py-1 px-0 font-size-14" scope="col">Weight</th>
-                                                <th class="py-1 px-0 font-size-14" scope="col">Total Charges</th>
-                                                <th class="py-1 px-0 font-size-14" scope="col">Payment Method</th>
+                                                {{-- <th class="py-1 px-0 font-size-14" scope="col">Total Charges</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Payment Method</th> --}}
                                             </tr>
                                             <tr>
+                                                <td class="py-1 px-0 font-size-14">({{$data->parcel_id}})</td>
                                                 <td class="py-1 px-0 font-size-14">{{$data->pl_boxes}}</td>
                                                 <td class="py-1 px-0 font-size-14">{{$data->pl_weight}}</td>
-                                                <td class="py-1 px-0 font-size-14">{{$data->pl_final}}</td>
-                                                <td class="py-1 px-0 font-size-14">{{$data->parcel_with_payment->payment_method}}</td>
+                                                {{-- <td class="py-1 px-0 font-size-14">{{$data->pl_final}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$data->parcel_with_payment->payment_method}}</td> --}}
                                             </tr>
-                                            <tr>
+                                            {{-- <tr>
                                                 <th class="py-1 px-0 font-size-14" scope="col">Charges</th>
                                                 <th class="py-1 px-0 font-size-14" scope="col">Extras</th>
                                                 <th class="py-1 px-0 font-size-14" scope="col">Discounts</th>
@@ -189,7 +191,7 @@
                                                 <td class="py-1 px-0 font-size-14">{{$data->pl_extras}}</td>
                                                 <td class="py-1 px-0 font-size-14">{{$data->pl_discount}}</td>
                                                 <td class="py-1 px-0 font-size-14">{{$data->pl_description}}</td>
-                                            </tr>
+                                            </tr> --}}
                                         </tbody>
 
                                     </table>

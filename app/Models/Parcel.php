@@ -13,10 +13,11 @@ class Parcel extends Model
     use HasFactory, Notifiable;
     use SoftDeletes;
     protected $guarded = [];
+    protected $casts = ['pl_description' => 'array'];
 
     protected $fillables = [
-         'pl_boxes', 'service_id', 'pl_weight', 'pl_charges', 'pl_extras',
-        'pl_discount', 'pl_final', 'pl_discription', 'pl_status','shipper_country_id','consignee_country_id','payment_id', 'status'
+         'parcel_id','pl_boxes', 'service_id', 'pl_weight', 'pl_charges', 'pl_extras',
+        'pl_discount', 'pl_final', 'pl_description', 'pl_status','payment_id', 'status'
     ];
 
     public function parcel_with_shipper(){

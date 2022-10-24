@@ -14,7 +14,7 @@
                         <h4 class="float-end font-size-16"> Customer Receipt Print Preview </h4>
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0 text-bold text-decoration-underline ">
-                                <li class="breadcrumb-item">Tracking ID: {{$data->pl_id}}</li>
+                                <li class="breadcrumb-item">Tracking ID: {{$data->parcel_id}}</li>
                                 <li class="breadcrumb-item  text-bold">Dated: {{ date('d,m,Y' ,strtotime($data->created_at)) }}</li>
                             </ol>
                         </div>
@@ -53,7 +53,7 @@
                                 <h3 class="m-2 font-size-22 fw-bold">Parcel Details </h3>
 
                                 <ol class="breadcrumb m-0 text-bold text-decoration-underline">
-                                    <li class="breadcrumb-item">Tracking ID: <span class="text-bold">{{$data->pl_id}}</span></li>
+                                    <li class="breadcrumb-item">Tracking ID: <span class="text-bold">{{$data->parcel_id}}</span></li>
                                     <li class="breadcrumb-item  text-bold">Service Used: <span class="text-bold text-primary">{{ $data->parcel_with_service->service_name  }}</span></li>
                                     <li class="breadcrumb-item  text-bold">Destination: <span class=" text-bold text-primary">{{  $data->parcel_with_consignee->consignee_with_country->name }}</span></li>
                                     <li class="breadcrumb-item  text-bold">Status: <span class="text-bold text-danger">{{ $data->pl_status }}</span></li>
@@ -88,6 +88,46 @@
                                                 <td class="py-1 px-0 font-size-14">{{$data->pl_discount}}</td>
                                                 <td class="py-1 px-0 font-size-14">{{$data->pl_description}}</td>
                                             </tr>
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                            </div>
+
+                            <hr class="m-0 mb-2">
+                            <div class="">
+                                <h3 class="m-2 font-size-22 fw-bold">Dispatch Notes</h3>
+                            </div>
+                            <div class="text-center">
+                                <div class="table-responsive">
+                                    <table class="table table-nowrap table-sm table-bordered  table-responsive-sm">
+                                        <thead>
+                                            <tr>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Content</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Condition</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Currency</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Price</th>
+                                                <th class="py-1 px-0 font-size-14" scope="col">Quantity</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            {{-- @dd($data->parcel_with_notes); --}}
+                                            @if( $data->parcel_with_notes->count() >0)
+                                            @foreach($data->parcel_with_notes as $item)
+                                            <tr>
+                                                <td class="py-1 px-0 font-size-14">{{$item->disp_content}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$item->disp_condition}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{ $item->notes_with_currency->name }}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$item->disp_price}}</td>
+                                                <td class="py-1 px-0 font-size-14">{{$item->disp_quantity}}</td>  
+                                            </tr>
+                                            @endforeach
+                                            @else
+                                            <tr>
+                                                <td class="text-danger">No Record found!</td>
+                                            </tr>
+                                            @endif
                                         </tbody>
 
                                     </table>

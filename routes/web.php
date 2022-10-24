@@ -191,3 +191,11 @@ Route::post('customer-payment-add', [PaymentController::class, 'customer_payment
 
 // Route::get('ajax-autocomplete-search', [ParcelController::class,'selectSearch']);
 Route::get('/search-tracking-id',[ParcelController::class, 'search_tracking_id']);
+
+Route::get('add-content/',[ServicesController::class,'create_content'])->name('add-content');
+Route::post('store-content/',[ServicesController::class,'store_content'])->name('store-content');
+Route::get('edit-content/{id}', [ServicesController::class, 'edit_content']);
+Route::post('update-content/{id}', [ServicesController::class, 'update_content']);
+Route::get('delete-content/{id}', [ServicesController::class, 'destroy_content'])->name('delete-content');
+Route::get('restore-content/{id}', [ServicesController::class, 'restorecontent'])->name('restore-content');
+Route::get('content-forceDelete/{id}', [ServicesController::class, 'content_forceDelete'])->name('content-forceDelete');

@@ -1,4 +1,3 @@
-
 <!------------------Logistic Modal---------------------->
 <div class="modal fade" id="logisticmodal" aria-hidden="true" aria-labelledby="..." tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
@@ -18,12 +17,15 @@
                             <div class="row">
                                 <div class="col-md-12 mb-2">
                                     <label for="username6" class="form-label">Logistics Name</label>
-                                    <input type="text" placeholder="Enter logistic name" class="form-control @error('logistics_name') is-invalid @enderror" name="logistic_name" value="{{ old('logistic_name') }}" required autocomplete="logistic_name" autofocus>
+                                    <input type="text" placeholder="Enter logistic name"
+                                        class="form-control @error('logistics_name') is-invalid @enderror"
+                                        name="logistic_name" value="{{ old('logistic_name') }}" required
+                                        autocomplete="logistic_name" autofocus>
 
                                     @error('logistic_name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                     @enderror
                                 </div>
                                 {{-- <div class="col-md-12 mb-2">
@@ -63,9 +65,8 @@
                             <div class="row">
                                 <div class="col-md-12 mb-2">
                                     <label for="username7" class="form-label">Vendor Phone Number</label>
-                                    <input type="text" data-inputmask="'mask': '0399-99999999'" type="number"
-                                        maxlength="12"
-                                        class="form-control @error('vendor_phone') is-invalid @enderror"
+                                    <input type="text" data-inputmask="'mask': '0999-9999999999'" type="number"
+                                        maxlength="15" class="form-control @error('vendor_phone') is-invalid @enderror"
                                         name="vendor_phone" value="{{ old('vendor_phone') }}" required
                                         autocomplete="vendor_phone" autofocus>
 
@@ -186,7 +187,7 @@
                         </textarea>
                         </div>
                     </div>
-                        {{-- <div class="col-md-12 mb-3">
+                    {{-- <div class="col-md-12 mb-3">
                         <label for="username" class="form-label">Company NTN Number</label>
                         <input type="number" id="ntn_no" placeholder="Enter NTN Number" required
                             class="form-control @error('ntn_no') is-invalid @enderror" name="ntn_no"
@@ -198,8 +199,8 @@
                             </span>
                         @enderror
                     </div> --}}
-                    </div>
-                    {{-- <div class="row">
+            </div>
+            {{-- <div class="row">
                     <div class="col-md-12 mb-3">
                         <label for="username" class="form-label">Company Website URL</label>
                         <input type="url" id="web_url" name="web_url" required
@@ -233,13 +234,12 @@
                     </div>
                      --}}
 
-                    <button type="submit" form="companyform" class="btn btn-primary " id="modal_submit"
-                        value="Submit">Submit</button>
-                    <button type="button" class="btn btn-secondary" id="modal_close"
-                        data-bs-dismiss="modal">Close</button>
-                </form>
+            <button type="submit" form="companyform" class="btn btn-primary " id="modal_submit"
+                value="Submit">Submit</button>
+            <button type="button" class="btn btn-secondary" id="modal_close" data-bs-dismiss="modal">Close</button>
+            </form>
 
-            </div>
         </div>
     </div>
+</div>
 </div>

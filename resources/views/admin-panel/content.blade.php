@@ -134,5 +134,5 @@
         @include('admin-panel.sections.vendors')
         @include('admin-panel.sections.regions')
         @include('admin-panel.sections.methods')
+        @include('admin-panel.sections.content_types')
 
-    <!---------------------- JAVASCRIPT-------------------->

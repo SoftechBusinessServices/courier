@@ -84,7 +84,7 @@
                                                 <td>{{ $i++ }}</td>
                                                 <td>
                                                     <a href="{{ url('parcel-details/' . $item->id) }}" class="btn btn-outline-secondary btn-sm delete" title="View">
-                                                        <i class="far fa-eye"> {{ $item->pl_id }}</i>
+                                                        <i class="far fa-eye"> {{ $item->parcel_id }}</i>
                                                     </a>
                                                 </td>
                                                 <td>{{ $item->parcel_with_consignee->consignee_with_country->name}}</td>
@@ -106,7 +106,7 @@
                                                     <a href="{{ url('/customer-receipt-print-view/'.$item->id) }}" class="btn btn-info waves-effect waves-light me-1 btn-sm"><i class="fa fa-print font-size-12">Customer Receipt</i></a>
                                                 </td>
                                                 <td>
-                                                    <a id="todolink" class="btn btn-outline-info btn-sm parcel_allocate" title="add" data-bs-toggle="modal" data-bs-target="#allocatemodal" href="#allocatemodal" data-id="{{ $item->id }}" data-pl-id ="{{$item->pl_id}}" data-prod-id="{{ $item->service_id }}">
+                                                    <a id="todolink" class="btn btn-outline-info btn-sm parcel_allocate" title="add" data-bs-toggle="modal" data-bs-target="#allocatemodal" href="#allocatemodal" data-id="{{ $item->id }}" data-pl-id ="{{$item->parcel_id}}" data-prod-id="{{ $item->service_id }}">
                                                         Allocate
                                                     </a>
                                                 </td>
@@ -145,7 +145,7 @@
 
             var pl_id = ($(this).data('id'));
             var service_id = ($(this).data('prod-id'));
-            // alert(pl_id);
+            alert(pl_id);
             // alert(service_id);
             if (service_id) {
 

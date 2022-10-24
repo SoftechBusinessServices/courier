@@ -52,6 +52,27 @@
                     </div>
                 </div> --}}
 
+                
+                <div class="col  ">
+                    <div class="modal-content rounded-3 shadow">
+                        <div class="modal-body  text-center">
+                            <a href="#" class="nav-link text-dark">
+                                <img src="{{ asset('assets/images/parcel.png') }}" alt="">
+
+                                <h3 class="mb-0 mt-2">Contents</h3>
+                            </a>
+                        </div>
+                        <div class="modal-footer flex-nowrap p-0 justify-content-center">
+                            <a class="btn btn-primary btn-md text-white font-size-10" data-bs-toggle="modal"
+                                data-bs-target="#contentmodal">Add Content
+                                </a>
+                            <a class="btn btn-success btn-md text-white font-size-10" href="{{ route('add-content') }}">
+                                Contents List
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
 
                 <!--Services  -->
                 <div class="col ">

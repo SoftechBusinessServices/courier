@@ -20,4 +20,8 @@ class VendorIdTracking extends Model
 
         return $this->hasMany(Parcel::class,'pl_id','id');
     }
+    public function tracking_with_allocate_parcel(){
+
+        return $this->belongsTo(AllocateParcel::class,'vendor_id','id');
+    }
 }

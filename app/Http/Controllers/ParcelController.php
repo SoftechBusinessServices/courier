@@ -11,6 +11,7 @@ use App\Models\ParcelNote;
 use Illuminate\Http\Request;
 use App\Models\ParcelShipper;
 use App\Models\AllocateParcel;
+use App\Models\Content;
 use App\Models\ParcelConsignee;
 
 class ParcelController extends Controller
@@ -57,7 +58,7 @@ class ParcelController extends Controller
             // dd(22);
             $consignee_validated = $request->validate([
 
-                'pl_id' => 'required',
+                'parcel_id' => 'required',
                 'consignee_name' => 'required',
                 'consignee_phone' => 'required',
                 'consignee_business' => 'required',
@@ -72,7 +73,7 @@ class ParcelController extends Controller
             // dd(33);
             $parcel_validated = $request->validate([
 
-                'pl_id' => 'required',
+                'parcel_id' => 'required',
                 'service_id' => 'required',
                 'payment_method_id' => 'required',
                 'pl_boxes' => 'required',
@@ -123,7 +124,7 @@ class ParcelController extends Controller
 
                 $data  = [
 
-                    'pl_id' => $request->pl_id,
+                    'parcel_id' => $request->parcel_id,
                     'shipper_id' => $shipper_id,
                     'consignee_id' =>$consignee_id,
                     'pl_boxes' => $request->pl_boxes,
@@ -172,7 +173,7 @@ class ParcelController extends Controller
             // dd(22222);
             $consignee_validated = $request->validate([
 
-                'pl_id' => 'required',
+                'parcel_id' => 'required',
                 'consignee_name' => 'required',
                 'consignee_phone' => 'required',
                 'consignee_business' => 'required',
@@ -186,7 +187,7 @@ class ParcelController extends Controller
             ]);
             $parcel_validated = $request->validate([
 
-                'pl_id' => 'required',
+                'parcel_id' => 'required',
                 'service_id' => 'required',
                 'payment_method_id' => 'required',
                 'pl_boxes' => 'required',
@@ -220,7 +221,7 @@ class ParcelController extends Controller
          
                 $data  = [
 
-                    'pl_id' => $request->pl_id,
+                    'parcel_id' => $request->parcel_id,
                     'shipper_id' => $request->shipper_id,
                     'consignee_id' =>$consignee_id,
                     'pl_boxes' => $request->pl_boxes,
@@ -285,10 +286,12 @@ class ParcelController extends Controller
             $query->with('notes_with_currency');
 
         }])->find($id);
+        $description = Content::whereIn('id',$data->pl_description)->get()->pluck('name')->toArray();
+        $pl_description =$data->description = implode('+', $description);
+        // dd( $data->description);
+        // dd($description);
 
-        // dd($data);
-
-        return view('admin-panel.parcels.parcel_details', compact('data'));
+        return view('admin-panel.parcels.parcel_details', compact('data','pl_description'));
     }
 
     public function update_parcel(Request $request, $id)

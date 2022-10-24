@@ -48,7 +48,9 @@
                                                 <td class="py-1 px-0 font-size-14">{{$data->pl_charges}}</td>
                                                 <td class="py-1 px-0 font-size-14">{{$data->pl_extras}}</td>
                                                 <td class="py-1 px-0 font-size-14">{{$data->pl_discount}}</td>
-                                                <td class="py-1 px-0 font-size-14">{{$data->pl_description}}</td>
+                                                <td class="py-1 px-0 font-size-14">
+                                                   {{$pl_description}}
+                                                </td>
                                             </tr>
                                         </tbody>
 

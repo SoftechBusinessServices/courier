@@ -34,9 +34,8 @@
                         <label for="userpassword" class="form-label">{{ __('Password') }}</label>
                         <div class="input-group auth-pass-inputgroup">
                             <input type="password" id="userpassword" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password" placeholder="Enter password" value="{{ old('password') }}" required>
-                            <!-- {{-- <button class="btn btn-light " type="button" id="password-addon"><i
-                                    class="mdi mdi-eye-outline" onclick="togglePassword"></i></button> --}} -->
-
+                            <button class="btn btn-light " type="button" id="password-addon"><i
+                                class="mdi mdi-eye-outline"></i></button>
 
 
                             @error('password')
@@ -45,8 +44,7 @@
                             </span>
                             @enderror
                         </div>
-                        <div class="show-hode-password d-flex float-right"> <input type="checkbox" class="btn btn-light  " onclick="togglePassword()">Show Password
-                        </div>
+                        
                     </div>
                     <div class="mb-3">
                         <label for="userpassword" for="password-confirm" class="form-label">{{ __('Confirm Password') }}</label>

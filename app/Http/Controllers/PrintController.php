@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Parcel;
 use App\Models\Region;
+use App\Models\Company;
+use App\Models\Content;
 use App\Models\Country;
+use App\Models\Currency;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use App\Models\ShippingCharge;
 use App\Models\ParcelRegistration;
 use App\Http\Controllers\Controller;
-use App\Models\Company;
-use App\Models\Currency;
-use App\Models\Parcel;
 
 class PrintController extends Controller
 {
@@ -113,8 +114,10 @@ class PrintController extends Controller
         }])->find($id);
        
         // dd($data);
-        
-        return view('admin-panel.prints.dispatch_notes_print_view', compact('data'));
+        $description = Content::whereIn('id',$data->pl_description)->get()->pluck('name')->toArray();
+        $pl_description =$data->description = implode('+', $description);
+
+        return view('admin-panel.prints.dispatch_notes_print_view', compact('data','pl_description'));
     }
     public function customer_receipt_print_view($id)
     {
@@ -130,8 +133,10 @@ class PrintController extends Controller
 
         }])->find($id);
         // dd($data);
+        $description = Content::whereIn('id',$data->pl_description)->get()->pluck('name')->toArray();
+        $pl_description =$data->description = implode('+', $description);
       
-        return view('admin-panel.prints.customer_receipt_print_view', compact('data'));
+        return view('admin-panel.prints.customer_receipt_print_view', compact('data','pl_description'));
     }
 
 

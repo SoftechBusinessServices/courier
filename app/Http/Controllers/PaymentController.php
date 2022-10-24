@@ -6,17 +6,18 @@ use App\Models\User;
 use App\Models\Parcel;
 use App\Models\Region;
 use App\Models\Company;
+use App\Models\Content;
 use App\Models\Country;
 use App\Models\Service;
 use App\Models\Currency;
 use App\Models\Customer;
 use App\Models\Logistic;
+use App\Models\PaymentLog;
 use Illuminate\Http\Request;
 use App\Models\ParcelShipper;
 use App\Models\PaymentMethod;
-use App\Models\AllocateParcel;
-use App\Models\PaymentLog;
 use App\Models\VendorCharges;
+use App\Models\AllocateParcel;
 use Illuminate\Support\Facades\DB;
 
 class PaymentController extends Controller
@@ -281,6 +282,10 @@ class PaymentController extends Controller
 
         $data['dues'] =  $data['totalAmount'] - $data['totalpaid'];
         // dd($data['dues']);
+
+        // $description = Content::whereIn('id',$data->pl_description)->get()->pluck('name')->toArray();
+        // $pl_description =$data->description = implode('+', $description);
+        
         return view('admin-panel.payments.customer_payments')->with($data);
     }
 

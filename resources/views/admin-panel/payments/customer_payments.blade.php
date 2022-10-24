@@ -162,7 +162,7 @@
                                                             <td>{{ $row->parcel_with_consignee->consignee_name }}</td>
                                                             <td>{{ $row->parcel_with_consignee->consignee_with_country->name }} </td>
                                                                 <td>{{ $row->parcel_with_payment->payment_method }}</td>
-                                                                <td>{{ $row->pl_description }}</td>
+                                                                {{-- <td>{{ $row->pl_description }}</td> --}}
                                                             <td>{{ $row->pl_boxes }}</td>
                                                             <td>{{ $row->pl_weight }}</td>
                                                              <td>{{ $row->pl_final }}</td>

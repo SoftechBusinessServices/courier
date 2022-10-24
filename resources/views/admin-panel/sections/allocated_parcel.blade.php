@@ -96,7 +96,7 @@
                                                                 <a href="{{ url('parcel-details/' . $item->id) }}"
                                                                     class="btn btn-outline-secondary btn-sm delete"
                                                                     title="View">
-                                                                    <i class="far fa-eye"> {{ $item->pl_id }}</i>
+                                                                    <i class="far fa-eye"> {{ $item->allocate_with_parcel->parcel_id }}</i>
                                                                 </a>
                                                             </td>
                                                             <td>
@@ -140,7 +140,7 @@
                                                                             title="add" data-bs-toggle="modal"
                                                                             data-bs-target="#trackingmodal"
                                                                             id="{{ $item->pl_id }}"
-                                                                            data-pl-id="{{ $item->allocate_with_parcel->pl_id}}"
+                                                                            data-pl-id="{{ $item->allocate_with_parcel->parcel_id}}"
                                                                             data-vendor-id="{{ $item->vendor_id }}">
                                                                             update
                                                                         </a>
@@ -173,7 +173,7 @@
                                                                             title="add" data-bs-toggle="modal"
                                                                             data-bs-target="#vendor_charges_update"
                                                                             id="{{ $item->pl_id }}"
-                                                                            data-pl-id="{{ $item->allocate_with_parcel->pl_id}}"
+                                                                            data-pl-id="{{ $item->allocate_with_parcel->parcel_id}}"
                                                                             data-vendor-id="{{ $item->vendor_id }}">
                                                                             update
                                                                         </a>

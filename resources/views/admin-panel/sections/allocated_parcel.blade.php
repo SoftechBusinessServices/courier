@@ -200,9 +200,17 @@
                                                             </td> --}}
 
                                                             <td>
-                                                                <input data-id="{{$item->pl_id}}" class="toggle-class" type="checkbox" data-onstyle="danger" data-offstyle="info"
-                                                                 data-toggle="toggle" data-on="delivered" data-off="allocated" {{ $item->allocate_with_parcel->pl_status ? 'checked' : '' }}>
-                                                             </td>
+                                                                {{-- <input data-id="{{$item->pl_id}}" class="toggle-class my-class" type="checkbox" data-onstyle="info" data-offstyle="danger"
+                                                                 data-toggle="toggle" data-on="In-transit" data-off="Delivered" {{ $item->allocate_with_parcel->pl_status ? 'checked' : '' }}> --}}
+                                                                <select name="" id="status-id" class="form-control">
+                                                                    @php
+                                                                        $array = ['processed','allocated','intransit','delivered'];    
+                                                                    @endphp
+                                                                    @foreach ($array  as $arr)
+                                                                        <option value="{{$arr."_".$item->pl_id}}" {{($arr == $item->allocate_with_parcel->pl_status ) ? "selected" :""}}>{{$arr}}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </td>
                                                            
                                                              
                                                              
@@ -407,21 +415,22 @@
 <script>
    $(function(){
 
-    $('.toggle-class').change(function(){
+    $('#status-id').change(function(){
 
-        var status = $(this).prop('checked') == true ? 1 : 0;
-        var parcelid = $(this).data('id');
-
+        alert(1);
+        var status = $(this).val();
+        // var parcelid = $(this).data('id');
+        // console.log(status,parcelid);
         $.ajax({
 
             type: "GET",
             dataType: "json",
             url: "{{route('changeStatus')}}",
-            data : {'status':status, 'parcelid':parcelid},
+            data : {'status':status},
 
             success: function(data){
 
-                console.log(data);
+                toastr.success(data.success,'Success');
             }
         });
     })

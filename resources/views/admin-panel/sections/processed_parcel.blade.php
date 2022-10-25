@@ -145,7 +145,7 @@
 
             var pl_id = ($(this).data('id'));
             var service_id = ($(this).data('prod-id'));
-            alert(pl_id);
+            // alert(pl_id);
             // alert(service_id);
             if (service_id) {
 

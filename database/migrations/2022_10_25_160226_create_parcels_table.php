@@ -32,7 +32,7 @@ class CreateParcelsTable extends Migration
             $table->float('pl_discount')->nullable();
             $table->float('pl_final')->nullable();
             $table->longText('pl_description')->nullable();
-            $table->enum('pl_status', ['processed','allocated','delivered','returned','cancelled'])->default('processed');
+            $table->enum('pl_status', ['processed','allocated','intransit','delivered','cancelled'])->default('processed');
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
             $table->softDeletes();

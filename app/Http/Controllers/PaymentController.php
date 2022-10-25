@@ -257,10 +257,7 @@ class PaymentController extends Controller
         $customer_id = ($request->has('customer')) ? $request->customer : 0;
 
         $data['allocated_parcels'] = Parcel::with(['parcel_with_payment','parcel_with_service','parcel_with_charges', 'parcel_with_tracking', 
-        
-        // 'parcel_with_tracking'  => function ($query) {
-        //     $query->with('tracking_with_allocate_parcel');
-        // },
+
        
             'parcel_with_shipper' => function ($query) {
                 $query->with('shipper_with_country');
@@ -317,10 +314,12 @@ class PaymentController extends Controller
 
 
      // Excel Export
-     public function exportExcel(){
+     public function exportExcel(Request $request){
+        // dd($request->all());
 
-        $file_name = 'customer_payments_'.date('Y_m_d_H_i_s').'.xlsx';
-        return Excel::download(new CustomersExport, $file_name);
+        // $file_name = 'customer_payments_'.date('Y_m_d_H_i_s').'.xlsx';
+        // return Excel::download($record, $file_name);
+        return Excel::download(new CustomersExport, 'invoices.xlsx');
       
      }
 

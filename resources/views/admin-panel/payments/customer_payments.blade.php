@@ -118,8 +118,7 @@
                                             <a href="#"
                                                 class="btn btn-success waves-effect waves-light  mr-2 p-1 pb-0 print-btn-customer-report px-3"><i
                                                     class="fa fa-print">Print</i></a>
-                                            <a href="{{ route('employees.exportexcel') }}"
-                                                class="btn btn-primary waves-effect waves-light  mr-2 p-1 pb-0  px-3">Excel Export</a>
+                                            <button  class="btn btn-primary waves-effect waves-light export-to-excel  mr-2 p-1 pb-0  px-3">Excel Export</button>
                                                   
                                         </div>
                                     </div>
@@ -287,6 +286,11 @@
     </div>
 
     <script>
+        $('body').on('click','.export-to-excel',function(){
+            var url = "{{ route('employees.exportexcel') }}";
+            var id = "{{request()->get('customer')}}";
+            window.open(url+"?customer="+id);
+        });
         $('body').on('click', '.print-btn-customer-report', function() {
             var divToPrint = $('.print-div-customer-report').html();
             var header = $('.invoice-title').html();

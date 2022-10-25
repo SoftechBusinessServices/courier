@@ -116,10 +116,13 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-1 mt-4 p-3">
+                                        <div class="col-2 mt-4 p-3">
                                             <a href="#"
-                                                class="btn btn-success waves-effect waves-light  mr-4 pt-2 pb-0 print-btn-vendor-report px-3"><i
+                                                class="btn btn-success waves-effect waves-light  mr-2 p-1 pb-0 print-btn-vendor-report px-3"><i
                                                     class="fa fa-print">Print</i></a>
+                                                    <a href="{{ route('employees.exportexcel') }}"
+                                                    class="btn btn-primary waves-effect waves-light  mr-2 p-1 pb-0 print-btn-customer-report px-3">Excel Export</a>
+                                                      
                                         </div>
                                     </div>
                                 </form>
@@ -128,7 +131,7 @@
                                     <div class="row mb-2">
                                         <div class="col-12 border">
                                             <h6 class="text-center mt-2 font-weight-bold text-center text-secondary border">
-                                                Vendor Charges Table</h6>
+                                                Vendor's <span class="text-info"> Charges </span>Details</h6>
                                             <hr>
                                             <table
                                                 class="table table-bordered dt-responsive  nowrap w-100 table-sm text-center table-sm ">
@@ -159,7 +162,7 @@
                                                             <td>{{ date('d F Y', strtotime($row->created_at)) }}</td>
                                                             <td>{{ $row->parcel_id }}</td>
                                                             <td>{{ $row->vendor_tracking_id }}</td>
-                                                            <td>{{ $row->vendor_tracking_charges }}</td>
+                                                            <td class="bg-secondary text-white">{{ $row->vendor_tracking_charges }}</td>
                                                             <td>{{ $row->service_name }}</td>
                                                             <td>{{$row->company_name}}</td>
                                                             <td>{{$row->consignee_name}}</td>
@@ -181,7 +184,7 @@
                                     <div class="row mt-5">
                                         <div class="col-8 border">
                                             <h6 class="text-center mt-2 font-weight-bold text-center text-secondary border">
-                                                Vendor Payments Table</h6>
+                                                Vendor's <span class="text-info"> Payments </span>Details</h6>
                                             <hr>
                                             <table id="datatable1"
                                                 class="table table-bordered dt-responsive nowrap w-100 table-sm">
@@ -223,21 +226,18 @@
                                             <table class="table table-sm">
                                                 <tr>
                                                     <th>Total Payable: </th>
-                                                    <td><input type="text" name="vendor_total_payable"
-                                                            value=" {{ $totalAmount }}" readonly></td>
+                                                    <td>{{ $totalAmount }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Total Paid: </th>
-                                                    <td><input type="text" name="vendor_total_paid"
-                                                            value="{{ $totalpaid }}" readonly></td>
+                                                    <td>{{ $totalpaid }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Total Dues: </th>
                                                     @php
                                                         $dues = $totalAmount - $totalpaid;
                                                     @endphp
-                                                    <td><input type="text" name="vendor_total_dues"
-                                                            value="{{ $dues }}" readonly></td>
+                                                    <td>{{ $dues }}</td>
                                                 </tr>
                                             </table>
 

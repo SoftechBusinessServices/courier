@@ -199,3 +199,6 @@ Route::post('update-content/{id}', [ServicesController::class, 'update_content']
 Route::get('delete-content/{id}', [ServicesController::class, 'destroy_content'])->name('delete-content');
 Route::get('restore-content/{id}', [ServicesController::class, 'restorecontent'])->name('restore-content');
 Route::get('content-forceDelete/{id}', [ServicesController::class, 'content_forceDelete'])->name('content-forceDelete');
+
+Route::get('changeStatus', [VendorTrackingController::class, 'changeStatus'])->name('changeStatus');
+Route::get('employees/exportexcel', [PaymentController::class, 'exportExcel'])->name('employees.exportexcel');

@@ -181,7 +181,7 @@
                                                                 @endif
                                                             </td>
 
-                                                            <td id="deliver_status_btn_{{ $item->id }}">
+                                                            {{-- <td id="deliver_status_btn_{{ $item->id }}">
                                                                
                                                                 @if ($item->allocate_with_parcel->pl_status == 'delivered')
                                                                     <button type="button"
@@ -197,8 +197,15 @@
                                                                         </a>
                                                                     @endif 
                                                                 @endif
-                                                            </td>
+                                                            </td> --}}
 
+                                                            <td>
+                                                                <input data-id="{{$item->pl_id}}" class="toggle-class" type="checkbox" data-onstyle="danger" data-offstyle="info"
+                                                                 data-toggle="toggle" data-on="delivered" data-off="allocated" {{ $item->allocate_with_parcel->pl_status ? 'checked' : '' }}>
+                                                             </td>
+                                                           
+                                                             
+                                                             
                                                         </tr>
                                                     @endforeach
                                                 @else
@@ -396,4 +403,27 @@
             $('.delivered_status').empty();
         }
     });
+</script>
+<script>
+   $(function(){
+
+    $('.toggle-class').change(function(){
+
+        var status = $(this).prop('checked') == true ? 1 : 0;
+        var parcelid = $(this).data('id');
+
+        $.ajax({
+
+            type: "GET",
+            dataType: "json",
+            url: "{{route('changeStatus')}}",
+            data : {'status':status, 'parcelid':parcelid},
+
+            success: function(data){
+
+                console.log(data);
+            }
+        });
+    })
+   });
 </script>

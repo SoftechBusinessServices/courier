@@ -76,5 +76,13 @@ class VendorTrackingController extends Controller
         return response()->json(['success'=>'User status change successfully.']);
     }
 
+    public function changeStatus(Request $request)
+    {
+        $user = Parcel::find($request->parcelid);
+        $user->status = $request->status;
+        $user->save();
+  
+        return response()->json(['success'=>'Status change successfully.']);
+    }
 
 }

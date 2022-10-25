@@ -215,9 +215,7 @@
         </div>
     </div>
 </div>
-
-
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js" ></script>
 <script>
     //date-range picker
     $('body').on('submit', '#balance_sheet_form', function(e) {
@@ -251,7 +249,7 @@
                     html += '</td>';
 
                     html += '<td>';
-                    html += v.created_at;
+                    html +=  moment(v.created_at).format('LLL');
                     html += '</td>';
 
                     html += '<td>';

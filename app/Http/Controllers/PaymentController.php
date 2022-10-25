@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\CustomersExport;
 use App\Models\User;
 use App\Models\Parcel;
 use App\Models\Region;
@@ -19,6 +20,8 @@ use App\Models\PaymentMethod;
 use App\Models\VendorCharges;
 use App\Models\AllocateParcel;
 use Illuminate\Support\Facades\DB;
+use Excel;
+
 
 class PaymentController extends Controller
 {
@@ -267,9 +270,11 @@ class PaymentController extends Controller
             }
         ])
             ->where('shipper_id', $customer_id)
-            ->where('pl_status', 'delivered')
+            ->whereIn('pl_status', ['allocated','delivered','processed'])
             ->orderBy('shipper_id', 'DESC')
             ->get();
+            //  dd( $data['allocated_parcels'] );
+
             foreach($data['allocated_parcels'] as $val):
                 
                 $description = Content::whereIn('id',$val->pl_description)
@@ -277,7 +282,7 @@ class PaymentController extends Controller
                 ->pluck('name')->toArray();
                 $val->description = implode(" ", $description);
             endforeach;
- 
+             
 
         $data['totalAmount'] = array_sum(Parcel::where('parcels.shipper_id', $customer_id)->pluck('pl_final')->toArray());
         // dd( $data['totalAmount'] );
@@ -305,16 +310,18 @@ class PaymentController extends Controller
         // $description = Content::whereIn('id',$data->pl_description)->get()->pluck('name')->toArray();
         // $pl_description =$data->description = implode('+', $description);
         
+       
         return view('admin-panel.payments.customer_payments')->with($data);
+
     }
 
 
+     // Excel Export
+     public function exportExcel(){
 
+        $file_name = 'customer_payments_'.date('Y_m_d_H_i_s').'.xlsx';
+        return Excel::download(new CustomersExport, $file_name);
+      
+     }
 
-    //----------Balance Sheet Functions-----------//
-    public function balance_sheet()
-    {
-
-        // return view('admin-panel.payments.customer_payments');
-    }
 }

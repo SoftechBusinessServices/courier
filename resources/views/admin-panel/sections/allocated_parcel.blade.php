@@ -186,7 +186,7 @@
                                                                         $array = ['allocated','intransit','delivered']; 
                                                                         // var_dump($array);
                                                                     @endphp
-                                                                    <select name="" id="status-id" class="form-control font-size-12 p-2">
+                                                                    <select name="status-id" id="status-id" class="form-control font-size-12 p-2">
                                                                     @foreach ($array  as $arr)
                                                                         <option value="{{$arr."_".$item->pl_id}}" {{($arr == $item->allocate_with_parcel->pl_status ) ? "selected" :""}}>{{$arr}}</option>
                                                                     @endforeach

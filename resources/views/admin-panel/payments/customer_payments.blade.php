@@ -118,8 +118,10 @@
                                             <a href="#"
                                                 class="btn btn-success waves-effect waves-light  mr-2 p-1 pb-0 print-btn-customer-report px-3"><i
                                                     class="fa fa-print">Print</i></a>
-                                            <button  class="btn btn-primary waves-effect waves-light export-to-excel  mr-2 p-1 pb-0  px-3">Excel Export</button>
-                                                  
+                                            <button
+                                                class="btn btn-primary waves-effect waves-light export-to-excel  mr-2 p-1 pb-0  px-3">Excel
+                                                Export</button>
+
                                         </div>
                                     </div>
                                 </form>
@@ -130,7 +132,7 @@
                                                 Customer's <span class="text-info">Delivered Parcels</span> Details</h6>
                                             <hr>
                                             <table id="datatable-buttons"
-                                            class="table table-bordered dt-responsive nowrap w-100 table-sm text-center  ">
+                                                class="table table-bordered dt-responsive nowrap w-100 table-sm text-center  ">
 
                                                 <thead>
                                                     <tr>
@@ -159,24 +161,25 @@
                                                             <td>{{ date('d F Y', strtotime($row->created_at)) }}</td>
                                                             <td>{{ $row->parcel_id }}</td>
                                                             <td>
-                                                                @if($row->parcel_with_tracking && $row->parcel_with_tracking->vendor_tracking_id)
-                                                                
-                                                                <p>{{ $row->parcel_with_tracking->vendor_tracking_id }}</p>
+                                                                @if ($row->parcel_with_tracking && $row->parcel_with_tracking->vendor_tracking_id)
+                                                                    <p>{{ $row->parcel_with_tracking->vendor_tracking_id }}
+                                                                    </p>
                                                                 @else
-                                                                <p><code> (Not Assigned)</code></p>
+                                                                    <p><code> (Not Assigned)</code></p>
                                                                 @endif
                                                             </td>
                                                             {{-- <td>{{ $row->pl_id }}</td> --}}
                                                             <td>{{ $row->parcel_with_service->service_name }}</td>
                                                             <td>{{ $row->parcel_with_shipper->company_name }}</td>
                                                             <td>{{ $row->parcel_with_consignee->consignee_name }}</td>
-                                                            <td>{{ $row->parcel_with_consignee->consignee_with_country->name }} </td>
-                                                                <td>{{ $row->parcel_with_payment->payment_method }}</td>
-                                                                <td>{{ $row->description }}</td>
+                                                            <td>{{ $row->parcel_with_consignee->consignee_with_country->name }}
+                                                            </td>
+                                                            <td>{{ $row->parcel_with_payment->payment_method }}</td>
+                                                            <td>{{ $row->description }}</td>
                                                             <td>{{ $row->pl_boxes }}</td>
                                                             <td>{{ $row->pl_weight }}</td>
-                                                             <td>{{ $row->pl_final }}</td>
-                                                             {{-- <td>{{$row->final - $totalpaid}}</td> --}}
+                                                            <td>{{ $row->pl_final }}</td>
+                                                            {{-- <td>{{$row->final - $totalpaid}}</td> --}}
                                                         </tr>
                                                     @empty
                                                         <p>No data</p>
@@ -201,8 +204,7 @@
                                             </div>
 
 
-                                            <table
-                                                class="table table-bordered dt-responsive nowrap w-100 table-sm">
+                                            <table class="table table-bordered dt-responsive nowrap w-100 table-sm">
                                                 <thead>
                                                     <tr>
                                                         <td>#</td>
@@ -265,7 +267,8 @@
                                             </table>
                                         </div>
                                     </div>
-                                </div> <!--print-div-->
+                                </div>
+                                <!--print-div-->
 
                             </div>
                         </div>
@@ -286,11 +289,14 @@
     </div>
 
     <script>
-        $('body').on('click','.export-to-excel',function(){
-            var url = "{{ route('employees.exportexcel') }}";
-            var id = "{{request()->get('customer')}}";
-            window.open(url+"?customer="+id);
+        
+        $('body').on('click', '.export-to-excel', function() {
+            var url = "{{ route('customer_exportExcel') }}";
+            var id = "{{ request()->get('customer') }}";
+            window.open(url + "?customer=" + id);
         });
+
+
         $('body').on('click', '.print-btn-customer-report', function() {
             var divToPrint = $('.print-div-customer-report').html();
             var header = $('.invoice-title').html();

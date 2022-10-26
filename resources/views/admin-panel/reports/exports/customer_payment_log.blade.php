@@ -1,8 +1,10 @@
+
+
 <table>
 
     <thead>
         <tr>
-            <td>#</td>
+            <td>S.No</td>
             <td>Date</td>
             <td>Parcel ID</td>
             <td>Tracking ID</td>
@@ -49,7 +51,7 @@
         @endforeach
         <tr>
             <th >Total Amount</th>
-            <th class="text-dark">{{ $totalAmount }}</th>
+            <th >{{ $totalAmount }}</th>
         </tr>
     </tbody>
 </table>
@@ -58,7 +60,7 @@
 <table>
     <thead>
         <tr>
-            <td>#</td>
+            <td>S.No</td>
             <td>Date</td>
             {{-- <td>Total Amount</td> --}}
             <td>Paid Amount</td>
@@ -79,17 +81,17 @@
             </tr>
         @empty
             <tr>
-                <td colspan="4">
+                <td>
                    
                         No record ..
                 </td>
             </tr>
         @endforelse
 
-        <tr class="border">
-            <th colspan="2" >Calculate Total</th>
+        <tr>
+            <th >Calculate Total</th>
             <th >{{ $totalpaid }}</th>
-            <th colspan="2" >{{ $dues }}</th>
+            <th >{{ $dues }}</th>
         </tr>
     </tbody>
 </table>

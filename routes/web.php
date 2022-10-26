@@ -201,4 +201,5 @@ Route::get('restore-content/{id}', [ServicesController::class, 'restorecontent']
 Route::get('content-forceDelete/{id}', [ServicesController::class, 'content_forceDelete'])->name('content-forceDelete');
 
 Route::get('changeStatus', [VendorTrackingController::class, 'changeStatus'])->name('changeStatus');
-Route::get('employees/exportexcel', [PaymentController::class, 'exportExcel'])->name('employees.exportexcel');
+Route::get('customer_exportExcel', [PaymentController::class, 'customer_exportExcel'])->name('customer_exportExcel');
+Route::get('vendor_exportExcel', [PaymentController::class, 'vendor_exportExcel'])->name('vendor_exportExcel');

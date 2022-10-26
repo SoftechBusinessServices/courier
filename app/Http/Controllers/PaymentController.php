@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\CustomersExport;
+use App\Exports\VendorsExport;
 use App\Models\User;
 use App\Models\Parcel;
 use App\Models\Region;
@@ -314,12 +315,18 @@ class PaymentController extends Controller
 
 
      // Excel Export
-     public function exportExcel(Request $request){
+     public function customer_exportExcel(Request $request){
         // dd($request->all());
 
         // $file_name = 'customer_payments_'.date('Y_m_d_H_i_s').'.xlsx';
         // return Excel::download($record, $file_name);
         return Excel::download(new CustomersExport, 'invoices.xlsx');
+      
+     }
+     public function vendor_exportExcel(Request $request){
+        // dd($request->all());
+
+        return Excel::download(new VendorsExport, 'invoices.xlsx');
       
      }
 

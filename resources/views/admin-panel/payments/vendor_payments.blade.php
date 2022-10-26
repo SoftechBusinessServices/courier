@@ -120,9 +120,10 @@
                                             <a href="#"
                                                 class="btn btn-success waves-effect waves-light  mr-2 p-1 pb-0 print-btn-vendor-report px-3"><i
                                                     class="fa fa-print">Print</i></a>
-                                                    <a href="{{ route('employees.exportexcel') }}"
-                                                    class="btn btn-primary waves-effect waves-light  mr-2 p-1 pb-0 print-btn-customer-report px-3">Excel Export</a>
-                                                      
+                                            <button
+                                                class="btn btn-primary waves-effect waves-light vendor-export-to-excel  mr-2 p-1 pb-0  px-3">Excel
+                                                Export</button>
+
                                         </div>
                                     </div>
                                 </form>
@@ -162,10 +163,11 @@
                                                             <td>{{ date('d F Y', strtotime($row->created_at)) }}</td>
                                                             <td>{{ $row->parcel_id }}</td>
                                                             <td>{{ $row->vendor_tracking_id }}</td>
-                                                            <td class="bg-secondary text-white">{{ $row->vendor_tracking_charges }}</td>
+                                                            <td class="bg-secondary text-white">
+                                                                {{ $row->vendor_tracking_charges }}</td>
                                                             <td>{{ $row->service_name }}</td>
-                                                            <td>{{$row->company_name}}</td>
-                                                            <td>{{$row->consignee_name}}</td>
+                                                            <td>{{ $row->company_name }}</td>
+                                                            <td>{{ $row->consignee_name }}</td>
                                                             <td>{{ $row->name }}</td>
                                                             <td>{{ $row->payment_method }}</td>
                                                             <td>{{ $row->description }}</td>
@@ -261,6 +263,14 @@
         </div>
     </div>
     </div>
+
+    <script>
+        $('body').on('click', '.vendor-export-to-excel', function() {
+            var url = "{{ route('vendor_exportExcel') }}";
+            var id = "{{ request()->get('vendor') }}";
+            window.open(url + "?vendor=" + id);
+        });
+    </script>
 
     <script>
         $('body').on('click', '.print-btn-vendor-report', function() {

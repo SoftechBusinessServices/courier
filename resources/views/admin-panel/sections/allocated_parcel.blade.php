@@ -66,10 +66,10 @@
                                 @if (isset($allocated_parcels))
                                     <div class="table-responsive">
                                         <table id="datatable"
-                                            class="table table-bordered dt-responsive  nowrap w-100 table-sm text-center">
+                                            class="table table-bordered dt-responsive  nowrap w-100 table-sm text-center font-size-13 table-responsive-sm">
                                             <thead>
-                                                <tr class="text-center font-size-14">
-                                                    <th>S.No</th>
+                                                <tr class="text-center">
+                                                    <th >S.No</th>
                                                     <th>Parcel ID</th>
                                                     <th>Parcel<br>Destination</th>
                                                     <th>Despatch<br>Date</th>
@@ -91,7 +91,7 @@
                                                 @if ($allocated_parcels->count() > 0)
                                                     @foreach ($allocated_parcels as $item)
                                                         <tr>
-                                                            <td>{{ $i++ }}</td>
+                                                            <td >{{ $i++ }}</td>
                                                             <td>
                                                                 <a href="{{ url('parcel-details/' . $item->id) }}"
                                                                     class="btn btn-outline-secondary btn-sm delete"
@@ -181,39 +181,18 @@
                                                                 @endif
                                                             </td>
 
-                                                            {{-- <td id="deliver_status_btn_{{ $item->id }}">
-                                                               
-                                                                @if ($item->allocate_with_parcel->pl_status == 'delivered')
-                                                                    <button type="button"
-                                                                        class="btn btn-danger btn-sm disabled">
-                                                                        {{ $item->allocate_with_parcel->pl_status }}
-                                                                    </button>
-                                                                @else
-                                                                    @if ($item->allocate_with_parcel && $item->allocate_with_parcel->parcel_with_charges  && $item->allocate_with_parcel->parcel_with_tracking )
-                                                                        <a class="btn btn-outline-info btn-sm change_delivered_status"
-                                                                            title="add"
-                                                                            id="{{ $item->pl_id }}">
-                                                                            Deliver
-                                                                        </a>
-                                                                    @endif 
-                                                                @endif
-                                                            </td> --}}
-
                                                             <td>
-                                                                {{-- <input data-id="{{$item->pl_id}}" class="toggle-class my-class" type="checkbox" data-onstyle="info" data-offstyle="danger"
-                                                                 data-toggle="toggle" data-on="In-transit" data-off="Delivered" {{ $item->allocate_with_parcel->pl_status ? 'checked' : '' }}> --}}
-                                                                <select name="" id="status-id" class="form-control">
                                                                     @php
-                                                                        $array = ['processed','allocated','intransit','delivered'];    
+                                                                        $array = ['allocated','intransit','delivered']; 
+                                                                        // var_dump($array);
                                                                     @endphp
+                                                                    <select name="" id="status-id" class="form-control font-size-12 p-2">
                                                                     @foreach ($array  as $arr)
                                                                         <option value="{{$arr."_".$item->pl_id}}" {{($arr == $item->allocate_with_parcel->pl_status ) ? "selected" :""}}>{{$arr}}</option>
                                                                     @endforeach
                                                                 </select>
                                                             </td>
-                                                           
-                                                             
-                                                             
+                                                               
                                                         </tr>
                                                     @endforeach
                                                 @else
@@ -417,8 +396,9 @@
 
     $('#status-id').change(function(){
 
-        alert(1);
+        
         var status = $(this).val();
+        alert(status);
         // var parcelid = $(this).data('id');
         // console.log(status,parcelid);
         $.ajax({

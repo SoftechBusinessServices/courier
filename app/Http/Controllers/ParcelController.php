@@ -5,14 +5,16 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Parcel;
 use App\Models\Region;
+use App\Models\Content;
 use App\Models\Country;
 use App\Models\Currency;
 use App\Models\ParcelNote;
+use App\Models\PaymentLog;
 use Illuminate\Http\Request;
 use App\Models\ParcelShipper;
 use App\Models\AllocateParcel;
-use App\Models\Content;
 use App\Models\ParcelConsignee;
+use Illuminate\Support\Facades\Response;
 
 class ParcelController extends Controller
 {
@@ -126,7 +128,7 @@ class ParcelController extends Controller
 
                     'parcel_id' => $request->parcel_id,
                     'shipper_id' => $shipper_id,
-                    'consignee_id' =>$consignee_id,
+                    'consignee_id' => $consignee_id,
                     'pl_boxes' => $request->pl_boxes,
                     'pl_weight' => $request->pl_weight,
                     'service_id' => $request->service_id,
@@ -160,15 +162,14 @@ class ParcelController extends Controller
                     ];
                     $record = ParcelNote::create($data);
                     session()->now('message', 'Success! parcel Added.');
-                    
                 } //for loop closed
-               
-               
+
+
             }  //parcel validated
             // dd(99);
             return redirect()->back()->with('success', "Record inserted Successfully");
         } //if shipper-id-NULL-selected
-        
+
         else {
             // dd(22222);
             $consignee_validated = $request->validate([
@@ -218,12 +219,12 @@ class ParcelController extends Controller
                 $consignee_id = ParcelConsignee::create($data)->id;
                 session()->now('message', 'Success! parcel Added.');
                 // return $consignee_id;
-         
+
                 $data  = [
 
                     'parcel_id' => $request->parcel_id,
                     'shipper_id' => $request->shipper_id,
-                    'consignee_id' =>$consignee_id,
+                    'consignee_id' => $consignee_id,
                     'pl_boxes' => $request->pl_boxes,
                     'pl_weight' => $request->pl_weight,
                     'service_id' => $request->service_id,
@@ -253,9 +254,8 @@ class ParcelController extends Controller
 
                     ];
                     $record = ParcelNote::create($data);
-                    
+
                     session()->now('message', 'Success! parcel Added.');
-                 
                 } //for loop closed
 
 
@@ -276,22 +276,19 @@ class ParcelController extends Controller
     public function parcel_details($id)
     {
         // dd($id);
-        $data = Parcel::with(['parcel_with_payment','parcel_with_service','parcel_with_shipper'=>function($query){
+        $data = Parcel::with(['parcel_with_payment', 'parcel_with_service', 'parcel_with_shipper' => function ($query) {
             $query->with('shipper_with_country');
-
-        } ,'parcel_with_consignee'=>function($query){
+        }, 'parcel_with_consignee' => function ($query) {
             $query->with('consignee_with_country');
-
-        },'parcel_with_notes'=>function($query){
+        }, 'parcel_with_notes' => function ($query) {
             $query->with('notes_with_currency');
-
         }])->find($id);
-        $description = Content::whereIn('id',$data->pl_description)->get()->pluck('name')->toArray();
-        $pl_description =$data->description = implode('+', $description);
+        $description = Content::whereIn('id', $data->pl_description)->get()->pluck('name')->toArray();
+        $pl_description = $data->description = implode('+', $description);
         // dd( $data->description);
         // dd($description);
 
-        return view('admin-panel.parcels.parcel_details', compact('data','pl_description'));
+        return view('admin-panel.parcels.parcel_details', compact('data', 'pl_description'));
     }
 
     public function update_parcel(Request $request, $id)
@@ -357,8 +354,8 @@ class ParcelController extends Controller
     {
         // dd(1);
         $employee = Parcel::where('pl_id', 'Like', '%' . $request->search . '%')->first();
-       
-       return response()->json($employee);
+
+        return response()->json($employee);
     }
 
     public function vendor_details_list(Request $request)
@@ -395,13 +392,40 @@ class ParcelController extends Controller
             ->toDateTimeString();
 
         $dated_data = Parcel::with(
-            'parcel_with_tracking', 
+            'parcel_with_tracking',
             'parcel_with_charges'
-            )
-                ->whereBetween('created_at', [$start_date, $end_date])
-                ->where('pl_status', 'delivered')
-                ->get();
+        )
+            ->whereBetween('created_at', [$start_date, $end_date])
+            ->where('pl_status', 'delivered')
+            ->get();
         return response()->json($dated_data);
+    }
+
+
+    public function date_wise_customer_record(Request $request)
+    {
+        $start_date = Carbon::parse($request->start_date)
+            ->toDateTimeString();
+
+        $end_date = Carbon::parse($request->end_date)
+            ->toDateTimeString();
+
+        $dated_parcels = Parcel::with(
+            'parcel_with_tracking',
+            'parcel_with_charges'
+        )
+            ->whereBetween('created_at', [$start_date, $end_date])
+            // ->where('pl_status', 'delivered')
+            ->get();
+
+            $dated_logs= PaymentLog::with('paymentlog_with_method')
+            ->where('payment_logs.customer_type', '1')
+            // ->where('payment_logs.vcid', $customer_id)
+            ->whereBetween('created_at', [$start_date, $end_date])
+            ->orderBy('payment_logs.id', 'ASC')
+            ->get();
+        // dd($data['cutomer_payments']);        
+        return Response::json(['dated_parcels'=>$dated_parcels,'dated_logs'=>$dated_logs]);
         //    dd($users);
 
         // return view('admin-panel.report', compact('users'));

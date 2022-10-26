@@ -203,3 +203,5 @@ Route::get('content-forceDelete/{id}', [ServicesController::class, 'content_forc
 Route::get('changeStatus', [VendorTrackingController::class, 'changeStatus'])->name('changeStatus');
 Route::get('customer_exportExcel', [PaymentController::class, 'customer_exportExcel'])->name('customer_exportExcel');
 Route::get('vendor_exportExcel', [PaymentController::class, 'vendor_exportExcel'])->name('vendor_exportExcel');
+
+Route::post('date-wise-customer-record',[ParcelController::class,'date_wise_customer_record'])->name('date-wise-customer-record');

@@ -114,15 +114,18 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-2 mt-4 p-3">
+                                        <div class="col-3 mt-4 p-3">
                                             <a href="#"
                                                 class="btn btn-success waves-effect waves-light  mr-2 p-1 pb-0 print-btn-customer-report px-3"><i
                                                     class="fa fa-print">Print</i></a>
                                             <button
                                                 class="btn btn-primary waves-effect waves-light export-to-excel  mr-2 p-1 pb-0  px-3">Excel
                                                 Export</button>
-
+                                            <a class="btn btn-info  btn-md text-white font-size-12 " data-bs-toggle="modal"
+                                                data-bs-target="#customer-date-wise_record">Select Date</a>
                                         </div>
+
+
                                     </div>
                                 </form>
                                 <div class="print-div-customer-report">
@@ -285,17 +288,86 @@
             </div>
         </div>
     </div>
-    </div>
+
+    <!-- customer-date-wise_record-modal -->
+    <div class="modal fade" id="customer-date-wise_record" aria-hidden="true" aria-labelledby="..." tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #d6dbf8">
+                    <h5 class="modal-title">Datewise Fetching Customer's Record</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    {{-- <form id="balance_sheet_modal" action="{{ route('daily.report') }}" method="get"> --}}
+                    <form id="customer_date_wise_form" method="POST">
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">From Date</label>
+                                    <input type="date" class="form-control" name="start_date" id="start_date">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">To Date</label>
+                                    <input type="date" class="form-control" name="end_date" id="end_date">
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <button type="submit" form="customer_date_wise_form" class="btn btn-primary "
+                                    id="modal_submit15" value="Submit">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                </form>
+
+            </div>
+        </div>
     </div>
 
     <script>
-        
         $('body').on('click', '.export-to-excel', function() {
             var url = "{{ route('customer_exportExcel') }}";
             var id = "{{ request()->get('customer') }}";
             window.open(url + "?customer=" + id);
         });
 
+        //date-range picker
+        $('body').on('submit', '#customer_date_wise_form', function(e) {
+            e.preventDefault();
+            alert(1);
+            var fdata = new FormData(this);
+            // console.log(Object.fromEntries(fdata)); return false;
+            $.ajax({
+                url: "{{ route('date-wise-customer-record') }}",
+                type: "POST",
+                data: fdata,
+                processData: false,
+                contentType: false,
+                // processCache : false,
+                success: function(data) {
+                    
+                    console.log(data);
+                    $('#customer-date-wise_record').modal('hide');
+
+                }
+
+            }); //ajax function closed 
+
+        }); // on-submit function closed
+
+
+        $('body').on('blur', '#start_date', function() {
+            var startDate = $(this).val();
+            $('#end_date').prop('min', startDate);
+        });
 
         $('body').on('click', '.print-btn-customer-report', function() {
             var divToPrint = $('.print-div-customer-report').html();

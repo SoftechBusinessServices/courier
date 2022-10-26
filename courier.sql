@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2022 at 06:43 PM
+-- Generation Time: Oct 26, 2022 at 02:13 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -37,6 +37,15 @@ CREATE TABLE `allocate_parcels` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `allocate_parcels`
+--
+
+INSERT INTO `allocate_parcels` (`id`, `pl_id`, `service_id`, `vendor_id`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 3, 1, 'active', '2022-10-25 11:12:42', '2022-10-25 11:12:42', NULL),
+(2, 2, 3, 2, 'active', '2022-10-25 11:12:53', '2022-10-25 11:12:53', NULL),
+(3, 3, 1, 3, 'active', '2022-10-25 11:13:04', '2022-10-25 11:13:04', NULL);
 
 -- --------------------------------------------------------
 
@@ -287,7 +296,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (135, '2022_10_19_054601_create_vendor_charges_table', 11),
 (136, '2022_10_19_054627_create_vendor_id_trackings_table', 11),
 (137, '2022_10_19_173022_create_payment_logs_table', 11),
-(138, '2022_10_24_095649_create_contents_table', 11);
+(138, '2022_10_24_095649_create_contents_table', 11),
+(139, '2022_10_25_160226_create_parcels_table', 12);
 
 -- --------------------------------------------------------
 
@@ -309,7 +319,7 @@ CREATE TABLE `parcels` (
   `pl_discount` double(8,2) DEFAULT NULL,
   `pl_final` double(8,2) DEFAULT NULL,
   `pl_description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `pl_status` enum('processed','allocated','delivered','returned','cancelled') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'processed',
+  `pl_status` enum('processed','allocated','intransit','delivered','cancelled') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'processed',
   `status` enum('active','inactive') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -321,11 +331,12 @@ CREATE TABLE `parcels` (
 --
 
 INSERT INTO `parcels` (`id`, `parcel_id`, `shipper_id`, `consignee_id`, `pl_boxes`, `pl_weight`, `service_id`, `payment_id`, `pl_charges`, `pl_extras`, `pl_discount`, `pl_final`, `pl_description`, `pl_status`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'PL000001', 1, 1, 63, 75.00, 1, 1, 930.00, 70.00, 100.00, 900.00, '[\"2\",\"3\"]', 'processed', 'active', '2022-10-24 11:07:53', '2022-10-24 11:07:53', NULL),
-(2, 'PL000002', 2, 2, 63, 79.00, 2, 4, 600.00, 100.00, 60.00, 640.00, '[\"2\",\"3\",\"4\"]', 'processed', 'active', '2022-10-24 11:09:54', '2022-10-24 11:09:54', NULL),
-(3, 'PL000003', 1, 3, 15, 91.00, 3, 2, 890.00, 60.00, 80.00, 870.00, '[\"2\",\"3\",\"5\"]', 'processed', 'active', '2022-10-24 11:11:04', '2022-10-24 11:11:04', NULL),
-(4, 'PL000004', 1, 4, 57, 75.00, 2, 3, 900.00, 200.00, 150.00, 950.00, '[\"1\",\"3\",\"5\"]', 'processed', 'active', '2022-10-24 11:12:14', '2022-10-24 11:12:14', NULL),
-(5, 'PL000005', 2, 5, 29, 14.00, 4, 1, 500.00, 170.00, 50.00, 620.00, '[\"2\",\"3\",\"4\",\"5\"]', 'processed', 'active', '2022-10-24 11:13:40', '2022-10-24 11:13:40', NULL);
+(1, 'PL000001', 1, 1, 98, 98.00, 3, 4, 400.00, 100.00, 50.00, 450.00, '[\"2\",\"4\"]', 'delivered', 'active', '2022-10-25 11:07:47', '2022-10-25 11:48:13', NULL),
+(2, 'PL000002', 1, 2, 87, 38.00, 3, 4, 710.00, 60.00, 50.00, 720.00, '[\"2\",\"3\",\"4\"]', 'allocated', 'active', '2022-10-25 11:08:49', '2022-10-25 11:12:53', NULL),
+(3, 'PL000003', 2, 3, 34, 64.00, 1, 1, 440.00, 50.00, 60.00, 430.00, '[\"2\",\"5\"]', 'allocated', 'active', '2022-10-25 11:10:22', '2022-10-25 11:13:04', NULL),
+(4, 'PL000004', 1, 4, 32, 46.00, 4, 3, 1000.00, 900.00, 600.00, 1300.00, '[\"2\",\"3\"]', 'processed', 'active', '2022-10-25 11:11:29', '2022-10-25 11:11:29', NULL),
+(5, 'PL000005', 2, 5, 24, 13.00, 4, 3, 310.00, 55.00, 65.00, 300.00, '[\"2\",\"3\"]', 'processed', 'active', '2022-10-25 11:12:24', '2022-10-25 11:12:24', NULL),
+(6, 'PL000006', 2, 6, 23, 66.00, 4, 4, 800.00, 180.00, 100.00, 880.00, '[\"4\",\"5\"]', 'processed', 'active', '2022-10-25 11:14:19', '2022-10-25 11:14:19', NULL);
 
 -- --------------------------------------------------------
 
@@ -355,11 +366,12 @@ CREATE TABLE `parcel_consignees` (
 --
 
 INSERT INTO `parcel_consignees` (`id`, `consignee_name`, `consignee_phone`, `consignee_business`, `consignee_country_id`, `consignee_state`, `consignee_city`, `consignee_zip`, `consignee_address1`, `consignee_address2`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Attaullah', '0345-6787878151', 'Attaullah Carporate', 10, 'fsdf', 'sdfsdf', 'sfsdf', 'sdfsdf', 'sdfsdf', 'active', '2022-10-24 11:07:53', '2022-10-24 11:07:53', NULL),
-(2, 'Abbas', '0345-1316164654', 'Abbas Carporate', 9, 'sdfsf', 'sdfsdf', 'sdfds', 'fdfdsf', 'df', 'active', '2022-10-24 11:09:54', '2022-10-24 11:09:54', NULL),
-(3, 'Zabih', '0336-4456487878', 'Zabihullah Company', 5, 'sdfsdf', 'sdfsdf', 'sdfsd', 'sdfsd', 'fsdf', 'active', '2022-10-24 11:11:04', '2022-10-24 11:11:04', NULL),
-(4, 'Waheed', '0345-1212354654', 'Waheed computers', 5, 'sdfsf', 'sdfsd', 'fsdfsd', 'fsdfs', 'fsdf', 'active', '2022-10-24 11:12:14', '2022-10-24 11:12:14', NULL),
-(5, 'Alamzaib', '0321-4115634878', 'Alamzaib Associates', 4, 'sdfds', 'dsf', 'sdf', 'dsf', 'df', 'active', '2022-10-24 11:13:40', '2022-10-24 11:13:40', NULL);
+(1, 'Zain Ul Abideen', '0345-4651156165', 'Zain SBS', 10, 'fdsfs', 'sdfds', 'dsfsd', 'fsdf', 'sdfds', 'active', '2022-10-25 11:07:47', '2022-10-25 11:07:47', NULL),
+(2, 'Wahab', '0345-1561632312', 'Wahab SBS', 7, 'dsfdsf', 'sdfd', 'sdf', 'sdfs', 'sdf', 'active', '2022-10-25 11:08:49', '2022-10-25 11:08:49', NULL),
+(3, 'Faisal', '0314-6656464646', 'Faisal Carporate', 2, 'sdf', 'df', 'sdf', 'dsf', 'fsdf', 'active', '2022-10-25 11:10:22', '2022-10-25 11:10:22', NULL),
+(4, 'Ahmad', '0346-5456456456', 'Ahamd Carporate', 3, 'dsfsd', 'dsfsdf', 'sdfs', 'sdfsd', 'fsdfs', 'active', '2022-10-25 11:11:29', '2022-10-25 11:11:29', NULL),
+(5, 'Hamza', '0312-1121235645', 'Hamza Carporate', 4, 'dsfds', 'sdfs', 'sdfsd', 'sdfsd', 'sdfsdf', 'active', '2022-10-25 11:12:24', '2022-10-25 11:12:24', NULL),
+(6, 'Inaam Khan', '0314-5645645645', 'Inaam Carporate', 7, 'dsfsd', 'fsdf', 'sdfsd', 'sdfs', 'sdf', 'active', '2022-10-25 11:14:19', '2022-10-25 11:14:19', NULL);
 
 -- --------------------------------------------------------
 
@@ -391,7 +403,13 @@ INSERT INTO `parcel_notes` (`id`, `pl_id`, `disp_content`, `disp_condition`, `cu
 (2, 2, 'gdfgdf', 'new', NULL, 64.00, 10, 640.00, 'active', '2022-10-24 11:09:54', '2022-10-24 11:09:54', NULL),
 (3, 3, 'fsdfsaf', 'new', '1', 87.00, 10, 870.00, 'active', '2022-10-24 11:11:04', '2022-10-24 11:11:04', NULL),
 (4, 4, 'sdffsf', 'new', '2', 95.00, 10, 950.00, 'active', '2022-10-24 11:12:14', '2022-10-24 11:12:14', NULL),
-(5, 5, 'hfgfdg', 'new', NULL, 62.00, 10, 620.00, 'active', '2022-10-24 11:13:40', '2022-10-24 11:13:40', NULL);
+(5, 5, 'hfgfdg', 'new', NULL, 62.00, 10, 620.00, 'active', '2022-10-24 11:13:40', '2022-10-24 11:13:40', NULL),
+(6, 1, 'sdfsf', 'new', '1', 45.00, 10, 450.00, 'active', '2022-10-25 11:07:47', '2022-10-25 11:07:47', NULL),
+(7, 2, 'dsfs', 'new', '1', 72.00, 10, 720.00, 'active', '2022-10-25 11:08:50', '2022-10-25 11:08:50', NULL),
+(8, 3, 'sdfsfd', 'new', '2', 430.00, 1, 430.00, 'active', '2022-10-25 11:10:22', '2022-10-25 11:10:22', NULL),
+(9, 4, 'dsfsf', 'new', NULL, 130.00, 10, 1300.00, 'active', '2022-10-25 11:11:29', '2022-10-25 11:11:29', NULL),
+(10, 5, NULL, 'new', NULL, 310.00, 1, 310.00, 'active', '2022-10-25 11:12:24', '2022-10-25 11:12:24', NULL),
+(11, 6, 'fdsf', 'new', '1', 880.00, 1, 880.00, 'active', '2022-10-25 11:14:19', '2022-10-25 11:14:19', NULL);
 
 -- --------------------------------------------------------
 
@@ -421,8 +439,8 @@ CREATE TABLE `parcel_shippers` (
 --
 
 INSERT INTO `parcel_shippers` (`id`, `pl_date`, `company_name`, `shipper_phone`, `shipper_country_id`, `shipper_state`, `shipper_city`, `shipper_zip`, `shipper_address1`, `shipper_address2`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, NULL, 'Softech Company', '0312-2155454545', 1, 'sdfdsfs', 'fsdf', 'sdfd', 'sdfsd', 'sdf', 'active', '2022-10-24 11:07:53', '2022-10-24 11:07:53', NULL),
-(2, NULL, 'CoreTech Company', '0141-4465465654', 2, 'fsdfs', 'fsdfsdsdf', 'dsfsdf', 'dfd', 'fdfd', 'active', '2022-10-24 11:09:54', '2022-10-24 11:09:54', NULL);
+(1, NULL, 'Softech SBS', '0112-3112313233', 1, 'sdfsd', 'sdfdsf', 'sdf', 'sdfds', 'sdfds', 'active', '2022-10-25 11:07:47', '2022-10-25 11:07:47', NULL),
+(2, NULL, 'Pkols Software', '0031-5312316156', 5, 'dsf', 'sdfsd', 'sdf', 'sdfsd', 'sdf', 'active', '2022-10-25 11:10:22', '2022-10-25 11:10:22', NULL);
 
 -- --------------------------------------------------------
 
@@ -454,6 +472,14 @@ CREATE TABLE `payment_logs` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `payment_logs`
+--
+
+INSERT INTO `payment_logs` (`id`, `customer_type`, `vcid`, `payment_method_id`, `invoice_id`, `collected_amount`, `remaining_amount`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(1, '1', 1, 1, 0, 150.00, 2570.00, NULL, '2022-10-24 12:32:31', '2022-10-24 12:32:31'),
+(2, '2', 1, 1, 0, 100.00, 200.00, NULL, '2022-10-24 12:54:32', '2022-10-24 12:54:32');
 
 -- --------------------------------------------------------
 
@@ -570,6 +596,15 @@ CREATE TABLE `vendor_charges` (
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `vendor_charges`
+--
+
+INSERT INTO `vendor_charges` (`id`, `pl_id`, `vendor_id`, `vendor_tracking_charges`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 1, '300', 'active', '2022-10-25 11:16:37', '2022-10-25 11:16:37', NULL),
+(2, 2, 2, '500', 'active', '2022-10-25 11:16:43', '2022-10-25 11:16:43', NULL),
+(3, 3, 3, '200', 'active', '2022-10-25 11:16:48', '2022-10-25 11:16:48', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -586,6 +621,15 @@ CREATE TABLE `vendor_id_trackings` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `vendor_id_trackings`
+--
+
+INSERT INTO `vendor_id_trackings` (`id`, `pl_id`, `vendor_id`, `vendor_tracking_id`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 1, 't123', 'active', '2022-10-25 11:16:22', '2022-10-25 11:16:22', NULL),
+(2, 2, 2, 't1234', 'active', '2022-10-25 11:16:28', '2022-10-25 11:16:28', NULL),
+(3, 3, 3, 't12345', 'active', '2022-10-25 11:16:32', '2022-10-25 11:16:32', NULL);
 
 --
 -- Indexes for dumped tables
@@ -734,7 +778,7 @@ ALTER TABLE `vendor_id_trackings`
 -- AUTO_INCREMENT for table `allocate_parcels`
 --
 ALTER TABLE `allocate_parcels`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `companies`
@@ -788,25 +832,25 @@ ALTER TABLE `logistics`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
 
 --
 -- AUTO_INCREMENT for table `parcels`
 --
 ALTER TABLE `parcels`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `parcel_consignees`
 --
 ALTER TABLE `parcel_consignees`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `parcel_notes`
 --
 ALTER TABLE `parcel_notes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `parcel_shippers`
@@ -818,7 +862,7 @@ ALTER TABLE `parcel_shippers`
 -- AUTO_INCREMENT for table `payment_logs`
 --
 ALTER TABLE `payment_logs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `payment_methods`
@@ -848,13 +892,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `vendor_charges`
 --
 ALTER TABLE `vendor_charges`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `vendor_id_trackings`
 --
 ALTER TABLE `vendor_id_trackings`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

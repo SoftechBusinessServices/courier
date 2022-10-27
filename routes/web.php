@@ -205,3 +205,4 @@ Route::get('customer_exportExcel', [PaymentController::class, 'customer_exportEx
 Route::get('vendor_exportExcel', [PaymentController::class, 'vendor_exportExcel'])->name('vendor_exportExcel');
 
 Route::post('date-wise-customer-record',[ParcelController::class,'date_wise_customer_record'])->name('date-wise-customer-record');
+Route::get('pl-changeStatus', [VendorTrackingController::class, 'pl_changeStatus'])->name('pl-changeStatus');

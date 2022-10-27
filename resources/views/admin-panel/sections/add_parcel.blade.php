@@ -138,7 +138,7 @@
                                 <div class="col-lg-4">
                                     <div class="mb-3">
                                         <label for="basicpill-namecard-input">Description</label><br>
-                                        <select class="js-example-basic-multiple form-control"   style="height:10%; width:100%;" name="pl_description[]" multiple="multiple">
+                                        <select class="js-example-basic-multiple form-control"  style="height:10%; width:100%;" name="pl_description[]" multiple="multiple">
                                           @foreach($contents as $content)
                                             <option value="{{$content->id}}">{{$content->name}}</option>
                                           @endforeach
@@ -597,7 +597,7 @@
         </div>
     </div>
 </div>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.repeater/1.2.1/jquery.repeater.min.js" data-cfasync="false" data-no-optimize="1" data-no-defer="1" data-no-minify="1"></script>
 <script>
     var currentTab = 0; // Current tab is set to be the first tab (0)
     showTab(currentTab); // Display the current tab
@@ -676,7 +676,7 @@
 <script>
     $(document).ready(function() {
 
-        $(":input").inputmask();
+        // $(":input").inputmask();
         $("#dvAddShipper").hide();
         $(function() {
 
@@ -760,7 +760,7 @@
         $(function() {
             
             $("#disp_price").blur(function() {
-               
+                // alert(1);
                 var disp_price = parseInt($(this).val());
                 var disp_quantity = parseInt($('#disp_quantity').val());
                 // var pl_discount = parseInt($('#pl_discount').val());

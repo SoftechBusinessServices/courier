@@ -121,8 +121,8 @@
                                             <button
                                                 class="btn btn-primary waves-effect waves-light export-to-excel  mr-2 p-1 pb-0  px-3">Excel
                                                 Export</button>
-                                            <a class="btn btn-info  btn-md text-white font-size-12 " data-bs-toggle="modal"
-                                                data-bs-target="#customer-date-wise_record">Select Date</a>
+                                            {{-- <a class="btn btn-info  btn-md text-white font-size-12 " data-bs-toggle="modal"
+                                                data-bs-target="#customer-date-wise_record">Select Date</a> --}}
                                         </div>
 
 

@@ -19,11 +19,10 @@
                             <td>
                                 <input type="text" name="parcel_id" value="" id="parcel_id"
                                     class="form-control" readonly>
-                                <input type="hidden" name="pl_id" value="" id="pl_id"
-                                    class="form-control">
+                                <input type="hidden" name="pl_id" value="" id="pl_id" class="form-control">
 
-                                <br><input type="hidden" name="selected_vendor_id" value="" id="selected_vendor_id"
-                                    class="form-control" readonly>
+                                <br><input type="hidden" name="selected_vendor_id" value=""
+                                    id="selected_vendor_id" class="form-control" readonly>
                             </td>
                             <td>
                                 <input type="text" name="vendor_tracking_id" value="" id="vendor_tracking_id"
@@ -69,7 +68,7 @@
                                             class="table table-bordered dt-responsive  nowrap w-100 table-sm text-center font-size-13 table-responsive-sm">
                                             <thead>
                                                 <tr class="text-center">
-                                                    <th >S.No</th>
+                                                    <th>S.No</th>
                                                     <th>Parcel ID</th>
                                                     <th>Parcel<br>Destination</th>
                                                     <th>Despatch<br>Date</th>
@@ -91,12 +90,13 @@
                                                 @if ($allocated_parcels->count() > 0)
                                                     @foreach ($allocated_parcels as $item)
                                                         <tr>
-                                                            <td >{{ $i++ }}</td>
+                                                            <td>{{ $i++ }}</td>
                                                             <td>
                                                                 <a href="{{ url('parcel-details/' . $item->id) }}"
                                                                     class="btn btn-outline-secondary btn-sm delete"
                                                                     title="View">
-                                                                    <i class="far fa-eye"> {{ $item->allocate_with_parcel->parcel_id }}</i>
+                                                                    <i class="far fa-eye">
+                                                                        {{ $item->allocate_with_parcel->parcel_id }}</i>
                                                                 </a>
                                                             </td>
                                                             <td>
@@ -134,13 +134,13 @@
                                                                         </button>
                                                                     </p>
                                                                 @else
-                                                                {{-- @php echo($item->id);  @endphp --}}
+                                                                    {{-- @php echo($item->id);  @endphp --}}
                                                                     <p id="trackingModal_{{ $item->id }}">
                                                                         <a class="btn btn-outline-success btn-sm tracking_btn"
                                                                             title="add" data-bs-toggle="modal"
                                                                             data-bs-target="#trackingmodal"
                                                                             id="{{ $item->pl_id }}"
-                                                                            data-pl-id="{{ $item->allocate_with_parcel->parcel_id}}"
+                                                                            data-pl-id="{{ $item->allocate_with_parcel->parcel_id }}"
                                                                             data-vendor-id="{{ $item->vendor_id }}">
                                                                             update
                                                                         </a>
@@ -151,11 +151,11 @@
 
                                                             <td>
                                                                 @php
-                                                                //    var_dump( $item
-                                                                //     ->allocate_with_parcel
-                                                                //     ->parcel_with_charges
-                                                                //     // ->vendor_tracking_charges
-                                                                //     )    
+                                                                    //    var_dump( $item
+                                                                    //     ->allocate_with_parcel
+                                                                    //     ->parcel_with_charges
+                                                                    //     // ->vendor_tracking_charges
+                                                                    //     )
                                                                 @endphp
                                                                 @if ($item->allocate_with_parcel && $item->allocate_with_parcel->parcel_with_charges)
                                                                     <p id="tracking_charges_style">
@@ -165,15 +165,13 @@
                                                                         </button>
                                                                     </p>
                                                                 @else
-                                                              
-                                                              
-                                                                {{-- @php echo($item->id);  @endphp --}}
+                                                                    {{-- @php echo($item->id);  @endphp --}}
                                                                     <p id="trackingModal2_{{ $item->id }}">
                                                                         <a class="btn btn-outline-primary btn-sm charges_btn"
                                                                             title="add" data-bs-toggle="modal"
                                                                             data-bs-target="#vendor_charges_update"
                                                                             id="{{ $item->pl_id }}"
-                                                                            data-pl-id="{{ $item->allocate_with_parcel->parcel_id}}"
+                                                                            data-pl-id="{{ $item->allocate_with_parcel->parcel_id }}"
                                                                             data-vendor-id="{{ $item->vendor_id }}">
                                                                             update
                                                                         </a>
@@ -181,18 +179,54 @@
                                                                 @endif
                                                             </td>
 
-                                                            <td>
+                                                            {{-- <td>
+                                                                <select name="" id="status-id" class="form-control font-size-12 p-2">
                                                                     @php
                                                                         $array = ['allocated','intransit','delivered']; 
                                                                         // var_dump($array);
                                                                     @endphp
-                                                                    <select name="status-id" id="status-id" class="form-control font-size-12 p-2">
-                                                                    @foreach ($array  as $arr)
+                                                                    
+                                                                    @foreach ($array as $arr)
                                                                         <option value="{{$arr."_".$item->pl_id}}" {{($arr == $item->allocate_with_parcel->pl_status ) ? "selected" :""}}>{{$arr}}</option>
                                                                     @endforeach
                                                                 </select>
+                                                            </td> --}}
+                                                            <td>
+                                                                {{-- <input data-id="{{$item->pl_id}}" class="toggle-class my-class" type="checkbox" data-onstyle="info" data-offstyle="danger"
+                                                                 data-toggle="toggle" data-on="In-transit" data-off="Delivered" {{ $item->allocate_with_parcel->pl_status ? 'checked' : '' }}> --}}
+
+                                                                {{-- <input id="{{$item->pl_id}}" class="toggle-class" 
+                                                                 type="checkbox" data-onstyle="success" data-offstyle="danger" 
+                                                                 data-on="intransit" data-off="delivered" 
+                                                                 {{ $item->allocate_with_parcel->pl_status ? 'checked' : '' }}
+                                                                 onclick="changeStatus(event.target, {{ $item->pl_id }});"> --}}
+                                                                {{-- <button>{{ $item->allocate_with_parcel->pl_status }}</button> --}}
+
+                                                                {{-- <input
+                                                                    class="toggle-class toggle-status"
+                                                                    data-toggle="toggle" data-on="Allocated"
+                                                                    data-off="Delivered" data-onstyle="warning"
+                                                                    data-offstyle="dark" type="checkbox"
+                                                                    {{ $item->allocate_with_parcel->pl_status == 'allocated' ? 'checked' : '' }}> --}}
+
+                                                                <select class="form-control input-sm dropdown_status p-2">
+                                                                    <option value="allocated"
+                                                                        {{ $item->allocate_with_parcel->pl_status == 'allocated' ? 'selected' : '' }}>
+                                                                        Allocated</option>
+                                                                    <option value="intransit"
+                                                                        {{ $item->allocate_with_parcel->pl_status == 'intransit' ? 'selected' : '' }}>
+                                                                        In Transit</option>
+                                                                    <option  value="delivered"
+                                                                        {{ $item->allocate_with_parcel->pl_status == 'delivered' ? 'selected' : '' }}>
+                                                                        Delivered</option>
+                                                                </select>
                                                             </td>
-                                                               
+                                                            <td>
+                                                                <button class="btn btn-info btn-sm"
+                                                                    onclick="change_status(this,{{ $item->pl_id }})">Update</button>
+                                                            </td>
+
+
                                                         </tr>
                                                     @endforeach
                                                 @else
@@ -288,7 +322,7 @@
                         data.data.vendor_tracking_id + '</button>');
 
                     toastr.success('record updated', 'success');
-                    
+
                     $(':input', this).val('');
                     $('#trackingmodal').modal('hide');
 
@@ -319,12 +353,12 @@
                     });
                 }
                 if (data.success == 1) {
-                    $('#trackingModal2_'+ data.data.id).html(
+                    $('#trackingModal2_' + data.data.id).html(
                         '<button type="button" class="btn bg-primary text-white btn-sm disabled">' +
                         data.data.vendor_tracking_charges + '</button>');
 
                     toastr.success('record updated', 'success');
-                    
+
                     $(':input', this).val('');
                     $('#vendor_charges_update').modal('hide');
                     // console.log(track_id);
@@ -340,7 +374,7 @@
         e.preventDefault();
         // alert(1);
         pl_id = this.id;
-       
+
         $('#pl_id').val(pl_id);
         $('#parcel_id').val($(this).data('pl-id'));
         $('#selected_vendor_id').val($(this).data('vendor-id'));
@@ -391,28 +425,58 @@
         }
     });
 </script>
+
 <script>
-   $(function(){
+    $(function() {
 
-    $('#status-id').change(function(){
+        $('#status-id').change(function() {
 
-        
-        var status = $(this).val();
-        alert(status);
-        // var parcelid = $(this).data('id');
-        // console.log(status,parcelid);
+
+            var status = $(this).val();
+            alert(status);
+            // var parcelid = $(this).data('id');
+            // console.log(status,parcelid);
+            $.ajax({
+
+                type: "GET",
+                dataType: "json",
+                url: "{{ route('changeStatus') }}",
+                data: {
+                    'status': status
+                },
+
+                success: function(data) {
+
+                    toastr.success(data.success, 'Success');
+                }
+            });
+        })
+    });
+
+
+</script>
+
+<script>
+    function change_status(element, id) {
+
+        var status = $(element).parents('td').parents('tr').find('.dropdown_status').val();
+        // alert(status + id);
+
         $.ajax({
 
             type: "GET",
             dataType: "json",
-            url: "{{route('changeStatus')}}",
-            data : {'status':status},
+            url: "{{ route('pl-changeStatus') }}",
+            data: {
+                'status': status,
+                'id': id
+            },
+            success: function(data) {
 
-            success: function(data){
-
-                toastr.success(data.success,'Success');
+                toastr.success(data.success, 'Success');
             }
         });
-    })
-   });
+
+
+    };
 </script>

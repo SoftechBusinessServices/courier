@@ -17,6 +17,7 @@
         "resolve-url-loader": "^3.1.0"
     },
     "dependencies": {
+        "bootstrap4-toggle": "^3.6.1",
         "jquery": "^3.6.1"
     }
 }

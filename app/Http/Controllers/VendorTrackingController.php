@@ -85,5 +85,12 @@ class VendorTrackingController extends Controller
   
         return response()->json(['success'=>'Status change successfully.']);
     }
+    public function pl_changeStatus(Request $request) { 
+    //    dd($request->id);
+        $category = Parcel::find($request->id);
+        $category->pl_status = $request->status; 
+        $category->save(); 
+        
+        return response()->json(['success'=>' status change successfully.']); }
 
 }

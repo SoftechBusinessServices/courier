@@ -134,7 +134,7 @@ class HomeController extends Controller
 
     public function update_user(Request $request, $id)
     {
-
+        // dd($request->all());
         $request->validate([
 
             'name' => 'required',

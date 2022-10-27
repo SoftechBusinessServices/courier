@@ -1,89 +1,43 @@
 @extends('admin-panel.index')
 
 @section('content')
-    <div>
-        <div class=" bg-light  pt-4 px-4"
-            style="background-image: url('{{ asset('assets/images/bg-image.jpg') }}'); height: 100vh; background-position: center; background-repeat: no-repeat; background-size: cover; padding-bottom:50px">
-            <div class="container" style="margin-top: 70px; ">
-                <!-- start page title -->
-                <div class="row">
-                    <div class="col">
-                        <!--write your code here  -->
-                        <div class="row">
-                            <div class="col p-0">
-                                <div class="card overflow-hidden">
-                                    <div class="bg-primary bg-soft">
-                                        <div class="row">
-                                            <div class="col-8">
-                                                <div class="text-primary p-3">
-                                                    <h5 class="text-primary">Welcome Back !</h5>
-                                                    <p>User Profile Information</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-4 align-self-end">
-                                                <img src="{{ asset('assets/images/profile-img.png') }}" alt=""
-                                                    class="img-fluid">
+
+    <div class=" bg-light  pt-4 px-4">
+        {{-- style="background-image: url('{{ asset('assets/images/bg-image.jpg') }}'); height: 100vh; background-position: center; background-repeat: no-repeat; background-size: cover; padding-bottom:50px"> --}}
+        <div class="container" style="margin-top: 70px; ">
+            <!-- start page title -->
+            <div class="row">
+                <div class="col">
+                    <!--write your code here  -->
+                    <div class="row">
+                        <div class="col p-0">
+                            <div class="card overflow-hidden">
+                                <div class="bg-primary bg-soft">
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <div class="text-primary p-3">
+                                                <h5 class="text-primary">Welcome Back !</h5>
+                                                <p>User Profile Information</p>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="card-body pt-0">
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="avatar-md profile-user-wid mb-4">
-                                                    <img src="{{ asset('assets/images/users/admin.png') }}" alt=""
-                                                        class="img-thumbnail rounded-circle">
-                                                </div>
-                                                <h5 class="font-size-15 text-truncate">{{ $data->name }}</h5>
-                                                {{-- <h5 class="text-muted font-size-15 text-truncate">{{ $data->email }}</h5> --}}
-                                                <p class="text-muted mb-0 text-truncate">Laravel Developer</p>
-                                                {{-- <p class="text-muted mb-0 text-truncate">California, United States</p> --}}
-                                            </div>
-
-                                            <div class="col-sm-6">
-                                                <div class="pt-4">
-
-                                                    <div class="row">
-                                                        <div class="col-6 bg-light rounded">
-                                                            <h5 class="font-size-15">125</h5>
-                                                            <p class="text-muted mb-0">Projects</p>
-                                                        </div>
-                                                        <div class="col-6 bg-light rounded">
-                                                            <h5 class="font-size-15">$1245</h5>
-                                                            <p class="text-muted mb-0">Revenue</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="mt-4">
-                                                        <a href="javascript: void(0);"
-                                                            class="btn btn-success waves-effect waves-light btn-sm"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target=".transaction-detailModal">
-                                                            Change Password
-
-                                                        </a>
-                                                        {{--  <a href="javascript: void(0);"
-                                                            class="btn btn-primary waves-effect waves-light btn-sm"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target=".transaction-detailModal2">
-                                                            Edit
-
-                                                        </a>  --}}
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        <div class="col-4 align-self-end">
+                                            <img src="{{ asset('assets/images/profile-img.png') }}" alt=""
+                                                class="img-fluid">
                                         </div>
                                     </div>
                                 </div>
-                                <!-- end card -->
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col p-0">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title mb-4">Personal Information</h4>
+                                <div class="card-body pt-0">
+                                    <div class="row">
+                                        <div class="avatar-md profile-user-wid mb-4 cover">
+                                            <img src="{{ asset('assets/images/users/admin.png') }}" alt=""
+                                                class="img-thumbnail rounded-circle">
+                                        </div>
+                                        <h5 class="font-size-15 text-truncate">{{ $data->name }}</h5>
 
-                                        <p class="text-muted mb-4"></p>
-                                        <div class="table-responsive">
+                                        <p class="text-muted mb-0 text-truncate">{{ $data->email }}</p>
+
+                                        <h4 class="card-title mb-1 mt-3">Personal Information</h4>
+                                        <div class="pt-4">
                                             <table class="table table-nowrap mb-0">
                                                 <tbody>
                                                     <tr>
@@ -104,26 +58,35 @@
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                        </div>
-                                        <div class="mt-4 justify-content-center">
-                                            <a href="{{ route('home') }}"
-                                                class="btn btn-dark btn-md text-white btn-sm">Dashboard </a>
-                                            <a href="javascript: void(0);"
-                                                class="btn btn-primary waves-effect waves-light btn-sm"
-                                                data-bs-toggle="modal" data-bs-target=".transaction-detailModal3">
-                                                Edit Profile
-                                            </a>
+                                            <div class="mt-4 justify-content-center">
+                                                <a href="{{ route('home') }}"
+                                                    class="btn btn-dark btn-md text-white btn-sm">Dashboard </a>
+                                                <a href="javascript: void(0);"
+                                                    class="btn btn-primary waves-effect waves-light btn-sm"
+                                                    data-bs-toggle="modal" data-bs-target=".transaction-detailModal3">
+                                                    Edit Profile
+                                                </a>
+                                                <a href="javascript: void(0);"
+                                                    class="btn btn-success waves-effect waves-light btn-sm"
+                                                    data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
+                                                    Change Password
+
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- end card -->
+
                             </div>
                         </div>
+                        <!-- end card -->
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
+
 
     <!-- Transaction Modal -->
 
@@ -190,7 +153,7 @@
                                                                             <strong>{{ $errors->first('current-password') }}</strong>
                                                                         </span>
                                                                     @endif
-                                                                    
+
                                                                 </div>
                                                             </div>
 
@@ -209,8 +172,7 @@
                                                                         </span>
                                                                     @endif
                                                                 </div>
-                                                                <div class="show-hode-password d-flex float-right"> <input type="checkbox" class="btn btn-light  " onclick="togglePassword()">Show Password
-                                                                </div>
+                                                                
                                                             </div>
 
                                                             <div class="form-group">
@@ -223,11 +185,7 @@
                                                                         class="form-control"
                                                                         name="new-password_confirmation" required>
                                                                 </div>
-                                                                <div class="justify-content-end d-flex flex-row">
-                                                                    <p class="pt-3 pr-1">Show Password</p>
-                                                                    <input type="checkbox"
-                                                                        aria-label="Checkbox for following text input">
-                                                                </div>
+                                                               
                                                             </div>
 
 
@@ -324,8 +282,8 @@
                                         </div>
                                     </div>
                                     <div class="col-md-11 mb-3 offset-1 ">
-                                        <button type="submit" form="update_user" class="btn btn-primary "
-                                            id="modal_submit" value="Submit"> Update Record</button>
+                                        <button type="submit" form="update_user123" class="btn btn-primary "
+                                            id="modal_submit23" value="Submit"> Update Record</button>
                                         <button type="button" class="btn btn-secondary" id="modal_close"
                                             data-bs-dismiss="modal">Close</button>
                                     </div>
@@ -358,7 +316,7 @@
 
                             </thead>
                             <tbody>
-                                <form id="update_user" class="form-horizontal" method="POST"
+                                <form id="update_user123" class="form-horizontal" method="POST"
                                     action="{{ url('update-user/' . $data->id) }}">
                                     @csrf
                                     <div class="container">
@@ -370,14 +328,13 @@
 
                                                     <div class="panel-body">
 
-
                                                         <div
                                                             class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                                             <label for="name" class="col-md-12 control-label">Full
-                                                                Name:</label>
+                                                                Name: <span class="text-muted">{{$data->name}}</span></label>
 
                                                             <div class="col-md-12 mb-3">
-                                                                <input type="text" value="{{ $data->name }}"
+                                                                <input type="text" placeholder=""
                                                                     class="form-control" name="name" required>
                                                                 <input type="hidden" name="id"
                                                                     value="{{ $data->id }}">
@@ -388,29 +345,14 @@
                                                                 @endif
                                                             </div>
                                                         </div>
-                                                        <div
-                                                            class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                                            <label for="name" class="col-md-12 control-label">Mobile
-                                                                Nubmer:</label>
-                                                            <div class="col-md-12 mb-3">
-                                                                <input type="text" value="{{ $data->name }}"
-                                                                    class="form-control" name="name" required>
-                                                                <input type="hidden" name="id"
-                                                                    value="{{ $data->id }}">
-                                                                @if ($errors->has('name'))
-                                                                    <span class="help-block">
-                                                                        <strong>{{ $errors->first('name') }}</strong>
-                                                                    </span>
-                                                                @endif
-                                                            </div>
-                                                        </div>
+
                                                         <div
                                                             class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                                             <label for="email" class="col-md-12 control-label">User
-                                                                Email:</label>
+                                                                Email:<span class="text-muted">{{$data->email}}</span></label>
 
                                                             <div class="col-md-12 mb-3">
-                                                                <input type="text" value="{{ $data->email }}"
+                                                                <input type="text" placeholder=""
                                                                     class="form-control" name="email" required>
 
                                                                 @if ($errors->has('email'))
@@ -422,21 +364,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                                    <label for="email"
-                                                        class="col-md-12 control-label">Location:</label>
 
-                                                    <div class="col-md-12 mb-3">
-                                                        <input type="text" value="{{ $data->email }}"
-                                                            class="form-control" name="email" required>
-
-                                                        @if ($errors->has('email'))
-                                                            <span class="help-block">
-                                                                <strong>{{ $errors->first('email') }}</strong>
-                                                            </span>
-                                                        @endif
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -455,8 +383,7 @@
         </div>
 
     </div>
-    </div>
-    </div>
+
     <!-- end modal -->
     <!-- Update profile -->
     <div class="modal fade transaction-detailModal3" tabindex="-1" role="dialog"
@@ -550,7 +477,7 @@
 
 
 <script>
-        function togglePassword() {
+    function togglePassword() {
         var x = document.getElementById("new-password");
         if (x.type === "password") {
             x.type = "text";

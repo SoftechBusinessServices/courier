@@ -60,7 +60,7 @@
                                     <li class="breadcrumb-item  text-bold">Dated: <span class="text-bold">{{ date('d,m,Y' ,strtotime($data->created_at)) }}</span></li>
                                 </ol>
                             </div>
-                            <div class="text-center">
+                            <div class=" ">
                                 <div class="table-responsive">
                                     <table class="table table-nowrap table-sm table-responsive-sm">
                                         <tbody>
@@ -100,7 +100,7 @@
                             <div class="">
                                 <h3 class="m-2 font-size-22 fw-bold">Dispatch Notes</h3>
                             </div>
-                            <div class="text-center">
+                            <div class=" ">
                                 <div class="table-responsive">
                                     <table class="table table-nowrap table-sm table-bordered  table-responsive-sm">
                                         <thead>
@@ -141,7 +141,7 @@
                                 <h3 class="m-2 font-size-22 fw-bold">Consignee Details</h3>
                                 <!-- {{$data->consignee}} -->
                             </div>
-                            <div class="text-center">
+                            <div class=" ">
                                 <div class="table-responsive">
                                     <table class="table table-nowrap table-sm  table-responsive-sm">
                                         <tbody>
@@ -191,7 +191,7 @@
                                 <h3 class="m-2 font-size-22 fw-bold">Shipper Details</h3>
                                 <!-- {{$data->shipper}} -->
                             </div>
-                            <div class="text-center">
+                            <div class=" ">
                                 <div class="table-responsive">
                                     <table class="table table-nowrap table-sm  table-responsive-sm">
                                         <tbody>

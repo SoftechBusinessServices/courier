@@ -10,6 +10,24 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body px-3 py-0">
+                            <div class="invoice-title">
+                                <div class="mb-0">
+                                   <div class="row">
+                                       <div class="col  text-center">
+                                           <img src="{{asset('assets/images/LogoBFS.png')}}" alt="logo" height="60" covered />
+                                       </div>
+                                       <div class="col">
+                                           <label for="">SBS Courier Services</label>
+                                           <p>Email: sbsservice@mail.com</p>
+                                           <label for="">Phone: 091-21336444</label>
+                                       </div>
+                                       <div class="col">
+                                           <p>Address: G15 markaz, Green Acre Plaza, Islamabad, Pakistan</p>
+                                           <p>Website: www.bfs.com</p>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
 
                             <div class="page-title-right">
                                 <h3 class="m-2 font-size-22 fw-bold">Parcel Details </h3>
@@ -22,7 +40,7 @@
                                     <li class="breadcrumb-item  text-bold">Dated: <span class="text-bold">{{ date('d,m,Y' ,strtotime($data->created_at)) }}</span></li>
                                 </ol>
                             </div>
-                            <div class="text-center">
+                            <div class=" ">
                                 <div class="table-responsive">
                                     <table class="table table-nowrap table-sm table-responsive-sm">
                                         <tbody>
@@ -60,10 +78,10 @@
 
                             <hr class="m-0 mb-1">
                             <div class="">
-                                <h3 class="m-2 font-size-22 fw-bold">Consignee Details</h3>
+                                <h3 class="m-1 font-size-22 fw-bold">Consignee Details</h3>
                                 <!-- {{$data->consignee}} -->
                             </div>
-                            <div class="text-center">
+                            <div class=" ">
                                 <div class="table-responsive">
                                     <table class="table table-nowrap table-sm  table-responsive-sm">
                                         <tbody>
@@ -110,11 +128,11 @@
 
                             <hr class="m-0 mb-1">
                             <div class="">
-                                <h3 class="m-2 font-size-22 fw-bold">Shipper Details</h3>
+                                <h3 class="m-1 font-size-22 fw-bold">Shipper Details</h3>
                                 <!-- {{$data->shipper}} -->
                               
                             </div>
-                            <div class="text-center">
+                            <div class=" ">
                                 <div class="table-responsive">
                                     <table class="table table-nowrap table-sm  table-responsive-sm">
                                         <tbody>

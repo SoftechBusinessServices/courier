@@ -54,7 +54,7 @@
                                 <!-- {{$data->shipper}} -->
                               
                             </div>
-                            <div class="text-center">
+                            <div >
                                 <div class="table-responsive">
                                     <table class="table table-nowrap table-sm  table-responsive-sm">
                                         <tbody>
@@ -106,7 +106,7 @@
                                 <h3 class="m-2 font-size-16 fw-bold">Consignee Details</h3>
                                 <!-- {{$data->consignee}} -->
                             </div>
-                            <div class="text-center">
+                            <div>
                                 <div class="table-responsive">
                                     <table class="table table-nowrap table-sm  table-responsive-sm">
                                         <tbody>
@@ -162,7 +162,7 @@
                                     <li class="breadcrumb-item  text-bold">Dated: <span class="text-bold">{{ date('d,m,Y' ,strtotime($data->created_at)) }}</span></li>
                                 </ol> --}}
                             </div>
-                            <div class="text-center">
+                            <div >
                                 <div class="table-responsive">
                                     <table class="table table-nowrap table-sm table-responsive-sm">
                                         <tbody>
@@ -204,7 +204,7 @@
                             <div class="">
                                 <h3 class="font-size-15 fw-bold">Dispatch Note</h3>
                             </div>
-                            <div class="text-center">
+                            <div>
                                 <div class="table-responsive">
                                     <table class="table table-nowrap table-sm table-bordered  table-responsive-sm">
                                         <thead>

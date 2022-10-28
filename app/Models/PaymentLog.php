@@ -15,4 +15,9 @@ class PaymentLog extends Model
 
         return $this->belongsTo(PaymentMethod::class,'payment_method_id','id');
     }
+    public function paymentlog_with_parcel(){
+        
+        return $this->belongsTo(Parcel::class,'vcid','id');
+
+    }
 }

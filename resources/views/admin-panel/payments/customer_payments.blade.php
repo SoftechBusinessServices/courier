@@ -114,6 +114,7 @@
                                                 </select>
                                             </div>
                                         </div>
+                                       
                                         <div class="col-3 mt-4 p-3">
                                             <a href="#"
                                                 class="btn btn-success waves-effect waves-light  mr-2 p-1 pb-0 print-btn-customer-report px-3"><i
@@ -121,8 +122,9 @@
                                             <button
                                                 class="btn btn-primary waves-effect waves-light export-to-excel  mr-2 p-1 pb-0  px-3">Excel
                                                 Export</button>
-                                            {{-- <a class="btn btn-info  btn-md text-white font-size-12 " data-bs-toggle="modal"
-                                                data-bs-target="#customer-date-wise_record">Select Date</a> --}}
+                                                {{-- {{$customer}}  --}}
+                                            <a class="btn btn-info  btn-md text-white font-size-12 " data-bs-toggle="modal"
+                                                data-bs-target="#customer-date-wise_record">Select Date</a>
                                         </div>
 
 
@@ -298,8 +300,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    {{-- <form id="balance_sheet_modal" action="{{ route('daily.report') }}" method="get"> --}}
-                    <form id="customer_date_wise_form" method="POST">
+                    <form id="customer_date_wise_form" action="{{ route('date-wise-customer-record') }}" method="POST">
+                    {{-- <form id="customer_date_wise_form" method="POST"> --}}
                         @csrf
                         <div class="row">
                             <div class="col-md-6">
@@ -314,6 +316,7 @@
                                     <input type="date" class="form-control" name="end_date" id="end_date">
                                 </div>
                             </div>
+                            <input type="text" class="form-control-sm" name="selected_customer_id" id="selected_customer_id" value="" readonly>
                         </div>
 
                         <hr>
@@ -340,30 +343,32 @@
         });
 
         //date-range picker
-        $('body').on('submit', '#customer_date_wise_form', function(e) {
-            e.preventDefault();
-            alert(1);
-            var fdata = new FormData(this);
-            // console.log(Object.fromEntries(fdata)); return false;
-            $.ajax({
-                url: "{{ route('date-wise-customer-record') }}",
-                type: "POST",
-                data: fdata,
-                processData: false,
-                contentType: false,
-                // processCache : false,
-                success: function(data) {
+        // $('body').on('submit', '#customer_date_wise_form', function(e) {
+        //     e.preventDefault();
+        //     // alert(1);
+        //     var fdata = new FormData(this);
+        //     // console.log(Object.fromEntries(fdata)); return false;
+        //     $.ajax({
+        //         url: "{{ route('date-wise-customer-record') }}",
+        //         type: "POST",
+        //         data: fdata,
+        //         processData: false,
+        //         contentType: false,
+        //         // processCache : false,
+        //         success: function(data) {
                     
-                    console.log(data);
-                    $('#customer-date-wise_record').modal('hide');
+        //             console.log(data);
+        //             $('#customer-date-wise_record').modal('hide');
 
-                }
+        //         }
 
-            }); //ajax function closed 
+        //     }); //ajax function closed 
 
-        }); // on-submit function closed
+        // }); // on-submit function closed
 
-
+        var a =$('#customer-payment-select').val();
+        $('#selected_customer_id').val(a);
+        
         $('body').on('blur', '#start_date', function() {
             var startDate = $(this).val();
             $('#end_date').prop('min', startDate);

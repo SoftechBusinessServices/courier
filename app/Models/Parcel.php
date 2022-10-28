@@ -55,7 +55,10 @@ class Parcel extends Model
     {
         return $this->hasMany(AllocateParcel::class,'pl_id','id');
     }
-    
+    public function parcel_with_payment_log(){
+
+        return $this->hasMany(PaymentLog::class, 'vcid','id');
+    }
     // public function country()
     // {
     //     return $this->belongsTo(Country::class,'consignee_country_id','id');

@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-{{-- @dd(1); --}}
+
 @include('admin-panel.head')
 
 <body>

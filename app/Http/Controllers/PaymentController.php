@@ -251,8 +251,8 @@ class PaymentController extends Controller
     }
 
     public function customer_payment(Request $request)
-    {
-
+    {   
+    //    dd($request->all());
         $data['customers'] =  ParcelShipper::all();
 
         $customer_id = ($request->has('customer')) ? $request->customer : 0;

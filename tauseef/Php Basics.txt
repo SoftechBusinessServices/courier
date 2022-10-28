@@ -1,0 +1,586 @@
+Funtion:
+A function is a piece of code that takes another input in the form of a parameter, processes it, and then returns a value. A PHP Function feature is a piece of code that can be used over and over again and accepts argument lists as input, and returns a value
+
+Built-in Functions in PHP
+PHP has over 1000 built-in functions that can be called directly from within a script to perform a specific task in PHP Functions.
+
+rand	Used to generate a random number 							echo rand(); 		Random numbers
+round	Round off a number with decimal points to the nearest whole number.			echo round(3.49);	3
+sqrt	Returns the square root of a number 							echo sqrt(100);		10
+number_format	Used to formats a numeric value using digit separators and decimal points 	number_format(2509663);	2,509,663
+is_number	Accepts an argument and returns true if its numeric and false if it’s not	is_numeric("guru")	false
+
+
+User Defined Functions in PHP
+A function is a set of statements that can be used repeatedly in a program.
+When a page loads, a feature will not run automatically.
+A call to a function will cause it to be executed. 
+
+Why use Functions?
+Reusability of Code: Unlike other programming languages, PHP Functions are specified only once and can be called multiple times.
+Less Code: It saves a lot of code because the logic doesn't have to be written several times. You can write the logic only once and reuse it by using functions.
+Simple to Comprehend: The programming logic is separated using PHP Functions. Since every logic is divided into functions, it is easier to understand the application's flow.
+
+What is PHP?
+PHP is a server side script that is interpreted on the server while JavaScript is an example of a client side script that is interpreted by the client browser. Both PHP and JavaScript can be embedded into HTML pages.
+
+What is a Scripting Language?
+A script is a set of programming instructions that is interpreted at runtime.
+A scripting language is a language that interprets scripts at runtime. Scripts are usually embedded into other software environments.
+
+Why use PHP?
+PHP is cross platform; this means you can deploy your application on a number of different operating systems such as windows, Linux, Mac OS etc.
+PHP is open source and free.
+Short learning curve compared to other languages such as JSP, ASP etc.
+Large community document
+Other benefit that you get with PHP is that it’s a server side scripting language; this means you only need to install it on the server and client computers requesting for resources from the server do not need to have PHP installed; only a web browser would be enough.
+
+Class
+A class is a template for objects, and an object is an instance of class.
+A Fruit can have properties like name, color, weight, etc. We can define variables like $name, $color, and $weight to hold the values of these properties.
+When the individual objects (apple, banana, etc.) are created, they inherit all the properties and behaviors from the class, but each object will have different values for the properties.
+
+<?php
+class Fruit {
+  // Properties
+  public $name;
+  public $color;
+
+  // Methods
+  function set_name($name) {
+    $this->name = $name;
+  }
+  function get_name() {
+    return $this->name;
+  }
+  function set_color($color) {
+    $this->color = $color;
+  }
+  function get_color() {
+    return $this->color;
+  }
+}
+
+$apple = new Fruit();
+$apple->set_name('Apple');
+$apple->set_color('Red');
+echo "Name: " . $apple->get_name();
+echo "<br>";
+echo "Color: " . $apple->get_color();
+?>
+
+PHP - The __construct Function
+A constructor allows you to initialize an object's properties upon creation of the object.
+
+If you create a __construct() function, PHP will automatically call this function when you create an object from a class.
+
+Notice that the construct function starts with two underscores (__)!
+
+We see in the example below, that using a constructor saves us from calling the set_name() method which reduces the amount of code:
+
+<?php
+class Fruit {
+  public $name;
+  public $color;
+
+  function __construct($name, $color) {
+    $this->name = $name;
+    $this->color = $color;
+  }
+  function get_name() {
+    return $this->name;
+  }
+  function get_color() {
+    return $this->color;
+  }
+}
+
+$apple = new Fruit("Apple", "red");
+echo $apple->get_name();
+echo "<br>";
+echo $apple->get_color();
+?>
+
+Can we make an object without Constructor Initialiaztion?
+Simply speaking, a constructor does not create an object. It just initializes the state of the object. It's the new operator which creates the object. Now, let's understand this in little detail.
+
+When you create an object using statement like this:
+
+new MyClass();
+The object is first created by the new operator. Just before a reference to the newly created object is returned as the result, the indicated constructor is processed to initialize the new object.
+<?php
+class Fruit {
+  public $name;
+  public $color;
+
+  function __construct($name, $color) {
+    $this->name = $name;
+    $this->color = $color;
+  }
+  function get_name() {
+    return $this->name;
+  }
+  function get_color() {
+    return $this->color;
+  }
+}
+
+$apple = new Fruit("Apple", "red");
+echo $apple->get_name();
+echo "<br>";
+echo $apple->get_color();
+?>
+
+
+PHP - The __destruct Function
+A destructor is called when the object is destructed or the script is stopped or exited.
+If you create a __destruct() function, PHP will automatically call this function at the end of the script.
+Notice that the destruct function starts with two underscores (__)!
+
+The example below has a __construct() function that is automatically called when you create an object from a class, and a __destruct() function that is automatically called at the end of the script:
+
+<?php
+class Fruit {
+  // Properties
+  var $name;
+  var $color;
+
+  // Methods
+  function __construct($name, $color) {
+    $this->name = $name;
+    $this->color = $color; 
+  }
+  function __destruct() {
+    echo "The fruit is {$this->name} and the color is {$this->color}."; 
+  }
+}
+
+$apple = new Fruit("Angoor", "sabz");
+?>
+
+Output:
+The fruit is Angoor and the color is sabz.
+
+
+PHP - Access Modifiers
+Properties and methods can have access modifiers which control where they can be accessed.
+
+There are three access modifiers:
+
+public - the property or method can be accessed from everywhere. This is default
+protected - the property or method can be accessed within the class and by classes derived from that class
+private - the property or method can ONLY be accessed within the class
+
+<?php
+class Fruit {
+  public $name;
+  protected $color;
+  private $weight;
+}
+
+$mango = new Fruit();
+$mango->name = 'Mango'; // OK
+$mango->color = 'Yellow'; // ERROR
+$mango->weight = '300'; // ERROR
+?>
+
+<?php
+class Fruit {
+  public $name;
+  public $color;
+  public $weight;
+
+  function set_name($n) {  // a public function (default)
+    $this->name = $n;
+  }
+  protected function set_color($n) { // a protected function
+    $this->color = $n;
+  }
+  private function set_weight($n) { // a private function
+    $this->weight = $n;
+  }
+}
+
+$mango = new Fruit();
+$mango->set_name('Mango'); // OK
+$mango->set_color('Yellow'); // ERROR
+$mango->set_weight('300'); // ERROR
+?>
+
+PHP - What is Inheritance?
+Inheritance in OOP = When a class derives from another class.
+
+The child class will inherit all the public and protected properties and methods from the parent class. In addition, it can have its own properties and methods.
+
+An inherited class is defined by using the extends keyword.
+
+<?php
+class Fruit {
+  public $name;
+  public $color;
+  public function __construct($name, $color) {
+    $this->name = $name;
+    $this->color = $color; 
+  }
+  public function intro() {
+    echo "The fruit is {$this->name} and the color is {$this->color}."; 
+  }
+}
+
+// Strawberry is inherited from Fruit
+class Strawberry extends Fruit {
+  public function message() {
+    echo "Am I a fruit or a berry? "; 
+  }
+}
+
+$strawberry = new Strawberry("Strawberry", "red");
+$strawberry->message();
+$strawberry->intro();
+?>
+ 
+Output: Am I a fruit or a berry? The fruit is Strawberry and the color is red.
+
+PHP - Inheritance and the Protected Access Modifier
+In the previous chapter we learned that protected properties or methods can be accessed within the class and by classes derived from that class. What does that mean?
+
+<?php
+class Fruit {
+  public $name;
+  public $color;
+  public function __construct($name, $color) {
+    $this->name = $name;
+    $this->color = $color;
+  }
+  protected function intro() {
+    echo "The fruit is {$this->name} and the color is {$this->color}.";
+  }
+}
+
+class Strawberry extends Fruit {
+  public function message() {
+    echo "Am I a fruit or a berry? ";
+  }
+}
+
+// Try to call all three methods from outside class
+$strawberry = new Strawberry("Strawberry", "red");  // OK. __construct() is public
+$strawberry->message(); // OK. message() is public
+$strawberry->intro(); // ERROR. intro() is protected
+?>
+
+
+PHP - Overriding Inherited Methods
+Inherited methods can be overridden by redefining the methods (use the same name) in the child class.
+
+Look at the example below. The __construct() and intro() methods in the child class (Strawberry) will override the __construct() and intro() methods in the parent class (Fruit):
+
+<?php
+class Fruit {
+  public $name;
+  public $color;
+  public function __construct($name, $color) {
+    $this->name = $name;
+    $this->color = $color;
+  }
+  public function intro() {
+    echo "The fruit is {$this->name} and the color is {$this->color}.";
+  }
+}
+
+class Strawberry extends Fruit {
+  public $weight;
+  public function __construct($name, $color, $weight) {
+    $this->name = $name;
+    $this->color = $color;
+    $this->weight = $weight;
+  }
+  public function intro() {
+    echo "The fruit is {$this->name}, the color is {$this->color}, and the weight is {$this->weight} gram.";
+  }
+}
+
+$strawberry = new Strawberry("Strawberry", "red", 50);
+$strawberry->intro();
+?>
+Output: The fruit is Strawberry, the color is red, and the weight is 50 gram.
+
+PHP - The final Keyword
+The final keyword can be used to prevent class inheritance or to prevent method overriding.
+
+<?php
+final class Fruit {
+  public $name;
+  public $color;
+  public function __construct($name, $color) {
+    $this->name = $name;
+    $this->color = $color; 
+  }
+  public function intro() {
+    echo "asdsad {$this->name} sdsad {$this->color}."; 
+  }
+  
+}
+
+class Strawberry extends Fruit {
+
+}
+
+$strawberry = new Strawberry("Strawberry", "red");
+$strawberry->intro();
+?>
+Output : PHP Fatal error: Class Strawberry may not inherit from final class (Fruit) in /home/AEaAoc/prog.php on line 20
+
+Final Method Overriding:
+The following example shows how to prevent method overriding:
+<?php
+class Fruit {
+	public $name;
+    public function __construct($name){
+    
+    	$this->name = $name;
+    }
+  final function intro() {
+  echo "my name is".$this->name;
+  }
+}
+
+class Strawberry extends Fruit {
+  // will result in error
+  public function intro() {
+  echo "my name is".$this->name;
+  }
+}
+
+$obj = new Strawberry("banana");
+$obj->intro();
+?>
+Output: PHP Fatal error: Cannot override final method Fruit::intro() in /home/EF2BF2/prog.php on line 22
+
+PHP - Class Constants
+Constants cannot be changed once it is declared.
+
+Class constants can be useful if you need to define some constant data within a class.
+
+A class constant is declared inside a class with the const keyword.
+We can access a constant from outside the class by using the class name followed by the scope resolution operator (::) followed by the constant name, like here:
+<?php
+class Goodbye {
+  const LEAVING_MESSAGE = "Thank you for Softech.com!";
+}
+
+echo Goodbye::LEAVING_MESSAGE;
+?>
+Output: Thank you for Softech.com!
+
+Or, we can access a constant from inside the class by using the self keyword followed by the scope resolution operator (::) followed by the constant name, like here:
+<?php
+class Goodbye {
+  const LEAVING_MESSAGE = "Thank you for visiting W3Schools.com!";
+  public function byebye() {
+    echo self::LEAVING_MESSAGE;
+  }
+}
+
+$goodbye = new Goodbye();
+$goodbye->byebye();
+?>
+Output: Thank you for visiting W3Schools.com!
+
+PHP - What are Abstract Classes and Methods?
+An abstract class is a class that contains at least one abstract method. An abstract method is a method that is declared, but not implemented in the code.
+
+An abstract class or method is defined with the abstract keyword:
+
+Rules for Abstract Class are:
+1.  redeclares the parent abstract method (same as parent and child class)
+2. Child clas method will be same or Less Access Modifier(Parent-method-protected, the child class method must be defined as either protected or public)
+3. Same number of Arguments as Parent but child may have soAbstract classes are the classes in which at least one method is abstract. Unlike C++ abstract classes in PHP are declared with the help of abstract keyword. Use of abstract classes are that all base classes implementing this class should give implementation of abstract methods declared in parent class. An abstract class can contain abstract as well as non abstract methods.
+me additional as well
+<?php
+
+// Abstract class
+abstract class Base {
+	// This is abstract function
+	abstract function printdata();
+}
+class Derived extends base {
+	function printdata() {
+		echo "Derived class";
+	}
+}
+
+// Uncommenting the following line will
+// cause compiler error as the line tries
+// to create an instance of abstract class.
+// $b = new Base();
+	
+$b1 = new Derived;
+$b1->printdata();
+?>
+
+Output: Derived class
+
+We use abstract classes when we want to commit the programmer (either oneself or someone else) to write a certain class method, but we are only sure about the name of the method, and not the details of how it should be written. To take an example, circles, rectangles, octagons, etc.
+may all look different, but are all 2D shapes nonetheless, and thus all possess the traits of area and circumference.
+So, it makes perfect sense to group the code that they have in common into one parent class. In this parent class, we would have the two properties of area and circumference, and we might even consider adding a method that calculates the area (which might be problematic since different shapes require different calculations). In these kinds of cases, when we need to commit the child classes to certain methods that they inherit from the parent class but we cannot commit about the code that should be used in the methods, we use abstract classes.
+
+What is Interface?
+
+
+<?php
+// Interface definition
+interface Animal {
+  public function makeSound();
+}
+
+// Class definitions
+class Cat implements Animal {
+  public function makeSound() {
+    echo " Meow ";
+  }
+}
+
+class Dog implements Animal {
+  public function makeSound() {
+    echo " Bark ";
+  }
+}
+
+class Mouse implements Animal {
+  public function makeSound() {
+    echo " Squeak ";
+  }
+}
+
+// Create a list of animals
+$cat = new Cat();
+$dog = new Dog();
+$mouse = new Mouse();
+$animals = array($cat, $dog, $mouse);
+
+// Tell the animals to make a sound
+foreach($animals as $animal) {
+  $animal->makeSound();
+}
+?>
+
+ Output: Meow Bark Squeak 
+Example Explained
+Cat, Dog and Mouse are all classes that implement the Animal interface, which means that all of them are able to make a sound using the makeSound() method. Because of this, we can loop through all of the animals and tell them to make a sound even if we don't know what type of animal each one is.
+
+Since the interface does not tell the classes how to implement the method, each animal can make a sound in its own way.
+
+PHP - What are Traits?
+
+PHP only supports single inheritance: a child class can inherit only from one single parent.
+
+So, what if a class needs to inherit multiple behaviors? OOP traits solve this problem.
+
+Traits are used to declare methods that can be used in multiple classes. Traits can have methods and abstract methods that can be used in multiple classes, and the methods can have any access modifier (public, private, or protected).
+
+Traits are declared with the trait keyword:
+
+<?php
+trait message1 {
+public function msg1() {
+    echo "OOP is fun! ";
+  }
+}
+
+class Welcome {
+  use message1;
+}
+
+$obj = new Welcome();
+$obj->msg1();
+?>
+
+Example Explained
+Here, we declare one trait: message1. Then, we create a class: Welcome. The class uses the trait, and all the methods in the trait will be available in the class.
+
+If other classes need to use the msg1() function, simply use the message1 trait in those classes. This reduces code duplication, because there is no need to redeclare the same method over and over again.
+
+<?php
+trait message1 {
+  public function msg1() {
+    echo "OOP is fun! "; 
+  }
+}
+
+trait message2 {
+  public function msg2() {
+    echo "OOP reduces code duplication!"; 
+  }
+}
+
+class Welcome {
+  use message1;
+}
+
+class Welcome2 {
+  use message1, message2;
+}
+
+$obj = new Welcome();
+$obj->msg1();
+echo "<br>";
+
+
+$obj2 = new Welcome2();
+$obj2->msg1();
+$obj2->msg2();
+?>
+
+Output: OOP is fun!
+OOP is fun! OOP reduces code duplication!
+
+PHP - Static Methods
+Static methods can be called directly - without creating an instance of the class first.
+
+Static methods are declared with the static keyword:
+
+<?php
+class greeting {
+  public static function welcome() {
+    echo "Hello World!";
+  }
+}
+
+// Call static method
+greeting::welcome();
+?>
+Output: Hello World!
+
+................
+What Does Primary Key Mean?
+A primary key is a special relational database table column (or combination of columns) designated to uniquely identify each table record.
+
+A primary key is used as a unique identifier to quickly parse data within the table. A table cannot have more than one primary key.
+
+A primary key’s main features are:
+
+It must contain a unique value for each row of data.
+It cannot contain null values.
+Every row must have a primary key value.
+A primary key might use one or more fields already present in the underlying data model, or a specific extra field can be created to be the primary key.
+
+
+..........Database................
+
+Database relationships
+Database relationships are associations between tables that are created using join statements to retrieve data.
+
+What Is a Database Table Relationship?
+Primary and Foreign Keys
+Each record in a table has a unique identifier. 
+It can be a single column (like a student ID number) or a combination of columns (e.g., date and time of file creation plus the customer’s last name). That identifier is called a key. 
+
+When a table references the data from another table, it’s called a relationship.
+ The key in the referenced table is called the foreign key, and the key in the referencing table is called the primary key. But it’s a matter of perspective:
+ If table A is linked to table B, determining which is the primary and foreign key depends on which table you are looking at. While a primary key is not required, it is the standard. The primary key and the foreign key must have the same data type (e.g., numeric or alphanumeric) to be related.
+
+
+
+
+

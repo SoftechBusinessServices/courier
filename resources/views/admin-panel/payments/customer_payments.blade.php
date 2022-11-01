@@ -123,8 +123,8 @@
                                                 class="btn btn-primary waves-effect waves-light export-to-excel  mr-2 p-1 pb-0  px-3">Excel
                                                 Export</button>
                                             {{-- {{$customer}}  --}}
-                                            <a class="btn btn-info  btn-md text-white font-size-12 " data-bs-toggle="modal"
-                                                data-bs-target="#customer-date-wise_record">Select Date</a>
+                                            {{-- <a class="btn btn-info  btn-md text-white font-size-12 " data-bs-toggle="modal"
+                                                data-bs-target="#customer-date-wise_record">Select Date</a> --}}
                                         </div>
 
 
@@ -186,7 +186,6 @@
                                                             <td>{{ $row->pl_weight }}</td>
                                                             <td>{{ $row->pl_final }}</td>
                                                             <td>
-                                                                {{-- @dd(($row->pl_status)); --}}
                                                                 @if ($row->pl_status == 'delivered')
                                                                     <button type="button" class="btn btn-danger  btn-sm">
                                                                         {{ $row->pl_status }} </button>

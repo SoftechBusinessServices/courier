@@ -80,6 +80,7 @@
                                                     <th>Tracking<br>ID</th>
                                                     <th>Vendor<br>Charges</th>
                                                     <th>Parcel<br>Status</th>
+                                                    <th class="text-center">Action</th>
 
                                                 </tr>
                                             </thead>

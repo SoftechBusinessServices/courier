@@ -114,7 +114,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                       
+
                                         <div class="col-3 mt-4 p-3">
                                             <a href="#"
                                                 class="btn btn-success waves-effect waves-light  mr-2 p-1 pb-0 print-btn-customer-report px-3"><i
@@ -122,7 +122,7 @@
                                             <button
                                                 class="btn btn-primary waves-effect waves-light export-to-excel  mr-2 p-1 pb-0  px-3">Excel
                                                 Export</button>
-                                                {{-- {{$customer}}  --}}
+                                            {{-- {{$customer}}  --}}
                                             <a class="btn btn-info  btn-md text-white font-size-12 " data-bs-toggle="modal"
                                                 data-bs-target="#customer-date-wise_record">Select Date</a>
                                         </div>
@@ -155,6 +155,7 @@
                                                         <td>No of Boxes</td>
                                                         <td>Weight</td>
                                                         <td>Charges</td>
+                                                        <td>Status</td>
                                                         {{-- <td>Balance</td> --}}
                                                     </tr>
                                                 </thead>
@@ -184,6 +185,19 @@
                                                             <td>{{ $row->pl_boxes }}</td>
                                                             <td>{{ $row->pl_weight }}</td>
                                                             <td>{{ $row->pl_final }}</td>
+                                                            <td>
+                                                                {{-- @dd(($row->pl_status)); --}}
+                                                                @if ($row->pl_status == 'delivered')
+                                                                    <button type="button" class="btn btn-danger  btn-sm">
+                                                                        {{ $row->pl_status }} </button>
+                                                                @elseif ($row->pl_status == 'intransit')
+                                                                <button type="button" class="btn btn-warning  btn-sm">
+                                                                    {{ $row->pl_status }} </button>
+                                                                @else
+                                                                <button type="button" class="btn btn-info  btn-sm">
+                                                                    {{ $row->pl_status }} </button>
+                                                                @endif
+                                                            </td>
                                                             {{-- <td>{{$row->final - $totalpaid}}</td> --}}
                                                         </tr>
                                                     @empty
@@ -301,7 +315,7 @@
                 </div>
                 <div class="modal-body">
                     <form id="customer_date_wise_form" action="{{ route('date-wise-customer-record') }}" method="POST">
-                    {{-- <form id="customer_date_wise_form" method="POST"> --}}
+                        {{-- <form id="customer_date_wise_form" method="POST"> --}}
                         @csrf
                         <div class="row">
                             <div class="col-md-6">
@@ -316,7 +330,8 @@
                                     <input type="date" class="form-control" name="end_date" id="end_date">
                                 </div>
                             </div>
-                            <input type="text" class="form-control-sm" name="selected_customer_id" id="selected_customer_id" value="" readonly>
+                            <input type="text" class="form-control-sm" name="selected_customer_id"
+                                id="selected_customer_id" value="" readonly>
                         </div>
 
                         <hr>
@@ -356,7 +371,7 @@
         //         contentType: false,
         //         // processCache : false,
         //         success: function(data) {
-                    
+
         //             console.log(data);
         //             $('#customer-date-wise_record').modal('hide');
 
@@ -366,9 +381,9 @@
 
         // }); // on-submit function closed
 
-        var a =$('#customer-payment-select').val();
+        var a = $('#customer-payment-select').val();
         $('#selected_customer_id').val(a);
-        
+
         $('body').on('blur', '#start_date', function() {
             var startDate = $(this).val();
             $('#end_date').prop('min', startDate);

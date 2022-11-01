@@ -339,7 +339,7 @@ class ParcelController extends Controller
     }
     public function destroy_parcel($id)
     {
-
+        // dd($id);
         $data = Parcel::find($id);
         // dd($data);
         $data = $data->delete();

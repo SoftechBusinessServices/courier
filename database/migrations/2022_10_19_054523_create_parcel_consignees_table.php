@@ -22,8 +22,8 @@ class CreateParcelConsigneesTable extends Migration
             $table->string('consignee_business')->nullable();
             // $table->foreignId('region_id');
             // $table->foreign('region_id')->references('id')->on('regions')->onDelete('cascade');
-            $table->foreignId('consignee_country_id')->nullable();
-            // $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
+            $table->unsignedBigInteger('consignee_country_id')->nullable();
+            $table->foreign('consignee_country_id')->references('id')->on('countries')->onDelete('cascade');
             $table->string('consignee_state')->nullable();
             $table->string('consignee_city')->nullable();
             $table->string('consignee_zip')->nullable();

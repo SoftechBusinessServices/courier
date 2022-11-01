@@ -19,10 +19,10 @@ class CreateParcelShippersTable extends Migration
             $table->date('pl_date')->nullable();
             $table->string('company_name')->nullable();
             $table->string('shipper_phone')->nullable();
-            $table->foreignId('shipper_country_id')->nullable();
+            $table->unsignedBigInteger('shipper_country_id')->nullable();
+            $table->foreign('shipper_country_id')->references('id')->on('countries')->onDelete('cascade');
             // $table->foreignId('region_id');
             // $table->foreign('region_id')->references('id')->on('regions')->onDelete('cascade');
-            // $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
             $table->string('shipper_state')->nullable();
             $table->string('shipper_city')->nullable();
             $table->string('shipper_zip')->nullable();

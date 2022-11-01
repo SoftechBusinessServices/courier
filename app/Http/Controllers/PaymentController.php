@@ -268,7 +268,7 @@ class PaymentController extends Controller
             }
         ])
             ->where('shipper_id', $customer_id)
-            ->whereIn('pl_status', ['allocated','delivered','processed'])
+            ->whereIn('pl_status', ['processed','allocated','intransit','delivered'])
             ->orderBy('shipper_id', 'DESC')
             ->get();
             //  dd( $data['allocated_parcels'] );

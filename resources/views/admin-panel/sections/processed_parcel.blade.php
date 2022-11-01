@@ -71,7 +71,7 @@
                                                 <th>Parcel <br>Charges</th>
                                                 <th>Required<br>Service</th>
                                                 <th>Print<br>Options</th>
-                                                <th>Parcel<br>Status</th>
+                                                <th class="text-center">Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -108,6 +108,12 @@
                                                 <td>
                                                     <a id="todolink" class="btn btn-outline-info btn-sm parcel_allocate" title="add" data-bs-toggle="modal" data-bs-target="#allocatemodal" href="#allocatemodal" data-id="{{ $item->id }}" data-pl-id ="{{$item->parcel_id}}" data-prod-id="{{ $item->service_id }}">
                                                         Allocate
+                                                    </a>
+                                                    |
+                                                    <a href="{{ url('delete-parcel/' . $item->id) }}"
+                                                        class="btn btn-outline-danger btn-sm delete" title="Delete"
+                                                        onclick="return confirm('Are you sure to delete this Parcel?')">
+                                                        <i class="fas fa-trash-alt"></i>
                                                     </a>
                                                 </td>
 

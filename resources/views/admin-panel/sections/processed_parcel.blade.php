@@ -87,7 +87,7 @@
                                                         <i class="far fa-eye"> {{ $item->parcel_id }}</i>
                                                     </a>
                                                 </td>
-                                                {{-- <td>{{ $item->parcel_with_consignee->consignee_with_country->name}}</td> --}}
+                                                <td>{{ $item->parcel_with_consignee->consignee_with_country->name}}</td>
                                                 {{-- <td>{{ $item->country->name}}</td> --}}
                                              
                                                 <td>

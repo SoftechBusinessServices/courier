@@ -101,7 +101,7 @@
                                                                 </a>
                                                             </td>
                                                             <td>
-                                                                {{-- {{ $item->allocate_with_parcel->parcel_with_consignee->consignee_with_country->name }} --}}
+                                                                {{ $item->allocate_with_parcel->parcel_with_consignee->consignee_with_country->name }}
                                                             </td>
                                                             <td>
                                                                 @php

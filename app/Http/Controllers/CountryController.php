@@ -18,9 +18,9 @@ class CountryController extends Controller
         $region  = Region::find($id);
         return view('admin-panel.countries.create_country1', compact('data', 'region'));
     }
-    public function add_country($id)
+    public function add_country($id=null)
     {
-        dd(1);
+        // dd(1);
         $data = Country::all();
         $regions  = Region::all();
         return view('admin-panel.countries.create_country', compact('data', 'regions'));
@@ -104,12 +104,13 @@ class CountryController extends Controller
 
     public function destroy_country($id)
     {
+        // dd($id);
         $data = Country::find($id);
         // dd($data);
         $data = $data->delete();
 
         if ($data) {
-            return redirect('add-country')->with('success', "Record Deleted");
+            return redirect()->back()->with('success', "Record Deleted");
         } else {
             return redirect()->back()->with('success', "Record Not Deleted");
         }

@@ -27,6 +27,9 @@
                             <a class="btn btn-success btn-md text-white font-size-10" href="{{ route('add-user') }}">
                                 Users List
                             </a>
+                            <a class="btn btn-dark btn-md text-white font-size-10" href="{{ route('customer-list') }}">
+                                Customers
+                            </a>
 
                         </div>
                     </div>

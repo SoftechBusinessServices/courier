@@ -68,7 +68,7 @@
                                                 <td class="py-1 px-0 font-size-14">{{$data->parcel_with_shipper->company_name}}</td>
                                                 <td class="py-1 px-0 font-size-14">{{$data->parcel_with_shipper->shipper_phone}}</td>
                                                 <td class="py-1 px-0 font-size-14">{{$data->parcel_with_shipper->company_name}}</td>
-                                                <td class="py-1 px-0 font-size-14">{{$data->parcel_with_shipper->shipper_with_country->name}}</td>
+                                                {{-- <td class="py-1 px-0 font-size-14">{{$data->parcel_with_shipper->shipper_with_country->name}}</td> --}}
                                             </tr>
                                             <tr>
                                                 <th class="py-1 px-0 font-size-14" scope="col">State</th>

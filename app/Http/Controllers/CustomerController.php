@@ -6,6 +6,7 @@ use App\Models\Company;
 use App\Models\User;
 use App\Models\Country;
 use App\Models\Customer;
+use App\Models\ParcelShipper;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -131,5 +132,12 @@ class CustomerController extends Controller
         } else {
             return redirect()->back()->with('success', "Record Not Deleted...");
         }
+    }
+
+    public function customer_list()
+    {
+        $data = ParcelShipper::all();
+        // dd($data);
+        return view('admin-panel.users.create_customer_list', compact('data'));
     }
 }

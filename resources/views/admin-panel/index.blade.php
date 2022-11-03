@@ -36,7 +36,7 @@
  <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.colVis.min.js') }}"></script>
 
  <!-- Datatable init js -->
- {{-- <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script> --}}
+ <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
  <script src="{{ asset('assets/js/app.js') }}"></script>
  {{-- <script src="{{ asset('assets/js/script.js') }}"></script> --}}
 

@@ -57,6 +57,7 @@ Route::get('delete-company/{id}', [CompanyController::class, 'destroy_company'])
 
 //Customer Routes
 Route::get('/add-customer', [CustomerController::class, 'add_customer'])->name('add-customer');
+
 Route::post('/store-customer', [CustomerController::class, 'store_customer'])->name('store-customer');
 Route::get('edit-customer/{id}', [CustomerController::class, 'edit_customer']);
 Route::post('update-customer/{id}', [CustomerController::class, 'update_customer']);
@@ -206,3 +207,5 @@ Route::get('vendor_exportExcel', [PaymentController::class, 'vendor_exportExcel'
 
 Route::post('date-wise-customer-record',[ParcelController::class,'date_wise_customer_record'])->name('date-wise-customer-record');
 Route::get('pl-changeStatus', [VendorTrackingController::class, 'pl_changeStatus'])->name('pl-changeStatus');
+
+Route::get('/customer-list', [CustomerController::class, 'customer_list'])->name('customer-list');

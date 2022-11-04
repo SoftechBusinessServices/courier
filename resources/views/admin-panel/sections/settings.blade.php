@@ -22,7 +22,7 @@
                         </div>
                         <div class="modal-footer flex-nowrap p-0 justify-content-center">
                             <a class="btn btn-primary btn-md text-white font-size-10" data-bs-toggle="modal"
-                                data-bs-target="#usermodal">Add User
+                                data-bs-target="#usermodal">Add
                                 </a>
                             <a class="btn btn-success btn-md text-white font-size-10" href="{{ route('add-user') }}">
                                 Users List
@@ -60,9 +60,9 @@
                     <div class="modal-content rounded-3 shadow">
                         <div class="modal-body  text-center">
                             <a href="#" class="nav-link text-dark">
-                                <img src="{{ asset('assets/images/parcel.png') }}" alt="">
+                                <img src="{{ asset('assets/images/content-icon.png') }}" alt="">
 
-                                <h3 class="mb-0 mt-2">Contents</h3>
+                                <h3 class="mb-0 mt-4">Contents</h3>
                             </a>
                         </div>
                         <div class="modal-footer flex-nowrap p-0 justify-content-center">

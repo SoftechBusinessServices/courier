@@ -1,7 +1,7 @@
 @extends('admin-panel.index')
 
 @section('content')
-    <div class="main-content container">
+    {{-- <div class="main-content container"> --}}
 
         <div class="page-content">
             <div class="container-fluid">
@@ -18,7 +18,7 @@
 
                                     {{--  <a class="btn btn-success btn-md text-white " data-bs-toggle="modal"
                                         data-bs-target="#countrymodal">Add Country</a>  --}}
-                                    <span class="font-size-22 font-weight-bold ml-2"> Contents Details
+                                    <span class="font-size-22 font-weight-bold ml-2"> Customers List
                                     </span>
                                 </p>
                                 @if (isset($data))
@@ -81,7 +81,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    {{-- </div> --}}
 
 
 @endsection

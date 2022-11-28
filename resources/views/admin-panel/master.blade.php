@@ -7,6 +7,7 @@
     <!-- Begin page -->
     <div id="layout-wrapper">
         @include('admin-panel.header')
+        {{-- @dd($currencies); --}}
         @include('admin-panel.content')
     </div>
 

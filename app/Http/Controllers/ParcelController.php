@@ -28,7 +28,7 @@ class ParcelController extends Controller
         $regions = Region::all();
         $countries = Country::all();
         $currencies = Currency::all();
-        // dd($charges);
+        // dd($currencies);
 
         return view('admin-panel.parcels.create_parcel', compact('data', 'regions', 'currencies', 'countries', 'abc'));
     }

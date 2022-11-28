@@ -202,11 +202,13 @@
                                             <div class="form-group col" style="margin: 0 5px; padding:0px">
                                                 <label for="message">Currency</label>
                                                 <select name="disp_currency[]" id="disp_currency[]"
-                                                    class="form-control @error('company_currency') is-invalid @enderror">
-                                                <option value="">-----</option>
-                                                   @foreach($currencies as $currency)
-                                                   <option value="{{$currency->id}}">{{ $currency->name." , ".$currency->symbol}}</option>
-                                                   @endforeach
+                                                    class="form-control @error('disp_currency') is-invalid @enderror">
+                                                    <option value="">---</option>
+                                                    @foreach ($currencies as $get_currency)
+                                                        <option value="{{ $get_currency->id }}"> {{ $get_currency->name }}
+                                                        </option>
+                                                    @endforeach
+                                                   
                                                 </select>
                                                 @error('disp_currency')
                                                     <span class="invalid-feedback" role="alert">
@@ -850,9 +852,9 @@
                                                 <select name="disp_currency[]" id="disp_currency[]"
                                                     class="form-control @error('company_currency') is-invalid @enderror">
 
-                                                    <option value="0">PKR</option>
-                                                    <option value="1">USD</option>
-                                                    <option value="2">Euro</option>
+                                                    <option value="1">PKR</option>
+                                                    <option value="2">USD</option>
+                                                    <option value="3">Euro</option>
                                                 </select>
                                                 @error('disp_currency')
                                                     <span class="invalid-feedback" role="alert">

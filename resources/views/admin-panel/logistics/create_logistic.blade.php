@@ -1,7 +1,7 @@
 @extends('admin-panel.index')
 
 @section('content')
-    <div class="main-content container">
+    <div class="">
 
         <div class="page-content">
             <div class="container-fluid">
@@ -31,7 +31,7 @@
                                                 <th>Phone</th>
                                                 <th>Address</th>
                                                 <th>Joining date</th>
-                                                <th>Action</th>
+                                                <th class="text-center">Action</th>
                                             </tr>
                                         </thead>
 
@@ -73,7 +73,7 @@
                                         </td> --}}
                                                         </td>
 
-                                                        <td style="width: 100px">
+                                                        <td style="width: 100px" class="text-center">
                                                             {{-- <a href="{{ url('print-parcel/' . $item->id) }}"
                                                                 class="btn btn-outline-dark btn-sm print" title="Print">
                                                                 <i class="fas fa-regular fa-print"></i>

@@ -22,7 +22,7 @@
   
 {{-- <body id="loading" style="background-image: url('{{ asset('assets/images/bg-image.jpg')}}'); height: 100%; background-position: center; background-repeat: no-repeat; background-size: cover; "> --}}
 <body id="loading" >
-    <div class="account-pages my-5 pt-sm-5">
+    <div class="account-pages my-5 pt-sm-2">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8 col-lg-6 col-xl-5">
@@ -115,44 +115,11 @@
                                     </div>
 
                                     <div class="mt-4 text-center">
-                                        <h5 class="font-size-14 ">Sign in with</h5>
-
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item">
-                                                <a href="javascript::void()"
-                                                    class="social-list-item bg-primary text-white border-primary">
-                                                    <i class="mdi mdi-facebook"></i>
-                                                </a>
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <a href="javascript::void()"
-                                                    class="social-list-item bg-info text-white border-info">
-                                                    <i class="mdi mdi-twitter"></i>
-                                                </a>
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <a href="javascript::void()"
-                                                    class="social-list-item bg-danger text-white border-danger">
-                                                    <i class="mdi mdi-google"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
+                                       
                                     </div>
 
                                     <div class="text-center">
-                                        {{-- @if (Route::has('password.request'))
-                                            <a href="{{ route('password.request') }}" class="text-muted">
-                                                <i class="mdi mdi-lock me-1"></i>
-                                                {{ __('Forgot Your Password?') }}
-                                            </a>
-                                        @endif --}}
-                                        <a class="btn btn-link" href="{{ route('ForgetPasswordGet') }}">
-                                            {{ __('Forgot Your Password?') }}
-                                        </a>
-                                        <p>Don't have an account ? <a href="{{ route('register') }}"
-                                                class="fw-medium text-primary">
-                                                Signup now </a>
-                                        </p>
+                                       
                                     </div>
 
 

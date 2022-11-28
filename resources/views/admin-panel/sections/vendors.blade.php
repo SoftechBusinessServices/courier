@@ -4,7 +4,7 @@
 
         <div class="modal-content">
             <div class="modal-header" style="background-color: #d6dbf8">
-                <h5 class="modal-title">Logistics Vendor Registration</h5>
+                <h5 class="modal-title">Logistics(Vendor) Registration</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -16,8 +16,8 @@
 
                             <div class="row">
                                 <div class="col-md-12 mb-2">
-                                    <label for="username6" class="form-label">Logistics Name</label>
-                                    <input type="text" placeholder="Enter logistic name"
+                                    <label for="username6" class="form-label">Vendor(Logistics) Name</label>
+                                    <input type="text" placeholder="Enter vendor name"
                                         class="form-control @error('logistics_name') is-invalid @enderror"
                                         name="logistic_name" value="{{ old('logistic_name') }}" required
                                         autocomplete="logistic_name" autofocus>

@@ -11,7 +11,7 @@
 
             <div class="row gx-5 mb-2 p-4">
 
-                <div class="col  ">
+                <div class="col  col-lg-2 col-md-3 col-sm-4 ">
                     <div class="modal-content rounded-3 shadow">
                         <div class="modal-body  text-center">
                             <a href="#" class="nav-link text-dark">
@@ -20,14 +20,14 @@
                                 <h3 class="mb-0 mt-2">Users</h3>
                             </a>
                         </div>
-                        <div class="modal-footer flex-nowrap p-0 justify-content-center">
-                            <a class="btn btn-primary btn-md text-white font-size-10" data-bs-toggle="modal"
+                        <div class="modal-footer flex-nowrap p-0 justify-content-center p-1">
+                            <a class="btn btn-primary btn-md text-white font-size-10 btn-sm" data-bs-toggle="modal"
                                 data-bs-target="#usermodal">Add
                                 </a>
-                            <a class="btn btn-success btn-md text-white font-size-10" href="{{ route('add-user') }}">
+                            <a class="btn btn-success btn-md text-white font-size-10 btn-sm" href="{{ route('add-user') }}">
                                 Users List
                             </a>
-                            <a class="btn btn-dark btn-md text-white font-size-10" href="{{ route('customer-list') }}">
+                            <a class="btn btn-dark btn-md text-white font-size-10 btn-sm" href="{{ route('customer-list') }}">
                                 Customers
                             </a>
 
@@ -56,7 +56,7 @@
                 </div> --}}
 
                 
-                <div class="col  ">
+                <div class="col  col-lg-2 col-md-3 col-sm-4 ">
                     <div class="modal-content rounded-3 shadow">
                         <div class="modal-body  text-center">
                             <a href="#" class="nav-link text-dark">
@@ -66,10 +66,10 @@
                             </a>
                         </div>
                         <div class="modal-footer flex-nowrap p-0 justify-content-center">
-                            <a class="btn btn-primary btn-md text-white font-size-10" data-bs-toggle="modal"
+                            <a class="btn btn-primary btn-md text-white font-size-10 btn-sm" data-bs-toggle="modal"
                                 data-bs-target="#contentmodal">Add Content
                                 </a>
-                            <a class="btn btn-success btn-md text-white font-size-10" href="{{ route('add-content') }}">
+                            <a class="btn btn-success btn-md text-white font-size-10 btn-sm" href="{{ route('add-content') }}">
                                 Contents List
                             </a>
 
@@ -78,7 +78,7 @@
                 </div>
 
                 <!--Services  -->
-                <div class="col ">
+                <div class="col  col-lg-2 col-md-3 col-sm-4 ">
                     <div class="modal-content rounded-3 shadow">
                         <div class="modal-body  text-center">
                             <a href="#" class="nav-link text-dark">
@@ -89,10 +89,10 @@
 
                         </div>
                         <div class="modal-footer flex-nowrap p-0 justify-content-center">
-                            <a class="btn btn-primary btn-md text-white font-size-10" data-bs-toggle="modal"
+                            <a class="btn btn-primary btn-md text-white font-size-10 btn-sm" data-bs-toggle="modal"
                                 data-bs-target="#servicemodal">Add Service
                             </a>
-                            <a class="btn btn-success btn-md text-white font-size-10" href="{{ route('add-service') }}">
+                            <a class="btn btn-success btn-md text-white font-size-10 btn-sm" href="{{ route('add-service') }}">
                                 Service List
                             </a>
 
@@ -101,7 +101,7 @@
                 </div>
                 <!-- Services closed -->
 
-                <div class="col ">
+                <div class="col  col-lg-2 col-md-3 col-sm-4 ">
                     <div class="modal-content rounded-3 shadow">
                         <div class="modal-body text-center">
                             <a href="#" class="nav-link text-dark">
@@ -112,10 +112,10 @@
 
                         </div>
                         <div class="modal-footer flex-nowrap p-0 justify-content-center">
-                            <a class="btn btn-primary btn-md text-white font-size-10" data-bs-toggle="modal"
+                            <a class="btn btn-primary btn-md text-white font-size-10 btn-sm" data-bs-toggle="modal"
                                 data-bs-target="#logisticmodal">Add Vendor
                             </a>
-                            <a href="{{ route('add-logistic') }}" class="btn btn-success btn-md text-white font-size-10">Vendors List
+                            <a href="{{ route('add-logistic') }}" class="btn btn-success btn-md text-white font-size-10 btn-sm">Vendors List
                             </a>
 
                         </div>
@@ -125,7 +125,7 @@
 
 
                 <!-- Regions  -->
-                <div class="col ">
+                <div class="col  col-lg-2 col-md-3 col-sm-4 ">
                     <div class="modal-content rounded-3 shadow">
                         <div class="modal-body  text-center">
                             <a href="#" class="nav-link text-dark">
@@ -136,10 +136,10 @@
 
                         </div>
                         <div class="modal-footer flex-nowrap p-0 justify-content-center">
-                            <a class="btn btn-primary btn-md text-white font-size-10 " data-bs-toggle="modal"
+                            <a class="btn btn-primary btn-md text-white font-size-10 btn-sm" data-bs-toggle="modal"
                                 data-bs-target="#regionmodal">Add Region
                             </a>
-                            <a class="btn btn-success btn-md text-white font-size-10" href="{{ route('add-region') }}">
+                            <a class="btn btn-success btn-md text-white font-size-10 btn-sm" href="{{ route('add-region') }}">
                                 Regions List
                             </a>
 
@@ -148,7 +148,7 @@
                 </div>
                 <!-- Regions closed -->
 
-                <div class="col ">
+                <div class="col  col-lg-2 col-md-3 col-sm-4 ">
                     <div class="modal-content rounded-3 shadow">
                         <div class="modal-body  text-center">
                             <a href="#" class="nav-link text-dark px-0">
@@ -158,10 +158,10 @@
                             </a>
                         </div>
                         <div class="modal-footer flex-nowrap p-0 justify-content-center">
-                            <a class="btn btn-primary btn-md text-white font-size-10" data-bs-toggle="modal"
+                            <a class="btn btn-primary btn-md text-white font-size-10 btn-sm" data-bs-toggle="modal"
                                 data-bs-target="#payment_method_modal">Add Method
                             </a>
-                            <a class="btn btn-success btn-md text-white font-size-10" href="{{ route('add-payment-method') }}">
+                            <a class="btn btn-success btn-md text-white font-size-10 btn-sm" href="{{ route('add-payment-method') }}">
                                 Methods List
                             </a>
                         </div>

@@ -20,7 +20,7 @@ class CreateParcelNotesTable extends Migration
             $table->longText('disp_content')->nullable();
             $table->string('disp_condition')->nullable();
             $table->unsignedBigInteger('currency_id')->nullable();
-            $table->foreign('currency_id')->references('id')->on('currencies')->onDelete('cascade');
+            // $table->foreign('currency_id')->references('id')->on('currencies')->onDelete('cascade');
             $table->float('disp_price')->nullable();
             $table->integer('disp_quantity')->nullable();
             $table->float('disp_total')->nullable();

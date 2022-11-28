@@ -238,6 +238,40 @@ class HomeController extends Controller
         }
     }
 
+    public function update_profile(Request $request, $id)
+    {
+        // dd($request->all());
+        $user_record = User::find($id);
+        $validatedData = $request->validate([
+
+            'name' => 'required',
+            'email' => 'required',
+            // 'password' => 'required',
+            // 'is_admin' => 'required',
+
+        ], [
+            'name.required' => 'Name field is required',
+            'email.required' => 'Email field is required',
+            // 'password.required' => 'Password Number is required',
+            // 'is_admin.required' => 'User type field is required',
+        ]);
+
+        $data  = [
+            'name' => $request->name,
+            'email' => $request->email,
+            // 'password' => Hash::make($request->password),
+            // 'is_admin' => $request->is_admin,
+        ];
+
+        $data = $user_record->update($data);
+        if ($data) {
+
+            return redirect('home')->with('success', "Record Updated Successfully");
+        } else {
+            return redirect()->back()->with('error', "Record Not Updated...");
+        }
+    }
+
     public function contact_us(Request $request)
     {
 

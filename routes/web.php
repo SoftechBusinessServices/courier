@@ -136,6 +136,7 @@ Route::get('report', [ReportController::class, 'index'])->name('report');
 
 Route::post('update-user/{id}', [HomeController::class, 'update_user']);
 Route::get('profile/{id}', [HomeController::class, 'profile']);
+Route::post('update-profile/{id}', [HomeController::class, 'update_profile']);
 Route::get('/changePassword', [App\Http\Controllers\HomeController::class, 'showChangePasswordGet'])->name('changePasswordGet');
 Route::post('/changePassword', [App\Http\Controllers\HomeController::class, 'changePasswordPost'])->name('changePasswordPost');
 Route::get('forget-password', [ForgotPasswordController::class, 'ForgetPassword'])->name('ForgetPasswordGet');

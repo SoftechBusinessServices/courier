@@ -42,7 +42,7 @@
                                             <table class="table table-nowrap mb-0">
                                                 <tbody>
                                                     <tr>
-                                                        <th scope="row">Full Name :</th>
+                                                        <th scope="row">User Name :</th>
                                                         <td>{{ $data->name }}</td>
                                                     </tr>
                                                     {{-- <tr>
@@ -50,19 +50,10 @@
                                                         <td>(123) 123 1234</td>
                                                     </tr> --}}
                                                     <tr>
-                                                        <th scope="row">E-mail :</th>
+                                                        <th scope="row">User E-mail :</th>
                                                         <td>{{ $data->email }}</td>
                                                     </tr>
-                                                    <tr>
-                                                        <th scope="row">User Role :</th>
-                                                        <td>
-                                                            @if ($data->is_admin == 1)
-                                                                <i class="fas fa-hamburger">Admin</i>
-                                                            @else
-                                                                <i class="fas fa fa-coffee">User</i>
-                                                            @endif
-                                                        </td>
-                                                    </tr>
+                                                   
                                                 </tbody>
                                             </table>
                                             <div class="mt-2 justify-content-center">

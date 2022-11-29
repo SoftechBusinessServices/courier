@@ -203,7 +203,7 @@
                                                 <label for="message">Currency</label>
                                                 <select name="disp_currency[]" id="disp_currency[]"
                                                     class="form-control @error('disp_currency') is-invalid @enderror">
-                                                    <option value="">---</option>
+                                                   
                                                     @foreach ($currencies as $get_currency)
                                                         <option value="{{ $get_currency->id }}"> {{ $get_currency->name }}
                                                         </option>

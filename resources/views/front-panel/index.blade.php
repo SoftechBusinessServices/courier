@@ -623,12 +623,12 @@
 
                                             <div class="card-body row text-center ">
                                                 <table class="table table-bordered table-hover">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Parcel ID</th>
-                                                            <th>Reg Date</th>
-                                                            <th>Destination</th>
-                                                            <th>Status</th>
+                                                    <thead class="text-center">
+                                                        <tr class="text-center">
+                                                            <th class="text-center">Parcel ID</th>
+                                                            <th class="text-center">Customer Name</th>
+                                                            <th class="text-center">Registration Date</th>
+                                                            <th class="text-center">Status</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody id='tracking_record'>
@@ -1754,22 +1754,24 @@
                     'search': search
                 },
                 success: function(data) {
+                    console.log(data);
                     var html = '';
                     // $('tbody').html(data);
                     html += '<tr>';
 
                     html += '<td>';
-                    html += data.pl_id;
+                    html += data.parcel_id;
+                    html += '</td>';
+
+                    html += '<td>';
+                    html += data.parcel_with_shipper.company_name;
                     html += '</td>';
 
                     html += '<td>';
                     html += moment(data.created_at).format('LLL');
                     html += '</td>';
 
-                    html += '<td>';
-                    html += data.pl_description;
-                    html += '</td>';
-
+                   
                     html += '<td> <span class="badge badge-info">';
                     html += data.pl_status;
                     html += '</span></td>';

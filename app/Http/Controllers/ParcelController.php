@@ -353,10 +353,13 @@ class ParcelController extends Controller
 
     public function search_tracking_id(Request $request)
     {
-        // dd(1);
-        $employee = Parcel::where('pl_id', 'Like', '%' . $request->search . '%')->first();
-
-        return response()->json($employee);
+        // dd($request);
+        $search = Parcel::with('parcel_with_shipper')->where('parcel_id', 'Like', '%' . $request->search . '%')->first();
+        // dd($search);
+        // $search_id = $search->id;
+        // $employee = ParcelConsignee::where('id',$search_id)->first();
+        // dd($employee);
+        return response()->json($search);
     }
 
     public function vendor_details_list(Request $request)

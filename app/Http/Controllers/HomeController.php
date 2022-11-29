@@ -51,11 +51,11 @@ class HomeController extends Controller
         if (isset($lastParcel)) {
             // Sum 1 + last id
             // $abc =  $parcel->pl_id = date('Y') . '-' . 'PL-00000' . ($lastParcel->id + 1);
-            $abc =  $parcel->pl_id = 'PL00000' . ($lastParcel->id + 1);
+            $abc =  $parcel->pl_id = 'pl00000' . ($lastParcel->id + 1);
             // $data['pl_id'] = $a;
             // return $abc;
         } else {
-            $abc = $parcel->pl_id  = 'PL000001';
+            $abc = $parcel->pl_id  = 'pl000001';
             // $data['pl_id'] = $b;
             // return $abc;
         }

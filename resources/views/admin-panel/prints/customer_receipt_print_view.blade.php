@@ -36,13 +36,14 @@
                                             <img src="{{asset('assets/images/LogoBFS.png')}}" alt="logo" height="60" covered />
                                         </div>
                                         <div class="col">
-                                            <label for="">SBS Courier Services</label>
-                                            <p>Email: sbsservice@mail.com</p>
-                                            <label for="">Phone: 091-21336444</label>
+                                            <label for="">Best Freight System</label>
+                                            <p>Email: Bestfreightsys@gmail.com</p>
+                                            <label for="">Phone: (+92) 300 8631512</label>
                                         </div>
                                         <div class="col">
-                                            <p>Address: G15 markaz, Green Acre Plaza, Islamabad, Pakistan</p>
-                                            <p>Website: www.bfs.com</p>
+                                            <p>Address: Al Amin market Fateh Garh Road, Sialkot, Pakistan</p>
+                                            <p>Website: <a href="http://imrans33.sg-host.com/"
+                                                    target="_blank">http://imrans33.sg-host.com/</a> </p>
                                         </div>
                                     </div>
                                 </div>

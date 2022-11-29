@@ -36,7 +36,7 @@
                                                 <th>Region</th>
                                                 <th>Country</th>
                                                 <th>Code</th>
-                                                <th>Status</th>
+                                                {{-- <th>Status</th> --}}
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -53,7 +53,7 @@
                                                         <td>{{ $item->region->name }}</td>
                                                         <td>{{ $item->name }}</td>
                                                         <td>{{ $item->code }}</td>
-                                                        <td>
+                                                        {{-- <td>
                                                             @if ($item->status == 'inactive')
                                                                 <button type="button" class="btn btn-danger  btn-sm">
                                                                     {{ $item->status }} </button>
@@ -61,7 +61,7 @@
                                                                 <button type="button" class="btn btn-success btn-sm">
                                                                     {{ $item->status }} </button>
                                                             @endif
-                                                        </td>
+                                                        </td> --}}
                                                         </td>
 
                                                         <td style="width: 100px">

@@ -21,8 +21,9 @@
 
                                 </p>
                                 @if (isset($data))
-                                    <table id="datatable-buttons"
-                                        class="table table-bordered dt-responsive nowrap w-100 table-sm text-center">
+                                
+                                <table id="datatable-buttons"
+                                        class="table table-bordered dt-responsive nowrap w-100 table-sm table-responsive">
 
                                         <thead>
                                             <tr>
@@ -30,7 +31,7 @@
                                                 <th>Region</th>
                                                 <th>Country</th>
                                                 <th>Date</th>
-                                                <th>Status</th>
+                                                <th>Action</th>
 
                                             </tr>
                                         </thead>
@@ -54,14 +55,14 @@
                                                             @endphp
                                                         </td>
                                                         <td>
-                                                            @if ($item->status == 'inactive')
+                                                            {{-- @if ($item->status == 'inactive')
                                                                 <button type="button" class="btn btn-danger  btn-sm">
                                                                     {{ $item->status }} </button>
                                                             @else
                                                                 <button type="button" class="btn btn-success btn-sm">
                                                                     {{ $item->status }} </button>
                                                             @endif
-                                                            |
+                                                            | --}}
                                                             <a href="{{ url('delete-country/' . $item->id) }}"
                                                                 class="btn btn-outline-danger btn-sm delete" title="Delete"
                                                                 onclick="return confirm('Are you sure to delete Record?')">

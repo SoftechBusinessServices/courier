@@ -227,7 +227,7 @@ class HomeController extends Controller
     }
     public function destroy_user($id)
     {
-        dd($id);
+        // dd($id);
         $data = User::find($id);
         $data = $data->delete();
 

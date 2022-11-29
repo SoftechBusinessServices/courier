@@ -26,7 +26,7 @@
                                 @if (isset($data))
                                     <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100 table-responsive">
                                         <thead>
-                                            <tr>
+                                            <tr class="text-center">
                                                 <th>S.No</th>
                                                 <th>Name</th>
                                                 <th>Email</th>

@@ -17,15 +17,15 @@
                                     <span class="font-size-20 font-weight-bold">Regions Details</span>
                                 </p>
                                 @if (isset($data))
-                                    <table id="datatable-buttons"
-                                        class="table table-bordered dt-responsive nowrap w-100 table-sm text-center">
+                                <table id="datatable-buttons"
+                                class="table table-bordered dt-responsive nowrap w-100 table-sm table-responsive">
 
                                         <thead>
                                             <tr>
                                                 <th>S.No</th>
                                                 <th>Region</th>
                                                 <th>Countries</th>
-                                                <th>Status</th>
+                                                {{-- <th>Status</th> --}}
                                                 <th>Action</th>
 
                                             </tr>
@@ -55,7 +55,7 @@
 
                                                         </td>
 
-                                                        <td>
+                                                        {{-- <td>
                                                             @if ($item->status == 'inactive')
                                                                 <button type="button" class="btn btn-danger  btn-sm">
                                                                     {{ $item->status }} </button>
@@ -63,7 +63,7 @@
                                                                 <button type="button" class="btn btn-success btn-sm">
                                                                     {{ $item->status }} </button>
                                                             @endif
-                                                        </td>
+                                                        </td> --}}
                                                         <td style="">
 
                                                             <a href="{{ url('edit-region/' . $item->id) }}"

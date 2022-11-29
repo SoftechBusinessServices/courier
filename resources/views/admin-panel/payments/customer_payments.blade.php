@@ -151,7 +151,7 @@
                                                         <td>Consignee Name</td>
                                                         <td>Destination</td>
                                                         <td>Payment Method</td>
-                                                        <td>Contents</td>
+                                                        {{-- <td>Contents</td> --}}
                                                         <td>No of Boxes</td>
                                                         <td>Weight</td>
                                                         <td>Charges</td>
@@ -181,7 +181,7 @@
                                                             <td>{{ $row->parcel_with_consignee->consignee_with_country->name }}
                                                             </td>
                                                             <td>{{ $row->parcel_with_payment->payment_method }}</td>
-                                                            <td>{{ $row->description }}</td>
+                                                            {{-- <td>{{ $row->description }}</td> --}}
                                                             <td>{{ $row->pl_boxes }}</td>
                                                             <td>{{ $row->pl_weight }}</td>
                                                             <td>{{ $row->pl_final }}</td>

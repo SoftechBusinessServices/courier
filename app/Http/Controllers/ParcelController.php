@@ -359,7 +359,13 @@ class ParcelController extends Controller
         // $search_id = $search->id;
         // $employee = ParcelConsignee::where('id',$search_id)->first();
         // dd($employee);
-        return response()->json($search);
+        if ($search->count() > 0) {
+            return response()->json($search);
+        }
+        else{
+            return response()->json();
+        }
+       
     }
 
     public function vendor_details_list(Request $request)

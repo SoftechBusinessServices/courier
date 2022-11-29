@@ -646,7 +646,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btn-close">Close</button>
                         </div>
                     </div>
                 </div>
@@ -1728,17 +1728,17 @@
             @if (Session::has('error'))
                 toastr.error(
                     '{{ Session::get('
-                                                                                                                            error ') }}'
+                                                                                                                                                                    error ') }}'
                 );
             @elseif (Session::has('success'))
                 toastr.success(
                     '{{ Session::get('
-                                                                                                                            success ') }}'
+                                                                                                                                                                    success ') }}'
                 );
             @endif
         });
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     <script type="text/javascript">
         $('body').on('submit', '#tracking-form', function(e) {
             e.preventDefault();
@@ -1755,6 +1755,13 @@
                 },
                 success: function(data) {
                     console.log(data);
+
+                    if (data == '') {
+                       alert(1);
+                    }
+                    else{
+
+                        
                     var html = '';
                     // $('tbody').html(data);
                     html += '<tr>';
@@ -1771,7 +1778,7 @@
                     html += moment(data.created_at).format('LLL');
                     html += '</td>';
 
-                   
+
                     html += '<td> <span class="badge badge-info">';
                     html += data.pl_status;
                     html += '</span></td>';
@@ -1780,6 +1787,11 @@
 
                     $('#tracking_record').html(html);
                 }
+
+                    }
+                  
+
+
             });
         })
     </script>

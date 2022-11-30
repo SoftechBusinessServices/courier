@@ -33,7 +33,7 @@ class LogisticController extends Controller
             'vendor_address'          =>  'required',
             'service_id'                  =>  'required',
         ]);
-        $data1  =['name'=>$request->logistic_name];
+        $data1  = ['name' => $request->logistic_name];
         $record_id = Company::create($data1)->id;
         // dd($record_id);
         for ($i = 0; $i < count($request->service_id); $i++) {
@@ -49,7 +49,6 @@ class LogisticController extends Controller
 
             ];
             $record = Logistic::create($data);
-
         }
         return redirect()->back()->with('success', "Record inserted Successfully");
     }
@@ -61,7 +60,7 @@ class LogisticController extends Controller
         $countries = Country::all();
         $services = Service::all();
         // dd($data);
-        return view('admin-panel.logistics.edit_logistic', compact('data', 'countries','services'));
+        return view('admin-panel.logistics.edit_logistic', compact('data', 'countries', 'services'));
     }
     public function update_logistic(Request $request, $id)
     {
@@ -136,7 +135,7 @@ class LogisticController extends Controller
             // 'vendor_tracking_id' => $request->vendor_tracking_id,
             // 'vendor_tracking_charges' => $request->vendor_tracking_charges,
         ];
-        $AllocateParcel =AllocateParcel::create($data);
+        $AllocateParcel = AllocateParcel::create($data);
         // dd($AllocateParcel);
         $record = Parcel::where('id', $id)->first();
         $record->pl_status = "allocated";
@@ -155,6 +154,17 @@ class LogisticController extends Controller
     {
         // dd($id);
         $shipping = Logistic::with('logistic_with_company')->where('service_id', $id)->get();
-        return response()->json($shipping);
+        // dd($shipping);
+        if ($shipping->isEmpty())  {
+            // dd(1);
+            $error = "No such (Service) with a Vendor ";
+            return response()->json(['success' => 0, 'data' => $error]);
+        } else {
+            // dd(2);
+            return response()->json($shipping);
+        }
     }
+
+
+
 }

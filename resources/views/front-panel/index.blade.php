@@ -116,7 +116,7 @@
 
                     <div class="logo-header">
                         {{-- <p class="font-size-12">Best Freight System</P> --}}
-                        <a href="#" class="">
+                        <a href="{{ url('/') }}" class="">
 
                             <img src="{{ asset('assets2/images/logo5.png') }}" />
 
@@ -168,7 +168,7 @@
                         <div class="extra-nav">
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-warning" style="border: none;" data-toggle="modal"
-                                data-target=".bd-example-modal-lg">Track
+                                data-target=".bd-example-modal-lg" id="track-parcel">Track
                                 Your Parcel</button>
                             <a href="{{ url('login') }}" class="btn bg-white" style="border: none;">
                                 Login to Dashboard</a>
@@ -602,17 +602,18 @@
 
                                             <nav class="navbar navbar-light bg-light justify-content-between">
                                                 <div class="row">
-                                                    <div class="col-md-4">
-                                                        <a class="navbar-brand">Enter Your Tracking ID:</a>
+                                                    <div class="col-4">
+                                                        <a class="navbar-brand">Enter Your Parcel ID:</a>
                                                     </div>
-                                                    <div class="col-md-8">
+                                                    <div class="col-8 ">
                                                         <form class="form-inline" id="tracking-form">
                                                             <input id="tracking-id" name="tracking-id"
-                                                                class="form-control block mr-sm-12" type="text"
-                                                                placeholder="Tracking ID" aria-label="Search">
+                                                                class="form-control block mr-sm-12 border border-warning" type="text"
+                                                                placeholder="Parcel Tracking ID" aria-label="Search">
                                                             <button onclick="myFunction()"
                                                                 class="btn btn-outline-success my-2 my-sm-0"
-                                                                type="submit" name="submit">Search</button>
+                                                                type="submit" name="submit"
+                                                                id="btn-search">Search</button>
                                                         </form>
                                                     </div>
                                                 </div>
@@ -646,7 +647,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btn-close">Close</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                id="btn-close">Close</button>
                         </div>
                     </div>
                 </div>
@@ -1578,8 +1580,9 @@
                             <div class="widget widget_about text-white">
                                 <h4 class="widget-title">About Company</h4>
                                 <div class="logo-footer clearfix p-b15">
-                                    <a href="index.html"><img src="{{ asset('assets2/images/logo-real.png') }}"
-                                            width="171" height="49" alt="" /></a>
+                                    <a href="{{ url('/') }}"><img
+                                            src="{{ asset('assets2/images/marker2.png') }}" width="171"
+                                            height="49" alt="" /></a>
                                 </div>
                                 {{-- <p>Lorem ipsum this is dummy text dolor sit amet check this text, consecte tura
                                     dipiscing elit, sed do eiusmod tempor doler is incididunt. </p> --}}
@@ -1728,12 +1731,12 @@
             @if (Session::has('error'))
                 toastr.error(
                     '{{ Session::get('
-                                                                                                                                                                    error ') }}'
+                                                                                                                                                                                                                                                    error ') }}'
                 );
             @elseif (Session::has('success'))
                 toastr.success(
                     '{{ Session::get('
-                                                                                                                                                                    success ') }}'
+                                                                                                                                                                                                                                                    success ') }}'
                 );
             @endif
         });
@@ -1756,50 +1759,72 @@
                 success: function(data) {
                     console.log(data);
 
-                    if (data == '') {
-                       alert(1);
+                    if (data.success == 0) {
+
+                        $('#tracking_record').html('<button class="btn btn-danger  btn-sm disabled">' +
+                            data.data + '</button>');
                     }
-                    else{
 
-                        
-                    var html = '';
-                    // $('tbody').html(data);
-                    html += '<tr>';
+                    if (data) {
 
-                    html += '<td>';
-                    html += data.parcel_id;
-                    html += '</td>';
+                        var html = '';
+                        // $('tbody').html(data);
+                        html += '<tr>';
 
-                    html += '<td>';
-                    html += data.parcel_with_shipper.company_name;
-                    html += '</td>';
+                        html += '<td>';
+                        html += data.parcel_id;
+                        html += '</td>';
 
-                    html += '<td>';
-                    html += moment(data.created_at).format('LLL');
-                    html += '</td>';
+                        html += '<td>';
+                        html += data.parcel_with_shipper.company_name;
+                        html += '</td>';
+
+                        html += '<td>';
+                        html += moment(data.created_at).format('LLL');
+                        html += '</td>';
 
 
-                    html += '<td> <span class="badge badge-info">';
-                    html += data.pl_status;
-                    html += '</span></td>';
+                        html += '<td> <span class="badge badge-info">';
+                        html += data.pl_status;
+                        html += '</span></td>';
 
-                    html += '</tr>';
+                        html += '</tr>';
 
-                    $('#tracking_record').html(html);
+                        $('#tracking_record').html(html);
+                    }
+                    if (trdataSel.length == 0) {
+
+                        $('#tracking_record').html('no');
+                    }
+
                 }
 
-                    }
-                  
 
 
             });
         })
     </script>
+
+
     <script type="text/javascript">
         $.ajaxSetup({
             headers: {
                 'csrftoken': '{{ csrf_token() }}'
             }
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+
+            $('#track-parcel').on('click', function(e) {
+                e.preventDefault();
+               $('.bd-example-modal-lg form')[0].reset();
+               $('#tracking_record').html('');
+             
+
+            });
+         
         });
     </script>
 

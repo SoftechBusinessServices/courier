@@ -108,7 +108,7 @@
                                 <div class="print-div-balance-report">
                                     <div class="table-responsive">
                                         <table id="datatable-buttons"
-                                            class="table table-bordered dt-responsive nowrap w-100 table-sm text-center table-sm balance-sheet-table">
+                                            class="table table-bordered dt-responsive nowrap w-100 table-sm  table-sm balance-sheet-table">
                                             <thead>
                                                 <tr class="text-center">
                                                     <th>S.NO</th>
@@ -117,47 +117,11 @@
                                                     <th>Tracking<br>ID</th>
                                                     <th>Receivable <br>Charges</th>
                                                     <th>Payable<br>Charges</th>
-                                                    <th>Difference</th>
+                                                    <th>Net <br> Profit</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {{-- @php
-                                                    $i = 1;
-                                                @endphp
-                                                @if ($delivered_parcels->count() > 0)
-    
-                                                    @foreach ($delivered_parcels as $item)
-                                                        <tr>
-                                                            <td>{{ $i++ }}</td>
-                                                            <td>
-                                                                @php
-                                                                    $month = date('d/m/Y', strtotime($item->created_at));
-                                                                    // dd($month);
-                                                                    echo $month;
-                                                                @endphp
-                                                            </td>
-                                                            <td>
-                                                                <a href="{{ url('parcel-details/' . $item->id) }}"
-                                                                    class="btn btn-outline-secondary btn-sm delete"
-                                                                    title="View">
-                                                                    <i class="far fa-eye"> {{ $item->pl_id }}</i>
-                                                                </a>
-                                                            </td>
-    
-    
-                                                            <td>{{ $item->parcel_tracking->vendor_tracking_id }} </td>
-                                                            <td>{{ $a = $item->pl_final }}</td>
-                                                            <td>{{ $b = $item->parcel_charges->vendor_tracking_charges }}
-                                                            </td>
-                                                            <td>{{ $a - $b }}</td>
-    
-                                                        </tr>
-                                                    @endforeach
-                                                @else
-                                                    <tr>
-                                                        <td><code>No record found...</code></td>
-                                                    </tr>
-                                                @endif --}}
+                                               
                                             </tbody>
                                         </table>
                                     </div>

@@ -93,12 +93,10 @@
                                                         <tr>
                                                             <td>{{ $i++ }}</td>
                                                             <td>
-                                                                <a href="{{ url('parcel-details/' . $item->id) }}"
-                                                                    class="btn btn-outline-secondary btn-sm delete"
-                                                                    title="View">
-                                                                    <i class="far fa-eye">
-                                                                        {{ $item->allocate_with_parcel->parcel_id }}</i>
-                                                                </a>
+                                                                
+                                                                   
+                                                                        {{ $item->allocate_with_parcel->parcel_id }}
+                                                                
                                                             </td>
                                                             <td>
                                                                 {{ $item->allocate_with_parcel->parcel_with_consignee->consignee_with_country->name }}
@@ -136,7 +134,7 @@
                                                                     </p>
                                                                 @else
                                                                     {{-- @php echo($item->id);  @endphp --}}
-                                                                    <p id="trackingModal_{{ $item->id }}">
+                                                                    <p id="trackingModal_{{ $item->pl_id }}">
                                                                         <a class="btn btn-outline-success btn-sm tracking_btn"
                                                                             title="add" data-bs-toggle="modal"
                                                                             data-bs-target="#trackingmodal"
@@ -167,7 +165,7 @@
                                                                     </p>
                                                                 @else
                                                                     {{-- @php echo($item->id);  @endphp --}}
-                                                                    <p id="trackingModal2_{{ $item->id }}">
+                                                                    <p id="trackingModal2_{{ $item->pl_id }}">
                                                                         <a class="btn btn-outline-primary btn-sm charges_btn"
                                                                             title="add" data-bs-toggle="modal"
                                                                             data-bs-target="#vendor_charges_update"
@@ -318,10 +316,10 @@
                 if (data.success == 1) {
                     console.log(data)
                     // $('#trackingModal_' + track_id).text(data.data.vendor_tracking_id);
-                    $('#trackingModal_' + data.data.id).html(
+                    $('#trackingModal_' + data.data.pl_id).html(
                         '<button type="button" class="btn bg-success text-white btn-sm disabled">' +
                         data.data.vendor_tracking_id + '</button>');
-
+                    // alert( data.data.vendor_tracking_id+data.pl_id);
                     toastr.success('record updated', 'success');
 
                     $(':input', this).val('');
@@ -354,10 +352,10 @@
                     });
                 }
                 if (data.success == 1) {
-                    $('#trackingModal2_' + data.data.id).html(
+                    $('#trackingModal2_' + data.data.pl_id).html(
                         '<button type="button" class="btn bg-primary text-white btn-sm disabled">' +
                         data.data.vendor_tracking_charges + '</button>');
-
+                            // alert(data.data.vendor_tracking_charges+data.pl_id);
                     toastr.success('record updated', 'success');
 
                     $(':input', this).val('');

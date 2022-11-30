@@ -16,6 +16,7 @@ use App\Models\ParcelShipper;
 use App\Models\AllocateParcel;
 use App\Models\ParcelConsignee;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Validator;
 
 class ParcelController extends Controller
 {
@@ -354,18 +355,20 @@ class ParcelController extends Controller
     public function search_tracking_id(Request $request)
     {
         // dd($request);
+        // $validator = Validator::make($request->search);
         $search = Parcel::with('parcel_with_shipper')->where('parcel_id', 'Like', '%' . $request->search . '%')->first();
         // dd($search);
         // $search_id = $search->id;
         // $employee = ParcelConsignee::where('id',$search_id)->first();
         // dd($employee);
-        if ($search->count() > 0) {
+        if (empty($search)) {
+
+            $error = "No record found";
+            return response()->json(['success' => 0, 'data' => $error]);
+        } else {
             return response()->json($search);
+            // return response()->json(['success' => 1, 'data' => $search]);
         }
-        else{
-            return response()->json();
-        }
-       
     }
 
     public function vendor_details_list(Request $request)
@@ -413,7 +416,7 @@ class ParcelController extends Controller
 
 
     public function date_wise_customer_record(Request $request)
-    {   
+    {
         // dd($request->all());
         // $dates = [];
         $customer_id = $request->selected_customer_id;
@@ -431,28 +434,28 @@ class ParcelController extends Controller
         $parcel_dates = Parcel::whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->pluck('created_at');
         $log_dates = PaymentLog::whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->pluck('created_at');
         // dd($parcel_dates,$log_dates);
-        
+
         $merged_dates = $parcel_dates->merge($log_dates);
         // dd($merged_dates);
-        
+
         $sorted_dates = $merged_dates->sortBy('created_at')->toArray();
         // dd($sorted_dates);
-        
+
         // $time_stamps = $sorted_dates->pick('created_at') ;
         // dd($time_stamps);
-        
+
         $selected_parcels = Parcel::with('parcel_with_payment_log')
-        ->where($sorted_dates)
-        ->where('shipper_id',$customer_id)->get();
-           dd($selected_parcels);
-        
+            ->where($sorted_dates)
+            ->where('shipper_id', $customer_id)->get();
+        dd($selected_parcels);
+
         $selected_logs = PaymentLog::
-        // with('paymentlog_with_parcel')
-        where('customer_type','1')
-        ->where('vcid',$customer_id)
-        ->get();
+            // with('paymentlog_with_parcel')
+            where('customer_type', '1')
+            ->where('vcid', $customer_id)
+            ->get();
         //    dd($selected_logs);
-        
+
         $merged_parcels = $selected_parcels->concat($selected_logs)->sortBy('created_at');
         dd($merged_parcels);
 

@@ -17,6 +17,9 @@
                         </div>
                         <div class="col-md-6">
                             <label for="course" class="form-label">Select Vendor for Service </label>
+                            <div id="no-vendor">
+
+                            </div>
                             <select class="form-control" name="vendor_id" id="vendor_id"></select>
                             @error('vendor_id')
                             <span class="invalid-feedback" role="alert">
@@ -162,8 +165,21 @@
                     //    dataType: "json",
                     success: function(data) {
                         console.log(data);
-                        if (data) {
+                        
+                        if (data.success == 0) {
+                            // alert(data.data);
+                            // $('#vendor_id').hide();
+                            // $('#no-vendor').html('<button class="btn btn-danger  btn-sm disabled">' +
+                            // data.data + '</button>');
+                            //   $('#vendor_id').hide();
+                            // $('#vendor_id').attr('disabled', 'disabled');
+                            
+                    }
+                      
+                        else {
+                            // $('#vendor_id').removeAttr('disabled');
                             $('#vendor_id').empty();
+                            // $('#vendor_id').append();
                             $('#vendor_id').append(
                                 '<option hidden>Choose Vendor</option>');
                             $.each(data, function(key, course) {
@@ -172,14 +188,17 @@
                                     '">' + course.logistic_with_company.name +
                                     '</option>');
                             });
-                        } else {
-                            $('#vendor_id').empty();
-                        }
+                        } 
+                        // else {
+                        //     $('#vendor_id').empty();
+                        //     $('#vendor_id').append(data.data );
+                        // }
                     }
                 });
-            } else {
-                $('#vendor_id').empty();
-            }
+            } 
+            // else {
+            //     $('#vendor_id').empty();
+            // }
 
         });
 

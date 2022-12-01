@@ -323,6 +323,7 @@
                     toastr.success('record updated', 'success');
 
                     $(':input', this).val('');
+                    $("#vendor-tracking-id").trigger("reset");
                     $('#trackingmodal').modal('hide');
 
                     // console.log(track_id);
@@ -359,6 +360,7 @@
                     toastr.success('record updated', 'success');
 
                     $(':input', this).val('');
+                    $("#vendor-tracking-charges").trigger("reset");
                     $('#vendor_charges_update').modal('hide');
                     // console.log(track_id);
                 }

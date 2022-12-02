@@ -341,9 +341,11 @@ class ParcelController extends Controller
     public function destroy_parcel($id)
     {
         // dd($id);
-        $data = Parcel::find($id);
+        $data1 = Parcel::find($id)->delete();
+        $data = ParcelNote::where('pl_id', $id)->delete();
+       
         // dd($data);
-        $data = $data->delete();
+       
 
         if ($data) {
             return redirect()->back()->with('error', "Record Deleted Successfully");

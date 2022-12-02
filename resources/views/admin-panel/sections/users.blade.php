@@ -10,7 +10,7 @@
                     @csrf
                     <div class="mb-3">
                         <label for="username4" class="form-label">Username</label>
-                        <input type="text" placeholder="Enter username" required class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                        <input type="text" placeholder="Enter username"  class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}"  autocomplete="name" autofocus required>
 
                         @error('name')
                         <span class="invalid-feedback" role="alert">
